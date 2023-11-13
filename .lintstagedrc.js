@@ -1,12 +1,8 @@
 module.exports = {
-    // Type check TypeScript files
-    '**/*.(ts|tsx)': () => 'npx tsc --noEmit',
-
-    // Lint & Prettify TS and JS files
-    '**/*.(ts|tsx)': filenames => {
-        return [
-            `npx eslint --fix ${filenames.join(' ')}`,
-            `npx prettier --write ${filenames.join(' ')}`
-        ];
-    }
+    '**/*.(ts|tsx)': filenames => [
+        `npx tsc --noEmit`,
+        `npx eslint --fix ${filenames.join(' ')}`,
+        `npx prettier --write ${filenames.join(' ')}`
+    ],
+    '**/node_modules/**/*': () => null
 };
