@@ -2,6 +2,7 @@
     "name": "dessert-front",
     "version": "0.1.0",
     "private": true,
+    "type": "commonjs",
     "scripts": {
         "dev": "next dev",
         "build": "next build",
@@ -11,6 +12,9 @@
         "postinstall": "husky install",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build"
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
     },
     "dependencies": {
         "@emotion/react": "^11.11.1",
