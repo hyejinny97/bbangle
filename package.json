@@ -59,5 +59,6 @@
     "prettier": "^3.1.0",
     "storybook": "7.5.3",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }
