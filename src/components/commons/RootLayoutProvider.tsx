@@ -2,9 +2,9 @@
 
 import { ReactNode } from 'react';
 import { RecoilRoot } from 'recoil';
-import GlobalStyle from '../styles/Global';
+import GlobalStyle from '../../commons/styles/Global';
 import { ThemeProvider } from '@emotion/react';
-import { theme } from '../styles/theme';
+import { theme } from '../../commons/styles/theme';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const RootLayoutProvider = ({ children }: { children: ReactNode }) => {
