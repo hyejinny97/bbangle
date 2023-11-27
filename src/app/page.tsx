@@ -1,5 +1,7 @@
 'use client';
 
+import Main from '@/components/units/main/MainContainer';
+
 export default function Home() {
-    return <div>메인페이지</div>;
+    return <Main />;
 }
