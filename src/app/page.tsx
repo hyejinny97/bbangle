@@ -1,5 +1,5 @@
-import Main from '@/components/units/main/MainContainer';
+import ServerHome from '@/components/units/Home/sever/SeverHome';
 
 export default function Home() {
-    return <Main />;
+    return <ServerHome />;
 }
