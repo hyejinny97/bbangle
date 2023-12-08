@@ -12,6 +12,7 @@
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+install-state.gz
 
 # testing
 /coverage
