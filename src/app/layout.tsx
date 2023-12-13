@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import './global.css';
 import RootLayoutProvider from '@/components/commons/RootLayoutProvider';
 
 const inter = Inter({ subsets: ['latin'] });
