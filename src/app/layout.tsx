@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './global.css';
 import RootLayoutProvider from '@/components/commons/RootLayoutProvider';
+import Footer from '@/components/commons/footer/server/footer.tsx';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,7 +16,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     return (
         <html>
             <body className={inter.className}>
-                <RootLayoutProvider>{children}</RootLayoutProvider>
+                <RootLayoutProvider>
+                    <div className="sm:w-[600px] w-full h-screen m-auto">{children}</div>
+                    <Footer />
+                </RootLayoutProvider>
             </body>
         </html>
     );
