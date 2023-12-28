@@ -3,7 +3,7 @@
 import { MouseEvent } from 'react';
 import TabButton from '../TabButton.tsx';
 import { useRecoilState } from 'recoil';
-import { categoryName, productNameState } from '@/atoms/atom.ts';
+import { categoryName, productNameState } from '@/atoms/atom';
 
 const CATEGORY_TAB = [
     { id: 1, name: '상품별' },
@@ -15,10 +15,11 @@ const CategoryTab = () => {
     const handleClickBtn = (e: MouseEvent<HTMLButtonElement>) => {
         const buttonName = e.currentTarget.name;
         setIsProductName(buttonName);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     return (
-        <div>
+        <div className="sticky top-0">
             <div className="w-full h-[43px] bg-white justify-start items-start inline-flex relative">
                 {CATEGORY_TAB.map(tab => (
                     <TabButton
