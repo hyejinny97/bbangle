@@ -1,8 +1,17 @@
-const Button = ({ title }) => {
+'use client';
+
+import React from 'react';
+
+interface ButtonProps {
+    title: String;
+    icon: React.ReactElement;
+}
+
+const Button = ({ title, icon }: ButtonProps) => {
     return (
-        <button className="flex flex-col cursor-pointer items-center justify-center w-1/5 gap-2">
-            <div className="w-2 h-2 bg-black"></div>
-            <span>{title}</span>
+        <button className="flex flex-col items-center justify-center w-1/5 gap-2 cursor-pointer">
+            {icon}
+            <span className="text-neutral-400 text-xs font-normal leading-[18px]">{title}</span>
         </button>
     );
 };
