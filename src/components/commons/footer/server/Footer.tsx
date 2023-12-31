@@ -5,11 +5,12 @@ import Category from '@/components/commons/footer/assets/category.svg';
 import Heart from '@/components/commons/footer/assets/heart.svg';
 import Profile from '@/components/commons/footer/assets/profile.svg';
 import Search from '@/components/commons/footer/assets/search.svg';
+import Home from '@/components/commons/footer/assets/home.svg';
 
 const Footer = () => {
     // 나중에 따로 뺄거
     const menu = [
-        { title: '홈', icon: <Category /> },
+        { title: '홈', icon: <Home /> },
         { title: '검색', icon: <Search /> },
         { title: '전체', icon: <Category /> },
         { title: '찜', icon: <Heart /> },
