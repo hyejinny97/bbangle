@@ -1,5 +1,5 @@
-'use client';
+import ServerHome from '@/components/units/Home/server/ServerHome';
 
 export default function Home() {
-    return <div>메인페이지</div>;
+    return <ServerHome />;
 }
