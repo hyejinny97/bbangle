@@ -17,7 +17,7 @@ const TabButton = ({ name, ProductName, handleClickBtn }: TabButtonProps) => {
                 <div
                     className={`${
                         ProductName === name
-                            ? 'text-stone-600 font-medium'
+                            ? 'text-[#212121] font-medium'
                             : 'text-neutral-400 font-nomal'
                     } text-sm font-['Pretendard'] leading-[21px]`}
                 >
