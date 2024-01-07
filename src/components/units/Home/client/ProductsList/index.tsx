@@ -11,7 +11,15 @@ const bestProductsData = [
         productImg: '/assets/breadImg.jpeg',
         productName: '고구마케이크 3종',
         storeName: '안녕, 베이커리',
-        tag: ['#비건', '무설탕', '글루텐프리'],
+        tag: [
+            '#비건',
+            '#무설탕',
+            '#글루텐프리',
+            '#글루텐프리',
+            '#글루텐프리',
+            '#글루텐프리',
+            '#글루텐프리'
+        ],
         price: 8500
     },
     {
