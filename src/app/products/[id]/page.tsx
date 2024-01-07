@@ -1,5 +1,11 @@
+import Header from '@/components/commons/header/server/Header';
+
 const ProductDetail = () => {
-    return <>디테일 페이지입니당당당</>;
+    return (
+        <>
+            <Header title="상품보기" />
+        </>
+    );
 };
 
 export default ProductDetail;
