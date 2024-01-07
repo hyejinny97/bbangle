@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <html>
             <body className={inter.className}>
                 <RootLayoutProvider>
-                    <div className="sm:w-[600px] w-full  m-auto pb-24">{children}</div>
+                    <div className="sm:w-[600px] w-full m-auto pb-24">{children}</div>
                     <Footer />
                 </RootLayoutProvider>
             </body>
