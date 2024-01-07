@@ -19,7 +19,7 @@ const CategoryTab = () => {
     };
 
     return (
-        <div className="sticky top-0">
+        <div className="sticky top-[60px]">
             <div className="w-full h-[43px] bg-white justify-start items-start inline-flex relative">
                 {CATEGORY_TAB.map(tab => (
                     <TabButton
@@ -30,9 +30,9 @@ const CategoryTab = () => {
                     />
                 ))}
 
-                <div className="w-full h-0.5 bg-gray-200 flex absolute left-0 bottom-0">
+                <div className="w-full h-0.5 bg-neutral-100 flex absolute left-0 bottom-0">
                     <div
-                        className={`w-1/2  h-0.5 opacity-30 bg-stone-600 duration-[0.5s] transform ${
+                        className={`w-1/2  h-0.5 bg-[#212121] duration-[0.5s] transform ${
                             ProductName === categoryName ? 'translate-x-0' : 'translate-x-full'
                         }`}
                     />

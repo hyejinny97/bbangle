@@ -125,6 +125,20 @@ const styles = css`
         border-collapse: collapse;
         border-spacing: 0;
     }
+    .scrollable-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+        -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+        scroll-snap-type: x mandatory; /* Optional: Snap to grid on x-axis */
+        scroll-behavior: smooth; /* Optional: Smooth scrolling behavior */
+        white-space: nowrap;
+    }
+
+    .scrollable-container::-webkit-scrollbar {
+        display: none; /* Safari/Chrome/Opera */
+    }
 `;
 
 const GlobalStyle = () => <Global styles={styles} />;

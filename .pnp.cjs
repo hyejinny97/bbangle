@@ -65,6 +65,7 @@ const RAW_RUNTIME_STATE =
           ["recoil", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:0.7.7"],\
           ["storybook", "npm:7.5.3"],\
           ["svg-inline-loader", "npm:0.8.2"],\
+          ["swiper", "npm:11.0.5"],\
           ["tailwindcss", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:3.2.4"],\
           ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
           ["yup", "npm:1.3.2"]\
@@ -10342,6 +10343,7 @@ const RAW_RUNTIME_STATE =
           ["recoil", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:0.7.7"],\
           ["storybook", "npm:7.5.3"],\
           ["svg-inline-loader", "npm:0.8.2"],\
+          ["swiper", "npm:11.0.5"],\
           ["tailwindcss", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:3.2.4"],\
           ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
           ["yup", "npm:1.3.2"]\
@@ -18194,6 +18196,15 @@ const RAW_RUNTIME_STATE =
           "@types/swc__core",\
           "@types/webpack",\
           "webpack"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["swiper", [\
+      ["npm:11.0.5", {\
+        "packageLocation": "../../.yarn/berry/cache/swiper-npm-11.0.5-152220df64-10c0.zip/node_modules/swiper/",\
+        "packageDependencies": [\
+          ["swiper", "npm:11.0.5"]\
         ],\
         "linkType": "HARD"\
       }]\
