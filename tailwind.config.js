@@ -4,6 +4,16 @@ module.exports = {
     content: ['./src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
+            keyframes: {
+                pop: {
+                    '0%, 100%': { transform: 'scale(1)' },
+                    '50%': { transform: 'scale(1.2)' }
+                }
+            },
+            animation: {
+                pop: 'pop 0.4s ease-in-out'
+            },
+
             colors: {
                 color: {
                     PrimaryOrangeRed: '#F04C28',

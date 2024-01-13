@@ -1,8 +1,10 @@
 'use client';
 
+import BtnHeart from '@/components/commons/button/client/Btn_heart';
 import Header from '@/components/commons/header/server/Header';
 import ProductImgs from '@/components/units/Detail/client/ProductImgs';
 import ProductInfo from '@/components/units/Detail/client/ProductInfo';
+import { useState } from 'react';
 
 const product = {
     id: 1,
@@ -16,11 +18,16 @@ const product = {
 };
 
 const ProductDetail = () => {
+    const [isLiked, setIsLiked] = useState(false);
+    const handleLikeClick = () => {
+        setIsLiked(!isLiked);
+    };
     return (
         <>
             <Header title="상품보기" />
             <ProductImgs product={product} />
             <ProductInfo product={product} />
+            <BtnHeart isLiked={isLiked} onClick={handleLikeClick} />
         </>
     );
 };
