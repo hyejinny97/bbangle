@@ -1,5 +1,7 @@
+import { IProductsType } from '@/components/units/Home/types';
+
 interface TagSwiperProps {
-    tag: string[];
+    tag: IProductsType['tags'];
 }
 
 const TagSwiper: React.FC<TagSwiperProps> = ({ tag }) => {
@@ -15,7 +17,7 @@ const TagSwiper: React.FC<TagSwiperProps> = ({ tag }) => {
                                 className="h-[21px] px-1.5 py-0.5 bg-color-White rounded border border-solid border-color-Gray200 justify-center items-center gap-1 inline-flex"
                             >
                                 <span className="inline-block text-color-Gray600 text-[11px] font-normal leading-none">
-                                    {tag}
+                                    임시태그
                                 </span>
                             </div>
                         )

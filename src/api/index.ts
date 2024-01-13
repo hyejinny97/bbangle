@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const serverUrl = `https://${process.env.SERVER_URL}:${process.env.SERVER_PORT}/api/v1`;
+const serverUrl = `http://${process.env.NEXT_PUBLIC_SERVER_URL}:${process.env.NEXT_PUBLIC_SERVER_PORT}/api/v1`;
 
 async function get<T>(endpoint: string, params = ''): Promise<T> {
     return axios.get(serverUrl + endpoint + '/' + params, {
