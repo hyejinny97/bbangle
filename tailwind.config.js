@@ -3,7 +3,26 @@ module.exports = {
     // tailwind CSS 를 적용할 경로를 app폴더내 모든 디렉토리내 js,ts,jsx,tsx파일에 적용
     content: ['./src/**/*.{js,ts,jsx,tsx}'],
     theme: {
-        extend: {}
+        extend: {
+            colors: {
+                color: {
+                    PrimaryOrangeRed: '#F04C28',
+                    SecondaryOrangeRed: '#ED5F5F',
+                    SubColorPink: '#FEEDEA',
+                    Gray100: '#F5F5F5',
+                    Gray400: '#BDBDBD',
+                    Gray500: '#9E9E9E',
+                    Gray600: '#757575',
+                    Gray700: '#616161',
+                    Gray800: '#424242',
+                    Gray900: '#212121',
+                    White: '#fff'
+                }
+            }
+        }
+    },
+    future: {
+        hoverOnlyWhenSupported: true
     },
     plugins: []
 };
