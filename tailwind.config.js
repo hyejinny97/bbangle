@@ -20,6 +20,7 @@ module.exports = {
                     SecondaryOrangeRed: '#ED5F5F',
                     SubColorPink: '#FEEDEA',
                     Gray100: '#F5F5F5',
+                    Gray200: '#EEEEEE',
                     Gray400: '#BDBDBD',
                     Gray500: '#9E9E9E',
                     Gray600: '#757575',

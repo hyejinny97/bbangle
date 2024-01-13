@@ -1,56 +1,32 @@
-import React, { useRef, useState, TouchEvent } from 'react';
+import { IProductsType } from '@/components/units/Home/types';
 
 interface TagSwiperProps {
-    tag: string[];
+    tag: IProductsType['tags'];
 }
 
 const TagSwiper: React.FC<TagSwiperProps> = ({ tag }) => {
-    const containerRef = useRef<HTMLDivElement | null>(null);
-    const [isDragging, setIsDragging] = useState(false);
-    const [startX, setStartX] = useState(0);
-
-    const handleTouchStart = (e: TouchEvent) => {
-        setIsDragging(true);
-        setStartX(e.touches[0].pageX);
-    };
-
-    const handleTouchEnd = () => {
-        setIsDragging(false);
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-        e.preventDefault();
-
-        if (!isDragging || !containerRef.current) return;
-
-        const delta = startX - e.touches[0].pageX;
-        containerRef.current.scrollLeft += delta;
-
-        setStartX(e.touches[0].pageX);
-
-    };
-
     return (
-        <div
-            ref={containerRef}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-            onTouchMove={handleTouchMove}
-            className="flex space-x-2 overflow-x-auto scrollable-container"
-        >
-            <div className="flex gap-1 whitespace-nowrap">
-                {tag.map((tag, index) => (
-                    <div
-                        key={index}
-                        style={{ flex: 'auto' }}
-                        className="w-auto h-[21px] px-1.5 py-0.5 bg-white rounded border border-solid border-gray-200 justify-center items-center gap-1 inline-flex"
-                    >
-                        <span className="inline-block text-neutral-500 text-[11px] font-normal font-['Pretendard'] leading-none">
-                            {tag}
-                        </span>
-                    </div>
-                ))}
+        <div className="flex justify-between w-full space-x-2 overflow-x-auto">
+            <div className="flex gap-1 ">
+                {tag.map((tag, index) => {
+                    return (
+                        index < 3 && (
+                            <div
+                                key={index}
+                                style={{ flex: 'auto' }}
+                                className="h-[21px] px-1.5 py-0.5 bg-color-White rounded border border-solid border-color-Gray200 justify-center items-center gap-1 inline-flex"
+                            >
+                                <span className="inline-block text-color-Gray600 text-[11px] font-normal leading-none">
+                                    임시태그
+                                </span>
+                            </div>
+                        )
+                    );
+                })}
             </div>
+            <span className="text-[11px] font-semibold text-color-Gray400">
+                {tag.length > 3 && `${tag.length - 3}+`}
+            </span>
         </div>
     );
 };
