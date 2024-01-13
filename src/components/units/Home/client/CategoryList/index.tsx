@@ -122,7 +122,7 @@ const CategoryList = () => {
     const [ProductName] = useRecoilState(productNameState);
 
     return (
-        <div className="flex flex-wrap w-full p-4">
+        <div className="flex flex-wrap w-[92%] m-auto py-4">
             {categoryMenu
                 .filter(category => category.category === ProductName)
                 .map(category => (

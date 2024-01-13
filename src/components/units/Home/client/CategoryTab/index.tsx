@@ -30,9 +30,9 @@ const CategoryTab = () => {
                     />
                 ))}
 
-                <div className="w-full h-0.5 bg-neutral-100 flex absolute left-0 bottom-0">
+                <div className="w-full h-0.5 bg-color-Gray100 flex absolute left-0 bottom-0">
                     <div
-                        className={`w-1/2  h-0.5 bg-[#212121] duration-[0.5s] transform ${
+                        className={`w-1/2  h-0.5 bg-color-Gray900 duration-[0.5s] transform ${
                             ProductName === categoryName ? 'translate-x-0' : 'translate-x-full'
                         }`}
                     />
