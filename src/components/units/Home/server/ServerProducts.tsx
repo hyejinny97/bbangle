@@ -1,7 +1,17 @@
 import Link from 'next/link';
 import ProductsList from '../client/ProductsList';
+import * as API from '@/api';
 
-const ServerProducts = () => {
+const getBestProducts = async () => {
+    const res = await fetch(`${API.serverUrl}/boards`, { cache: 'no-store' });
+    const data = res.json();
+
+    return data;
+};
+
+const ServerProducts = async () => {
+    const bestProducts = await getBestProducts();
+
     return (
         <div className="w-full">
             <div className="w-[92%] h-14 m-auto py-2.5 justify-between items-end flex">
@@ -10,7 +20,7 @@ const ServerProducts = () => {
                     전체보기
                 </Link>
             </div>
-            <ProductsList />
+            <ProductsList bestProducts={bestProducts} />
         </div>
     );
 };
