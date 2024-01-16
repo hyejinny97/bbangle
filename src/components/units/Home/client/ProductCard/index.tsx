@@ -8,7 +8,7 @@ interface ProductsCardProps {
 
 const ProductsCard = ({ product }: ProductsCardProps) => {
     return (
-        <Link href="./products/:id" className="w-[48%]">
+        <Link href={`/products/${product.boardId}`} className="w-[48%]">
             <div
                 className="w-full pb-[90%] bg-cover bg-center rounded-xl"
                 style={{ backgroundImage: `url(${product.thumbnail})` }}
