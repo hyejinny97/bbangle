@@ -17,7 +17,7 @@ const CategoryTab = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
     return (
-        <div className="sticky top-0">
+        <div className="sticky top-0 z-10">
             <div className="w-full h-[43px] bg-white justify-start items-start inline-flex relative">
                 {CATEGORY_TAB.map(tab => (
                     <TabButton

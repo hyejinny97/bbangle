@@ -5,7 +5,7 @@ const ServerTotal = () => {
     return (
         <>
             <ServerCategory />
-            <ServerItems/>
+            <ServerItems />
         </>
     );
 };

@@ -1,53 +1,45 @@
 'use client';
-import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import { useState } from 'react';
-import Filter from '@/components/commons/filter/assets/filter.svg';
+import CheckBox from '@/components/commons/checkbox/client/Checkbox';
+import Filters from './assets/filter.svg';
+import Sort from './assets/sort.svg';
 
 const FilterTab = () => {
-    const [checked, setChecked] = useState(false); // 체크 여부 판단
-    const checkHandled = (e: any) => {
-        console.log(e.target.checked);
-        setChecked(e.target.checked);
+    const [isChecked, setIsChecked] = useState(false); // 체크 여부 판단
+    const checkHandled = () => {
+        setIsChecked(!isChecked);
     };
-    const navItem = [
-        '전체',
-        '버튼1',
-        '버튼2',
-        '버튼3',
-        '버튼4',
-        '전체',
-        '버튼1',
-        '버튼2',
-        '버튼3',
-        '버튼4',
-        '버튼1',
-        '버튼2',
-        '버튼4',
-        '버튼1',
-        '버튼2',
-        '버튼3'
-    ];
+
+    const navItem = ['전체', '빵', '쿠키', '케이크', '타르트', '잼/청', '요거트', '기타'];
     return (
         <>
-            <div className="flex overflow-x-scroll pl-3 pt-3 scrollbar-hide">
+            <div className="flex gap-[6px] w-full my-[16px] overflow-x-scroll scrollbar-hide  ">
                 {navItem.map((item, index) => {
                     return (
                         <button
                             key={index}
-                            className="flex w-[50px] h-[30px] items-center justify-center overflow-hidden whitespace-nowrap border-2 px-6 py-3 rounded-full text-xs font-medium m-2"
+                            className="h-[34px] flex-shrink-0 px-3 py-2 bg-white rounded-[50px] border border-gray-200 justify-center items-center gap-1 inline-flex"
                         >
-                            <h2>{item}</h2>
+                            <p className="text-neutral-800 text-xs font-medium font-['Pretendard'] leading-[18px]">
+                                {item}
+                            </p>
                         </button>
                     );
                 })}
+                <div className="absolute right-[16px] bg-white pl-[6px]">
+                    <Filters />
+                </div>
             </div>
-            <div className="w-[92%] h-15 m-auto py-3 justify-between items-end flex">
-                <CheckBox checked={checked} onChange={checkHandled} title="주문가능한 상품 보기" />
-                <div className="w-[54px] h-[25px] justify-start items-center gap-1 inline-flex">
-                    <Filter />
-                    <div className="text-neutral-700 text-xs font-medium font-['Pretendard'] leading-[21px]">
-                        추천순
-                    </div>
+            <div className="flex border w-full justify-between items-center">
+                <CheckBox
+                    isChecked={isChecked}
+                    onClick={checkHandled}
+                    title="주문가능한 상품 보기"
+                />
+
+                <div className="text-neutral-700 flex gap-[4px] text-xs font-medium">
+                    <Sort />
+                    추천순
                 </div>
             </div>
         </>
