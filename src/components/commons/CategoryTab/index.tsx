@@ -5,12 +5,11 @@ import TabButton from '../TabButton.tsx';
 import { useRecoilState } from 'recoil';
 import { categoryName, productNameState } from '@/atoms/atom';
 
-const CATEGORY_TAB = [
-    { id: 1, name: '상품별' },
-    { id: 2, name: '성분별' }
-];
+interface CategoryTabProps {
+    categories: string[];
+}
 
-const CategoryTab = () => {
+const CategoryTab = ({ categories }: CategoryTabProps) => {
     const [ProductName, setIsProductName] = useRecoilState(productNameState);
     const handleClickBtn = (e: MouseEvent<HTMLButtonElement>) => {
         const buttonName = e.currentTarget.name;
@@ -21,10 +20,10 @@ const CategoryTab = () => {
     return (
         <div className="sticky top-[60px]">
             <div className="w-full h-[43px] bg-white justify-start items-start inline-flex relative">
-                {CATEGORY_TAB.map(tab => (
+                {categories.map((tab, index) => (
                     <TabButton
-                        key={tab.id}
-                        name={tab.name}
+                        key={index}
+                        name={tab}
                         handleClickBtn={handleClickBtn}
                         ProductName={ProductName}
                     />
