@@ -8,7 +8,7 @@ const FilterTab = () => {
     const [isChecked, setIsChecked] = useState(false); // 체크 여부 판단
     const [selectedItem, setSelectedItem] = useState(null);
 
-    const handleItemClick = index => {
+    const handleItemClick = (index: any) => {
         setSelectedItem(index);
     };
     const checkHandled = () => {
