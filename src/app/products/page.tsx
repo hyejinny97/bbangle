@@ -1,5 +1,7 @@
+import ServerTotal from '@/components/units/Products/server/ServerTotal';
+
 const Products = () => {
-    return <>프로덕트 페이지ㅇ</>;
+    return <ServerTotal />;
 };
 
 export default Products;
