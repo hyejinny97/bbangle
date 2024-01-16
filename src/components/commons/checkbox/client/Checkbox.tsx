@@ -14,7 +14,7 @@ function CheckBox({ isChecked, title, onClick }: CheckBoxProps) {
             <button onClick={onClick}>
                 <div>{isChecked ? <On /> : <Off />}</div>
             </button>
-            <div className="text-gray-800 text-sm font-normal pl-[0.3rem] ">{title}</div>
+            <div className="text-gray-800 text-xs font-normal pl-[0.5rem] ">{title}</div>
         </div>
     );
 }

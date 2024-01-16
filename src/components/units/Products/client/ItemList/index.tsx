@@ -16,18 +16,24 @@ const ItemList = ({ bestProducts }: TotalListProps) => {
     console.log(ProductName);
 
     return (
-        <div className="flex flex-wrap w-[92%] m-auto gap-x-[4%] gap-y-2">
+        <div className="flex flex-wrap m-auto">
             {ProductName === '상품' ? (
                 <>
                     <FilterTab />
-                    <div className="flex flex-wrap  m-auto gap-x-[4%] gap-y-2">
+                    <div className="flex flex-wrap  w-[92%] m-auto gap-x-[4%] gap-y-2">
                         {bestProducts.map(product => (
                             <ProductsCard key={String(product.boardId)} product={product} />
                         ))}
                     </div>
                 </>
             ) : (
-                bestProducts.map((store, index) => <StoreCard key={index} store={store} />)
+                bestProducts.map((store, index) => (
+                    <>
+                        <div className="w-full border-b border-solid border-[#F5F5F5]">
+                            <StoreCard key={index} store={store} />
+                        </div>
+                    </>
+                ))
             )}
         </div>
     );
