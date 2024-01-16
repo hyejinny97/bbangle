@@ -1,26 +1,10 @@
 export interface IProductsType {
-    boardId: Number;
-    storeId: Number;
-    storeName: String;
-    thumbnail: String;
-    title: String;
-    price: Number;
-    isWished: Boolean;
-    tags: [
-        {
-            glutenFree: Boolean;
-        },
-        {
-            highProtein: Boolean;
-        },
-        {
-            sugarFree: Boolean;
-        },
-        {
-            vegan: Boolean;
-        },
-        {
-            ketogenic: Boolean;
-        }
-    ];
+    boardId: number;
+    storeId: number;
+    storeName: string;
+    thumbnail: string;
+    title: string;
+    price: number;
+    isWished: boolean;
+    tags: string[];
 }

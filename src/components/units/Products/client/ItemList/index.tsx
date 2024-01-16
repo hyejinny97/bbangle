@@ -1,6 +1,6 @@
 'use client';
 
-import { itemName, itemNameState } from '@/atoms/atom';
+import { itemNameState } from '@/atoms/atom';
 import ProductsCard from '@/components/units/Home/client/ProductCard';
 import { IProductsType } from '@/components/units/Products/types';
 import { useRecoilState } from 'recoil';
