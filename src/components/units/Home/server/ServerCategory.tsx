@@ -1,10 +1,10 @@
+import CategoryTab from '@/components/commons/CategoryTab';
 import CategoryList from '../client/CategoryList';
-import CategoryTab from '../client/CategoryTab';
 
 const ServerCategory = () => {
     return (
         <>
-            <CategoryTab />
+            <CategoryTab categories={['상품별', '성분별']} />
             <CategoryList />
         </>
     );
