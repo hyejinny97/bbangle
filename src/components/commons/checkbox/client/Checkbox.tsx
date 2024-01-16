@@ -8,8 +8,6 @@ type checkButtonprops = {
     title: string;
 };
 const CheckBox = ({ checked, onChange, title }: checkButtonprops) => {
-    console.log('checkbox:', checked);
-    console.log(onChange);
     return (
         <div className="mb-[0.125rem] block min-h-[1.5rem] pl-[0rem]">
             <input

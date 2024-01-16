@@ -67,6 +67,7 @@ const RAW_RUNTIME_STATE =
           ["storybook", "npm:7.5.3"],\
           ["svg-inline-loader", "npm:0.8.2"],\
           ["swiper", "npm:11.0.5"],\
+          ["tailwind-scrollbar-hide", "npm:1.1.7"],\
           ["tailwindcss", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:3.2.4"],\
           ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
           ["yup", "npm:1.3.2"]\
@@ -10358,6 +10359,7 @@ const RAW_RUNTIME_STATE =
           ["storybook", "npm:7.5.3"],\
           ["svg-inline-loader", "npm:0.8.2"],\
           ["swiper", "npm:11.0.5"],\
+          ["tailwind-scrollbar-hide", "npm:1.1.7"],\
           ["tailwindcss", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:3.2.4"],\
           ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
           ["yup", "npm:1.3.2"]\
@@ -18275,6 +18277,15 @@ const RAW_RUNTIME_STATE =
           ["slice-ansi", "npm:4.0.0"],\
           ["string-width", "npm:4.2.3"],\
           ["strip-ansi", "npm:6.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["tailwind-scrollbar-hide", [\
+      ["npm:1.1.7", {\
+        "packageLocation": "../../Users/User/AppData/Local/Yarn/Berry/cache/tailwind-scrollbar-hide-npm-1.1.7-537baa5b75-10c0.zip/node_modules/tailwind-scrollbar-hide/",\
+        "packageDependencies": [\
+          ["tailwind-scrollbar-hide", "npm:1.1.7"]\
         ],\
         "linkType": "HARD"\
       }]\
