@@ -1,8 +1,9 @@
 'use client';
+
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import Filters from './assets/filter.svg';
 import SortingButton from '../SortingButton';
-import { UseGetAllProductsQuery } from '../../hooks/UseGetAllProductsQuery';
+import { useState } from 'react';
 
 const FilterTab = () => {
     const [isChecked, setIsChecked] = useState(false);
@@ -17,33 +18,31 @@ const FilterTab = () => {
         setIsChecked(!isChecked);
     };
 
-    const { data, error, isLoading } = UseGetAllProductsQuery({
-        category: 'BREAD'
-    });
-    // 데이터 로딩 중 처리
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    // 에러 발생 시 처리
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    }
-    console.log('0000' + data);
-
     return (
         <>
-            <div className="flex overflow-x-scroll pl-3 pt-3 scrollbar-hide">
+            <div className="flex relative gap-[6px] m-auto w-[92%] my-[16px] overflow-x-scroll scrollbar-hide ">
                 {navItem.map((item, index) => {
                     return (
                         <button
                             key={index}
-                            className="flex w-[50px] h-[30px] items-center justify-center overflow-hidden whitespace-nowrap border-2 px-6 py-3 rounded-full text-xs font-medium m-2"
+                            className={`h-[34px] flex-shrink-0 px-3 py-2 rounded-[50px] bg-white ${
+                                selectedItem === index ? 'border-red-500' : 'border-gray-200'
+                            } border  justify-center items-center gap-1 inline-flex`}
+                            onClick={() => handleItemClick(index)}
                         >
-                            <h2>{item}</h2>
+                            <p
+                                className={`text-xs font-medium font-['Pretendard'] leading-[18px] ${
+                                    selectedItem === index ? 'text-red-500  ' : 'text-neutral-800'
+                                }`}
+                            >
+                                {item}
+                            </p>
                         </button>
                     );
                 })}
+                <button className="absolute right-[0px] bg-white pl-[6px]">
+                    <Filters />
+                </button>
             </div>
 
             <div className="border-b border-solid border-gray-100 w-full "></div>
@@ -59,4 +58,5 @@ const FilterTab = () => {
         </>
     );
 };
+
 export default FilterTab;

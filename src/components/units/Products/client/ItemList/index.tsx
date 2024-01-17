@@ -1,6 +1,6 @@
 'use client';
 
-import { itemName, itemNameState } from '@/atoms/atom';
+import { itemNameState } from '@/atoms/atom';
 import ProductsCard from '@/components/units/Home/client/ProductCard';
 import { IProductsType } from '@/components/units/Products/types';
 import { useRecoilState } from 'recoil';
@@ -15,7 +15,7 @@ const ItemList = ({ bestProducts }: TotalListProps) => {
     const [ProductName] = useRecoilState(itemNameState);
 
     return (
-        <div className="flex flex-wrap w-[92%] m-auto  gap-x-[4%] gap-y-2">
+        <div className="flex flex-wrap m-auto">
             {ProductName === '상품' ? (
                 <>
                     <FilterTab />
@@ -27,7 +27,13 @@ const ItemList = ({ bestProducts }: TotalListProps) => {
                     </div>
                 </>
             ) : (
-                bestProducts.map((store, index) => <StoreCard key={index} store={store} />)
+                bestProducts.map((store, index) => (
+                    <>
+                        <div className="w-full border-b border-solid border-[#F5F5F5]">
+                            <StoreCard key={index} store={store} />
+                        </div>
+                    </>
+                ))
             )}
         </div>
     );

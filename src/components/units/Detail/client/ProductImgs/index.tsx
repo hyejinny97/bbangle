@@ -25,17 +25,13 @@ const ProductImgs = ({ boardImages }: ProductImgProps) => {
                     <Swiper
                         spaceBetween={10}
                         slidesPerView={1}
-                        navigation={{
-                            nextEl: '.swiper-button-next',
-                            prevEl: '.swiper-button-prev'
-                        }}
                         pagination={{ clickable: true }}
                         scrollbar={{ el: '.swiper-scrollbar', draggable: true }}
                         onActiveIndexChange={swiperCore => {
                             setSwiperIndex(swiperCore.activeIndex);
                         }}
                     >
-                        {boardImages.map(image => (
+                        {boardImages.map((image, index) => (
                             <>
                                 <SwiperSlide key={image.id}>
                                     <div className="">
@@ -54,12 +50,14 @@ const ProductImgs = ({ boardImages }: ProductImgProps) => {
                         ))}
                     </Swiper>
                 </div>
-                <div className="absolute bottom-[10px] right-[10px] w-[37px] h-[21px] px-2.5 py-0.5 bg-black bg-opacity-60 rounded-[50px] justify-center items-center gap-2.5 inline-flex z-10">
-                    <div className="text-white text-[11px] font-medium">
-                        {' '}
-                        {swiperIndex + 1}/{boardImages.length}
+                {boardImages.length > 0 && (
+                    <div className="absolute bottom-[10px] right-[10px] w-[37px] h-[21px] px-2.5 py-0.5 bg-black bg-opacity-60 rounded-[50px] justify-center items-center gap-2.5 inline-flex z-10">
+                        <div className="text-white text-[11px] font-medium">
+                            {' '}
+                            {swiperIndex + 1}/{boardImages.length}
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </div>
     );

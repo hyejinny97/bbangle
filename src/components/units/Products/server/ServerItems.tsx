@@ -9,23 +9,7 @@ const bestProducts = [
         title: '고구마케이크 3종',
         price: 8500,
         isWished: true,
-        tags: [
-            {
-                glutenFree: true
-            },
-            {
-                highProtein: false
-            },
-            {
-                sugarFree: false
-            },
-            {
-                vegan: true
-            },
-            {
-                ketogenic: false
-            }
-        ]
+        tags: ['glutenFree', 'vegan']
     },
     {
         boardId: 2,
@@ -35,23 +19,7 @@ const bestProducts = [
         title: '고구마케이크 3종',
         price: 9500,
         isWished: true,
-        tags: [
-            {
-                glutenFree: true
-            },
-            {
-                highProtein: false
-            },
-            {
-                sugarFree: false
-            },
-            {
-                vegan: true
-            },
-            {
-                ketogenic: false
-            }
-        ]
+        tags: ['glutenFree', 'vegan']
     },
     {
         boardId: 3,
@@ -61,23 +29,7 @@ const bestProducts = [
         title: '고구마케이크 3종',
         price: 10500,
         isWished: true,
-        tags: [
-            {
-                glutenFree: true
-            },
-            {
-                highProtein: false
-            },
-            {
-                sugarFree: false
-            },
-            {
-                vegan: true
-            },
-            {
-                ketogenic: false
-            }
-        ]
+        tags: ['glutenFree', 'vegan']
     },
     {
         boardId: 1,
@@ -87,23 +39,7 @@ const bestProducts = [
         title: '고구마케이크 3종',
         price: 7500,
         isWished: true,
-        tags: [
-            {
-                glutenFree: true
-            },
-            {
-                highProtein: false
-            },
-            {
-                sugarFree: false
-            },
-            {
-                vegan: true
-            },
-            {
-                ketogenic: false
-            }
-        ]
+        tags: ['glutenFree', 'vegan']
     },
     {
         boardId: 2,
@@ -113,23 +49,7 @@ const bestProducts = [
         title: '고구마케이크 3종',
         price: 9500,
         isWished: true,
-        tags: [
-            {
-                glutenFree: true
-            },
-            {
-                highProtein: false
-            },
-            {
-                sugarFree: false
-            },
-            {
-                vegan: true
-            },
-            {
-                ketogenic: false
-            }
-        ]
+        tags: ['glutenFree', 'vegan']
     },
     {
         boardId: 3,
@@ -139,23 +59,7 @@ const bestProducts = [
         title: '고구마케이크 3종',
         price: 8500,
         isWished: true,
-        tags: [
-            {
-                glutenFree: true
-            },
-            {
-                highProtein: false
-            },
-            {
-                sugarFree: false
-            },
-            {
-                vegan: true
-            },
-            {
-                ketogenic: false
-            }
-        ]
+        tags: ['glutenFree', 'vegan']
     },
     {
         boardId: 1,
@@ -165,23 +69,7 @@ const bestProducts = [
         title: '고구마케이크 3종',
         price: 8500,
         isWished: true,
-        tags: [
-            {
-                glutenFree: true
-            },
-            {
-                highProtein: false
-            },
-            {
-                sugarFree: false
-            },
-            {
-                vegan: true
-            },
-            {
-                ketogenic: false
-            }
-        ]
+        tags: ['glutenFree', 'vegan']
     },
     {
         boardId: 2,
@@ -191,23 +79,7 @@ const bestProducts = [
         title: '고구마케이크 3종',
         price: 8500,
         isWished: true,
-        tags: [
-            {
-                glutenFree: true
-            },
-            {
-                highProtein: false
-            },
-            {
-                sugarFree: false
-            },
-            {
-                vegan: true
-            },
-            {
-                ketogenic: false
-            }
-        ]
+        tags: ['glutenFree', 'vegan']
     },
     {
         boardId: 3,
@@ -217,23 +89,7 @@ const bestProducts = [
         title: '고구마케이크 3종',
         price: 8500,
         isWished: true,
-        tags: [
-            {
-                glutenFree: true
-            },
-            {
-                highProtein: false
-            },
-            {
-                sugarFree: false
-            },
-            {
-                vegan: true
-            },
-            {
-                ketogenic: false
-            }
-        ]
+        tags: ['glutenFree', 'vegan']
     }
 ];
 

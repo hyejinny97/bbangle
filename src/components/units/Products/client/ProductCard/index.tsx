@@ -10,12 +10,9 @@ const ProductsCard = ({ product }: ProductsCardProps) => {
     return (
         <Link href="./products/:id" className="w-[48%]">
             <div
-                className="w-full pb-[90%] bg-cover bg-center rounded-xl"
+                className="w-full bg-cover bg-center rounded-xl"
                 style={{ backgroundImage: `url(${product.thumbnail})` }}
             ></div>
-            {/* <div className="flex flex-wrap gap-1 mt-2 mb-1">
-               
-            </div> */}
             <p className="text-xs font-normal text-color-Gray400 mt-[6px] mb-[3px]">
                 {product.storeName}
             </p>

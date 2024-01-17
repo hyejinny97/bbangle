@@ -1,6 +1,6 @@
 import ServerTotal from '@/components/units/Products/server/ServerTotal';
 
-const Products = () => {
+const Products = async () => {
     return <ServerTotal />;
 };
 
