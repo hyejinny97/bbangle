@@ -20,7 +20,7 @@ const ItemList = ({ bestProducts }: TotalListProps) => {
             {ProductName === '상품' ? (
                 <>
                     <FilterTab />
-                    <div className="flex flex-wrap  w-[92%] m-auto gap-x-[4%] gap-y-2">
+                    <div className="flex flex-wrap  w-[92%] m-auto gap-x-[4%] gap-y-4">
                         {bestProducts.map(product => (
                             <ProductsCard key={String(product.boardId)} product={product} />
                         ))}
