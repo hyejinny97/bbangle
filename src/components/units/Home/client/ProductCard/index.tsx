@@ -16,8 +16,8 @@ const ProductsCard = ({ product }: ProductsCardProps) => {
             <p className="text-xs font-normal text-color-Gray400 mt-[6px] mb-[3px]">
                 {product.storeName}
             </p>
-            <h3 className="mb-1 text-xs font-normal text-color-Gray900">{product.title}</h3>
-            <p className="mb-1 text-sm font-semibold text-color-Gray900">
+            <h3 className="mb-1 text-xs font-normal">{product.title}</h3>
+            <p className="mb-1 text-sm font-medium text-color-Gray900 ">
                 {product.price.toLocaleString()}원
             </p>
             <TagSwiper tag={product.tags} />

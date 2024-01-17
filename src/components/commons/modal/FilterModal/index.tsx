@@ -21,10 +21,6 @@ const FilterModal = ({
     const [checked, setChecked] = useState<boolean>(false); // 체크 여부 판단
     return (
         <div className="w-[100%] h-[100%] bg-white flex-col justify-center items-start flex">
-            {/* <div className="w-[360px] h-8 relative bg-white flex-col justify-start items-start flex">
-                <div className="w-[360px] h-8 bg-white backdrop-blur-[250px]" />
-                <div className="w-[360px] h-8 bg-black" />
-            </div> */}
             <div className="self-stretch px-4 py-2.5 bg-white justify-start items-center inline-flex">
                 <div className="grow shrink basis-0 h-4 justify-start items-center flex">
                     <div className="grow shrink basis-0 text-center text-neutral-800 text-base font-medium font-['Pretendard'] leading-none">
@@ -44,22 +40,6 @@ const FilterModal = ({
                                     <div className="text-zinc-600 text-sm font-semibold font-['Pretendard'] leading-[21px]">
                                         {item.MainTab}
                                     </div>
-                                    <CheckBox
-                                        checked={checked}
-                                        onChange={() => checkHandled(sub.id)}
-                                        children={
-                                            <div className="self-stretch justify-start items-start gap-2.5 inline-flex">
-                                                <div className="p-2 bg-red-50 rounded-lg justify-start items-center gap-1.5 flex">
-                                                    <div className="w-4 h-4 relative">
-                                                        <div className="w-4 h-4 left-0 top-0 absolute bg-red-500 rounded border border-red-500" />
-                                                    </div>
-                                                    <div className="text-neutral-800 text-sm font-semibold font-['Pretendard'] leading-[21px]">
-                                                        {sub.name}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        }
-                                    />
                                 </div>
                             );
                         })

@@ -6,6 +6,8 @@ import { IProductsType } from '@/components/units/Products/types';
 import { useRecoilState } from 'recoil';
 import StoreCard from '../StoreCard';
 import FilterTab from '../FilterTab';
+import NewModal from '../NewModal';
+import { useState } from 'react';
 
 interface TotalListProps {
     bestProducts: IProductsType[];
@@ -13,21 +15,32 @@ interface TotalListProps {
 
 const ItemList = ({ bestProducts }: TotalListProps) => {
     const [ProductName] = useRecoilState(itemNameState);
-    console.log(ProductName);
+    const [modalOpen, setModalOpen] = useState(false);
 
     return (
-        <div className="flex flex-wrap w-[92%] m-auto  gap-x-[4%] gap-y-2">
-            {ProductName === '상품' ? (
-                <>
-                    <FilterTab />
-                    {bestProducts.map((product, index) => (
-                        <ProductsCard key={index} product={product} />
-                    ))}
-                </>
-            ) : (
-                bestProducts.map((store, index) => <StoreCard key={index} store={store} />)
-            )}
-        </div>
+        <>
+            <div className="flex flex-wrap m-auto">
+                {ProductName === '상품' ? (
+                    <>
+                        <FilterTab />
+
+                        <div className="flex flex-wrap w-[92%] m-auto gap-x-[4%] gap-y-4">
+                            {bestProducts.map((product, i) => (
+                                <ProductsCard key={i} product={product} />
+                            ))}
+                        </div>
+                    </>
+                ) : (
+                    bestProducts.map((store, index) => (
+                        <>
+                            <div className="w-full border-b border-solid border-[#F5F5F5]">
+                                <StoreCard key={index} store={store} />
+                            </div>
+                        </>
+                    ))
+                )}
+            </div>
+        </>
     );
 };
 

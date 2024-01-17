@@ -1,61 +1,83 @@
 'use client';
+
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
+import Filters from './assets/filter.svg';
+import SortingButton from '../SortingButton';
 import { useState } from 'react';
-import Filter from '@/components/commons/filter/assets/filter.svg';
-import FilterModal from '@/components/commons/modal/FilterModal';
-import { IFilterType, navItem } from '@/components/commons/modal/type';
+import NewModal from '../NewModal';
+import { UseGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
 
 const FilterTab = () => {
-    const [checked, setChecked] = useState<boolean>(false); // 체크 여부 판단
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    const [selectedTags, setSelectedTags] = useState<IFilterType[]>(navItem);
-    const checkHandled = (e: any) => {
-        console.log(e.target.checked);
-        setChecked(e.target.checked);
+    const [isChecked, setIsChecked] = useState(false);
+
+    const [selectedItem, setSelectedItem] = useState(null);
+
+    const navItem = ['전체', '빵', '쿠키', '케이크', '타르트', '잼/청', '요거트', '기타'];
+
+    const handleItemClick = (index: any) => {
+        setSelectedItem(index);
     };
-    const setModalIs = () => {
-        setIsModalOpen(!isModalOpen);
+    const checkHandled = () => {
+        setIsChecked(!isChecked);
     };
+
+    // const { data, error, isLoading } = UseGetAllProductsQuery({
+    //     category: 'BREAD'
+    // });
+    // // 데이터 로딩 중 처리
+    // if (isLoading) {
+    //     return <div>Loading...</div>;
+    // }
+
+    // // 에러 발생 시 처리
+    // if (error) {
+    //     return <div>Error: {error.message}</div>;
+    // }
+    // console.log('0000' + data);
 
     return (
         <>
-            <div className="flex overflow-x-scroll pl-3 pt-3 scrollbar-hide">
-                {selectedTags.map((item: IFilterType, index) => {
-                    return item.subTab.map(sub => {
-                        return (
-                            <button
-                                onClick={setModalIs}
-                                key={index}
-                                className="flex w-[50px] h-[30px] items-center justify-center overflow-hidden whitespace-nowrap border-2 px-6 py-3 rounded-full text-xs font-medium m-2"
+            <div className="flex relative gap-[6px] m-auto w-[92%] my-[16px] overflow-x-scroll scrollbar-hide ">
+                {navItem.map((item, index) => {
+                    return (
+                        <button
+                            key={index}
+                            className={`h-[34px] flex-shrink-0 px-3 py-2 rounded-[50px] bg-white ${
+                                selectedItem === index ? 'border-red-500' : 'border-gray-200'
+                            } border  justify-center items-center gap-1 inline-flex`}
+                            onClick={() => handleItemClick(index)}
+                        >
+                            <p
+                                className={`text-xs font-medium font-['Pretendard'] leading-[18px] ${
+                                    selectedItem === index ? 'text-red-500  ' : 'text-neutral-800'
+                                }`}
                             >
-                                <h2>{sub.name}</h2>
-                            </button>
-                        );
-                    });
+                                {item}
+                            </p>
+                        </button>
+                    );
                 })}
+                <button
+                    className="absolute right-[0px] bg-white pl-[6px]"
+                    onClick={() => setOpenModal(true)}
+                >
+                    <Filters />
+                </button>
             </div>
-            <div className="w-[92%] h-15 m-auto py-3 justify-between items-end flex">
+
+            <div className="border-b border-solid border-gray-100 w-full "></div>
+            <div className="flex w-[92%] py-[12px] m-auto justify-between items-center ">
                 <CheckBox
-                    checked={checked}
-                    onChange={checkHandled}
-                    children="주문가능한 상품 보기"
+                    isChecked={isChecked}
+                    onClick={checkHandled}
+                    title="주문가능한 상품 보기"
                 />
-                <div className="w-[54px] h-[25px] justify-start items-center gap-1 inline-flex">
-                    <Filter />
-                    <div className="text-neutral-700 text-xs font-medium font-['Pretendard'] leading-[21px]">
-                        추천순
-                    </div>
-                </div>
+
+                <SortingButton />
             </div>
-            {isModalOpen === true ? (
-                <FilterModal
-                    selectedTags={selectedTags}
-                    setSelectedTags={setSelectedTags}
-                    isModalOpen={isModalOpen}
-                    setIsModalOpen={setIsModalOpen}
-                />
-            ) : null}
+            <NewModal />
         </>
     );
 };
+
 export default FilterTab;
