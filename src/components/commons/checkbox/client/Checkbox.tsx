@@ -1,13 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 type checkButtonprops = {
     checked: boolean;
     onChange: any;
-    title: string;
+    children: ReactNode;
 };
-const CheckBox = ({ checked, onChange, title }: checkButtonprops) => {
+const CheckBox = ({ checked, onChange, children }: checkButtonprops) => {
     return (
         <div className="mb-[0.125rem] block min-h-[1.5rem] pl-[0rem]">
             <input
@@ -19,7 +19,7 @@ const CheckBox = ({ checked, onChange, title }: checkButtonprops) => {
                 onChange={onChange}
             />
             <div className="inline-block pl-[0.3rem] text-neutral-700 text-sm font-normal font-['Pretendard'] leading-[21px]">
-                {title}
+                {children}
             </div>
         </div>
     );
