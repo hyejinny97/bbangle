@@ -21,19 +21,19 @@ const FilterTab = () => {
         setIsChecked(!isChecked);
     };
 
-    const { data, error, isLoading } = UseGetAllProductsQuery({
-        category: 'BREAD'
-    });
-    // 데이터 로딩 중 처리
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
+    // const { data, error, isLoading } = UseGetAllProductsQuery({
+    //     category: 'BREAD'
+    // });
+    // // 데이터 로딩 중 처리
+    // if (isLoading) {
+    //     return <div>Loading...</div>;
+    // }
 
-    // 에러 발생 시 처리
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    }
-    console.log('0000' + data);
+    // // 에러 발생 시 처리
+    // if (error) {
+    //     return <div>Error: {error.message}</div>;
+    // }
+    // console.log('0000' + data);
 
     return (
         <>
