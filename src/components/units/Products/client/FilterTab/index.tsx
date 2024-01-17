@@ -4,9 +4,12 @@ import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import Filters from './assets/filter.svg';
 import SortingButton from '../SortingButton';
 import { useState } from 'react';
+import NewModal from '../NewModal';
+import { UseGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
 
 const FilterTab = () => {
     const [isChecked, setIsChecked] = useState(false);
+
     const [selectedItem, setSelectedItem] = useState(null);
 
     const navItem = ['전체', '빵', '쿠키', '케이크', '타르트', '잼/청', '요거트', '기타'];
@@ -17,6 +20,20 @@ const FilterTab = () => {
     const checkHandled = () => {
         setIsChecked(!isChecked);
     };
+
+    const { data, error, isLoading } = UseGetAllProductsQuery({
+        category: 'BREAD'
+    });
+    // 데이터 로딩 중 처리
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    // 에러 발생 시 처리
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+    console.log('0000' + data);
 
     return (
         <>
@@ -40,7 +57,10 @@ const FilterTab = () => {
                         </button>
                     );
                 })}
-                <button className="absolute right-[0px] bg-white pl-[6px]">
+                <button
+                    className="absolute right-[0px] bg-white pl-[6px]"
+                    onClick={() => setOpenModal(true)}
+                >
                     <Filters />
                 </button>
             </div>
@@ -55,6 +75,7 @@ const FilterTab = () => {
 
                 <SortingButton />
             </div>
+            <NewModal />
         </>
     );
 };
