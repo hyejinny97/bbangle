@@ -16,6 +16,7 @@ const CategoryTab = () => {
         setProductName(e.currentTarget.name);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
+
     return (
         <div className="sticky top-0">
             <div className="w-full h-[43px] bg-white justify-start items-start inline-flex relative">

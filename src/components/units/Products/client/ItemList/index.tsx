@@ -13,16 +13,18 @@ interface TotalListProps {
 
 const ItemList = ({ bestProducts }: TotalListProps) => {
     const [ProductName] = useRecoilState(itemNameState);
-    console.log(ProductName);
 
     return (
         <div className="flex flex-wrap w-[92%] m-auto  gap-x-[4%] gap-y-2">
             {ProductName === '상품' ? (
                 <>
                     <FilterTab />
-                    {bestProducts.map((product, index) => (
-                        <ProductsCard key={index} product={product} />
-                    ))}
+
+                    <div className="flex flex-wrap w-[92%] m-auto gap-x-[4%] gap-y-4">
+                        {bestProducts.map((product, i) => (
+                            <ProductsCard key={i} product={product} />
+                        ))}
+                    </div>
                 </>
             ) : (
                 bestProducts.map((store, index) => <StoreCard key={index} store={store} />)

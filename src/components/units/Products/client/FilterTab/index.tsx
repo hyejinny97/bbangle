@@ -1,32 +1,36 @@
 'use client';
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
-import { useState } from 'react';
-import Filter from '@/components/commons/filter/assets/filter.svg';
+import Filters from './assets/filter.svg';
+import SortingButton from '../SortingButton';
+import { UseGetAllProductsQuery } from '../../hooks/UseGetAllProductsQuery';
 
 const FilterTab = () => {
-    const [checked, setChecked] = useState(false); // 체크 여부 판단
-    const checkHandled = (e: any) => {
-        console.log(e.target.checked);
-        setChecked(e.target.checked);
+    const [isChecked, setIsChecked] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
+
+    const navItem = ['전체', '빵', '쿠키', '케이크', '타르트', '잼/청', '요거트', '기타'];
+
+    const handleItemClick = (index: any) => {
+        setSelectedItem(index);
     };
-    const navItem = [
-        '전체',
-        '버튼1',
-        '버튼2',
-        '버튼3',
-        '버튼4',
-        '전체',
-        '버튼1',
-        '버튼2',
-        '버튼3',
-        '버튼4',
-        '버튼1',
-        '버튼2',
-        '버튼4',
-        '버튼1',
-        '버튼2',
-        '버튼3'
-    ];
+    const checkHandled = () => {
+        setIsChecked(!isChecked);
+    };
+
+    const { data, error, isLoading } = UseGetAllProductsQuery({
+        category: 'BREAD'
+    });
+    // 데이터 로딩 중 처리
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    // 에러 발생 시 처리
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+    console.log('0000' + data);
+
     return (
         <>
             <div className="flex overflow-x-scroll pl-3 pt-3 scrollbar-hide">
@@ -41,14 +45,16 @@ const FilterTab = () => {
                     );
                 })}
             </div>
-            <div className="w-[92%] h-15 m-auto py-3 justify-between items-end flex">
-                <CheckBox checked={checked} onChange={checkHandled} title="주문가능한 상품 보기" />
-                <div className="w-[54px] h-[25px] justify-start items-center gap-1 inline-flex">
-                    <Filter />
-                    <div className="text-neutral-700 text-xs font-medium font-['Pretendard'] leading-[21px]">
-                        추천순
-                    </div>
-                </div>
+
+            <div className="border-b border-solid border-gray-100 w-full "></div>
+            <div className="flex w-[92%] py-[12px] m-auto justify-between items-center ">
+                <CheckBox
+                    isChecked={isChecked}
+                    onClick={checkHandled}
+                    title="주문가능한 상품 보기"
+                />
+
+                <SortingButton />
             </div>
         </>
     );
