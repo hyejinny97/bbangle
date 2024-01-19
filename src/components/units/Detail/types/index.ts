@@ -28,6 +28,7 @@ export interface IProductDetailType {
             fri: boolean;
             sat: boolean;
             sun: boolean;
+            [key: string]: boolean;
         };
         purchaseUrl: string;
         isWished: boolean;
