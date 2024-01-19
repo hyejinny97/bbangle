@@ -60,7 +60,6 @@ const FilterTab = ({ query, onChange }: FilterTabProps) => {
     const checkHandled = () => {
         setIsChecked(!isChecked);
     };
-
     return (
         <>
             <div className="w-full relative">
