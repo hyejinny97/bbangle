@@ -11,7 +11,7 @@ function SortingButton() {
         setIsOpen(!isOpen);
     };
 
-    const handleOptionClick = option => {
+    const handleOptionClick = (option: string) => {
         setSelectedOption(option);
         setIsOpen(false);
         // 여기에 정렬을 처리하는 로직 추가
@@ -34,19 +34,19 @@ function SortingButton() {
                         className="w-full m-auto py-2.5 border-b border-neutral-100 justify-center items-center gap-2.5 inline-flex  "
                         onClick={() => handleOptionClick('담은순')}
                     >
-                        <p className="text-neutral-800 text-xs font-medium "> 담은순</p>
+                        <p className="text-xs font-medium text-neutral-800 "> 담은순</p>
                     </button>
                     <button
                         className="m-auto w-full py-2.5 border-b border-neutral-100 "
                         onClick={() => handleOptionClick('인기순')}
                     >
-                        <div className="text-neutral-800 text-xs font-medium"> 인기순</div>
+                        <div className="text-xs font-medium text-neutral-800"> 인기순</div>
                     </button>
                     <button
                         className="m-auto w-full py-2.5 border-b border-neutral-100 "
                         onClick={() => handleOptionClick('저가순')}
                     >
-                        <div className="text-neutral-800 text-xs font-medium "> 저가순</div>
+                        <div className="text-xs font-medium text-neutral-800 "> 저가순</div>
                     </button>
                 </div>
             )}
