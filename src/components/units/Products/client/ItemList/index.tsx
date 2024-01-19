@@ -6,28 +6,43 @@ import { IProductsType } from '@/components/units/Products/types';
 import { useRecoilState } from 'recoil';
 import StoreCard from '../StoreCard';
 import FilterTab from '../FilterTab';
-import NewModal from '../NewModal';
-import { useState } from 'react';
+import { UseGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
+import { useEffect, useState } from 'react';
 
 interface TotalListProps {
     bestProducts: IProductsType[];
 }
+interface IQuery {
+    category: string;
+    tags: string[];
+    sort: string;
+}
 
 const ItemList = ({ bestProducts }: TotalListProps) => {
     const [ProductName] = useRecoilState(itemNameState);
-    const [modalOpen, setModalOpen] = useState(false);
+    const [query, setQuery] = useState<IQuery>({
+        category: '',
+        tags: [],
+        sort: ''
+    });
+
+    const handleQuery = (newQuery: IQuery) => {
+        setQuery(newQuery);
+    };
+    const { data, refetch } = UseGetAllProductsQuery(query);
+
+    useEffect(() => {
+        refetch();
+    }, [query, refetch]);
 
     return (
         <>
             <div className="flex flex-wrap m-auto">
                 {ProductName === '상품' ? (
                     <>
-                        <FilterTab />
-
+                        <FilterTab query={query} onChange={handleQuery} />
                         <div className="flex flex-wrap w-[92%] m-auto gap-x-[4%] gap-y-4">
-                            {bestProducts.map((product, i) => (
-                                <ProductsCard key={i} product={product} />
-                            ))}
+                            {data?.map((product, i) => <ProductsCard key={i} product={product} />)}
                         </div>
                     </>
                 ) : (

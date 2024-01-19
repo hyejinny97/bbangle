@@ -31,7 +31,7 @@ const ProductImgs = ({ boardImages }: ProductImgProps) => {
                             setSwiperIndex(swiperCore.activeIndex);
                         }}
                     >
-                        {boardImages.map((image, index) => (
+                        {boardImages.map(image => (
                             <>
                                 <SwiperSlide key={image.id}>
                                     <div className="">

@@ -35,5 +35,21 @@ module.exports = {
     future: {
         hoverOnlyWhenSupported: true
     },
-    plugins: [require('tailwind-scrollbar-hide')]
+    plugins: [
+        require('tailwind-scrollbar-hide'), // 이미 존재하는 플러그인
+        function ({ addUtilities }) {
+            const newUtilities = {
+                '.custom-slider-thumb': {
+                    '::-webkit-slider-thumb': {
+                        width: '1.25rem', // 원의 너비
+                        height: '1.25rem', // 원의 높이
+                        backgroundColor: 'orange', // 배경색 (예: 오렌지색)
+                        border: '2px solid #fff', // 테두리 스타일
+                        borderRadius: '50%' // 원의 테두리 반지름
+                    }
+                }
+            };
+            addUtilities(newUtilities);
+        }
+    ]
 };
