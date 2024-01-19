@@ -1,5 +1,7 @@
-const Products = () => {
-    return <>프로덕트 페이지</>;
+import ServerTotal from '@/components/units/Products/server/ServerTotal';
+
+const Products = async () => {
+    return <ServerTotal />;
 };
 
 export default Products;

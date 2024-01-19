@@ -1,12 +1,15 @@
 'use client';
 
 import Logo from '@/commons/assets/logo.svg';
+import Link from 'next/link';
 
 const LogoContainer = () => {
     return (
-        <div className="w-[100%] px-4 pt-2.5 bg-white">
+        <div className="w-[92%] m-auto pt-2.5 bg-color-White">
             <h1>
-                <Logo />
+                <Link href="/">
+                    <Logo />
+                </Link>
             </h1>
         </div>
     );

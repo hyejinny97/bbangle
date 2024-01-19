@@ -18,7 +18,7 @@ const CategoryBtn = ({ name, icon, url, ProductName }: CategoryProps) => {
         items-center gap-1 py-3`}
         >
             <div>{icon}</div>
-            <div className="text-sm font-normal leading-tight text-neutral-800">{name}</div>
+            <div className="text-sm font-normal leading-tight text-color-Gray900">{name}</div>
         </Link>
     );
 };
