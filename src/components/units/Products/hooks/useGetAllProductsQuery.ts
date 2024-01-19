@@ -11,11 +11,16 @@ interface GetProductsQueryProps {
 const GetAllProducts = async (query: GetProductsQueryProps): Promise<IProductsType[]> => {
     const { category, tags, sort } = query;
     const categoryQuery = category ? `category=${category}` : '';
-    const tagQuery = tags ? tags.map(tag => `${tag}=true`).join('&') : '';
+    console.log(111111);
+    const tagQuery = tags && tags.length > 0 ? tags.map(tag => `${tag}=true`).join('&') : '';
     const sortQuery = sort ? `sort=${sort}` : '';
 
-    const result = await API.get<{ data: IProductsType[] }>(`/boards?${categoryQuery}`);
-    console.log('what', result.data);
+    const queryString = [categoryQuery, tagQuery, sortQuery].filter(Boolean).join('&');
+
+    const result = await API.get<{ data: IProductsType[] }>(
+        `/boards${queryString ? `?${queryString}` : ''}`
+    );
+    console.log('what', result);
     return result.data;
 };
 
