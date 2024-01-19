@@ -1,11 +1,12 @@
 'use client';
 
 import KakaoIcon from '@/components/commons/Login/client/KakaoLogin/assets/kakao_logo.svg';
-import * as API from '@/api/index';
 
 const KakaoLogin = () => {
     const handleKakaoLogin = async () => {
-        window.location.assign(`${API.serverUrl}/auth/kakao`);
+        window.location.assign(
+            `http://${process.env.NEXT_PUBLIC_SERVER_URL}:${process.env.NEXT_PUBLIC_SERVER_PORT}/oauth2/authorization/kakao`
+        );
     };
 
     return (
