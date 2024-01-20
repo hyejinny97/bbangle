@@ -3,11 +3,15 @@ import ProductsList from '../client/ProductsList';
 import * as API from '@/api';
 
 const getBestProducts = async () => {
-    console.log(API.serverUrl);
-    const res = await fetch(`${API.serverUrl}/boards`, { cache: 'no-store' });
-    const data = res.json();
+    try {
+        const res = await fetch(`${API.serverUrl}/boards`, { cache: 'no-store' });
+        const data = res.json();
 
-    return data;
+        return data;
+    } catch (err) {
+        console.log(err);
+        return [];
+    }
 };
 
 const ServerProducts = async () => {
