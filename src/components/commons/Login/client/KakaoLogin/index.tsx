@@ -4,9 +4,7 @@ import KakaoIcon from '@/components/commons/Login/client/KakaoLogin/assets/kakao
 
 const KakaoLogin = () => {
     const handleKakaoLogin = async () => {
-        window.location.assign(
-            `http://${process.env.NEXT_PUBLIC_SERVER_URL}:${process.env.NEXT_PUBLIC_SERVER_PORT}/oauth2/authorization/kakao`
-        );
+        window.location.assign(`${process.env.NEXT_PUBLIC_SERVER_URL}/oauth2/authorization/kakao`);
     };
 
     return (
