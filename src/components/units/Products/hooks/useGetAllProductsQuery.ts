@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import * as API from '@/api';
-import { IProductsType } from '@/components/units/Home/types';
+import { IAllProductsType } from '@/commons/types/allProductsType';
 
 interface GetProductsQueryProps {
     category?: string;
@@ -8,7 +8,7 @@ interface GetProductsQueryProps {
     sort?: string;
 }
 
-const GetAllProducts = async (query: GetProductsQueryProps): Promise<IProductsType[]> => {
+const getAllProducts = async (query: GetProductsQueryProps): Promise<IAllProductsType> => {
     const { category, tags, sort } = query;
     const categoryQuery = category ? `category=${category}` : '';
     console.log(111111);
@@ -17,7 +17,7 @@ const GetAllProducts = async (query: GetProductsQueryProps): Promise<IProductsTy
 
     const queryString = [categoryQuery, tagQuery, sortQuery].filter(Boolean).join('&');
 
-    const result = await API.get<{ data: IProductsType[] }>(
+    const result = await API.get<{ data: IAllProductsType }>(
         `/boards${queryString ? `?${queryString}` : ''}`
     );
     console.log('what', result);
@@ -25,8 +25,8 @@ const GetAllProducts = async (query: GetProductsQueryProps): Promise<IProductsTy
 };
 
 export const UseGetAllProductsQuery = (query: GetProductsQueryProps) => {
-    return useQuery<IProductsType[], Error>({
+    return useQuery<IAllProductsType, Error>({
         queryKey: ['products'],
-        queryFn: () => GetAllProducts(query)
+        queryFn: () => getAllProducts(query)
     });
 };
