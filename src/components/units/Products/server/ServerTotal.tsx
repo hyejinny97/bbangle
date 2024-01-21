@@ -1,11 +1,9 @@
-import ServerCategory from './ServerCategory';
-import ServerItems from './ServerItems';
+import DetailProducts from '@/components/units/Products/client/ItemList';
 
 const ServerTotal = () => {
     return (
         <>
-            <ServerCategory />
-            <ServerItems />
+            <DetailProducts />
         </>
     );
 };

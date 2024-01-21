@@ -12,3 +12,8 @@ export const itemNameState = atom({
     key: 'itemNameState',
     default: '상품'
 });
+
+export const isCategoryTabState = atom({
+    key: 'isCategoryTabState',
+    default: true
+});

@@ -2,11 +2,11 @@ import { IProductType } from '@/commons/types/productType';
 import TagSwiper from '@/components/units/Home/client/TagSwiper';
 import Link from 'next/link';
 
-interface ProductsCardProps {
+interface ProductCardProps {
     product: IProductType;
 }
 
-const ProductsCard = ({ product }: ProductsCardProps) => {
+const ProductCard = ({ product }: ProductCardProps) => {
     return (
         <Link href={`/products/${product.boardId}`} className="w-[48%]">
             <div
@@ -25,4 +25,4 @@ const ProductsCard = ({ product }: ProductsCardProps) => {
     );
 };
 
-export default ProductsCard;
+export default ProductCard;
