@@ -30,6 +30,7 @@ const ItemList = ({ bestProducts }: TotalListProps) => {
         setQuery(newQuery);
     };
     const { data, refetch } = UseGetAllProductsQuery(query);
+    console.log(data.content);
 
     useEffect(() => {
         refetch();
@@ -42,7 +43,9 @@ const ItemList = ({ bestProducts }: TotalListProps) => {
                     <>
                         <FilterTab query={query} onChange={handleQuery} />
                         <div className="flex flex-wrap w-[92%] m-auto gap-x-[4%] gap-y-4">
-                            {data?.map((product, i) => <ProductsCard key={i} product={product} />)}
+                            {data?.content?.map((product, i) => (
+                                <ProductsCard key={i} product={product} />
+                            ))}
                         </div>
                     </>
                 ) : (
