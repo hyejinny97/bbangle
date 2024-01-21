@@ -15,7 +15,7 @@ import NoSugarIcon from './assets/noSugar-icon.svg';
 import ProteinIcon from './assets/protein-icon.svg';
 import TartIcon from './assets/tart-icon.svg';
 import YogurtIcon from './assets/yogurt.svg';
-import { productNameState } from '@/atoms/atom';
+import { isCategoryTabState } from '@/atoms/atom';
 
 const categoryMenu = [
     {
@@ -119,19 +119,19 @@ const categoryMenu = [
 ];
 
 const CategoryList = () => {
-    const [ProductName] = useRecoilState(productNameState);
+    const [isCategoryTab] = useRecoilState(isCategoryTabState);
 
     return (
         <div className="flex flex-wrap w-[92%] m-auto py-4">
             {categoryMenu
-                .filter(category => category.category === ProductName)
+                .filter(category => category.category === (isCategoryTab ? '상품별' : '성분별'))
                 .map(category => (
                     <CategoryBtn
                         key={category.id}
                         name={category.name}
                         icon={category.icon}
                         url={category.url}
-                        ProductName={ProductName}
+                        ProductName={isCategoryTab ? '상품별' : '성분별'}
                     />
                 ))}
         </div>

@@ -1,12 +1,13 @@
 'use client';
 
-import { itemNameState } from '@/atoms/atom';
-import ProductsCard from '@/components/units/Home/client/ProductCard';
+import { isCategoryTabState } from '@/atoms/atom';
 import { useRecoilState } from 'recoil';
 // import StoreCard from '../StoreCard';
 import FilterTab from '../FilterTab';
 import { UseGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
 import { useEffect, useState } from 'react';
+import ProductCard from '@/components/commons/card/ProductCard';
+import CategoryTab from '@/components/commons/CategoryTab';
 
 interface IQuery {
     category: string;
@@ -14,8 +15,8 @@ interface IQuery {
     sort: string;
 }
 
-const ItemList = () => {
-    const [ProductName] = useRecoilState(itemNameState);
+const DetailProducts = () => {
+    const [isCategoryTab] = useRecoilState(isCategoryTabState);
     const [query, setQuery] = useState<IQuery>({
         category: '',
         tags: [],
@@ -33,22 +34,23 @@ const ItemList = () => {
 
     return (
         <>
+            <CategoryTab categories={['상품', '스토어']} />
             <div className="flex flex-wrap m-auto">
-                {ProductName === '상품' ? (
+                {isCategoryTab ? (
                     <>
                         <FilterTab query={query} onChange={handleQuery} />
                         <div className="flex flex-wrap w-[92%] m-auto gap-x-[4%] gap-y-4">
                             {data?.content.map((product, i) => (
-                                <ProductsCard key={i} product={product} />
+                                <ProductCard key={i} product={product} />
                             ))}
                         </div>
                     </>
                 ) : (
-                    <></>
+                    <>스토어</>
                 )}
             </div>
         </>
     );
 };
 
-export default ItemList;
+export default DetailProducts;
