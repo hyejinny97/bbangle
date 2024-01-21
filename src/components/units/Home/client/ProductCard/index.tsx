@@ -1,9 +1,9 @@
+import { IProductType } from '@/commons/types/productType';
 import TagSwiper from '@/components/units/Home/client/TagSwiper';
-import { IProductsType } from '@/components/units/Home/types';
 import Link from 'next/link';
 
 interface ProductsCardProps {
-    product: IProductsType;
+    product: IProductType;
 }
 
 const ProductsCard = ({ product }: ProductsCardProps) => {
