@@ -23,14 +23,6 @@ const DetailProducts = () => {
         sort: ''
     });
 
-    useEffect(() => {
-        // 쿠키 가져오기
-        const cookies = document.cookie;
-
-        // 콘솔에 쿠키 출력
-        console.log('쿠키:', cookies);
-    }, []);
-
     const handleQuery = (newQuery: IQuery) => {
         setQuery(newQuery);
     };
