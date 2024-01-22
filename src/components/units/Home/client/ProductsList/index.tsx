@@ -10,7 +10,7 @@ interface ProductsListProps {
 const ProductsList = ({ bestProducts }: ProductsListProps) => {
     return (
         <div className="flex flex-wrap w-[92%] m-auto  gap-x-[4%] gap-y-2">
-            {bestProducts?.content.map(product => (
+            {bestProducts?.content?.map(product => (
                 <ProductCard key={String(product.boardId)} product={product} />
             ))}
         </div>
