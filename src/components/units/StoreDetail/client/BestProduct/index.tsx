@@ -7,10 +7,10 @@ function BestProducts() {
     console.log(data?.bestProducts);
     return (
         <>
-            <div className="flex mb-[10px] m-auto space-x-[3%] gap-y-2">
+            <div className="flex w-full flex-wrap m-auto gap-x-[3%] gap-y-2">
                 {data?.bestProducts.map((item, i) => (
-                    <div key={i} className="w-1/3">
-                        <ProductCard product={item} />
+                    <div key={i} className="w-[31%]">
+                        <ProductCard product={item} popular={true} ranking={Number(i + 1)} />
                     </div>
                 ))}
             </div>

@@ -35,7 +35,7 @@ function RecentKeyword() {
     return (
         <>
             <div className="w-full relative">
-                <div className="flex gap-[8px]  w-92% overflow-x-scroll scrollbar-hide">
+                <div className="flex gap-[8px] w-92% overflow-x-scroll scrollbar-hide">
                     {RECENT.map(item => (
                         <span
                             key={item}

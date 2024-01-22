@@ -5,19 +5,27 @@ import Link from 'next/link';
 interface ProductCardProps {
     product: IProductType;
     popular?: boolean;
+    ranking?: number;
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
     return (
-        <Link href={`/products/${product.boardId}`} className="w-full">
+        <Link href={`/products/${product.boardId}`} className="w-full relative">
+            {popular && (
+                <div className="absolute top-[6px] left-[6px] w-5 h-5 bg-white rounded-md border border-solid border-neutral-100 flex-col justify-center items-center gap-2.5 inline-flex">
+                    <div className="text-neutral-800 text-[11px] font-bold font-['Pretendard'] leading-[11px]">
+                        {ranking}
+                    </div>
+                </div>
+            )}
             <div
-                className="w-full pb-[90%] bg-cover bg-center rounded-xl"
+                className="w-full pb-[90%] bg-cover bg-center rounded-[6px] "
                 style={{ backgroundImage: `url(${product.thumbnail})` }}
             ></div>
             <p className="text-xs font-normal text-color-Gray400 mt-[6px] mb-[3px]">
                 {product.storeName}
             </p>
-            <h3 className="w-full mb-1 text-xs font-normal overflow-ellipsis whitespace-nowrap">
+            <h3 className="w-full mb-1 text-xs font-normal  overflow-hidden overflow-ellipsis whitespace-nowrap">
                 {product.title}
             </h3>
             <p className="mb-1 text-sm font-medium text-color-Gray900 ">

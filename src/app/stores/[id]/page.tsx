@@ -1,7 +1,7 @@
-import ServerTotal from '@/components/units/StoreDetail/server/ServerTotal';
+import ServerHome from '@/components/units/StoreDetail/server/ServerHome';
 
 const Stores = async () => {
-    return <ServerTotal />;
+    return <ServerHome />;
 };
 
 export default Stores;

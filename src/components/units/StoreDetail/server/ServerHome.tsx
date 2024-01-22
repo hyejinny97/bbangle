@@ -1,12 +1,12 @@
 import Header from '@/components/commons/header/server/Header';
-import ServerStoreIntro from './ServerStoreIntro';
+import ServerStoreDetail from './ServerStoreDetail';
 
-const ServerTotal = () => {
+const ServerHome = () => {
     return (
         <>
             <Header title="스토어" />
-            <ServerStoreIntro />
+            <ServerStoreDetail />
         </>
     );
 };
-export default ServerTotal;
+export default ServerHome;
