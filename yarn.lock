@@ -7476,6 +7476,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-some-plugin: "npm:^0.0.3"
     eslint-plugin-storybook: "npm:^0.6.15"
+    file-loader: "npm:^6.2.0"
     husky: "npm:^8.0.0"
     lint-staged: "npm:^15.1.0"
     next: "npm:13.5.6"
@@ -7493,6 +7494,7 @@ __metadata:
     tailwind-scrollbar-hide: "npm:^1.1.7"
     tailwindcss: "npm:3.2.4"
     typescript: "npm:^5"
+    url-loader: "npm:^4.1.1"
     yup: "npm:^1.3.2"
   languageName: unknown
   linkType: soft
@@ -8813,6 +8815,18 @@ __metadata:
   dependencies:
     flat-cache: "npm:^3.0.4"
   checksum: 58473e8a82794d01b38e5e435f6feaf648e3f36fdb3a56e98f417f4efae71ad1c0d4ebd8a9a7c50c3ad085820a93fc7494ad721e0e4ebc1da3573f4e1c3c7cdd
+  languageName: node
+  linkType: hard
+
+"file-loader@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "file-loader@npm:6.2.0"
+  dependencies:
+    loader-utils: "npm:^2.0.0"
+    schema-utils: "npm:^3.0.0"
+  peerDependencies:
+    webpack: ^4.0.0 || ^5.0.0
+  checksum: e176a57c2037ab0f78e5755dbf293a6b7f0f8392350a120bd03cc2ce2525bea017458ba28fea14ca535ff1848055e86d1a3a216bdb2561ef33395b27260a1dd3
   languageName: node
   linkType: hard
 
@@ -15020,6 +15034,23 @@ __metadata:
   dependencies:
     punycode: "npm:^2.1.0"
   checksum: 4ef57b45aa820d7ac6496e9208559986c665e49447cb072744c13b66925a362d96dd5a46c4530a6b8e203e5db5fe849369444440cb22ecfc26c679359e5dfa3c
+  languageName: node
+  linkType: hard
+
+"url-loader@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "url-loader@npm:4.1.1"
+  dependencies:
+    loader-utils: "npm:^2.0.0"
+    mime-types: "npm:^2.1.27"
+    schema-utils: "npm:^3.0.0"
+  peerDependencies:
+    file-loader: "*"
+    webpack: ^4.0.0 || ^5.0.0
+  peerDependenciesMeta:
+    file-loader:
+      optional: true
+  checksum: 71b6300e02ce26c70625eae1a2297c0737635038c62691bb3007ac33e85c0130efc74bfb444baf5c6b3bad5953491159d31d66498967d1417865d0c7e7cd1a64
   languageName: node
   linkType: hard
 

@@ -58,6 +58,7 @@
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-some-plugin": "^0.0.3",
         "eslint-plugin-storybook": "^0.6.15",
+        "file-loader": "^6.2.0",
         "husky": "^8.0.0",
         "lint-staged": "^15.1.0",
         "postcss": "8.4.20",
@@ -67,7 +68,8 @@
         "svg-inline-loader": "^0.8.2",
         "swiper": "^11.0.5",
         "tailwindcss": "3.2.4",
-        "typescript": "^5"
+        "typescript": "^5",
+        "url-loader": "^4.1.1"
     },
     "packageManager": "yarn@4.0.2"
 }
