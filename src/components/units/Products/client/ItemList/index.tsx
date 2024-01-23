@@ -8,6 +8,7 @@ import { UseGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
 import { useEffect, useState } from 'react';
 import ProductCard from '@/components/commons/card/ProductCard';
 import CategoryTab from '@/components/commons/CategoryTab';
+import StoreCard from '../StoreCard';
 
 interface IQuery {
     category: string;
@@ -15,7 +16,7 @@ interface IQuery {
     sort: string;
 }
 
-const DetailProducts = () => {
+const ItemList = ({ storeData }) => {
     const [isCategoryTab] = useRecoilState(isCategoryTabState);
     const [query, setQuery] = useState<IQuery>({
         category: '',
@@ -41,16 +42,24 @@ const DetailProducts = () => {
                         <FilterTab query={query} onChange={handleQuery} />
                         <div className="flex flex-wrap w-[92%] m-auto gap-x-[4%] gap-y-4">
                             {data?.content.map((product, i) => (
-                                <ProductCard key={i} product={product} />
+                                <div key={i} className="w-[48%]">
+                                    <ProductCard product={product} />
+                                </div>
                             ))}
                         </div>
                     </>
                 ) : (
-                    <>스토어</>
+                    <>
+                        <div className="w-full">
+                            {storeData.content.map((data, i) => (
+                                <StoreCard data={data} key={i} />
+                            ))}
+                        </div>
+                    </>
                 )}
             </div>
         </>
     );
 };
 
-export default DetailProducts;
+export default ItemList;
