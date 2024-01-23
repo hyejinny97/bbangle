@@ -55,6 +55,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-hooks", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:4.6.0"],\
           ["eslint-plugin-some-plugin", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:0.0.3"],\
           ["eslint-plugin-storybook", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:0.6.15"],\
+          ["file-loader", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:6.2.0"],\
           ["husky", "npm:8.0.3"],\
           ["lint-staged", "npm:15.1.0"],\
           ["next", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:13.5.6"],\
@@ -71,6 +72,7 @@ const RAW_RUNTIME_STATE =
           ["tailwind-scrollbar-hide", "npm:1.1.7"],\
           ["tailwindcss", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:3.2.4"],\
           ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
+          ["url-loader", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:4.1.1"],\
           ["yup", "npm:1.3.2"]\
         ],\
         "linkType": "SOFT"\
@@ -10365,6 +10367,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-hooks", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:4.6.0"],\
           ["eslint-plugin-some-plugin", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:0.0.3"],\
           ["eslint-plugin-storybook", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:0.6.15"],\
+          ["file-loader", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:6.2.0"],\
           ["husky", "npm:8.0.3"],\
           ["lint-staged", "npm:15.1.0"],\
           ["next", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:13.5.6"],\
@@ -10381,6 +10384,7 @@ const RAW_RUNTIME_STATE =
           ["tailwind-scrollbar-hide", "npm:1.1.7"],\
           ["tailwindcss", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:3.2.4"],\
           ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
+          ["url-loader", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:4.1.1"],\
           ["yup", "npm:1.3.2"]\
         ],\
         "linkType": "SOFT"\
@@ -11964,6 +11968,30 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["file-entry-cache", "npm:6.0.1"],\
           ["flat-cache", "npm:3.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["file-loader", [\
+      ["npm:6.2.0", {\
+        "packageLocation": "../../.yarn/berry/cache/file-loader-npm-6.2.0-4b02fd87d5-10c0.zip/node_modules/file-loader/",\
+        "packageDependencies": [\
+          ["file-loader", "npm:6.2.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:6.2.0", {\
+        "packageLocation": "./.yarn/__virtual__/file-loader-virtual-f8e97bbbee/3/.yarn/berry/cache/file-loader-npm-6.2.0-4b02fd87d5-10c0.zip/node_modules/file-loader/",\
+        "packageDependencies": [\
+          ["file-loader", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:6.2.0"],\
+          ["@types/webpack", null],\
+          ["loader-utils", "npm:2.0.4"],\
+          ["schema-utils", "npm:3.3.0"],\
+          ["webpack", null]\
+        ],\
+        "packagePeers": [\
+          "@types/webpack",\
+          "webpack"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -19281,6 +19309,35 @@ const RAW_RUNTIME_STATE =
           ["url", "npm:0.11.3"],\
           ["punycode", "npm:1.4.1"],\
           ["qs", "npm:6.11.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["url-loader", [\
+      ["npm:4.1.1", {\
+        "packageLocation": "../../.yarn/berry/cache/url-loader-npm-4.1.1-568e22ebcb-10c0.zip/node_modules/url-loader/",\
+        "packageDependencies": [\
+          ["url-loader", "npm:4.1.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:4.1.1", {\
+        "packageLocation": "./.yarn/__virtual__/url-loader-virtual-680faa727d/3/.yarn/berry/cache/url-loader-npm-4.1.1-568e22ebcb-10c0.zip/node_modules/url-loader/",\
+        "packageDependencies": [\
+          ["url-loader", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:4.1.1"],\
+          ["@types/file-loader", null],\
+          ["@types/webpack", null],\
+          ["file-loader", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:6.2.0"],\
+          ["loader-utils", "npm:2.0.4"],\
+          ["mime-types", "npm:2.1.35"],\
+          ["schema-utils", "npm:3.3.0"],\
+          ["webpack", null]\
+        ],\
+        "packagePeers": [\
+          "@types/file-loader",\
+          "@types/webpack",\
+          "file-loader",\
+          "webpack"\
         ],\
         "linkType": "HARD"\
       }]\

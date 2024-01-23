@@ -20,17 +20,19 @@ function NewModal({ openModal, onClick }: ModalProps) {
 
     return (
         <>
-            <div className="max-w-[600px] py-[22px] border rounded-t-[20px] m-auto fixed bottom-0 left-[3%] right-[3%] z-10 bg-white">
-                <div className="grow relative justify-start items-center flex">
-                    <div className="grow text-center ">
-                        <p>필터</p>
-                        <button
-                            type="button"
-                            onClick={onClick}
-                            className="absolute right-[16px] top-0"
-                        >
-                            <X />
-                        </button>
+            <div className="max-w-[600px] border  rounded-t-[20px] m-auto fixed bottom-0 left-[3%] right-[3%] z-10 bg-white">
+                <div className="py-[22px]">
+                    <div className="relative flex items-center justify-start grow">
+                        <div className="text-center grow ">
+                            <p>필터</p>
+                            <button
+                                type="button"
+                                onClick={onClick}
+                                className="absolute right-[16px] top-0"
+                            >
+                                <X />
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div className="w-[92%] m-auto py-[16px]">
@@ -59,17 +61,19 @@ function Section({ title, values }: SectionProps) {
     const dynamicMinValue = 0;
     const dynamicMaxValue = 100000;
 
-    const handleChange = (newValue: number[]) => {
+    const handleChange = (newValue: any) => {
+        // newValue는 여기서 배열로 확정되므로 배열의 값들을 직접 접근 가능
         const clampedValue = [
             Math.min(newValue[0], dynamicMaxValue),
             Math.min(newValue[1], dynamicMaxValue)
         ];
+
         setValue(clampedValue);
     };
 
     return (
         <div className="py-4 flex flex-col gap-[10px]">
-            <div className="text-zinc-600 text-sm font-semibold">{title}</div>
+            <div className="text-sm font-semibold text-zinc-600">{title}</div>
             <div className="flex flex-wrap gap-[10px]">
                 {values ? (
                     values.map((item, i) => (
@@ -88,7 +92,7 @@ function Section({ title, values }: SectionProps) {
                     ))
                 ) : (
                     <>
-                        <p className="text-neutral-800 text-xl font-bold">
+                        <p className="text-xl font-bold text-neutral-800">
                             {value[0]}~{value[1]}
                         </p>
                         <div className="relative w-full h-[4px] bg-[#dddddd]-500">
