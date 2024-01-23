@@ -13,7 +13,7 @@ interface ModalProps {
 
 function NewModal({ openModal, onClick }: ModalProps) {
     if (!openModal) {
-        return null; // 모달이 닫혀있는 경우 null 반환하여 렌더링하지 않음
+        return null;
     }
     const navItem = ['전체', '빵', '쿠키', '케이크', '타르트', '잼/청', '요거트', '기타'];
     const tags = ['전체', '글루텐프리', '고단백', '비건', '무설탕', '키토제닉'];

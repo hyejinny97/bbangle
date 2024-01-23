@@ -28,6 +28,7 @@ const ItemList = ({ storeData }) => {
         setQuery(newQuery);
     };
     const { data, refetch } = UseGetAllProductsQuery(query);
+    console.log(data.content);
 
     useEffect(() => {
         refetch();

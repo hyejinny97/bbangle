@@ -5,6 +5,8 @@ import Filters from './assets/filter.svg';
 import SortingButton from '../SortingButton';
 import { useState } from 'react';
 import NewModal from '../NewModal';
+import { useRecoilState } from 'recoil';
+import { modalState } from '@/atoms/atom';
 
 interface FilterTabProps {
     onChange: (_: IQuery) => void;
@@ -48,7 +50,7 @@ function transformTag(tag: string): string {
 const FilterTab = ({ query, onChange }: FilterTabProps) => {
     const [isChecked, setIsChecked] = useState(false);
     const [selectedItem, setSelectedItem] = useState<string | null>(null);
-    const [openModal, setOpenModal] = useState(false);
+    const [openModal, setOpenModal] = useRecoilState(modalState);
     const navItem = ['전체', '빵', '쿠키', '케이크', '타르트', '잼/청', '요거트', '기타'];
 
     const handleItemClick = (newCategory: string) => {
@@ -60,10 +62,11 @@ const FilterTab = ({ query, onChange }: FilterTabProps) => {
     const checkHandled = () => {
         setIsChecked(!isChecked);
     };
+
     return (
         <>
-            <div className="w-full relative">
-                <div className="flex relative gap-[6px] m-auto w-[92%] my-[16px] overflow-x-scroll scrollbar-hide ">
+            <div className="w-full relative ">
+                <div className="flex gap-[6px] m-auto w-[92%] my-[16px] overflow-x-scroll scrollbar-hide ">
                     {navItem.map((item, index) => {
                         return (
                             <button
@@ -85,13 +88,13 @@ const FilterTab = ({ query, onChange }: FilterTabProps) => {
                             </button>
                         );
                     })}
-                    <button
-                        className="absolute right-[0px] bg-white pl-[6px]"
-                        onClick={() => setOpenModal(true)}
-                    >
-                        <Filters />
-                    </button>
                 </div>
+                <button
+                    className="absolute right-[4%] top-[16px] bg-white pl-[6px]"
+                    onClick={() => setOpenModal(true)}
+                >
+                    <Filters />
+                </button>
                 <div className="border-b border-solid border-gray-100 w-full "></div>
                 <div className="flex w-[92%] py-[12px] m-auto justify-between items-center ">
                     <CheckBox
