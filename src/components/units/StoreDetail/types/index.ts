@@ -11,25 +11,25 @@ export interface IProductsType {
 
 export interface IStoreDetailType {
     store: {
-        storeId: number;
-        storeName: string;
+        id: number;
+        title: string;
         profile: string;
         isWished: boolean;
         introduce: string;
     };
-    bestProducts: [
+    best_products: [
         {
-            boardId: number;
-            thumbnail: string;
+            id: number;
+            profile: string;
             title: string;
             price: number;
             isBundled: boolean;
         }
     ];
-    allProducts: [
+    all_products: [
         {
-            boardId: number;
-            thumbnail: string;
+            id: number;
+            profile: string;
             title: string;
             price: number;
             isWished: boolean;

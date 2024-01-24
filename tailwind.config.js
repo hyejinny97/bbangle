@@ -8,10 +8,20 @@ module.exports = {
                 pop: {
                     '0%, 100%': { transform: 'scale(1)' },
                     '50%': { transform: 'scale(1.2)' }
+                },
+                slideUp: {
+                    '0%': { transform: 'translateY(100%)' },
+                    '100%': { transform: 'translateY(0)' }
+                },
+                slideDown: {
+                    '0%': { transform: 'translateY(0)' },
+                    '100%': { transform: 'translateY(100%)' }
                 }
             },
             animation: {
-                pop: 'pop 0.4s ease-in-out'
+                pop: 'pop 0.4s ease-in-out',
+                slideUp: 'slideUp 0.2s ease-out',
+                slideDown: 'slideDown 0.3s ease-out'
             },
 
             colors: {

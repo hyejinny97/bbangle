@@ -5,6 +5,7 @@ async function GetDetail(params: { id: string }) {
     try {
         const res = await fetch(`${API.serverUrl}/boards/${params.id}`);
         const data = await res.json();
+        console.log(data);
         return data;
     } catch (err) {
         console.log(err);

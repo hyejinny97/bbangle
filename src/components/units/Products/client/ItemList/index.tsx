@@ -1,14 +1,15 @@
 'use client';
 
-import { isCategoryTabState } from '@/atoms/atom';
+import { isCategoryTabState, modalState } from '@/atoms/atom';
 import { useRecoilState } from 'recoil';
-// import StoreCard from '../StoreCard';
 import FilterTab from '../FilterTab';
 import { UseGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
 import { useEffect, useState } from 'react';
 import ProductCard from '@/components/commons/card/ProductCard';
 import CategoryTab from '@/components/commons/CategoryTab';
 import StoreCard from '../StoreCard';
+import { IStoreType } from '@/commons/types/storeType';
+import NewModal from '../NewModal';
 
 interface IQuery {
     category: string;
@@ -16,19 +17,23 @@ interface IQuery {
     sort: string;
 }
 
-const ItemList = ({ storeData }) => {
+interface storeDataProp {
+    storeData: IStoreType[];
+}
+const ItemList = ({ storeData }: storeDataProp) => {
     const [isCategoryTab] = useRecoilState(isCategoryTabState);
+    const openModal = useRecoilState(modalState);
     const [query, setQuery] = useState<IQuery>({
         category: '',
         tags: [],
         sort: ''
     });
+    const { data, refetch } = UseGetAllProductsQuery(query);
+    const itemData = data?.content;
 
     const handleQuery = (newQuery: IQuery) => {
         setQuery(newQuery);
     };
-    const { data, refetch } = UseGetAllProductsQuery(query);
-    console.log(data.content);
 
     useEffect(() => {
         refetch();
@@ -42,7 +47,7 @@ const ItemList = ({ storeData }) => {
                     <>
                         <FilterTab query={query} onChange={handleQuery} />
                         <div className="flex flex-wrap w-[92%] m-auto gap-x-[4%] gap-y-4">
-                            {data?.content.map((product, i) => (
+                            {itemData?.map((product, i) => (
                                 <div key={i} className="w-[48%]">
                                     <ProductCard product={product} />
                                 </div>
@@ -52,13 +57,14 @@ const ItemList = ({ storeData }) => {
                 ) : (
                     <>
                         <div className="w-full">
-                            {storeData.content.map((data, i) => (
+                            {storeData.map((data, i) => (
                                 <StoreCard data={data} key={i} />
                             ))}
                         </div>
                     </>
                 )}
             </div>
+            {openModal && <NewModal />}
         </>
     );
 };
