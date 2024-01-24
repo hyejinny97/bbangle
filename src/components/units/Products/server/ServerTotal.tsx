@@ -1,23 +1,14 @@
+import { IStoreType } from '@/commons/types/storeType';
 import ItemList from '@/components/units/Products/client/ItemList';
-import * as API from '@/api';
 
-async function GetAllStore() {
-    try {
-        const res = await fetch(`${API.serverUrl}/stores`);
-        const data = await res.json();
-        return data;
-    } catch (err) {
-        console.log(err);
-        return [];
-    }
+interface storeDataProp {
+    storeData: IStoreType[];
 }
 
-const ServerTotal = async () => {
-    const data = await GetAllStore();
-    console.log(data);
+const ServerTotal = async ({ storeData }: storeDataProp) => {
     return (
         <>
-            <ItemList storeData={data} />
+            <ItemList storeData={storeData} />
         </>
     );
 };

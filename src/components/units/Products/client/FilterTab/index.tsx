@@ -4,7 +4,6 @@ import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import Filters from './assets/filter.svg';
 import SortingButton from '../SortingButton';
 import { useState } from 'react';
-import NewModal from '../NewModal';
 import { useRecoilState } from 'recoil';
 import { modalState } from '@/atoms/atom';
 
@@ -91,7 +90,7 @@ const FilterTab = ({ query, onChange }: FilterTabProps) => {
                 </div>
                 <button
                     className="absolute right-[4%] top-[16px] bg-white pl-[6px]"
-                    onClick={() => setOpenModal(true)}
+                    onClick={() => setOpenModal(!openModal)}
                 >
                     <Filters />
                 </button>
@@ -105,9 +104,6 @@ const FilterTab = ({ query, onChange }: FilterTabProps) => {
 
                     <SortingButton />
                 </div>
-                {openModal && (
-                    <NewModal openModal={openModal} onClick={() => setOpenModal(false)} />
-                )}
             </div>
         </>
     );
