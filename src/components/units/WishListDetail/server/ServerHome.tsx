@@ -1,11 +1,11 @@
 import Header from '@/components/commons/header/server/Header';
-import ServerWishListDetail from './ServerWishListDetail';
+import WishDetail from '../client/WishDetail';
 
 const ServerHome = async () => {
     return (
         <>
             <Header title="찜 상세(임시)" />
-            <ServerWishListDetail />
+            <WishDetail />
         </>
     );
 };

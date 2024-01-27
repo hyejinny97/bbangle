@@ -5,12 +5,12 @@ const DATA = [
     {
         boardId: 1,
         storeId: 1,
-        storeName: '123',
+        storeName: '빵그리의 오븐 노예1',
         thumbnail: '/assets/breadImg.jpeg',
-        title: '111',
-        price: 111111,
+        title: '맛있는 빵',
+        price: 345000,
         isWished: true,
-        tags: ['1']
+        tags: ['글루텐프리', '고단백', '냠']
     },
     {
         boardId: 1,
@@ -56,14 +56,14 @@ const DATA = [
 
 const FILTER_DATA = [
     { name: 'aaa', value: '담은순' },
-    { name: 'aaa', value: '저가순' },
-    { name: 'aaa', value: '고액순' }
+    { name: 'aaa', value: '인기순' },
+    { name: 'aaa', value: '저가순' }
 ];
 
-function ServerWishListDetail() {
+function WishDetail() {
     return (
         <div className="w-[92%]">
-            <div>
+            <div className="mb-5">
                 <FilterSelect datas={FILTER_DATA} />
             </div>
             <div className="flex flex-wrap w-full  m-auto gap-x-[4%] gap-y-4">
@@ -77,4 +77,4 @@ function ServerWishListDetail() {
     );
 }
 
-export default ServerWishListDetail;
+export default WishDetail;
