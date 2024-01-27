@@ -7,7 +7,7 @@ interface TagSwiperProps {
 
 const TagSwiper = ({ tag }: TagSwiperProps) => {
     const [maxTagsToShow, setMaxTagsToShow] = useState(4);
-    const tagFilter = tag.map(item => {
+    const tagFilter = tag.map((item: string) => {
         let translatedItem = item;
 
         switch (item) {

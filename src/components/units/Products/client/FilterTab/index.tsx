@@ -3,81 +3,59 @@
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import Filters from './assets/filter.svg';
 import SortingButton from '../SortingButton';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { modalState } from '@/atoms/atom';
+import { filterValueState, modalState } from '@/atoms/atom';
+import { UseGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
+import { transformTag } from '@/commons/constants/transfromTag';
 
 interface FilterTabProps {
-    onChange: (_: IQuery) => void;
-    query: IQuery;
+    navItem: string[];
 }
 
-interface IQuery {
-    category: string;
-    tags: string[];
-    sort: string;
-}
-
-function transformTag(tag: string): string {
-    if (tag === '전체') {
-        return '';
-    }
-    if (tag === '빵') {
-        return 'BREAD';
-    }
-    if (tag === '쿠키') {
-        return 'COOKIE';
-    }
-    if (tag === '케이크') {
-        return 'CAKE';
-    }
-    if (tag === '타르트') {
-        return 'TART';
-    }
-    if (tag === '잼/청') {
-        return 'JAM';
-    }
-    if (tag === '요거트') {
-        return 'YOGURT';
-    }
-    if (tag === '기타') {
-        return 'ETC';
-    }
-    return tag;
-}
-
-const FilterTab = ({ query, onChange }: FilterTabProps) => {
+const FilterTab = ({ navItem }: FilterTabProps) => {
     const [isChecked, setIsChecked] = useState(false);
     const [selectedItem, setSelectedItem] = useState<string | null>(null);
     const [openModal, setOpenModal] = useRecoilState(modalState);
-    const navItem = ['전체', '빵', '쿠키', '케이크', '타르트', '잼/청', '요거트', '기타'];
+    const [filterValue, setFilterValue] = useRecoilState(filterValueState);
+    const { data, refetch } = UseGetAllProductsQuery(filterValue);
 
     const handleItemClick = (newCategory: string) => {
-        const newQuery: IQuery = { ...query, category: transformTag(newCategory) };
         setSelectedItem(newCategory);
-        onChange(newQuery);
+        setFilterValue(prevObject => ({
+            ...prevObject,
+            category: transformTag(newCategory)
+        }));
     };
 
     const checkHandled = () => {
         setIsChecked(!isChecked);
     };
 
+    useEffect(() => {
+        console.log(data);
+        console.log(11111111 + JSON.stringify(filterValue));
+        refetch();
+    }, [selectedItem, refetch, filterValue]);
+
     return (
         <>
             <div className="w-full relative ">
-                <div className="flex gap-[6px] m-auto w-[92%] my-[16px] overflow-x-scroll scrollbar-hide ">
+                <div className="flex gap-[6px] m-auto pr-[40px] w-[92%] my-[16px] overflow-x-scroll scrollbar-hide ">
                     {navItem.map((item, index) => {
                         return (
                             <button
                                 key={index}
                                 className={`h-[34px] flex-shrink-0 px-3 py-2 rounded-[50px] bg-white ${
-                                    selectedItem === item ? 'border-red-500' : 'border-gray-200'
+                                    filterValue.category === transformTag(item)
+                                        ? 'border-red-500'
+                                        : 'border-gray-200'
                                 } border  justify-center items-center gap-1 inline-flex`}
                                 onClick={() => handleItemClick(item)}
                             >
                                 <p
                                     className={`text-xs font-medium font-['Pretendard'] leading-[18px] ${
-                                        selectedItem === item
+                                        filterValue.category === transformTag(item)
                                             ? 'text-red-500  '
                                             : 'text-neutral-800'
                                     }`}
@@ -101,7 +79,6 @@ const FilterTab = ({ query, onChange }: FilterTabProps) => {
                         onClick={checkHandled}
                         title="주문가능한 상품 보기"
                     />
-
                     <SortingButton />
                 </div>
             </div>
