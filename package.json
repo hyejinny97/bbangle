@@ -66,6 +66,7 @@
         "postcss": "8.4.20",
         "postcss-syntax": "^0.36.2",
         "prettier": "^3.1.0",
+        "react-icons": "^5.0.1",
         "storybook": "7.5.3",
         "svg-inline-loader": "^0.8.2",
         "swiper": "^11.0.5",

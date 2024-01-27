@@ -44,7 +44,7 @@ const WishFolder = ({ isDefault }: WishFolderProps) => {
 
                 <div className="flex items-center justify-between mt-1.5">
                     <h3 className="text-sm font-semibold text-color-Gray900">폴더이름</h3>
-                    <span className="text-xs font-normal text-color-Gray500">0</span>
+                    <span className="text-xs font-normal text-color-Gray500">(0)</span>
                 </div>
             </div>
         </Link>
