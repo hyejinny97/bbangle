@@ -1,27 +1,31 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { MouseEvent, useEffect, useState } from 'react';
 import X from './assets/x_btn.svg';
 import 'rc-slider/assets/index.css';
 import Btn from '@/components/commons/button/client/Btn';
 import { useRecoilState } from 'recoil';
-import { modalState } from '@/atoms/atom';
+import { filterValueState, modalState } from '@/atoms/atom';
 import ModalSection from '../ModalSection';
 
-// interface ModalProps {
-//     openModal: boolean;
-//     onClick?: () => void;
+const navItem = ['전체', '빵', '쿠키', '케이크', '타르트', '잼/청', '요거트', '기타'];
+const tags = ['전체', '글루텐프리', '고단백', '비건', '무설탕', '키토제닉'];
+
+// interface filterType {
+//     [key: string]: string | null | string[];
 // }
 
-function NewModal() {
+interface ModalProps {
+    refetch: () => void;
+    // onChange: React.Dispatch<React.SetStateAction<filterType>>;
+}
+
+function NewModal({ refetch }: ModalProps) {
     const [openModal, setOpenModal] = useRecoilState(modalState);
     const [isVisible, setIsVisible] = useState(openModal);
     const [animationClass, setAnimationClass] = useState('animate-slideUp');
-
-    const navItem = ['전체', '빵', '쿠키', '케이크', '타르트', '잼/청', '요거트', '기타'];
-    const tags = ['전체', '글루텐프리', '고단백', '비건', '무설탕', '키토제닉'];
-
-    const [, setModalValues] = useState<{ [key: string]: string | null }[]>([]);
+    const [filterValue, setFilterValue] = useRecoilState(filterValueState);
+    const [tempFilterValue, setTempFilterValue] = useState(filterValue);
 
     const handleCloseModal = () => {
         setAnimationClass('animate-slideDown');
@@ -31,11 +35,22 @@ function NewModal() {
         }, 300);
     };
 
-    const handleModalValueChange = (sectionTitle: string, selectedItem: string | null) => {
-        setModalValues(prevValues => {
+    const handleModalValueChange = (
+        sectionTitle: string,
+        selectedItem: string | string[] | null
+    ) => {
+        setTempFilterValue(prevValues => {
             const updatedValues = { ...prevValues, [sectionTitle]: selectedItem };
             return updatedValues;
         });
+    };
+
+    const handleConfirm = (e: MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        //onChange(filterValue);
+        refetch();
+        setFilterValue(tempFilterValue);
+        handleCloseModal();
     };
 
     useEffect(() => {
@@ -72,18 +87,23 @@ function NewModal() {
                     <ModalSection
                         title="카테고리"
                         values={navItem}
-                        onChange={selectedItem => handleModalValueChange('카테고리', selectedItem)}
+                        filterValue={filterValue.category}
+                        onChange={selectedItem =>
+                            handleModalValueChange('category', selectedItem[0])
+                        }
                     />
                     <ModalSection
+                        multiple
                         title="성분"
                         values={tags}
-                        onChange={selectedItem => handleModalValueChange('카테고리', selectedItem)}
+                        filterValue={filterValue.tags}
+                        onChange={selectedItem => handleModalValueChange('tags', selectedItem)}
                     />
                     <ModalSection title="가격" />
                 </div>
                 <div className="w-[92%] h-[84px] m-auto flex gap-[10px] justify-center items-center">
-                    <Btn title="취소" active={false} onClick={() => {}} />
-                    <Btn title="확인" active={true} onClick={() => {}} />
+                    <Btn title="취소" active={false} onClick={handleConfirm} />
+                    <Btn title="확인" active={true} onClick={handleConfirm} />
                 </div>
             </div>
         </div>

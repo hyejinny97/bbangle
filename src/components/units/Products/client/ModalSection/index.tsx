@@ -1,3 +1,4 @@
+import { transformIngredientEngishTag, transformTag } from '@/commons/constants/transfromTag';
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import Slider from 'rc-slider';
 import { useState } from 'react';
@@ -5,12 +6,16 @@ import { useState } from 'react';
 interface SectionProps {
     title: string;
     values?: string[];
-    onChange?: (_newItem: string | null) => void;
+    filterValue?: string | string[] | null;
+    multiple?: boolean;
+    onChange?: (_newItem: string[] | string) => void;
 }
 
-function ModalSection({ title, values, onChange }: SectionProps) {
+function ModalSection({ title, values, filterValue, multiple, onChange }: SectionProps) {
     const [value, setValue] = useState([0, 1000]);
-    const [selectedItem, setSelectedItem] = useState<string | null>(null);
+    const [selectedItems, setSelectedItems] = useState<string[]>([]);
+
+    console.log(11 + JSON.stringify(filterValue));
 
     const dynamicMinValue = 0;
     const dynamicMaxValue = 100000;
@@ -24,31 +29,52 @@ function ModalSection({ title, values, onChange }: SectionProps) {
         setValue(clampedValue);
     };
 
+    const handleClick = (item: string) => {
+        let newSelectedItems;
+
+        if (multiple) {
+            newSelectedItems = selectedItems.includes(item)
+                ? selectedItems.filter(selectedItem => selectedItem !== item)
+                : [...selectedItems, transformIngredientEngishTag(item)];
+        } else {
+            newSelectedItems = [transformTag(item)];
+        }
+
+        setSelectedItems(newSelectedItems);
+        if (onChange) {
+            onChange(newSelectedItems);
+        }
+    };
+
     return (
         <div className="py-4 flex flex-col gap-[10px]">
             <div className="text-sm font-semibold text-zinc-600">{title}</div>
             <div className="flex flex-wrap gap-[10px]">
                 {values ? (
-                    values.map((item, i) => (
-                        <div
-                            key={i}
-                            className={`h-[37px] p-2  rounded-lg justify-start items-center gap-1.5 inline-flex ${
-                                item === selectedItem ? 'bg-red-50 ' : ' bg-slate-100'
-                            }`}
-                        >
-                            <CheckBox
-                                isChecked={item === selectedItem}
-                                title={item}
-                                onClick={() => {
-                                    const newItem = item === selectedItem ? null : item;
-                                    setSelectedItem(newItem);
-                                    if (onChange) {
-                                        onChange(newItem);
-                                    }
-                                }}
-                            />
-                        </div>
-                    ))
+                    values.map((item, i) => {
+                        // 여기에서 item 변수를 선언 및 할당
+                        const transformedItem = multiple
+                            ? transformIngredientEngishTag(item)
+                            : transformTag(item);
+
+                        return (
+                            <div
+                                key={i}
+                                className={`h-[37px] p-2 rounded-lg justify-start items-center gap-1.5 inline-flex ${
+                                    selectedItems.includes(transformedItem)
+                                        ? 'bg-red-50'
+                                        : 'bg-slate-100'
+                                }`}
+                                onClick={() => handleClick(transformedItem)}
+                            >
+                                <CheckBox
+                                    isChecked={selectedItems.includes(transformedItem)}
+                                    title={item}
+                                    onClick={() => handleClick(transformedItem)}
+                                />
+                            </div>
+                        );
+                    })
                 ) : (
                     <>
                         <p className="text-xl font-bold text-neutral-800">

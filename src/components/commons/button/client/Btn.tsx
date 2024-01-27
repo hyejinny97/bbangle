@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 
 interface ButtonProps {
     title: String;
     active: Boolean;
-    onClick: () => void;
+    onClick: (_e: MouseEvent<HTMLButtonElement>) => void;
 }
 
 function Btn({ title, active, onClick }: ButtonProps) {

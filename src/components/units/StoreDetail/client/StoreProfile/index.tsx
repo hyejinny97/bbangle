@@ -10,10 +10,10 @@ function StoreProfile() {
     const [isLiked, setIsLiked] = useState(store?.isWished || false);
     return (
         <div className="flex flex-col justify-center items-center gap-[10px]">
-            <div
+            {/* <div
                 className="w-[46px] h-[46px] bg-cover bg-center rounded-md"
                 style={{ backgroundImage: `url(${data?.store.profile})` }}
-            ></div>
+            ></div> */}
             <div className=" flex flex-col gap-[4px]">
                 <div className="w-full flex items-center justify-center gap-[2px]">
                     <div className="text-neutral-800 text-base font-bold">{store?.storeName} </div>
