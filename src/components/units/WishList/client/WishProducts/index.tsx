@@ -6,7 +6,9 @@ import UpModal from '@/components/commons/modal/UpModal';
 import StoreCard from '@/components/units/Products/client/StoreCard';
 import WishButton from '@/components/units/WishList/client/WishButton';
 import WishFolder from '@/components/units/WishList/client/WishFolder';
-import { useState } from 'react';
+import { useAddWishListMutation } from '@/components/units/WishList/hooks/useAddWishListMutation';
+import { useGetWishLists } from '@/components/units/WishList/hooks/useGetWishList';
+import { ChangeEvent, useState } from 'react';
 import { useRecoilState } from 'recoil';
 
 const STORE_DATA = [
@@ -29,12 +31,34 @@ const STORE_DATA = [
 
 const WishProducts = () => {
     const [isCategoryTab] = useRecoilState(isCategoryTabState);
-
+    const [title, setTitle] = useState('');
     const [isVisible, setIsVisible] = useState(false);
-    const [isAdd] = useState(false);
+
+    const { data, refetch } = useGetWishLists();
+
+    const { mutate } = useAddWishListMutation();
 
     const handleModalToggle = () => {
         setIsVisible(prev => !prev);
+        setTitle('');
+    };
+
+    const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
+        setTitle(e.target.value);
+    };
+    console.log(mutate);
+    const handleAddWishList = () => {
+        if (title) {
+            mutate(
+                { title },
+                {
+                    onSuccess: () => {
+                        refetch();
+                        handleModalToggle();
+                    }
+                }
+            );
+        }
     };
 
     return (
@@ -45,38 +69,36 @@ const WishProducts = () => {
                     <div className="w-[92%] m-auto">
                         <div className="flex items-center justify-end gap-2 pt-4 pb-2.5">
                             <WishButton title="추가" onClick={handleModalToggle} />
-                            <WishButton title="완료" isBlack onClick={() => {}} />
+                            <WishButton title="편집" isBlack onClick={() => {}} />
                         </div>
                         <div className="flex flex-wrap gap-x-[5%] gap-y-4">
-                            <WishFolder isDefault />
-                            <WishFolder />
-                            <WishFolder />
+                            {data?.map(wish => <WishFolder key={wish.folderId} wish={wish} />)}
                         </div>
                     </div>
                     <UpModal title="찜 폴더" isVisible={isVisible} toggleModal={handleModalToggle}>
                         <div className="w-full">
-                            {isAdd ? (
-                                <div className="w-[92%] m-auto flex flex-col items-end gap-2">
-                                    <input
-                                        type="text"
-                                        style={{ outline: 'none' }}
-                                        className="w-full p-3 border border-solid border-color-Gray100 rounded-[10px] text-base font-normal"
-                                        placeholder="폴더명을 입력해주세요."
-                                    />
-                                    <div className="w-[324px] text-right">
-                                        <span className="text-xs font-medium text-color-Gray900 ">
-                                            9
-                                        </span>
-                                        <span className="text-xs font-medium text-color-G400">
-                                            /12
-                                        </span>
-                                    </div>
+                            <div className="w-[92%] m-auto flex flex-col items-end gap-2">
+                                <input
+                                    type="text"
+                                    style={{ outline: 'none' }}
+                                    className="w-full p-3 border border-solid border-color-Gray100 rounded-[10px] text-base font-normal"
+                                    placeholder="폴더명을 입력해주세요."
+                                    onChange={handleChangeTitle}
+                                    maxLength={12}
+                                    value={title}
+                                />
+                                <div className="w-[324px] text-right">
+                                    <span className="text-xs font-medium text-color-Gray900 ">
+                                        {title.length}
+                                    </span>
+                                    <span className="text-xs font-medium text-color-G400">/12</span>
                                 </div>
-                            ) : (
-                                <div></div>
-                            )}
+                            </div>
 
-                            <button className="w-[92%] m-auto flex justify-center items-center  py-3.5 bg-color-Gray900 text-base font-medium text-color-White rounded-[50px] mt-4">
+                            <button
+                                onClick={handleAddWishList}
+                                className="w-[92%] m-auto flex justify-center items-center  py-3.5 bg-color-Gray900 text-base font-medium text-color-White rounded-[50px] mt-4"
+                            >
                                 확인
                             </button>
                         </div>
