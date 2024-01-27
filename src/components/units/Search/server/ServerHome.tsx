@@ -1,13 +1,9 @@
-import InputContainer from '../client/InputContainer';
-import ServerPopularKeyword from './ServerPopularKeyword';
-import ServerRecentKeyword from './ServerRecentKeyword';
+import ResultContainer from '../client/ResultContainer';
 
 const ServerHome = () => {
     return (
         <>
-            <InputContainer />
-            <ServerRecentKeyword />
-            <ServerPopularKeyword />
+            <ResultContainer />
         </>
     );
 };

@@ -11,7 +11,7 @@ import { IStoreType } from '@/commons/types/storeType';
 import NewModal from '../NewModal';
 
 interface storeDataProp {
-    storeData: IStoreType[];
+    storeData?: IStoreType[];
 }
 
 const NAV_INITIAL = ['전체', '빵', '쿠키', '케이크', '타르트', '잼/청', '요거트', '기타'];
@@ -45,9 +45,7 @@ const ItemList = ({ storeData }: storeDataProp) => {
                 ) : (
                     <>
                         <div className="w-full">
-                            {storeData.map((data, i) => (
-                                <StoreCard data={data} key={i} />
-                            ))}
+                            {storeData?.map((data, i) => <StoreCard data={data} key={i} />)}
                         </div>
                     </>
                 )}

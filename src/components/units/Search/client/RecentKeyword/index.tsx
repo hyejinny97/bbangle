@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import XX from './assets/xx.svg';
 
 const RECENT: string[] = [
@@ -20,11 +21,11 @@ interface RecentChipProps {
     onClick?: () => void;
 }
 
-function RecentChip({ title }: RecentChipProps) {
+function RecentChip({ title, onClick }: RecentChipProps) {
     return (
         <p className="text-xs font-medium font-Pretendard leading-[18px] text-zinc-600 flex items-center justify-center gap-[4px]">
             {title}
-            <button onClick={() => {}}>
+            <button onClick={onClick}>
                 <XX />
             </button>
         </p>
@@ -32,16 +33,20 @@ function RecentChip({ title }: RecentChipProps) {
 }
 
 function RecentKeyword() {
+    const [recentItems, setRecentItems] = useState(RECENT);
+    const handleDelete = (itemToDelete: string) => {
+        setRecentItems(items => items.filter(item => item !== itemToDelete));
+    };
     return (
         <>
             <div className="w-full relative">
                 <div className="flex gap-[8px] w-92% overflow-x-scroll scrollbar-hide">
-                    {RECENT.map(item => (
+                    {recentItems.map(item => (
                         <span
                             key={item}
                             className="h-34px flex-shrink-0 px-3 py-2 bg-white border border-solid border-gray-200  gap-1 inline-flex rounded-[50px] "
                         >
-                            <RecentChip title={item} />
+                            <RecentChip title={item} onClick={() => handleDelete(item)} />
                         </span>
                     ))}
                 </div>
