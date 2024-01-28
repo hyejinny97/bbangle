@@ -4,28 +4,25 @@ import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import Filters from './assets/filter.svg';
 import SortingButton from '../SortingButton';
 import { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { filterValueState, modalState } from '@/atoms/atom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { categoryItems, filterValueState, modalState } from '@/atoms/atom';
 import { UseGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
-import { transformTag } from '@/commons/constants/transfromTag';
+import { transformIngredientTag, transformTag } from '@/commons/constants/transfromTag';
 
-interface FilterTabProps {
-    navItem: string[];
-}
-
-const FilterTab = ({ navItem }: FilterTabProps) => {
+const FilterTab = () => {
     const [isChecked, setIsChecked] = useState(false);
-    const [selectedItem, setSelectedItem] = useState<string | null>(null);
     const [openModal, setOpenModal] = useRecoilState(modalState);
     const [filterValue, setFilterValue] = useRecoilState(filterValueState);
+    const filterItem = useRecoilValue(categoryItems);
+    const [newFilterItem, setNewFilterItem] = useState(filterItem);
     const { data, refetch } = UseGetAllProductsQuery(filterValue);
 
     const handleItemClick = (newCategory: string) => {
-        setSelectedItem(newCategory);
         setFilterValue(prevObject => ({
             ...prevObject,
             category: transformTag(newCategory)
         }));
+        console.log(newCategory);
     };
 
     const checkHandled = () => {
@@ -34,28 +31,43 @@ const FilterTab = ({ navItem }: FilterTabProps) => {
 
     useEffect(() => {
         console.log(data);
-        console.log(11111111 + JSON.stringify(filterValue));
         refetch();
-    }, [selectedItem, refetch, filterValue]);
+        if (filterValue.tags) {
+            const newTag = `${transformIngredientTag(filterValue.tags[0])} ${
+                filterValue.tags.length > 1 ? `외 ${filterValue.tags.length - 1}` : ''
+            }`;
+            if (!newFilterItem.includes(newTag)) {
+                setNewFilterItem(prevItems => {
+                    return [newTag, ...prevItems]; // newTag 추가
+                });
+            }
+            setNewFilterItem(prevItems => {
+                const updatedItems = filterItem.filter(item => item !== prevItems[0]);
+                return [newTag, ...updatedItems];
+            });
+        }
+    }, [refetch, filterValue, filterItem]);
 
     return (
         <>
             <div className="w-full relative ">
                 <div className="flex gap-[6px] m-auto pr-[40px] w-[92%] my-[16px] overflow-x-scroll scrollbar-hide ">
-                    {navItem.map((item, index) => {
+                    {newFilterItem.map((item, index) => {
+                        const isTagActive = filterValue.category === transformTag(item);
+                        const isNewTag = newFilterItem[0] !== '전체' && item === newFilterItem[0];
+
                         return (
                             <button
                                 key={index}
                                 className={`h-[34px] flex-shrink-0 px-3 py-2 rounded-[50px] bg-white ${
-                                    filterValue.category === transformTag(item)
-                                        ? 'border-red-500'
-                                        : 'border-gray-200'
-                                } border  justify-center items-center gap-1 inline-flex`}
+                                    isTagActive || isNewTag ? 'border-red-500' : 'border-gray-200'
+                                } border justify-center items-center gap-1 inline-flex`}
                                 onClick={() => handleItemClick(item)}
+                                disabled={isNewTag}
                             >
                                 <p
                                     className={`text-xs font-medium font-['Pretendard'] leading-[18px] ${
-                                        filterValue.category === transformTag(item)
+                                        isTagActive || isNewTag
                                             ? 'text-red-500  '
                                             : 'text-neutral-800'
                                     }`}
