@@ -5,15 +5,8 @@ import X from './assets/x_btn.svg';
 import 'rc-slider/assets/index.css';
 import Btn from '@/components/commons/button/client/Btn';
 import { useRecoilState } from 'recoil';
-import { filterValueState, modalState } from '@/atoms/atom';
+import { categoryItems, filterValueState, ingredientItems, modalState } from '@/atoms/atom';
 import ModalSection from '../ModalSection';
-
-const navItem = ['전체', '빵', '쿠키', '케이크', '타르트', '잼/청', '요거트', '기타'];
-const tags = ['전체', '글루텐프리', '고단백', '비건', '무설탕', '키토제닉'];
-
-// interface filterType {
-//     [key: string]: string | null | string[];
-// }
 
 interface ModalProps {
     refetch: () => void;
@@ -25,6 +18,8 @@ function NewModal({ refetch }: ModalProps) {
     const [isVisible, setIsVisible] = useState(openModal);
     const [animationClass, setAnimationClass] = useState('animate-slideUp');
     const [filterValue, setFilterValue] = useRecoilState(filterValueState);
+    const [categoryNav] = useRecoilState(categoryItems);
+    const [ingredientNav] = useRecoilState(ingredientItems);
     const [tempFilterValue, setTempFilterValue] = useState(filterValue);
 
     const handleCloseModal = () => {
@@ -86,7 +81,7 @@ function NewModal({ refetch }: ModalProps) {
                 <div className="w-[92%] m-auto py-[16px]">
                     <ModalSection
                         title="카테고리"
-                        values={navItem}
+                        values={categoryNav}
                         filterValue={filterValue.category}
                         onChange={selectedItem =>
                             handleModalValueChange('category', selectedItem[0])
@@ -95,7 +90,7 @@ function NewModal({ refetch }: ModalProps) {
                     <ModalSection
                         multiple
                         title="성분"
-                        values={tags}
+                        values={ingredientNav}
                         filterValue={filterValue.tags}
                         onChange={selectedItem => handleModalValueChange('tags', selectedItem)}
                     />

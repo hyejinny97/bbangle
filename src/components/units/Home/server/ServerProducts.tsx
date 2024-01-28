@@ -6,7 +6,6 @@ const getBestProducts = async () => {
     try {
         const res = await fetch(`${API.serverUrl}/boards`, { cache: 'no-store' });
         const data = res.json();
-
         return data;
     } catch (err) {
         console.log(err);

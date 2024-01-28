@@ -46,19 +46,19 @@ export function transformIngredientTag(tag: string): string {
 }
 export function transformIngredientEngishTag(tag: string): string {
     if (tag === '글루텐프리') {
-        return 'glutenFreeTag';
+        return 'glutenFree';
     }
     if (tag === '고단백') {
-        return 'highProteinTag';
+        return 'highProtein';
     }
     if (tag === '비건') {
-        return 'veganTag';
+        return 'vegan';
     }
     if (tag === '무설탕') {
-        return 'sugarFreeTag';
+        return 'sugarFree';
     }
     if (tag === '키토제닉') {
-        return 'ketogenicTag';
+        return 'ketogenic';
     }
     return tag;
 }
