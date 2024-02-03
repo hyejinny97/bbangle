@@ -15,6 +15,11 @@ export const filterValueState = atom<{ [key: string]: string | string[] | null }
     default: {}
 });
 
+export const isWishModalState = atom<boolean>({
+    key: 'isWishModalState',
+    default: false
+});
+
 export const categoryItems = atom({
     key: 'categoryItems',
     default: ['전체', '빵', '쿠키', '케이크', '타르트', '잼/청', '요거트', '기타'] as string[]

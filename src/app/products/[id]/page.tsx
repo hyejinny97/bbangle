@@ -5,7 +5,6 @@ async function GetDetail(params: { id: string }) {
     try {
         const res = await fetch(`${API.serverUrl}/boards/${params.id}`);
         const data = await res.json();
-        console.log(data);
         return data;
     } catch (err) {
         console.log(err);
@@ -15,7 +14,6 @@ async function GetDetail(params: { id: string }) {
 
 const ProductDetail = async ({ params }: { params?: any }) => {
     const data = await GetDetail(params);
-    console.log(data);
     return (
         <>
             <DetailHome data={data} />{' '}
