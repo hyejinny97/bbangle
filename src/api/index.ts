@@ -5,7 +5,9 @@ const serverUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`;
 async function get<T>(endpoint: string): Promise<T> {
     return axios.get(serverUrl + endpoint, {
         headers: {
-            Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            // Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            Authorization:
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwNjk1MTI2MiwiZXhwIjoxNzA2OTYyMDYyLCJpZCI6NH0.TMisQfc5GNSR0g4Fr_P6yywLA-8NVpNlVM0wDKVTZk0'
         }
     });
 }
@@ -16,7 +18,9 @@ async function post<T, D>(endpoint: string, data: D): Promise<T> {
     return axios.post(serverUrl + endpoint, bodyData, {
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            // Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            Authorization:
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwNjk1MTI2MiwiZXhwIjoxNzA2OTYyMDYyLCJpZCI6NH0.TMisQfc5GNSR0g4Fr_P6yywLA-8NVpNlVM0wDKVTZk0'
         }
     });
 }
@@ -47,7 +51,9 @@ async function patch<T, D>(endpoint: string, data: D): Promise<T> {
     return axios.patch(serverUrl + endpoint, bodyData, {
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            // Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            Authorization:
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwNjk1MTI2MiwiZXhwIjoxNzA2OTYyMDYyLCJpZCI6NH0.TMisQfc5GNSR0g4Fr_P6yywLA-8NVpNlVM0wDKVTZk0'
         }
     });
 }

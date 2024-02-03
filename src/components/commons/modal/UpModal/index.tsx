@@ -20,7 +20,7 @@ const UpModal = ({ title, children, isVisible, toggleModal }: UpModalProps) => {
         <>
             <BackDrop isVisible={isVisible} onClick={handleToggle} />
             <div
-                className={`w-full max-w-[600px] max-h-[76vh] bg-color-White fixed left-1/2 -translate-x-1/2 ${
+                className={`w-full max-w-[600px] max-h-[76vh] z-[200] bg-color-White fixed left-1/2 -translate-x-1/2 ${
                     isVisible ? 'bottom-0' : '-bottom-full'
                 } z-20 rounded-tl-2xl rounded-tr-2xl transition-all pb-4`}
             >
