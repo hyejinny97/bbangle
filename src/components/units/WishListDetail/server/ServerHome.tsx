@@ -1,4 +1,4 @@
-import Header from '@/components/commons/header/server/Header';
+import Header from '@/components/commons/header/client/Header';
 import WishDetail from '../client/WishDetail';
 
 const ServerHome = async () => {

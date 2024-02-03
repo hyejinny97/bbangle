@@ -1,9 +1,22 @@
-import ItemList from '@/components/units/Products/client/ItemList';
+import { IAllProductsType } from '@/commons/types/allProductsType';
+import ItemList from '../ItemList';
 
-function SearchResult() {
+interface getSearchResultQueryProps {
+    resultProducts?: IAllProductsType;
+    resultStores?: IAllProductsType;
+    refetch: () => void;
+}
+
+function SearchResult({ resultProducts, resultStores, refetch }: getSearchResultQueryProps) {
+    // console.log('1111' + resultData);
+
     return (
         <>
-            <ItemList />
+            <ItemList
+                resultProducts={resultProducts}
+                resultStores={resultStores}
+                refetch={refetch}
+            />
         </>
     );
 }

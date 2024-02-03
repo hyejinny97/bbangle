@@ -1,4 +1,4 @@
-import Header from '@/components/commons/header/server/Header';
+import Header from '@/components/commons/header/client/Header';
 import WishProducts from '@/components/units/WishList/client/WishProducts';
 const ServerWishList = () => {
     return (
