@@ -1,4 +1,3 @@
-import { categoryName } from '@/atoms/atom';
 import Link from 'next/link';
 
 interface CategoryProps {
@@ -12,9 +11,7 @@ const CategoryBtn = ({ name, icon, url, ProductName }: CategoryProps) => {
     return (
         <Link
             href={url}
-            className={`${
-                ProductName === categoryName ? 'w-1/4' : 'w-1/3'
-            } flex flex-col justify-startc
+            className={`${ProductName === '상품별' ? 'w-1/4' : 'w-1/3'} flex flex-col justify-startc
         items-center gap-1 py-3`}
         >
             <div>{icon}</div>

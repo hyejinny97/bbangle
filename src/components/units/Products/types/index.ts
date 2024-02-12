@@ -1,16 +1,7 @@
+import { IProductType } from '@/commons/types/productType';
+
 export interface IProductsType {
-    content: [
-        {
-            boardId: number;
-            storeId: number;
-            storeName: string;
-            thumbnail: string;
-            title: string;
-            price: number;
-            isWished: boolean;
-            tags: string[];
-        }
-    ];
+    content: IProductType[];
     empty: boolean;
     first: boolean;
     last: boolean;
