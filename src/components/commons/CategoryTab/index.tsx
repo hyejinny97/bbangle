@@ -21,7 +21,7 @@ const CategoryTab = ({ categories }: CategoryTabProps) => {
     };
 
     return (
-        <div className="w-full h-[43px] bg-white justify-start items-start inline-flex relative ">
+        <div className="w-full h-[43px] bg-white justify-start items-start inline-flex ">
             {categories.map((tab, index) => (
                 <TabButton
                     key={index}

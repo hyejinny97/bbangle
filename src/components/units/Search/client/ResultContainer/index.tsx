@@ -21,11 +21,11 @@ const ResultContainer = () => {
     useEffect(() => {
         refetch();
         console.log(keyword);
-    }, [keyword]);
+    }, [keyword, refetch]);
 
     return (
         <>
-            <div className="w-[92%] m-auto flex items-center gap-[17px]">
+            <div className="w-[92%] m-auto flex items-center gap-[17px] py-[10px]">
                 <div onClick={goBackHandler}>
                     <Back />
                 </div>

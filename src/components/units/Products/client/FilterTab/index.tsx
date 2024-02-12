@@ -46,7 +46,7 @@ const FilterTab = () => {
                 return [newTag, ...updatedItems];
             });
         }
-    }, [refetch, filterValue, filterItem]);
+    }, [data, filterValue, filterItem, newFilterItem, refetch]);
 
     return (
         <>

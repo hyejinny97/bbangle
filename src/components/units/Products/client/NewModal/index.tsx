@@ -1,6 +1,6 @@
 'use client';
 
-import React, { MouseEvent, useEffect, useState } from 'react';
+import React, { MouseEvent, useCallback, useEffect, useState } from 'react';
 import X from './assets/x_btn.svg';
 import 'rc-slider/assets/index.css';
 import Btn from '@/components/commons/button/client/Btn';
@@ -22,13 +22,13 @@ function NewModal({ refetch }: ModalProps) {
     const [ingredientNav] = useRecoilState(ingredientItems);
     const [tempFilterValue, setTempFilterValue] = useState(filterValue);
 
-    const handleCloseModal = () => {
+    const handleCloseModal = useCallback(() => {
         setAnimationClass('animate-slideDown');
         setTimeout(() => {
             setIsVisible(false);
             setOpenModal(false);
         }, 300);
-    };
+    }, [setAnimationClass, setIsVisible, setOpenModal]);
 
     const handleModalValueChange = (
         sectionTitle: string,
@@ -55,7 +55,7 @@ function NewModal({ refetch }: ModalProps) {
         } else if (!openModal && isVisible) {
             handleCloseModal();
         }
-    }, [openModal, isVisible]);
+    }, [openModal, isVisible, handleCloseModal]);
 
     if (!isVisible) return null;
 

@@ -7,7 +7,7 @@ async function get<T>(endpoint: string): Promise<T> {
         headers: {
             // Authorization: `Bearer ${sessionStorage.getItem('token')}`
             Authorization:
-                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwNjk1MTI2MiwiZXhwIjoxNzA2OTYyMDYyLCJpZCI6NH0.TMisQfc5GNSR0g4Fr_P6yywLA-8NVpNlVM0wDKVTZk0'
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwNjk1ODk4OCwiZXhwIjoxNzA2OTY5Nzg4LCJpZCI6Nn0.q9dYsr6Q_3UUupryp4Ex-B2P59niygnDga_cI7BQ6g4'
         }
     });
 }
@@ -20,7 +20,7 @@ async function post<T, D>(endpoint: string, data: D): Promise<T> {
             'Content-Type': 'application/json',
             // Authorization: `Bearer ${sessionStorage.getItem('token')}`
             Authorization:
-                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwNjk1MTI2MiwiZXhwIjoxNzA2OTYyMDYyLCJpZCI6NH0.TMisQfc5GNSR0g4Fr_P6yywLA-8NVpNlVM0wDKVTZk0'
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwNjk1ODk4OCwiZXhwIjoxNzA2OTY5Nzg4LCJpZCI6Nn0.q9dYsr6Q_3UUupryp4Ex-B2P59niygnDga_cI7BQ6g4'
         }
     });
 }
@@ -53,7 +53,7 @@ async function patch<T, D>(endpoint: string, data: D): Promise<T> {
             'Content-Type': 'application/json',
             // Authorization: `Bearer ${sessionStorage.getItem('token')}`
             Authorization:
-                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwNjk1MTI2MiwiZXhwIjoxNzA2OTYyMDYyLCJpZCI6NH0.TMisQfc5GNSR0g4Fr_P6yywLA-8NVpNlVM0wDKVTZk0'
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwNjk1ODk4OCwiZXhwIjoxNzA2OTY5Nzg4LCJpZCI6Nn0.q9dYsr6Q_3UUupryp4Ex-B2P59niygnDga_cI7BQ6g4'
         }
     });
 }
