@@ -13,7 +13,7 @@ function InputContainer({ keyword, onChange }: InputContainerProps) {
             <SearchInput
                 placeholder="궁금한 상품을 찾아보세요!"
                 value={keyword}
-                onChange={onChange}
+                onEnter={onChange}
             />
         </div>
     );

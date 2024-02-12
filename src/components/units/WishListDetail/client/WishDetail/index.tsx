@@ -2,7 +2,7 @@
 
 import ProductCard from '@/components/commons/card/ProductCard';
 import FilterSelect from '@/components/commons/selects/FilterSelect';
-import { useWishProductListQuery } from '@/components/units/WishListDetail/hooks/useWishProductListQuery';
+import { useWishProductListQuery } from '@/components/units/WishListDetail/hooks/useWishProductsListQuery';
 
 const FILTER_DATA = [
     { name: 'aaa', value: '담은순' },

@@ -1,8 +1,8 @@
-import { IProductsType } from '@/components/units/Home/types';
+import { IProductType } from '@/commons/types/productType';
 import { useEffect, useState } from 'react';
 
 interface TagSwiperProps {
-    tag: IProductsType['tags'];
+    tag: IProductType['tags'];
 }
 
 const TagSwiper = ({ tag }: TagSwiperProps) => {

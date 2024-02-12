@@ -1,5 +1,6 @@
 import BtnStar from '@/components/commons/button/client/Btn_start';
 import { useAddWishStoreMutation } from '@/components/units/Products/hooks/useAddWishStoreMutation';
+import { revalidateTag } from 'next/cache';
 import Link from 'next/link';
 import { MouseEvent } from 'react';
 
@@ -14,6 +15,7 @@ const StoreCard = ({ data }: any) => {
                 {
                     onSuccess: () => {
                         console.log('성공');
+                        revalidateTag('storeWish');
                     }
                 }
             );
