@@ -1,9 +1,9 @@
 import ServerHome from '@/components/units/WishListDetail/server/ServerHome';
 
-const WishListDetail = async () => {
+const WishListDetail = async ({ params }: { params: { id: number } }) => {
     return (
         <>
-            <ServerHome />
+            <ServerHome folderId={Number(params.id)} />
         </>
     );
 };

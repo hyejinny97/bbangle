@@ -1,11 +1,15 @@
 import Header from '@/components/commons/header/client/Header';
 import WishDetail from '../client/WishDetail';
 
-const ServerHome = async () => {
+interface ServerHomeProps {
+    folderId: number;
+}
+
+const ServerHome = async ({ folderId }: ServerHomeProps) => {
     return (
         <>
             <Header title="찜 상세(임시)" />
-            <WishDetail />
+            <WishDetail folderId={folderId} />
         </>
     );
 };
