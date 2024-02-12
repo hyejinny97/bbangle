@@ -8,26 +8,9 @@ import WishButton from '@/components/units/WishList/client/WishButton';
 import WishFolder from '@/components/units/WishList/client/WishFolder';
 import { useAddWishListMutation } from '@/components/units/WishList/hooks/useAddWishListMutation';
 import { useGetWishLists } from '@/components/units/WishList/hooks/useGetWishList';
+import { useWishStoreListQuery } from '@/components/units/WishListDetail/hooks/useWishStoreListQuery';
 import { ChangeEvent, useState } from 'react';
 import { useRecoilState } from 'recoil';
-
-const STORE_DATA = [
-    {
-        storeId: 1,
-        storeName: '빵그리의 오븐 노예1',
-        introduce: '시켜만 주세요'
-    },
-    {
-        storeId: 2,
-        storeName: '빵그리의 오븐 노예2',
-        introduce: '시켜만 주세요'
-    },
-    {
-        storeId: 3,
-        storeName: '빵그리의 오븐 노예3',
-        introduce: '시켜만 주세요'
-    }
-];
 
 const WishProducts = () => {
     const [isCategoryTab] = useRecoilState(isCategoryTabState);
@@ -35,6 +18,9 @@ const WishProducts = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     const { data, refetch } = useGetWishLists();
+    const { data: wishStoreList } = useWishStoreListQuery();
+
+    console.log(wishStoreList);
 
     const { mutate } = useAddWishListMutation();
 
@@ -46,7 +32,6 @@ const WishProducts = () => {
     const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.target.value);
     };
-    console.log(mutate);
     const handleAddWishList = () => {
         if (title) {
             mutate(
@@ -107,9 +92,7 @@ const WishProducts = () => {
             ) : (
                 <>
                     <div className="w-full">
-                        {STORE_DATA.map((data, i) => (
-                            <StoreCard data={data} key={i} />
-                        ))}
+                        {wishStoreList?.map((data, i) => <StoreCard data={data} key={i} />)}
                     </div>
                 </>
             )}

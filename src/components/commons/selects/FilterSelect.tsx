@@ -30,7 +30,7 @@ const FilterSelect = ({ datas }: FilterSelectProps) => {
                 </div>
             </div>
             {isView && (
-                <div className="absolute flex flex-col w-full top-[34px]  rounded-[10px] shadow bg-color-White">
+                <div className="absolute flex flex-col w-full top-[34px] z-[101] rounded-[10px] shadow bg-color-White">
                     {datas.map((data, index) => (
                         <button
                             name={data.name}
