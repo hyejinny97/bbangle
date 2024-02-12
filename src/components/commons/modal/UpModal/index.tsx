@@ -22,7 +22,7 @@ const UpModal = ({ title, children, isVisible, toggleModal }: UpModalProps) => {
             <div
                 className={`w-full max-w-[600px] max-h-[76vh] z-[200] bg-color-White fixed left-1/2 -translate-x-1/2 ${
                     isVisible ? 'bottom-0' : '-bottom-full'
-                } z-20 rounded-tl-2xl rounded-tr-2xl transition-all pb-4`}
+                } z-[5001] rounded-tl-2xl rounded-tr-2xl transition-all pb-4`}
             >
                 <div className="relative py-4">
                     <h4 className="text-center">{title}</h4>

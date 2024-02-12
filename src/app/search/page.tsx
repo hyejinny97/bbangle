@@ -1,4 +1,4 @@
-import ServerHome from '@/components/units/Search/server/ServerHome';
+import ServerSearch from '@/components/units/Search/server/ServerSearch';
 
 async function sendSearchKeyword(keyword: string) {
     try {
@@ -24,7 +24,7 @@ async function sendSearchKeyword(keyword: string) {
 const Search = async () => {
     const data = await sendSearchKeyword('55');
     console.log(111 + JSON.stringify(data));
-    return <ServerHome />;
+    return <ServerSearch />;
 };
 
 export default Search;

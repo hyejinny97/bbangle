@@ -8,7 +8,7 @@ interface getSearchResultQueryProps {
 }
 
 function SearchResult({ resultProducts, resultStores, refetch }: getSearchResultQueryProps) {
-    // console.log('1111' + resultData);
+    console.log('1111' + resultProducts);
 
     return (
         <>

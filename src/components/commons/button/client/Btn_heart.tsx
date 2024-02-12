@@ -9,7 +9,7 @@ interface ButtonProps {
 
 function BtnHeart({ isLiked, onClick }: ButtonProps) {
     return (
-        <div className="relative z-50 w-full text-center">
+        <div className="w-full text-center">
             <button onClick={onClick}>
                 <div className={isLiked ? 'animate-pop' : ''}>{isLiked ? <Red /> : <Gray />}</div>
             </button>

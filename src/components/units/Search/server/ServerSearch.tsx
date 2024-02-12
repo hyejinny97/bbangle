@@ -1,10 +1,10 @@
 import ResultContainer from '../client/ResultContainer';
 
-const ServerHome = () => {
+const ServerSearch = () => {
     return (
         <>
             <ResultContainer />
         </>
     );
 };
-export default ServerHome;
+export default ServerSearch;

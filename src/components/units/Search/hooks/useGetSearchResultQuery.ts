@@ -10,12 +10,13 @@ interface getSearchResultQueryProps {
 }
 
 const getSearchResultQuery = async (keyword: string): Promise<getSearchResultQueryProps> => {
+    console.log(333 + keyword);
     try {
         if (keyword) {
             const result = await API.get<{ data: getSearchResultQueryProps }>(
                 `/search?keyword=${keyword}`
             );
-            //  console.log('11', result.data);
+            console.log('11', result.data);
             return result.data;
         }
         return {};

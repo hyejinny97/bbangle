@@ -46,12 +46,12 @@ const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
     const handleClickHeart = (id: number) => (e: any) => {
         e.preventDefault();
 
-        if (product.isWished) {
-            alert('이미 찜한 상품 입니다.');
-        } else {
-            setIsModal(true);
-            setProductId(id);
-        }
+        // if (product.isWished) {
+        //     alert('이미 찜한 상품 입니다.');
+        // } else {
+        setIsModal(true);
+        setProductId(id);
+        // }
     };
 
     const handleAddWish = (id: number) => () => {
@@ -86,7 +86,7 @@ const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
 
     return (
         <>
-            <Link href="/products/1" className="relative w-full ">
+            <Link href="/products/1" className=" w-full">
                 {popular && (
                     <div className="absolute z-10 top-[6px] left-[6px] w-5 h-5 bg-white rounded-md border border-solid border-neutral-100 flex-col justify-center items-center gap-2.5 inline-flex">
                         <div className="text-neutral-800 text-[11px] font-bold leading-[11px]">
