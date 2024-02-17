@@ -6,7 +6,6 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { categoryItems, filterValueState } from '@/atoms/atom';
 import NewModal from '../NewModal';
 import { useState } from 'react';
-import { transformTag } from '@/commons/constants/transfromTag';
 
 const FilterTab = () => {
     //const [isChecked, setIsChecked] = useState(false);
@@ -18,7 +17,7 @@ const FilterTab = () => {
     const handleItemClick = (newCategory: string) => {
         setFilterValue(prev => ({
             ...prev,
-            category: transformTag(newCategory)
+            category: newCategory
         }));
     };
 
@@ -47,7 +46,7 @@ const FilterTab = () => {
         <div className="w-full relative">
             <div className="flex gap-[6px] m-auto pr-[40px] w-[92%] my-[16px] overflow-x-scroll scrollbar-hide ">
                 {FILTER_LIST.map((item, index) => {
-                    const isTagActive = filterValue.category === transformTag(item);
+                    const isTagActive = filterValue.category === item;
                     const isNewTag = FILTER_LIST[0] !== '전체';
 
                     return (
