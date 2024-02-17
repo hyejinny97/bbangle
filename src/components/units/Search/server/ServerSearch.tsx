@@ -1,9 +1,13 @@
 import ResultContainer from '../client/ResultContainer';
 
-const ServerSearch = () => {
+interface ServerSearchProps {
+    searchParams: { [key: string]: string | string[] | undefined };
+}
+
+const ServerSearch = ({ searchParams }: ServerSearchProps) => {
     return (
         <>
-            <ResultContainer />
+            <ResultContainer searchParams={searchParams} />
         </>
     );
 };
