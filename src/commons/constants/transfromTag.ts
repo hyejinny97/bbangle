@@ -62,3 +62,28 @@ export function transformIngredientEngishTag(tag: string): string {
     }
     return tag;
 }
+
+export function transformDayTag(tag: string): string {
+    if (tag === 'fri') {
+        return '금';
+    }
+    if (tag === 'mon') {
+        return '월';
+    }
+    if (tag === 'sat') {
+        return '토';
+    }
+    if (tag === 'sun') {
+        return '일';
+    }
+    if (tag === 'thu') {
+        return '목';
+    }
+    if (tag === 'tue') {
+        return '화';
+    }
+    if (tag === 'wed') {
+        return '수';
+    }
+    return tag;
+}

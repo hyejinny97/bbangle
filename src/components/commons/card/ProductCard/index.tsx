@@ -10,14 +10,17 @@ import PlusIcon from './assets/plus-icon.svg';
 import { useGetWishLists } from '@/components/units/WishList/hooks/useGetWishList';
 import { useAddWishListMutation } from '@/components/units/WishList/hooks/useAddWishListMutation';
 import { useAddWishMutation } from '@/components/commons/card/ProductCard/hooks/useAddWishMutation';
+import { IStoreType } from '@/commons/types/storeType';
 
 interface ProductCardProps {
     product: IProductType;
+    storeData?: IStoreType;
     popular?: boolean;
     ranking?: number;
 }
 
 const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
+    // console.log(product);
     const [isModal, setIsModal] = useState(false);
     const [productId, setProductId] = useState<number>();
     const [isAddView, setIsAddView] = useState(false);
@@ -86,7 +89,7 @@ const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
 
     return (
         <>
-            <Link href="/products/1" className="w-full ">
+            <Link href={`/products/${product.boardId}`} className="w-full relative">
                 {popular && (
                     <div className="absolute z-10 top-[6px] left-[6px] w-5 h-5 bg-white rounded-md border border-solid border-neutral-100 flex-col justify-center items-center gap-2.5 inline-flex">
                         <div className="text-neutral-800 text-[11px] font-bold leading-[11px]">
@@ -106,7 +109,7 @@ const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
                     </div>
                 </div>
                 <p className="text-xs font-normal text-color-Gray400 mt-[6px] mb-[3px]">
-                    {product.storeName}
+                    {product?.storeName}
                 </p>
                 <h3 className="w-full mb-1 overflow-hidden text-xs font-normal overflow-ellipsis whitespace-nowrap">
                     {product.title}
