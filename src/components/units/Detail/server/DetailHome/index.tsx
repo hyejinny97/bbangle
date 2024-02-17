@@ -10,7 +10,7 @@ interface DetailHomePropsType {
 const DetailHome = ({ data }: DetailHomePropsType) => {
     return (
         <>
-            <Header title="상품보기" />
+            <Header title="상품보기" back={true} />
             <ProductImgs boardImages={data.board.images} />
             <DetailInfo data={data} />
         </>

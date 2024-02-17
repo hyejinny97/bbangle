@@ -14,7 +14,7 @@ const getSearchResultQuery = async (keyword: string): Promise<getSearchResultQue
     try {
         if (keyword) {
             const result = await API.get<{ data: getSearchResultQueryProps }>(
-                `/search?keyword=${keyword}`
+                `/search?keyword=${keyword}&storePage=0&boardPage=0`
             );
             console.log('11', result.data);
             return result.data;

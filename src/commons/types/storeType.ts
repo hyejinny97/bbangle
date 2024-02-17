@@ -1,6 +1,6 @@
 export interface IStoreType {
-    id: number;
-    name: string;
+    storeId: number;
+    storeName: string;
     introduce: string;
     profile: string;
     isWished: boolean;

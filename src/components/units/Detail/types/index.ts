@@ -1,13 +1,13 @@
 export interface IProductDetailType {
     store: {
-        name: string;
-        id: number;
+        storeName: string;
+        storeId: number;
         profile: string;
         isWished: boolean;
     };
     board: {
-        id: number;
-        profile: string;
+        boardId: number;
+        thumbnail: string;
         images: [
             {
                 id: number;
@@ -39,6 +39,6 @@ export interface IProductDetailType {
 }
 
 export interface IProductType {
-    name: string;
+    title: string;
     tags: string[];
 }

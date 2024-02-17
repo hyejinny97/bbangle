@@ -1,16 +1,23 @@
 'use client';
 import ProductCard from '@/components/commons/card/ProductCard';
-import { UseGetStoreDetialQuery } from '../../hooks/useGetStoreDetailQuery';
+import { IProductType } from '@/commons/types/productType';
+import { IStoreType } from '@/commons/types/storeType';
 
-function AllProducts() {
-    const { data } = UseGetStoreDetialQuery(1);
-    console.log(data?.store);
+interface AllProductProps {
+    data: {
+        allProducts: IProductType[];
+        store: IStoreType;
+    };
+}
+
+function AllProducts({ data }: AllProductProps) {
+    console.log(data);
     return (
         <>
             <div className="flex w-full flex-wrap m-auto gap-x-[4%] gap-y-4">
-                {data?.allProducts.map((item, i) => (
+                {data.allProducts.map((item, i) => (
                     <div key={i} className="w-[48%]">
-                        <ProductCard product={item} />
+                        <ProductCard product={item} storeData={data?.store} />
                     </div>
                 ))}
             </div>
