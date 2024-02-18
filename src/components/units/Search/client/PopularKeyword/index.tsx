@@ -1,17 +1,24 @@
-const RECENT: string[] = [
-    'example1',
-    'example2',
-    'example3',
-    'example4',
-    'example5',
-    'example6',
-    'example7'
-];
+import * as API from '@/api';
 
-function PopularKeyword() {
+type PopularKeywordsType = Array<string>;
+
+const fetchPopularKeywords = async (): Promise<PopularKeywordsType> => {
+    try {
+        const response = await fetch(`${API.serverUrl}/search/best-keyword`, { cache: 'no-store' });
+        const data = await response.json();
+        return data.content;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+};
+
+const PopularKeyword = async () => {
+    const popularKeywords = await fetchPopularKeywords();
+
     return (
         <div className="flex flex-col gap-[16px]">
-            {RECENT.map((item, i) => (
+            {popularKeywords.map((item, i) => (
                 <div key={i} className="flex gap-[6px]">
                     <p className="text-red-500 text-sm font-bold">{i + 1}</p>
                     <p className="text-neutral-800 text-sm font-normal">{item}</p>
@@ -19,6 +26,6 @@ function PopularKeyword() {
             ))}
         </div>
     );
-}
+};
 
 export default PopularKeyword;
