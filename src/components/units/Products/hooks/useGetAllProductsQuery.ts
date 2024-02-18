@@ -13,7 +13,6 @@ const getAllProducts = async (query: GetProductsQueryProps): Promise<IAllProduct
     const { category, tags, sort } = query;
     const tagsQuery = tags?.map(tag => `${transformTagToEng(tag)}=true`).join('&');
     const categoryQuery = category && transformCategoryToEng(category);
-
     const queryObject = {
         category: categoryQuery || '',
         tagsQuery: tagsQuery || '',
@@ -21,11 +20,9 @@ const getAllProducts = async (query: GetProductsQueryProps): Promise<IAllProduct
     };
     const queryString = new URLSearchParams(queryObject).toString();
 
-    const response = await API.get<{ data: IAllProductsType }>(
-        `/boards${queryString ? `?${queryString}` : ''}`
-    );
+    const { data } = await API.get<{ data: IAllProductsType }>(`/boards${queryString}`);
 
-    return response.data;
+    return data;
 };
 
 export const useGetAllProductsQuery = (query: GetProductsQueryProps) => {
