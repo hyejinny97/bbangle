@@ -39,7 +39,7 @@ function FilterModal({ isVisible, setVisible }: ModalProps) {
     }, [filterValue]);
 
     return (
-        <UpModal title="필터" isVisible={isVisible} toggleModal={() => setVisible(!isVisible)}>
+        <UpModal title="필터" isVisible={isVisible} toggleModal={handleCancel}>
             <SingleCheckBox
                 selectedItem={selectedCategory}
                 setSelectedItem={setSelectedCategory}
