@@ -1,10 +1,13 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import Back from '@/components/commons/header/assets/back_arrow.svg';
 
 const BtnBack = () => {
+    const router = useRouter();
+
     const goBackHandler = () => {
-        window.history.back();
+        router.back();
     };
 
     return (
