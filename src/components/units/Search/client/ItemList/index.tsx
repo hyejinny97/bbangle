@@ -8,7 +8,7 @@ import { IStoreType } from '@/commons/types/storeType';
 import { useEffect } from 'react';
 import FilterTab from '@/components/units/Products/client/FilterTab';
 import StoreCard from '@/components/units/Products/client/StoreCard';
-import NewModal from '@/components/units/Products/client/NewModal';
+import NewModal from '@/components/units/Products/client/FilterModal';
 import { IAllProductsType } from '@/commons/types/allProductsType';
 import None from '@/commons/assets/sad_charac.svg';
 
