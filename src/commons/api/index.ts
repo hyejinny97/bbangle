@@ -6,16 +6,23 @@ import { IAllStoreType } from '../types/allstoreType';
 
 export const getAllProducts = async (query: GetProductsQueryProps): Promise<IAllProductsType> => {
     const { category, tags, sort } = query;
-    const tagsQuery = tags?.map(tag => `${transformTagToEng(tag)}=true`).join('&');
     const categoryQuery = category && transformCategoryToEng(category);
+    const tagsEng = tags?.map(tag => transformTagToEng(tag));
+    const tagsQuery = tagsEng?.reduce(
+        (acc, tag) => ({
+            ...acc,
+            [tag]: true
+        }),
+        {}
+    );
+
     const queryObject = {
         category: categoryQuery || '',
-        tagsQuery: tagsQuery || '',
-        sort: sort || ''
+        ...tagsQuery,
+        sort: sort || 'LATEST'
     };
     const queryString = new URLSearchParams(queryObject).toString();
-
-    const { data } = await API.get<{ data: IAllProductsType }>(`/boards${queryString}`);
+    const { data } = await API.get<{ data: IAllProductsType }>(`/boards?${queryString}`);
 
     return data;
 };
