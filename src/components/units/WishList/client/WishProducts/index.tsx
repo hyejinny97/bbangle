@@ -43,6 +43,9 @@ const WishProducts = () => {
                     onSuccess: () => {
                         refetch();
                         handleModalToggle();
+                    },
+                    onError: (err: any) => {
+                        alert(err.response.data.message);
                     }
                 }
             );
@@ -64,7 +67,9 @@ const WishProducts = () => {
                             />
                         </div>
                         <div className="flex flex-wrap gap-x-[5%] gap-y-4">
-                            {data?.map(wish => <WishFolder key={wish.folderId} wish={wish} />)}
+                            {data?.map(wish => (
+                                <WishFolder key={wish.folderId} wish={wish} isEdit={isEdit} />
+                            ))}
                         </div>
                     </div>
                     <UpModal title="찜 폴더" isVisible={isVisible} toggleModal={handleModalToggle}>
