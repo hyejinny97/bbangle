@@ -1,17 +1,4 @@
-import * as API from '@/api';
-
-type PopularKeywordsType = Array<string>;
-
-const fetchPopularKeywords = async (): Promise<PopularKeywordsType> => {
-    try {
-        const response = await fetch(`${API.serverUrl}/search/best-keyword`, { cache: 'no-store' });
-        const data = await response.json();
-        return data.content;
-    } catch (error) {
-        console.error(error);
-        return [];
-    }
-};
+import { fetchPopularKeywords } from '@/components/units/Search/api/fetchPopularKeywords';
 
 const PopularKeyword = async () => {
     const popularKeywords = await fetchPopularKeywords();
