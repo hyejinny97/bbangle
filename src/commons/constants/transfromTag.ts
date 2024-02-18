@@ -1,4 +1,4 @@
-export function transformTag(tag: string): string {
+export function transformCategoryToEng(tag: string): string {
     if (tag === '전체') {
         return '';
     }
@@ -26,7 +26,7 @@ export function transformTag(tag: string): string {
     return tag;
 }
 
-export function transformIngredientTag(tag: string): string {
+export function transformTagToKr(tag: string): string {
     if (tag === 'glutenFree') {
         return '글루텐프리';
     }
@@ -44,7 +44,7 @@ export function transformIngredientTag(tag: string): string {
     }
     return tag;
 }
-export function transformIngredientEngishTag(tag: string): string {
+export function transformTagToEng(tag: string): string {
     if (tag === '글루텐프리') {
         return 'glutenFree';
     }

@@ -17,13 +17,12 @@ function SingleCheckBox({ title, values, selectedItem, setSelectedItem }: Single
 
     return (
         <Wrapper title={title}>
-            {values.map((item, i) => {
+            {values.map(item => {
                 const isSelected = selectedItem === item;
-                console.log(selectedItem, item);
 
                 return (
                     <div
-                        key={i}
+                        key={item}
                         className={`h-[37px] p-2 rounded-lg justify-start items-center gap-1.5 inline-flex ${
                             isSelected ? 'bg-red-50' : 'bg-slate-100'
                         }`}

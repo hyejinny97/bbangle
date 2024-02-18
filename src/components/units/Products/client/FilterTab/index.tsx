@@ -4,15 +4,13 @@ import Filters from './assets/filter.svg';
 import SortingButton from '../SortingButton';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { categoryItems, filterValueState } from '@/atoms/atom';
-import NewModal from '../NewModal';
+import FilterModal from '../FilterModal';
 import { useState } from 'react';
 
 const FilterTab = () => {
-    //const [isChecked, setIsChecked] = useState(false);
-    //  const [newFilterItem, setNewFilterItem] = useState(filterItem);
     const FILTER_LIST = useRecoilValue(categoryItems);
     const [filterValue, setFilterValue] = useRecoilState(filterValueState);
-    const [isVisible, setIsVisible] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
 
     const handleItemClick = (newCategory: string) => {
         setFilterValue(prev => ({
@@ -20,27 +18,6 @@ const FilterTab = () => {
             category: newCategory
         }));
     };
-
-    // const checkHandled = () => {
-    //     setIsChecked(!isChecked);
-    // };
-
-    // useEffect(() => {
-    //     if (filterValue.tags) {
-    //         const newTag = `${transformIngredientTag(filterValue.tags[0])} ${
-    //             filterValue.tags.length > 1 ? `외 ${filterValue.tags.length - 1}` : ''
-    //         }`;
-    //         if (!newFilterItem.includes(newTag)) {
-    //             setNewFilterItem(prevItems => {
-    //                 return [newTag, ...prevItems];
-    //             });
-    //         }
-    //         setNewFilterItem(prevItems => {
-    //             const updatedItems = filterItem.filter(item => item !== prevItems[0]);
-    //             return [newTag, ...updatedItems];
-    //         });
-    //     }
-    // }, [filterValue, filterItem, newFilterItem]);
 
     return (
         <div className="w-full relative">
@@ -71,20 +48,15 @@ const FilterTab = () => {
             </div>
             <button
                 className="absolute right-[3%] top-[16px] bg-white pl-[6px]"
-                onClick={() => setIsVisible(true)}
+                onClick={() => setModalVisible(true)}
             >
                 <Filters />
             </button>
-            <NewModal isVisible={isVisible} onChange={setIsVisible} />
             <div className="border-b border-solid border-gray-100 w-full "></div>
             <div className="flex w-[92%] py-[12px] m-auto justify-between items-center ">
-                {/* <CheckBox
-                        isChecked={isChecked}
-                        onClick={checkHandled}
-                        title="주문가능한 상품 보기"
-                    /> */}
                 <SortingButton />
             </div>
+            <FilterModal isVisible={modalVisible} setVisible={setModalVisible} />
         </div>
     );
 };

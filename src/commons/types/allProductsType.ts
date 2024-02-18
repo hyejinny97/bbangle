@@ -6,3 +6,9 @@ export interface IAllProductsType {
     pageNumber: number;
     pageSize: number;
 }
+
+export interface GetProductsQueryProps {
+    category?: string;
+    tags?: string[];
+    sort?: string;
+}
