@@ -1,3 +1,4 @@
+import { IFilterType } from '@/commons/types/filterType';
 import { atom } from 'recoil';
 
 export const isCategoryTabState = atom({
@@ -10,14 +11,17 @@ export const modalState = atom({
     default: false
 });
 
-export const filterValueState = atom<{ [key: string]: string | string[] | null }>({
-    key: 'filterValueState',
-    default: {}
-});
-
 export const isWishModalState = atom<boolean>({
     key: 'isWishModalState',
     default: false
+});
+
+export const filterValueState = atom<IFilterType>({
+    key: 'filterValueState',
+    default: {
+        category: undefined,
+        tags: undefined
+    }
 });
 
 export const categoryItems = atom({
