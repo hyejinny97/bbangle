@@ -1,6 +1,6 @@
 'use client';
 
-import { filterValueState, isCategoryTabState, modalState } from '@/atoms/atom';
+import { filterValueState, isCategoryTabState } from '@/atoms/atom';
 import { useRecoilState } from 'recoil';
 import ProductCard from '@/components/commons/card/ProductCard';
 import CategoryTab from '@/components/commons/CategoryTab';
@@ -8,7 +8,6 @@ import { IStoreType } from '@/commons/types/storeType';
 import { useEffect } from 'react';
 import FilterTab from '@/components/units/Products/client/FilterTab';
 import StoreCard from '@/components/units/Products/client/StoreCard';
-import NewModal from '@/components/units/Products/client/FilterModal';
 import { IAllProductsType } from '@/commons/types/allProductsType';
 import None from '@/commons/assets/sad_charac.svg';
 
@@ -22,7 +21,6 @@ interface storeDataProp {
 const ItemList = ({ resultProducts, resultStores, refetch }: storeDataProp) => {
     const [isCategoryTab] = useRecoilState(isCategoryTabState);
     const [filterValue] = useRecoilState(filterValueState);
-    const openModal = useRecoilState(modalState);
 
     console.log(resultProducts?.content);
     useEffect(() => {
@@ -69,7 +67,6 @@ const ItemList = ({ resultProducts, resultStores, refetch }: storeDataProp) => {
                     </>
                 )}
             </div>
-            {openModal && <NewModal refetch={refetch} />}
         </>
     );
 };
