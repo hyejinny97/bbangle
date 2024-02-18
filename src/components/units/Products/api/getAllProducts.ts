@@ -1,8 +1,6 @@
 import * as API from '@/api';
-import { transformTagToEng, transformCategoryToEng } from '@/commons/constants/transfromTag';
-import { GetProductsQueryProps, IAllProductsType } from '../types/allProductsType';
-import { WishStoreData, WishStoreListReturn } from '../types/wishStoreType';
-import { IAllStoreType } from '../types/allstoreType';
+import { GetProductsQueryProps, IAllProductsType } from '@/commons/types/allProductsType';
+import { transformCategoryToEng, transformTagToEng } from '@/commons/constants/transfromTag';
 
 export const getAllProducts = async (query: GetProductsQueryProps): Promise<IAllProductsType> => {
     const { category, tags, sort } = query;
@@ -25,14 +23,4 @@ export const getAllProducts = async (query: GetProductsQueryProps): Promise<IAll
     const { data } = await API.get<{ data: IAllProductsType }>(`/boards?${queryString}`);
 
     return data;
-};
-
-export const getAllStores = async (): Promise<IAllStoreType> => {
-    const result = await API.get<{ data: IAllStoreType }>('/stores');
-    console.log('what', result.data);
-    return result.data;
-};
-
-export const addWishStore = async (data: WishStoreData): Promise<WishStoreListReturn> => {
-    return API.post<WishStoreListReturn, null>(`/likes/store/${data.storeId}`, null);
 };
