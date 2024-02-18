@@ -20,7 +20,6 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
-    // console.log(product);
     const [isModal, setIsModal] = useState(false);
     const [productId, setProductId] = useState<number>();
     const [isAddView, setIsAddView] = useState(false);

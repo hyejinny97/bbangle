@@ -17,6 +17,7 @@ function NewModal({ isVisible, onChange }: ModalProps) {
     const [categoryNav] = useRecoilState(categoryItems);
     const [ingredientNav] = useRecoilState(ingredientItems);
     const [filterValue, setFilterValue] = useRecoilState(filterValueState);
+
     const [selectedCategory, setSelectedCategory] = useState(filterValue.category);
     const [selectedIngredient, setSelectedIngredient] = useState(filterValue.tags);
 

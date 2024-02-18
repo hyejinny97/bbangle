@@ -7,8 +7,10 @@ import { categoryItems, filterValueState } from '@/atoms/atom';
 import NewModal from '../NewModal';
 import { useState } from 'react';
 
+import CheckBox from '@/components/commons/checkbox/client/Checkbox';
+
 const FilterTab = () => {
-    //const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
     //  const [newFilterItem, setNewFilterItem] = useState(filterItem);
     const FILTER_LIST = useRecoilValue(categoryItems);
     const [filterValue, setFilterValue] = useRecoilState(filterValueState);
@@ -21,9 +23,9 @@ const FilterTab = () => {
         }));
     };
 
-    // const checkHandled = () => {
-    //     setIsChecked(!isChecked);
-    // };
+    const checkHandled = () => {
+        setIsChecked(!isChecked);
+    };
 
     // useEffect(() => {
     //     if (filterValue.tags) {
@@ -78,11 +80,11 @@ const FilterTab = () => {
             <NewModal isVisible={isVisible} onChange={setIsVisible} />
             <div className="border-b border-solid border-gray-100 w-full "></div>
             <div className="flex w-[92%] py-[12px] m-auto justify-between items-center ">
-                {/* <CheckBox
-                        isChecked={isChecked}
-                        onClick={checkHandled}
-                        title="주문가능한 상품 보기"
-                    /> */}
+                <CheckBox
+                    isChecked={isChecked}
+                    onClick={checkHandled}
+                    title="주문가능한 상품 보기"
+                />
                 <SortingButton />
             </div>
         </div>
