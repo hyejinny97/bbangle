@@ -2,27 +2,26 @@
 
 import UpModal from '@/components/commons/modal/UpModal';
 import { useRecoilState } from 'recoil';
-import { categoryItems, filterValueState, ingredientItems } from '@/atoms/atom';
+import { filterValueState } from '@/atoms/atom';
 import Btn from '@/components/commons/button/client/Btn';
-import { useEffect, useState } from 'react';
-import SingleCheckBox from '../ModalSection/SingleCheckBox';
-import MultipleCheckBox from '../ModalSection/MultipleCheckBox';
+import { SetStateAction, useEffect, useState } from 'react';
+import SingleCheckBox from './ModalSection/SingleCheckBox';
+import MultipleCheckBox from './ModalSection/MultipleCheckBox';
+import { FILTER_VALUES } from '@/commons/constants/filterValues';
 
 interface ModalProps {
     isVisible: boolean;
-    onChange: (_: boolean) => void;
+    setVisible: React.Dispatch<SetStateAction<boolean>>;
 }
 
-function NewModal({ isVisible, onChange }: ModalProps) {
-    const [categoryNav] = useRecoilState(categoryItems);
-    const [ingredientNav] = useRecoilState(ingredientItems);
+function FilterModal({ isVisible, setVisible }: ModalProps) {
     const [filterValue, setFilterValue] = useRecoilState(filterValueState);
 
     const [selectedCategory, setSelectedCategory] = useState(filterValue.category);
     const [selectedIngredient, setSelectedIngredient] = useState(filterValue.tags);
 
     const handleConfirm = () => {
-        onChange(!isVisible);
+        setVisible(!isVisible);
         setFilterValue(prev => ({
             category: selectedCategory ? selectedCategory : prev.category,
             tags: selectedIngredient ? selectedIngredient : prev.tags
@@ -30,7 +29,7 @@ function NewModal({ isVisible, onChange }: ModalProps) {
     };
 
     const handleCancel = () => {
-        onChange(!isVisible);
+        setVisible(!isVisible);
         setSelectedCategory(filterValue.category);
         setSelectedIngredient(filterValue.tags);
     };
@@ -41,18 +40,18 @@ function NewModal({ isVisible, onChange }: ModalProps) {
     }, [filterValue]);
 
     return (
-        <UpModal title="필터" isVisible={isVisible} toggleModal={() => onChange(!isVisible)}>
+        <UpModal title="필터" isVisible={isVisible} toggleModal={handleCancel}>
             <SingleCheckBox
                 selectedItem={selectedCategory}
                 setSelectedItem={setSelectedCategory}
                 title="카테고리"
-                values={categoryNav}
+                values={FILTER_VALUES.categories}
             />
             <MultipleCheckBox
                 selectedItems={selectedIngredient}
                 setSelectedItems={setSelectedIngredient}
                 title="성분"
-                values={ingredientNav}
+                values={FILTER_VALUES.tags}
             />
 
             <div className="w-[92%] h-[84px] m-auto flex gap-[10px] justify-center items-center">
@@ -63,4 +62,4 @@ function NewModal({ isVisible, onChange }: ModalProps) {
     );
 }
 
-export default NewModal;
+export default FilterModal;

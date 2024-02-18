@@ -1,12 +1,12 @@
 import ProductCard from '@/components/commons/card/ProductCard';
-import { UseGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
+import { useGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
 import { filterValueState } from '@/atoms/atom';
 import { useRecoilState } from 'recoil';
 import { useEffect } from 'react';
 
 function ProductsTab() {
     const [filterValue] = useRecoilState(filterValueState);
-    const { data, refetch, isError, isLoading } = UseGetAllProductsQuery(filterValue);
+    const { data, refetch, isError, isLoading } = useGetAllProductsQuery(filterValue);
 
     useEffect(() => {
         refetch();

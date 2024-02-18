@@ -4,7 +4,7 @@ import Filters from './assets/filter.svg';
 import SortingButton from '../SortingButton';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { categoryItems, filterValueState } from '@/atoms/atom';
-import NewModal from '../NewModal';
+import FilterModal from '../FilterModal';
 import { useState } from 'react';
 
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
@@ -14,7 +14,7 @@ const FilterTab = () => {
     //  const [newFilterItem, setNewFilterItem] = useState(filterItem);
     const FILTER_LIST = useRecoilValue(categoryItems);
     const [filterValue, setFilterValue] = useRecoilState(filterValueState);
-    const [isVisible, setIsVisible] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
 
     const handleItemClick = (newCategory: string) => {
         setFilterValue(prev => ({
@@ -73,11 +73,10 @@ const FilterTab = () => {
             </div>
             <button
                 className="absolute right-[3%] top-[16px] bg-white pl-[6px]"
-                onClick={() => setIsVisible(true)}
+                onClick={() => setModalVisible(true)}
             >
                 <Filters />
             </button>
-            <NewModal isVisible={isVisible} onChange={setIsVisible} />
             <div className="border-b border-solid border-gray-100 w-full "></div>
             <div className="flex w-[92%] py-[12px] m-auto justify-between items-center ">
                 <CheckBox
@@ -85,8 +84,10 @@ const FilterTab = () => {
                     onClick={checkHandled}
                     title="주문가능한 상품 보기"
                 />
+
                 <SortingButton />
             </div>
+            <FilterModal isVisible={modalVisible} setVisible={setModalVisible} />
         </div>
     );
 };
