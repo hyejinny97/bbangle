@@ -13,9 +13,19 @@ const SearchInputContainer = () => {
     const searchParams = useSearchParams();
 
     const [text, setText] = useState(searchParams.get('query') || '');
-    const debouncedText = useDebounce<string>({ value: text, delay: 500 });
+    const [showAutoComplete, setShowAutoComplete] = useState(false);
+    const debouncedText = useDebounce<string>({ value: text, delay: 300 });
 
     const { mutate } = useAddRecentSearchKeywordMutation();
+
+    useEffect(() => {
+        const handleClick = () => {
+            setShowAutoComplete(false);
+        };
+        window.addEventListener('click', handleClick);
+
+        return () => window.removeEventListener('click', handleClick);
+    }, []);
 
     useEffect(() => {
         setText(searchParams.get('query') || '');
@@ -23,6 +33,7 @@ const SearchInputContainer = () => {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setText(e.target.value);
+        setShowAutoComplete(true);
     };
 
     const handleInputEnter = () => {
@@ -41,9 +52,11 @@ const SearchInputContainer = () => {
                 onEnter={handleInputEnter}
                 placeholder="궁금한 상품을 찾아보세요!"
             />
-            <div className="absolute z-[1] w-full">
-                <AutoCompleteSearchContainer keyword={debouncedText} />
-            </div>
+            {showAutoComplete && (
+                <div className="absolute z-[1] w-full">
+                    <AutoCompleteSearchContainer keyword={debouncedText} />
+                </div>
+            )}
         </div>
     );
 };
