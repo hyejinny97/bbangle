@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import SearchInput from '@/components/commons/inputs/SearchInput';
 import { useAddRecentSearchKeywordMutation } from '@/components/units/Search/hooks/useAddRecentSearchKeywordMutation';
+import SearchInput from '@/components/commons/inputs/SearchInput';
+import AutoCompleteSearchContainer from '@/components/units/Search/client/AutoCompleteSearchContainer';
 
 const SearchInputContainer = () => {
     const router = useRouter();
@@ -30,13 +31,16 @@ const SearchInputContainer = () => {
     };
 
     return (
-        <div className="w-[92%] m-auto">
+        <div className="relative w-[92%] m-auto">
             <SearchInput
                 value={text}
                 onChange={handleInputChange}
                 onEnter={handleInputEnter}
                 placeholder="궁금한 상품을 찾아보세요!"
             />
+            <div className="absolute z-[1] w-full">
+                <AutoCompleteSearchContainer keyword={text} />
+            </div>
         </div>
     );
 };
