@@ -22,6 +22,7 @@ const getAutoCompleteSearchTexts = async (
 export const useGetAutoCompleteSearchTextsQuery = (keyword: string) => {
     return useQuery({
         queryKey: ['autoCompleteSearchTexts', keyword],
-        queryFn: () => getAutoCompleteSearchTexts(keyword)
+        queryFn: () => getAutoCompleteSearchTexts(keyword),
+        refetchOnMount: false
     });
 };
