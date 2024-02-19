@@ -40,8 +40,6 @@ function MultipleCheckBox({
         setSelectedItems(updatedItems);
     };
 
-    console.log(selectedItems);
-
     return (
         <Wrapper title={title}>
             {values.map((item, i) => {
