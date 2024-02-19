@@ -5,6 +5,7 @@ import Wrapper from '../Wrapper';
 interface MultipleCheckBoxProps {
     title: string;
     values: string[];
+    uniqueValue?: string;
     selectedItems?: string[];
     setSelectedItems: Dispatch<SetStateAction<string[] | undefined>>;
 }
@@ -12,20 +13,34 @@ interface MultipleCheckBoxProps {
 function MultipleCheckBox({
     title,
     values,
+    uniqueValue,
     selectedItems,
     setSelectedItems
 }: MultipleCheckBoxProps) {
-    const handleClick = (clickItem: string) => {
+    const handleClick = (clickedItem: string) => {
         if (!selectedItems) {
-            setSelectedItems([clickItem]);
+            setSelectedItems([clickedItem]);
             return;
         }
 
-        const updatedItems = selectedItems.includes(clickItem)
-            ? selectedItems.filter(item => item !== clickItem)
-            : [...selectedItems, clickItem];
+        if (clickedItem === uniqueValue) {
+            setSelectedItems([clickedItem]);
+            return;
+        }
+
+        if (selectedItems.includes(clickedItem)) {
+            const updatedItems = selectedItems
+                .filter(item => item !== clickedItem)
+                .filter(item => item !== uniqueValue);
+            setSelectedItems(updatedItems);
+            return;
+        }
+
+        const updatedItems = [...selectedItems, clickedItem].filter(item => item !== uniqueValue);
         setSelectedItems(updatedItems);
     };
+
+    console.log(selectedItems);
 
     return (
         <Wrapper title={title}>
