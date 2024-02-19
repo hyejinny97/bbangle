@@ -11,7 +11,6 @@ import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 
 const FilterTab = () => {
     const [isChecked, setIsChecked] = useState(false);
-    //  const [newFilterItem, setNewFilterItem] = useState(filterItem);
     const FILTER_LIST = useRecoilValue(categoryItems);
     const [filterValue, setFilterValue] = useRecoilState(filterValueState);
     const [modalVisible, setModalVisible] = useState(false);
