@@ -2,10 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import * as API from '@/api';
 
 type DataType = {
-    keywordId: string;
     keyword: string;
 };
-type RecentSearchKeywordsType = Array<DataType>;
+export type RecentSearchKeywordsType = Array<DataType>;
 
 const isLoggedIn = true; // 일단 로그인했다고 가정
 
