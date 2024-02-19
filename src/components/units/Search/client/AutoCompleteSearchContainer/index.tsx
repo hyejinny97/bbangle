@@ -40,13 +40,12 @@ const AutoCompleteSearchItem = ({ text, keyword }: AutoCompleteSearchItemProps) 
 const AutoCompleteSearchContainer = ({ keyword }: AutoCompleteSearchContainerProps) => {
     const { data: autoCompleteSearchTexts } = useGetAutoCompleteSearchTextsQuery(keyword);
 
-    if (!autoCompleteSearchTexts?.length) return;
-
     return (
         <div className="shadow-md shadow-color-Gray100">
-            {autoCompleteSearchTexts.map(text => {
-                return <AutoCompleteSearchItem key={text} text={text} keyword={keyword} />;
-            })}
+            {!!autoCompleteSearchTexts?.length &&
+                autoCompleteSearchTexts.map(text => {
+                    return <AutoCompleteSearchItem key={text} text={text} keyword={keyword} />;
+                })}
         </div>
     );
 };
