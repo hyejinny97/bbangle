@@ -7,7 +7,7 @@ async function get<T>(endpoint: string): Promise<T> {
         headers: {
             // Authorization: `Bearer ${sessionStorage.getItem('token')}`
             Authorization:
-                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwNzcxNjcwNywiZXhwIjoxNzA3NzI3NTA3LCJpZCI6NH0.zJ6r9dS2zmKQmyOW2fm3gPRgfWFJ1rwNv8XipSOBEn0'
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODMyMzE3NywiZXhwIjoxNzA4MzMzOTc3LCJpZCI6OX0.OmFA9v6dK_IeOa6CA9ilicgpkzG8R6QYNypKk-3KIyU'
         }
     });
 }
@@ -20,7 +20,7 @@ async function post<T, D>(endpoint: string, data: D): Promise<T> {
             'Content-Type': 'application/json',
             // Authorization: `Bearer ${sessionStorage.getItem('token')}`
             Authorization:
-                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwNzcxNjcwNywiZXhwIjoxNzA3NzI3NTA3LCJpZCI6NH0.zJ6r9dS2zmKQmyOW2fm3gPRgfWFJ1rwNv8XipSOBEn0'
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODMyMzE3NywiZXhwIjoxNzA4MzMzOTc3LCJpZCI6OX0.OmFA9v6dK_IeOa6CA9ilicgpkzG8R6QYNypKk-3KIyU'
         }
     });
 }
@@ -53,7 +53,7 @@ async function patch<T, D>(endpoint: string, data: D): Promise<T> {
             'Content-Type': 'application/json',
             // Authorization: `Bearer ${sessionStorage.getItem('token')}`
             Authorization:
-                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwNzcxNjcwNywiZXhwIjoxNzA3NzI3NTA3LCJpZCI6NH0.zJ6r9dS2zmKQmyOW2fm3gPRgfWFJ1rwNv8XipSOBEn0'
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODMyMzE3NywiZXhwIjoxNzA4MzMzOTc3LCJpZCI6OX0.OmFA9v6dK_IeOa6CA9ilicgpkzG8R6QYNypKk-3KIyU'
         }
     });
 }
@@ -67,10 +67,12 @@ async function formPatch<T, D>(endpoint: string, data: D): Promise<T> {
     });
 }
 
-async function del<T>(endpoint: string, params = ''): Promise<T> {
-    return axios.delete(serverUrl + endpoint + '/' + params, {
+async function del<T>(endpoint: string): Promise<T> {
+    return axios.delete(serverUrl + endpoint, {
         headers: {
-            Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            // Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            Authorization:
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODMyMzE3NywiZXhwIjoxNzA4MzMzOTc3LCJpZCI6OX0.OmFA9v6dK_IeOa6CA9ilicgpkzG8R6QYNypKk-3KIyU'
         }
     });
 }
