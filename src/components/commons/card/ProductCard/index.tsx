@@ -20,6 +20,7 @@ interface ProductCardProps {
 const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
     const [isModal, setIsModal] = useState(false);
     const [productId, setProductId] = useState<number>();
+    console.log(product);
 
     return (
         <>
@@ -31,7 +32,7 @@ const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
                 />
                 <div className="absolute z-10 top-[6px] h-5 w-full ">
                     <RankingBadge popular={popular} ranking={ranking} />
-                    <BundleBadge />
+                    {product.isBundled && <BundleBadge />}
                 </div>
                 <ProductSummary product={product} />
             </Link>

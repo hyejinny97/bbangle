@@ -17,7 +17,6 @@ const ResultContainer = ({ searchParams }: ResultContainerProps) => {
             </div>
 
             {searchParams?.query ? (
-                // <SearchResult />
                 <></>
             ) : (
                 <>
