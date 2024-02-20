@@ -8,7 +8,7 @@ import { RankingBadge } from './client/RankingBadge';
 import { ProductImage } from './client/ProductImage';
 import { ProductSummary } from './client/ProductSummary';
 import { ChooseWishListModal } from './client/ChooseWishListModal';
-import { BundleBadge } from './client/BundleBadge';
+import { BundleBadge } from '../../badge/BundleBadge';
 
 interface ProductCardProps {
     product: IProductType;
@@ -20,7 +20,6 @@ interface ProductCardProps {
 const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
     const [isModal, setIsModal] = useState(false);
     const [productId, setProductId] = useState<number>();
-    console.log(product);
 
     return (
         <>

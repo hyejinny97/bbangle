@@ -11,7 +11,7 @@ const DetailHome = ({ data }: DetailHomePropsType) => {
     return (
         <>
             <Header title="상품보기" back={true} />
-            <ProductImgs boardImages={data.board.images} />
+            <ProductImgs boardImages={data.board.images} isBundled={data.board.isBundled} />
             <DetailInfo data={data} />
         </>
     );
