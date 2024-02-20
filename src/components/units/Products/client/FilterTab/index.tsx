@@ -15,7 +15,7 @@ const FilterTab = () => {
     const [filterValue, setFilterValue] = useRecoilState(filterValueState);
     const [modalVisible, setModalVisible] = useState(false);
 
-    const handleItemClick = (newCategory: string) => {
+    const handleFilterClick = (newCategory: string) => {
         setFilterValue(prev => ({
             ...prev,
             category: newCategory
@@ -56,7 +56,7 @@ const FilterTab = () => {
                             className={`h-[34px] flex-shrink-0 px-3 py-2 rounded-[50px] bg-white ${
                                 isTagActive || isNewTag ? 'border-red-500' : 'border-gray-200'
                             } border justify-center items-center gap-1 inline-flex`}
-                            onClick={() => handleItemClick(item)}
+                            onClick={() => handleFilterClick(item)}
                             disabled={isNewTag}
                         >
                             <p

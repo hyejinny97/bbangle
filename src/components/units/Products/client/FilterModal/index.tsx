@@ -18,25 +18,25 @@ function FilterModal({ isVisible, setVisible }: ModalProps) {
     const [filterValue, setFilterValue] = useRecoilState(filterValueState);
 
     const [selectedCategory, setSelectedCategory] = useState(filterValue.category);
-    const [selectedIngredient, setSelectedIngredient] = useState(filterValue.tags);
+    const [selectedTags, setSelectedTags] = useState(filterValue.tags);
 
     const handleConfirm = () => {
         setVisible(!isVisible);
         setFilterValue(prev => ({
             category: selectedCategory ? selectedCategory : prev.category,
-            tags: selectedIngredient ? selectedIngredient : prev.tags
+            tags: selectedTags ? selectedTags : prev.tags
         }));
     };
 
     const handleCancel = () => {
         setVisible(!isVisible);
         setSelectedCategory(filterValue.category);
-        setSelectedIngredient(filterValue.tags);
+        setSelectedTags(filterValue.tags);
     };
 
     useEffect(() => {
         setSelectedCategory(filterValue.category);
-        setSelectedIngredient(filterValue.tags);
+        setSelectedTags(filterValue.tags);
     }, [filterValue]);
 
     return (
@@ -48,8 +48,9 @@ function FilterModal({ isVisible, setVisible }: ModalProps) {
                 values={FILTER_VALUES.categories}
             />
             <MultipleCheckBox
-                selectedItems={selectedIngredient}
-                setSelectedItems={setSelectedIngredient}
+                uniqueValue="전체"
+                selectedItems={selectedTags}
+                setSelectedItems={setSelectedTags}
                 title="성분"
                 values={FILTER_VALUES.tags}
             />
