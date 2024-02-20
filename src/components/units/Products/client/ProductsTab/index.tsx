@@ -3,6 +3,7 @@ import { useGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
 import { filterValueState } from '@/atoms/atom';
 import { useRecoilValue } from 'recoil';
 import { useEffect } from 'react';
+import Loading from '@/components/units/Loading/client';
 
 function ProductsTab() {
     const filterValue = useRecoilValue(filterValueState);
@@ -13,7 +14,7 @@ function ProductsTab() {
     }, [filterValue, refetch]);
 
     if (isLoading) {
-        return <div className="p-[16px]">Loading...</div>;
+        return <Loading />;
     }
     if (isError) {
         return <div className="p-[16px]">Error</div>;

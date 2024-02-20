@@ -1,10 +1,15 @@
+import Loading from '@/components/units/Loading/client';
 import { useGetAllStoresQuery } from '../../hooks/useGetAllStoresQuery';
 import StoreCard from '../StoreCard';
 
 function StoresTab() {
     const { data, isError, isLoading } = useGetAllStoresQuery();
     if (isLoading) {
-        return <div className="p-[16px]">Loading...</div>;
+        return (
+            <div className="p-[16px]">
+                <Loading />
+            </div>
+        );
     }
     if (isError) {
         return <div className="p-[16px]">Error</div>;
