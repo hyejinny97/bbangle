@@ -16,6 +16,7 @@ interface ModalProps {
 
 function FilterModal({ isVisible, setVisible }: ModalProps) {
     const [filterValue, setFilterValue] = useRecoilState(filterValueState);
+
     const [selectedCategory, setSelectedCategory] = useState(filterValue.category);
     const [selectedTags, setSelectedTags] = useState(filterValue.tags);
 

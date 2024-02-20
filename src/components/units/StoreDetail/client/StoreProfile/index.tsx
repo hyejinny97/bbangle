@@ -9,7 +9,7 @@ interface StoreProfileProps {
 }
 
 function StoreProfile({ data }: StoreProfileProps) {
-    const [isLiked, setIsLiked] = useState(data?.store.isWished || false);
+    const [isLiked, setIsLiked] = useState(data?.store?.isWished || false);
     return (
         <div className="flex flex-col justify-center items-center gap-[10px]">
             <div
