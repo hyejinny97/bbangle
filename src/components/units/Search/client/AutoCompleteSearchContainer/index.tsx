@@ -14,24 +14,28 @@ interface AutoCompleteSearchContainerProps {
 
 const AutoCompleteSearchItem = ({ text, keyword }: AutoCompleteSearchItemProps) => {
     const keywordStartIdx = text.indexOf(keyword);
+    const keywordLastIdx = keywordStartIdx + keyword.length - 1;
 
-    let startText = text;
-    let endText = '';
-    let highlightedText = '';
-    if (keywordStartIdx !== -1) {
-        const keywordLastIdx = keywordStartIdx + keyword.length - 1;
+    const startText = text.slice(0, keywordStartIdx);
+    const endText = text.slice(keywordLastIdx + 1);
+    const highlightedText = text.slice(keywordStartIdx, keywordLastIdx + 1);
 
-        startText = text.slice(0, keywordStartIdx);
-        endText = text.slice(keywordLastIdx + 1);
-        highlightedText = text.slice(keywordStartIdx, keywordLastIdx + 1);
-    }
+    const noMatched = keywordStartIdx === -1;
 
     return (
         <Link href={`/search?query=${text}`}>
             <div className="p-[10px] border-b border-solid border-color-Gray100 bg-white text-[14px] text-color-Gray900">
-                {startText}
-                <span className="text-[14px] text-color-PrimaryOrangeRed">{highlightedText}</span>
-                {endText}
+                {noMatched ? (
+                    text
+                ) : (
+                    <>
+                        {startText}
+                        <span className="text-[14px] text-color-PrimaryOrangeRed">
+                            {highlightedText}
+                        </span>
+                        {endText}
+                    </>
+                )}
             </div>
         </Link>
     );
