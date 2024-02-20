@@ -35,7 +35,13 @@ const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
                 </div>
                 <ProductSummary product={product} />
             </Link>
-            <ChooseWishListModal isModal={isModal} setIsModal={setIsModal} productId={productId} />
+            {isModal && (
+                <ChooseWishListModal
+                    isModal={isModal}
+                    setIsModal={setIsModal}
+                    productId={productId}
+                />
+            )}
         </>
     );
 };
