@@ -4,9 +4,11 @@ interface TabButtonProps {
     handleClickBtn: (_e: MouseEvent<HTMLButtonElement>) => void;
     name: string;
     ProductName: string;
+    isCategoryTab: boolean;
 }
 
 const TabButton = ({ name, ProductName, handleClickBtn }: TabButtonProps) => {
+    // console.log(ProductName, name);
     return (
         <button
             className="inline-flex flex-col items-start self-stretch justify-start grow shrink basis-0"

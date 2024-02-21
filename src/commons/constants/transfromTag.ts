@@ -1,4 +1,4 @@
-export function transformTag(tag: string): string {
+export function transformCategoryToEng(tag: string): string {
     if (tag === '전체') {
         return '';
     }
@@ -26,7 +26,7 @@ export function transformTag(tag: string): string {
     return tag;
 }
 
-export function transformIngredientTag(tag: string): string {
+export function transformTagToKr(tag: string): string {
     if (tag === 'glutenFree') {
         return '글루텐프리';
     }
@@ -44,7 +44,7 @@ export function transformIngredientTag(tag: string): string {
     }
     return tag;
 }
-export function transformIngredientEngishTag(tag: string): string {
+export function transformTagToEng(tag: string): string {
     if (tag === '글루텐프리') {
         return 'glutenFree';
     }
@@ -59,6 +59,31 @@ export function transformIngredientEngishTag(tag: string): string {
     }
     if (tag === '키토제닉') {
         return 'ketogenic';
+    }
+    return tag;
+}
+
+export function transformDayTag(tag: string): string {
+    if (tag === 'fri') {
+        return '금';
+    }
+    if (tag === 'mon') {
+        return '월';
+    }
+    if (tag === 'sat') {
+        return '토';
+    }
+    if (tag === 'sun') {
+        return '일';
+    }
+    if (tag === 'thu') {
+        return '목';
+    }
+    if (tag === 'tue') {
+        return '화';
+    }
+    if (tag === 'wed') {
+        return '수';
     }
     return tag;
 }

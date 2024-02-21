@@ -2,21 +2,28 @@ import { useQuery } from '@tanstack/react-query';
 import * as API from '@/api';
 import { IAllProductsType } from '@/commons/types/allProductsType';
 
-// /search?keyword={}
-
-interface getSearchResultQueryProps {
-    boards?: IAllProductsType;
+interface GetProductsQueryProps {
+    category?: string;
+    tags?: string[];
+    sort?: string;
 }
 
-const getSearchResultQuery = async (keyword: string): Promise<getSearchResultQueryProps> => {
-    const result = await API.get<{ data: getSearchResultQueryProps }>(`/search?keyword=${keyword}`);
-    //console.log('11', result.data);
+const getAllProducts = async (query: GetProductsQueryProps): Promise<IAllProductsType> => {
+    const { category, tags, sort } = query;
+    const categoryQuery = category ? `category=${category}` : '';
+    const tagQuery = tags && tags.length > 0 ? tags.map(tag => `${tag}=true`).join('&') : '';
+    const sortQuery = sort ? `sort=${sort}` : '';
+    const queryString = [categoryQuery, tagQuery, sortQuery].filter(Boolean).join('&');
+    const result = await API.get<{ data: IAllProductsType }>(
+        `/boards${queryString ? `?${queryString}` : ''}`
+    );
+
     return result.data;
 };
 
-export const useGetSearchResultQuery = (keyword: string) => {
-    return useQuery<getSearchResultQueryProps, Error>({
-        queryKey: ['wishlists'],
-        queryFn: () => getSearchResultQuery(keyword)
+export const UseGetSearchResultMutaion = (query: GetProductsQueryProps) => {
+    return useQuery<IAllProductsType, Error>({
+        queryKey: ['products'],
+        queryFn: () => getAllProducts(query)
     });
 };

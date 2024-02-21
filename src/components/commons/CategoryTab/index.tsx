@@ -10,6 +10,7 @@ interface CategoryTabProps {
 
 const CategoryTab = ({ categories }: CategoryTabProps) => {
     const [isCategoryTab, setIsCategoryTab] = useRecoilState(isCategoryTabState);
+
     const handleClickBtn = (index: number) => {
         if (index === 0) {
             setIsCategoryTab(true);
@@ -28,6 +29,7 @@ const CategoryTab = ({ categories }: CategoryTabProps) => {
                     name={tab}
                     handleClickBtn={() => handleClickBtn(index)}
                     ProductName={tab}
+                    isCategoryTab={isCategoryTab}
                 />
             ))}
 

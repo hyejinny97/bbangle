@@ -20,7 +20,7 @@ async function post<T, D>(endpoint: string, data: D): Promise<T> {
             'Content-Type': 'application/json',
             // Authorization: `Bearer ${sessionStorage.getItem('token')}`
             Authorization:
-                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODUxODUzNSwiZXhwIjoxNzA4NTI5MzM1LCJpZCI6NH0.KcSVO4aClmsuBMiWD1jp6It8Y4iBn7rOs-wc4aW5sTs'
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODMyMzE3NywiZXhwIjoxNzA4MzMzOTc3LCJpZCI6OX0.OmFA9v6dK_IeOa6CA9ilicgpkzG8R6QYNypKk-3KIyU'
         }
     });
 }
@@ -53,7 +53,7 @@ async function patch<T, D>(endpoint: string, data: D): Promise<T> {
             'Content-Type': 'application/json',
             // Authorization: `Bearer ${sessionStorage.getItem('token')}`
             Authorization:
-                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODUxODUzNSwiZXhwIjoxNzA4NTI5MzM1LCJpZCI6NH0.KcSVO4aClmsuBMiWD1jp6It8Y4iBn7rOs-wc4aW5sTs'
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODMyMzE3NywiZXhwIjoxNzA4MzMzOTc3LCJpZCI6OX0.OmFA9v6dK_IeOa6CA9ilicgpkzG8R6QYNypKk-3KIyU'
         }
     });
 }
@@ -72,6 +72,7 @@ async function del<T>(endpoint: string): Promise<T> {
         headers: {
             Authorization:
                 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODUxODUzNSwiZXhwIjoxNzA4NTI5MzM1LCJpZCI6NH0.KcSVO4aClmsuBMiWD1jp6It8Y4iBn7rOs-wc4aW5sTs'
+            // Authorization: `Bearer ${sessionStorage.getItem('token')}`
         }
     });
 }

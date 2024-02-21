@@ -14,7 +14,6 @@ function SortingButton() {
     const handleOptionClick = (option: string) => {
         setSelectedOption(option);
         setIsOpen(false);
-        // 여기에 정렬을 처리하는 로직 추가
     };
 
     return (

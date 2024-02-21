@@ -1,16 +1,16 @@
-import ServerBestProducts from './ServerBestProducts';
-import ServerAllProducts from './ServerAllProducts';
-import StoreProfile from '../client/StoreProfile';
+import Header from '@/components/commons/header/client/Header';
+// import ServerAllProducts from './ServerAllProducts';
+// import ServerBestProducts from './ServerBestProducts';
+import ServerProducts from './ServerProducts';
 
 const ServerStoreDetail = () => {
     return (
-        <div className="w-full">
-            <div className="border-b-4 w-full mx-auto pb-[16px] border-solid border-gray-100">
-                <StoreProfile />
-            </div>
-            <ServerBestProducts />
-            <ServerAllProducts />
-        </div>
+        <>
+            <Header title="스토어" back={true} />
+            {/* <ServerAllProducts />
+            <ServerBestProducts /> */}
+            <ServerProducts />
+        </>
     );
 };
 export default ServerStoreDetail;

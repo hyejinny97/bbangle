@@ -1,5 +1,9 @@
 import ServerSearch from '@/components/units/Search/server/ServerSearch';
 
+interface SearchPageProps {
+    searchParams: { [key: string]: string | string[] | undefined };
+}
+
 async function sendSearchKeyword(keyword: string) {
     try {
         console.log(keyword);
@@ -21,10 +25,10 @@ async function sendSearchKeyword(keyword: string) {
         console.error('Failed to fetch data:', error);
     }
 }
-const Search = async () => {
+const Search = async ({ searchParams }: SearchPageProps) => {
     const data = await sendSearchKeyword('55');
     console.log(111 + JSON.stringify(data));
-    return <ServerSearch />;
+    return <ServerSearch searchParams={searchParams} />;
 };
 
 export default Search;
