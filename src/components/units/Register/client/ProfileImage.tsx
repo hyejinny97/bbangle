@@ -1,6 +1,6 @@
 'use client';
 
-import Logo from '../../assets/logo.svg';
+import Logo from '../assets/logo.svg';
 
 const ProfileImage = () => {
     return (
