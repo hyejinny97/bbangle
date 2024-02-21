@@ -1,3 +1,5 @@
+'use client';
+
 import Input from '@/components/commons/inputs/Input';
 import { useId } from 'react';
 

@@ -2,7 +2,7 @@
 
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 
-function CheckSection() {
+const CheckSection = () => {
     return (
         <div className="flex flex-col gap-[16px]">
             <CheckBox isChecked={false} title="모두 동의합니다." onClick={() => {}} />
@@ -20,6 +20,6 @@ function CheckSection() {
             />
         </div>
     );
-}
+};
 
 export default CheckSection;
