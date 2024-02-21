@@ -1,15 +1,16 @@
 'use client';
 
+import { useRecoilValue } from 'recoil';
+import { MouseEventHandler } from 'react';
 import { popupState } from '@/atoms/atom';
 import usePopup from '@/commons/hooks/usePopup';
-import { useRecoilValue } from 'recoil';
 import BackDrop from '../backgrounds/BackDrop';
-import { MouseEventHandler } from 'react';
 
 const PopupContainer = () => {
     const popup = useRecoilValue(popupState);
-    const { popupVisible, closePopup } = usePopup();
+    const { closePopup } = usePopup();
 
+    const popupVisible = !!popup;
     if (!popupVisible) return <></>;
 
     const handleClick: MouseEventHandler<HTMLDivElement> = ({ target, currentTarget }) => {
