@@ -7,7 +7,7 @@ import StoreCard from '@/components/units/Products/client/StoreCard';
 import WishButton from '@/components/units/WishList/client/WishButton';
 import WishFolder from '@/components/units/WishList/client/WishFolder';
 import { useAddWishListMutation } from '@/components/units/WishList/hooks/useAddWishListMutation';
-import { useGetWishLists } from '@/components/units/WishList/hooks/useGetWishList';
+import { useGetWishListQuery } from '@/components/units/WishList/hooks/useGetWishListQuery';
 import { useWishStoreListQuery } from '@/components/units/WishListDetail/hooks/useWishStoreListQuery';
 import { ChangeEvent, useState } from 'react';
 import { useRecoilState } from 'recoil';
@@ -18,7 +18,7 @@ const WishProducts = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
 
-    const { data, refetch } = useGetWishLists();
+    const { data: wishList, refetch } = useGetWishListQuery();
     const { data: wishStoreList } = useWishStoreListQuery();
 
     const { mutate } = useAddWishListMutation();
@@ -67,7 +67,7 @@ const WishProducts = () => {
                             />
                         </div>
                         <div className="flex flex-wrap gap-x-[5%] gap-y-4">
-                            {data?.map(wish => (
+                            {wishList?.map(wish => (
                                 <WishFolder key={wish.folderId} wish={wish} isEdit={isEdit} />
                             ))}
                         </div>

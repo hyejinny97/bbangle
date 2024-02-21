@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { ChangeEvent, useState } from 'react';
 import UpModal from '@/components/commons/modal/UpModal';
 import PlusIcon from './assets/plus-icon.svg';
-import { useGetWishLists } from '@/components/units/WishList/hooks/useGetWishList';
+import { useGetWishListQuery } from '@/components/units/WishList/hooks/useGetWishListQuery';
 import { useAddWishListMutation } from '@/components/units/WishList/hooks/useAddWishListMutation';
 import { useAddWishMutation } from '@/components/commons/card/ProductCard/hooks/useAddWishMutation';
 
@@ -23,7 +23,7 @@ const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
     const [isAddView, setIsAddView] = useState(false);
     const [title, setTitle] = useState('');
 
-    const { data, refetch } = useGetWishLists();
+    const { data, refetch } = useGetWishListQuery();
 
     const { mutate: addWishListMutate } = useAddWishListMutation();
     const { mutate: addWishMutate } = useAddWishMutation();

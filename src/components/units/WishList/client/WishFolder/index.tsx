@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ChangeEvent, MouseEvent, useState } from 'react';
 import UpModal from '@/components/commons/modal/UpModal';
 import { useUpdateWishListMutation } from '@/components/units/WishList/hooks/useUpdateWishListMutation';
-import { useGetWishLists } from '@/components/units/WishList/hooks/useGetWishList';
+import { useGetWishListQuery } from '@/components/units/WishList/hooks/useGetWishListQuery';
 import { useDeleteWishListMutation } from '@/components/units/WishList/hooks/useDeleteWishListMutation';
 
 interface WishFolderProps {
@@ -18,11 +18,13 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
     const [title, setTitle] = useState('');
     const [folderId, setFolderId] = useState(0);
 
-    const { mutate } = useUpdateWishListMutation();
-    const { mutate: deleteWishMutate } = useDeleteWishListMutation();
-    const { refetch } = useGetWishLists();
+    console.log(wish);
 
-    const hadnleToggleEditModal = (folderId?: number) => (e: MouseEvent<HTMLHeadingElement>) => {
+    const { mutate: updateWishMutate } = useUpdateWishListMutation();
+    const { mutate: deleteWishMutate } = useDeleteWishListMutation();
+    const { refetch } = useGetWishListQuery();
+
+    const handleToggleEditModal = (folderId?: number) => (e: MouseEvent<HTMLHeadingElement>) => {
         if (isEdit) {
             e.preventDefault();
             setIsVisible(prev => !prev);
@@ -38,7 +40,7 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
 
     const handleUpdateWishList = (e: any) => {
         if (title) {
-            mutate(
+            updateWishMutate(
                 {
                     folderId,
                     data: {
@@ -48,7 +50,7 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
                 {
                     onSuccess: () => {
                         refetch();
-                        hadnleToggleEditModal()(e);
+                        handleToggleEditModal()(e);
                     }
                 }
             );
@@ -108,7 +110,7 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
                             className={`text-sm font-semibold text-color-Gray900 ${
                                 isEdit && 'underline'
                             }`}
-                            onClick={hadnleToggleEditModal(wish.folderId)}
+                            onClick={handleToggleEditModal(wish.folderId)}
                         >
                             {wish.title}
                         </h3>
@@ -122,7 +124,7 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
                 <UpModal
                     title="찜 폴더"
                     isVisible={isVisible}
-                    toggleModal={hadnleToggleEditModal()}
+                    toggleModal={handleToggleEditModal()}
                 >
                     <div className="w-full">
                         <div className="w-[92%] m-auto flex flex-col items-end gap-2">

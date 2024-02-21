@@ -7,7 +7,7 @@ async function get<T>(endpoint: string): Promise<T> {
         headers: {
             // Authorization: `Bearer ${sessionStorage.getItem('token')}`
             Authorization:
-                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODIzMTIxNywiZXhwIjoxNzA4MjQyMDE3LCJpZCI6NH0.j_mIWhzPeTEcufzG2G95Ng9uHXfpFILu7MYrvgwqqB4'
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODUxODUzNSwiZXhwIjoxNzA4NTI5MzM1LCJpZCI6NH0.KcSVO4aClmsuBMiWD1jp6It8Y4iBn7rOs-wc4aW5sTs'
         }
     });
 }
@@ -20,7 +20,7 @@ async function post<T, D>(endpoint: string, data: D): Promise<T> {
             'Content-Type': 'application/json',
             // Authorization: `Bearer ${sessionStorage.getItem('token')}`
             Authorization:
-                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODIzMTIxNywiZXhwIjoxNzA4MjQyMDE3LCJpZCI6NH0.j_mIWhzPeTEcufzG2G95Ng9uHXfpFILu7MYrvgwqqB4'
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODUxODUzNSwiZXhwIjoxNzA4NTI5MzM1LCJpZCI6NH0.KcSVO4aClmsuBMiWD1jp6It8Y4iBn7rOs-wc4aW5sTs'
         }
     });
 }
@@ -53,7 +53,7 @@ async function patch<T, D>(endpoint: string, data: D): Promise<T> {
             'Content-Type': 'application/json',
             // Authorization: `Bearer ${sessionStorage.getItem('token')}`
             Authorization:
-                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODIzMTIxNywiZXhwIjoxNzA4MjQyMDE3LCJpZCI6NH0.j_mIWhzPeTEcufzG2G95Ng9uHXfpFILu7MYrvgwqqB4'
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODUxODUzNSwiZXhwIjoxNzA4NTI5MzM1LCJpZCI6NH0.KcSVO4aClmsuBMiWD1jp6It8Y4iBn7rOs-wc4aW5sTs'
         }
     });
 }
@@ -71,7 +71,7 @@ async function del<T>(endpoint: string): Promise<T> {
     return axios.delete(serverUrl + endpoint, {
         headers: {
             Authorization:
-                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODIzMTIxNywiZXhwIjoxNzA4MjQyMDE3LCJpZCI6NH0.j_mIWhzPeTEcufzG2G95Ng9uHXfpFILu7MYrvgwqqB4'
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODUxODUzNSwiZXhwIjoxNzA4NTI5MzM1LCJpZCI6NH0.KcSVO4aClmsuBMiWD1jp6It8Y4iBn7rOs-wc4aW5sTs'
         }
     });
 }
