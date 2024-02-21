@@ -3,7 +3,7 @@ import { InputHTMLAttributes } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
-const Input = ({ id, type, onChange, placeholder }: InputProps) => {
+const Input = ({ id, type, onChange, placeholder, required }: InputProps) => {
     return (
         <input
             id={id}
@@ -11,7 +11,7 @@ const Input = ({ id, type, onChange, placeholder }: InputProps) => {
             type={type}
             onChange={onChange}
             placeholder={placeholder}
-            required
+            required={required}
         />
     );
 };
