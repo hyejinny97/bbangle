@@ -1,4 +1,4 @@
-import Loading from '@/components/units/Loading/client';
+import Loading from '@/components/commons/Loading';
 import { useGetAllStoresQuery } from '../../hooks/useGetAllStoresQuery';
 import StoreCard from '../StoreCard';
 

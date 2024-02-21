@@ -3,7 +3,7 @@ import { useGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
 import { filterValueState } from '@/atoms/atom';
 import { useRecoilValue } from 'recoil';
 import { useEffect } from 'react';
-import Loading from '@/components/units/Loading/client';
+import Loading from '@/components/commons/Loading';
 
 function ProductsTab() {
     const filterValue = useRecoilValue(filterValueState);
