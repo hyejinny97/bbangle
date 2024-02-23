@@ -1,4 +1,4 @@
-import IconCharacter from '@/components/units/MyPage/client/IconCharacter';
+import { IconCharacter } from '@/components/units/MyPage/client/Icons';
 
 const ServerUserInfo = () => {
     return (

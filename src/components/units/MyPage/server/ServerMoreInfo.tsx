@@ -1,7 +1,4 @@
-import IconBell from '@/components/units/MyPage/client/IconBell';
-import IconDoc from '@/components/units/MyPage/client/IconDoc';
-import IconLock from '@/components/units/MyPage/client/IconLock';
-import IconInquiry from '@/components/units/MyPage/client/IconInquiry';
+import { IconBell, IconDoc, IconLock, IconInquiry } from '@/components/units/MyPage/client/Icons';
 
 interface ServerMoreInfoItemProps {
     icon: React.ReactNode;

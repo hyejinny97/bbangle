@@ -1,4 +1,4 @@
-import IconLogoSub from '@/components/units/MyPage/client/IconLogoSub';
+import { IconLogoSub } from '@/components/units/MyPage/client/Icons';
 import SignInButton from '@/components/units/MyPage/client/SignInButton';
 
 const ServerSignIn = () => {
