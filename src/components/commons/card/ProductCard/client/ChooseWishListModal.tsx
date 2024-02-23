@@ -1,6 +1,6 @@
 import UpModal from '@/components/commons/modal/UpModal';
 import { useAddWishListMutation } from '@/components/units/WishList/hooks/useAddWishListMutation';
-import { useGetWishLists } from '@/components/units/WishList/hooks/useGetWishList';
+import { useGetWishListQuery } from '@/components/units/WishList/hooks/useGetWishListQuery';
 import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import { useAddWishMutation } from '../hooks/useAddWishMutation';
 import PlusIcon from '../assets/plus-icon.svg';
@@ -18,7 +18,7 @@ export const ChooseWishListModal = ({
 }: ChooseWishListModalProps) => {
     const [isAddView, setIsAddView] = useState(false);
     const [title, setTitle] = useState('');
-    const { data, refetch } = useGetWishLists();
+    const { data, refetch } = useGetWishListQuery();
     const { mutate: addWishListMutate } = useAddWishListMutation();
     const { mutate: addWishMutate } = useAddWishMutation();
 
