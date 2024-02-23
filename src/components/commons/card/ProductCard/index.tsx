@@ -2,6 +2,7 @@
 
 import { IProductType } from '@/commons/types/productType';
 import Link from 'next/link';
+
 import { useState } from 'react';
 import { IStoreType } from '@/commons/types/storeType';
 import { RankingBadge } from './client/RankingBadge';

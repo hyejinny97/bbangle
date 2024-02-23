@@ -7,7 +7,7 @@ const getWishList = async (): Promise<IWishList[]> => {
     return result.data;
 };
 
-export const useGetWishLists = () => {
+export const useGetWishListQuery = () => {
     return useQuery<IWishList[], Error>({
         queryKey: ['wishlists'],
         queryFn: getWishList

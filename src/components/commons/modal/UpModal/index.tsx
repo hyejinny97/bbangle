@@ -8,12 +8,12 @@ interface UpModalProps {
     title: string;
     children: ReactNode;
     isVisible: boolean;
-    toggleModal: () => void;
+    toggleModal: (_e: any) => void;
 }
 
 const UpModal = ({ title, children, isVisible, toggleModal }: UpModalProps) => {
-    const handleToggle = () => {
-        toggleModal();
+    const handleToggle = (e: any) => {
+        toggleModal(e);
     };
 
     return (
