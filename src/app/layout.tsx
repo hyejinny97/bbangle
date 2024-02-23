@@ -5,6 +5,7 @@ import './global.css';
 import RootLayoutProvider from '@/components/commons/RootLayoutProvider';
 import Footer from '@/components/commons/footer/server/Footer';
 import GetAccessToken from '@/components/commons/header/client/GetAccessToken';
+import PopupContainer from '@/components/commons/PopupContainer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <html>
             <body className={inter.className}>
                 <RootLayoutProvider>
+                    <PopupContainer />
                     <GetAccessToken />
                     <div className="sm:w-[600px] w-full m-auto pb-24">{children}</div>
                     <Footer />

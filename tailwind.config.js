@@ -38,6 +38,10 @@ module.exports = {
                     Gray800: '#424242',
                     Gray900: '#212121',
                     White: '#fff'
+                },
+                blueGray: {
+                    30: '#F4F7F9',
+                    50: '#ECEFF1'
                 }
             }
         }

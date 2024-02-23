@@ -1,4 +1,5 @@
 import { IFilterType } from '@/commons/types/filterType';
+import { ReactNode } from 'react';
 import { atom } from 'recoil';
 
 export const isCategoryTabState = atom({
@@ -9,6 +10,11 @@ export const isCategoryTabState = atom({
 export const modalState = atom({
     key: 'modalState',
     default: false
+});
+
+export const popupState = atom<ReactNode>({
+    key: 'popupState',
+    default: null
 });
 
 export const isWishModalState = atom<boolean>({
