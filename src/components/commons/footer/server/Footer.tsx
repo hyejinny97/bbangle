@@ -14,7 +14,7 @@ const Footer = () => {
         { title: '검색', icon: <Search />, page: '/search' },
         { title: '전체', icon: <Category />, page: '/products' },
         { title: '찜', icon: <Heart />, page: '/wishlist' },
-        { title: '마이페이지', icon: <Profile />, page: '/' }
+        { title: '마이페이지', icon: <Profile />, page: '/mypage' }
     ];
 
     return (
