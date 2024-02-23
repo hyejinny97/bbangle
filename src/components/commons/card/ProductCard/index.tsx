@@ -12,39 +12,31 @@ import { ChooseWishListModal } from './client/ChooseWishListModal';
 import { BundleBadge } from '../../badge/BundleBadge';
 
 interface ProductCardProps {
-    product: IProductType;
-    storeData?: IStoreType;
-    popular?: boolean;
-    ranking?: number;
+  product: IProductType;
+  storeData?: IStoreType;
+  popular?: boolean;
+  ranking?: number;
 }
 
 const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
-    const [isModal, setIsModal] = useState(false);
-    const [productId, setProductId] = useState<number>();
+  const [isModal, setIsModal] = useState(false);
+  const [productId, setProductId] = useState<number>();
 
-    return (
-        <>
-            <Link href={`/products/${product.boardId}`} className="w-full relative">
-                <ProductImage
-                    product={product}
-                    setIsModal={setIsModal}
-                    setProductId={setProductId}
-                />
-                <div className="absolute z-10 top-[6px] h-5 w-full ">
-                    <RankingBadge popular={popular} ranking={ranking} />
-                    {product.isBundled && <BundleBadge />}
-                </div>
-                <ProductSummary product={product} />
-            </Link>
-            {isModal && (
-                <ChooseWishListModal
-                    isModal={isModal}
-                    setIsModal={setIsModal}
-                    productId={productId}
-                />
-            )}
-        </>
-    );
+  return (
+    <>
+      <Link href={`/products/${product.boardId}`} className="w-full relative">
+        <ProductImage product={product} setIsModal={setIsModal} setProductId={setProductId} />
+        <div className="absolute z-10 top-[6px] h-5 w-full ">
+          <RankingBadge popular={popular} ranking={ranking} />
+          {product.isBundled && <BundleBadge />}
+        </div>
+        <ProductSummary product={product} />
+      </Link>
+      {isModal && (
+        <ChooseWishListModal isModal={isModal} setIsModal={setIsModal} productId={productId} />
+      )}
+    </>
+  );
 };
 
 export default ProductCard;

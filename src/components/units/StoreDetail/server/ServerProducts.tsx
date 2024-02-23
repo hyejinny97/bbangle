@@ -1,11 +1,11 @@
 import DetailContainer from '../client/container';
 
 function ServerProducts() {
-    return (
-        <>
-            <DetailContainer />
-        </>
-    );
+  return (
+    <>
+      <DetailContainer />
+    </>
+  );
 }
 
 export default ServerProducts;

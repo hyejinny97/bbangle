@@ -3,22 +3,22 @@
 import { useEffect } from 'react';
 
 const GetAccessToken = () => {
-    useEffect(() => {
-        const cookieToken = document.cookie;
-        // .split(';')
-        // .map(cookie => cookie.trim())
-        // .find(cookie => cookie.startsWith('token='));
+  useEffect(() => {
+    const cookieToken = document.cookie;
+    // .split(';')
+    // .map(cookie => cookie.trim())
+    // .find(cookie => cookie.startsWith('token='));
 
-        console.log(cookieToken);
+    console.log(cookieToken);
 
-        if (cookieToken) {
-            const tokenValue = cookieToken.split('=')[1];
+    if (cookieToken) {
+      const tokenValue = cookieToken.split('=')[1];
 
-            sessionStorage.setItem('token', tokenValue);
-        }
-    }, []);
+      sessionStorage.setItem('token', tokenValue);
+    }
+  }, []);
 
-    return <></>;
+  return <></>;
 };
 
 export default GetAccessToken;

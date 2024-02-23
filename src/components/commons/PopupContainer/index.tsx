@@ -7,21 +7,21 @@ import usePopup from '@/commons/hooks/usePopup';
 import BackDrop from '../backgrounds/BackDrop';
 
 const PopupContainer = () => {
-    const popup = useRecoilValue(popupState);
-    const { closePopup } = usePopup();
+  const popup = useRecoilValue(popupState);
+  const { closePopup } = usePopup();
 
-    const popupVisible = !!popup;
-    if (!popupVisible) return <></>;
+  const popupVisible = !!popup;
+  if (!popupVisible) return <></>;
 
-    const handleClick: MouseEventHandler<HTMLDivElement> = ({ target, currentTarget }) => {
-        if (target === currentTarget) closePopup();
-    };
+  const handleClick: MouseEventHandler<HTMLDivElement> = ({ target, currentTarget }) => {
+    if (target === currentTarget) closePopup();
+  };
 
-    return (
-        <BackDrop isVisible={popupVisible} onClick={handleClick}>
-            {popup}
-        </BackDrop>
-    );
+  return (
+    <BackDrop isVisible={popupVisible} onClick={handleClick}>
+      {popup}
+    </BackDrop>
+  );
 };
 
 export default PopupContainer;
