@@ -11,8 +11,8 @@ const isLoggedIn = false;
 
 const INFOS = [
     { href: '/notifications', icon: <IconBell />, content: '공지사항' },
-    { href: '', icon: <IconDoc />, content: '서비스 이용 약관' },
-    { href: '', icon: <IconLock />, content: '개인정보 수집 및 이용' },
+    { href: '/service-terms', icon: <IconDoc />, content: '서비스 이용 약관' },
+    { href: '/privacy-policy', icon: <IconLock />, content: '개인정보 수집 및 이용' },
     { href: '', icon: <IconInquiry />, content: '문의하기' }
 ];
 
