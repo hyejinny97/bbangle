@@ -1,4 +1,5 @@
-import NotificationItem from '@/components/units/Notifications/client/NotificationItem';
+import Link from 'next/link';
+import NotificationTitle from '@/components/units/Notifications/client/NotificationTitle';
 
 const NOTIFICATIONS = [
     { id: 1, title: '개인정보 처리방침 개정 안내', date: '2024.02.23' },
@@ -10,7 +11,9 @@ const Notifications = () => {
     return (
         <div>
             {NOTIFICATIONS.map(item => (
-                <NotificationItem key={item.id} id={item.id} title={item.title} date={item.date} />
+                <Link key={item.id} href={`/notifications/${item.id}`}>
+                    <NotificationTitle id={item.id} title={item.title} date={item.date} />
+                </Link>
             ))}
         </div>
     );
