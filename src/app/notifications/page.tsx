@@ -12,7 +12,7 @@ const Notifications = () => {
         <div>
             {NOTIFICATIONS.map(item => (
                 <Link key={item.id} href={`/notifications/${item.id}`}>
-                    <NotificationTitle id={item.id} title={item.title} date={item.date} />
+                    <NotificationTitle title={item.title} date={item.date} />
                 </Link>
             ))}
         </div>
