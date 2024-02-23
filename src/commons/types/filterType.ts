@@ -1,4 +1,4 @@
 export interface IFilterType {
-    category?: string;
-    tags?: string[];
+  category?: string;
+  tags?: string[];
 }

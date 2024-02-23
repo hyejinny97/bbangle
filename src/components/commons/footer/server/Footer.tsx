@@ -8,22 +8,22 @@ import Search from '@/components/commons/footer/assets/search.svg';
 import Home from '@/components/commons/footer/assets/home.svg';
 
 const Footer = () => {
-    // 나중에 따로 뺄거
-    const menu = [
-        { title: '홈', icon: <Home />, page: '/' },
-        { title: '검색', icon: <Search />, page: '/search' },
-        { title: '전체', icon: <Category />, page: '/products' },
-        { title: '찜', icon: <Heart />, page: '/wishlist' },
-        { title: '마이페이지', icon: <Profile />, page: '/mypage' }
-    ];
+  // 나중에 따로 뺄거
+  const menu = [
+    { title: '홈', icon: <Home />, page: '/' },
+    { title: '검색', icon: <Search />, page: '/search' },
+    { title: '전체', icon: <Category />, page: '/products' },
+    { title: '찜', icon: <Heart />, page: '/wishlist' },
+    { title: '마이페이지', icon: <Profile />, page: '/mypage' }
+  ];
 
-    return (
-        <div className="sm:w-[600px] sm:left-1/2 sm:translate-x-[-50%] py-[10px] flex justify-between fixed left-0 bottom-0 w-full bg-white border-t border-neutral-100 z-[100]">
-            {menu.map((item, index) => (
-                <Button key={index} title={item.title} icon={item.icon} page={item.page} />
-            ))}
-        </div>
-    );
+  return (
+    <div className="sm:w-[600px] sm:left-1/2 sm:translate-x-[-50%] py-[10px] flex justify-between fixed left-0 bottom-0 w-full bg-white border-t border-neutral-100 z-[100]">
+      {menu.map((item, index) => (
+        <Button key={index} title={item.title} icon={item.icon} page={item.page} />
+      ))}
+    </div>
+  );
 };
 
 export default Footer;

@@ -2,26 +2,23 @@ import * as API from '@/api/index';
 import { useMutation } from '@tanstack/react-query';
 
 interface WishListData {
-    folderId: number;
-    data: {
-        title: string;
-    };
+  folderId: number;
+  data: {
+    title: string;
+  };
 }
 
 interface WishListReturn {
-    message: string;
+  message: string;
 }
 
 const updateWishList = async (data: WishListData): Promise<WishListReturn> => {
-    return API.patch<WishListReturn, WishListData['data']>(
-        `/wishLists/${data.folderId}`,
-        data.data
-    );
+  return API.patch<WishListReturn, WishListData['data']>(`/wishLists/${data.folderId}`, data.data);
 };
 
 export const useUpdateWishListMutation = () => {
-    return useMutation({
-        mutationKey: ['updateWish'],
-        mutationFn: updateWishList
-    });
+  return useMutation({
+    mutationKey: ['updateWish'],
+    mutationFn: updateWishList
+  });
 };

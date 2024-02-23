@@ -7,14 +7,14 @@ import SeparateLine from '@/components/units/MyPage/client/SeparateLine';
 const IsLoggedIn = false;
 
 const MyPage = () => {
-    return (
-        <>
-            <Header title="마이페이지" />
-            {IsLoggedIn ? <ServerUserInfo /> : <ServerSignIn />}
-            <SeparateLine />
-            <ServerMoreInfo />
-        </>
-    );
+  return (
+    <>
+      <Header title="마이페이지" />
+      {IsLoggedIn ? <ServerUserInfo /> : <ServerSignIn />}
+      <SeparateLine />
+      <ServerMoreInfo />
+    </>
+  );
 };
 
 export default MyPage;
