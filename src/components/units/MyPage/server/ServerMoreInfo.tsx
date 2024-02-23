@@ -1,6 +1,8 @@
+import Link from 'next/link';
 import { IconBell, IconDoc, IconLock, IconInquiry } from '@/components/units/MyPage/client/Icons';
 
 interface ServerMoreInfoItemProps {
+    href: string;
     icon: React.ReactNode;
     content: string;
 }
@@ -8,18 +10,20 @@ interface ServerMoreInfoItemProps {
 const isLoggedIn = false;
 
 const INFOS = [
-    { icon: <IconBell />, content: '공지사항' },
-    { icon: <IconDoc />, content: '서비스 이용 약관' },
-    { icon: <IconLock />, content: '개인정보 수집 및 이용' },
-    { icon: <IconInquiry />, content: '문의하기' }
+    { href: '/notifications', icon: <IconBell />, content: '공지사항' },
+    { href: '', icon: <IconDoc />, content: '서비스 이용 약관' },
+    { href: '', icon: <IconLock />, content: '개인정보 수집 및 이용' },
+    { href: '', icon: <IconInquiry />, content: '문의하기' }
 ];
 
-const ServerMoreInfoItem = ({ icon, content }: ServerMoreInfoItemProps) => {
+const ServerMoreInfoItem = ({ href, icon, content }: ServerMoreInfoItemProps) => {
     return (
-        <div className="flex items-center p-4 border-solid border-b-[1px] border-color-Gray100">
-            {icon}
-            <p className="ml-[8px] text-[14px] font-medium">{content}</p>
-        </div>
+        <Link href={href}>
+            <div className="flex items-center p-4 border-solid border-b-[1px] border-color-Gray100">
+                {icon}
+                <p className="ml-[8px] text-[14px] font-medium">{content}</p>
+            </div>
+        </Link>
     );
 };
 
@@ -29,7 +33,12 @@ const ServerMoreInfo = () => {
     return (
         <div>
             {information.map(item => (
-                <ServerMoreInfoItem key={item.content} icon={item.icon} content={item.content} />
+                <ServerMoreInfoItem
+                    key={item.content}
+                    href={item.href}
+                    icon={item.icon}
+                    content={item.content}
+                />
             ))}
         </div>
     );
