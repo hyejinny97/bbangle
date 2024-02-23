@@ -7,7 +7,7 @@ import StoreCard from '@/components/units/Products/client/StoreCard';
 import WishButton from '@/components/units/WishList/client/WishButton';
 import WishFolder from '@/components/units/WishList/client/WishFolder';
 import { useAddWishListMutation } from '@/components/units/WishList/hooks/useAddWishListMutation';
-import { useGetWishLists } from '@/components/units/WishList/hooks/useGetWishList';
+import { useGetWishListQuery } from '@/components/units/WishList/hooks/useGetWishListQuery';
 import { useWishStoreListQuery } from '@/components/units/WishListDetail/hooks/useWishStoreListQuery';
 import { ChangeEvent, useState } from 'react';
 import { useRecoilState } from 'recoil';
@@ -16,13 +16,16 @@ const WishProducts = () => {
     const [isCategoryTab] = useRecoilState(isCategoryTabState);
     const [title, setTitle] = useState('');
     const [isVisible, setIsVisible] = useState(false);
+    const [isEdit, setIsEdit] = useState(false);
 
-    const { data, refetch } = useGetWishLists();
+    const { data: wishList, refetch } = useGetWishListQuery();
     const { data: wishStoreList } = useWishStoreListQuery();
 
-    console.log(wishStoreList);
-
     const { mutate } = useAddWishListMutation();
+
+    const handleToggleEdit = () => {
+        setIsEdit(prev => !prev);
+    };
 
     const handleModalToggle = () => {
         setIsVisible(prev => !prev);
@@ -40,6 +43,9 @@ const WishProducts = () => {
                     onSuccess: () => {
                         refetch();
                         handleModalToggle();
+                    },
+                    onError: (err: any) => {
+                        alert(err.response.data.message);
                     }
                 }
             );
@@ -54,10 +60,16 @@ const WishProducts = () => {
                     <div className="w-[92%] m-auto">
                         <div className="flex items-center justify-end gap-2 pt-4 pb-2.5">
                             <WishButton title="추가" onClick={handleModalToggle} />
-                            <WishButton title="편집" isBlack onClick={() => {}} />
+                            <WishButton
+                                title={isEdit ? '완료' : '편집'}
+                                isBlack={isEdit ? true : false}
+                                onClick={handleToggleEdit}
+                            />
                         </div>
                         <div className="flex flex-wrap gap-x-[5%] gap-y-4">
-                            {data?.map(wish => <WishFolder key={wish.folderId} wish={wish} />)}
+                            {wishList?.map(wish => (
+                                <WishFolder key={wish.folderId} wish={wish} isEdit={isEdit} />
+                            ))}
                         </div>
                     </div>
                     <UpModal title="찜 폴더" isVisible={isVisible} toggleModal={handleModalToggle}>
