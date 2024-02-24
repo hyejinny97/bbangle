@@ -14,11 +14,7 @@ async function GetDetail(params: { id: string }) {
 
 const ProductDetail = async ({ params }: { params?: any }) => {
   const data = await GetDetail(params);
-  return (
-    <>
-      <DetailHome data={data} />{' '}
-    </>
-  );
+  return <DetailHome data={data} />;
 };
 
 export default ProductDetail;
