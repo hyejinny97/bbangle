@@ -8,7 +8,6 @@ interface TabButtonProps {
 }
 
 const TabButton = ({ name, ProductName, handleClickBtn }: TabButtonProps) => {
-    // console.log(ProductName, name);
     return (
         <button
             className="inline-flex flex-col items-start self-stretch justify-start grow shrink basis-0"

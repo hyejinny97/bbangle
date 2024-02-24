@@ -9,13 +9,7 @@ interface getSearchResultQueryProps {
 
 function SearchResult({ resultProducts, resultStores, refetch }: getSearchResultQueryProps) {
     return (
-        <>
-            <ItemList
-                resultProducts={resultProducts}
-                resultStores={resultStores}
-                refetch={refetch}
-            />
-        </>
+        <ItemList resultProducts={resultProducts} resultStores={resultStores} refetch={refetch} />
     );
 }
 export default SearchResult;

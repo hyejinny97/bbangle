@@ -5,13 +5,17 @@ import { UseGetStoreDetialQuery } from '../../hooks/useGetStoreDetailQuery';
 import StoreProfile from '../StoreProfile';
 import AllProducts from '../AllProduct';
 import BestProducts from '../BestProduct';
+import Loading from '@/components/commons/Loading';
 
 const DetailContainer = () => {
     const params = useParams();
     const { data } = UseGetStoreDetialQuery(Number(params.id));
-    console.log(data);
     if (!data) {
-        return <div className="w-[92%] mx-atuo p-[16px]">Loading...</div>;
+        return (
+            <div className="w-[92%] mx-atuo p-[16px]">
+                <Loading />
+            </div>
+        );
     }
     return (
         <div className="w-full">

@@ -10,18 +10,16 @@ const ItemList = () => {
     const [isCategoryTab] = useRecoilState(isCategoryTabState);
 
     return (
-        <>
-            <div className="flex flex-wrap m-auto">
-                {isCategoryTab ? (
-                    <>
-                        <FilterTab />
-                        <ProductsTab />
-                    </>
-                ) : (
-                    <StoresTab />
-                )}
-            </div>
-        </>
+        <div className="flex flex-wrap m-auto">
+            {isCategoryTab ? (
+                <>
+                    <FilterTab />
+                    <ProductsTab />
+                </>
+            ) : (
+                <StoresTab />
+            )}
+        </div>
     );
 };
 

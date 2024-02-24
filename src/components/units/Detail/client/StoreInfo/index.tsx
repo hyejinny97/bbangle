@@ -10,7 +10,6 @@ interface ProductsProps {
 }
 
 function StoreInfo({ store }: ProductsProps) {
-    console.log(store);
     const [isLiked, setIsLiked] = useState(store.isWished);
 
     return (

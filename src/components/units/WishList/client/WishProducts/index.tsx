@@ -20,8 +20,6 @@ const WishProducts = () => {
     const { data, refetch } = useGetWishLists();
     const { data: wishStoreList } = useWishStoreListQuery();
 
-    console.log(wishStoreList);
-
     const { mutate } = useAddWishListMutation();
 
     const handleModalToggle = () => {

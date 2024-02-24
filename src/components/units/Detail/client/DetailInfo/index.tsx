@@ -11,7 +11,6 @@ interface ProductInfoProps {
 }
 
 const ProductInfo = ({ data }: ProductInfoProps) => {
-    console.log(data);
     return (
         <>
             <div className="flex-col flex-wrap container ">

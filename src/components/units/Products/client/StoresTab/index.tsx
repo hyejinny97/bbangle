@@ -15,11 +15,9 @@ function StoresTab() {
         return <div className="p-[16px]">Error</div>;
     }
     return (
-        <>
-            <div className="w-full">
-                {data?.content.map((data, i) => <StoreCard data={data} key={i} />)}
-            </div>
-        </>
+        <div className="w-full">
+            {data?.content.map((data, i) => <StoreCard data={data} key={i} />)}
+        </div>
     );
 }
 
