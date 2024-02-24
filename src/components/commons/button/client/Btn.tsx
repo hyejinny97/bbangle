@@ -3,7 +3,7 @@ import React, { MouseEvent } from 'react';
 interface ButtonProps {
     title: String;
     active: Boolean;
-    onClick: (_e: MouseEvent<HTMLButtonElement>) => void;
+    onClick?: (_e: MouseEvent<HTMLButtonElement>) => void;
 }
 
 function Btn({ title, active, onClick }: ButtonProps) {
