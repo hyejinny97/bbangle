@@ -1,4 +1,4 @@
-import Btn from '@/components/commons/button/client/Btn';
+import Button from '@/components/commons/button/client/Button';
 import { None } from '@/components/units/NotFound/client';
 import Link from 'next/link';
 
@@ -15,7 +15,7 @@ const Custom404 = () => {
       <div className="bg-white w-full max-w-[600px] mx-auto p-[16px] fixed flex gap-[10px] left-0 right-0 bottom-0 z-[5000]">
         <div className="flex-1">
           <Link href="/">
-            <Btn title="홈으로 가기" active={true} />
+            <Button variants="primary-black">홈으로 가기</Button>
           </Link>
         </div>
       </div>
