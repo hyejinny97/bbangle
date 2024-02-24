@@ -4,7 +4,7 @@ import { IProductDetailType } from '../../types';
 import StoreInfo from '../StoreInfo';
 import BoardInfo from '../BoardInfo';
 import BtnHeart from '@/components/commons/button/client/Btn_heart';
-import Btn from '@/components/commons/button/client/Btn';
+import Button from '@/components/commons/button/client/Button';
 
 interface ProductInfoProps {
   data: IProductDetailType;
@@ -23,7 +23,9 @@ const ProductInfo = ({ data }: ProductInfoProps) => {
           <BtnHeart isLiked={data.board.isWished} onClick={() => {}} />
         </div>
         <div className="flex-1">
-          <Btn title="구매하러 가기" active={true} onClick={() => {}} />
+          <Button variants="primary-black" onClick={() => {}}>
+            구매하러 가기
+          </Button>
         </div>
       </div>
     </>

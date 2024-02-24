@@ -73,6 +73,7 @@ const RAW_RUNTIME_STATE =
           ["storybook", "npm:7.5.3"],\
           ["svg-inline-loader", "npm:0.8.2"],\
           ["swiper", "npm:11.0.5"],\
+          ["tailwind-merge", "npm:2.2.1"],\
           ["tailwind-scrollbar-hide", "npm:1.1.7"],\
           ["tailwindcss", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:3.2.4"],\
           ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
@@ -2837,6 +2838,14 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/@babel-runtime-npm-7.23.8-c8503a23a8-10c0.zip/node_modules/@babel/runtime/",\
         "packageDependencies": [\
           ["@babel/runtime", "npm:7.23.8"],\
+          ["regenerator-runtime", "npm:0.14.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:7.23.9", {\
+        "packageLocation": "../../.yarn/berry/cache/@babel-runtime-npm-7.23.9-3b96e23cc2-10c0.zip/node_modules/@babel/runtime/",\
+        "packageDependencies": [\
+          ["@babel/runtime", "npm:7.23.9"],\
           ["regenerator-runtime", "npm:0.14.0"]\
         ],\
         "linkType": "HARD"\
@@ -10421,6 +10430,7 @@ const RAW_RUNTIME_STATE =
           ["storybook", "npm:7.5.3"],\
           ["svg-inline-loader", "npm:0.8.2"],\
           ["swiper", "npm:11.0.5"],\
+          ["tailwind-merge", "npm:2.2.1"],\
           ["tailwind-scrollbar-hide", "npm:1.1.7"],\
           ["tailwindcss", "virtual:72f3e23f8c9ae001cdb373149479c03b39fe701d28379b623862b568d5e812bffe8d0858a9ff347d81e05d8386b80d2919c4bf41d2bcbcc278efbc631b99d6ac#npm:3.2.4"],\
           ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
@@ -18519,6 +18529,16 @@ const RAW_RUNTIME_STATE =
           ["slice-ansi", "npm:4.0.0"],\
           ["string-width", "npm:4.2.3"],\
           ["strip-ansi", "npm:6.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["tailwind-merge", [\
+      ["npm:2.2.1", {\
+        "packageLocation": "../../.yarn/berry/cache/tailwind-merge-npm-2.2.1-8dc1f0b72b-10c0.zip/node_modules/tailwind-merge/",\
+        "packageDependencies": [\
+          ["tailwind-merge", "npm:2.2.1"],\
+          ["@babel/runtime", "npm:7.23.9"]\
         ],\
         "linkType": "HARD"\
       }]\

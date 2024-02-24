@@ -3,11 +3,11 @@
 import UpModal from '@/components/commons/modal/UpModal';
 import { useRecoilState } from 'recoil';
 import { filterValueState } from '@/atoms/atom';
-import Btn from '@/components/commons/button/client/Btn';
 import { SetStateAction, useEffect, useState } from 'react';
 import SingleCheckBox from './ModalSection/SingleCheckBox';
 import MultipleCheckBox from './ModalSection/MultipleCheckBox';
 import { FILTER_VALUES } from '@/commons/constants/filterValues';
+import Button from '@/components/commons/button/client/Button';
 
 interface ModalProps {
   isVisible: boolean;
@@ -56,8 +56,12 @@ function FilterModal({ isVisible, setVisible }: ModalProps) {
       />
 
       <div className="w-[92%] h-[84px] m-auto flex gap-[10px] justify-center items-center">
-        <Btn title="취소" active={false} onClick={handleCancel} />
-        <Btn title="확인" active={true} onClick={handleConfirm} />
+        <Button variants="primary-white" onClick={handleCancel}>
+          취소
+        </Button>
+        <Button variants="primary-black" onClick={handleConfirm}>
+          확인
+        </Button>
       </div>
     </UpModal>
   );
