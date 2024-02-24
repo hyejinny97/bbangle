@@ -1,4 +1,4 @@
-import { getInputStyle } from '@/commons/utils';
+import { INPUT_STYLE } from '@/commons/constants/inputStyle';
 import { InputHTMLAttributes, ReactNode, useId } from 'react';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
@@ -15,7 +15,7 @@ const Input = ({ id, label, button, ...props }: Props) => {
         {label}
       </label>
       <div className="relative">
-        <input id={inputId} className={getInputStyle()} {...props} />
+        <input id={inputId} className={INPUT_STYLE} {...props} />
         {button && <div className="absolute -translate-y-1/2 top-1/2 right-4">{button}</div>}
       </div>
     </div>
