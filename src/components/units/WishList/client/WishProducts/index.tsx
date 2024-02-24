@@ -16,16 +16,13 @@ const WishProducts = () => {
   const [isCategoryTab] = useRecoilState(isCategoryTabState);
   const [title, setTitle] = useState('');
   const [isVisible, setIsVisible] = useState(false);
-  const [isEdit, setIsEdit] = useState(false);
+
+  const [isEdit] = useState(false);
 
   const { data: wishList, refetch } = useGetWishListQuery();
   const { data: wishStoreList } = useWishStoreListQuery();
 
   const { mutate } = useAddWishListMutation();
-
-  const handleToggleEdit = () => {
-    setIsEdit(prev => !prev);
-  };
 
   const handleModalToggle = () => {
     setIsVisible(prev => !prev);
@@ -60,12 +57,9 @@ const WishProducts = () => {
           <div className="w-[92%] m-auto">
             <div className="flex items-center justify-end gap-2 pt-4 pb-2.5">
               <WishButton title="추가" onClick={handleModalToggle} />
-              <WishButton
-                title={isEdit ? '완료' : '편집'}
-                isBlack={isEdit ? true : false}
-                onClick={handleToggleEdit}
-              />
+              <WishButton title="편집" isBlack onClick={() => {}} />
             </div>
+
             <div className="flex flex-wrap gap-x-[5%] gap-y-4">
               {wishList?.map(wish => (
                 <WishFolder key={wish.folderId} wish={wish} isEdit={isEdit} />
