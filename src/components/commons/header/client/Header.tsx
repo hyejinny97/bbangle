@@ -8,7 +8,7 @@ interface HeaderProps {
   back?: boolean;
 }
 
-const Header = ({ title, back }: HeaderProps) => {
+const Header = ({ title, back = false }: HeaderProps) => {
   const goBackHandler = () => {
     window.history.back();
   };

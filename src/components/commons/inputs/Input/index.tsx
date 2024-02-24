@@ -1,18 +1,24 @@
 import { getInputStyle } from '@/commons/utils';
-import { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes, ReactNode, useId } from 'react';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
+  button?: ReactNode;
+  label: string;
+}
 
-const Input = ({ id, type, onChange, placeholder, required }: InputProps) => {
+const Input = ({ id, label, button, ...props }: Props) => {
+  const inputId = useId();
+
   return (
-    <input
-      id={id}
-      className={getInputStyle()}
-      type={type}
-      onChange={onChange}
-      placeholder={placeholder}
-      required={required}
-    />
+    <div id={id}>
+      <label className="inline-block mb-[6px]" htmlFor={inputId}>
+        {label}
+      </label>
+      <div className="relative">
+        <input id={inputId} className={getInputStyle()} {...props} />
+        {button && <div className="absolute -translate-y-1/2 top-1/2 right-4">{button}</div>}
+      </div>
+    </div>
   );
 };
 

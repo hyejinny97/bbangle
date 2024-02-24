@@ -1,12 +1,16 @@
 'use client';
 
-import Btn from '@/components/commons/button/client/Btn';
+import Button from '@/components/commons/button/client/Button';
 
 function ButtonSection() {
   return (
     <div className="flex gap-[10px]">
-      <Btn title="건너뛰기" onClick={() => {}} active={false} />
-      <Btn title="완료" onClick={() => {}} active={true} />
+      <Button variants="primary-white" onClick={() => {}}>
+        건너뛰기
+      </Button>
+      <Button variants="primary-black" onClick={() => {}}>
+        완료
+      </Button>
     </div>
   );
 }
