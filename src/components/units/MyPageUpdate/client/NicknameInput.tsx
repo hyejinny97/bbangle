@@ -8,18 +8,16 @@ const NicknameInput = () => {
   const inputId = useId();
 
   return (
-    <div>
-      <Input
-        id={inputId}
-        placeholder="닉네임을 입력해 주세요."
-        label="닉네임"
-        button={
-          <Button variants="input" onClick={() => {}}>
-            중복확인
-          </Button>
-        }
-      />
-    </div>
+    <Input
+      id={inputId}
+      placeholder="닉네임을 입력해 주세요."
+      label="닉네임"
+      button={
+        <Button variants="input" onClick={() => {}}>
+          중복확인
+        </Button>
+      }
+    />
   );
 };
 
