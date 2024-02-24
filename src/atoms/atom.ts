@@ -7,9 +7,9 @@ export const isCategoryTabState = atom({
   default: true
 });
 
-export const modalState = atom({
+export const modalState = atom<ReactNode>({
   key: 'modalState',
-  default: false
+  default: null
 });
 
 export const popupState = atom<ReactNode>({
