@@ -3,8 +3,8 @@ import { GetProductsQueryProps, IAllProductsType } from '@/commons/types/allProd
 import { getAllProducts } from '../api/getAllProducts';
 
 export const useGetAllProductsQuery = (query: GetProductsQueryProps) => {
-    return useQuery<IAllProductsType, Error>({
-        queryKey: ['products'],
-        queryFn: () => getAllProducts(query)
-    });
+  return useQuery<IAllProductsType, Error>({
+    queryKey: ['products'],
+    queryFn: () => getAllProducts(query)
+  });
 };

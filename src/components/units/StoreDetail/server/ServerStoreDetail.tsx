@@ -4,13 +4,13 @@ import Header from '@/components/commons/header/client/Header';
 import ServerProducts from './ServerProducts';
 
 const ServerStoreDetail = () => {
-    return (
-        <>
-            <Header title="스토어" back={true} />
-            {/* <ServerAllProducts />
+  return (
+    <>
+      <Header title="스토어" back={true} />
+      {/* <ServerAllProducts />
             <ServerBestProducts /> */}
-            <ServerProducts />
-        </>
-    );
+      <ServerProducts />
+    </>
+  );
 };
 export default ServerStoreDetail;

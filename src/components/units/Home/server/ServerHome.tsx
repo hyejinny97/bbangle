@@ -5,15 +5,15 @@ import ServerCategory from './ServerCategory';
 import ServerProducts from './ServerProducts';
 
 const ServerHome = () => {
-    return (
-        <>
-            <LogoContainer />
-            <Search />
-            <Banner />
-            <ServerCategory />
-            <ServerProducts />
-        </>
-    );
+  return (
+    <>
+      <LogoContainer />
+      <Search />
+      <Banner />
+      <ServerCategory />
+      <ServerProducts />
+    </>
+  );
 };
 
 export default ServerHome;

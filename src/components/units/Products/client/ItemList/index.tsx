@@ -7,20 +7,20 @@ import StoresTab from '../StoresTab';
 import FilterTab from '../FilterTab';
 
 const ItemList = () => {
-    const [isCategoryTab] = useRecoilState(isCategoryTabState);
+  const [isCategoryTab] = useRecoilState(isCategoryTabState);
 
-    return (
-        <div className="flex flex-wrap m-auto">
-            {isCategoryTab ? (
-                <>
-                    <FilterTab />
-                    <ProductsTab />
-                </>
-            ) : (
-                <StoresTab />
-            )}
-        </div>
-    );
+  return (
+    <div className="flex flex-wrap m-auto">
+      {isCategoryTab ? (
+        <>
+          <FilterTab />
+          <ProductsTab />
+        </>
+      ) : (
+        <StoresTab />
+      )}
+    </div>
+  );
 };
 
 export default ItemList;

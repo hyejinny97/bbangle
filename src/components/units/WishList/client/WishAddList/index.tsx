@@ -1,5 +1,5 @@
 const WishAddList = () => {
-    return <></>;
+  return <></>;
 };
 
 export default WishAddList;
