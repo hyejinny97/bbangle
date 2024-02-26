@@ -13,14 +13,14 @@ interface RadioProps {
   children: ReactNode;
 }
 
-function Radio({
+const Radio = ({
   isChecked = false,
   onChange,
   name = '',
   value = '',
   required = false,
   children
-}: RadioProps) {
+}: RadioProps) => {
   const id = useId();
 
   return (
@@ -41,6 +41,6 @@ function Radio({
       </label>
     </div>
   );
-}
+};
 
 export default Radio;
