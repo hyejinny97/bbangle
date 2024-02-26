@@ -1,4 +1,4 @@
-import CheckBox from '@/components/commons/checkbox/client/Checkbox';
+import Radio from '@/components/commons/radio/Radio';
 import { Dispatch, SetStateAction } from 'react';
 import Wrapper from '../Wrapper';
 
@@ -28,7 +28,13 @@ function SingleCheckBox({ title, values, selectedItem, setSelectedItem }: Single
             }`}
             onClick={() => handleClick(item)}
           >
-            <CheckBox isChecked={isSelected} title={item} onClick={() => handleClick(item)} />
+            <Radio isChecked={isSelected} onChange={() => handleClick(item)}>
+              <div
+                className={`text-gray-800 text-xs ${isSelected ? 'font-semibold' : 'font-normal'}`}
+              >
+                {item}
+              </div>
+            </Radio>
           </div>
         );
       })}
