@@ -26,7 +26,6 @@ function SingleCheckBox({ title, values, selectedItem, setSelectedItem }: Single
             className={`h-[37px] p-2 rounded-lg justify-start items-center gap-1.5 inline-flex ${
               isSelected ? 'bg-red-50' : 'bg-slate-100'
             }`}
-            onClick={() => handleClick(item)}
           >
             <Radio isChecked={isSelected} onChange={() => handleClick(item)}>
               <div

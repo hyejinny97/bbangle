@@ -78,7 +78,9 @@ const FilterTab = () => {
       </button>
       <div className="border-b border-solid border-gray-100 w-full "></div>
       <div className="flex w-[92%] py-[12px] m-auto justify-between items-center ">
-        <CheckBox isChecked={isChecked} onClick={checkHandled} title="주문가능한 상품 보기" />
+        <CheckBox isChecked={isChecked} onChange={checkHandled}>
+          주문가능한 상품 보기
+        </CheckBox>
 
         <SortingButton />
       </div>

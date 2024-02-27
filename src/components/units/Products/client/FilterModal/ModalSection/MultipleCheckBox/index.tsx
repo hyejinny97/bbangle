@@ -51,9 +51,14 @@ function MultipleCheckBox({
             className={`h-[37px] p-2 rounded-lg justify-start items-center gap-1.5 inline-flex ${
               isSelected ? 'bg-red-50' : 'bg-slate-100'
             }`}
-            onClick={() => handleClick(item)}
           >
-            <CheckBox isChecked={isSelected} title={item} onClick={() => handleClick(item)} />
+            <CheckBox isChecked={isSelected} onChange={() => handleClick(item)}>
+              <div
+                className={`text-gray-800 text-xs ${isSelected ? 'font-semibold' : 'font-normal'}`}
+              >
+                {item}
+              </div>
+            </CheckBox>
           </div>
         );
       })}
