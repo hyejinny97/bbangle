@@ -1,10 +1,10 @@
 import Header from '@/components/commons/header/client/Header';
-import BirthdayInput from '@/components/units/Registration/client/BirthdayInput';
-import ButtonSection from '@/components/units/Registration/client/ButtonSection';
-import CheckSection from '@/components/units/Registration/client/CheckSection';
-import NicknameInput from '@/components/units/Registration/client/NickNameInput';
-import PhoneNumberInput from '@/components/units/Registration/client/PhoneNumberInput';
-import ProfileImage from '@/components/units/Registration/client/ProfileImage';
+import BirthdayInput from '@/components/units/(Profile)/Registration/client/BirthdayInput';
+import ButtonSection from '@/components/units/(Profile)/Registration/client/ButtonSection';
+import CheckSection from '@/components/units/(Profile)/Registration/client/CheckSection';
+import NicknameInput from '@/components/units/(Profile)/Registration/client/NickNameInput';
+import PhoneNumberInput from '@/components/units/(Profile)/Registration/client/PhoneNumberInput';
+import ProfileImage from '@/components/units/(Profile)/Registration/client/ProfileImage';
 
 const Register = () => {
   return (

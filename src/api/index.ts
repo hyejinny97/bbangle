@@ -20,7 +20,7 @@ async function post<T, D>(endpoint: string, data: D): Promise<T> {
       'Content-Type': 'application/json',
       // Authorization: `Bearer ${sessionStorage.getItem('token')}`
       Authorization:
-        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODMyMzE3NywiZXhwIjoxNzA4MzMzOTc3LCJpZCI6OX0.OmFA9v6dK_IeOa6CA9ilicgpkzG8R6QYNypKk-3KIyU'
+        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODkyODk2NCwiZXhwIjoxNzA4OTM5NzY0LCJpZCI6OH0.RgqU9OiKu1uNcUKMhjvqDFAfP-AK6xcWhmj9F0f3Nh4'
     }
   });
 }
