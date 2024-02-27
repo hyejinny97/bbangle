@@ -55,9 +55,10 @@ function ModalSection({ title, values, storeValue, setStoreValue, multiple }: Mo
                       ? Array.isArray(storeValue) && storeValue.includes(item)
                       : storeValue === item
                   }
-                  title={item}
-                  onClick={() => handleClick(item)}
-                />
+                  onChange={() => handleClick(item)}
+                >
+                  {item}
+                </CheckBox>
               </div>
             );
           })
