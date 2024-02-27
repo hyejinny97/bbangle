@@ -1,22 +1,46 @@
-import React, { MouseEvent, ReactNode } from 'react';
+'use client';
+
+import React, { ChangeEvent, ReactNode, useId } from 'react';
 import Off from '../assets/icn_check_off.svg';
 import On from '../assets/icn_check_on.svg';
 
 interface CheckBoxProps {
   isChecked: boolean;
-  title: ReactNode;
-  onClick: (_e: MouseEvent<HTMLButtonElement>) => void;
+  onChange: (_e: ChangeEvent<HTMLInputElement>) => void;
+  name?: string;
+  value?: string;
+  required?: boolean;
+  children: ReactNode;
 }
 
-function CheckBox({ isChecked, title, onClick }: CheckBoxProps) {
+const CheckBox = ({
+  isChecked = false,
+  onChange,
+  name = '',
+  value = '',
+  required = false,
+  children
+}: CheckBoxProps) => {
+  const id = useId();
+
   return (
-    <div className="flex">
-      <button type="button" onClick={onClick}>
-        <div>{isChecked ? <On /> : <Off />}</div>
-      </button>
-      <div className="text-gray-800 text-xs font-normal pl-[0.5rem] ">{title}</div>
+    <div>
+      <input
+        type="checkbox"
+        id={id}
+        name={name}
+        value={value}
+        checked={isChecked}
+        onChange={onChange}
+        required={required}
+        hidden
+      />
+      <label htmlFor={id} className="flex text-gray-800 text-xs font-normal">
+        <span className="mr-[0.5rem]">{isChecked ? <On /> : <Off />}</span>
+        {children}
+      </label>
     </div>
   );
-}
+};
 
 export default CheckBox;
