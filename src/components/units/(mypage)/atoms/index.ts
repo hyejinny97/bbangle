@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil';
-import { RegistrationForm } from '../types';
+import { RegistrationRequest } from '../Registration/types';
 
 export const agreeState = atom({
   key: 'agree',
@@ -10,27 +10,27 @@ export const agreeState = atom({
   }
 });
 
-export const profileImgState = atom<File | null>({
+export const profileImgState = atom<File>({
   key: 'profileImg',
-  default: null
+  default: undefined
 });
 
-export const phoneNumberState = atom<string | null>({
+export const phoneNumberState = atom<string>({
   key: 'phoneNumber',
-  default: null
+  default: undefined
 });
 
-export const nicknameState = atom<string | null>({
+export const nicknameState = atom<string>({
   key: 'nickname',
-  default: null
+  default: undefined
 });
 
-export const birthdateState = atom<string | null>({
+export const birthdateState = atom<string>({
   key: 'birthdate',
-  default: null
+  default: undefined
 });
 
-export const registrationFormState = selector<RegistrationForm>({
+export const registrationFormState = selector<RegistrationRequest>({
   key: 'registrationForm',
 
   get: ({ get }) => {

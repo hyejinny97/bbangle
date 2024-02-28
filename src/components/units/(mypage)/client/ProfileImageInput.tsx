@@ -3,7 +3,7 @@
 import Icon from '@/components/commons/Icon';
 import { ChangeEventHandler, memo, useId } from 'react';
 import { useRecoilState } from 'recoil';
-import { profileImgState } from '../Registration/atoms';
+import { profileImgState } from '../atoms';
 import Image from 'next/image';
 
 const ProfileImageInput = () => {
@@ -19,9 +19,16 @@ const ProfileImageInput = () => {
   return (
     <label
       htmlFor={inputId}
-      className="cursor-pointer relative flex justify-center items-center rounded-full overflow-hidden w-[100px] h-[100px]"
+      className="cursor-pointer relative flex justify-center items-center rounded-full overflow-hidden w-[100px] h-[100px] bg-gray-100"
     >
-      <input id={inputId} type="file" hidden onChange={onChange} multiple={false} />
+      <input
+        id={inputId}
+        className="hidden"
+        name="profile"
+        type="file"
+        onChange={onChange}
+        multiple={false}
+      />
       {profileImg ? (
         <Image
           src={URL.createObjectURL(profileImg)}

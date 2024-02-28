@@ -6,7 +6,7 @@ const useRegistrationMutation = () => {
   const mutationFn = (data: RegistrationRequest) => {
     const { profileImg, ...rest } = data;
     const formData = new FormData();
-    formData.append('profileImg', profileImg);
+    profileImg && formData.append('profileImg', profileImg);
     formData.append('additionalInfo', JSON.stringify(rest));
     return API.formPut<null, FormData>('/api/v1/members/additional-information', formData);
   };

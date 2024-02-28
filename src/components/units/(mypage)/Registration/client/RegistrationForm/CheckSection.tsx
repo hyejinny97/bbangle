@@ -2,7 +2,7 @@
 
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import { useRecoilState } from 'recoil';
-import { agreeState } from '../../atoms';
+import { agreeState } from '../../../atoms';
 import { ChangeEvent } from 'react';
 
 const CheckSection = () => {
@@ -45,9 +45,9 @@ const CheckSection = () => {
     agree.isAllowingMarketing && agree.isPersonalInfoConsented && agree.isTermsOfServiceAccepted;
 
   return (
-    <div className="flex flex-col gap-[16px]">
+    <div className="flex flex-col gap-[16px] w-full">
       <CheckBox isChecked={allChecked} onChange={checkAll}>
-        모두 동의합니다.
+        <span className="text-base text-gray-900">모두 동의합니다.</span>
       </CheckBox>
       <hr />
       <CheckBox isChecked={agree.isTermsOfServiceAccepted} onChange={onChangeService}>

@@ -4,11 +4,9 @@ import Button from '@/components/commons/button/client/Button';
 
 function ButtonSection() {
   return (
-    <div className="flex gap-[10px]">
-      <Button variants="primary-white" onClick={() => {}}>
-        건너뛰기
-      </Button>
-      <Button type="submit" variants="primary-black" onClick={() => {}}>
+    <div className="flex gap-[10px] w-full">
+      <Button variants="primary-white">건너뛰기</Button>
+      <Button type="submit" variants="primary-black">
         완료
       </Button>
     </div>

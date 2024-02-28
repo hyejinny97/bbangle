@@ -5,7 +5,7 @@ import Input from '@/components/commons/inputs/Input';
 import { ChangeEvent, useId } from 'react';
 import useNicknameDoubleCheckMutation from '../hooks/useNicknameDoubleCheckMutation';
 import { useRecoilState } from 'recoil';
-import { nicknameState } from '../Registration/atoms';
+import { nicknameState } from '../atoms';
 
 const NicknameInput = () => {
   const inputId = useId();
@@ -22,12 +22,13 @@ const NicknameInput = () => {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <Input
         id={inputId}
         placeholder="닉네임을 입력해 주세요."
         label="닉네임"
         onChange={onChange}
+        autoComplete="off"
         required
         button={
           <Button type="button" variants="input" onClick={checkDouble}>

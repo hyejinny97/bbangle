@@ -35,7 +35,10 @@ const CheckBox = ({
         required={required}
         hidden
       />
-      <label htmlFor={id} className="flex text-gray-800 text-xs font-normal cursor-pointer">
+      <label
+        htmlFor={id}
+        className="flex text-gray-800 text-xs font-normal cursor-pointer items-center"
+      >
         <span className="mr-[0.5rem]">{isChecked ? <On /> : <Off />}</span>
         {children}
       </label>
