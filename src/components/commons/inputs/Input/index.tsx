@@ -6,13 +6,13 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
 }
 
-const Input = ({ id, label, button, ...props }: Props) => {
+const Input = ({ id, label, button, required, ...props }: Props) => {
   const inputId = useId();
 
   return (
     <div id={id}>
       <label className="inline-block mb-[6px]" htmlFor={inputId}>
-        {label}
+        {label} {required && <span className="text-primaryOrangeRed">*</span>}
       </label>
       <div className="relative">
         <input id={inputId} className={INPUT_STYLE} {...props} />

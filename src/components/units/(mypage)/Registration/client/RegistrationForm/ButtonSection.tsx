@@ -8,7 +8,7 @@ function ButtonSection() {
       <Button variants="primary-white" onClick={() => {}}>
         건너뛰기
       </Button>
-      <Button variants="primary-black" onClick={() => {}}>
+      <Button type="submit" variants="primary-black" onClick={() => {}}>
         완료
       </Button>
     </div>

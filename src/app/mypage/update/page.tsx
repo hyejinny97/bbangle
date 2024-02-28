@@ -1,10 +1,10 @@
 import Button from '@/components/commons/button/client/Button';
 import Header from '@/components/commons/header/client/Header';
-import BirthdayInput from '@/components/units/(Profile)/MyPageUpdate/client/BirthdayInput';
-import MoreSection from '@/components/units/(Profile)/MyPageUpdate/client/MoreSection';
-import NicknameInput from '@/components/units/(Profile)/MyPageUpdate/client/NicknameInput';
-import PhoneNumberInput from '@/components/units/(Profile)/MyPageUpdate/client/PhoneNumberInput';
-import ProfileImage from '@/components/units/(Profile)/MyPageUpdate/client/ProfileImage';
+import BirthdayInput from '@/components/units/(mypage)/client/BirthdayInput';
+import MoreSection from '@/components/units/(mypage)/MyPageUpdate/client/MoreSection';
+import NicknameInput from '@/components/units/(mypage)/client/NickNameInput';
+import PhoneNumberInput from '@/components/units/(mypage)/client/PhoneNumberInput';
+import ProfileImage from '@/components/units/(mypage)/MyPageUpdate/client/ProfileImage';
 
 const Update = () => {
   return (
