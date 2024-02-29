@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { IconCharacter } from '@/components/units/MyPage/client/Icons';
-import { fetchUserProfile } from '@/components/units/MyPage/api/fetchUserProfile';
+import { IconCharacter } from '@/components/units/(mypage)/MyPage/client/Icons';
+import { fetchUserProfile } from '@/components/units/(mypage)/api/fetchUserProfile';
 
 const ServerUserInfo = async () => {
   const { profileImg, nickname } = await fetchUserProfile();
