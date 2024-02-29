@@ -1,7 +1,7 @@
 import Header from '@/components/commons/header/client/Header';
 import ProductAndStoreTab from '@/components/commons/tabs/ProductAndStoreTab';
-import FilterTab from '@/components/units/Products/client/FilterTab';
-import ProductsTab from '@/components/units/Products/client/ProductsTab';
+import FilterTab from '@/components/units/(main)/Products/client/FilterTab';
+import ProductsTab from '@/components/units/(main)/Products/client/ProductsTab';
 
 const Products = () => {
   return (
