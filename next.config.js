@@ -1,5 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // images: {
+  //   remotePatterns: [
+  //     {
+  //       protocol: 'http',
+  //       hostname: 'k.kakaocdn.net',
+  //       port: '443',
+  //       pathname: '/dn/**'
+  //     }
+  //   ]
+  // },
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'firebasestorage.googleapis.com'
+      },
+      { hostname: 'k.kakaocdn.net' }
+    ]
+  },
   experimental: {
     // appDir: true,
     turbo: {
