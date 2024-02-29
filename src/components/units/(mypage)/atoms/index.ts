@@ -1,5 +1,6 @@
 import { atom, selector } from 'recoil';
 import { RegistrationRequest } from '../Registration/types';
+import { MyProfileUpdateRequest } from '../Update/types';
 
 export const agreeState = atom({
   key: 'agree',
@@ -46,6 +47,24 @@ export const registrationFormState = selector<RegistrationRequest>({
       birthdate,
       phoneNumber,
       ...agree
+    };
+  }
+});
+
+export const updateFormState = selector<MyProfileUpdateRequest>({
+  key: 'updateFormState',
+
+  get: ({ get }) => {
+    const profileImg = get(profileImgState);
+    const nickname = get(nicknameState);
+    const phoneNumber = get(phoneNumberState);
+    const birthdate = get(birthdateState);
+
+    return {
+      profileImg,
+      nickname,
+      birthdate,
+      phoneNumber
     };
   }
 });
