@@ -29,7 +29,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['firebasestorage.googleapis.com', 'k.kakaocdn.net']
+    remotePatterns: [{ hostname: 'firebasestorage.googleapis.com' }, { hostname: 'k.kakaocdn.net' }]
   }
 };
 
