@@ -2,7 +2,7 @@
 
 import { FormEventHandler, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
-import BirthdayInput from '@/components/units/(mypage)/client/BirthdayInput';
+import BirthdayInput from '@/components/units/(mypage)/client/BirthdateInput';
 import NicknameInput from '@/components/units/(mypage)/client/NickNameInput';
 import PhoneNumberInput from '@/components/units/(mypage)/client/PhoneNumberInput';
 import { registrationFormState } from '../../../atoms';

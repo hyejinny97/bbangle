@@ -6,7 +6,11 @@ import { useSetRecoilState } from 'recoil';
 import { phoneNumberState } from '../atoms';
 import { ChangeEventHandler } from 'react';
 
-const PhoneNumberInput = () => {
+interface PhoneNumberInputProps {
+  defaultValue?: string;
+}
+
+const PhoneNumberInput = ({ defaultValue }: PhoneNumberInputProps) => {
   const setPhoneNumber = useSetRecoilState(phoneNumberState);
 
   const onChange: ChangeEventHandler<HTMLInputElement> = e => {
@@ -26,6 +30,7 @@ const PhoneNumberInput = () => {
             중복확인
           </Button>
         }
+        defaultValue={defaultValue}
         onChange={onChange}
         required
       />

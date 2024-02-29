@@ -25,8 +25,6 @@ const ProfileImageInput = ({ defaultValue }: ProfileImageInputProps) => {
     profileImg && setImgSrc(URL.createObjectURL(profileImg));
   }, [profileImg]);
 
-  console.log('test', imgSrc);
-
   return (
     <label
       htmlFor={inputId}

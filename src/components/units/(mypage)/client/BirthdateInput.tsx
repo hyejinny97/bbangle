@@ -5,7 +5,11 @@ import { birthdateState } from '../atoms';
 import Input from '@/components/commons/inputs/Input';
 import { ChangeEventHandler } from 'react';
 
-const BirthdayInput = () => {
+interface BirthdateInputProps {
+  defaultValue?: string;
+}
+
+const BirthdateInput = ({ defaultValue }: BirthdateInputProps) => {
   const setBirthdate = useSetRecoilState(birthdateState);
 
   const onChange: ChangeEventHandler<HTMLInputElement> = e => {
@@ -13,7 +17,15 @@ const BirthdayInput = () => {
     setBirthdate(value);
   };
 
-  return <Input type="date" label="생년월일" onChange={onChange} max="9999-12-31" />;
+  return (
+    <Input
+      type="date"
+      defaultValue={defaultValue}
+      label="생년월일"
+      onChange={onChange}
+      max="9999-12-31"
+    />
+  );
 };
 
-export default BirthdayInput;
+export default BirthdateInput;

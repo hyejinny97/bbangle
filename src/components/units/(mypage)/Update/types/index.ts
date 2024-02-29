@@ -4,7 +4,7 @@ export interface NicknameDoubleCheckResponse {
 
 export interface MyProfileResponse {
   profileImg: string | null;
-  nickname: string;
+  nickname: string | null;
   birthDate: string | null;
   phoneNumber: string | null;
 }

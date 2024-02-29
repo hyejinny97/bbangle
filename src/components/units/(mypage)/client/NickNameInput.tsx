@@ -7,7 +7,11 @@ import useNicknameDoubleCheckMutation from '../hooks/useNicknameDoubleCheckMutat
 import { useRecoilState } from 'recoil';
 import { nicknameState } from '../atoms';
 
-const NicknameInput = () => {
+interface NicknameInputProps {
+  defaultValue?: string;
+}
+
+const NicknameInput = ({ defaultValue }: NicknameInputProps) => {
   const inputId = useId();
   const { mutate, data } = useNicknameDoubleCheckMutation();
   const [nickname, setNickname] = useRecoilState(nicknameState);
@@ -30,6 +34,7 @@ const NicknameInput = () => {
         onChange={onChange}
         autoComplete="off"
         required
+        defaultValue={defaultValue}
         button={
           <Button type="button" variants="input" onClick={checkDouble}>
             중복확인
