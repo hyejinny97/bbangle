@@ -15,7 +15,7 @@ import NoSugarIcon from './assets/noSugar-icon.svg';
 import ProteinIcon from './assets/protein-icon.svg';
 import TartIcon from './assets/tart-icon.svg';
 import YogurtIcon from './assets/yogurt.svg';
-import { isCategoryTabState } from '@/atoms/atom';
+import { isCategoryTabStateNew } from '@/atoms/atom';
 
 const categoryMenu = [
   {
@@ -119,7 +119,7 @@ const categoryMenu = [
 ];
 
 const CategoryList = () => {
-  const [isCategoryTab] = useRecoilState(isCategoryTabState);
+  const [isCategoryTab] = useRecoilState(isCategoryTabStateNew);
 
   return (
     <div className="flex flex-wrap w-[92%] m-auto py-4">

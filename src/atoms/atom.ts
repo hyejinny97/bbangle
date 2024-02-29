@@ -7,6 +7,11 @@ export const isCategoryTabState = atom({
   default: true
 });
 
+export const isCategoryTabStateNew = atom({
+  key: 'isCategoryTabStateNew',
+  default: true
+});
+
 export const modalState = atom<ReactNode>({
   key: 'modalState',
   default: null
