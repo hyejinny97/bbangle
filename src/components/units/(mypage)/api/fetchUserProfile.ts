@@ -1,11 +1,11 @@
 import * as API from '@/api';
 
-type UserProfileType = {
+interface UserProfileType {
   profileImg: string;
   nickname: string;
   phoneNumber: string;
   birthDate: string;
-};
+}
 
 export const fetchUserProfile = async (): Promise<UserProfileType> => {
   try {
