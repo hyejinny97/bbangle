@@ -1,20 +1,31 @@
 'use client';
 
 import Icon from '@/components/commons/Icon';
-import { ChangeEventHandler, memo, useId } from 'react';
+import { ChangeEventHandler, memo, useEffect, useId, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { profileImgState } from '../atoms';
 import Image from 'next/image';
 
-const ProfileImageInput = () => {
+interface ProfileImageInputProps {
+  defaultValue?: string;
+}
+
+const ProfileImageInput = ({ defaultValue }: ProfileImageInputProps) => {
   const inputId = useId();
   const [profileImg, setProfileImg] = useRecoilState(profileImgState);
+  const [imgSrc, setImgSrc] = useState(defaultValue);
 
   const onChange: ChangeEventHandler<HTMLInputElement> = e => {
     const file = e.target.files?.[0];
     if (!file) throw Error('파일이 없습니다.');
     setProfileImg(file);
   };
+
+  useEffect(() => {
+    profileImg && setImgSrc(URL.createObjectURL(profileImg));
+  }, [profileImg]);
+
+  console.log('test', imgSrc);
 
   return (
     <label
@@ -29,13 +40,8 @@ const ProfileImageInput = () => {
         onChange={onChange}
         multiple={false}
       />
-      {profileImg ? (
-        <Image
-          src={URL.createObjectURL(profileImg)}
-          alt="profile preview"
-          width={100}
-          height={100}
-        />
+      {imgSrc ? (
+        <Image src={imgSrc} alt="profile preview" width={100} height={100} />
       ) : (
         <Icon.bbangleSmile />
       )}

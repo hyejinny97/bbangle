@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import * as API from '@/api';
-import { NicknameDoubleCheckResponse } from '../MyPageUpdate/types';
+import { NicknameDoubleCheckResponse } from '../Update/types';
 
 const useNicknameDoubleCheckMutation = () => {
   const mutationFn = (nickname: string) =>
