@@ -1,18 +1,14 @@
 import * as API from '@/api';
+import { UserProfileType } from '../types';
 
-interface UserProfileType {
-  profileImg: string;
-  nickname: string;
-  phoneNumber: string;
-  birthDate: string;
-}
+const TMP_TOKEN =
+  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwOTI5NDAxMiwiZXhwIjoxNzA5MzA0ODEyLCJpZCI6OH0.0GKUGf5dzZtbAPwCtzjlJ-qTannqINioMCfvNuum50A';
 
 export const fetchUserProfile = async (): Promise<UserProfileType> => {
   try {
     const response = await fetch(`${API.serverUrl}/profile`, {
       headers: {
-        authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwOTE3NjY4MCwiZXhwIjoxNzA5MTg3NDgwLCJpZCI6OX0.z9DPSkwDSzLzozgIDb17u4xcPO1Iq8i0o3eZr6yuSBA'
+        authorization: `Bearer ${TMP_TOKEN}`
       }
     });
     if (!response.ok) throw Error(`[${response.status}] fetchUserProfile 에러`);

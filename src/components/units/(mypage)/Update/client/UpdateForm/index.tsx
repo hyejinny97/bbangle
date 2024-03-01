@@ -2,18 +2,18 @@
 
 import Button from '@/components/commons/button/client/Button';
 import BirthdayInput from '@/components/units/(mypage)/client/BirthdateInput';
-import MoreSection from '@/components/units/(mypage)/Update/client/MoreSection';
+import MoreSection from '@/components/units/(mypage)/Update/client/UpdateForm/MoreSection';
 import NicknameInput from '@/components/units/(mypage)/client/NickNameInput';
 import PhoneNumberInput from '@/components/units/(mypage)/client/PhoneNumberInput';
 import ProfileImageInput from '@/components/units/(mypage)/client/ProfileImageInput';
-import { MyProfileResponse } from '../../Update/types';
-import useProfileUpdateMutation from '../../Update/hooks/useProfileUpdateMutation';
+import useProfileUpdateMutation from '../../hooks/useProfileUpdateMutation';
 import { useRecoilValue } from 'recoil';
-import { updateFormState } from '../../atoms';
+import { updateFormState } from '../../../atoms';
 import { FormEventHandler } from 'react';
+import { UserProfileType } from '../../../types';
 
 interface UpdateFormProps {
-  defaultValues: MyProfileResponse;
+  defaultValues: UserProfileType;
 }
 
 const UpdateForm = ({ defaultValues }: UpdateFormProps) => {

@@ -1,9 +1,9 @@
 import Header from '@/components/commons/header/client/Header';
-import { getMyProfile } from '@/components/units/(mypage)/Update/api';
-import UpdateForm from '@/components/units/(mypage)/client/UpdateForm';
+import { fetchUserProfile } from '@/components/units/(mypage)/api/fetchUserProfile';
+import UpdateForm from '@/components/units/(mypage)/Update/client/UpdateForm';
 
 const Update = async () => {
-  const myProfile = await getMyProfile();
+  const myProfile = await fetchUserProfile();
 
   return (
     <>
