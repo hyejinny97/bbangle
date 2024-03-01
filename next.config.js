@@ -45,6 +45,9 @@ const nextConfig = {
     });
 
     return config;
+  },
+  images: {
+    remotePatterns: [{ hostname: 'firebasestorage.googleapis.com' }, { hostname: 'k.kakaocdn.net' }]
   }
 };
 
