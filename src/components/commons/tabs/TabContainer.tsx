@@ -9,7 +9,9 @@ interface TabContainerProps {
   onChange: (_activeTabIdx: number) => void;
 }
 
-const TabContainer = ({ names, initActiveTabIdx = 0, onChange }: TabContainerProps) => {
+const FIRST_IDX = 0;
+
+const TabContainer = ({ names, initActiveTabIdx = FIRST_IDX, onChange }: TabContainerProps) => {
   const [activeTabIdx, setActiveTabIdx] = useState(initActiveTabIdx);
 
   const handleTabButtonClick = (clickedTabIdx: number) => {
@@ -31,7 +33,7 @@ const TabContainer = ({ names, initActiveTabIdx = 0, onChange }: TabContainerPro
       <div className="w-full h-0.5 bg-color-Gray100 flex absolute left-0 bottom-0">
         <div
           className={`w-1/2  h-0.5 bg-[#7E7475] duration-[0.5s] transform ${
-            activeTabIdx === 0 ? 'translate-x-0' : 'translate-x-full'
+            activeTabIdx === FIRST_IDX ? 'translate-x-0' : 'translate-x-full'
           }`}
         />
       </div>
