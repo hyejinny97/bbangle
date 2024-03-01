@@ -3,8 +3,8 @@ export interface NicknameDoubleCheckResponse {
 }
 
 export interface MyProfileUpdateRequest {
-  profileImg?: File;
-  nickname: string;
-  phoneNumber: string;
-  birthDate?: string;
+  profileImg: File | null;
+  nickname: string | null;
+  phoneNumber: string | null;
+  birthDate: string | null;
 }

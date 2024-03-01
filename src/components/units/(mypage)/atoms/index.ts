@@ -58,12 +58,12 @@ export const updateFormState = selector<MyProfileUpdateRequest>({
     const profileImg = get(profileImgState);
     const nickname = get(nicknameState);
     const phoneNumber = get(phoneNumberState);
-    const birthdate = get(birthdateState);
+    const birthDate = get(birthdateState);
 
     return {
       profileImg,
       nickname,
-      birthdate,
+      birthDate,
       phoneNumber
     };
   }

@@ -11,6 +11,7 @@ import { useRecoilValue } from 'recoil';
 import { updateFormState } from '../../../atoms';
 import { FormEventHandler } from 'react';
 import { UserProfileType } from '../../../types';
+import { convertURLtoFile } from '@/commons/utils';
 
 interface UpdateFormProps {
   defaultValues: UserProfileType;
@@ -21,9 +22,17 @@ const UpdateForm = ({ defaultValues }: UpdateFormProps) => {
   const { mutate } = useProfileUpdateMutation();
   const updateForm = useRecoilValue(updateFormState);
 
-  const onSubmit: FormEventHandler<HTMLFormElement> = e => {
+  const onSubmit: FormEventHandler<HTMLFormElement> = async e => {
+    const defaultImgFile = profileImg ? await convertURLtoFile(profileImg) : null;
+    const updatedData = {
+      profileImg: updateForm.profileImg || defaultImgFile,
+      nickname: updateForm.nickname || defaultValues.nickname,
+      birthDate: updateForm.birthDate || defaultValues.birthDate,
+      phoneNumber: updateForm.phoneNumber || defaultValues.phoneNumber
+    };
+
+    mutate(updatedData);
     e.preventDefault();
-    mutate(updateForm);
   };
 
   return (
