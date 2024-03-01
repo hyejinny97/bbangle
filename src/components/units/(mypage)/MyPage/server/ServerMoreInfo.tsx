@@ -1,5 +1,10 @@
 import Link from 'next/link';
-import { IconBell, IconDoc, IconLock, IconInquiry } from '@/components/units/MyPage/client/Icons';
+import {
+  IconBell,
+  IconDoc,
+  IconLock,
+  IconInquiry
+} from '@/components/units/(mypage)/MyPage/client/Icons';
 
 interface ServerMoreInfoItemProps {
   href: string;
