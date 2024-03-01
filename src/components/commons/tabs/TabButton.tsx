@@ -12,7 +12,7 @@ const TabButton = ({ name, isActive, onClick }: TabButtonProps) => {
   return (
     <div
       className={`inline-flex self-stretch grow shrink basis-0 py-2.5 justify-center items-center text-sm leading-[21px] cursor-pointer ${
-        isActive ? 'text-color-Gray900 font-medium' : 'text-color-Gray500 font-normal'
+        isActive ? 'text-gray-900 font-medium' : 'text-gray-500 font-normal'
       }`}
       onClick={onClick}
     >
