@@ -6,8 +6,8 @@ import ProductCard from '@/components/commons/card/ProductCard';
 import CategoryTab from '@/components/commons/CategoryTab';
 import { IStoreType } from '@/commons/types/storeType';
 import { useEffect } from 'react';
-import FilterTab from '@/components/units/Products/client/FilterTab';
-import StoreCard from '@/components/units/Products/client/StoreCard';
+import FilterTab from '@/components/units/(main)/Products/client/FilterTab';
+import StoreCard from '@/components/units/(main)/Stores/client/StoreCard';
 import { IAllProductsType } from '@/commons/types/allProductsType';
 import None from '@/commons/assets/sad_charac.svg';
 

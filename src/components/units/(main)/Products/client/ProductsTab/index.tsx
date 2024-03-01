@@ -1,3 +1,5 @@
+'use client';
+
 import ProductCard from '@/components/commons/card/ProductCard';
 import { useGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
 import { filterValueState } from '@/atoms/atom';
