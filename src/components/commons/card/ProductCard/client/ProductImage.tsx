@@ -1,5 +1,7 @@
+import usePopup from '@/commons/hooks/usePopup';
 import { IProductType } from '@/commons/types/productType';
 import BtnHeart from '@/components/commons/button/client/Btn_heart';
+import ToastPop from '@/components/commons/toasts/ToastPop';
 import { Dispatch, SetStateAction } from 'react';
 
 interface ProductImageProps {
@@ -8,16 +10,19 @@ interface ProductImageProps {
   setProductId: Dispatch<SetStateAction<number | undefined>>;
 }
 export const ProductImage = ({ product, setIsModal, setProductId }: ProductImageProps) => {
+  const { openPopup } = usePopup();
+
   const handleClickHeart = (id: number) => (e: any) => {
     e.preventDefault();
 
     if (product.isWished) {
-      alert('이미 찜한 상품 입니다.');
+      openPopup(<ToastPop content="이미 찜한 상품 입니다." />);
     } else {
       setIsModal(true);
       setProductId(id);
     }
   };
+
   return (
     <div
       className="w-full pb-[100%] bg-cover bg-center rounded-[6px] relative "

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './index.css';
 import Link from 'next/link';
+import useToast from '@/commons/hooks/useToast';
 
 interface IToastPopProps {
   content: string;
@@ -8,20 +9,22 @@ interface IToastPopProps {
 }
 
 const ToastPop = ({ content, isAddWish }: IToastPopProps) => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isToast, setIsToast] = useState(false);
+  const { openToast } = useToast();
 
   useEffect(() => {
-    setIsVisible(true);
+    setIsToast(true);
 
     const timer = setTimeout(() => {
-      setIsVisible(false);
+      setIsToast(false);
+      openToast(null);
     }, 3000); // 3초 후에 사라지도록 설정 (원하는 시간으로 변경 가능)
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    isVisible && (
+    isToast && (
       <div className="toast-pop">
         <span className="text-sm text-white">{content}</span>
         {isAddWish && (
