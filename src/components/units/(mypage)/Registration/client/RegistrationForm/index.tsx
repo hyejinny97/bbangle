@@ -17,7 +17,6 @@ const RegistrationForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
 
   const onSubmit: FormEventHandler<HTMLFormElement> = e => {
-    e.preventDefault();
     const {
       phoneNumber,
       nickname,
@@ -34,6 +33,7 @@ const RegistrationForm = () => {
       isTermsOfServiceAccepted;
 
     if (isValid) mutate(registrationForm);
+    e.preventDefault();
   };
 
   return (
