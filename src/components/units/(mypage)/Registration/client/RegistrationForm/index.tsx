@@ -17,22 +17,7 @@ const RegistrationForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
 
   const onSubmit: FormEventHandler<HTMLFormElement> = e => {
-    const {
-      phoneNumber,
-      nickname,
-      isAllowingMarketing,
-      isPersonalInfoConsented,
-      isTermsOfServiceAccepted
-    } = registrationForm;
-
-    const isValid =
-      phoneNumber &&
-      nickname &&
-      isAllowingMarketing &&
-      isPersonalInfoConsented &&
-      isTermsOfServiceAccepted;
-
-    if (isValid) mutate(registrationForm);
+    mutate(registrationForm);
     e.preventDefault();
   };
 
