@@ -1,7 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // images: {
+  //   remotePatterns: [
+  //     {
+  //       protocol: 'http',
+  //       hostname: 'k.kakaocdn.net',
+  //       port: '443',
+  //       pathname: '/dn/**'
+  //     }
+  //   ]
+  // },
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'firebasestorage.googleapis.com'
+      },
+      { hostname: 'k.kakaocdn.net' }
+    ]
+  },
   experimental: {
-
     // appDir: true,
     turbo: {
       rules: {
@@ -19,7 +36,6 @@ const nextConfig = {
       },
       resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json']
     }
-
   },
   webpack(config) {
     config.module.rules.push({
@@ -31,7 +47,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['firebasestorage.googleapis.com']
+    remotePatterns: [{ hostname: 'firebasestorage.googleapis.com' }, { hostname: 'k.kakaocdn.net' }]
   }
 };
 

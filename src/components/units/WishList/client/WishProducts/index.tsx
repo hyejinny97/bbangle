@@ -3,7 +3,7 @@
 import { isCategoryTabState } from '@/atoms/atom';
 import CategoryTab from '@/components/commons/CategoryTab';
 import UpModal from '@/components/commons/modal/UpModal';
-import StoreCard from '@/components/units/Products/client/StoreCard';
+import StoreCard from '@/components/units/(main)/Stores/client/StoreCard';
 import WishButton from '@/components/units/WishList/client/WishButton';
 import WishFolder from '@/components/units/WishList/client/WishFolder';
 import { useAddWishListMutation } from '@/components/units/WishList/hooks/useAddWishListMutation';

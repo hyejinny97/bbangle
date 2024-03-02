@@ -1,80 +1,89 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 const serverUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`;
-
-async function get<T>(endpoint: string): Promise<T> {
+const TMP_TOKEN =
+  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwOTE1OTIwOCwiZXhwIjoxNzA5MTcwMDA4LCJpZCI6OH0.Sg0WW4IAUuhUnxBVhWzxkpSmkaCsSijUPz2G3_vHXBE';
+async function get<T>(endpoint: string): Promise<AxiosResponse<T>> {
   return axios.get(serverUrl + endpoint, {
     headers: {
       // Authorization: `Bearer ${sessionStorage.getItem('token')}`
-      Authorization:
-        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODUxODUzNSwiZXhwIjoxNzA4NTI5MzM1LCJpZCI6NH0.KcSVO4aClmsuBMiWD1jp6It8Y4iBn7rOs-wc4aW5sTs'
+      Authorization: TMP_TOKEN
     }
   });
 }
 
-async function post<T, D>(endpoint: string, data: D): Promise<T> {
+async function post<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
   const bodyData = JSON.stringify(data);
 
   return axios.post(serverUrl + endpoint, bodyData, {
     headers: {
       'Content-Type': 'application/json',
       // Authorization: `Bearer ${sessionStorage.getItem('token')}`
-      Authorization:
-        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODMyMzE3NywiZXhwIjoxNzA4MzMzOTc3LCJpZCI6OX0.OmFA9v6dK_IeOa6CA9ilicgpkzG8R6QYNypKk-3KIyU'
+      Authorization: TMP_TOKEN
     }
   });
 }
 
-async function formPost<T, D>(endpoint: string, data: D): Promise<T> {
+async function formPost<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
   return axios.post(serverUrl + endpoint, data, {
     headers: {
       'Content-Type': 'multipart/form-data',
-      Authorization: `Bearer ${sessionStorage.getItem('token')}`
+      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
+      Authorization: TMP_TOKEN
     }
   });
 }
 
-async function put<T, D>(endpoint: string, data: D): Promise<T> {
+async function put<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
   const bodyData = JSON.stringify(data);
 
   return axios.put(serverUrl + endpoint, bodyData, {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${sessionStorage.getItem('token')}`
+      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
+      Authorization: TMP_TOKEN
     }
   });
 }
 
-async function patch<T, D>(endpoint: string, data: D): Promise<T> {
+async function formPut<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
+  return axios.putForm(serverUrl + endpoint, data, {
+    headers: {
+      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
+      Authorization: TMP_TOKEN
+    }
+  });
+}
+
+async function patch<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
   const bodyData = JSON.stringify(data);
 
   return axios.patch(serverUrl + endpoint, bodyData, {
     headers: {
       'Content-Type': 'application/json',
       // Authorization: `Bearer ${sessionStorage.getItem('token')}`
-      Authorization:
-        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODMyMzE3NywiZXhwIjoxNzA4MzMzOTc3LCJpZCI6OX0.OmFA9v6dK_IeOa6CA9ilicgpkzG8R6QYNypKk-3KIyU'
+      Authorization: TMP_TOKEN
     }
   });
 }
 
-async function formPatch<T, D>(endpoint: string, data: D): Promise<T> {
+async function formPatch<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
   return axios.patch(serverUrl + endpoint, data, {
     headers: {
       'Content-Type': 'multipart/form-data',
-      Authorization: `Bearer ${sessionStorage.getItem('token')}`
+      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
+      Authorization: TMP_TOKEN
     }
   });
 }
 
-async function del<T>(endpoint: string): Promise<T> {
+async function del<T>(endpoint: string): Promise<AxiosResponse<T>> {
   return axios.delete(serverUrl + endpoint, {
     headers: {
-      Authorization:
-        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwODUxODUzNSwiZXhwIjoxNzA4NTI5MzM1LCJpZCI6NH0.KcSVO4aClmsuBMiWD1jp6It8Y4iBn7rOs-wc4aW5sTs'
+      Authorization: TMP_TOKEN
       // Authorization: `Bearer ${sessionStorage.getItem('token')}`
     }
   });
 }
 
-export { serverUrl, get, post, formPost, put, patch, formPatch, del as delete };
+export { serverUrl, get, post, formPost, put, patch, formPatch, formPut, del as delete };
