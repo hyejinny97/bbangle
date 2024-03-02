@@ -18,8 +18,6 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
   const [title, setTitle] = useState('');
   const [folderId, setFolderId] = useState(0);
 
-  console.log(wish);
-
   const { mutate: updateWishMutate } = useUpdateWishListMutation();
   const { mutate: deleteWishMutate } = useDeleteWishListMutation();
   const { refetch } = useGetWishListQuery();
