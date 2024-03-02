@@ -2,7 +2,7 @@ import * as API from '@/api';
 import { GetProductsQueryProps, IAllProductsType } from '@/commons/types/allProductsType';
 import { transformCategoryToEng, transformTagToEng } from '@/commons/constants/transfromTag';
 
-export const getAllProducts = async (query: GetProductsQueryProps): Promise<IAllProductsType> => {
+export const getAllProducts = async (query: GetProductsQueryProps) => {
   const { category, tags, sort } = query;
   const categoryQuery = category && transformCategoryToEng(category);
   const tagsEng = tags?.map(tag => transformTagToEng(tag));
@@ -20,7 +20,7 @@ export const getAllProducts = async (query: GetProductsQueryProps): Promise<IAll
     sort: sort || 'LATEST'
   };
   const queryString = new URLSearchParams(queryObject).toString();
-  const { data } = await API.get<{ data: IAllProductsType }>(`/boards?${queryString}`);
+  const { data } = await API.get<IAllProductsType>(`/boards?${queryString}`);
 
   return data;
 };
