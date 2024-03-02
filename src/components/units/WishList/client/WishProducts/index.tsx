@@ -2,6 +2,7 @@
 
 import { isCategoryTabState } from '@/atoms/atom';
 import CategoryTab from '@/components/commons/CategoryTab';
+import Input from '@/components/commons/inputs/Input';
 import UpModal from '@/components/commons/modal/UpModal';
 import StoreCard from '@/components/units/Products/client/StoreCard';
 import WishButton from '@/components/units/WishList/client/WishButton';
@@ -73,7 +74,9 @@ const WishProducts = () => {
           <UpModal title="찜 폴더" isVisible={isVisible} toggleModal={handleModalToggle}>
             <div className="w-full">
               <div className="w-[92%] m-auto flex flex-col items-end gap-2">
-                <input
+                <Input
+                  id="wish-add-input"
+                  label=""
                   type="text"
                   style={{ outline: 'none' }}
                   className="w-full p-3 border border-solid border-color-Gray100 rounded-[10px] text-base font-normal"
