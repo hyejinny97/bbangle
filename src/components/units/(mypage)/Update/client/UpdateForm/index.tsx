@@ -1,5 +1,8 @@
 'use client';
 
+import { FormEventHandler } from 'react';
+import { useRecoilValue } from 'recoil';
+import { convertURLtoFile } from '@/commons/utils';
 import Button from '@/components/commons/button/client/Button';
 import BirthdayInput from '@/components/units/(mypage)/client/BirthdateInput';
 import MoreSection from '@/components/units/(mypage)/Update/client/UpdateForm/MoreSection';
@@ -7,18 +10,16 @@ import NicknameInput from '@/components/units/(mypage)/client/NickNameInput';
 import PhoneNumberInput from '@/components/units/(mypage)/client/PhoneNumberInput';
 import ProfileImageInput from '@/components/units/(mypage)/client/ProfileImageInput';
 import useProfileUpdateMutation from '../../hooks/useProfileUpdateMutation';
-import { useRecoilValue } from 'recoil';
 import { updateFormState } from '../../../atoms';
-import { FormEventHandler } from 'react';
 import { UserProfileType } from '../../../types';
-import { convertURLtoFile } from '@/commons/utils';
 
 interface UpdateFormProps {
   defaultValues: UserProfileType;
 }
 
-const UpdateForm = ({ defaultValues }: UpdateFormProps) => {
-  const { profileImg, nickname, phoneNumber, birthDate } = defaultValues;
+const UpdateForm = ({
+  defaultValues: { profileImg, nickname, phoneNumber, birthDate }
+}: UpdateFormProps) => {
   const { mutate } = useProfileUpdateMutation();
   const updateForm = useRecoilValue(updateFormState);
 
@@ -26,9 +27,9 @@ const UpdateForm = ({ defaultValues }: UpdateFormProps) => {
     const defaultImgFile = profileImg ? await convertURLtoFile(profileImg) : null;
     const updatedData = {
       profileImg: updateForm.profileImg || defaultImgFile,
-      nickname: updateForm.nickname || defaultValues.nickname,
-      birthDate: updateForm.birthDate || defaultValues.birthDate,
-      phoneNumber: updateForm.phoneNumber || defaultValues.phoneNumber
+      nickname: updateForm.nickname || nickname,
+      birthDate: updateForm.birthDate || birthDate,
+      phoneNumber: updateForm.phoneNumber || phoneNumber
     };
 
     mutate(updatedData);
