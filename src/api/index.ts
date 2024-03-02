@@ -2,7 +2,8 @@ import axios, { AxiosResponse } from 'axios';
 
 const serverUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`;
 const TMP_TOKEN =
-  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwOTE1OTIwOCwiZXhwIjoxNzA5MTcwMDA4LCJpZCI6OH0.Sg0WW4IAUuhUnxBVhWzxkpSmkaCsSijUPz2G3_vHXBE';
+  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwOTM2Nzc5OCwiZXhwIjoxNzA5Mzc4NTk4LCJpZCI6NH0.i6XiJcNLKW0fBmpbP4cbZghSg5JY5TUIixnVNwIPrEQ';
+
 async function get<T>(endpoint: string): Promise<AxiosResponse<T>> {
   return axios.get(serverUrl + endpoint, {
     headers: {
