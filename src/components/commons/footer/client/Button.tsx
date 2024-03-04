@@ -1,24 +1,26 @@
-'use client';
-
-import { useRouter } from 'next/navigation';
 import React from 'react';
+import Link from 'next/link';
 
 interface ButtonProps {
   title: String;
   icon: React.ReactElement;
   page: string;
+  isActive: boolean;
 }
 
-const Header = ({ title, icon, page }: ButtonProps) => {
-  const router = useRouter();
+const Button = ({ title, icon, page, isActive }: ButtonProps) => {
   return (
-    <button
+    <Link
+      href={page}
       className="flex flex-col items-center justify-center w-1/5 gap-2 cursor-pointer"
-      onClick={() => router.push(page)}
     >
       {icon}
-      <span className="text-neutral-400 text-xs font-normal leading-[18px]">{title}</span>
-    </button>
+      <span
+        className={`text-neutral-400 text-xs font-normal leading-[18px] ${isActive ? 'text-primaryOrangeRed' : 'text-gray-500'}`}
+      >
+        {title}
+      </span>
+    </Link>
   );
 };
-export default Header;
+export default Button;
