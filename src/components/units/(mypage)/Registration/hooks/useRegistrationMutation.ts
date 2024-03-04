@@ -1,21 +1,25 @@
 import { useMutation } from '@tanstack/react-query';
 import * as API from '@/api';
 import { RegistrationRequest } from '../types';
+import { useRouter } from 'next/navigation';
 
 const useRegistrationMutation = () => {
+  const { push } = useRouter();
+
   const mutationFn = (data: RegistrationRequest) => {
     const { profileImg, ...rest } = data;
     const formData = new FormData();
     profileImg && formData.append('profileImg', profileImg);
     formData.append('additionalInfo', JSON.stringify(rest));
-    return API.formPut<null, FormData>('/api/v1/members/additional-information', formData);
+    return API.formPut<null, FormData>('/members/additional-information', formData);
   };
 
   const onSuccess = () => {
-    console.log('success');
+    push('/');
   };
-  const onError = () => {
-    console.log('error');
+
+  const onError = (e: Error) => {
+    console.log(e);
   };
 
   return useMutation({ mutationFn, onSuccess, onError });

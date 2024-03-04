@@ -5,9 +5,10 @@ import { MyProfileUpdateRequest } from '../types';
 
 const useProfileUpdateMutation = () => {
   const mutationFn = ({ profileImg, ...rest }: MyProfileUpdateRequest) => {
+    console.log('test');
     const formData = new FormData();
     profileImg && formData.append('profileImg', profileImg);
-    formData.append('additionalInfo', JSON.stringify(rest));
+    formData.append('infoUpdateRequest', JSON.stringify(rest));
     return API.formPut<null, FormData>('/profile', formData);
   };
 

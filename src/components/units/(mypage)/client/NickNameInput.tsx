@@ -34,6 +34,7 @@ const NicknameInput = ({ defaultValue }: NicknameInputProps) => {
         onChange={onChange}
         autoComplete="off"
         required
+        maxLength={20}
         defaultValue={defaultValue}
         button={
           <Button type="button" variants="input" onClick={checkDouble}>
