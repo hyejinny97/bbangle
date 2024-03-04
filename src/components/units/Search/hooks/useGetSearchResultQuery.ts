@@ -1,34 +1,49 @@
-import { useQuery } from '@tanstack/react-query';
 import * as API from '@/api';
-import { IAllProductsType } from '@/commons/types/allProductsType';
+import { useQuery } from '@tanstack/react-query';
+import { GetProductsQueryProps, IAllProductsType } from '@/commons/types/allProductsType';
+import { IAllStoreType } from '@/commons/types/allstoreType';
+import { transformFilterValueToQueryString } from '@/commons/utils/transformFilterValueToQueryString';
 
-// /search?keyword={}
-
-interface getSearchResultQueryProps {
-  boards?: IAllProductsType;
-  stores?: IAllProductsType;
+interface GetSearchResultProps {
+  keyword: string;
+  filterValue: GetProductsQueryProps;
 }
 
-const getSearchResultQuery = async (keyword: string): Promise<getSearchResultQueryProps> => {
-  console.log(333 + keyword);
+interface SearchResultDataType {
+  boards: IAllProductsType;
+  stores: IAllStoreType;
+}
+
+interface GetSearchResultReturnType {
+  products: IAllProductsType['content'];
+  stores: IAllStoreType['content'];
+}
+
+const getSearchResult = async ({
+  keyword,
+  filterValue
+}: GetSearchResultProps): Promise<GetSearchResultReturnType> => {
   try {
-    if (keyword) {
-      const result = await API.get<{ data: getSearchResultQueryProps }>(
-        `/search?keyword=${keyword}&storePage=0&boardPage=0`
-      );
-      console.log('11', result.data);
-      return result.data;
-    }
-    return {};
-  } catch (err) {
-    console.log(err);
+    if (!keyword) return { products: [], stores: [] };
+
+    const queryString = transformFilterValueToQueryString(filterValue);
+    const { data } = await API.get<SearchResultDataType>(
+      `/search?keyword=${keyword}&${queryString}&storePage=0&boardPage=0`
+    );
+
+    return { products: data.boards.content, stores: data.stores.content };
+  } catch (error) {
+    console.error(error);
+    return { products: [], stores: [] };
   }
-  return {};
 };
 
-export const useGetSearchResultQuery = (keyword: string) => {
-  return useQuery<getSearchResultQueryProps, Error>({
-    queryKey: ['["searchProducts"]'],
-    queryFn: () => getSearchResultQuery(keyword)
+export const useGetSearchResultQuery = ({ keyword, filterValue }: GetSearchResultProps) => {
+  return useQuery<GetSearchResultReturnType, Error>({
+    queryKey: ['searchResults', keyword, filterValue],
+    queryFn: () => getSearchResult({ keyword, filterValue }),
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    refetchOnWindowFocus: false
   });
 };

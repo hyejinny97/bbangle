@@ -18,7 +18,7 @@ const RecentChip = ({ title, onClick }: RecentChipProps) => {
   return (
     <p className="flex items-center justify-center gap-[4px]">
       <Link
-        href={`/search?query=${title}`}
+        href={`/search/products?query=${title}`}
         className="text-xs font-medium font-Pretendard leading-[18px] text-zinc-600 "
       >
         {title}

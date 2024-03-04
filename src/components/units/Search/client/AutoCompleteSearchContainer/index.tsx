@@ -23,7 +23,7 @@ const AutoCompleteSearchItem = ({ text, keyword }: AutoCompleteSearchItemProps) 
   const noMatched = keywordStartIdx === -1;
 
   return (
-    <Link href={`/search?query=${text}`}>
+    <Link href={`/search/products?query=${text}`}>
       <div className="p-[10px] border-b border-solid border-color-Gray100 bg-white text-[14px] text-color-Gray900">
         {noMatched ? (
           text

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { fetchPopularKeywords } from '@/components/units/Search/api/fetchPopularKeywords';
 
 const PopularKeyword = async () => {
@@ -8,7 +9,9 @@ const PopularKeyword = async () => {
       {popularKeywords.map((item, i) => (
         <div key={i} className="flex gap-[6px]">
           <p className="text-red-500 text-sm font-bold">{i + 1}</p>
-          <p className="text-neutral-800 text-sm font-normal">{item}</p>
+          <Link href={`/search/products?query=${item}`}>
+            <p className="text-neutral-800 text-sm font-normal">{item}</p>
+          </Link>
         </div>
       ))}
     </div>
