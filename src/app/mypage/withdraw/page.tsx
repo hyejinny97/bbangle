@@ -1,8 +1,8 @@
 import Header from '@/components/commons/header/client/Header';
-import { IconSadCharacter } from '@/components/units/Withdraw/client/Icons';
-import DeleteReasonList from '@/components/units/Withdraw/client/DeleteReasonList';
-import Agree from '@/components/units/Withdraw/client/Agree';
-import WithdrawButton from '@/components/units/Withdraw/client/WithdrawButton';
+import { IconSadCharacter } from '@/components/units/(mypage)/Withdraw/client/Icons';
+import DeleteReasonList from '@/components/units/(mypage)/Withdraw/client/DeleteReasonList';
+import Agree from '@/components/units/(mypage)/Withdraw/client/Agree';
+import WithdrawButton from '@/components/units/(mypage)/Withdraw/client/WithdrawButton';
 
 const Withdraw = () => {
   return (
