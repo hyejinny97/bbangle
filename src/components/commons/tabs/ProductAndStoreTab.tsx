@@ -16,10 +16,9 @@ const PRODUCT_IDX = 0;
 const STORE_IDX = 1;
 
 const ProductAndStoreTab = ({ productCount, storeCount }: ProductAndStoreTabProps) => {
-  const names = [
-    TAB_NAMES.product + (typeof productCount === 'number' ? `(${productCount})` : ''),
-    TAB_NAMES.store + (typeof storeCount === 'number' ? `(${storeCount})` : '')
-  ];
+  const productCountStr = typeof productCount === 'number' ? `(${productCount})` : '';
+  const storeCountStr = typeof storeCount === 'number' ? `(${storeCount})` : '';
+  const names = [`${TAB_NAMES.product} ${productCountStr}`, `${TAB_NAMES.store} ${storeCountStr}`];
 
   const router = useRouter();
   const pathname = usePathname();
@@ -30,7 +29,8 @@ const ProductAndStoreTab = ({ productCount, storeCount }: ProductAndStoreTabProp
   const defaultPath = segments.join('/');
 
   const handleTabChange = (activeTabIdx: number) => {
-    const path = `${defaultPath}/${activeTabIdx === PRODUCT_IDX ? 'products' : 'stores'}`;
+    const activeTab = activeTabIdx === PRODUCT_IDX ? 'products' : 'stores';
+    const path = `${defaultPath}/${activeTab}`;
     const queryString = searchParams.toString();
 
     router.push(queryString ? path + '?' + queryString : path);
