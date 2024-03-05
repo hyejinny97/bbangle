@@ -9,18 +9,13 @@ const ProductAndStoreTabWithCount = () => {
   const searchParams = useSearchParams();
   const keyword = searchParams.get('query') || '';
 
-  const { data: products } = useGetSearchProductsQuery({
+  const { itemCount: productCount } = useGetSearchProductsQuery({
     keyword,
     filterValue: { category: '', tags: [] }
   });
-  const { data: stores } = useGetSearchStoresQuery({ keyword });
+  const { itemCount: storeCount } = useGetSearchStoresQuery({ keyword });
 
-  return (
-    <ProductAndStoreTab
-      productCount={products && products.itemCount}
-      storeCount={stores && stores.itemCount}
-    />
-  );
+  return <ProductAndStoreTab productCount={productCount} storeCount={storeCount} />;
 };
 
 export default ProductAndStoreTabWithCount;
