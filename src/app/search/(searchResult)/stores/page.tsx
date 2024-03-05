@@ -1,8 +1,6 @@
 'use client';
 
-import { useRecoilValue } from 'recoil';
-import { filterValueState } from '@/atoms/atom';
-import { useGetSearchResultQuery } from '@/components/units/Search/hooks/useGetSearchResultQuery';
+import { useGetSearchStoresQuery } from '@/components/units/Search/hooks/useGetSearchStoresQuery';
 import StoreCard from '@/components/units/(main)/Stores/client/StoreCard';
 import NoSearchResult from '@/components/units/Search/client/NoSearchResult';
 
@@ -11,13 +9,12 @@ interface SearchStoresProps {
 }
 
 const SearchStores = ({ searchParams: { query } }: SearchStoresProps) => {
-  const filterValue = useRecoilValue(filterValueState);
-  const { data } = useGetSearchResultQuery({ keyword: query || '', filterValue });
+  const { data } = useGetSearchStoresQuery({ keyword: query || '' });
 
   return (
     <div className="w-full">
-      {data && data.stores.length > 0 ? (
-        data.stores.map(store => <StoreCard key={store.storeId} data={store} />)
+      {data && data.itemCount > 0 ? (
+        data.content.map(store => <StoreCard key={store.storeId} data={store} />)
       ) : (
         <NoSearchResult />
       )}
