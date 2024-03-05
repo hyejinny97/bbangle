@@ -2,18 +2,29 @@ import { useMutation } from '@tanstack/react-query';
 
 import * as API from '@/api';
 import { MyProfileUpdateRequest } from '../types';
+import { revalidateTag } from '@/action';
 
 const useProfileUpdateMutation = () => {
   const mutationFn = ({ profileImg, ...rest }: MyProfileUpdateRequest) => {
-    console.log('test');
     const formData = new FormData();
-    profileImg && formData.append('profileImg', profileImg);
-    formData.append('infoUpdateRequest', JSON.stringify(rest));
+    const jsonData = JSON.stringify(rest);
+    formData.append('infoUpdateRequest', new Blob([jsonData], { type: 'application/json' }));
+    if (profileImg) formData.append('profileImg', profileImg);
     return API.formPut<null, FormData>('/profile', formData);
   };
 
+  const onSuccess = async () => {
+    await revalidateTag('profile');
+  };
+
+  const onError = () => {
+    // Todo. toast popup
+  };
+
   return useMutation({
-    mutationFn
+    mutationFn,
+    onSuccess,
+    onError
   });
 };
 
