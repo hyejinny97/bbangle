@@ -1,17 +1,38 @@
-import Link from 'next/link';
-import NotificationTitle from '@/components/units/Notifications/client/NotificationTitle';
-import { fetchAllNotifications } from '@/components/units/Notifications/api/fetchAllNotifications';
+'use client';
 
-const Notifications = async () => {
-  const notifications = await fetchAllNotifications();
+import Link from 'next/link';
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
+import { useGetAllNotificationsQuery } from '@/components/units/Notifications/hooks/useGetAllNotificationsQuery';
+import NotificationTitle from '@/components/units/Notifications/client/NotificationTitle';
+import Loading from '@/components/commons/Loading';
+
+const Notifications = () => {
+  const { notifications, isLoading, isError, fetchNextPage, isFetchingNextPage } =
+    useGetAllNotificationsQuery();
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (!inView) return;
+    fetchNextPage();
+  }, [inView, fetchNextPage]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (isError) {
+    return <div className="p-[16px]">Error</div>;
+  }
 
   return (
     <div>
-      {notifications.map(item => (
-        <Link key={item.id} href={`/notifications/${item.id}`}>
-          <NotificationTitle title={item.title} date={item.createdAt} />
-        </Link>
-      ))}
+      {notifications &&
+        notifications.map((item, idx) => (
+          <Link key={idx} href={`/notifications/${item.id}`}>
+            <NotificationTitle title={item.title} date={item.createdAt} />
+          </Link>
+        ))}
+      {isFetchingNextPage ? <Loading /> : <div ref={ref}></div>}
     </div>
   );
 };

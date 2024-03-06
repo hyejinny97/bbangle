@@ -19,7 +19,7 @@ const SearchStores = ({ searchParams: { query } }: SearchStoresProps) => {
   useEffect(() => {
     if (!inView) return;
     fetchNextPage();
-  }, [inView]);
+  }, [inView, fetchNextPage]);
 
   if (isLoading) return <Loading />;
 
