@@ -1,5 +1,6 @@
 import * as API from '@/api';
 import { UserProfileType } from '../types';
+import { REAVALIDATE_TAG } from '@/commons/constants/revalidateTags';
 
 export const fetchUserProfile = async (): Promise<UserProfileType> => {
   try {
@@ -8,7 +9,7 @@ export const fetchUserProfile = async (): Promise<UserProfileType> => {
         authorization: API.TMP_TOKEN
       },
       next: {
-        tags: ['profile']
+        tags: [REAVALIDATE_TAG.profile]
       }
     });
     if (!response.ok) throw Error(`[${response.status}] fetchUserProfile 에러`);

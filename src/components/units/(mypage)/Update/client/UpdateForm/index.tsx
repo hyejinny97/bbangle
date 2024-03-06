@@ -19,6 +19,7 @@ interface UpdateFormProps {
 const UpdateForm = ({
   defaultValues: { profileImg, nickname, phoneNumber, birthDate }
 }: UpdateFormProps) => {
+  console.log({ profileImg, nickname, phoneNumber, birthDate });
   const { mutate } = useProfileUpdateMutation();
   const updateForm = useRecoilValue(updateFormState);
 
