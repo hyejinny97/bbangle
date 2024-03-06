@@ -1,21 +1,32 @@
 import Link from 'next/link';
+import { useRecoilState } from 'recoil';
+import { filterValueState } from '@/atoms/atom';
 
 interface CategoryProps {
   name: string;
   icon: React.ReactElement;
-  url: string;
-  ProductName: string;
+  isCategoryTab: boolean;
 }
 
-const CategoryBtn = ({ name, icon, url, ProductName }: CategoryProps) => {
+const CategoryBtn = ({ name, icon, isCategoryTab }: CategoryProps) => {
+  const [filterValue, setFilterValue] = useRecoilState(filterValueState);
+
+  const handleClickBtn = () => {
+    const newFilterValue = isCategoryTab
+      ? { ...filterValue, category: name }
+      : { ...filterValue, tags: [name] };
+
+    setFilterValue(newFilterValue);
+  };
+
   return (
     <Link
-      href={url}
-      className={`${ProductName === '상품별' ? 'w-1/4' : 'w-1/3'} flex flex-col justify-startc
-        items-center gap-1 py-3`}
+      href="/products"
+      className="flex flex-col justify-start items-center gap-1 py-3"
+      onClick={handleClickBtn}
     >
       <div>{icon}</div>
-      <div className="text-sm font-normal leading-tight text-color-Gray900">{name}</div>
+      <div className="text-sm font-normal leading-tight text-gray-900">{name}</div>
     </Link>
   );
 };

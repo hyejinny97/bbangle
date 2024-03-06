@@ -122,7 +122,7 @@ const CategoryList = () => {
   const [isCategoryTab] = useRecoilState(isCategoryTabStateNew);
 
   return (
-    <div className="flex flex-wrap w-[92%] m-auto py-4">
+    <div className={`grid w-[92%] m-auto py-4 ${isCategoryTab ? 'grid-cols-4' : 'grid-cols-3'}`}>
       {categoryMenu
         .filter(category => category.category === (isCategoryTab ? '상품별' : '성분별'))
         .map(category => (
@@ -130,8 +130,7 @@ const CategoryList = () => {
             key={category.id}
             name={category.name}
             icon={category.icon}
-            url={category.url}
-            ProductName={isCategoryTab ? '상품별' : '성분별'}
+            isCategoryTab={isCategoryTab}
           />
         ))}
     </div>

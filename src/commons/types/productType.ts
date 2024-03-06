@@ -1,6 +1,6 @@
 export interface IProductType {
   boardId: number;
-  // storeId: number;
+  storeId: number;
   storeName: string;
   thumbnail: string;
   title: string;

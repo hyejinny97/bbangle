@@ -1,7 +1,7 @@
 'use client';
 
 import Button from '@/components/commons/button/client/Button';
-import WithdrawPopup from '@/components/units/Withdraw/client/WithdrawPopup';
+import WithdrawPopup from '@/components/units/(mypage)/Withdraw/client/WithdrawPopup';
 import usePopup from '@/commons/hooks/usePopup';
 
 const WithdrawButton = () => {

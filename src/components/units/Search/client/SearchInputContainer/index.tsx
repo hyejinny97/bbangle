@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useAddRecentSearchKeywordMutation } from '@/components/units/Search/hooks/useAddRecentSearchKeywordMutation';
 import { useDebounce } from '@/components/units/Search/hooks/useDebounce';
 import SearchInput from '@/components/commons/inputs/SearchInput';
@@ -9,27 +9,27 @@ import AutoCompleteSearchContainer from '@/components/units/Search/client/AutoCo
 
 const SearchInputContainer = () => {
   const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
+  const query = searchParams.get('query');
 
-  const [text, setText] = useState(searchParams.get('query') || '');
+  const [text, setText] = useState(query || '');
   const [showAutoComplete, setShowAutoComplete] = useState(false);
   const debouncedText = useDebounce<string>({ value: text, delay: 300 });
 
   const { mutate } = useAddRecentSearchKeywordMutation();
 
   useEffect(() => {
-    const handleClick = () => {
+    const handleWindowClick = () => {
       setShowAutoComplete(false);
     };
-    window.addEventListener('click', handleClick);
+    window.addEventListener('click', handleWindowClick);
 
-    return () => window.removeEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleWindowClick);
   }, []);
 
   useEffect(() => {
-    setText(searchParams.get('query') || '');
-  }, [searchParams]);
+    setText(query || '');
+  }, [query]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
@@ -39,9 +39,10 @@ const SearchInputContainer = () => {
   const handleInputEnter = () => {
     const params = new URLSearchParams(searchParams.toString());
     params.set('query', text);
-    router.push(pathname + '?' + params.toString());
+    router.push('/search/products' + '?' + params.toString());
 
     mutate(text);
+    setShowAutoComplete(false);
   };
 
   return (
