@@ -1,4 +1,4 @@
-import DeleteReasonItem from '@/components/units/Withdraw/client/DeleteReasonItem';
+import DeleteReasonItem from '@/components/units/(mypage)/Withdraw/client/DeleteReasonItem';
 
 const REASONS = [
   { content: '원하는 정보가 부족해요.' },

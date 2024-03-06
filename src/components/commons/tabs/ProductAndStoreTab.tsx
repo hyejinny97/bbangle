@@ -28,6 +28,8 @@ const ProductAndStoreTab = ({ productCount, storeCount }: ProductAndStoreTabProp
   const isProductsPage = segments.pop() === 'products';
   const defaultPath = segments.join('/');
 
+  const activeTabIdx = isProductsPage ? PRODUCT_IDX : STORE_IDX;
+
   const handleTabChange = (activeTabIdx: number) => {
     const activeTab = activeTabIdx === PRODUCT_IDX ? 'products' : 'stores';
     const path = `${defaultPath}/${activeTab}`;
@@ -36,13 +38,7 @@ const ProductAndStoreTab = ({ productCount, storeCount }: ProductAndStoreTabProp
     router.push(queryString ? path + '?' + queryString : path);
   };
 
-  return (
-    <TabContainer
-      names={names}
-      initActiveTabIdx={isProductsPage ? PRODUCT_IDX : STORE_IDX}
-      onChange={handleTabChange}
-    />
-  );
+  return <TabContainer names={names} activeTabIdx={activeTabIdx} onChange={handleTabChange} />;
 };
 
 export default ProductAndStoreTab;

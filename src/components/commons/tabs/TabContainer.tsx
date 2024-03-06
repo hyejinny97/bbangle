@@ -1,24 +1,16 @@
 'use client';
 
-import { useState } from 'react';
 import TabButton from '@/components/commons/tabs/TabButton';
 
 interface TabContainerProps {
   names: Array<string>;
-  initActiveTabIdx?: number;
+  activeTabIdx: number;
   onChange: (_activeTabIdx: number) => void;
 }
 
 const FIRST_IDX = 0;
 
-const TabContainer = ({ names, initActiveTabIdx = FIRST_IDX, onChange }: TabContainerProps) => {
-  const [activeTabIdx, setActiveTabIdx] = useState(initActiveTabIdx);
-
-  const handleTabButtonClick = (clickedTabIdx: number) => {
-    setActiveTabIdx(clickedTabIdx);
-    onChange(clickedTabIdx);
-  };
-
+const TabContainer = ({ names, activeTabIdx, onChange }: TabContainerProps) => {
   return (
     <div className="w-full h-[43px] bg-white justify-start items-start inline-flex relative">
       {names.map((name, idx) => (
@@ -26,7 +18,7 @@ const TabContainer = ({ names, initActiveTabIdx = FIRST_IDX, onChange }: TabCont
           key={name}
           name={name}
           isActive={activeTabIdx === idx}
-          onClick={() => handleTabButtonClick(idx)}
+          onClick={() => onChange(idx)}
         />
       ))}
 

@@ -9,11 +9,7 @@ type NotificationType = {
 export const fetchNotificationDetail = async (id: number): Promise<NotificationType> => {
   try {
     const response = await fetch(`${API.serverUrl}/notice/${id}`, {
-      headers: {
-        authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwOTAyNDA5NywiZXhwIjoxNzA5MDM0ODk3LCJpZCI6OX0.VuE4WMJnMnBItQpmBkNo74Wym_f33Lsu0m1t8jNP4g0'
-      },
-      next: { tags: ['notificationDetail'] }
+      next: { tags: [`notificationDetail:${id}`] }
     });
     if (!response.ok) throw Error(`[${response.status}] fetchNotificationDetail 에러`);
 
