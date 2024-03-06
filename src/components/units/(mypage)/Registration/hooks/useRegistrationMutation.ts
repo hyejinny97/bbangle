@@ -18,8 +18,8 @@ const useRegistrationMutation = () => {
     push('/');
   };
 
-  const onError = (e: Error) => {
-    console.log(e);
+  const onError = () => {
+    // Todo. tosat
   };
 
   return useMutation({ mutationFn, onSuccess, onError });

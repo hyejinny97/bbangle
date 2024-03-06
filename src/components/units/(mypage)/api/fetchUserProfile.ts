@@ -1,14 +1,12 @@
 import * as API from '@/api';
 import { UserProfileType } from '../types';
 
-const TMP_TOKEN =
-  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwOTY0MzcwMSwiZXhwIjoxNzA5NjU0NTAxLCJpZCI6OH0.P5E1MT2BxAoXaNOYJ-CLREZ3eTku9XhV8bbTIPybULQ';
-
 export const fetchUserProfile = async (): Promise<UserProfileType> => {
+  console.log('fetch');
   try {
     const response = await fetch(`${API.serverUrl}/profile`, {
       headers: {
-        authorization: `Bearer ${TMP_TOKEN}`
+        authorization: API.TMP_TOKEN
       },
       next: {
         tags: ['profile']

@@ -13,8 +13,8 @@ const useProfileUpdateMutation = () => {
     return API.formPut<null, FormData>('/profile', formData);
   };
 
-  const onSuccess = async () => {
-    await revalidateTag('profile');
+  const onSuccess = () => {
+    revalidateTag('profile');
   };
 
   const onError = () => {
