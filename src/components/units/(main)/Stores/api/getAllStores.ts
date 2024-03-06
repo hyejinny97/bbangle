@@ -1,8 +1,17 @@
 import * as API from '@/api';
-import { IAllStoreType } from '@/commons/types/allstoreType';
+import { IStoreType } from '@/commons/types/storeType';
 
-export const getAllStores = async (): Promise<IAllStoreType> => {
-  const result = await API.get<{ data: IAllStoreType }>('/stores');
-  console.log('what', result.data);
-  return result.data;
+interface GetAllStoresProps {
+  pageParam: number;
+}
+
+interface AllStoresType {
+  content: Array<IStoreType>;
+  last: boolean;
+}
+
+export const getAllStores = async ({ pageParam }: GetAllStoresProps): Promise<AllStoresType> => {
+  const { data } = await API.get<AllStoresType>(`/stores?page=${pageParam}`);
+
+  return data;
 };

@@ -1,10 +1,21 @@
-import { useQuery } from '@tanstack/react-query';
-import { IAllStoreType } from '@/commons/types/allstoreType';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { getAllStores } from '../api/getAllStores';
 
 export const useGetAllStoresQuery = () => {
-  return useQuery<IAllStoreType, Error>({
+  const { data, ...rest } = useInfiniteQuery({
     queryKey: ['stores'],
-    queryFn: () => getAllStores()
+    queryFn: ({ pageParam }: { pageParam: number }) => getAllStores({ pageParam }),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, __, lastPageParam) => {
+      const nextPageParam = lastPage.last ? undefined : lastPageParam + 1;
+      return nextPageParam;
+    },
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    refetchOnWindowFocus: false
   });
+
+  const stores = data?.pages.map(page => page.content).flat();
+
+  return { stores, ...rest };
 };
