@@ -2,17 +2,18 @@
 
 import FilterIcon from './assets/filter.svg';
 import SortingButton from '../SortingButton';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { categoryItems, filterValueState } from '@/atoms/atom';
+import { useRecoilState } from 'recoil';
 import FilterModal from './FilterModal';
 import { useState } from 'react';
-
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import useModal from '@/commons/hooks/useModal';
+import { filterValueState } from '../../atoms';
+import { FILTER_VALUES } from '@/commons/constants/filterValues';
 
 const FilterTab = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const FILTER_LIST = useRecoilValue(categoryItems);
+  const FILTER_LIST = FILTER_VALUES.categories;
+
   const [filterValue, setFilterValue] = useRecoilState(filterValueState);
   const { openModal } = useModal();
 
@@ -34,7 +35,7 @@ const FilterTab = () => {
   return (
     <div className="w-full relative">
       <div className="flex gap-[6px] m-auto pr-[40px] w-[92%] my-[16px] overflow-x-scroll scrollbar-hide ">
-        {FILTER_LIST.map((item, index) => {
+        {FILTER_VALUES.categories.map((item, index) => {
           const isTagActive = filterValue.category === item;
           const isNewTag = FILTER_LIST[0] !== '전체';
 

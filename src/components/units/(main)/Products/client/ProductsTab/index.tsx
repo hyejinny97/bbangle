@@ -2,10 +2,10 @@
 
 import ProductCard from '@/components/commons/card/ProductCard';
 import { useGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
-import { filterValueState } from '@/atoms/atom';
 import { useRecoilValue } from 'recoil';
 import { useEffect } from 'react';
 import Loading from '@/components/commons/Loading';
+import { filterValueState } from '../../atoms';
 
 function ProductsTab() {
   const filterValue = useRecoilValue(filterValueState);
