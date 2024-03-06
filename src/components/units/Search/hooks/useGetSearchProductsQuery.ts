@@ -50,7 +50,8 @@ export const useGetSearchProductsQuery = ({
     },
     refetchOnMount: false,
     refetchOnReconnect: false,
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
+    staleTime: Infinity
   });
 
   const products = data?.pages.map(page => page.content).flat();

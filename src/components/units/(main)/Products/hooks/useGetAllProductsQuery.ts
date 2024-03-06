@@ -13,7 +13,8 @@ export const useGetAllProductsQuery = (query: ProductsQueryType) => {
     },
     refetchOnMount: false,
     refetchOnReconnect: false,
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
+    staleTime: Infinity
   });
 
   const products = data?.pages.map(page => page.content).flat();
