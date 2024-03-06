@@ -2,7 +2,6 @@ import * as API from '@/api';
 import { UserProfileType } from '../types';
 
 export const fetchUserProfile = async (): Promise<UserProfileType> => {
-  console.log('fetch');
   try {
     const response = await fetch(`${API.serverUrl}/profile`, {
       headers: {
