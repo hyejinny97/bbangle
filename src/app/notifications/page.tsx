@@ -15,7 +15,7 @@ const Notifications = () => {
   useEffect(() => {
     if (!inView) return;
     fetchNextPage();
-  }, [inView]);
+  }, [inView, fetchNextPage]);
 
   if (isLoading) {
     return <Loading />;

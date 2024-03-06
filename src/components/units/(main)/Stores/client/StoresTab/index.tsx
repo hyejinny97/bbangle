@@ -13,7 +13,7 @@ function StoresTab() {
   useEffect(() => {
     if (!inView) return;
     fetchNextPage();
-  }, [inView]);
+  }, [inView, fetchNextPage]);
 
   if (isLoading) {
     return (
