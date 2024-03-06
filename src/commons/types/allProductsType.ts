@@ -5,6 +5,7 @@ export interface IAllProductsType {
   itemCount: number;
   pageNumber: number;
   pageSize: number;
+  existNextPage: boolean;
 }
 
 export interface GetProductsQueryProps {

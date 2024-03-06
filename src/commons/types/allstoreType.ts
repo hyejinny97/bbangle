@@ -5,4 +5,5 @@ export interface IAllStoreType {
   itemCount: number;
   pageNumber: number;
   pageSize: number;
+  existNextPage: boolean;
 }
