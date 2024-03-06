@@ -4,16 +4,18 @@ import Filters from './assets/filter.svg';
 import SortingButton from '../SortingButton';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { categoryItems, filterValueState } from '@/atoms/atom';
-import FilterModal from '../FilterModal';
+import FilterModal from './FilterModal';
 import { useState } from 'react';
 
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
+import useModal from '@/commons/hooks/useModal';
 
 const FilterTab = () => {
   const [isChecked, setIsChecked] = useState(false);
   const FILTER_LIST = useRecoilValue(categoryItems);
   const [filterValue, setFilterValue] = useRecoilState(filterValueState);
-  const [modalVisible, setModalVisible] = useState(false);
+
+  const { openModal } = useModal();
 
   const handleFilterClick = (newCategory: string) => {
     setFilterValue(prev => ({
@@ -24,6 +26,10 @@ const FilterTab = () => {
 
   const checkHandled = () => {
     setIsChecked(!isChecked);
+  };
+
+  const openFilterModal = () => {
+    openModal(<FilterModal />);
   };
 
   // useEffect(() => {
@@ -72,11 +78,11 @@ const FilterTab = () => {
       </div>
       <button
         className="absolute right-[3%] top-[16px] bg-white pl-[6px]"
-        onClick={() => setModalVisible(true)}
+        onClick={openFilterModal}
       >
         <Filters />
       </button>
-      <div className="border-b border-solid border-gray-100 w-full "></div>
+      <hr className="border-0 bg-gray-100" />
       <div className="flex w-[92%] py-[12px] m-auto justify-between items-center ">
         <CheckBox isChecked={isChecked} onChange={checkHandled}>
           주문가능한 상품 보기
@@ -84,7 +90,6 @@ const FilterTab = () => {
 
         <SortingButton />
       </div>
-      <FilterModal isVisible={modalVisible} setVisible={setModalVisible} />
     </div>
   );
 };

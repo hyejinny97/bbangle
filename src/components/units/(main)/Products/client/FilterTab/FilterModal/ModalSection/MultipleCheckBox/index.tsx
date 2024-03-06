@@ -52,12 +52,12 @@ function MultipleCheckBox({
               isSelected ? 'bg-red-50' : 'bg-slate-100'
             }`}
           >
-            <CheckBox isChecked={isSelected} onChange={() => handleClick(item)}>
-              <div
+            <CheckBox name="category" isChecked={isSelected} onChange={() => handleClick(item)}>
+              <span
                 className={`text-gray-800 text-xs ${isSelected ? 'font-semibold' : 'font-normal'}`}
               >
                 {item}
-              </div>
+              </span>
             </CheckBox>
           </div>
         );

@@ -1,27 +1,22 @@
 'use client';
 
-import UpModal from '@/components/commons/modal/UpModal';
 import { useRecoilState } from 'recoil';
 import { filterValueState } from '@/atoms/atom';
-import { SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import SingleCheckBox from './ModalSection/SingleCheckBox';
 import MultipleCheckBox from './ModalSection/MultipleCheckBox';
 import { FILTER_VALUES } from '@/commons/constants/filterValues';
 import Button from '@/components/commons/button/client/Button';
+import UpModalNewVer from '@/components/commons/modal/UpModalNewVer';
+import useModal from '@/commons/hooks/useModal';
 
-interface ModalProps {
-  isVisible: boolean;
-  setVisible: React.Dispatch<SetStateAction<boolean>>;
-}
-
-function FilterModal({ isVisible, setVisible }: ModalProps) {
+function FilterModal() {
   const [filterValue, setFilterValue] = useRecoilState(filterValueState);
-
   const [selectedCategory, setSelectedCategory] = useState(filterValue.category);
   const [selectedTags, setSelectedTags] = useState(filterValue.tags);
+  const { closeModal } = useModal();
 
   const handleConfirm = () => {
-    setVisible(!isVisible);
     setFilterValue(prev => ({
       category: selectedCategory ? selectedCategory : prev.category,
       tags: selectedTags ? selectedTags : prev.tags
@@ -29,9 +24,9 @@ function FilterModal({ isVisible, setVisible }: ModalProps) {
   };
 
   const handleCancel = () => {
-    setVisible(!isVisible);
     setSelectedCategory(filterValue.category);
     setSelectedTags(filterValue.tags);
+    closeModal();
   };
 
   useEffect(() => {
@@ -40,7 +35,7 @@ function FilterModal({ isVisible, setVisible }: ModalProps) {
   }, [filterValue]);
 
   return (
-    <UpModal title="필터" isVisible={isVisible} toggleModal={handleCancel}>
+    <UpModalNewVer title="필터">
       <SingleCheckBox
         selectedItem={selectedCategory}
         setSelectedItem={setSelectedCategory}
@@ -63,7 +58,7 @@ function FilterModal({ isVisible, setVisible }: ModalProps) {
           확인
         </Button>
       </div>
-    </UpModal>
+    </UpModalNewVer>
   );
 }
 
