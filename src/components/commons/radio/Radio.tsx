@@ -3,6 +3,7 @@
 import React, { ChangeEvent, ReactNode, useId } from 'react';
 import Off from './assets/icon_radio_off.svg';
 import On from './assets/icon_radio_on.svg';
+import { twMerge } from 'tailwind-merge';
 
 interface RadioProps {
   isChecked: boolean;
@@ -11,6 +12,7 @@ interface RadioProps {
   value?: string;
   required?: boolean;
   children: ReactNode;
+  className?: string;
 }
 
 const Radio = ({
@@ -19,12 +21,19 @@ const Radio = ({
   name = '',
   value = '',
   required = false,
-  children
+  children,
+  className
 }: RadioProps) => {
   const id = useId();
 
   return (
-    <div>
+    <label
+      htmlFor={id}
+      className={twMerge(
+        'flex gap-[6px] text-gray-800 text-xs font-normal cursor-pointer items-center',
+        className
+      )}
+    >
       <input
         type="radio"
         id={id}
@@ -35,11 +44,9 @@ const Radio = ({
         required={required}
         hidden
       />
-      <label htmlFor={id} className="flex text-gray-800 text-xs font-normal cursor-pointer">
-        <span className="mr-[0.5rem]">{isChecked ? <On /> : <Off />}</span>
-        {children}
-      </label>
-    </div>
+      <span className="">{isChecked ? <On /> : <Off />}</span>
+      {children}
+    </label>
   );
 };
 

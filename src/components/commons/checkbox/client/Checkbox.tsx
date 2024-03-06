@@ -3,6 +3,7 @@
 import React, { ChangeEvent, ReactNode, useId } from 'react';
 import Off from '../assets/icn_check_off.svg';
 import On from '../assets/icn_check_on.svg';
+import { twMerge } from 'tailwind-merge';
 
 interface CheckBoxProps {
   isChecked: boolean;
@@ -11,6 +12,7 @@ interface CheckBoxProps {
   value?: string;
   required?: boolean;
   children: ReactNode;
+  className?: string;
 }
 
 const CheckBox = ({
@@ -19,12 +21,19 @@ const CheckBox = ({
   name = '',
   value = '',
   required = false,
-  children
+  children,
+  className
 }: CheckBoxProps) => {
   const id = useId();
 
   return (
-    <div>
+    <label
+      htmlFor={id}
+      className={twMerge(
+        'flex text-gray-800 text-xs font-normal cursor-pointer items-center',
+        className
+      )}
+    >
       <input
         type="checkbox"
         id={id}
@@ -35,14 +44,10 @@ const CheckBox = ({
         required={required}
         hidden
       />
-      <label
-        htmlFor={id}
-        className="flex text-gray-800 text-xs font-normal cursor-pointer items-center"
-      >
-        <span className="mr-[0.5rem]">{isChecked ? <On /> : <Off />}</span>
-        {children}
-      </label>
-    </div>
+
+      <span className="mr-[0.5rem]">{isChecked ? <On /> : <Off />}</span>
+      {children}
+    </label>
   );
 };
 

@@ -1,6 +1,6 @@
 'use client';
 
-import Filters from './assets/filter.svg';
+import FilterIcon from './assets/filter.svg';
 import SortingButton from '../SortingButton';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { categoryItems, filterValueState } from '@/atoms/atom';
@@ -14,7 +14,6 @@ const FilterTab = () => {
   const [isChecked, setIsChecked] = useState(false);
   const FILTER_LIST = useRecoilValue(categoryItems);
   const [filterValue, setFilterValue] = useRecoilState(filterValueState);
-
   const { openModal } = useModal();
 
   const handleFilterClick = (newCategory: string) => {
@@ -31,23 +30,6 @@ const FilterTab = () => {
   const openFilterModal = () => {
     openModal(<FilterModal />);
   };
-
-  // useEffect(() => {
-  //     if (filterValue.tags) {
-  //         const newTag = `${transformIngredientTag(filterValue.tags[0])} ${
-  //             filterValue.tags.length > 1 ? `외 ${filterValue.tags.length - 1}` : ''
-  //         }`;
-  //         if (!newFilterItem.includes(newTag)) {
-  //             setNewFilterItem(prevItems => {
-  //                 return [newTag, ...prevItems];
-  //             });
-  //         }
-  //         setNewFilterItem(prevItems => {
-  //             const updatedItems = filterItem.filter(item => item !== prevItems[0]);
-  //             return [newTag, ...updatedItems];
-  //         });
-  //     }
-  // }, [filterValue, filterItem, newFilterItem]);
 
   return (
     <div className="w-full relative">
@@ -80,7 +62,7 @@ const FilterTab = () => {
         className="absolute right-[3%] top-[16px] bg-white pl-[6px]"
         onClick={openFilterModal}
       >
-        <Filters />
+        <FilterIcon />
       </button>
       <hr className="border-0 bg-gray-100" />
       <div className="flex w-[92%] py-[12px] m-auto justify-between items-center ">
