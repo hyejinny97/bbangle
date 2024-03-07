@@ -1,8 +1,8 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { ProductsQueryType } from '@/commons/types/allProductsType';
+import { IFilterType } from '@/components/units/(main)/Products/types';
 import { getAllProducts } from '../api/getAllProducts';
 
-export const useGetAllProductsQuery = (query: ProductsQueryType) => {
+export const useGetAllProductsQuery = (query: IFilterType) => {
   const { data, ...rest } = useInfiniteQuery({
     queryKey: ['products', query],
     queryFn: ({ pageParam }: { pageParam: number }) => getAllProducts({ query, pageParam }),

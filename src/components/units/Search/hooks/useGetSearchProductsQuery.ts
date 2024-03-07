@@ -1,17 +1,18 @@
 import * as API from '@/api';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { ProductsQueryType, IAllProductsType } from '@/commons/types/allProductsType';
+import { IFilterType } from '@/components/units/(main)/Products/types';
+import { IAllProductsType } from '@/commons/types/allProductsType';
 import { transformFilterValueToQueryString } from '@/commons/utils/transformFilterValueToQueryString';
 
 interface GetSearchProductsProps {
   keyword: string;
-  filterValue: ProductsQueryType;
+  filterValue: IFilterType;
   pageParam: number;
 }
 
 interface UseGetSearchProductsQueryProps {
   keyword: string;
-  filterValue: ProductsQueryType;
+  filterValue: IFilterType;
 }
 
 const getSearchProducts = async ({
