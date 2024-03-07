@@ -7,9 +7,3 @@ export interface IAllProductsType {
   pageSize: number;
   existNextPage: boolean;
 }
-
-export interface ProductsQueryType {
-  category?: string;
-  tags?: string[];
-  sort?: string;
-}

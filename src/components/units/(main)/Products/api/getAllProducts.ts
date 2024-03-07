@@ -1,10 +1,10 @@
 import * as API from '@/api';
 import { IProductType } from '@/commons/types/productType';
-import { ProductsQueryType } from '@/commons/types/allProductsType';
+import { IFilterType } from '@/components/units/(main)/Products/types';
 import { transformFilterValueToQueryString } from '@/commons/utils/transformFilterValueToQueryString';
 
 interface GetAllProductsProps {
-  query: ProductsQueryType;
+  query: IFilterType;
   pageParam: number;
 }
 

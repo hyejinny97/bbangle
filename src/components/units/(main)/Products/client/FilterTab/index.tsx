@@ -1,7 +1,7 @@
 'use client';
 
 import FilterIcon from './assets/filter.svg';
-import SortingButton from '../SortingButton';
+import ProductSortSelect from '@/components/commons/selects/ProductSortSelect';
 import { useRecoilState } from 'recoil';
 import FilterModal from './FilterModal';
 import { useState } from 'react';
@@ -71,7 +71,7 @@ const FilterTab = () => {
           주문가능한 상품 보기
         </CheckBox>
 
-        <SortingButton />
+        <ProductSortSelect />
       </div>
     </div>
   );

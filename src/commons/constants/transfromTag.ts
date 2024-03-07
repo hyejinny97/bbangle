@@ -63,6 +63,16 @@ export function transformTagToEng(tag: string): string {
   return tag;
 }
 
+export function transformSortToEng(sort: string): string {
+  if (sort === '추천순') {
+    return 'recommend';
+  }
+  if (sort === '인기순') {
+    return 'popular';
+  }
+  return sort;
+}
+
 export function transformDayTag(tag: string): string {
   if (tag === 'fri') {
     return '금';
