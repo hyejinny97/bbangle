@@ -15,7 +15,6 @@ const PhoneNumberInput = ({ defaultValue }: PhoneNumberInputProps) => {
 
   const onChange: ChangeEventHandler<HTMLInputElement> = e => {
     const { value } = e.target;
-    console.log('HHH', value);
     setPhoneNumber(value);
   };
 
@@ -26,8 +25,8 @@ const PhoneNumberInput = ({ defaultValue }: PhoneNumberInputProps) => {
         label="휴대폰 번호"
         placeholder="-를 제외한 휴대폰 번호를 입력해 주세요."
         button={
-          <Button type="button" variants="input" onClick={() => {}}>
-            중복확인
+          <Button disabled type="button" variants="input" onClick={() => {}}>
+            인증하기
           </Button>
         }
         defaultValue={defaultValue}

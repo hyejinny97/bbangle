@@ -2,7 +2,6 @@
 
 import { FormEventHandler } from 'react';
 import { useRecoilValue } from 'recoil';
-import { convertURLtoFile } from '@/commons/utils';
 import Button from '@/components/commons/button/client/Button';
 import BirthdayInput from '@/components/units/(mypage)/client/BirthdateInput';
 import MoreSection from '@/components/units/(mypage)/Update/client/UpdateForm/MoreSection';
@@ -23,16 +22,8 @@ const UpdateForm = ({
   const { mutate } = useProfileUpdateMutation();
   const updateForm = useRecoilValue(updateFormState);
 
-  const onSubmit: FormEventHandler<HTMLFormElement> = async e => {
-    const defaultImgFile = profileImg ? await convertURLtoFile(profileImg) : null;
-    const updatedData = {
-      profileImg: updateForm.profileImg || defaultImgFile,
-      nickname: updateForm.nickname || nickname,
-      birthDate: updateForm.birthDate || birthDate,
-      phoneNumber: updateForm.phoneNumber || phoneNumber
-    };
-
-    mutate(updatedData);
+  const onSubmit: FormEventHandler<HTMLFormElement> = e => {
+    mutate(updateForm);
     e.preventDefault();
   };
 

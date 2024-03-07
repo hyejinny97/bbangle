@@ -1,19 +1,28 @@
 'use client';
 
+
 import ProductCard from '@/components/commons/card/ProductCard';
 import { useGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
 import { useRecoilValue } from 'recoil';
 import { useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
+import { useInView } from 'react-intersection-observer';
+import { filterValueState } from '@/atoms/atom';
+import { useGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
+import ProductCard from '@/components/commons/card/ProductCard';
 import Loading from '@/components/commons/Loading';
 import { filterValueState } from '../../atoms';
 
-function ProductsTab() {
+const ProductsTab = () => {
   const filterValue = useRecoilValue(filterValueState);
-  const { data, refetch, isError, isLoading } = useGetAllProductsQuery(filterValue);
+  const { products, isError, isLoading, fetchNextPage, isFetchingNextPage } =
+    useGetAllProductsQuery(filterValue);
+  const { ref, inView } = useInView();
 
   useEffect(() => {
-    refetch();
-  }, [filterValue, refetch]);
+    if (!inView) return;
+    fetchNextPage();
+  }, [inView, fetchNextPage]);
 
   if (isLoading) {
     return <Loading />;
@@ -24,13 +33,15 @@ function ProductsTab() {
 
   return (
     <div className="flex flex-wrap w-[92%] m-auto gap-x-[4%] gap-y-4">
-      {data?.content.map((product, i) => (
-        <div key={i} className="w-[48%]">
-          <ProductCard product={product} />
-        </div>
-      ))}
+      {products &&
+        products.map(product => (
+          <div key={product.boardId} className="w-[48%]">
+            <ProductCard product={product} />
+          </div>
+        ))}
+      {isFetchingNextPage ? <Loading /> : <div ref={ref}></div>}
     </div>
   );
-}
+};
 
 export default ProductsTab;

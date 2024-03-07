@@ -21,7 +21,11 @@ const nextConfig = {
   },
 
   images: {
-    remotePatterns: [{ hostname: 'firebasestorage.googleapis.com' }, { hostname: 'k.kakaocdn.net' }]
+    remotePatterns: [
+      { hostname: 'bbangle-bucket.kr.object.ncloudstorage.com' },
+      { hostname: 'firebasestorage.googleapis.com' },
+      { hostname: 'k.kakaocdn.net' }
+    ]
   }
 };
 

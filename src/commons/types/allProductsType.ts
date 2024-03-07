@@ -8,7 +8,7 @@ export interface IAllProductsType {
   existNextPage: boolean;
 }
 
-export interface GetProductsQueryProps {
+export interface ProductsQueryType {
   category?: string;
   tags?: string[];
   sort?: string;

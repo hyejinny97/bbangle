@@ -1,17 +1,17 @@
 import * as API from '@/api';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { GetProductsQueryProps, IAllProductsType } from '@/commons/types/allProductsType';
+import { ProductsQueryType, IAllProductsType } from '@/commons/types/allProductsType';
 import { transformFilterValueToQueryString } from '@/commons/utils/transformFilterValueToQueryString';
 
 interface GetSearchProductsProps {
   keyword: string;
-  filterValue: GetProductsQueryProps;
+  filterValue: ProductsQueryType;
   pageParam: number;
 }
 
 interface UseGetSearchProductsQueryProps {
   keyword: string;
-  filterValue: GetProductsQueryProps;
+  filterValue: ProductsQueryType;
 }
 
 const getSearchProducts = async ({
@@ -50,7 +50,8 @@ export const useGetSearchProductsQuery = ({
     },
     refetchOnMount: false,
     refetchOnReconnect: false,
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
+    staleTime: Infinity
   });
 
   const products = data?.pages.map(page => page.content).flat();
