@@ -21,10 +21,8 @@ const getSearchProducts = async ({
   pageParam
 }: GetSearchProductsProps): Promise<IAllProductsType> => {
   const queryString = transformFilterValueToQueryString(filterValue);
-  const data = await API.get<IAllProductsType>(
-    `/search/boards?keyword=${keyword}&${queryString}&page=${pageParam}`
-  );
-
+  const res = await API.get(`/search/boards?keyword=${keyword}&${queryString}&page=${pageParam}`);
+  const data: IAllProductsType = await res.json();
   return data;
 };
 

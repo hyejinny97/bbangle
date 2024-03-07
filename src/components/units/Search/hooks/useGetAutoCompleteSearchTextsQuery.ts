@@ -7,10 +7,8 @@ const getAutoCompleteSearchTexts = async (
   keyword: string
 ): Promise<AutoCompleteSearchTextsType> => {
   if (!keyword) return [];
-  const data = await API.get<{ content: AutoCompleteSearchTextsType }>(
-    `/search/auto-keyword?keyword=${keyword}`
-  );
-
+  const res = await API.get(`/search/auto-keyword?keyword=${keyword}`);
+  const data: { content: AutoCompleteSearchTextsType } = await res.json();
   return data.content;
 };
 

@@ -4,7 +4,7 @@ const serverUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`;
 const TMP_TOKEN =
   'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwOTY5NjIxNSwiZXhwIjoxNzA5NzA3MDE1LCJpZCI6OH0.vnt0sM8_KGCV7v86cnn1i-nLTAyiPJYQyydffEBj_uI';
 
-async function get<T>(endpoint: string, init?: RequestInit | undefined) {
+async function get(endpoint: string, init?: RequestInit | undefined) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
     headers: {
       'Content-Type': 'application/json',
@@ -13,8 +13,7 @@ async function get<T>(endpoint: string, init?: RequestInit | undefined) {
     ...init
   });
 
-  const data: T = await res.json();
-  return data;
+  return res;
 }
 
 async function post<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
