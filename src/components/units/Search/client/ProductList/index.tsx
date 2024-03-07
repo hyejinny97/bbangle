@@ -3,11 +3,11 @@
 import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useInView } from 'react-intersection-observer';
-import { filterValueState } from '@/atoms/atom';
 import { useGetSearchProductsQuery } from '@/components/units/Search/hooks/useGetSearchProductsQuery';
 import ProductCard from '@/components/commons/card/ProductCard';
 import NoSearchResult from '@/components/units/Search/client/NoSearchResult';
 import Loading from '@/components/commons/Loading';
+import { filterValueState } from '@/components/units/(main)/Products/atoms';
 
 interface ProductListProps {
   keyword: string;

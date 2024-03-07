@@ -1,5 +1,9 @@
 'use client';
 
+
+import ProductCard from '@/components/commons/card/ProductCard';
+import { useGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
+import { useRecoilValue } from 'recoil';
 import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useInView } from 'react-intersection-observer';
@@ -7,6 +11,7 @@ import { filterValueState } from '@/atoms/atom';
 import { useGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
 import ProductCard from '@/components/commons/card/ProductCard';
 import Loading from '@/components/commons/Loading';
+import { filterValueState } from '../../atoms';
 
 const ProductsTab = () => {
   const filterValue = useRecoilValue(filterValueState);
