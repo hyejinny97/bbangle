@@ -1,7 +1,11 @@
-import { ProductsQueryType } from '@/commons/types/allProductsType';
-import { transformCategoryToEng, transformTagToEng } from '@/commons/constants/transfromTag';
+import { IFilterType } from '@/components/units/(main)/Products/types';
+import {
+  transformCategoryToEng,
+  transformTagToEng,
+  transformSortToEng
+} from '@/commons/constants/transfromTag';
 
-export const transformFilterValueToQueryString = (query: ProductsQueryType) => {
+export const transformFilterValueToQueryString = (query: IFilterType) => {
   const { category, tags, sort } = query;
   const categoryQuery = category && transformCategoryToEng(category);
   const tagsEng = tags?.map(tag => transformTagToEng(tag));
@@ -12,11 +16,12 @@ export const transformFilterValueToQueryString = (query: ProductsQueryType) => {
     }),
     {}
   );
+  const sortQuery = transformSortToEng(sort);
 
   const queryObject = {
     category: categoryQuery || '',
     ...tagsQuery,
-    sort: sort || 'recommend'
+    sort: sortQuery
   };
 
   return new URLSearchParams(queryObject).toString();
