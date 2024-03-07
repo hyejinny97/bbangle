@@ -18,7 +18,6 @@ export const getAllProducts = async ({
   pageParam
 }: GetAllProductsProps): Promise<AllProductsType> => {
   const queryString = transformFilterValueToQueryString(query);
-  const { data } = await API.get<AllProductsType>(`/boards?${queryString}&page=${pageParam}`);
-
+  const data = await API.get<AllProductsType>(`/boards?${queryString}&page=${pageParam}`);
   return data;
 };
