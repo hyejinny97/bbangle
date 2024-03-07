@@ -20,20 +20,12 @@ const getSearchProducts = async ({
   filterValue,
   pageParam
 }: GetSearchProductsProps): Promise<IAllProductsType> => {
-  try {
-    if (!keyword)
-      return { content: [], itemCount: 0, pageNumber: 0, pageSize: 0, existNextPage: false };
+  const queryString = transformFilterValueToQueryString(filterValue);
+  const data = await API.get<IAllProductsType>(
+    `/search/boards?keyword=${keyword}&${queryString}&page=${pageParam}`
+  );
 
-    const queryString = transformFilterValueToQueryString(filterValue);
-    const { data } = await API.get<IAllProductsType>(
-      `/search/boards?keyword=${keyword}&${queryString}&page=${pageParam}`
-    );
-
-    return data;
-  } catch (error) {
-    console.error(error);
-    return { content: [], itemCount: 0, pageNumber: 0, pageSize: 0, existNextPage: false };
-  }
+  return data;
 };
 
 export const useGetSearchProductsQuery = ({

@@ -3,8 +3,8 @@ import * as API from '@/api';
 import { IWishStoreList } from '@/components/units/WishListDetail/types';
 
 const getWishStoreList = async (): Promise<IWishStoreList[]> => {
-  const result = await API.get<{ data: IWishStoreList[] }>('/likes/stores');
-  return result.data;
+  const data = await API.get<IWishStoreList[]>('/likes/stores');
+  return data;
 };
 
 export const useWishStoreListQuery = () => {

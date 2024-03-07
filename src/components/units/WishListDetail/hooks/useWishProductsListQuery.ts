@@ -3,9 +3,8 @@ import * as API from '@/api';
 import { IWishProductList } from '@/components/units/WishListDetail/types';
 
 const getWishProductList = async (folderId: number): Promise<IWishProductList> => {
-  const result = await API.get<{ data: IWishProductList }>(`/boards/folders/${folderId}`);
-  console.log(result.data);
-  return result.data;
+  const data = await API.get<IWishProductList>(`/boards/folders/${folderId}`);
+  return data;
 };
 
 export const useWishProductListQuery = (folderId: number) => {

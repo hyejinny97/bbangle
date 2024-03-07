@@ -6,17 +6,12 @@ type AutoCompleteSearchTextsType = Array<string>;
 const getAutoCompleteSearchTexts = async (
   keyword: string
 ): Promise<AutoCompleteSearchTextsType> => {
-  try {
-    if (!keyword) return [];
-    const response = await API.get<{ data: { content: AutoCompleteSearchTextsType } }>(
-      `/search/auto-keyword?keyword=${keyword}`
-    );
+  if (!keyword) return [];
+  const data = await API.get<{ content: AutoCompleteSearchTextsType }>(
+    `/search/auto-keyword?keyword=${keyword}`
+  );
 
-    return response.data.content;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+  return data.content;
 };
 
 export const useGetAutoCompleteSearchTextsQuery = (keyword: string) => {

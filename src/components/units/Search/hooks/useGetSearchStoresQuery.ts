@@ -15,19 +15,12 @@ const getSearchStores = async ({
   keyword,
   pageParam
 }: GetSearchStoresProps): Promise<IAllStoreType> => {
-  try {
-    if (!keyword)
-      return { content: [], itemCount: 0, pageNumber: 0, pageSize: 0, existNextPage: false };
+  // if (!keyword)
+  //   return { content: [], itemCount: 0, pageNumber: 0, pageSize: 0, existNextPage: false };
 
-    const { data } = await API.get<IAllStoreType>(
-      `/search/stores?keyword=${keyword}&page=${pageParam}`
-    );
+  const data = await API.get<IAllStoreType>(`/search/stores?keyword=${keyword}&page=${pageParam}`);
 
-    return data;
-  } catch (error) {
-    console.error(error);
-    return { content: [], itemCount: 0, pageNumber: 0, pageSize: 0, existNextPage: false };
-  }
+  return data;
 };
 
 export const useGetSearchStoresQuery = ({ keyword }: UseGetSearchStoresQueryProps) => {

@@ -6,20 +6,15 @@ type DataType = {
 };
 export type RecentSearchKeywordsType = Array<DataType>;
 
-const isLoggedIn = true; // 일단 로그인했다고 가정
+// const isLoggedIn = true; // 일단 로그인했다고 가정
 
 const getRecentSearchKeywords = async (): Promise<RecentSearchKeywordsType> => {
-  try {
-    if (!isLoggedIn) return [];
-    const response = await API.get<{ data: { content: RecentSearchKeywordsType } }>(
-      '/search/recency'
-    );
+  // if (!isLoggedIn) return [];
+  const response = await API.get<{ data: { content: RecentSearchKeywordsType } }>(
+    '/search/recency'
+  );
 
-    return response.data.content;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+  return response.data.content;
 };
 
 export const useGetRecentSearchKeywordsQuery = () => {

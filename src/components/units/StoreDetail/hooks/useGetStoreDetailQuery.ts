@@ -3,9 +3,8 @@ import * as API from '@/api';
 import { IStoreDetailType } from '../types';
 
 const getStoreDetail = async (id: number): Promise<IStoreDetailType> => {
-  const result = await API.get<{ data: IStoreDetailType }>(`/stores/${id}`);
-  console.log('what', result);
-  return result.data;
+  const data = await API.get<IStoreDetailType>(`/stores/${id}`);
+  return data;
 };
 
 export const UseGetStoreDetialQuery = (id: number) => {
