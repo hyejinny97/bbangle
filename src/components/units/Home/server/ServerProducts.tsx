@@ -4,7 +4,8 @@ import API from '@/api';
 import { IAllProductsType } from '@/commons/types/allProductsType';
 
 const getBestProducts = async () => {
-  const data = await API.get<IAllProductsType>(`${API.serverUrl}/boards`, { cache: 'no-store' });
+  const data = await API.get<IAllProductsType>('/boards', { cache: 'no-store' });
+
   return data;
 };
 
