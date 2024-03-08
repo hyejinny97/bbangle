@@ -1,10 +1,18 @@
+import CustomError from '@/commons/types/errorType';
 import axios, { AxiosResponse } from 'axios';
 
 const serverUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`;
 const TMP_TOKEN =
   'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwOTg3OTc1NywiZXhwIjoxNzA5ODkwNTU3LCJpZCI6MTN9.crR0SMca5uCIyel-QZWmG0m-APWmQ2YdPb-OXhobGV0';
 
-async function get(endpoint: string, init?: RequestInit | undefined) {
+async function checkError(res: Response) {
+  if (res.ok) return;
+
+  const errorData = await res.json();
+  throw new CustomError({ message: errorData.message, code: res.status });
+}
+
+async function get<T>(endpoint: string, init?: RequestInit | undefined) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
     headers: {
       'Content-Type': 'application/json',
@@ -13,7 +21,10 @@ async function get(endpoint: string, init?: RequestInit | undefined) {
     ...init
   });
 
-  return res;
+  await checkError(res);
+  const data: T = await res.json();
+
+  return data;
 }
 
 async function post(endpoint: string, init?: RequestInit) {
@@ -25,8 +36,10 @@ async function post(endpoint: string, init?: RequestInit) {
     },
     ...init
   });
+  await checkError(res);
+  const data = await res.json();
 
-  return res;
+  return data;
 }
 
 async function formPost(endpoint: string, init?: RequestInit) {
@@ -38,8 +51,10 @@ async function formPost(endpoint: string, init?: RequestInit) {
     },
     ...init
   });
+  await checkError(res);
+  const data = await res.json();
 
-  return res;
+  return data;
 }
 
 async function put<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {

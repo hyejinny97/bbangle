@@ -11,7 +11,6 @@ interface AllStoresType {
 }
 
 export const getAllStores = async ({ pageParam }: GetAllStoresProps): Promise<AllStoresType> => {
-  const res = await API.get(`/stores?page=${pageParam}`);
-  const data: AllStoresType = await res.json();
+  const data = await API.get<AllStoresType>(`/stores?page=${pageParam}`);
   return data;
 };

@@ -3,8 +3,7 @@ import * as API from '@/api';
 import { IWishList } from '../types';
 
 const getWishList = async (): Promise<IWishList[]> => {
-  const res = await API.get('/wishLists');
-  const data: IWishList[] = await res.json();
+  const data = await API.get<IWishList[]>('/wishLists');
   return data;
 };
 

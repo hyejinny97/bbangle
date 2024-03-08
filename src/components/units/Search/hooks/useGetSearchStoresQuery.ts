@@ -18,9 +18,7 @@ const getSearchStores = async ({
   // if (!keyword)
   //   return { content: [], itemCount: 0, pageNumber: 0, pageSize: 0, existNextPage: false };
 
-  const res = await API.get(`/search/stores?keyword=${keyword}&page=${pageParam}`);
-  const data: IAllStoreType = await res.json();
-
+  const data = await API.get<IAllStoreType>(`/search/stores?keyword=${keyword}&page=${pageParam}`);
   return data;
 };
 
