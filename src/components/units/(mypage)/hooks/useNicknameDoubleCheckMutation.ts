@@ -4,8 +4,9 @@ import { NicknameDoubleCheckResponse } from '../Update/types';
 
 const useNicknameDoubleCheckMutation = () => {
   const mutationFn = async (nickname: string) => {
-    const res = await API.post(`/profile/doublecheck?nickname=${nickname}`);
-    const data: NicknameDoubleCheckResponse = await res.json();
+    const data = await API.post<NicknameDoubleCheckResponse>(
+      `/profile/doublecheck?nickname=${nickname}`
+    );
     return data;
   };
 

@@ -2,8 +2,7 @@ import * as API from '@/api';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 
 const addRecentSearchKeyword = async (keyword: string) => {
-  const res = await API.post(`/search?keyword=${keyword}`);
-  const data = await res.json();
+  const data = await API.post(`/search?keyword=${keyword}`);
   return data;
 };
 

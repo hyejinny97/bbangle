@@ -17,12 +17,8 @@ const useProfileUpdateMutation = () => {
     if (profileImg) {
       formData.append('profileImg', profileImg);
     }
-    const res = await API.formPut('/profile', { body: formData });
-    const data = await res.json();
 
-    if (!res.ok) throw Error(data.message);
-
-    return data;
+    return API.formPut('/profile', { body: formData });
   };
 
   const onSuccess = async () => {
