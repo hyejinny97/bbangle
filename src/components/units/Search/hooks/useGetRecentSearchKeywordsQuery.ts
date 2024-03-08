@@ -10,7 +10,7 @@ export type RecentSearchKeywordsType = Array<DataType>;
 
 const getRecentSearchKeywords = async (): Promise<RecentSearchKeywordsType> => {
   // if (!isLoggedIn) return [];
-  const data = await API.get<{ content: RecentSearchKeywordsType }>('/search/recency');
+  const data: { content: RecentSearchKeywordsType } = await API.get('/search/recency');
   return data.content;
 };
 

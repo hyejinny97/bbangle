@@ -11,7 +11,7 @@ interface WishListReturn {
 }
 
 const addWish = async (data: WishData): Promise<WishListReturn> => {
-  const resData = await API.patch<WishListReturn>(`/boards/${data.borderId}/wish`, {
+  const resData: WishListReturn = await API.patch(`/boards/${data.borderId}/wish`, {
     body: JSON.stringify(data.data)
   });
 

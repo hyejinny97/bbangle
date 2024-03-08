@@ -15,7 +15,7 @@ const getAllProducts = async (query: GetProductsQueryProps): Promise<IAllProduct
   const sortQuery = sort ? `sort=${sort}` : '';
   const queryString = [categoryQuery, tagQuery, sortQuery].filter(Boolean).join('&');
 
-  const data = await API.get<IAllProductsType>(`/boards${queryString ? `?${queryString}` : ''}`);
+  const data: IAllProductsType = await API.get(`/boards${queryString ? `?${queryString}` : ''}`);
 
   return data;
 };

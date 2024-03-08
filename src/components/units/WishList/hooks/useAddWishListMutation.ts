@@ -10,7 +10,7 @@ interface WishListReturn {
 }
 
 const addWishList = async (reqData: WishListData): Promise<WishListReturn> => {
-  const data = await API.post<WishListReturn>('/wishLists', {
+  const data: WishListReturn = await API.post('/wishLists', {
     body: JSON.stringify(reqData)
   });
   return data;

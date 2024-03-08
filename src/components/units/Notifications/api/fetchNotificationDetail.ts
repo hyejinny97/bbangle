@@ -8,7 +8,7 @@ type NotificationType = {
 };
 
 export const fetchNotificationDetail = async (id: number): Promise<NotificationType> => {
-  const data = await API.get<NotificationType>('/notice/${id}', {
+  const data: NotificationType = await API.get('/notice/${id}', {
     next: { tags: [`${REAVALIDATE_TAG.notificationDetail}:${id}`] }
   });
 

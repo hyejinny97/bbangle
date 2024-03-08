@@ -1,10 +1,10 @@
-import checkError from '@/commons/utils/checkError';
+import { checkError, parseJson } from '@/commons/utils/apiUtils';
 
 const serverUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`;
 const TMP_TOKEN =
   'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwOTg5MTQyNSwiZXhwIjoxNzA5OTAyMjI1LCJpZCI6MTN9.6LN6x7mdeh4-JrXp0GRqxakAuHolS8c5VoATtcNuEN0';
 
-async function get<T>(endpoint: string, init?: RequestInit | undefined) {
+async function get(endpoint: string, init?: RequestInit | undefined) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
     headers: {
       'Content-Type': 'application/json',
@@ -14,12 +14,11 @@ async function get<T>(endpoint: string, init?: RequestInit | undefined) {
   });
 
   await checkError(res);
-  const data: T = await res.json();
-
+  const data = await parseJson(res);
   return data;
 }
 
-async function post<T>(endpoint: string, init?: RequestInit) {
+async function post(endpoint: string, init?: RequestInit) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
     method: 'POST',
     headers: {
@@ -29,8 +28,7 @@ async function post<T>(endpoint: string, init?: RequestInit) {
     ...init
   });
   await checkError(res);
-  const data: T = await res.json();
-
+  const data = await parseJson(res);
   return data;
 }
 
@@ -44,12 +42,11 @@ async function formPost(endpoint: string, init?: RequestInit) {
     ...init
   });
   await checkError(res);
-  const data = await res.json();
-
+  const data = await parseJson(res);
   return data;
 }
 
-async function put<T>(endpoint: string, init?: RequestInit) {
+async function put(endpoint: string, init?: RequestInit) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
     method: 'PUT',
     headers: {
@@ -59,12 +56,11 @@ async function put<T>(endpoint: string, init?: RequestInit) {
     ...init
   });
   await checkError(res);
-  const data: T = await res.json();
-
+  const data = await parseJson(res);
   return data;
 }
 
-async function formPut<T>(endpoint: string, init?: RequestInit) {
+async function formPut(endpoint: string, init?: RequestInit) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
     method: 'PUT',
     headers: {
@@ -72,12 +68,14 @@ async function formPut<T>(endpoint: string, init?: RequestInit) {
     },
     ...init
   });
+
   await checkError(res);
-  const data: T = await res.json();
+
+  const data = await parseJson(res);
   return data;
 }
 
-async function patch<T>(endpoint: string, init?: RequestInit) {
+async function patch(endpoint: string, init?: RequestInit) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
     method: 'PATCH',
     headers: {
@@ -87,11 +85,11 @@ async function patch<T>(endpoint: string, init?: RequestInit) {
     ...init
   });
   await checkError(res);
-  const data: T = await res.json();
+  const data = await parseJson(res);
   return data;
 }
 
-async function formPatch<T>(endpoint: string, init?: RequestInit) {
+async function formPatch(endpoint: string, init?: RequestInit) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
     method: 'PATCH',
     headers: {
@@ -100,11 +98,11 @@ async function formPatch<T>(endpoint: string, init?: RequestInit) {
     ...init
   });
   await checkError(res);
-  const data: T = await res.json();
+  const data = await parseJson(res);
   return data;
 }
 
-async function del<T>(endpoint: string, init?: RequestInit) {
+async function _delete(endpoint: string, init?: RequestInit) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
     method: 'DELETE',
     headers: {
@@ -113,7 +111,7 @@ async function del<T>(endpoint: string, init?: RequestInit) {
     ...init
   });
   await checkError(res);
-  const data: T = await res.json();
+  const data = await parseJson(res);
   return data;
 }
 
@@ -127,7 +125,7 @@ const API = {
   patch,
   formPatch,
   formPut,
-  delete: del
+  delete: _delete
 };
 
 export default API;

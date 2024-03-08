@@ -20,7 +20,7 @@ const SIZE = 10; // 한 페이지당 보여질 데이터 수
 export const getAllNotifications = async ({
   pageParam
 }: GetAllNotificationsProps): Promise<AllNotificationsType> => {
-  const data = await API.get<AllNotificationsType>(
+  const data: AllNotificationsType = await API.get(
     `/notice?page=${pageParam}&size=${SIZE}&sort=createdAt,DESC`
   );
   return data;

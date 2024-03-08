@@ -12,8 +12,11 @@ interface WishListReturn {
   message: string;
 }
 
-const updateWishList = async (data: WishListData): Promise<WishListReturn> => {
-  return API.patch<WishListReturn, WishListData['data']>(`/wishLists/${data.folderId}`, data.data);
+const updateWishList = async (wishList: WishListData): Promise<WishListReturn> => {
+  const data: WishListReturn = await API.patch(`/wishLists/${wishList.folderId}`, {
+    body: JSON.stringify(wishList.data)
+  });
+  return data;
 };
 
 export const useUpdateWishListMutation = () => {
