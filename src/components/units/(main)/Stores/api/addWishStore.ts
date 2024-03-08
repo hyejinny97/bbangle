@@ -1,6 +1,8 @@
 import * as API from '@/api';
-import { WishStoreData, WishStoreListReturn } from '../../types';
+import { WishStoreListReturn } from '../../types';
 
-export const addWishStore = async (data: WishStoreData): Promise<WishStoreListReturn> => {
-  return API.post<WishStoreListReturn, null>(`/likes/store/${data.storeId}`, null);
+export const addWishStore = async (storeId: number) => {
+  const res = await API.post(`/likes/store/${String(storeId)}`);
+  const data: WishStoreListReturn = await res.json();
+  return data;
 };

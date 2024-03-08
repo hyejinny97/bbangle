@@ -2,11 +2,9 @@ import * as API from '@/api';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 
 const addRecentSearchKeyword = async (keyword: string) => {
-  try {
-    await API.post(`/search?keyword=${keyword}`, keyword);
-  } catch (error) {
-    console.error(error);
-  }
+  const res = await API.post(`/search?keyword=${keyword}`);
+  const data = await res.json();
+  return data;
 };
 
 export const useAddRecentSearchKeywordMutation = () => {

@@ -1,27 +1,15 @@
+import { IStoreType } from '@/commons/types/storeType';
 import BtnStar from '@/components/commons/button/client/Btn_start';
 import { useAddWishStoreMutation } from '@/components/units/(main)/Stores/hooks/useAddWishStoreMutation';
-import { revalidateTag } from 'next/cache';
 import Link from 'next/link';
 import { MouseEvent } from 'react';
 
-const StoreCard = ({ data }: any) => {
+const StoreCard = ({ data }: { data: IStoreType }) => {
   const { mutate } = useAddWishStoreMutation();
 
   const handleAddWishStore = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    try {
-      mutate(
-        { storeId: data.storeId },
-        {
-          onSuccess: () => {
-            console.log('성공');
-            revalidateTag('storeWish');
-          }
-        }
-      );
-    } catch (err) {
-      console.log(err);
-    }
+    mutate(data.storeId);
   };
 
   return (
@@ -37,7 +25,7 @@ const StoreCard = ({ data }: any) => {
               <div className="text-sm font-semibold grow shrink basis-0 text-neutral-800 ">
                 {data.storeName}
               </div>
-              <BtnStar isLiked={data.isLiked} onClick={handleAddWishStore} />
+              <BtnStar isLiked={data.isWished} onClick={handleAddWishStore} />
             </div>
             <div className="text-xs font-normal text-neutral-500">{data.introduce}</div>
           </div>
