@@ -1,4 +1,4 @@
-import * as API from '@/api/index';
+import API from '@/api';
 import { useMutation } from '@tanstack/react-query';
 
 interface WishListData {
