@@ -14,7 +14,7 @@ const SearchInputContainer = () => {
 
   const [text, setText] = useState(query || '');
   const [showAutoComplete, setShowAutoComplete] = useState(false);
-  const debouncedText = useDebounce<string>({ value: text, delay: 300 });
+  const debouncedText = useDebounce<string>({ value: text, delay: 500 });
 
   const { mutate } = useAddRecentSearchKeywordMutation();
 
