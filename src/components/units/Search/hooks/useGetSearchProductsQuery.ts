@@ -1,4 +1,4 @@
-import * as API from '@/api';
+import API from '@/api';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { IFilterType } from '@/components/units/(main)/Products/types';
 import { IAllProductsType } from '@/commons/types/allProductsType';

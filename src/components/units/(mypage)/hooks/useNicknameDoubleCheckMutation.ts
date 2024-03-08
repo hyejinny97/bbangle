@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import * as API from '@/api';
+import API from '@/api';
 import { NicknameDoubleCheckResponse } from '../Update/types';
 
 const useNicknameDoubleCheckMutation = () => {

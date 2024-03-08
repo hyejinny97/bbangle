@@ -1,4 +1,4 @@
-import * as API from '@/api';
+import API from '@/api';
 import { IProductType } from '@/commons/types/productType';
 import { IFilterType } from '@/components/units/(main)/Products/types';
 import { transformFilterValueToQueryString } from '@/commons/utils/transformFilterValueToQueryString';

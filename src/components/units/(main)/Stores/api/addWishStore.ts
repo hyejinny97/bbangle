@@ -1,4 +1,4 @@
-import * as API from '@/api';
+import API from '@/api';
 import { WishStoreListReturn } from '../../types';
 
 export const addWishStore = async (storeId: number) => {

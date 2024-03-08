@@ -1,5 +1,5 @@
 import ServerWishList from '@/components/units/WishList/server/ServerWishList';
-import * as API from '@/api';
+import API from '@/api';
 
 async function getWishStore() {
   try {

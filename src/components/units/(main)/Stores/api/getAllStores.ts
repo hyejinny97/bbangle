@@ -1,4 +1,4 @@
-import * as API from '@/api';
+import API from '@/api';
 import { IStoreType } from '@/commons/types/storeType';
 
 interface GetAllStoresProps {

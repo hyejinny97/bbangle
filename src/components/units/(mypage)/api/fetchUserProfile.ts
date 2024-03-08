@@ -1,4 +1,4 @@
-import * as API from '@/api';
+import API from '@/api';
 import { UserProfileType } from '../types';
 import { REAVALIDATE_TAG } from '@/commons/constants/revalidateTags';
 

@@ -130,5 +130,4 @@ const API = {
   delete: del
 };
 
-export { TMP_TOKEN, serverUrl, get, post, formPost, put, patch, formPatch, formPut, del as delete };
 export default API;

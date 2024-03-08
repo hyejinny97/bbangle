@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 
-import * as API from '@/api';
+import API from '@/api';
 import { MyProfileUpdateRequest } from '../types';
 import { revalidateTag } from '@/action';
 import { useRouter } from 'next/navigation';

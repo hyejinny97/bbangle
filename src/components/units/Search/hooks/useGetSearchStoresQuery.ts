@@ -1,4 +1,4 @@
-import * as API from '@/api';
+import API from '@/api';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { IAllStoreType } from '@/commons/types/allstoreType';
 

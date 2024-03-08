@@ -1,5 +1,5 @@
 import DetailHome from '@/components/units/Detail/server/DetailHome';
-import * as API from '@/api';
+import API from '@/api';
 
 async function GetDetail(params: { id: string }) {
   try {

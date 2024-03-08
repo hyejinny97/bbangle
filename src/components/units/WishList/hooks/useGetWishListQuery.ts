@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import * as API from '@/api';
+import API from '@/api';
 import { IWishList } from '../types';
 
 const getWishList = async (): Promise<IWishList[]> => {

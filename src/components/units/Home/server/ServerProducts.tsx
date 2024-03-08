@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import ProductsList from '../client/ProductsList';
-import * as API from '@/api';
+import API from '@/api';
 
 const getBestProducts = async () => {
   try {

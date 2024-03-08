@@ -1,4 +1,4 @@
-import * as API from '@/api';
+import API from '@/api';
 
 interface GetAllNotificationsProps {
   pageParam: number;

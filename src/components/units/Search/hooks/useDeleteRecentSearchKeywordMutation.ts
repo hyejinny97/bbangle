@@ -1,4 +1,4 @@
-import * as API from '@/api';
+import API from '@/api';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 import type { RecentSearchKeywordsType } from '@/components/units/Search/hooks/useGetRecentSearchKeywordsQuery';
 
