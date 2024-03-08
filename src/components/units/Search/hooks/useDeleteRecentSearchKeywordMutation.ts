@@ -5,12 +5,9 @@ import type { RecentSearchKeywordsType } from '@/components/units/Search/hooks/u
 const isLoggedIn = true; // 일단 로그인했다고 가정
 
 const deleteRecentSearchKeyword = async (keyword: string) => {
-  try {
-    if (!isLoggedIn) return;
-    await API.delete(`/search/recency?keyword=${keyword}`);
-  } catch (error) {
-    console.error(error);
-  }
+  if (!isLoggedIn) return;
+  const data = await API.delete(`/search/recency?keyword=${keyword}`);
+  return data;
 };
 
 export const useDeleteRecentSearchKeywordMutation = () => {

@@ -1,16 +1,8 @@
-import CustomError from '@/commons/types/errorType';
-import axios, { AxiosResponse } from 'axios';
+import checkError from '@/commons/utils/checkError';
 
 const serverUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`;
 const TMP_TOKEN =
-  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwOTg5MTE1NSwiZXhwIjoxNzA5OTAxOTU1LCJpZCI6MTN9.VZNzT2BG9gCA1seZyi9zDuscNmBuEGERgn6wbtcwcd0';
-
-async function checkError(res: Response) {
-  if (res.ok) return;
-
-  const errorData = await res.json();
-  throw new CustomError({ message: errorData.message, code: res.status });
-}
+  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwOTg5MTQyNSwiZXhwIjoxNzA5OTAyMjI1LCJpZCI6MTN9.6LN6x7mdeh4-JrXp0GRqxakAuHolS8c5VoATtcNuEN0';
 
 async function get<T>(endpoint: string, init?: RequestInit | undefined) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
@@ -76,46 +68,53 @@ async function formPut<T>(endpoint: string, init?: RequestInit) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
     method: 'PUT',
     headers: {
-      'Content-Type': 'multipart/form-data',
       Authorization: TMP_TOKEN
     },
     ...init
   });
   await checkError(res);
   const data: T = await res.json();
-
   return data;
 }
 
-async function patch<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
-  const bodyData = JSON.stringify(data);
-
-  return axios.patch(serverUrl + endpoint, bodyData, {
+async function patch<T>(endpoint: string, init?: RequestInit) {
+  const res = await fetch(`${serverUrl}${endpoint}`, {
+    method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
       Authorization: TMP_TOKEN
-    }
+    },
+    ...init
   });
+  await checkError(res);
+  const data: T = await res.json();
+  return data;
 }
 
-async function formPatch<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
-  return axios.patch(serverUrl + endpoint, data, {
+async function formPatch<T>(endpoint: string, init?: RequestInit) {
+  const res = await fetch(`${serverUrl}${endpoint}`, {
+    method: 'PATCH',
     headers: {
-      'Content-Type': 'multipart/form-data',
-      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
       Authorization: TMP_TOKEN
-    }
+    },
+    ...init
   });
+  await checkError(res);
+  const data: T = await res.json();
+  return data;
 }
 
-async function del<T>(endpoint: string): Promise<AxiosResponse<T>> {
-  return axios.delete(serverUrl + endpoint, {
+async function del<T>(endpoint: string, init?: RequestInit) {
+  const res = await fetch(`${serverUrl}${endpoint}`, {
+    method: 'DELETE',
     headers: {
       Authorization: TMP_TOKEN
-      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
-    }
+    },
+    ...init
   });
+  await checkError(res);
+  const data: T = await res.json();
+  return data;
 }
 
 const API = {

@@ -1,14 +1,12 @@
-export interface ErrorProps extends Error {
-  error: CustomError & { digest?: string };
-  reset: () => void;
+export interface ErrorResponse {
+  message: string;
 }
 
 class CustomError extends Error {
   message: string = '';
-
   code: number = 0;
 
-  constructor({ message, code }: { message: string; code: number }) {
+  constructor({ message, code }: { message: ErrorResponse['message']; code: number }) {
     super();
     this.message = message;
     this.code = code;
