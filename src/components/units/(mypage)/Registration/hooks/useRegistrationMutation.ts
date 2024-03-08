@@ -18,7 +18,7 @@ const useRegistrationMutation = () => {
     if (profileImg) {
       formData.append('profileImage', profileImg);
     }
-    return API.formPut<null, FormData>('/members/additional-information', formData);
+    return API.formPut('/members/additional-information', { body: formData });
   };
 
   const onSuccess = () => {

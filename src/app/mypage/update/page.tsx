@@ -4,6 +4,7 @@ import UpdateForm from '@/components/units/(mypage)/Update/client/UpdateForm';
 
 const Update = async () => {
   const myProfile = await fetchUserProfile();
+  console.log(myProfile);
 
   return (
     <>

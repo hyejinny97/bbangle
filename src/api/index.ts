@@ -29,14 +29,17 @@ async function post(endpoint: string, init?: RequestInit) {
   return res;
 }
 
-async function formPost<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
-  return axios.post(serverUrl + endpoint, data, {
+async function formPost(endpoint: string, init?: RequestInit) {
+  const res = await fetch(`${serverUrl}${endpoint}`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'multipart/form-data',
-      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
       Authorization: TMP_TOKEN
-    }
+    },
+    ...init
   });
+
+  return res;
 }
 
 async function put<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
@@ -51,13 +54,17 @@ async function put<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
   });
 }
 
-async function formPut<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
-  return axios.putForm(serverUrl + endpoint, data, {
+async function formPut(endpoint: string, init?: RequestInit) {
+  const res = await fetch(`${serverUrl}${endpoint}`, {
+    method: 'PUT',
     headers: {
-      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
+      'Content-Type': 'multipart/form-data',
       Authorization: TMP_TOKEN
-    }
+    },
+    ...init
   });
+
+  return res;
 }
 
 async function patch<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
