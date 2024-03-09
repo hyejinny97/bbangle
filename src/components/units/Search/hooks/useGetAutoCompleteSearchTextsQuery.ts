@@ -8,7 +8,7 @@ const getAutoCompleteSearchTexts = async (
 ): Promise<AutoCompleteSearchTextsType> => {
   try {
     if (!keyword) return [];
-    const response = await API.get<{ data: { content: AutoCompleteSearchTextsType } }>(
+    const response = await API.get<{ content: AutoCompleteSearchTextsType }>(
       `/search/auto-keyword?keyword=${keyword}`
     );
 
@@ -23,6 +23,8 @@ export const useGetAutoCompleteSearchTextsQuery = (keyword: string) => {
   return useQuery({
     queryKey: ['autoCompleteSearchTexts', keyword],
     queryFn: () => getAutoCompleteSearchTexts(keyword),
-    refetchOnMount: false
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false
   });
 };

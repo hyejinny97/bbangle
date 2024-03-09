@@ -22,7 +22,14 @@ const getSearchProducts = async ({
 }: GetSearchProductsProps): Promise<IAllProductsType> => {
   try {
     if (!keyword)
-      return { content: [], itemCount: 0, pageNumber: 0, pageSize: 0, existNextPage: false };
+      return {
+        content: [],
+        itemAllCount: 0,
+        limitItemCount: 0,
+        currentItemCount: 0,
+        pageNumber: 0,
+        existNextPage: false
+      };
 
     const queryString = transformFilterValueToQueryString(filterValue);
     const { data } = await API.get<IAllProductsType>(
@@ -32,7 +39,14 @@ const getSearchProducts = async ({
     return data;
   } catch (error) {
     console.error(error);
-    return { content: [], itemCount: 0, pageNumber: 0, pageSize: 0, existNextPage: false };
+    return {
+      content: [],
+      itemAllCount: 0,
+      limitItemCount: 0,
+      currentItemCount: 0,
+      pageNumber: 0,
+      existNextPage: false
+    };
   }
 };
 
@@ -56,7 +70,7 @@ export const useGetSearchProductsQuery = ({
   });
 
   const products = data?.pages.map(page => page.content).flat();
-  const itemCount = data?.pages[0]?.itemCount || 0;
+  const itemCount = data?.pages[0]?.itemAllCount || 0;
 
   return { products, itemCount, ...rest };
 };

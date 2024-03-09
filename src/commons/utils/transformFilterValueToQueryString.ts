@@ -6,7 +6,7 @@ import {
 } from '@/commons/constants/transfromTag';
 
 export const transformFilterValueToQueryString = (query: IFilterType) => {
-  const { category, tags, sort } = query;
+  const { category, tags, sort, showProductsAvailableOrder } = query;
   const categoryQuery = category && transformCategoryToEng(category);
   const tagsEng = tags?.map(tag => transformTagToEng(tag));
   const tagsQuery = tagsEng?.reduce(
@@ -21,7 +21,8 @@ export const transformFilterValueToQueryString = (query: IFilterType) => {
   const queryObject = {
     category: categoryQuery || '',
     ...tagsQuery,
-    sort: sortQuery
+    sort: sortQuery,
+    orderAvailableToday: String(showProductsAvailableOrder)
   };
 
   return new URLSearchParams(queryObject).toString();

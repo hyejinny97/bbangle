@@ -14,8 +14,8 @@ const Select = ({ options, selectedOption, onChange }: SelectProps) => {
 
   useEffect(() => {
     const handleWindowClick = (e: MouseEvent) => {
-      const clickedTarget = e.target as HTMLElement;
-      if (clickedTarget.closest('.selectEl')) return;
+      const clickedTarget = e.target;
+      if (clickedTarget instanceof Element && clickedTarget.closest('.selectEl')) return;
 
       setIsExpended(false);
     };

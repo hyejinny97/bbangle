@@ -4,14 +4,12 @@ import FilterIcon from './assets/filter.svg';
 import ProductSortSelect from '@/components/commons/selects/ProductSortSelect';
 import { useRecoilState } from 'recoil';
 import FilterModal from './FilterModal';
-import { useState } from 'react';
-import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import useModal from '@/commons/hooks/useModal';
 import { filterValueState } from '../../atoms';
 import { FILTER_VALUES } from '@/commons/constants/filterValues';
+import OrderAvailableCheckBox from '@/components/units/(main)/Products/client/FilterTab/OrderAvailableCheckBox';
 
 const FilterTab = () => {
-  const [isChecked, setIsChecked] = useState(false);
   const FILTER_LIST = FILTER_VALUES.categories;
 
   const [filterValue, setFilterValue] = useRecoilState(filterValueState);
@@ -22,10 +20,6 @@ const FilterTab = () => {
       ...prev,
       category: newCategory
     }));
-  };
-
-  const checkHandled = () => {
-    setIsChecked(!isChecked);
   };
 
   const openFilterModal = () => {
@@ -67,10 +61,7 @@ const FilterTab = () => {
       </button>
       <hr className="border-0 bg-gray-100" />
       <div className="flex w-[92%] py-[12px] m-auto justify-between items-center ">
-        <CheckBox isChecked={isChecked} onChange={checkHandled}>
-          주문가능한 상품 보기
-        </CheckBox>
-
+        <OrderAvailableCheckBox />
         <ProductSortSelect />
       </div>
     </div>
