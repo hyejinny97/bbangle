@@ -17,6 +17,8 @@ export const useGetAutoCompleteSearchTextsQuery = (keyword: string) => {
   return useQuery({
     queryKey: ['autoCompleteSearchTexts', keyword],
     queryFn: () => getAutoCompleteSearchTexts(keyword),
-    refetchOnMount: false
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false
   });
 };

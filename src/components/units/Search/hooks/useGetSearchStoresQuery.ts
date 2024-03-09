@@ -15,9 +15,15 @@ const getSearchStores = async ({
   keyword,
   pageParam
 }: GetSearchStoresProps): Promise<IAllStoreType> => {
-  // if (!keyword)
-  //   return { content: [], itemCount: 0, pageNumber: 0, pageSize: 0, existNextPage: false };
-
+  if (!keyword)
+    return {
+      content: [],
+      itemAllCount: 0,
+      limitItemCount: 0,
+      currentItemCount: 0,
+      pageNumber: 0,
+      existNextPage: false
+    };
   const data: IAllStoreType = await API.get(`/search/stores?keyword=${keyword}&page=${pageParam}`);
   return data;
 };
@@ -37,7 +43,7 @@ export const useGetSearchStoresQuery = ({ keyword }: UseGetSearchStoresQueryProp
   });
 
   const stores = data?.pages.map(page => page.content).flat();
-  const itemCount = data?.pages[0]?.itemCount || 0;
+  const itemCount = data?.pages[0]?.itemAllCount || 0;
 
   return { stores, itemCount, ...rest };
 };

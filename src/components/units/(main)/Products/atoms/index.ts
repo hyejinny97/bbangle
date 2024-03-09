@@ -16,6 +16,7 @@ export const filterValueState = atom<IFilterType>({
   default: {
     category: undefined,
     tags: undefined,
-    sort: '추천순'
+    sort: '추천순',
+    showProductsAvailableOrder: false
   }
 });

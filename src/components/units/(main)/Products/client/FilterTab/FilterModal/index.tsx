@@ -19,7 +19,8 @@ function FilterModal() {
     setFilterValue(prev => ({
       category: selectedCategory ? selectedCategory : prev.category,
       tags: selectedTags ? selectedTags : prev.tags,
-      sort: prev.sort
+      sort: prev.sort,
+      showProductsAvailableOrder: prev.showProductsAvailableOrder
     }));
     closeModal();
   };
