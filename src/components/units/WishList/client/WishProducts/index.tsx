@@ -7,7 +7,7 @@ import StoreCard from '@/components/units/(main)/Stores/client/StoreCard';
 import WishButton from '@/components/units/WishList/client/WishButton';
 import WishFolder from '@/components/units/WishList/client/WishFolder';
 import { useAddWishListMutation } from '@/components/units/WishList/hooks/useAddWishListMutation';
-import { useGetWishListQuery } from '@/components/units/WishList/hooks/useGetWishListQuery';
+import { useGetWishListFolder } from '@/components/units/WishList/hooks/useGetWishListFolder';
 import { useWishStoreListQuery } from '@/components/units/WishListDetail/hooks/useWishStoreListQuery';
 import { ChangeEvent, useState } from 'react';
 import { useRecoilState } from 'recoil';
@@ -19,7 +19,7 @@ const WishProducts = () => {
 
   const [isEdit] = useState(false);
 
-  const { data: wishList, refetch } = useGetWishListQuery();
+  const { data: wishList, refetch } = useGetWishListFolder();
   const { data: wishStoreList } = useWishStoreListQuery();
 
   const { mutate } = useAddWishListMutation();

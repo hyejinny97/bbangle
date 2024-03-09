@@ -8,7 +8,7 @@ const getWishStoreList = async (): Promise<WishStore[]> => {
 };
 
 export const useWishStoreListQuery = () => {
-  return useQuery<WishStore[], Error>({
+  return useQuery({
     queryKey: ['wishStoreList'],
     queryFn: getWishStoreList
   });

@@ -28,7 +28,7 @@ export interface IWishProductList {
 }
 
 export interface WishStore {
-  storeId: number;
-  storeName: string;
   introduce: string;
+  storeName: string;
+  storeId: number;
 }
