@@ -1,10 +1,11 @@
-import CustomError from '../types/errorType';
+import { ErrorResponse } from '../types/errorType';
 
 export async function checkError(res: Response) {
   if (res.ok) return;
 
-  const errorData = await res.json();
-  throw new CustomError({ message: errorData.message, code: res.status });
+  const errorData: ErrorResponse = await res.json();
+
+  throw new Error(errorData.message);
 }
 
 export async function parseJson(res: Response) {

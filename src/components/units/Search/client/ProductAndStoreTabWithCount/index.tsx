@@ -11,7 +11,7 @@ const ProductAndStoreTabWithCount = () => {
 
   const { itemCount: productCount } = useGetSearchProductsQuery({
     keyword,
-    filterValue: { category: '', tags: [] }
+    filterValue: { category: '', tags: [], sort: '' }
   });
   const { itemCount: storeCount } = useGetSearchStoresQuery({ keyword });
 

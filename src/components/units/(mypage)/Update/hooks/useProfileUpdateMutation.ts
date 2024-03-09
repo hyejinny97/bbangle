@@ -17,7 +17,6 @@ const useProfileUpdateMutation = () => {
     if (profileImg) {
       formData.append('profileImg', profileImg);
     }
-
     return API.formPut('/profile', { body: formData });
   };
 
