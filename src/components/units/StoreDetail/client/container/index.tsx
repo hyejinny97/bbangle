@@ -6,10 +6,14 @@ import StoreProfile from '../StoreProfile';
 import AllProducts from '../AllProduct';
 import BestProducts from '../BestProduct';
 import Loading from '@/components/commons/Loading';
+import { UseGetStoreDetialAllQuery } from '../../hooks/useGetStoreDetailAllQuery';
 
 const DetailContainer = () => {
   const params = useParams();
   const { data } = UseGetStoreDetialQuery(Number(params.id));
+  const { data: all } = UseGetStoreDetialAllQuery(Number(params.id));
+  console.log(all);
+
   if (!data) {
     return (
       <div className="w-[92%] mx-atuo p-[16px]">
