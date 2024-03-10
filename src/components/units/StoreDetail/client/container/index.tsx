@@ -11,8 +11,7 @@ import { UseGetStoreDetialAllQuery } from '../../hooks/useGetStoreDetailAllQuery
 const DetailContainer = () => {
   const params = useParams();
   const { data } = UseGetStoreDetialQuery(Number(params.id));
-  const { data: all } = UseGetStoreDetialAllQuery(Number(params.id));
-  console.log(all);
+  const { data: allData } = UseGetStoreDetialAllQuery(Number(params.id));
 
   if (!data) {
     return (
@@ -34,7 +33,7 @@ const DetailContainer = () => {
       </div>
       <div className="w-[92%] m-auto py-[16px]">
         <div className="text-gray-800 text-sm mb-[10px] font-semibold">전체상품</div>
-        <AllProducts data={data} />
+        <AllProducts data={allData} />
       </div>
     </div>
   );

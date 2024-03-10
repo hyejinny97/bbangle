@@ -3,7 +3,7 @@ import API from '@/api';
 import { IStoreDetailAllType } from '../types';
 
 const getStoreDetailAll = async (id: number): Promise<IStoreDetailAllType> => {
-  const data: IStoreDetailAllType = await API.get(`/stores/${id}/boards/all`);
+  const data: IStoreDetailAllType = await API.get(`/stores/${id}/boards/all?page=0`);
   return data;
 };
 
