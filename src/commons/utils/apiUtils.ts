@@ -1,14 +1,25 @@
-import { redirect } from 'next/navigation';
+import { redirect as redirectAction } from '@/action';
+
 import { ErrorResponse } from '../types/errorType';
+import { redirect } from 'next/navigation';
 
 export async function checkError(res: Response) {
   if (res.ok) return;
-  if (res.status === 401) {
+  const isServerSide = typeof window === 'undefined';
+
+  if (res.status === 401 && !isServerSide) {
+    redirectAction('/login');
+  }
+  if (res.status === 401 && isServerSide) {
     redirect('/login');
   }
 
-  const errorData: ErrorResponse = await res.json();
-  throw new Error(errorData.message);
+  try {
+    const errorData: ErrorResponse = await res.json();
+    throw new Error(errorData.message);
+  } catch (e) {
+    throw new Error(`[${res.status}] failed to fetch`);
+  }
 }
 
 export async function parseJson(res: Response) {
