@@ -42,7 +42,7 @@ const NicknameInput = ({ defaultValue }: NicknameInputProps) => {
           </Button>
         }
       />
-      {data && <div className="text-xs mt-[4px] text-gray-600">{data?.data.message}</div>}
+      {data && <div className="text-xs mt-[4px] text-gray-600">{data?.message}</div>}
     </div>
   );
 };

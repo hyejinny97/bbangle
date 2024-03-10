@@ -1,11 +1,10 @@
 import { useMutation } from '@tanstack/react-query';
-import * as API from '@/api';
+import API from '@/api';
 import { RegistrationRequest } from '../types';
 import { useRouter } from 'next/navigation';
-import { AxiosError } from 'axios';
-import { ErrorResponse } from '@/commons/types/errorResponse';
 import { revalidateTag } from '@/action';
 import { REAVALIDATE_TAG } from '@/commons/constants/revalidateTags';
+import { ErrorResponse } from '@/commons/types/errorType';
 
 const useRegistrationMutation = () => {
   const { push } = useRouter();
@@ -18,7 +17,7 @@ const useRegistrationMutation = () => {
     if (profileImg) {
       formData.append('profileImage', profileImg);
     }
-    return API.formPut<null, FormData>('/members/additional-information', formData);
+    return API.formPut('/members/additional-information', { body: formData });
   };
 
   const onSuccess = () => {
@@ -27,9 +26,9 @@ const useRegistrationMutation = () => {
     push('/');
   };
 
-  const onError = (e: AxiosError<ErrorResponse>) => {
+  const onError = (e: ErrorResponse) => {
     // Todo. toast popup 임시로 alert 처리
-    alert(e.response?.data.message);
+    alert(e.message);
   };
   return useMutation({ mutationFn, onSuccess, onError });
 };

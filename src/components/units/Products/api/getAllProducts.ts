@@ -1,5 +1,5 @@
-import * as API from '@/api';
-import { GetProductsQueryProps, IAllProductsType } from '@/commons/types/allProductsType';
+import API from '@/api';
+import { GetProductsQueryProps } from '@/commons/types/allProductsType';
 import { transformCategoryToEng, transformTagToEng } from '@/commons/constants/transfromTag';
 
 export const getAllProducts = async (query: GetProductsQueryProps) => {
@@ -20,7 +20,7 @@ export const getAllProducts = async (query: GetProductsQueryProps) => {
     sort: sort || 'LATEST'
   };
   const queryString = new URLSearchParams(queryObject).toString();
-  const { data } = await API.get<IAllProductsType>(`/boards?${queryString}`);
+  const data = await API.get(`/boards?${queryString}`);
 
   return data;
 };

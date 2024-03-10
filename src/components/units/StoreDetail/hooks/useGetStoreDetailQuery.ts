@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import * as API from '@/api';
+import API from '@/api';
 import { IStoreDetailType } from '../types';
 
-const getStoreDetail = async (id: number) => {
-  const result = await API.get<IStoreDetailType>(`/stores/${id}`);
-  return result.data;
+const getStoreDetail = async (id: number): Promise<IStoreDetailType> => {
+  const data: IStoreDetailType = await API.get(`/stores/${id}`);
+  return data;
 };
 
 export const UseGetStoreDetialQuery = (id: number) => {

@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import { useGetSearchProductsQuery } from '@/components/units/Search/hooks/useGetSearchProductsQuery';
 import { useGetSearchStoresQuery } from '@/components/units/Search/hooks/useGetSearchStoresQuery';
 import ProductAndStoreTab from '@/components/commons/tabs/ProductAndStoreTab';
+import { Suspense } from 'react';
 
 const ProductAndStoreTabWithCount = () => {
   const searchParams = useSearchParams();
@@ -15,7 +16,11 @@ const ProductAndStoreTabWithCount = () => {
   });
   const { itemCount: storeCount } = useGetSearchStoresQuery({ keyword });
 
-  return <ProductAndStoreTab productCount={productCount} storeCount={storeCount} />;
+  return (
+    <Suspense>
+      <ProductAndStoreTab productCount={productCount} storeCount={storeCount} />
+    </Suspense>
+  );
 };
 
 export default ProductAndStoreTabWithCount;
