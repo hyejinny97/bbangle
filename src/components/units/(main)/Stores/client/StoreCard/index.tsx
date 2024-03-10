@@ -1,13 +1,16 @@
 import { WishStore } from '@/components/units/WishListDetail/types';
+import BtnStar from '@/components/commons/button/client/Btn_start';
+import { useAddWishStoreMutation } from '@/components/units/(main)/Stores/hooks/useAddWishStoreMutation';
 import Link from 'next/link';
+import { MouseEvent } from 'react';
 
 const StoreCard = ({ data }: { data: WishStore }) => {
-  // const { mutate } = useAddWishStoreMutation();
+  const { mutate } = useAddWishStoreMutation();
 
-  // const handleAddWishStore = (e: MouseEvent<HTMLButtonElement>) => {
-  //   e.preventDefault();
-  //   mutate(data.storeId);
-  // };
+  const handleAddWishStore = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    mutate(data.storeId);
+  };
 
   return (
     <Link href="/stores/1">
@@ -22,7 +25,7 @@ const StoreCard = ({ data }: { data: WishStore }) => {
               <div className="text-sm font-semibold grow shrink basis-0 text-neutral-800 ">
                 {data.storeName}
               </div>
-              {/* <BtnStar isLiked={data.isWished} onClick={handleAddWishStore} /> */}
+              <BtnStar isLiked={false} onClick={handleAddWishStore} />
             </div>
             <div className="text-xs font-normal text-neutral-500">{data.introduce}</div>
           </div>

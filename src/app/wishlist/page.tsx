@@ -8,6 +8,7 @@ async function getWishStore() {
 
 const WishList = async () => {
   await getWishStore();
+
   return (
     <>
       <ServerWishList />

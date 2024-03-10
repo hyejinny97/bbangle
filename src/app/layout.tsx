@@ -7,6 +7,7 @@ import Footer from '@/components/commons/footer/server/Footer';
 import GetAccessToken from '@/components/commons/header/client/GetAccessToken';
 import PopupContainer from '@/components/commons/PopupContainer';
 import ModalContainer from '@/components/commons/ModalContainer';
+import ToastContainer from '@/components/commons/ToastContainer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <RootLayoutProvider>
           <ModalContainer />
           <PopupContainer />
+          <ToastContainer />
           <GetAccessToken />
           <div className="sm:w-[600px] w-full m-auto pb-24 min-h-screen relative">{children}</div>
           <Footer />

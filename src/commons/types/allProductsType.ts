@@ -8,3 +8,9 @@ export interface IAllProductsType {
   pageNumber: number; // 몇 페이지인지
   existNextPage: boolean; // 다음 페이지 유무
 }
+
+export interface GetProductsQueryProps {
+  category: string;
+  tags: string[];
+  sort: string;
+}

@@ -4,6 +4,8 @@ import { useGetWishListFolder } from '@/components/units/WishList/hooks/useGetWi
 import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import { useAddWishMutation } from '../hooks/useAddWishMutation';
 import PlusIcon from '../assets/plus-icon.svg';
+import ToastPop from '@/components/commons/toasts/ToastPop';
+import useToast from '@/commons/hooks/useToast';
 
 interface ChooseWishListModalProps {
   isModal: boolean;
@@ -21,6 +23,7 @@ export const ChooseWishListModal = ({
   const { data, refetch } = useGetWishListFolder();
   const { mutate: addWishListMutate } = useAddWishListMutation();
   const { mutate: addWishMutate } = useAddWishMutation();
+  const { openToast } = useToast();
 
   const handleToggleAddView = () => {
     setIsAddView(prev => !prev);
@@ -44,7 +47,7 @@ export const ChooseWishListModal = ({
         onSuccess: () => {
           refetch();
           setIsModal(false);
-          alert('추가 되었습니다.');
+          openToast(<ToastPop content="💖 찜한 상품이 추가 되었습니다." isAddWish />);
         }
       }
     );
