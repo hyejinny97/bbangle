@@ -5,9 +5,12 @@ import { MyProfileUpdateRequest } from '../types';
 import { revalidateTag } from '@/action';
 import { useRouter } from 'next/navigation';
 import { REAVALIDATE_TAG } from '@/commons/constants/revalidateTags';
+import useToast from '@/commons/hooks/useToast';
+import ToastPop from '@/components/commons/ToastPop';
 
 const useProfileUpdateMutation = () => {
   const { push } = useRouter();
+  const { openToast } = useToast();
 
   const mutationFn = async ({ profileImg, ...rest }: MyProfileUpdateRequest) => {
     const formData = new FormData();
@@ -25,10 +28,12 @@ const useProfileUpdateMutation = () => {
     push('/mypage');
   };
 
-  const onError = (e: Error) => {
-    // Todo. toast popup 임시로 alert 처리
-
-    alert(e.message);
+  const onError = () => {
+    openToast(
+      <ToastPop>
+        <div>업데이트 실패했습니다.</div>
+      </ToastPop>
+    );
   };
 
   return useMutation({

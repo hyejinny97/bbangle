@@ -1,15 +1,18 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { UseGetStoreDetialQuery } from '../../hooks/useGetStoreDetailQuery';
+import { useGetStoreDetialQuery } from '../../hooks/useGetStoreDetailQuery';
 import StoreProfile from '../StoreProfile';
 import AllProducts from '../AllProduct';
 import BestProducts from '../BestProduct';
 import Loading from '@/components/commons/Loading';
+import { useGetStoreDetialAllQuery } from '../../hooks/useGetStoreDetailAllQuery';
 
 const DetailContainer = () => {
   const params = useParams();
-  const { data } = UseGetStoreDetialQuery(Number(params.id));
+  const { data } = useGetStoreDetialQuery(Number(params.id));
+  const { data: allData } = useGetStoreDetialAllQuery(Number(params.id));
+
   if (!data) {
     return (
       <div className="w-[92%] mx-atuo p-[16px]">
@@ -30,7 +33,7 @@ const DetailContainer = () => {
       </div>
       <div className="w-[92%] m-auto py-[16px]">
         <div className="text-gray-800 text-sm mb-[10px] font-semibold">전체상품</div>
-        <AllProducts data={data} />
+        <AllProducts data={allData} />
       </div>
     </div>
   );

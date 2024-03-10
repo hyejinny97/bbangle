@@ -2,7 +2,8 @@ import { checkError, parseJson } from '@/commons/utils/apiUtils';
 
 const serverUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`;
 const TMP_TOKEN =
-  'Bearer eJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcxMDA1MjUxOCwiZXhwIjoxNzEwMDYzMzE4LCJpZCI6MTR9.H89CAAKDTRAxbGZqMlUao-QnpdmUS5Xj2BfG0yajCFw';
+  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcxMDA2MzkyMSwiZXhwIjoxNzEwMDc0NzIxLCJpZCI6MTR9.mz9RqjBHd06sRYA7seuJeM29Go53i3yMTroLughoGPk';
+
 
 async function get(endpoint: string, init?: RequestInit | undefined) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
