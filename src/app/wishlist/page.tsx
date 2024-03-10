@@ -1,18 +1,14 @@
 import ServerWishList from '@/components/units/WishList/server/ServerWishList';
-// import * as API from '@/api';
+import API from '@/api';
 
-// async function getWishStore() {
-//   try {
-//     const res = await fetch(`${API.serverUrl}/likes/stores`);
-//     const data = await res.json();
-//     return data;
-//   } catch (err) {
-//     console.log(err);
-//     return [];
-//   }
-// }
+async function getWishStore() {
+  const data = await API.get('/likes/stores');
+  return data;
+}
 
 const WishList = async () => {
+  await getWishStore();
+
   return (
     <>
       <ServerWishList />

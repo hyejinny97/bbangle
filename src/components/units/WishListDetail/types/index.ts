@@ -27,8 +27,8 @@ export interface IWishProductList {
   empty: boolean;
 }
 
-export interface IWishStoreList {
-  storeId: number;
-  storeName: string;
+export interface WishStore {
   introduce: string;
+  storeName: string;
+  storeId: number;
 }

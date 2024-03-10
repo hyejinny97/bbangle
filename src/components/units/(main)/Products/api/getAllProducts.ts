@@ -1,4 +1,4 @@
-import * as API from '@/api';
+import API from '@/api';
 import { IProductType } from '@/commons/types/productType';
 import { IFilterType } from '@/components/units/(main)/Products/types';
 import { transformFilterValueToQueryString } from '@/commons/utils/transformFilterValueToQueryString';
@@ -18,7 +18,6 @@ export const getAllProducts = async ({
   pageParam
 }: GetAllProductsProps): Promise<AllProductsType> => {
   const queryString = transformFilterValueToQueryString(query);
-  const { data } = await API.get<AllProductsType>(`/boards?${queryString}&page=${pageParam}`);
-
+  const data: AllProductsType = await API.get(`/boards?${queryString}&page=${pageParam}`);
   return data;
 };

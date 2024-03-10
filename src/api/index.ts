@@ -1,90 +1,131 @@
-import axios, { AxiosResponse } from 'axios';
+import { checkError, parseJson } from '@/commons/utils/apiUtils';
 
 const serverUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`;
 const TMP_TOKEN =
   'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcwOTM4MDYxOSwiZXhwIjoxNzA5MzkxNDE5LCJpZCI6NH0.A22pxkdD_OR1ynGWnKo7WD60XRiJwKhW2p3GqR8Q548';
 
-async function get<T>(endpoint: string): Promise<AxiosResponse<T>> {
-  return axios.get(serverUrl + endpoint, {
-    headers: {
-      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
-      Authorization: TMP_TOKEN
-    }
-  });
-}
-
-async function post<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
-  const bodyData = JSON.stringify(data);
-
-  return axios.post(serverUrl + endpoint, bodyData, {
+async function get(endpoint: string, init?: RequestInit | undefined) {
+  const res = await fetch(`${serverUrl}${endpoint}`, {
     headers: {
       'Content-Type': 'application/json',
-      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
       Authorization: TMP_TOKEN
-    }
+    },
+    ...init
   });
+
+  await checkError(res);
+  const data = await parseJson(res);
+  return data;
 }
 
-async function formPost<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
-  return axios.post(serverUrl + endpoint, data, {
+async function post(endpoint: string, init?: RequestInit) {
+  const res = await fetch(`${serverUrl}${endpoint}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: TMP_TOKEN
+    },
+    ...init
+  });
+  await checkError(res);
+  const data = await parseJson(res);
+  return data;
+}
+
+async function formPost(endpoint: string, init?: RequestInit) {
+  const res = await fetch(`${serverUrl}${endpoint}`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'multipart/form-data',
-      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
       Authorization: TMP_TOKEN
-    }
+    },
+    ...init
   });
+  await checkError(res);
+  const data = await parseJson(res);
+  return data;
 }
 
-async function put<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
-  const bodyData = JSON.stringify(data);
-
-  return axios.put(serverUrl + endpoint, bodyData, {
+async function put(endpoint: string, init?: RequestInit) {
+  const res = await fetch(`${serverUrl}${endpoint}`, {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
       Authorization: TMP_TOKEN
-    }
+    },
+    ...init
   });
+  await checkError(res);
+  const data = await parseJson(res);
+  return data;
 }
 
-async function formPut<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
-  return axios.putForm(serverUrl + endpoint, data, {
+async function formPut(endpoint: string, init?: RequestInit) {
+  const res = await fetch(`${serverUrl}${endpoint}`, {
+    method: 'PUT',
     headers: {
-      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
       Authorization: TMP_TOKEN
-    }
+    },
+    ...init
   });
+
+  await checkError(res);
+
+  const data = await parseJson(res);
+  return data;
 }
 
-async function patch<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
-  const bodyData = JSON.stringify(data);
-
-  return axios.patch(serverUrl + endpoint, bodyData, {
+async function patch(endpoint: string, init?: RequestInit) {
+  const res = await fetch(`${serverUrl}${endpoint}`, {
+    method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
       Authorization: TMP_TOKEN
-    }
+    },
+    ...init
   });
+  await checkError(res);
+  const data = await parseJson(res);
+  return data;
 }
 
-async function formPatch<T, D>(endpoint: string, data: D): Promise<AxiosResponse<T>> {
-  return axios.patch(serverUrl + endpoint, data, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
-      Authorization: TMP_TOKEN
-    }
-  });
-}
-
-async function del<T>(endpoint: string): Promise<AxiosResponse<T>> {
-  return axios.delete(serverUrl + endpoint, {
+async function formPatch(endpoint: string, init?: RequestInit) {
+  const res = await fetch(`${serverUrl}${endpoint}`, {
+    method: 'PATCH',
     headers: {
       Authorization: TMP_TOKEN
-      // Authorization: `Bearer ${sessionStorage.getItem('token')}`
-    }
+    },
+    ...init
   });
+  await checkError(res);
+  const data = await parseJson(res);
+  return data;
 }
 
-export { TMP_TOKEN, serverUrl, get, post, formPost, put, patch, formPatch, formPut, del as delete };
+async function _delete(endpoint: string, init?: RequestInit) {
+  const res = await fetch(`${serverUrl}${endpoint}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: TMP_TOKEN
+    },
+    ...init
+  });
+  await checkError(res);
+  const data = await parseJson(res);
+  return data;
+}
+
+const API = {
+  TMP_TOKEN,
+  serverUrl,
+  get,
+  post,
+  formPost,
+  put,
+  patch,
+  formPatch,
+  formPut,
+  delete: _delete
+};
+
+export default API;

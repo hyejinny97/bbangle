@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import * as API from '@/api';
+import API from '@/api';
 import { IAllProductsType } from '@/commons/types/allProductsType';
 
 interface GetProductsQueryProps {
@@ -14,11 +14,10 @@ const getAllProducts = async (query: GetProductsQueryProps): Promise<IAllProduct
   const tagQuery = tags && tags.length > 0 ? tags.map(tag => `${tag}=true`).join('&') : '';
   const sortQuery = sort ? `sort=${sort}` : '';
   const queryString = [categoryQuery, tagQuery, sortQuery].filter(Boolean).join('&');
-  const result = await API.get<{ data: IAllProductsType }>(
-    `/boards${queryString ? `?${queryString}` : ''}`
-  );
 
-  return result.data;
+  const data: IAllProductsType = await API.get(`/boards${queryString ? `?${queryString}` : ''}`);
+
+  return data;
 };
 
 export const UseGetSearchResultMutaion = (query: GetProductsQueryProps) => {

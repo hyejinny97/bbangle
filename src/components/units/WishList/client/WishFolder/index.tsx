@@ -1,18 +1,18 @@
 import WishLogo from '@/components/units/WishList/assets/wishLogo.svg';
 import BtnRemove from '@/components/units/WishList/assets/btnRemove.svg';
-import { IWishList } from '@/components/units/WishList/types';
+import { WishListFolder } from '@/components/units/WishList/types';
 import Link from 'next/link';
 import { ChangeEvent, MouseEvent, useState } from 'react';
 import UpModal from '@/components/commons/modal/UpModal';
 import { useUpdateWishListMutation } from '@/components/units/WishList/hooks/useUpdateWishListMutation';
-import { useGetWishListQuery } from '@/components/units/WishList/hooks/useGetWishListQuery';
+import { useGetWishListFolder } from '@/components/units/WishList/hooks/useGetWishListFolder';
 import { useDeleteWishListMutation } from '@/components/units/WishList/hooks/useDeleteWishListMutation';
 import useToast from '@/commons/hooks/useToast';
 import ToastPop from '@/components/commons/toasts/ToastPop';
 import Input from '@/components/commons/inputs/Input';
 
 interface WishFolderProps {
-  wish: IWishList;
+  wish: WishListFolder;
   isEdit: boolean;
 }
 
@@ -24,7 +24,7 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
 
   const { mutate: updateWishMutate } = useUpdateWishListMutation();
   const { mutate: deleteWishMutate } = useDeleteWishListMutation();
-  const { refetch } = useGetWishListQuery();
+  const { refetch } = useGetWishListFolder();
 
   const handleToggleEditModal = (folderId?: number) => (e: MouseEvent<HTMLElement>) => {
     if (!isEdit) {

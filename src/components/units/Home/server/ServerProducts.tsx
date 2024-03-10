@@ -1,16 +1,12 @@
 import Link from 'next/link';
 import ProductsList from '../client/ProductsList';
-import * as API from '@/api';
+import API from '@/api';
+import { IAllProductsType } from '@/commons/types/allProductsType';
 
 const getBestProducts = async () => {
-  try {
-    const res = await fetch(`${API.serverUrl}/boards`, { cache: 'no-store' });
-    const data = res.json();
-    return data;
-  } catch (err) {
-    console.log(err);
-    return [];
-  }
+  const data: IAllProductsType = await API.get('/boards', { cache: 'no-store' });
+
+  return data;
 };
 
 const ServerProducts = async () => {

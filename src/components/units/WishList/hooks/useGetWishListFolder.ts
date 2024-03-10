@@ -2,14 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import API from '@/api';
 import { WishListFolder } from '../types';
 
-const getWishList = async () => {
+const getWishListFolder = async (): Promise<WishListFolder[]> => {
   const data: WishListFolder[] = await API.get('/wishLists');
   return data;
 };
 
-export const useGetWishListQuery = () => {
-  return useQuery({
+export const useGetWishListFolder = () => {
+  return useQuery<WishListFolder[], Error>({
     queryKey: ['wishlists'],
-    queryFn: getWishList
+    queryFn: getWishListFolder
   });
 };

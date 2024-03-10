@@ -21,7 +21,7 @@ const ToastPop = ({ content, isAddWish }: IToastPopProps) => {
     }, 3000); // 3초 후에 사라지도록 설정 (원하는 시간으로 변경 가능)
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [openToast]);
 
   return (
     isToast && (

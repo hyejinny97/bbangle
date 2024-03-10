@@ -18,7 +18,9 @@ function FilterModal() {
   const handleConfirm = () => {
     setFilterValue(prev => ({
       category: selectedCategory ? selectedCategory : prev.category,
-      tags: selectedTags ? selectedTags : prev.tags
+      tags: selectedTags ? selectedTags : prev.tags,
+      sort: prev.sort,
+      showProductsAvailableOrder: prev.showProductsAvailableOrder
     }));
     closeModal();
   };

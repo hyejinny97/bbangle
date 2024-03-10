@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import * as API from '@/api';
+import API from '@/api';
 import { IWishProductList } from '@/components/units/WishListDetail/types';
 
 const getWishProductList = async (folderId: number) => {
-  const result = await API.get<IWishProductList>(`/boards/folders/${folderId}`);
-  return result.data;
+  const data: IWishProductList = await API.get(`/boards/folders/${folderId}`);
+  return data;
 };
 
 export const useWishProductListQuery = (folderId: number) => {
