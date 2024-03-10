@@ -28,8 +28,7 @@ const useProfileUpdateMutation = () => {
     push('/mypage');
   };
 
-  const onError = e => {
-    console.log(e);
+  const onError = () => {
     openToast(
       <ToastPop>
         <div>업데이트 실패했습니다.</div>
