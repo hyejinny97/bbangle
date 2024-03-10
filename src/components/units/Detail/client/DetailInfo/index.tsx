@@ -41,7 +41,7 @@ const ProductInfo = ({ data }: ProductInfoProps) => {
         <StoreInfo store={data.store} />
         <div className="border-b border-[#FAFAFA] border-solid"></div>
         <BoardInfo data={data} />
-        <div className=" justify-center w-[92%] m-auto border text-center border-red-600">
+        <div className="justify-center w-[92%] m-auto text-center">
           <Image
             src={'https://bbangree-oven.cdn.ntruss.com/1/1/1.jpg'}
             alt="상세"
