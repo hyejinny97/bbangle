@@ -12,6 +12,11 @@ interface ProductsProps {
 function StoreInfo({ store }: ProductsProps) {
   const [isLiked, setIsLiked] = useState(store.isWished);
 
+  const addStoreToWishList = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setIsLiked(!isLiked);
+  };
+
   return (
     <Link href={`/stores/${store.storeId}`} className=" w-full">
       <div className="py-[13.5px] w-[92%] m-auto flex items-center justify-between ">
@@ -21,7 +26,7 @@ function StoreInfo({ store }: ProductsProps) {
           </div>
           <div className="text-[#757575] text-[14px]">{store.storeName}</div>
         </div>
-        <BtnStar isLiked={isLiked} onClick={() => setIsLiked(!isLiked)} />
+        <BtnStar isLiked={isLiked} onClick={addStoreToWishList} />
       </div>
     </Link>
   );

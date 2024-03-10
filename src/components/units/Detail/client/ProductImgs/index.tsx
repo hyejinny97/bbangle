@@ -38,7 +38,7 @@ const ProductImgs = ({ boardImages, isBundled }: ProductImgProps) => {
                 <>
                   <SwiperSlide key={image.id}>
                     <div className="">
-                      <div className="w-full pb-[90%]">
+                      <div className="w-full pb-[100%]">
                         <Image
                           src={image.url}
                           alt="img"
