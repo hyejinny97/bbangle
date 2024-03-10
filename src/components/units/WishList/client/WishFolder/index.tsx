@@ -8,7 +8,7 @@ import { useUpdateWishListMutation } from '@/components/units/WishList/hooks/use
 import { useGetWishListFolder } from '@/components/units/WishList/hooks/useGetWishListFolder';
 import { useDeleteWishListMutation } from '@/components/units/WishList/hooks/useDeleteWishListMutation';
 import useToast from '@/commons/hooks/useToast';
-import ToastPop from '@/components/commons/toasts/ToastPop';
+import ToastPop from '@/components/commons/ToastPop';
 import Input from '@/components/commons/inputs/Input';
 
 interface WishFolderProps {
@@ -45,7 +45,11 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
 
   const handleUpdateWishList = (e: MouseEvent<HTMLElement>) => {
     if (!title) {
-      openToast(<ToastPop content="변경하실 폴더 명을 입력해주세요." />);
+      openToast(
+        <ToastPop>
+          <div>변경하실 폴더 명을 입력해주세요.</div>
+        </ToastPop>
+      );
       return;
     }
 
@@ -60,7 +64,11 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
         onSuccess: () => {
           refetch();
           handleToggleEditModal()(e);
-          openToast(<ToastPop content="폴더 명이 변경 되었습니다." />);
+          openToast(
+            <ToastPop>
+              <div>폴더 명이 변경 되었습니다.</div>
+            </ToastPop>
+          );
         }
       }
     );
@@ -74,7 +82,11 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
       {
         onSuccess: () => {
           refetch();
-          openToast(<ToastPop content="찜 폴더가 삭제 되었습니다." />);
+          openToast(
+            <ToastPop>
+              <div>찜 폴더가 삭제 되었습니다.</div>
+            </ToastPop>
+          );
         }
       }
     );

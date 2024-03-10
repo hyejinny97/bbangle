@@ -23,6 +23,13 @@ module.exports = {
         slideUp: 'slideUp 0.2s ease-out',
         slideDown: 'slideDown 0.3s ease-out'
       },
+      zIndex: {
+        toast: 1000,
+        popup: 1000,
+        modal: 1000,
+        footer: 9000,
+        backdrop: 9999
+      },
 
       colors: {
         color: {
