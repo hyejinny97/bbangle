@@ -26,7 +26,7 @@ const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
     <>
       <Link href={`/products/${product.boardId}`} className="w-full relative">
         <ProductImage product={product} setIsModal={setIsModal} setProductId={setProductId} />
-        <div className="absolute z-10 top-[6px] h-5 w-full ">
+        <div className="absolute z-10 top-[2px] h-5 w-full ">
           <RankingBadge popular={popular} ranking={ranking} />
           {product.isBundled && <BundleBadge />}
         </div>
