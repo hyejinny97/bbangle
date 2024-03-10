@@ -3,7 +3,7 @@ import WishProducts from '@/components/units/WishList/client/WishProducts';
 const ServerWishList = () => {
   return (
     <>
-      <Header title="찜" />
+      <Header title="찜" back />
       <WishProducts />
     </>
   );

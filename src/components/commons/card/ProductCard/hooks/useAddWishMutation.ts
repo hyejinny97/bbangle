@@ -1,5 +1,6 @@
 import * as API from '@/api/index';
 import { useMutation } from '@tanstack/react-query';
+import { AxiosResponse } from 'axios';
 
 interface WishData {
   data: { folderId: number };
@@ -10,7 +11,7 @@ interface WishListReturn {
   message: string;
 }
 
-const addWish = async (data: WishData): Promise<WishListReturn> => {
+const addWish = async (data: WishData): Promise<AxiosResponse<WishListReturn>> => {
   return API.patch<WishListReturn, WishData['data']>(`/boards/${data.borderId}/wish`, data.data);
 };
 

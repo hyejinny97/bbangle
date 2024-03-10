@@ -1,11 +1,14 @@
+import useToast from '@/commons/hooks/useToast';
 import BtnStar from '@/components/commons/button/client/Btn_start';
 import { useAddWishStoreMutation } from '@/components/units/(main)/Stores/hooks/useAddWishStoreMutation';
+import ToastPop from '@/components/commons/toasts/ToastPop';
 import { revalidateTag } from 'next/cache';
 import Link from 'next/link';
 import { MouseEvent } from 'react';
 
 const StoreCard = ({ data }: any) => {
   const { mutate } = useAddWishStoreMutation();
+  const { openToast } = useToast();
 
   const handleAddWishStore = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -14,7 +17,7 @@ const StoreCard = ({ data }: any) => {
         { storeId: data.storeId },
         {
           onSuccess: () => {
-            console.log('성공');
+            openToast(<ToastPop content="💖 스토어가 찜 목록에 추가 되었습니다." isAddWish />);
             revalidateTag('storeWish');
           }
         }

@@ -20,6 +20,10 @@ export const popupState = atom<ReactNode>({
   key: 'popupState',
   default: null
 });
+export const toastState = atom<ReactNode>({
+  key: 'toastState',
+  default: null
+});
 
 export const isWishModalState = atom<boolean>({
   key: 'isWishModalState',
