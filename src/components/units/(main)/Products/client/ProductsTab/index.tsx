@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
+import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
 import { filterValueState } from '@/components/units/(main)/Products/atoms';

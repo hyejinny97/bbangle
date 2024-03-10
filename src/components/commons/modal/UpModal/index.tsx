@@ -1,18 +1,18 @@
 'use client';
 
 import BackDrop from '@/components/commons/backgrounds/BackDrop';
-import { ReactNode } from 'react';
+import { MouseEvent, ReactNode } from 'react';
 import { GrClose } from 'react-icons/gr';
 
 interface UpModalProps {
   title: string;
   children: ReactNode;
   isVisible: boolean;
-  toggleModal: (_e: any) => void;
+  toggleModal: (_e: MouseEvent<HTMLElement>) => void;
 }
 
 const UpModal = ({ title, children, isVisible, toggleModal }: UpModalProps) => {
-  const handleToggle = (e: any) => {
+  const handleToggle = <T extends HTMLElement>(e: React.MouseEvent<T>): void => {
     toggleModal(e);
   };
 

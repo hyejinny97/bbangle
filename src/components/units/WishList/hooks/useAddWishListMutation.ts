@@ -1,4 +1,4 @@
-import * as API from '@/api/index';
+import API from '@/api';
 import { useMutation } from '@tanstack/react-query';
 
 interface WishListData {
@@ -9,8 +9,11 @@ interface WishListReturn {
   message: string;
 }
 
-const addWishList = async (data: WishListData): Promise<WishListReturn> => {
-  return API.post<WishListReturn, WishListData>('/wishLists', data);
+const addWishList = async (reqData: WishListData): Promise<WishListReturn> => {
+  const data: WishListReturn = await API.post('/wishLists', {
+    body: JSON.stringify(reqData)
+  });
+  return data;
 };
 
 export const useAddWishListMutation = () => {

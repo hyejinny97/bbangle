@@ -1,21 +1,16 @@
 import ServerWishList from '@/components/units/WishList/server/ServerWishList';
-import * as API from '@/api';
+import API from '@/api';
+
+export const dynamic = 'force-dynamic';
 
 async function getWishStore() {
-  try {
-    const res = await fetch(`${API.serverUrl}/likes/stores`);
-    const data = await res.json();
-    console.log(data);
-    return data;
-  } catch (err) {
-    console.log(err);
-    return [];
-  }
+  const data = await API.get('/likes/stores');
+  return data;
 }
 
 const WishList = async () => {
-  const { data } = await getWishStore();
-  console.log(data);
+  await getWishStore();
+
   return (
     <>
       <ServerWishList />

@@ -1,4 +1,4 @@
-import * as API from '@/api/index';
+import API from '@/api';
 import { useMutation } from '@tanstack/react-query';
 
 interface WishListData {
@@ -9,8 +9,9 @@ interface WishListReturn {
   message: string;
 }
 
-const deleteWishList = async (data: WishListData): Promise<WishListReturn> => {
-  return API.delete<WishListReturn>(`/wishLists/${data.folderId}`);
+const deleteWishList = async (wishList: WishListData): Promise<WishListReturn> => {
+  const data: WishListReturn = await API.delete(`/wishLists/${wishList.folderId}`);
+  return data;
 };
 
 export const useDeleteWishListMutation = () => {

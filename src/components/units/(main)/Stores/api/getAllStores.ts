@@ -1,4 +1,4 @@
-import * as API from '@/api';
+import API from '@/api';
 import { IStoreType } from '@/commons/types/storeType';
 
 interface GetAllStoresProps {
@@ -11,7 +11,6 @@ interface AllStoresType {
 }
 
 export const getAllStores = async ({ pageParam }: GetAllStoresProps): Promise<AllStoresType> => {
-  const { data } = await API.get<AllStoresType>(`/stores?page=${pageParam}`);
-
+  const data: AllStoresType = await API.get(`/stores?page=${pageParam}`);
   return data;
 };

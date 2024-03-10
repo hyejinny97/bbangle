@@ -1,4 +1,4 @@
-import * as API from '@/api/index';
+import API from '@/api';
 import { useMutation } from '@tanstack/react-query';
 
 interface WishData {
@@ -10,8 +10,12 @@ interface WishListReturn {
   message: string;
 }
 
-const addWish = async (data: WishData): Promise<WishListReturn> => {
-  return API.patch<WishListReturn, WishData['data']>(`/boards/${data.borderId}/wish`, data.data);
+const addWish = async (wishList: WishData): Promise<WishListReturn> => {
+  const data: WishListReturn = await API.patch(`/boards/${wishList.borderId}/wish`, {
+    body: JSON.stringify(wishList.data)
+  });
+
+  return data;
 };
 
 export const useAddWishMutation = () => {

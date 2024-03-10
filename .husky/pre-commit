@@ -4,3 +4,4 @@
 
 yarn lint
 yarn lint-staged
+yarn check-types
