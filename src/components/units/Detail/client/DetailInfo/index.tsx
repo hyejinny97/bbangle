@@ -4,7 +4,7 @@ import { IProductDetailType } from '../../types';
 import StoreInfo from '../StoreInfo';
 import BoardInfo from '../BoardInfo';
 import Button from '@/components/commons/button/client/Button';
-import ToastPop from '@/components/commons/toasts/ToastPop';
+import ToastPop from '@/components/commons/ToastPop';
 import { MouseEvent, useState } from 'react';
 import { ChooseWishListModal } from '@/components/commons/card/ProductCard/client/ChooseWishListModal';
 import useToast from '@/commons/hooks/useToast';
@@ -24,7 +24,11 @@ const ProductInfo = ({ data }: ProductInfoProps) => {
     e.preventDefault();
 
     if (data.board.isWished) {
-      openToast(<ToastPop content="이미 찜한 상품 입니다." />);
+      openToast(
+        <ToastPop>
+          <div>이미 찜한 상품 입니다.</div>
+        </ToastPop>
+      );
     } else {
       setIsModal(true);
       setProductId(data.board.boardId);
