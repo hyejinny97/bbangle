@@ -18,7 +18,7 @@ const UpModalNewVer = ({ title, children }: UpModalProps) => {
       initial={{ bottom: '-100%' }}
       animate={{ bottom: 0 }}
       exit={{ bottom: '-100%' }}
-      className="absolute w-full max-w-[600px] max-h-[76vh] bg-white z-[5001] rounded-t-2xl pb-4"
+      className="absolute w-full max-w-[600px] bg-white z-[5001] rounded-t-2xl pb-4"
     >
       <div className="relative py-4">
         <h4 className="text-center">{title}</h4>
