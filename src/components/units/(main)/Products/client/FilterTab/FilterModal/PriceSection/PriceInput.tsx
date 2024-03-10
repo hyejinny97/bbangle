@@ -34,6 +34,7 @@ const PriceInput = ({ value, onChange }: PriceInputProps) => {
         value={`${value.toLocaleString()}`}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
+        disabled
         className={`p-0 pr-[5px] border-none text-right ${isLimitValue ? 'text-gray-500' : 'text-gray-900'}`}
       />
       <span className="text-gray-500">원</span>
