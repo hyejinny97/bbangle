@@ -31,7 +31,7 @@ const ProductInfo = ({ data }: ProductInfoProps) => {
     }
   };
 
-  const gotoUrl = () => {
+  const gotoPurchaseUrl = () => {
     window.open(data.board.purchaseUrl, '_blank');
   };
 
@@ -58,7 +58,7 @@ const ProductInfo = ({ data }: ProductInfoProps) => {
           <BtnOutlinedHeart isLiked={data.board.isWished} onClick={handleClickHeart} />
         </div>
         <div className="flex-1">
-          <Button onClick={gotoUrl}>구매하러 가기</Button>
+          <Button onClick={gotoPurchaseUrl}>구매하러 가기</Button>
         </div>
       </div>
       {isModal && (
