@@ -10,7 +10,6 @@ interface BackDropProps {
 }
 
 const BackDrop = ({ isVisible, onClick, children, className = '' }: BackDropProps) => {
-  console.log(isVisible);
   return (
     <motion.div
       initial={{ opacity: 0 }}

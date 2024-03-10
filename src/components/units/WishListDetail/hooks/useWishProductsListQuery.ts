@@ -2,9 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 import * as API from '@/api';
 import { IWishProductList } from '@/components/units/WishListDetail/types';
 
-const getWishProductList = async (folderId: number): Promise<IWishProductList> => {
-  const result = await API.get<{ data: IWishProductList }>(`/boards/folders/${folderId}`);
-  console.log(result.data);
+const getWishProductList = async (folderId: number) => {
+  const result = await API.get<IWishProductList>(`/boards/folders/${folderId}`);
   return result.data;
 };
 

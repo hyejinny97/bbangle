@@ -7,6 +7,9 @@ import UpModal from '@/components/commons/modal/UpModal';
 import { useUpdateWishListMutation } from '@/components/units/WishList/hooks/useUpdateWishListMutation';
 import { useGetWishListQuery } from '@/components/units/WishList/hooks/useGetWishListQuery';
 import { useDeleteWishListMutation } from '@/components/units/WishList/hooks/useDeleteWishListMutation';
+import useToast from '@/commons/hooks/useToast';
+import ToastPop from '@/components/commons/toasts/ToastPop';
+import Input from '@/components/commons/inputs/Input';
 
 interface WishFolderProps {
   wish: IWishList;
@@ -17,20 +20,22 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [title, setTitle] = useState('');
   const [folderId, setFolderId] = useState(0);
-
-  console.log(wish);
+  const { openToast } = useToast();
 
   const { mutate: updateWishMutate } = useUpdateWishListMutation();
   const { mutate: deleteWishMutate } = useDeleteWishListMutation();
   const { refetch } = useGetWishListQuery();
 
-  const handleToggleEditModal = (folderId?: number) => (e: MouseEvent<HTMLHeadingElement>) => {
-    if (isEdit) {
-      e.preventDefault();
-      setIsVisible(prev => !prev);
-      if (folderId) {
-        setFolderId(folderId);
-      }
+  const handleToggleEditModal = (folderId?: number) => (e: MouseEvent<HTMLElement>) => {
+    if (!isEdit) {
+      return;
+    }
+
+    e.preventDefault();
+    setIsVisible(prev => !prev);
+
+    if (folderId) {
+      setFolderId(folderId);
     }
   };
 
@@ -38,25 +43,27 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
     setTitle(e.target.value);
   };
 
-  const handleUpdateWishList = (e: any) => {
-    if (title) {
-      updateWishMutate(
-        {
-          folderId,
-          data: {
-            title
-          }
-        },
-        {
-          onSuccess: () => {
-            refetch();
-            handleToggleEditModal()(e);
-          }
-        }
-      );
-    } else {
-      alert('변경하실 폴더 명을 입력해주세요.');
+  const handleUpdateWishList = (e: MouseEvent<HTMLElement>) => {
+    if (!title) {
+      openToast(<ToastPop content="변경하실 폴더 명을 입력해주세요." />);
+      return;
     }
+
+    updateWishMutate(
+      {
+        folderId,
+        data: {
+          title
+        }
+      },
+      {
+        onSuccess: () => {
+          refetch();
+          handleToggleEditModal()(e);
+          openToast(<ToastPop content="폴더 명이 변경 되었습니다." />);
+        }
+      }
+    );
   };
   const handleDeleteWishList = (folderId: number) => (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -67,7 +74,7 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
       {
         onSuccess: () => {
           refetch();
-          alert('삭제 완료');
+          openToast(<ToastPop content="찜 폴더가 삭제 되었습니다." />);
         }
       }
     );
@@ -105,11 +112,11 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
               </button>
             )}
           </div>
-          <div className="flex items-center justify-between mt-1.5">
-            <h3
-              className={`text-sm font-semibold text-color-Gray900 ${isEdit && 'underline'}`}
-              onClick={handleToggleEditModal(wish.folderId)}
-            >
+          <div
+            className="flex items-center justify-between mt-1.5"
+            onClick={handleToggleEditModal(wish.folderId)}
+          >
+            <h3 className={`text-sm font-semibold text-color-Gray900 ${isEdit && 'underline'}`}>
               {wish.title}
             </h3>
             <span className="text-xs font-normal text-color-Gray500">({wish.count})</span>
@@ -120,7 +127,9 @@ const WishFolder = ({ wish, isEdit }: WishFolderProps) => {
         <UpModal title="찜 폴더" isVisible={isVisible} toggleModal={handleToggleEditModal()}>
           <div className="w-full">
             <div className="w-[92%] m-auto flex flex-col items-end gap-2">
-              <input
+              <Input
+                id="wish-update-input"
+                label=""
                 type="text"
                 style={{ outline: 'none' }}
                 className="w-full p-3 border border-solid border-color-Gray100 rounded-[10px] text-base font-normal"

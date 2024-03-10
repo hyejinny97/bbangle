@@ -2,6 +2,7 @@
 
 import { isCategoryTabState } from '@/atoms/atom';
 import CategoryTab from '@/components/commons/CategoryTab';
+import Input from '@/components/commons/inputs/Input';
 import UpModal from '@/components/commons/modal/UpModal';
 import StoreCard from '@/components/units/(main)/Stores/client/StoreCard';
 import WishButton from '@/components/units/WishList/client/WishButton';
@@ -17,12 +18,16 @@ const WishProducts = () => {
   const [title, setTitle] = useState('');
   const [isVisible, setIsVisible] = useState(false);
 
-  const [isEdit] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
   const { data: wishList, refetch } = useGetWishListQuery();
   const { data: wishStoreList } = useWishStoreListQuery();
 
   const { mutate } = useAddWishListMutation();
+
+  const handleClickEdit = () => {
+    setIsEdit(prev => !prev);
+  };
 
   const handleModalToggle = () => {
     setIsVisible(prev => !prev);
@@ -57,7 +62,7 @@ const WishProducts = () => {
           <div className="w-[92%] m-auto">
             <div className="flex items-center justify-end gap-2 pt-4 pb-2.5">
               <WishButton title="추가" onClick={handleModalToggle} />
-              <WishButton title="편집" isBlack onClick={() => {}} />
+              <WishButton title={isEdit ? '완료' : '편집'} isBlack onClick={handleClickEdit} />
             </div>
 
             <div className="flex flex-wrap gap-x-[5%] gap-y-4">
@@ -69,7 +74,9 @@ const WishProducts = () => {
           <UpModal title="찜 폴더" isVisible={isVisible} toggleModal={handleModalToggle}>
             <div className="w-full">
               <div className="w-[92%] m-auto flex flex-col items-end gap-2">
-                <input
+                <Input
+                  id="wish-add-input"
+                  label=""
                   type="text"
                   style={{ outline: 'none' }}
                   className="w-full p-3 border border-solid border-color-Gray100 rounded-[10px] text-base font-normal"
