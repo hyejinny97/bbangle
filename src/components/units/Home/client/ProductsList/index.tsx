@@ -3,15 +3,10 @@ import API from '@/api';
 import { IProductType } from '@/commons/types/productType';
 
 const getBestProducts = async () => {
-  try {
-    const res = await fetch(`${API.serverUrl}/boards`, { cache: 'no-store' });
-    const data = res.json();
-    return data;
-  } catch (err) {
-    console.log(err);
-    return [];
-  }
+  const data = await API.get('/boards', { cache: 'no-store' });
+  return data;
 };
+
 const ProductsList = async () => {
   const bestProducts = await getBestProducts();
   return (
