@@ -1,17 +1,17 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { UseGetStoreDetialQuery } from '../../hooks/useGetStoreDetailQuery';
+import { useGetStoreDetialQuery } from '../../hooks/useGetStoreDetailQuery';
 import StoreProfile from '../StoreProfile';
 import AllProducts from '../AllProduct';
 import BestProducts from '../BestProduct';
 import Loading from '@/components/commons/Loading';
-import { UseGetStoreDetialAllQuery } from '../../hooks/useGetStoreDetailAllQuery';
+import { useGetStoreDetialAllQuery } from '../../hooks/useGetStoreDetailAllQuery';
 
 const DetailContainer = () => {
   const params = useParams();
-  const { data } = UseGetStoreDetialQuery(Number(params.id));
-  const { data: allData } = UseGetStoreDetialAllQuery(Number(params.id));
+  const { data } = useGetStoreDetialQuery(Number(params.id));
+  const { data: allData } = useGetStoreDetialAllQuery(Number(params.id));
 
   if (!data) {
     return (

@@ -7,7 +7,7 @@ const getStoreDetailAll = async (id: number): Promise<IStoreDetailAllType> => {
   return data;
 };
 
-export const UseGetStoreDetialAllQuery = (id: number) => {
+export const useGetStoreDetialAllQuery = (id: number) => {
   return useQuery<IStoreDetailAllType, Error>({
     queryKey: ['products_all'],
     queryFn: () => getStoreDetailAll(id)

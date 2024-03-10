@@ -3,7 +3,6 @@ import API from '@/api';
 
 const getBestProducts = async () => {
   try {
-    await new Promise(resolve => setTimeout(resolve, 3000));
     const res = await fetch(`${API.serverUrl}/boards`, { cache: 'no-store' });
     const data = res.json();
     return data;
