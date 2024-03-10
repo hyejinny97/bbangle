@@ -25,13 +25,23 @@ const useProfileUpdateMutation = () => {
 
   const onSuccess = async () => {
     await revalidateTag(REAVALIDATE_TAG.profile);
+    openToast(
+      <ToastPop>
+        <div>프로필 수정이 완료되었어요.</div>
+      </ToastPop>
+    );
+
     push('/mypage');
   };
 
-  const onError = () => {
+  const onError = (e: Error) => {
+    const message = e.message
+      ? '알 수 없는 이유로 수정에 실패했어요.'
+      : '프로필 수정이 완료되었어요.';
+
     openToast(
       <ToastPop>
-        <div>업데이트 실패했습니다.</div>
+        <div>{message}</div>
       </ToastPop>
     );
   };

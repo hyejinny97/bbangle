@@ -5,8 +5,11 @@ import { useRouter } from 'next/navigation';
 import { revalidateTag } from '@/action';
 import { REAVALIDATE_TAG } from '@/commons/constants/revalidateTags';
 import { ErrorResponse } from '@/commons/types/errorType';
+import useToast from '@/commons/hooks/useToast';
+import ToastPop from '@/components/commons/ToastPop';
 
 const useRegistrationMutation = () => {
+  const { openToast } = useToast();
   const { push } = useRouter();
 
   const mutationFn = ({ profileImg, ...rest }: RegistrationRequest) => {
@@ -21,14 +24,25 @@ const useRegistrationMutation = () => {
   };
 
   const onSuccess = () => {
-    // Todo. toast popup
     revalidateTag(REAVALIDATE_TAG.profile);
+    openToast(
+      <ToastPop>
+        <div>프로필 등록이 완료되었어요.</div>
+      </ToastPop>
+    );
     push('/');
   };
 
   const onError = (e: ErrorResponse) => {
-    // Todo. toast popup 임시로 alert 처리
-    alert(e.message);
+    const message = e.message
+      ? '알 수 없는 이유로 등록에 실패했어요.'
+      : '프로필 등록이 완료되었어요.';
+
+    openToast(
+      <ToastPop>
+        <div>{message}</div>
+      </ToastPop>
+    );
   };
   return useMutation({ mutationFn, onSuccess, onError });
 };
