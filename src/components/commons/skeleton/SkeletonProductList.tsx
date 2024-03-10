@@ -1,4 +1,4 @@
-export const SkeletonProductCard = () => {
+export const SkeletonProductList = () => {
   return (
     <div className="flex flex-wrap w-[92%] m-auto  gap-x-[4%] gap-y-4">
       <div className="w-[48%] animate-pulse">

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ProductsList from '../client/ProductsList';
 import { Suspense } from 'react';
-import { SkeletonProductCard } from '@/components/commons/skeleton/SkeletonProductCard';
+import { SkeletonProductList } from '@/components/commons/skeleton/SkeletonProductList';
 //import { IAllProductsType } from '@/commons/types/allProductsType';
 
 const ServerProducts = async () => {
@@ -13,7 +13,7 @@ const ServerProducts = async () => {
           전체보기
         </Link>
       </div>
-      <Suspense fallback={<SkeletonProductCard />}>
+      <Suspense fallback={<SkeletonProductList />}>
         <ProductsList />
       </Suspense>
     </div>
