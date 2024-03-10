@@ -12,19 +12,39 @@ const PriceSection = () => {
   const [price, setPrice] = useRecoilState(priceTempState);
 
   const handleMinPriceChange = (newValue: number) => {
-    if (newValue > LIMIT_MAX_PRICE - PRICE_GAP)
-      setPrice({ ...price, maxPrice: LIMIT_MAX_PRICE, minPrice: LIMIT_MAX_PRICE - PRICE_GAP });
-    else if (newValue > price.maxPrice - PRICE_GAP)
+    if (newValue > LIMIT_MAX_PRICE - PRICE_GAP) {
+      setPrice({
+        ...price,
+        maxPrice: LIMIT_MAX_PRICE,
+        minPrice: LIMIT_MAX_PRICE - PRICE_GAP
+      });
+      return;
+    }
+
+    if (newValue > price.maxPrice - PRICE_GAP) {
       setPrice({ ...price, maxPrice: newValue + PRICE_GAP, minPrice: newValue });
-    else setPrice({ ...price, minPrice: newValue });
+      return;
+    }
+
+    setPrice({ ...price, minPrice: newValue });
   };
 
   const handleMaxPriceChange = (newValue: number) => {
-    if (newValue < LIMIT_MIN_PRICE + PRICE_GAP)
-      setPrice({ ...price, maxPrice: LIMIT_MIN_PRICE + PRICE_GAP, minPrice: LIMIT_MIN_PRICE });
-    else if (newValue < price.minPrice + PRICE_GAP)
+    if (newValue < LIMIT_MIN_PRICE + PRICE_GAP) {
+      setPrice({
+        ...price,
+        maxPrice: LIMIT_MIN_PRICE + PRICE_GAP,
+        minPrice: LIMIT_MIN_PRICE
+      });
+      return;
+    }
+
+    if (newValue < price.minPrice + PRICE_GAP) {
       setPrice({ ...price, maxPrice: newValue, minPrice: newValue - PRICE_GAP });
-    else setPrice({ ...price, maxPrice: newValue });
+      return;
+    }
+
+    setPrice({ ...price, maxPrice: newValue });
   };
 
   return (

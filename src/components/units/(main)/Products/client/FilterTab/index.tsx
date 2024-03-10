@@ -12,7 +12,7 @@ import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit
 
 const getIngredientTag = (ingredients: Array<string>) => {
   if (ingredients.length === 1) return ingredients[0];
-  else if (ingredients.length > 1) return `${ingredients[0]} 외 ${ingredients.length - 1}개`;
+  if (ingredients.length > 1) return `${ingredients[0]} 외 ${ingredients.length - 1}개`;
 };
 
 const getPriceTag = ({ minPrice, maxPrice }: { minPrice: number; maxPrice: number }) => {
