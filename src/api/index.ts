@@ -14,6 +14,7 @@ async function get(endpoint: string, init?: RequestInit | undefined) {
   });
 
   await checkError(res);
+
   const data = await parseJson(res);
   return data;
 }
