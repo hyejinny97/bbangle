@@ -18,7 +18,7 @@ const useRegistrationMutation = () => {
     const blobData = new Blob([jsonData], { type: 'application/json' });
     formData.append('additionalInfo', blobData);
     if (profileImg) {
-      formData.append('profileImage', profileImg);
+      formData.append('profileImg', profileImg);
     }
     return API.formPut('/members/additional-information', { body: formData });
   };
@@ -34,9 +34,7 @@ const useRegistrationMutation = () => {
   };
 
   const onError = (e: ErrorResponse) => {
-    const message = e.message
-      ? '알 수 없는 이유로 등록에 실패했어요.'
-      : '프로필 등록이 완료되었어요.';
+    const message = e.message || '알 수 없는 이유로 등록에 실패했어요.';
 
     openToast(
       <ToastPop>

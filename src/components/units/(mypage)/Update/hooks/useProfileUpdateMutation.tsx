@@ -35,9 +35,7 @@ const useProfileUpdateMutation = () => {
   };
 
   const onError = (e: Error) => {
-    const message = e.message
-      ? '알 수 없는 이유로 수정에 실패했어요.'
-      : '프로필 수정이 완료되었어요.';
+    const message = e.message || '알 수 없는 이유로 수정에 실패했어요.';
 
     openToast(
       <ToastPop>
