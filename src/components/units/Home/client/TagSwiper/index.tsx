@@ -1,5 +1,6 @@
 import { IProductType } from '@/commons/types/productType';
 import { useEffect, useState } from 'react';
+import { transformTagToKr } from '@/commons/constants/transfromTag';
 
 interface TagSwiperProps {
   tag: IProductType['tags'];
@@ -8,28 +9,7 @@ interface TagSwiperProps {
 const TagSwiper = ({ tag }: TagSwiperProps) => {
   const [maxTagsToShow, setMaxTagsToShow] = useState(4);
   const tagFilter = tag.map((item: string) => {
-    let translatedItem = item;
-
-    switch (item) {
-      case 'glutenFree':
-        translatedItem = '글루텐프리';
-        break;
-      case 'sugarFree':
-        translatedItem = '무설탕';
-        break;
-      case 'ketogenic':
-        translatedItem = '키토제닉';
-        break;
-      case 'vegan':
-        translatedItem = '비건';
-        break;
-      case 'highProtein':
-        translatedItem = '고단백';
-        break;
-      default:
-        break;
-    }
-
+    const translatedItem = transformTagToKr(item);
     return translatedItem;
   });
 
