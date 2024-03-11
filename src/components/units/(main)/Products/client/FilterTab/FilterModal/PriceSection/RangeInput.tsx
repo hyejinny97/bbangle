@@ -1,6 +1,6 @@
 'use client';
 
-import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
+import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE, PRICE_RANGE_STEP } from '@/commons/constants/priceLimit';
 
 interface RageInputProps {
   value: number;
@@ -19,7 +19,7 @@ const RangeInput = ({ value, onChange }: RageInputProps) => {
       onChange={handleInputChange}
       min={LIMIT_MIN_PRICE}
       max={LIMIT_MAX_PRICE}
-      step="1000"
+      step={PRICE_RANGE_STEP}
       className="absolute top-0 w-full h-full appearance-none bg-transparent pointer-events-none"
     />
   );
