@@ -1,7 +1,7 @@
 'use client';
 
 import { INPUT_STYLE } from '@/commons/constants/inputStyle';
-import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
+import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE, PRICE_RANGE_STEP } from '@/commons/constants/priceLimit';
 import Input from '@/components/commons/inputs/Input';
 
 interface PriceInputProps {
@@ -24,8 +24,8 @@ const PriceInput = ({ value, onChange }: PriceInputProps) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const pressedKey = e.key;
 
-    if (pressedKey === 'ArrowUp' && value < LIMIT_MAX_PRICE) onChange(value + 1);
-    if (pressedKey === 'ArrowDown' && LIMIT_MIN_PRICE < value) onChange(value - 1);
+    if (pressedKey === 'ArrowUp' && value < LIMIT_MAX_PRICE) onChange(value + PRICE_RANGE_STEP);
+    if (pressedKey === 'ArrowDown' && LIMIT_MIN_PRICE < value) onChange(value - PRICE_RANGE_STEP);
   };
 
   return (
@@ -34,7 +34,6 @@ const PriceInput = ({ value, onChange }: PriceInputProps) => {
         value={`${value.toLocaleString()}`}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        disabled
         className={`p-0 pr-[5px] border-none text-right ${isLimitValue ? 'text-gray-500' : 'text-gray-900'}`}
       />
       <span className="text-gray-500">원</span>
