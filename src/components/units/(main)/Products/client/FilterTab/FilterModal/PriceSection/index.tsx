@@ -10,26 +10,18 @@ const PriceSection = () => {
 
   const handleMinPriceChange = (newValue: number) => {
     if (newValue > price.maxPrice) {
-      return setPrice(prev => {
-        return { ...prev, minPrice: price.maxPrice };
-      });
+      return setPrice(prev => ({ ...prev, minPrice: price.maxPrice }));
     }
 
-    setPrice(prev => {
-      return { ...prev, minPrice: newValue };
-    });
+    setPrice(prev => ({ ...prev, minPrice: newValue }));
   };
 
   const handleMaxPriceChange = (newValue: number) => {
     if (newValue < price.minPrice) {
-      return setPrice(prev => {
-        return { ...prev, maxPrice: price.minPrice };
-      });
+      return setPrice(prev => ({ ...prev, maxPrice: price.minPrice }));
     }
 
-    setPrice(prev => {
-      return { ...prev, maxPrice: newValue };
-    });
+    setPrice(prev => ({ ...prev, maxPrice: newValue }));
   };
 
   return (
