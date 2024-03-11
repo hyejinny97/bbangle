@@ -1,7 +1,7 @@
 'use state';
 
-import { useState, useEffect } from 'react';
 import PriceInput from '@/components/units/(main)/Products/client/FilterTab/FilterModal/PriceSection/PriceInput';
+import { useTmpPrice } from '@/components/units/(main)/Products/hooks/useTmpPrice';
 
 interface PriceInputContainerProps {
   minPrice: number;
@@ -16,16 +16,8 @@ const PriceInputContainer = ({
   onMinPriceChange,
   onMaxPriceChange
 }: PriceInputContainerProps) => {
-  const [tmpMinPrice, setTmpMinPrice] = useState(minPrice);
-  const [tmpMaxPrice, setTmpMaxPrice] = useState(maxPrice);
-
-  useEffect(() => {
-    setTmpMinPrice(minPrice);
-  }, [minPrice]);
-
-  useEffect(() => {
-    setTmpMaxPrice(maxPrice);
-  }, [maxPrice]);
+  const { tmpMinPrice, tmpMaxPrice, handleTmpMinPriceChange, handleTmpMaxPriceChange } =
+    useTmpPrice({ minPrice, maxPrice });
 
   const handleApplyButtonClick = () => {
     if (tmpMinPrice > tmpMaxPrice) {
@@ -41,9 +33,9 @@ const PriceInputContainer = ({
   return (
     <div className="flex gap-[10px] justify-between items-center">
       <div className="flex flex-1 gap-[6px] items-center">
-        <PriceInput value={tmpMinPrice} onChange={(newValue: number) => setTmpMinPrice(newValue)} />
+        <PriceInput value={tmpMinPrice} onChange={handleTmpMinPriceChange} />
         ~
-        <PriceInput value={tmpMaxPrice} onChange={(newValue: number) => setTmpMaxPrice(newValue)} />
+        <PriceInput value={tmpMaxPrice} onChange={handleTmpMaxPriceChange} />
       </div>
       <span
         className="font-semibold text-[14px] text-primaryOrangeRed cursor-pointer"
