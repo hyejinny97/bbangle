@@ -1,12 +1,39 @@
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Header from '@/components/commons/header/client/Header';
 import { IconSadCharacter } from '@/components/units/(mypage)/Withdraw/client/Icons';
 import DeleteReasonList from '@/components/units/(mypage)/Withdraw/client/DeleteReasonList';
 import Agree from '@/components/units/(mypage)/Withdraw/client/Agree';
 import WithdrawButton from '@/components/units/(mypage)/Withdraw/client/WithdrawButton';
+import { withdrawMemberShip } from '@/components/units/(mypage)/api/withdrawMemberShip';
+import usePopup from '@/commons/hooks/usePopup';
+import useToast from '@/commons/hooks/useToast';
+import ToastPop from '@/components/commons/ToastPop';
 
 const Withdraw = () => {
+  const [isAgreeChecked, setIsAgreeChecked] = useState(false);
+
+  const router = useRouter();
+  const { closePopup } = usePopup();
+  const { openToast } = useToast();
+
+  const handleAgreeChange = () => {
+    setIsAgreeChecked(!isAgreeChecked);
+  };
+
+  const handleFormSuccess = (message: string) => {
+    closePopup();
+    openToast(<ToastPop>{message}</ToastPop>);
+    router.push('/');
+  };
+
   return (
-    <form id="withdraw-form" action="">
+    <form
+      id="withdraw-form"
+      action={formData => withdrawMemberShip({ formData, onSuccess: handleFormSuccess })}
+    >
       <Header title="회원 탈퇴" back />
       <div className="p-4 text-gray-900">
         <div className="mb-[40px] flex flex-col items-center">
@@ -27,12 +54,12 @@ const Withdraw = () => {
           </p>
           <DeleteReasonList />
           <div className="flex justify-center mt-[20px]">
-            <Agree />
+            <Agree isChecked={isAgreeChecked} onChange={handleAgreeChange} />
           </div>
         </div>
       </div>
       <div className="mt-[10px] p-4">
-        <WithdrawButton />
+        <WithdrawButton disabled={!isAgreeChecked} />
       </div>
     </form>
   );
