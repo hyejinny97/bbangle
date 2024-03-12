@@ -2,14 +2,13 @@ import API from '@/api';
 
 interface WithdrawMemberShipProps {
   formData: FormData;
-  onSuccess: (_message: string) => void;
 }
 
 interface Data {
   message: string;
 }
 
-export const withdrawMemberShip = async ({ formData, onSuccess }: WithdrawMemberShipProps) => {
+export const withdrawMemberShip = async ({ formData }: WithdrawMemberShipProps) => {
   const rawFormData = {
     reasons: formData.getAll('delete-reason').join(',')
   };
@@ -18,5 +17,5 @@ export const withdrawMemberShip = async ({ formData, onSuccess }: WithdrawMember
     body: JSON.stringify(rawFormData)
   });
 
-  onSuccess(data.message);
+  return data.message;
 };
