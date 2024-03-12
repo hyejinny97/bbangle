@@ -4,7 +4,6 @@ import Icon from '@/components/commons/Icon';
 import Button from '@/components/commons/button/client/Button';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import usePopup from '@/commons/hooks/usePopup';
 
 export default function GlobalError({
   error,
@@ -14,12 +13,10 @@ export default function GlobalError({
   reset: () => void;
 }) {
   const router = useRouter();
-  const { closePopup } = usePopup();
 
   useEffect(() => {
-    closePopup();
     console.error(error);
-  }, [error, closePopup]);
+  }, [error]);
 
   return (
     <html>
