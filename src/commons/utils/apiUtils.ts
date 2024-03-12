@@ -8,7 +8,7 @@ export async function checkError(res: Response) {
   const isServerSide = typeof window === 'undefined';
 
   if (res.status === 401 && !isServerSide) {
-    redirectAction('/login');
+    await redirectAction('/login');
   }
   if (res.status === 401 && isServerSide) {
     redirect('/login');
