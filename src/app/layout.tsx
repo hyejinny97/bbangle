@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import './global.css';
 import RootLayoutProvider from '@/components/commons/RootLayoutProvider';
 import Footer from '@/components/commons/footer/server/Footer';
@@ -9,7 +9,9 @@ import PopupContainer from '@/components/commons/PopupContainer';
 import ModalContainer from '@/components/commons/ModalContainer';
 import ToastContainer from '@/components/commons/ToastContainer';
 
-const inter = Inter({ subsets: ['latin'] });
+const pretendard = localFont({
+  src: '../commons/assets/PretendardVariable.woff2'
+});
 
 export const metadata: Metadata = {
   title: '빵그리의 오븐',
@@ -20,7 +22,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html>
-      <body className={inter.className}>
+      <body className={pretendard.className}>
         <RootLayoutProvider>
           <ModalContainer />
           <PopupContainer />
