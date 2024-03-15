@@ -1,12 +1,13 @@
 import { checkError, parseJson } from '@/commons/utils/apiUtils';
 
-const serverUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`;
+const serverUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}`;
+const apiUrl = `${serverUrl}/api/v1`;
+
 const TMP_TOKEN =
   'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcxMDA2MzkyMSwiZXhwIjoxNzEwMDc0NzIxLCJpZCI6MTR9.mz9RqjBHd06sRYA7seuJeM29Go53i3yMTroLughoGPk';
 
-
 async function get(endpoint: string, init?: RequestInit | undefined) {
-  const res = await fetch(`${serverUrl}${endpoint}`, {
+  const res = await fetch(`${apiUrl}${endpoint}`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: TMP_TOKEN
@@ -21,7 +22,7 @@ async function get(endpoint: string, init?: RequestInit | undefined) {
 }
 
 async function post(endpoint: string, init?: RequestInit) {
-  const res = await fetch(`${serverUrl}${endpoint}`, {
+  const res = await fetch(`${apiUrl}${endpoint}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -35,7 +36,7 @@ async function post(endpoint: string, init?: RequestInit) {
 }
 
 async function formPost(endpoint: string, init?: RequestInit) {
-  const res = await fetch(`${serverUrl}${endpoint}`, {
+  const res = await fetch(`${apiUrl}${endpoint}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'multipart/form-data',
@@ -49,7 +50,7 @@ async function formPost(endpoint: string, init?: RequestInit) {
 }
 
 async function put(endpoint: string, init?: RequestInit) {
-  const res = await fetch(`${serverUrl}${endpoint}`, {
+  const res = await fetch(`${apiUrl}${endpoint}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -63,7 +64,7 @@ async function put(endpoint: string, init?: RequestInit) {
 }
 
 async function formPut(endpoint: string, init?: RequestInit) {
-  const res = await fetch(`${serverUrl}${endpoint}`, {
+  const res = await fetch(`${apiUrl}${endpoint}`, {
     method: 'PUT',
     headers: {
       Authorization: TMP_TOKEN
@@ -78,7 +79,7 @@ async function formPut(endpoint: string, init?: RequestInit) {
 }
 
 async function patch(endpoint: string, init?: RequestInit) {
-  const res = await fetch(`${serverUrl}${endpoint}`, {
+  const res = await fetch(`${apiUrl}${endpoint}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -92,7 +93,7 @@ async function patch(endpoint: string, init?: RequestInit) {
 }
 
 async function formPatch(endpoint: string, init?: RequestInit) {
-  const res = await fetch(`${serverUrl}${endpoint}`, {
+  const res = await fetch(`${apiUrl}${endpoint}`, {
     method: 'PATCH',
     headers: {
       Authorization: TMP_TOKEN
@@ -105,7 +106,7 @@ async function formPatch(endpoint: string, init?: RequestInit) {
 }
 
 async function _delete(endpoint: string, init?: RequestInit) {
-  const res = await fetch(`${serverUrl}${endpoint}`, {
+  const res = await fetch(`${apiUrl}${endpoint}`, {
     method: 'DELETE',
     headers: {
       Authorization: TMP_TOKEN
@@ -120,6 +121,7 @@ async function _delete(endpoint: string, init?: RequestInit) {
 const API = {
   TMP_TOKEN,
   serverUrl,
+  apiUrl,
   get,
   post,
   formPost,

@@ -41,7 +41,7 @@ const ProfileImageInput = ({ defaultValue }: ProfileImageInputProps) => {
       {imgSrc ? (
         <Image src={imgSrc} alt="profile preview" width={100} height={100} />
       ) : (
-        <Icon.bbangleSmile />
+        <Icon.bbangleSmile className="fill-gray-300" />
       )}
       <div className="absolute h-[26px] leading-[26px] bottom-0 w-full text-center text-white bg-gray-800/50">
         편집
