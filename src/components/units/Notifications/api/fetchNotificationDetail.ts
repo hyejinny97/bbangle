@@ -1,14 +1,14 @@
 import API from '@/api';
 import { REAVALIDATE_TAG } from '@/commons/constants/revalidateTags';
 
-type NotificationType = {
+interface NotificationType {
   title: string;
   content: string;
   createdAt: string;
-};
+}
 
 export const fetchNotificationDetail = async (id: number): Promise<NotificationType> => {
-  const data: NotificationType = await API.get('/notice/${id}', {
+  const data: NotificationType = await API.get(`/notice/${id}`, {
     next: { tags: [`${REAVALIDATE_TAG.notificationDetail}:${id}`] }
   });
 
