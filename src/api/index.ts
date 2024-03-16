@@ -4,7 +4,6 @@ const serverUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`;
 const TMP_TOKEN =
   'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcxMDA2MzkyMSwiZXhwIjoxNzEwMDc0NzIxLCJpZCI6MTR9.mz9RqjBHd06sRYA7seuJeM29Go53i3yMTroLughoGPk';
 
-
 async function get(endpoint: string, init?: RequestInit | undefined) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
     headers: {
