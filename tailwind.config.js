@@ -31,6 +31,7 @@ module.exports = {
         backdrop: 9999
       },
 
+      // ex) text-gray-50
       colors: {
         color: {
           PrimaryOrangeRed: '#F04C28',
@@ -65,6 +66,28 @@ module.exports = {
         },
         primaryOrangeRed: '#F04C28',
         secondaryOrangeRed: '#ED5F5F'
+      },
+      // ex) text-11
+      fontSize: {
+        11: '11px',
+        12: '12px',
+        14: '14px',
+        16: '16px',
+        18: '18px',
+        20: '20px'
+      },
+      // ex) leading-120
+      lineHeight: {
+        120: '1.2',
+        130: '1.3',
+        140: '1.4',
+        150: '1.5'
+      },
+      // ex) tracking-tight-6
+      letterSpacing: {
+        'tight-6': '-0.06em',
+        'tight-4': '-0.04em',
+        'tight-2': '-0.02em'
       }
     }
   },
