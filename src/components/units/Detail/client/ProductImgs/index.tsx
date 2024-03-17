@@ -19,7 +19,6 @@ interface ProductImgProps {
 
 const ProductImgs = ({ boardImages, isBundled }: ProductImgProps) => {
   const [swiperIndex, setSwiperIndex] = useState(0);
-  console.log(boardImages);
 
   return (
     <div className="w-[92%] relative m-auto">

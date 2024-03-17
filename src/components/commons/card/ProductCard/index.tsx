@@ -5,10 +5,10 @@ import Link from 'next/link';
 
 import { useState } from 'react';
 import { IStoreType } from '@/commons/types/storeType';
-import { RankingBadge } from './client/RankingBadge';
 import { ProductImage } from './client/ProductImage';
 import { ProductSummary } from './client/ProductSummary';
 import { ChooseWishListModal } from './client/ChooseWishListModal';
+//import { BundleBadge } from '../../badge/BundleBadge';
 
 interface ProductCardProps {
   product: IProductType;
@@ -23,11 +23,14 @@ const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
 
   return (
     <>
-      <Link href={`/products/${product.boardId}`} className="w-full relative">
-        <ProductImage product={product} setIsModal={setIsModal} setProductId={setProductId} />
-        <div className="absolute z-10 top-[2px] h-5 w-full ">
-          <RankingBadge popular={popular} ranking={ranking} />
-        </div>
+      <Link href={`/products/${product.boardId}`} className="relative">
+        <ProductImage
+          product={product}
+          popular={popular}
+          ranking={ranking}
+          setIsModal={setIsModal}
+          setProductId={setProductId}
+        />
         <ProductSummary product={product} />
       </Link>
       {isModal && (
