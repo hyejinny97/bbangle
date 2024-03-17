@@ -19,6 +19,7 @@ interface ProductImgProps {
 
 const ProductImgs = ({ boardImages, isBundled }: ProductImgProps) => {
   const [swiperIndex, setSwiperIndex] = useState(0);
+  console.log(boardImages);
 
   return (
     <div className="w-[92%] relative m-auto">
@@ -33,9 +34,9 @@ const ProductImgs = ({ boardImages, isBundled }: ProductImgProps) => {
               setSwiperIndex(swiperCore.activeIndex);
             }}
           >
-            {boardImages.length > 0 ? (
-              boardImages.map(image => (
-                <>
+            {boardImages ? (
+              boardImages.map(image =>
+                image.url ? (
                   <SwiperSlide key={image.id}>
                     <div className="">
                       <div className="w-full pb-[100%]">
@@ -49,8 +50,15 @@ const ProductImgs = ({ boardImages, isBundled }: ProductImgProps) => {
                       </div>
                     </div>
                   </SwiperSlide>
-                </>
-              ))
+                ) : (
+                  <div
+                    key={image.id}
+                    className="w-full py-[43%] m-auto flex items-center justify-center border border-solid border-gray-100 rounded-[10px] "
+                  >
+                    <None />
+                  </div>
+                )
+              )
             ) : (
               <div className="w-full py-[43%] m-auto flex items-center justify-center border border-solid border-gray-100 rounded-[10px] ">
                 <None />

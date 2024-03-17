@@ -9,7 +9,6 @@ import { RankingBadge } from './client/RankingBadge';
 import { ProductImage } from './client/ProductImage';
 import { ProductSummary } from './client/ProductSummary';
 import { ChooseWishListModal } from './client/ChooseWishListModal';
-import { BundleBadge } from '../../badge/BundleBadge';
 
 interface ProductCardProps {
   product: IProductType;
@@ -28,7 +27,6 @@ const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
         <ProductImage product={product} setIsModal={setIsModal} setProductId={setProductId} />
         <div className="absolute z-10 top-[2px] h-5 w-full ">
           <RankingBadge popular={popular} ranking={ranking} />
-          {product.isBundled && <BundleBadge />}
         </div>
         <ProductSummary product={product} />
       </Link>

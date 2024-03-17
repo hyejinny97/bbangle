@@ -1,3 +1,5 @@
+'use client';
+
 import { transformDayTag } from '@/commons/constants/transfromTag';
 import { IProductDetailType } from '../../types';
 import TagContainer from '../TagContainer';
@@ -8,6 +10,7 @@ interface BoardInfoProps {
 }
 
 function BoardInfo({ data }: BoardInfoProps) {
+  console.log(data);
   const [clickMore, setClickMore] = useState(false);
   const products = data.board.products;
   const uniqueTags = Array.from(new Set(products.map(product => product.tags).flat()));
