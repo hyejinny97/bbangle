@@ -52,9 +52,12 @@ const ProductImgs = ({ boardImages, isBundled }: ProductImgProps) => {
                 ) : (
                   <div
                     key={image.id}
-                    className="w-full py-[43%] m-auto flex items-center justify-center border border-solid border-gray-100 rounded-[10px] "
+                    className="w-full relative m-auto flex items-center justify-center border border-solid border-gray-100 rounded-[10px]"
+                    style={{ paddingTop: '100%' }}
                   >
-                    <None />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <None />
+                    </div>
                   </div>
                 )
               )
