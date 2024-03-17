@@ -1,7 +1,7 @@
 import Header from '@/components/commons/header/client/Header';
-import GoogleLogin from '@/components/units/Login/GoogleLoginButton';
-import KakaoLogin from '@/components/units/Login/KakaoLoginButton';
 import LogoBox from '@/components/units/Login/LogoBox';
+import KakaoLoginButton from './KaKaoLoginButton';
+import GoogleLoginButton from './GoogleLoginButton';
 
 const Login = () => {
   return (
@@ -10,8 +10,8 @@ const Login = () => {
       <div className="flex flex-col gap-[81px] px-[16px] m-[16px] pt-[70px]">
         <LogoBox />
         <div className="flex flex-col gap-3">
-          <KakaoLogin />
-          <GoogleLogin />
+          <KakaoLoginButton />
+          <GoogleLoginButton />
         </div>
       </div>
     </>

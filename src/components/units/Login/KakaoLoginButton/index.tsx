@@ -1,17 +1,17 @@
 'use client';
 
 import API from '@/api';
-import KakaoIcon from './assets/kakao_logo.svg';
+import KakaoIcon from '../assets/kakao_logo.svg';
 
 const KakaoLoginButton = () => {
-  const handleKakaoLogin = async () => {
+  const handleKakaLogin = () => {
     window.location.assign(`${API.serverUrl}/oauth2/authorization/kakao`);
   };
 
   return (
     <button
       className="rounded-[10px] flex gap-[8px] items-center justify-center h-[52px] bg-[#FEE500] shadow text-black"
-      onClick={handleKakaoLogin}
+      onClick={handleKakaLogin}
     >
       <KakaoIcon />
       <div className="text-black text-opacity-90 text-base font-medium font-['Pretendard'] leading-normal">
