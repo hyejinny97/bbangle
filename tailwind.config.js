@@ -27,7 +27,7 @@ module.exports = {
         toast: 1000,
         popup: 1000,
         modal: 1000,
-        footer: 9000,
+        footer: 4999,
         backdrop: 9999
       },
 
