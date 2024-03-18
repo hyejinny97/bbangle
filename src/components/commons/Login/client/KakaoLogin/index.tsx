@@ -8,13 +8,14 @@ const KakaoLogin = () => {
   };
 
   return (
-    <div className="w-auto h-[52px] p-4 bg-[#FEE500] rounded-[10px] shadow flex-col justify-center items-center gap-4 inline-flex">
-      <button className="inline-flex items-center justify-start gap-2" onClick={handleKakaoLogin}>
-        <KakaoIcon />
-        <div className="text-black text-opacity-90 text-base font-medium font-['Pretendard'] leading-normal">
-          카카오톡 시작하기
-        </div>
-      </button>
+    <div
+      className="flex justify-center items-center gap-[8px] w-full p-[16px] bg-[#FEE500] rounded-[10px] shadow cursor-pointer"
+      onClick={handleKakaoLogin}
+    >
+      <KakaoIcon />
+      <div className="text-black/85 text-16 font-medium leading-150 tracking-tight-2">
+        카카오톡 시작하기
+      </div>
     </div>
   );
 };
