@@ -18,18 +18,16 @@ const SearchInput = ({ value, onChange, onEnter, placeholder }: SearchInputProps
   };
 
   return (
-    <div className="w-full py-2.5 bg-color-White">
-      <div className="grow shrink basis-0 h-10 px-4 py-2.5 bg-slate-100 rounded-[50px] justify-start items-center gap-1.5 flex cursor-pointer">
-        <SearchIcon />
-        <input
-          type="text"
-          value={value}
-          className="w-full bg-slate-100 text-color-Gray400  text-sm font-medium outline-none"
-          onChange={onChange}
-          onKeyDown={handleKeyDown}
-          placeholder={placeholder}
-        />
-      </div>
+    <div className="flex items-center gap-[6px] px-[16px] py-[10px] w-full bg-blueGray-30 rounded-[50px] cursor-pointer">
+      <SearchIcon />
+      <input
+        type="text"
+        value={value}
+        className="w-full text-gray-400 text-14 font-medium leading-150 tracking-tight-2 outline-none"
+        onChange={onChange}
+        onKeyDown={handleKeyDown}
+        placeholder={placeholder}
+      />
     </div>
   );
 };
