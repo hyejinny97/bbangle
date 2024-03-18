@@ -16,9 +16,9 @@ const ToastPop = ({ children }: IToastPopProps) => {
       animate={{ bottom: '100%' }}
       exit={{ bottom: 0 }}
       drag="y"
-      className="absolute w-[80%] p-4 bg-gray-800 rounded-lg "
+      className="flex items-center justify-between gap-[6px] px-[16px] py-[10px] w-full bg-gray-800 rounded-[8px] text-14 text-white text-medium leading-150 tracking-tight-2"
     >
-      <span className="text-sm text-white">{children}</span>
+      {children}
     </motion.div>
   );
 };
