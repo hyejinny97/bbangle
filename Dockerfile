@@ -7,6 +7,7 @@ COPY .env /usr/app/.env
 COPY ./ ./
 
 RUN ls -al
+RUN cat .env
 
 RUN yarn set version stable
 RUN yarn install 
