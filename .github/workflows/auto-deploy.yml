@@ -15,12 +15,12 @@ jobs:
         run: |
           echo "NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_SERVER_URL" >> .env
           echo "NEXT_PUBLIC_KAKAO_JS_KEY=$NEXT_PUBLIC_KAKAO_JS_KEY" >> .env
-          echo "NEXT_PUBLIC_KAKAOCHANNEL_PROFILE_ID=$NEXT_PUBLIC_KAKAOCHANNEL_PROFILE_ID" >> .env
+          echo "NEXT_PUBLIC_KAKAO_CHANNEL_PROFILE_ID=$NEXT_PUBLIC_KAKAO_CHANNEL_PROFILE_ID" >> .env
           echo "HTTPS=$HTTPS" >> .env
         env:
           NEXT_PUBLIC_SERVER_URL: ${{ secrets.NEXT_PUBLIC_SERVER_URL }}
           NEXT_PUBLIC_KAKAO_JS_KEY: ${{ secrets.NEXT_PUBLIC_KAKAO_JS_KEY }}
-          NEXT_PUBLIC_KAKAOCHANNEL_PROFILE_ID: ${{ secrets.NEXT_PUBLIC_KAKAOCHANNEL_PROFILE_ID }}
+          NEXT_PUBLIC_KAKAO_CHANNEL_PROFILE_ID: ${{ secrets.NEXT_PUBLIC_KAKAO_CHANNEL_PROFILE_ID }}
           HTTPS: ${{ secrets.HTTPS }}
 
       - name: 도커 이미지를 생성하고 도커 허브에 업로드합니다.
