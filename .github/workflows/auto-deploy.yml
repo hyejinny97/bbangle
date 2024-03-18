@@ -2,7 +2,7 @@ name: Auto deploy to NCP
 
 on: 
   push:
-    branches: ['main']
+    branches: ['master']
 
 jobs:
   build:
