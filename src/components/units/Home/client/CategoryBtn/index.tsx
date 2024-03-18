@@ -1,26 +1,34 @@
-import { categoryName } from '@/atoms/atom';
 import Link from 'next/link';
+import { useRecoilState } from 'recoil';
+import { filterValueState } from '@/components/units/(main)/Products/atoms';
 
 interface CategoryProps {
-    name: string;
-    icon: React.ReactElement;
-    url: string;
-    ProductName: string;
+  name: string;
+  icon: React.ReactElement;
+  isCategoryTab: boolean;
 }
 
-const CategoryBtn = ({ name, icon, url, ProductName }: CategoryProps) => {
-    return (
-        <Link
-            href={url}
-            className={`${
-                ProductName === categoryName ? 'w-1/4' : 'w-1/3'
-            } flex flex-col justify-startc
-        items-center gap-1 py-3`}
-        >
-            <div>{icon}</div>
-            <div className="text-sm font-normal leading-tight text-color-Gray900">{name}</div>
-        </Link>
-    );
+const CategoryBtn = ({ name, icon, isCategoryTab }: CategoryProps) => {
+  const [filterValue, setFilterValue] = useRecoilState(filterValueState);
+
+  const handleClickBtn = () => {
+    const newFilterValue = isCategoryTab
+      ? { ...filterValue, category: name }
+      : { ...filterValue, tags: [name] };
+
+    setFilterValue(newFilterValue);
+  };
+
+  return (
+    <Link
+      href="/products"
+      className="flex flex-col justify-start items-center gap-1 py-3"
+      onClick={handleClickBtn}
+    >
+      <div>{icon}</div>
+      <div className="text-sm font-normal leading-tight text-gray-900">{name}</div>
+    </Link>
+  );
 };
 
 export default CategoryBtn;

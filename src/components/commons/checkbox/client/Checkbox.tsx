@@ -1,22 +1,54 @@
-import React, { MouseEvent } from 'react';
+'use client';
+
+import React, { ChangeEvent, ReactNode, useId } from 'react';
 import Off from '../assets/icn_check_off.svg';
 import On from '../assets/icn_check_on.svg';
+import { twMerge } from 'tailwind-merge';
 
 interface CheckBoxProps {
-    isChecked: boolean;
-    title: string;
-    onClick: (_e: MouseEvent<HTMLButtonElement>) => void;
+  isChecked: boolean;
+  onChange: (_e: ChangeEvent<HTMLInputElement>) => void;
+  name?: string;
+  value?: string;
+  required?: boolean;
+  children: ReactNode;
+  className?: string;
 }
 
-function CheckBox({ isChecked, title, onClick }: CheckBoxProps) {
-    return (
-        <div className="flex">
-            <button onClick={onClick}>
-                <div>{isChecked ? <On /> : <Off />}</div>
-            </button>
-            <div className="text-gray-800 text-xs font-normal pl-[0.5rem] ">{title}</div>
-        </div>
-    );
-}
+const CheckBox = ({
+  isChecked = false,
+  onChange,
+  name = '',
+  value = '',
+  required = false,
+  children,
+  className
+}: CheckBoxProps) => {
+  const id = useId();
+
+  return (
+    <label
+      htmlFor={id}
+      className={twMerge(
+        'flex text-gray-800 text-xs font-normal cursor-pointer items-center',
+        className
+      )}
+    >
+      <input
+        type="checkbox"
+        id={id}
+        name={name}
+        value={value}
+        checked={isChecked}
+        onChange={onChange}
+        required={required}
+        hidden
+      />
+
+      <span className="mr-[0.5rem]">{isChecked ? <On /> : <Off />}</span>
+      {children}
+    </label>
+  );
+};
 
 export default CheckBox;

@@ -1,14 +1,31 @@
+import { ReactNode } from 'react';
 import { atom } from 'recoil';
 
-export const categoryName = '상품별';
-export const itemName = '상품';
-
-export const productNameState = atom({
-    key: 'productNameState',
-    default: '상품별'
+export const isCategoryTabState = atom({
+  key: 'isCategoryTabState',
+  default: true
 });
 
-export const itemNameState = atom({
-    key: 'itemNameState',
-    default: '상품'
+export const isCategoryTabStateNew = atom({
+  key: 'isCategoryTabStateNew',
+  default: true
+});
+
+export const modalState = atom<ReactNode>({
+  key: 'modalState',
+  default: null
+});
+
+export const popupState = atom<ReactNode>({
+  key: 'popupState',
+  default: null
+});
+export const toastState = atom<ReactNode>({
+  key: 'toastState',
+  default: null
+});
+
+export const isWishModalState = atom<boolean>({
+  key: 'isWishModalState',
+  default: false
 });

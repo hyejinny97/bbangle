@@ -1,12 +1,14 @@
-import CategoryTab from '@/components/commons/CategoryTab';
+import CategoryAndIngredientTab from '@/components/commons/tabs/CategoryAndIngredientTab';
 import CategoryList from '../client/CategoryList';
 
 const ServerCategory = () => {
-    return (
-        <>
-            <CategoryTab categories={['상품별', '성분별']} />
-            <CategoryList />
-        </>
-    );
+  return (
+    <>
+      <div className="sticky top-[60px] z-[4999]">
+        <CategoryAndIngredientTab />
+      </div>
+      <CategoryList />
+    </>
+  );
 };
 export default ServerCategory;
