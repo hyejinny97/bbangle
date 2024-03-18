@@ -4,6 +4,8 @@ RUN mkdir -p /usr/app
 WORKDIR /usr/app
 
 COPY ./ ./
+COPY .env ./
+RUN export $(cat .env | xargs)
 
 RUN yarn set version stable
 RUN yarn install 
