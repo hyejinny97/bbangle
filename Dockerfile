@@ -5,6 +5,7 @@ WORKDIR /usr/app
 
 COPY ./ ./
 
+RUN npm install --global yarn
 RUN yarn install 
 RUN yarn build
 
