@@ -2,7 +2,7 @@ import { checkError, parseJson } from '@/commons/utils/apiUtils';
 
 const serverUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/v1`;
 const TMP_TOKEN =
-  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcxMDA2MzkyMSwiZXhwIjoxNzEwMDc0NzIxLCJpZCI6MTR9.mz9RqjBHd06sRYA7seuJeM29Go53i3yMTroLughoGPk';
+  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYmFuZ2xlYmJhbmdsZSIsImlhdCI6MTcxMDE3MjkzNywiZXhwIjoxNzEwMTgzNzM3LCJpZCI6MTR9.8Avh5PAWMC13s2XJsVgqY-ORxAyaoTF9dzinil3303g';
 
 async function get(endpoint: string, init?: RequestInit | undefined) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
@@ -37,7 +37,6 @@ async function formPost(endpoint: string, init?: RequestInit) {
   const res = await fetch(`${serverUrl}${endpoint}`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'multipart/form-data',
       Authorization: TMP_TOKEN
     },
     ...init
