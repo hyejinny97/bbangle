@@ -9,14 +9,12 @@ interface ButtonProps {
 
 function BtnOutlinedHeart({ isLiked, onClick }: ButtonProps) {
   return (
-    <div className="w-full text-center">
-      <button
-        onClick={onClick}
-        className="border border-solid border-[#EEEEEE] rounded-[999px] p-[13px]"
-      >
-        <div className={isLiked ? 'animate-pop' : ''}>{isLiked ? <Red /> : <Gray />}</div>
-      </button>
-    </div>
+    <button
+      onClick={onClick}
+      className={`border border-solid border-gray-200 rounded-full p-[13px] ${isLiked ? 'animate-pop' : ''}`}
+    >
+      {isLiked ? <Red /> : <Gray />}
+    </button>
   );
 }
 
