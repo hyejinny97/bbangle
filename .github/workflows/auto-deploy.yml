@@ -10,17 +10,19 @@ jobs:
     steps:
       - name: 최신 버전을 다운로드 받습니다.
         uses: actions/checkout@v4.1.1
+        with:
+          ref: master
 
       - name: 환경 변수를 설정합니다.
         run: |
           echo "NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_SERVER_URL" >> .env
-          echo "NEXT_PUBLIC_KAKAO_JS_KEY=$"NEXT_PUBLIC_KAKAO_JS_KEY" >> .env
-          echo "NEXT_PUBLIC_KAKAOCHANNEL_PROFULE_ID=$"NEXT_PUBLIC_KAKAOCHANNEL_PROFULE_ID" >> .env
+          echo "NEXT_PUBLIC_KAKAO_JS_KEY=$NEXT_PUBLIC_KAKAO_JS_KEY" >> .env
+          echo "NEXT_PUBLIC_KAKAO_CHANNEL_PROFILE_ID=$NEXT_PUBLIC_KAKAO_CHANNEL_PROFILE_ID" >> .env
           echo "HTTPS=$HTTPS" >> .env
         env:
           NEXT_PUBLIC_SERVER_URL: ${{ secrets.NEXT_PUBLIC_SERVER_URL }}
           NEXT_PUBLIC_KAKAO_JS_KEY: ${{ secrets.NEXT_PUBLIC_KAKAO_JS_KEY }}
-          NEXT_PUBLIC_KAKAOCHANNEL_PROFULE_ID: ${{ secrets.NEXT_PUBLIC_KAKAOCHANNEL_PROFULE_ID }}
+          NEXT_PUBLIC_KAKAO_CHANNEL_PROFILE_ID: ${{ secrets.NEXT_PUBLIC_KAKAO_CHANNEL_PROFILE_ID }}
           HTTPS: ${{ secrets.HTTPS }}
 
       - name: 도커 이미지를 생성하고 도커 허브에 업로드합니다.
@@ -48,6 +50,7 @@ jobs:
           script: |
             sudo docker login -u ${{ secrets.DOCKER_ID }} -p ${{ secrets.DOCKER_TOKEN }}
             sudo docker stop bbangle-frontend
+            sudo docker rm bbangle-frontend
             sudo docker pull ${{ secrets.DOCKER_REPO }}
             sudo docker run -d -p 3000:3000 --name bbangle-frontend ${{ secrets.DOCKER_REPO }} 
 
