@@ -2,15 +2,16 @@
 
 import SearchIcon from '@/components/units/Home/client/Search/assets/search.svg';
 
-interface SearchInputProps {
-  value: string;
-  onChange: (_: React.ChangeEvent<HTMLInputElement>) => void;
-  onEnter: () => void;
-  placeholder: string;
+interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  value?: string;
+  onChange?: (_: React.ChangeEvent<HTMLInputElement>) => void;
+  onEnter?: () => void;
 }
 
-const SearchInput = ({ value, onChange, onEnter, placeholder }: SearchInputProps) => {
+const SearchInput = ({ value, onChange, onEnter, ...rest }: SearchInputProps) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!onEnter) return;
+
     if (e.key === 'Enter') {
       onEnter();
       e.preventDefault();
@@ -23,10 +24,10 @@ const SearchInput = ({ value, onChange, onEnter, placeholder }: SearchInputProps
       <input
         type="text"
         value={value}
-        className="w-full text-gray-400 text-14 font-medium leading-150 tracking-tight-2 outline-none"
+        className="w-full bg-blueGray-30 text-gray-400 text-14 font-medium leading-150 tracking-tight-2 outline-none"
         onChange={onChange}
         onKeyDown={handleKeyDown}
-        placeholder={placeholder}
+        {...rest}
       />
     </div>
   );

@@ -10,11 +10,9 @@ const getBestProducts = async () => {
 const ProductsList = async () => {
   const bestProducts = await getBestProducts();
   return (
-    <div className="flex flex-wrap w-[92%] m-auto  gap-x-[4%] gap-y-4">
+    <div className="grid grid-cols-2 gap-x-[16px] gap-y-[16px]">
       {bestProducts?.content?.map((product: IProductType) => (
-        <div key={String(product.boardId)} className="w-[48%]">
-          <ProductCard product={product} />
-        </div>
+        <ProductCard key={String(product.boardId)} product={product} />
       ))}
     </div>
   );
