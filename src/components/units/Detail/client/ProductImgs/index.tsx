@@ -33,9 +33,9 @@ const ProductImgs = ({ boardImages, isBundled }: ProductImgProps) => {
               setSwiperIndex(swiperCore.activeIndex);
             }}
           >
-            {boardImages.length > 0 ? (
-              boardImages.map(image => (
-                <>
+            {boardImages ? (
+              boardImages.map(image =>
+                image.url ? (
                   <SwiperSlide key={image.id}>
                     <div className="">
                       <div className="w-full pb-[100%]">
@@ -49,8 +49,18 @@ const ProductImgs = ({ boardImages, isBundled }: ProductImgProps) => {
                       </div>
                     </div>
                   </SwiperSlide>
-                </>
-              ))
+                ) : (
+                  <div
+                    key={image.id}
+                    className="w-full relative m-auto flex items-center justify-center border border-solid border-gray-100 rounded-[10px]"
+                    style={{ paddingTop: '100%' }}
+                  >
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <None />
+                    </div>
+                  </div>
+                )
+              )
             ) : (
               <div className="w-full py-[43%] m-auto flex items-center justify-center border border-solid border-gray-100 rounded-[10px] ">
                 <None />
@@ -63,7 +73,7 @@ const ProductImgs = ({ boardImages, isBundled }: ProductImgProps) => {
             <BundleBadge />
           </div>
         )}
-        {boardImages.length > 0 && (
+        {boardImages[0].url && (
           <div className="absolute bottom-[10px] right-[10px] w-[37px] h-[21px] px-2.5 py-0.5 bg-black bg-opacity-60 rounded-[50px] justify-center items-center gap-2.5 inline-flex z-10">
             <div className="text-white text-[11px] font-medium">
               {swiperIndex + 1}/{boardImages.length}
