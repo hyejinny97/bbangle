@@ -7,7 +7,7 @@ async function getDetail(params: { id: string }) {
   return data;
 }
 
-const ProductDetail = async ({ params }: { params?: any }) => {
+const ProductDetail = async (params: { id: string }) => {
   const data = await getDetail(params);
   return <DetailHome data={data} />;
 };
