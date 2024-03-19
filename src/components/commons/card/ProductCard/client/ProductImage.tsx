@@ -38,10 +38,10 @@ export const ProductImage = ({
 
   return (
     <div
-      className="w-full pb-[100%] bg-cover bg-center rounded-[6px] relative "
+      className="w-full pb-[100%] bg-cover bg-center rounded-[6px] relative"
       style={{ backgroundImage: `url(${product.thumbnail})` }}
     >
-      <div className="absolute bottom-[9px] right-[9px] ">
+      <div className="absolute bottom-[9px] right-[9px] h-[20px]">
         <BtnHeart isLiked={product.isWished} onClick={handleClickHeart(product.boardId)} />
       </div>
       <div className="absolute z-10 top-[6px] left-[6px] w-full flex gap-[6px]">
