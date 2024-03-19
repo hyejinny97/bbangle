@@ -4,7 +4,7 @@ import BtnHeart from '@/components/commons/button/client/Btn_heart';
 import ToastPop from '@/components/commons/ToastPop';
 import { Dispatch, SetStateAction } from 'react';
 import { BundleBadge } from '@/components/commons/badge/BundleBadge';
-import { RankingBadge } from './RankingBadge';
+import { RankingBadge } from '../../../badge/RankingBadge';
 
 interface ProductImageProps {
   product: IProductType;
@@ -21,7 +21,7 @@ export const ProductImage = ({
   setProductId
 }: ProductImageProps) => {
   const { openPopup } = usePopup();
-  const handleClickHeart = (id: number) => (e: any) => {
+  const handleClickHeart = (id: number) => (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     if (product.isWished) {
@@ -44,8 +44,8 @@ export const ProductImage = ({
       <div className="absolute bottom-[9px] right-[9px] ">
         <BtnHeart isLiked={product.isWished} onClick={handleClickHeart(product.boardId)} />
       </div>
-      <div className="absolute z-10 top-[6px] left-[6px] w-full flex gap-2">
-        <RankingBadge popular={popular} ranking={ranking} />
+      <div className="absolute z-10 top-[6px] left-[6px] w-full flex gap-[6px]">
+        {popular && <RankingBadge ranking={ranking} />}
         {product.isBundled && <BundleBadge />}
       </div>
     </div>
