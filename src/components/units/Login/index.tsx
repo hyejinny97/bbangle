@@ -1,6 +1,6 @@
 import Header from '@/components/commons/header/client/Header';
 import LogoBox from '@/components/units/Login/LogoBox';
-import KakaoLoginButton from './KaKaoLoginButton';
+import KakaoLoginButton from './KakaoLoginButton';
 import GoogleLoginButton from './GoogleLoginButton';
 
 const Login = () => {
