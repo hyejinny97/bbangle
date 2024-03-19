@@ -47,7 +47,7 @@ function FilterModal() {
         <TagsSection />
         <hr />
         <PriceSection />
-        <div className="flex gap-[10px] justify-center items-center">
+        <div className="flex gap-[10px] justify-center items-center p-[16px]">
           <Button variants="primary-white" onClick={handleCancel}>
             취소
           </Button>

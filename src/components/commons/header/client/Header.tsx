@@ -2,10 +2,10 @@
 
 import React from 'react';
 import Back from '@/components/commons/header/assets/back_arrow.svg';
-import PaddingWrapper from '../../PaddingWrapper';
+import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 interface HeaderProps {
-  title: String;
+  title?: String;
   back?: boolean;
 }
 
