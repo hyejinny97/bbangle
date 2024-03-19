@@ -39,7 +39,6 @@ async function formPost(endpoint: string, init?: RequestInit) {
   const res = await fetch(`${apiUrl}${endpoint}`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'multipart/form-data',
       Authorization: TMP_TOKEN
     },
     ...init
