@@ -2,7 +2,7 @@ name: Auto deploy to NCP
 
 on: 
   push:
-    branches: ['develop']
+    branches: ['master']
 
 jobs:
   build:
@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: 최신 버전을 다운로드 받습니다.
         uses: actions/checkout@v4.1.1
+        with:
+          ref: master
 
       - name: 환경 변수를 설정합니다.
         run: |
