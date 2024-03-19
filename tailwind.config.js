@@ -4,6 +4,9 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      boxShadow: {
+        'white-up': '0 -4px 6px rgba(255, 255, 255, 0.5)'
+      },
       keyframes: {
         pop: {
           '0%, 100%': { transform: 'scale(1)' },
