@@ -1,6 +1,10 @@
+'use client';
+
+import LogoSub from '@/commons/assets/logo_sub.svg';
+import Header from '@/components/commons/header/client/Header';
 import GoogleLogin from '@/components/commons/Login/client/GoogleLogin';
 import KakaoLogin from '@/components/commons/Login/client/KakaoLogin';
-import LogoBox from '@/components/commons/Login/client/LogoBox';
+import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 interface LoginProps {
   title: string;
@@ -9,18 +13,24 @@ interface LoginProps {
 
 const Login = ({ title, subTitle }: LoginProps) => {
   return (
-    <div className="w-[91%] m-auto">
-      <div>헤더</div>
-      <LogoBox />
-      <div className="mb-20">
-        <p className="text-base font-semibold text-center text-neutral-800 ">{title}</p>
-        <p className="text-sm font-normal text-center text-neutral-700">{subTitle}</p>
-      </div>
-      <div className="flex flex-col gap-3">
-        <KakaoLogin />
-        <GoogleLogin />
-      </div>
-    </div>
+    <>
+      <Header back />
+      <PaddingWrapper className="py-[16px] h-[80vh]">
+        <div className="flex flex-col justify-between items-center px-[16px] pt-[70px] pb-[16px] h-full">
+          <div className="flex flex-col items-center">
+            <LogoSub />
+            <div className="mt-[20px] text-center leading-150">
+              <p className="text-16 font-semibold tracking-tight-4 text-gray-900">{title}</p>
+              <p className="text-14 font-normal tracking-tight-6 text-gray-800">{subTitle}</p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-[10px] w-full">
+            <KakaoLogin />
+            <GoogleLogin />
+          </div>
+        </div>
+      </PaddingWrapper>
+    </>
   );
 };
 
