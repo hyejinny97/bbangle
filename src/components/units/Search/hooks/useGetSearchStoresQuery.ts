@@ -1,6 +1,6 @@
 import API from '@/api';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { IAllStoreType } from '@/commons/types/allstoreType';
+import { IAllStoreType } from '@/components/units/Search/types';
 
 interface GetSearchStoresProps {
   keyword: string;
