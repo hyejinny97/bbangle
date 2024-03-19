@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Back from '@/components/commons/header/assets/back_arrow.svg';
+import PaddingWrapper from '../../PaddingWrapper';
 
 interface HeaderProps {
   title: String;
@@ -14,14 +15,14 @@ const Header = ({ title, back = false }: HeaderProps) => {
   };
 
   return (
-    <div className="h-[60px] flex items-center w-[92%] m-auto">
+    <PaddingWrapper className="h-[60px] flex items-center">
       {back && (
-        <button className="flex cursor-pointer mr-[17px] " onClick={goBackHandler}>
+        <button className="flex cursor-pointer mr-[17px]" onClick={goBackHandler}>
           <Back />
         </button>
       )}
-      <h2 className="text-[16px]">{title}</h2>
-    </div>
+      <h2 className="text-16">{title}</h2>
+    </PaddingWrapper>
   );
 };
 
