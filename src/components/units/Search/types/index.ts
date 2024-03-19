@@ -18,3 +18,8 @@ export interface IAllStoreType {
   pageNumber: number; // 몇 페이지인지
   existNextPage: boolean; // 다음 페이지 유무
 }
+
+type KeywordDataType = {
+  keyword: string;
+};
+export type RecentSearchKeywordsType = Array<KeywordDataType>;

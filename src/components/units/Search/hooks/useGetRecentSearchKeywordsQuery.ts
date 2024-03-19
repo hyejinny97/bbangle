@@ -1,18 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import API from '@/api';
-
-type DataType = {
-  keyword: string;
-};
-export type RecentSearchKeywordsType = Array<DataType>;
-
-// const isLoggedIn = true; // 일단 로그인했다고 가정
-
-const getRecentSearchKeywords = async (): Promise<RecentSearchKeywordsType> => {
-  // if (!isLoggedIn) return [];
-  const data: { content: RecentSearchKeywordsType } = await API.get('/search/recency');
-  return data.content;
-};
+import { RecentSearchKeywordsType } from '@/components/units/Search/types';
+import { getRecentSearchKeywords } from '@/components/units/Search/api/getRecentSearchKeywords';
 
 export const useGetRecentSearchKeywordsQuery = () => {
   return useQuery<RecentSearchKeywordsType, Error>({
