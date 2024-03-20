@@ -15,13 +15,9 @@ const Header = ({ title, back = false }: HeaderProps) => {
   };
 
   return (
-    <PaddingWrapper className="h-[60px] flex items-center">
-      {back && (
-        <button className="flex cursor-pointer mr-[17px]" onClick={goBackHandler}>
-          <Back />
-        </button>
-      )}
-      <h2 className="text-16">{title}</h2>
+    <PaddingWrapper className="flex items-center h-[60px] py-[10px]">
+      {back && <Back className="cursor-pointer mr-[17px]" onClick={goBackHandler} />}
+      <h2 className="text-16 font-medium leading-[16px] tracking-tight-2">{title}</h2>
     </PaddingWrapper>
   );
 };
