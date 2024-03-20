@@ -47,7 +47,7 @@ function FilterModal() {
       <TagsSection />
       <hr className="bg-gray-100" />
       <PriceSection />
-      <PaddingWrapper className="flex gap-[10px] justify-center items-center py-[16px]">
+      <PaddingWrapper className="flex gap-[10px] justify-center items-center">
         <Button
           variants="primary-white"
           className="font-medium text-16 leading-150 tracking-tight-2"

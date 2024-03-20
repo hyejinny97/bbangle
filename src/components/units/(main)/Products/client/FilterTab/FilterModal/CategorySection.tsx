@@ -12,7 +12,7 @@ function CategorySection() {
   };
 
   return (
-    <PaddingWrapper className="flex flex-col gap-[10px] pt-[16px] pb-[26px]">
+    <PaddingWrapper className="flex flex-col gap-[10px] pb-[26px]">
       <div className="text-14 font-semibold leading-150 tracking-tight-2">카테고리</div>
       <div className="flex gap-[10px] flex-wrap">
         {FILTER_VALUES.categories.map(item => {

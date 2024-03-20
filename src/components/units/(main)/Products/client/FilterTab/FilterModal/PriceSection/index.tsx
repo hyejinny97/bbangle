@@ -26,7 +26,7 @@ const PriceSection = () => {
   };
 
   return (
-    <PaddingWrapper className="flex flex-col gap-[10px] pt-[16px] pb-[26px]">
+    <PaddingWrapper className="flex flex-col gap-[10px] pb-[26px]">
       <div className="text-14 font-semibold leading-150 tracking-tight-2">가격</div>
       <PriceInputContainer
         minPrice={price.minPrice}

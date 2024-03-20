@@ -42,7 +42,7 @@ const FilterTab = () => {
   };
 
   return (
-    <PaddingWrapper className="flex flex-col gap-[16px] pt-[16px] pb-[12px] border-b-[1px] border-solid border-gray-100">
+    <PaddingWrapper className="flex flex-col gap-[16px] pb-[12px] border-b-[1px] border-solid border-gray-100">
       <div className="flex justify-between items-center gap-[6px]">
         <div className="flex gap-[6px] overflow-x-scroll scrollbar-hide">
           {filterTagList.map((item, index) => {

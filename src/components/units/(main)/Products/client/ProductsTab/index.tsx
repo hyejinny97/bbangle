@@ -28,7 +28,7 @@ const ProductsTab = () => {
   }
 
   return (
-    <PaddingWrapper className="grid grid-cols-2 gap-x-[16px] gap-y-[16px] pt-[16px] pb-[36px]">
+    <PaddingWrapper className="grid grid-cols-2 gap-x-[16px] gap-y-[16px] pb-[36px]">
       {products && products.map(product => <ProductCard key={product.boardId} product={product} />)}
       {isFetchingNextPage ? <Loading /> : <div ref={ref}></div>}
     </PaddingWrapper>
