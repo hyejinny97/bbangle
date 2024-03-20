@@ -5,7 +5,7 @@ import KaKaoChatScript from '@/components/units/(mypage)/MyPage/client/KaKaoChat
 import SeparateLine from '@/components/units/(mypage)/MyPage/client/SeparateLine';
 import LoginSection from '@/components/units/(mypage)/MyPage/client/LoginSection';
 
-const IsLoggedIn = true;
+const IsLoggedIn = false;
 
 const MyPage = () => {
   return (
