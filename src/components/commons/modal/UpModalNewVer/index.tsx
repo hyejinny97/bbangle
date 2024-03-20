@@ -18,13 +18,13 @@ const UpModalNewVer = ({ title, children }: UpModalProps) => {
       initial={{ bottom: '-100%' }}
       animate={{ bottom: 0 }}
       exit={{ bottom: '-100%' }}
-      className="absolute w-full max-w-[600px] bg-white z-[5001] rounded-t-2xl pb-4"
+      className="absolute w-full max-w-[600px] bg-white z-[5001] rounded-t-[12px]"
     >
-      <div className="relative py-4">
-        <h4 className="text-center">{title}</h4>
-        <button className="absolute -translate-y-1/2 right-5 top-1/2" onClick={closeModal}>
-          <Icon.close />
-        </button>
+      <div className="flex items-center px-[16px] py-[10px]">
+        <h4 className="flex-1 text-center font-medium text-16 leading-150 tracking-tight-2">
+          {title}
+        </h4>
+        <Icon.close className="cursor-pointer" onClick={closeModal} />
       </div>
       {children}
     </motion.div>

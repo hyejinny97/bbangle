@@ -6,19 +6,18 @@ import { MouseEvent } from 'react';
 
 const StoreCard = ({ data }: { data: WishStore }) => {
   const { mutate } = useAddWishStoreMutation();
-
   const handleAddWishStore = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     mutate(data.storeId);
   };
 
   return (
-    <Link href="/stores/1">
+    <Link href={`/stores/${data.storeId}`}>
       <div className="flex flex-col justify-between w-full py-5 m-auto border-b border-gray-100 border-solid ">
         <div className="flex  justify-between w-[92%] m-auto items-center gap-[10px] ">
           <div
             className="w-[40px] h-[40px] rounded-md bg-cover bg-center flex flex-shrink-0"
-            // style={{ backgroundImage: `url(${data.profile})` }}
+            style={{ backgroundImage: `url(${data?.profile})` }}
           ></div>
           <div className="inline-flex flex-col items-start justify-start grow shrink basis-0">
             <div className="inline-flex items-center self-stretch justify-start gap-1">

@@ -1,3 +1,5 @@
+'use client';
+
 import { transformDayTag } from '@/commons/constants/transfromTag';
 import { IProductDetailType } from '../../types';
 import TagContainer from '../TagContainer';

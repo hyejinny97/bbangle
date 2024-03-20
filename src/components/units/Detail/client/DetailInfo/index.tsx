@@ -53,11 +53,11 @@ const ProductInfo = ({ data }: ProductInfoProps) => {
             height={0}
             sizes="100vw"
             className=" m-auto"
-            style={{ width: '100% ', padding: 0, margin: 0 }}
+            style={{ width: '100% ', padding: 0, margin: 0, marginBottom: '100px' }}
           />{' '}
         </div>
       </div>
-      <div className="bg-white w-full max-w-[600px] mx-auto p-[16px] fixed flex items-center gap-[10px] left-[0%] right-[0%] bottom-0 z-[5000]">
+      <div className="bg-white z-[5000] w-full max-w-[600px] mx-auto p-[16px] fixed flex items-center gap-[10px] left-[0%] right-[0%] bottom-0 ">
         <div>
           <BtnOutlinedHeart isLiked={data.board.isWished} onClick={handleClickHeart} />
         </div>
