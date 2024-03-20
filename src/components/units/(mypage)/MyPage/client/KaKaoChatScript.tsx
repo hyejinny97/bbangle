@@ -1,6 +1,6 @@
 'use client';
 
-const ServerKaKaoChatScript = () => {
+const KaKaoChatScript = () => {
   const handleScriptLoad = () => {
     window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JS_KEY);
   };
@@ -12,8 +12,8 @@ const ServerKaKaoChatScript = () => {
       integrity="sha384-ty4605mXDCz/lA+RRt4bHCRa1c9uIaIi0JrsmmWVxaNJZzu58jMhJK8wAMqDxrYv"
       crossOrigin="anonymous"
       onLoad={handleScriptLoad}
-    ></script>
+    />
   );
 };
 
-export default ServerKaKaoChatScript;
+export default KaKaoChatScript;
