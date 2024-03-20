@@ -8,7 +8,7 @@ const UserInfo = async () => {
   const { profileImg, nickname } = await fetchUserProfile();
 
   return (
-    <PaddingWrapper className="flex flex-col gap-[16px] py-[16px]">
+    <PaddingWrapper className="flex flex-col gap-[16px]">
       <div className="flex justify-between items-center">
         <div className="flex justify-between items-center gap-[6px]">
           <div className="bg-gray-100 rounded-[6px] ">

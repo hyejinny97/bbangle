@@ -11,9 +11,7 @@ const GoogleLoginButton = () => {
       onClick={handleGoogleLogin}
     >
       <GoogleIcon />
-      <div className="text-black text-opacity-90 text-base font-medium font-['Pretendard'] leading-normal">
-        구글 시작하기
-      </div>
+      <div className="text-black text-16 leading-150 tracking-tight-2">구글 시작하기</div>
     </button>
   );
 };

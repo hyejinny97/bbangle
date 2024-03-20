@@ -10,13 +10,11 @@ const KakaoLoginButton = () => {
 
   return (
     <button
-      className="rounded-[10px] flex gap-[8px] items-center justify-center h-[52px] bg-[#FEE500] shadow text-black"
+      className="rounded-[10px] flex gap-[8px] items-center justify-center h-[52px] bg-kakao shadow text-black"
       onClick={handleKakaLogin}
     >
       <KakaoIcon />
-      <div className="text-black text-opacity-90 text-base font-medium font-['Pretendard'] leading-normal">
-        카카오톡 시작하기
-      </div>
+      <div className="text-black text-16 leading-150 tracking-tight-2">카카오톡 시작하기</div>
     </button>
   );
 };

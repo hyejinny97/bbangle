@@ -26,7 +26,7 @@ const INFOS = [
 
 const MoreInfoItem = ({ icon, content }: MoreInfoItemProps) => {
   return (
-    <PaddingWrapper className="flex items-center gap-[8px] py-[16px] border-solid border-b-[1px] border-gray-100">
+    <PaddingWrapper className="flex items-center gap-[8px] border-solid border-b-[1px] border-gray-100">
       {icon}
       <p className="ml-[8px] text-[14px] font-medium">{content}</p>
     </PaddingWrapper>

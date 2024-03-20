@@ -64,6 +64,7 @@ module.exports = {
           30: '#F4F7F9',
           50: '#ECEFF1'
         },
+        kakao: '#FEE500',
         primaryOrangeRed: '#F04C28',
         secondaryOrangeRed: '#ED5F5F'
       },
