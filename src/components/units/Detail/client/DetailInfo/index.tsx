@@ -10,6 +10,7 @@ import { ChooseWishListModal } from '@/components/commons/card/ProductCard/clien
 import useToast from '@/commons/hooks/useToast';
 import Image from 'next/image';
 import BtnOutlinedHeart from '@/components/commons/button/client/Btn_outlined_heart';
+import GrayDivider from '@/components/commons/divider/GrayDivider';
 
 interface ProductInfoProps {
   data: IProductDetailType;
@@ -41,11 +42,11 @@ const ProductInfo = ({ data }: ProductInfoProps) => {
 
   return (
     <>
-      <div className="container flex-col flex-wrap w-ful">
+      <div className="container flex-col flex-wrap w-full">
         <StoreInfo store={data.store} />
-        <div className="border-b border-[#FAFAFA] border-solid"></div>
+        <GrayDivider />
         <BoardInfo data={data} />
-        <div className="justify-center w-[92%] m-auto text-center">
+        <div className="w-full">
           <Image
             src={'https://bbangree-oven.cdn.ntruss.com/1/1/1.jpg'}
             alt="상세"
@@ -57,6 +58,7 @@ const ProductInfo = ({ data }: ProductInfoProps) => {
           />{' '}
         </div>
       </div>
+
       <div className="bg-white z-[5000] w-full max-w-[600px] mx-auto p-[16px] fixed flex items-center gap-[10px] left-[0%] right-[0%] bottom-0 ">
         <div>
           <BtnOutlinedHeart isLiked={data.board.isWished} onClick={handleClickHeart} />
