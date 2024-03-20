@@ -2,7 +2,7 @@
 
 import { MouseEvent, ReactNode } from 'react';
 import BackDrop from '@/components/commons/backgrounds/BackDrop';
-import Icon from '@/components/commons/Icon';
+import { CloseIcon } from '@/components/commons/Icon';
 
 interface UpModalProps {
   title: string;
@@ -28,7 +28,9 @@ const UpModal = ({ title, children, isVisible, toggleModal }: UpModalProps) => {
           <h4 className="flex-1 text-center font-medium text-16 leading-150 tracking-tight-2">
             {title}
           </h4>
-          <Icon.close className="cursor-pointer" onClick={handleToggle} />
+          <button onClick={handleToggle}>
+            <CloseIcon className="cursor-pointer" />
+          </button>
         </div>
         {children}
       </div>

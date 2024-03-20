@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
-import Icon from '../../Icon';
+import { CloseIcon } from '../../Icon';
 import useModal from '@/commons/hooks/useModal';
 import { motion } from 'framer-motion';
 
@@ -24,7 +24,9 @@ const UpModalNewVer = ({ title, children }: UpModalProps) => {
         <h4 className="flex-1 text-center font-medium text-16 leading-150 tracking-tight-2">
           {title}
         </h4>
-        <Icon.close className="cursor-pointer" onClick={closeModal} />
+        <button onClick={closeModal}>
+          <CloseIcon className="cursor-pointer" />
+        </button>
       </div>
       {children}
     </motion.div>

@@ -1,6 +1,6 @@
 'use client';
 
-import Icon from '@/components/commons/Icon';
+import { BbangleSadIcon } from '@/components/commons/Icon';
 import Button from '@/components/commons/button/client/Button';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -23,7 +23,7 @@ export default function GlobalError({
       <body>
         <div className="flex flex-wrap w-[92%] m-auto gap-x-[4%] gap-y-4">
           <div className="flex flex-col items-center justify-center w-full h-[80vh] gap-2">
-            <Icon.bbangleSad />
+            <BbangleSadIcon />
             <div className="text-color-Gray500 text-center">
               <p className="text-sm font-regular">에러가 발생했어요!</p>
               <p className="text-sm font-regular">{error.message}</p>

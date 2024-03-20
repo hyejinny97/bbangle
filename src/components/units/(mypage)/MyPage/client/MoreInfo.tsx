@@ -8,8 +8,9 @@ import {
   IconInquiry
 } from '@/components/units/(mypage)/MyPage/client/Icons';
 import { chatKakaoChannel } from '@/commons/utils/chatKakaoChannel';
+import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
-interface ServerMoreInfoItemProps {
+interface MoreInfoItemProps {
   icon: React.ReactNode;
   content: string;
 }
@@ -23,16 +24,16 @@ const INFOS = [
   { href: '#', icon: <IconInquiry />, content: '문의하기' }
 ];
 
-const ServerMoreInfoItem = ({ icon, content }: ServerMoreInfoItemProps) => {
+const MoreInfoItem = ({ icon, content }: MoreInfoItemProps) => {
   return (
-    <div className="flex items-center p-4 border-solid border-b-[1px] border-color-Gray100">
+    <PaddingWrapper className="flex items-center gap-[8px] py-[16px] border-solid border-b-[1px] border-gray-100">
       {icon}
       <p className="ml-[8px] text-[14px] font-medium">{content}</p>
-    </div>
+    </PaddingWrapper>
   );
 };
 
-const ServerMoreInfo = () => {
+const MoreInfo = () => {
   const information = isLoggedIn ? INFOS : INFOS.slice(0, INFOS.length - 1);
 
   return (
@@ -45,11 +46,11 @@ const ServerMoreInfo = () => {
             if (content === '문의하기') chatKakaoChannel();
           }}
         >
-          <ServerMoreInfoItem icon={icon} content={content} />
+          <MoreInfoItem icon={icon} content={content} />
         </Link>
       ))}
     </div>
   );
 };
 
-export default ServerMoreInfo;
+export default MoreInfo;

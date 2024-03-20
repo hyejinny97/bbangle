@@ -1,6 +1,6 @@
 'use client';
 
-import Icon from '@/components/commons/Icon';
+import { BbangleSadIcon } from '@/components/commons/Icon';
 import Button from '@/components/commons/button/client/Button';
 import Link from 'next/link';
 
@@ -8,7 +8,7 @@ const Custom404 = () => {
   return (
     <div className="flex flex-wrap w-[92%] m-auto gap-x-[4%] gap-y-4">
       <div className="flex flex-col items-center justify-center w-full h-[80vh] gap-2">
-        <Icon.bbangleSad />
+        <BbangleSadIcon />
         <div className="text-color-Gray500 text-center">
           <p className="text-sm font-regular">잘못된 경로에요!</p>
           <p className="text-sm font-regular">요청한 페이지를 찾을 수 없어요😢</p>
