@@ -1,14 +1,6 @@
-import API from '@/api';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
-import type { RecentSearchKeywordsType } from '@/components/units/Search/hooks/useGetRecentSearchKeywordsQuery';
-
-const isLoggedIn = true; // 일단 로그인했다고 가정
-
-const deleteRecentSearchKeyword = async (keyword: string) => {
-  if (!isLoggedIn) return;
-  const data = await API.delete(`/search/recency?keyword=${keyword}`);
-  return data;
-};
+import { RecentSearchKeywordsType } from '@/components/units/Search/types';
+import { deleteRecentSearchKeyword } from '@/components/units/Search/api/deleteRecentSearchKeyword';
 
 export const useDeleteRecentSearchKeywordMutation = () => {
   const queryClient = useQueryClient();

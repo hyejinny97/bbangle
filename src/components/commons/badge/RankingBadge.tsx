@@ -4,7 +4,7 @@ interface PopularRankingProps {
 
 export const RankingBadge = ({ ranking }: PopularRankingProps) => {
   return (
-    <span className="w-5 h-5 bg-white rounded-md border border-solid border-neutral-100  flex items-center justify-center text-neutral-800 text-[11px] font-bold leading-[11px]">
+    <span className="flex justify-center items-center w-[20px] h-[20px] bg-white rounded-[6px] border border-solid border-gray-100 text-gray-900 text-11 font-bold tracking-tight-2">
       {ranking}
     </span>
   );

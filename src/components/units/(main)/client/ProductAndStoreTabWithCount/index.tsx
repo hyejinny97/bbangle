@@ -2,19 +2,16 @@
 
 import { Suspense } from 'react';
 import { useRecoilValue } from 'recoil';
-import { useSearchParams } from 'next/navigation';
 import { filterValueState } from '@/components/units/(main)/Products/atoms';
-import { useGetSearchProductsQuery } from '@/components/units/Search/hooks/useGetSearchProductsQuery';
-import { useGetSearchStoresQuery } from '@/components/units/Search/hooks/useGetSearchStoresQuery';
+import { useGetAllProductsQuery } from '@/components/units/(main)/Products/hooks/useGetAllProductsQuery';
+import { useGetAllStoresQuery } from '@/components/units/(main)/Stores/hooks/useGetAllStoresQuery';
 import ProductAndStoreTab from '@/components/commons/tabs/ProductAndStoreTab';
 
 const ProductAndStoreTabWithCount = () => {
   const filterValue = useRecoilValue(filterValueState);
-  const searchParams = useSearchParams();
-  const keyword = searchParams.get('query') || '';
 
-  const { itemCount: productCount } = useGetSearchProductsQuery({ keyword, filterValue });
-  const { itemCount: storeCount } = useGetSearchStoresQuery({ keyword });
+  const { itemCount: productCount } = useGetAllProductsQuery(filterValue);
+  const { itemCount: storeCount } = useGetAllStoresQuery();
 
   return (
     <Suspense>

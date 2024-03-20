@@ -7,7 +7,7 @@ interface PaddingWrapperProps {
 }
 
 const PaddingWrapper = ({ className, children }: PaddingWrapperProps) => {
-  return <div className={twMerge('px-[16px]', className)}>{children}</div>;
+  return <div className={twMerge('p-[16px]', className)}>{children}</div>;
 };
 
 export default PaddingWrapper;
