@@ -24,10 +24,11 @@ const MoreBtn = ({ isMore, onClick }: MoreBtnProps) => {
     }
   };
   return (
-    <div className="h-[80px] bg-gradient-to-t bg-opacity-50">
+    <div className="relative">
+      {/* <div className="absolute top-[0px] w-full bg-gradient-to-t from-white  to-white h-[15px]"></div> */}
       <button
         type="button"
-        className="text-center text-gray-600 text-12 py-[13px] mt-[30px] font-400 w-full border border-solid border-gray-200 rounded-[8px]"
+        className="text-center text-gray-600 text-12 py-[13px] font-medium w-full border border-solid border-gray-200 rounded-[8px]"
         onClick={handleClick}
       >
         {!isMore ? '더보기' : '숨기기'}

@@ -4,8 +4,8 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      boxShadow: {
-        'white-up': '0 -4px 6px rgba(255, 255, 255, 0.5)'
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(180deg, hsla(0, 0%, 100%, 0), #fff)'
       },
       keyframes: {
         pop: {
@@ -68,6 +68,7 @@ module.exports = {
           50: '#ECEFF1'
         },
         primaryOrangeRed: '#F04C28',
+        subColorPink: '#FEEDEA',
         secondaryOrangeRed: '#ED5F5F'
       },
       // ex) text-11

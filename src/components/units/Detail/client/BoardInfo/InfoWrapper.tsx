@@ -8,7 +8,7 @@ interface InfoWrapperProps {
 const InfoWrapper = ({ title, children }: InfoWrapperProps) => {
   return (
     <div>
-      <h2 className="text-[#9E9E9E] text-xs font-semibold pb-[10px]">{title}</h2>
+      <h2 className="text-gray-500 text-12 leading-150 font-semibold pb-[10px]">{title}</h2>
       {children}
     </div>
   );
