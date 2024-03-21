@@ -8,6 +8,7 @@ import GetAccessToken from '@/components/commons/header/client/GetAccessToken';
 import PopupContainer from '@/components/commons/PopupContainer';
 import ModalContainer from '@/components/commons/ModalContainer';
 import ToastContainer from '@/components/commons/ToastContainer';
+import KaKaoChatScript from '@/components/commons/KaKaoChatScript';
 
 const pretendard = localFont({
   src: '../commons/assets/PretendardVariable.woff2'
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <div className="sm:w-[600px] w-full m-auto pb-24 min-h-screen relative">{children}</div>
           <Footer />
         </RootLayoutProvider>
+        <KaKaoChatScript />
       </body>
     </html>
   );
