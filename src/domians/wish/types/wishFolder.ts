@@ -1,4 +1,4 @@
-export interface WishListFolder {
+export interface WishFolder {
   folderId: number;
   title: string;
   count: number;

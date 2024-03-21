@@ -1,6 +1,6 @@
 import UpModal from '@/components/commons/modal/UpModal';
-import { useAddWishListMutation } from '@/components/units/WishList/hooks/useAddWishListMutation';
-import { useGetWishListFolder } from '@/components/units/WishList/hooks/useGetWishListFolder';
+import { useAddWishListMutation } from '@/domians/wish/hooks/useAddWishListMutation';
+import { useGetWishListFolder } from '@/domians/wish/hooks/useGetWishListFolder';
 import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import { useAddWishMutation } from '../hooks/useAddWishMutation';
 import PlusIcon from '../assets/plus-icon.svg';
