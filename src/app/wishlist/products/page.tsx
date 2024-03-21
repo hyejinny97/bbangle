@@ -1,11 +1,11 @@
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import WishFolderEditButtonSection from '@/domians/wish/components/WishFolderEditButtonSection';
 import WishFolderGrid from '@/domians/wish/components/WishFolderGrid';
-import WishFolderModifyButtonSection from '@/domians/wish/components/WishFolderModifyButtonSection';
 
 const WishProductsPage = () => {
   return (
     <PaddingWrapper>
-      <WishFolderModifyButtonSection />
+      <WishFolderEditButtonSection />
       <WishFolderGrid />
     </PaddingWrapper>
   );

@@ -2,10 +2,13 @@
 
 import Button from '@/components/commons/button/client/Button';
 import { useRecoilState } from 'recoil';
-import { isWishFolderEditMode } from '../atoms/wishFolder';
+import useModal from '@/commons/hooks/useModal';
+import WishFolderModal from './WishFolderModal';
+import { isWishFolderEditMode } from '../../atoms/wishFolder';
 
-const WishFolderModifyButtonSection = () => {
+const WishFolderEditButtonSection = () => {
   const [isEdit, setEdit] = useRecoilState(isWishFolderEditMode);
+  const { openModal } = useModal();
 
   const editFolder = () => {
     setEdit(true);
@@ -15,7 +18,9 @@ const WishFolderModifyButtonSection = () => {
     setEdit(false);
   };
 
-  const createFolder = () => {};
+  const createFolder = () => {
+    openModal(<WishFolderModal />);
+  };
 
   return (
     <div className="flex justify-end gap-[6px] pb-[10px]">
@@ -35,4 +40,4 @@ const WishFolderModifyButtonSection = () => {
   );
 };
 
-export default WishFolderModifyButtonSection;
+export default WishFolderEditButtonSection;
