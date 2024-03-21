@@ -15,9 +15,14 @@ const UpModalNewVer = ({ title, children }: UpModalProps) => {
 
   return (
     <motion.div
-      initial={{ bottom: '-100%' }}
-      animate={{ bottom: 0 }}
-      exit={{ bottom: '-100%' }}
+      key="modal"
+      initial={{ translateY: '100%' }}
+      animate={{ translateY: 0 }}
+      exit={{ translateY: '100%' }}
+      transition={{
+        ease: 'linear',
+        duration: 0.2
+      }}
       className="absolute w-full max-w-[600px] max-h-[100vh] overflow-y-scroll scrollbar-hide bg-white z-[5001] rounded-t-[12px]"
     >
       <div className="flex items-center px-[16px] py-[10px]">
