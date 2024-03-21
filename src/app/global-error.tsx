@@ -29,7 +29,7 @@ export default function GlobalError({
               <p className="text-sm font-regular">{error.message}</p>
             </div>
           </div>
-          <div className="flex justify-evenly bg-white w-full max-w-[600px] mx-auto p-[16px] fixed flex gap-[10px] left-0 right-0 bottom-0 z-[5000]">
+          <div className="justify-evenly bg-white w-full max-w-[600px] mx-auto p-[16px] fixed flex gap-[10px] left-0 right-0 bottom-0 z-[5000]">
             <div className="flex-1">
               <Button onClick={reset} variants="primary-black">
                 다시 시도하기

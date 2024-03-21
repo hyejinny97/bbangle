@@ -33,6 +33,7 @@ const ProductCard = ({ product, popular, ranking }: ProductCardProps) => {
         />
         <ProductSummary product={product} />
       </Link>
+      {/* Todo. useModal 사용 */}
       {isModal && (
         <ChooseWishListModal isModal={isModal} setIsModal={setIsModal} productId={productId} />
       )}

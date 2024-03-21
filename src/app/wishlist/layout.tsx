@@ -21,7 +21,7 @@ const Laoyout = ({ children }: Layout) => {
 
   return (
     <>
-      <Header back={!isDetailPage} />
+      <Header back={isDetailPage} title="찜" />
       {!isDetailPage && (
         <div className="flex">
           <TabLink href="/wishlist/products" active={isProductPage}>
