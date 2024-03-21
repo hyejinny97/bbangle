@@ -45,9 +45,6 @@ const WishProducts = () => {
           onSuccess: () => {
             refetch();
             handleModalToggle();
-          },
-          onError: (err: any) => {
-            alert(err.response.data.message);
           }
         }
       );

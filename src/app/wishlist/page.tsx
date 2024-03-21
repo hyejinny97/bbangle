@@ -1,19 +1,11 @@
-import ServerWishList from '@/components/units/WishList/server/ServerWishList';
-import API from '@/api';
-
-export const dynamic = 'force-dynamic';
-
-async function getWishStore() {
-  const data = await API.get('/likes/stores');
-  return data;
-}
+import Header from '@/components/commons/header/client/Header';
+import WishProducts from '@/components/units/WishList/client/WishProducts';
 
 const WishList = async () => {
-  await getWishStore();
-
   return (
     <>
-      <ServerWishList />
+      <Header title="찜" back />
+      <WishProducts />
     </>
   );
 };
