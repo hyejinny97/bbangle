@@ -1,5 +1,6 @@
 'use client';
 
+import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import Header from '@/components/commons/header/client/Header';
 import TabLink from '@/components/commons/tabs/TabLink';
 import { usePathname } from 'next/navigation';
@@ -20,7 +21,7 @@ const Laoyout = ({ children }: Layout) => {
 
   return (
     <>
-      <Header back={isDetailPage} />
+      <Header back={!isDetailPage} />
       {!isDetailPage && (
         <div className="flex">
           <TabLink href="/wishlist/products" active={isProductPage}>
@@ -31,7 +32,7 @@ const Laoyout = ({ children }: Layout) => {
           </TabLink>
         </div>
       )}
-      {children}
+      <PaddingWrapper>{children}</PaddingWrapper>
     </>
   );
 };
