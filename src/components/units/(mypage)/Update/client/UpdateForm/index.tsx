@@ -27,8 +27,6 @@ const UpdateForm = ({
     e.preventDefault();
   };
 
-  console.log({ profileImg, nickname, phoneNumber, birthDate });
-
   return (
     <form className="px-[16px]" onSubmit={onSubmit}>
       <div className="my-[16px] flex flex-col w-full justify-center items-center">

@@ -4,6 +4,9 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(180deg, hsla(0, 0%, 100%, 0), #fff)'
+      },
       keyframes: {
         pop: {
           '0%, 100%': { transform: 'scale(1)' },
@@ -27,7 +30,7 @@ module.exports = {
         toast: 1000,
         popup: 1000,
         modal: 1000,
-        footer: 9000,
+        footer: 4999,
         backdrop: 9999
       },
 
@@ -64,7 +67,9 @@ module.exports = {
           30: '#F4F7F9',
           50: '#ECEFF1'
         },
+        kakao: '#FEE500',
         primaryOrangeRed: '#F04C28',
+        subColorPink: '#FEEDEA',
         secondaryOrangeRed: '#ED5F5F'
       },
       // ex) text-11

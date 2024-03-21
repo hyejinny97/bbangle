@@ -2,21 +2,24 @@ import Link from 'next/link';
 import ProductsList from '../client/ProductsList';
 import { Suspense } from 'react';
 import { SkeletonProductList } from '@/components/commons/skeleton/SkeletonProductList';
-//import { IAllProductsType } from '@/commons/types/allProductsType';
+import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 const ServerProducts = async () => {
   return (
-    <div className="w-full">
-      <div className="w-[92%] h-14 m-auto py-2.5 justify-between items-end flex">
-        <div className="text-2xl font-normal leading-9 text-color-Gray500">Best</div>
-        <Link href="/products" className="text-color-Gray400 text-xs font-medium  leading-[18px]">
+    <PaddingWrapper className="pb-[36px]">
+      <div className="flex justify-between items-end py-[10px] ">
+        <div className="text-20 font-semibold leading-150 tracking-tight-2 text-gray-500">Best</div>
+        <Link
+          href="/products"
+          className="text-gray-400 text-12 font-medium leading-150 tracking-tight-2"
+        >
           전체보기
         </Link>
       </div>
       <Suspense fallback={<SkeletonProductList />}>
         <ProductsList />
       </Suspense>
-    </div>
+    </PaddingWrapper>
   );
 };
 
