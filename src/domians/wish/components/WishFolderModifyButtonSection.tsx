@@ -23,12 +23,12 @@ const WishFolderModifyButtonSection = () => {
         추가
       </Button>
       {isEdit ? (
-        <Button variants="secondary-white" onClick={editFolder}>
-          편집
-        </Button>
-      ) : (
         <Button variants="secondary-black" onClick={complete}>
           완료
+        </Button>
+      ) : (
+        <Button variants="secondary-white" onClick={editFolder}>
+          편집
         </Button>
       )}
     </div>
