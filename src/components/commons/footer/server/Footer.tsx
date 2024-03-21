@@ -39,11 +39,17 @@ const Footer = () => {
         const isStorePage = pathname === '/stores';
         const isProductLink = item.href === '/products';
 
+        const isWishStorePage = pathname === '/wishlist/stores';
+        const isWishProductLink = item.href === '/wishlist/products';
+
         let isActive = pathname.startsWith(item.href);
         if (!isHomePage && isHomeLink) {
           isActive = false;
         }
         if (isStorePage && isProductLink) {
+          isActive = true;
+        }
+        if (isWishStorePage && isWishProductLink) {
           isActive = true;
         }
 
