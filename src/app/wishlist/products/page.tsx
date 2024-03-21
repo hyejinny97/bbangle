@@ -1,5 +1,5 @@
-import WishFolderGrid from '@/domians/wish/WishFolderGrid';
-import WishFolderModifyButtonSection from '@/domians/wish/WishFolderModifyButtonSection';
+import WishFolderGrid from '@/domians/wish/components/WishFolderGrid';
+import WishFolderModifyButtonSection from '@/domians/wish/components/WishFolderModifyButtonSection';
 
 const WishProductsPage = () => {
   return (
