@@ -1,5 +1,11 @@
+import WishStroeList from '@/domians/wish/components/WishStoreList';
+
 const WishStoresPage = () => {
-  return <>store</>;
+  return (
+    <>
+      <WishStroeList />
+    </>
+  );
 };
 
 export default WishStoresPage;

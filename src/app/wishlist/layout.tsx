@@ -1,6 +1,5 @@
 'use client';
 
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import Header from '@/components/commons/header/client/Header';
 import TabLink from '@/components/commons/tabs/TabLink';
 import { usePathname } from 'next/navigation';
@@ -32,7 +31,7 @@ const Laoyout = ({ children }: Layout) => {
           </TabLink>
         </div>
       )}
-      <PaddingWrapper>{children}</PaddingWrapper>
+      {children}
     </>
   );
 };
