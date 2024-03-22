@@ -1,7 +1,8 @@
 'use client';
 
 import Header from '@/components/commons/header/client/Header';
-import TabLink from '@/components/commons/tabs/TabLink';
+import TabButton from '@/shared/components/TabButton';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 
@@ -23,12 +24,12 @@ const Laoyout = ({ children }: Layout) => {
       <Header back={isDetailPage} title="찜" />
       {!isDetailPage && (
         <div className="flex">
-          <TabLink href="/wishlist/products" active={isProductPage}>
-            상품
-          </TabLink>
-          <TabLink href="/wishlist/stores" active={isStorePage}>
-            스토어
-          </TabLink>
+          <Link href="/wishlist/products">
+            <TabButton active={isProductPage}>상품</TabButton>
+          </Link>
+          <Link href="/wishlist/stores">
+            <TabButton active={isStorePage}>스토어</TabButton>
+          </Link>
         </div>
       )}
       {children}
