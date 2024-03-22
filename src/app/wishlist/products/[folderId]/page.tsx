@@ -1,9 +1,11 @@
-import WishProductsSortButtonSection from '@/domians/wish/components/WishProductsSortButtonSection';
+import WishFolderEditButtonSection from '@/blocks/wish/WishFolderEditButtonSection';
+import WishProductList from '@/blocks/wish/WishProductList';
 
 const WishProductsDetail = () => {
   return (
     <>
-      <WishProductsSortButtonSection />
+      <WishFolderEditButtonSection />
+      <WishProductList />
     </>
   );
 };

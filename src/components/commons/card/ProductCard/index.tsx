@@ -4,7 +4,6 @@ import { IProductType } from '@/commons/types/productType';
 import Link from 'next/link';
 
 import { useState } from 'react';
-import { IStoreType } from '@/commons/types/storeType';
 import { ProductImage } from './client/ProductImage';
 import { ProductSummary } from './client/ProductSummary';
 import { ChooseWishListModal } from './client/ChooseWishListModal';
@@ -12,7 +11,6 @@ import { ChooseWishListModal } from './client/ChooseWishListModal';
 
 interface ProductCardProps {
   product: IProductType;
-  storeData?: IStoreType;
   popular?: boolean;
   ranking?: number;
 }

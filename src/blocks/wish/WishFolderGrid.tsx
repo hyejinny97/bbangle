@@ -1,4 +1,4 @@
-import WishFolder from './WishFolder';
+import WishFolder from '@/domians/wish/components/WishFolder';
 
 const WishFolderGrid = () => {
   return (

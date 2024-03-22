@@ -1,4 +1,4 @@
-import WishStore from './WishStore';
+import WishStore from '@/domians/wish/components/WishStore';
 
 const WishStroeList = () => {
   return (
