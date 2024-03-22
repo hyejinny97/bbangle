@@ -4,10 +4,10 @@ import Button from '@/components/commons/button/client/Button';
 import { useRecoilState } from 'recoil';
 import useModal from '@/commons/hooks/useModal';
 import WishFolderModal from './WishFolderModal';
-import { isWishFolderEditMode } from '../../atoms/wishFolder';
+import { isWishFolderEditModeState } from '../../atoms/wishFolder';
 
 const WishFolderEditButtonSection = () => {
-  const [isEdit, setEdit] = useRecoilState(isWishFolderEditMode);
+  const [isEdit, setEdit] = useRecoilState(isWishFolderEditModeState);
   const { openModal } = useModal();
 
   const editFolder = () => {
