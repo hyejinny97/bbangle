@@ -24,10 +24,10 @@ const Laoyout = ({ children }: Layout) => {
       <Header back={isDetailPage} title="찜" />
       {!isDetailPage && (
         <div className="flex">
-          <Link href="/wishlist/products">
+          <Link className="w-full" href="/wishlist/products">
             <TabButton active={isProductPage}>상품</TabButton>
           </Link>
-          <Link href="/wishlist/stores">
+          <Link className="w-full" href="/wishlist/stores">
             <TabButton active={isStorePage}>스토어</TabButton>
           </Link>
         </div>
