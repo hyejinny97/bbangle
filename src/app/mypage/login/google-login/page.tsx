@@ -1,23 +1,24 @@
-import API from '@/shared/utils/api';
-import { redirect } from 'next/navigation';
+'use client';
 
-interface Params {
+import Loading from '@/components/commons/Loading';
+import useGoogleLoginMutation from '@/domains/user/queries/useGoogleLoginMutation';
+import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
+import { useParams } from 'next/navigation';
+import { useEffect } from 'react';
+
+interface GoogleParams extends Params {
   error: string;
-  code: string;
-  error_description: string; // kakao 응답이 snake_case라 camelCase 사용 불가능
 }
 
-interface Props {
-  params: Params;
-}
+const GoogleLoginPage = () => {
+  const { mutate } = useGoogleLoginMutation();
+  const { code } = useParams<GoogleParams>();
 
-const GoogleLoginPage = async ({ params: { code } }: Props) => {
-  const res = await API.get(`/oauth2/login/callback/google?code=${code}`, {
-    method: 'GET'
+  useEffect(() => {
+    mutate(code);
   });
 
-  if (!res.ok) throw Error('구글 로그인 실패');
-  redirect('/');
+  return <Loading />;
 };
 
 export default GoogleLoginPage;
