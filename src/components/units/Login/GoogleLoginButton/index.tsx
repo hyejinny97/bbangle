@@ -1,9 +1,20 @@
 'use client';
 
+import { GOOGLE } from '@/shared/constants/api';
 import GoogleIcon from '../assets/google_logo.svg';
 
 const GoogleLoginButton = () => {
-  const handleGoogleLogin = () => {};
+  const queryObject = {
+    client_id: GOOGLE.clientId,
+    redirect_uri: GOOGLE.redirectUri,
+    response_type: 'token',
+    scope: 'https://www.googleapis.com/auth/drive.metadata.readonly'
+  };
+  const queryString = new URLSearchParams(queryObject).toString();
+
+  const handleGoogleLogin = () => {
+    window.location.assign(`${GOOGLE.authUrl}?${queryString}`);
+  };
 
   return (
     <button

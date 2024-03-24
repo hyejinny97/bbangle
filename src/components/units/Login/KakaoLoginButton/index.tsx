@@ -1,18 +1,18 @@
 'use client';
 
-import { KAKAO_AUTH_URL, KAKAO_CLIENT_ID, KAKAO_REDIRECT_URI } from '@/shared/constants/api';
+import { KAKAO } from '@/shared/constants/api';
 import KakaoIcon from '../assets/kakao_logo.svg';
 
 const KakaoLoginButton = () => {
   const queryObject = {
-    client_id: KAKAO_CLIENT_ID,
+    client_id: KAKAO.clientId,
     response_type: 'code',
-    redirect_uri: KAKAO_REDIRECT_URI
+    redirect_uri: KAKAO.redirectUri
   };
   const queryString = new URLSearchParams(queryObject).toString();
 
   const handleKakaLogin = () => {
-    window.location.assign(`${KAKAO_AUTH_URL}?${queryString}`);
+    window.location.assign(`${KAKAO.authUrl}?${queryString}`);
   };
 
   return (
