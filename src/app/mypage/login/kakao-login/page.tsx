@@ -1,23 +1,26 @@
-import API from '@/shared/utils/api';
-import { redirect } from 'next/navigation';
+'use client';
 
-interface Params {
+import Loading from '@/components/commons/Loading';
+import useKakaoLoginMutation from '@/domains/user/queries/useKakaoLoginMutation';
+import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
+import { useParams } from 'next/navigation';
+import { useEffect } from 'react';
+
+interface KakaoParams extends Params {
   error: string;
   code: string;
-  error_description: string; // kakao 응답이 snake_case라 camelCase 사용 불가능
+  error_description: string;
 }
 
-interface Props {
-  params: Params;
-}
+const KakaoLoginPage = () => {
+  const { mutate } = useKakaoLoginMutation();
+  const { code } = useParams<KakaoParams>();
 
-const KakaoLoginPage = async ({ params: { code } }: Props) => {
-  const res = await API.get(`/oauth2/login/callback/kakao?code=${code}`, {
-    method: 'GET'
+  useEffect(() => {
+    mutate(code);
   });
 
-  if (!res.ok) throw Error('카카오 로그인 실패');
-  redirect('/');
+  return <Loading />;
 };
 
 export default KakaoLoginPage;

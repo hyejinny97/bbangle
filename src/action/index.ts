@@ -2,14 +2,14 @@
 
 import { revalidateTag as _revalidateTag } from 'next/cache';
 import { cookies } from 'next/headers';
-import { redirect as _redirect } from 'next/navigation';
+import { RedirectType, redirect as _redirect } from 'next/navigation';
 
 export const revalidateTag = async (tag: string) => {
   _revalidateTag(tag);
 };
 
-export const redirect = async (path: string) => {
-  _redirect(path);
+export const redirect = async (path: string, type?: RedirectType) => {
+  _redirect(path, type);
 };
 
 export const getCookie = async (name: string) => {
