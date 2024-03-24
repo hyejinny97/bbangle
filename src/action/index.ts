@@ -1,6 +1,7 @@
 'use server';
 
 import { revalidateTag as _revalidateTag } from 'next/cache';
+import { cookies } from 'next/headers';
 import { redirect as _redirect } from 'next/navigation';
 
 export const revalidateTag = async (tag: string) => {
@@ -9,4 +10,9 @@ export const revalidateTag = async (tag: string) => {
 
 export const redirect = async (path: string) => {
   _redirect(path);
+};
+
+export const getCookie = async (name: string) => {
+  const cookieStore = cookies();
+  return cookieStore.get(name);
 };

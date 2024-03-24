@@ -1,3 +1,6 @@
+import API from '@/shared/utils/api';
+import { redirect } from 'next/navigation';
+
 interface Params {
   error: string;
   code: string;
@@ -8,10 +11,13 @@ interface Props {
   params: Params;
 }
 
-const KakaoLogin = ({ params: { code } }: Props) => {
-  console.log(code);
+const KakaoLoginPage = async ({ params: { code } }: Props) => {
+  const res = await API.get(`/oauth2/login/callback/kakao?code=${code}`, {
+    method: 'GET'
+  });
 
-  return <>카카오 로그인 중입니다...</>;
+  if (!res.ok) throw Error('카카오 로그인 실패');
+  redirect('/');
 };
 
-export default KakaoLogin;
+export default KakaoLoginPage;

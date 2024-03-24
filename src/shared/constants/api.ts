@@ -9,3 +9,5 @@ export const KAKAO = {
   clientId: process.env.NEXT_PUBLIC_KAKAO_AUTH_CLIENT_ID ?? '',
   redirectUri: process.env.NEXT_PUBLIC_KAKAO_AUTH_REDIRECT_URI ?? ''
 };
+
+export const API_URL = process.env.NEXT_PUBLIC_SERVER_URL;
