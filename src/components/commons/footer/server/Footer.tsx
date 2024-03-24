@@ -21,7 +21,12 @@ const Footer = () => {
     { title: '홈', defaultIcon: <Home />, activeIcon: <HomeActive />, href: '/' },
     { title: '검색', defaultIcon: <Search />, activeIcon: <SearchActive />, href: '/search' },
     { title: '전체', defaultIcon: <Category />, activeIcon: <CategoryActive />, href: '/products' },
-    { title: '찜', defaultIcon: <Heart />, activeIcon: <HeartActive />, href: '/wishlist' },
+    {
+      title: '찜',
+      defaultIcon: <Heart />,
+      activeIcon: <HeartActive />,
+      href: '/wishlist/products'
+    },
     {
       title: '마이페이지',
       defaultIcon: <Profile />,
@@ -39,11 +44,17 @@ const Footer = () => {
         const isStorePage = pathname === '/stores';
         const isProductLink = item.href === '/products';
 
+        const isWishStorePage = pathname === '/wishlist/stores';
+        const isWishProductLink = item.href === '/wishlist/products';
+
         let isActive = pathname.startsWith(item.href);
         if (!isHomePage && isHomeLink) {
           isActive = false;
         }
         if (isStorePage && isProductLink) {
+          isActive = true;
+        }
+        if (isWishStorePage && isWishProductLink) {
           isActive = true;
         }
 
