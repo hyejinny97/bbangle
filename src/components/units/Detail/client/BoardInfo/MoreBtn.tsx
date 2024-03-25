@@ -24,18 +24,14 @@ const MoreBtn = ({ isMore, onClick }: MoreBtnProps) => {
     }
   };
   return (
-    <div className="relative">
-      {/* <div className="absolute top-[0px] w-full bg-gradient-to-t from-white  to-white h-[15px]"></div> */}
-      <button
-        type="button"
-        className="text-center text-gray-600 text-12 py-[13px] font-medium w-full border border-solid border-gray-200 rounded-[8px]"
-        onClick={handleClick}
-      >
-        {!isMore ? '더보기' : '숨기기'}
-      </button>
-    </div>
+    <button
+      type="button"
+      className="text-center text-gray-600 text-12 py-[13px] font-medium w-full border border-solid border-gray-200 rounded-[8px]"
+      onClick={handleClick}
+    >
+      {!isMore ? '더보기' : '숨기기'}
+    </button>
   );
 };
 
 export default MoreBtn;
-/* bg-gradient */

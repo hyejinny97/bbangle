@@ -22,7 +22,7 @@ function BoardInfo({ data }: BoardInfoProps) {
   availableDays = availableDays.map(item => transformDayTag(item));
 
   return (
-    <PaddingWrapper className="py-[16px]">
+    <PaddingWrapper>
       <div className="pb-[16px]">
         <div className="mb-[4px] h-[21px] justify-start gap-1 inline-flex">
           {uniqueTags.map((tag, i) => (
@@ -39,7 +39,11 @@ function BoardInfo({ data }: BoardInfoProps) {
 
       <GrayDivider />
 
-      <div className="flex flex-col gap-[16px] py-[16px] ">
+      <div
+        className={`flex relative flex-col gap-[16px] py-[16px] ${
+          clickMore ? 'overflow-y-visible ' : 'overflow-y-hidden h-[271px]'
+        }`}
+      >
         <InfoWrapper title="주문가능일">
           <div className="flex gap-[4px] ">
             {['월', '화', '수', '목', '금', '토', '일'].map(item => (
@@ -58,11 +62,7 @@ function BoardInfo({ data }: BoardInfoProps) {
         </InfoWrapper>
 
         <InfoWrapper title="상품 구성">
-          <div
-            className={`transition-all ease-in delay-150 ${
-              clickMore ? 'overflow-y-visible ' : 'overflow-y-hidden h-[85px]'
-            }`}
-          >
+          <div className="transition-all ease-in delay-150">
             {data.board.products.map((item, i) => (
               <div className="mb-[10px]" key={i}>
                 <div className="font-normal leading-120 text-12 text-gray-800 mb-[4px]">
@@ -76,17 +76,18 @@ function BoardInfo({ data }: BoardInfoProps) {
               </div>
             ))}
           </div>
-          {data.board.products.length > 2 && (
-            <div className="bg-gradient-to-t from-white to-transparent ">
-              <MoreBtn
-                isMore={clickMore}
-                onClick={() => {
-                  setClickMore(!clickMore);
-                }}
-              />
-            </div>
-          )}
         </InfoWrapper>
+
+        {data.board.products.length > 2 && (
+          <PaddingWrapper className="w-full pt-[30px] absolute bottom-0  bg-gradient-to-t from-white via-75% via-white to-white/0">
+            <MoreBtn
+              isMore={clickMore}
+              onClick={() => {
+                setClickMore(!clickMore);
+              }}
+            />
+          </PaddingWrapper>
+        )}
       </div>
     </PaddingWrapper>
   );
