@@ -1,11 +1,11 @@
 'use client';
 
 import { useRecoilState } from 'recoil';
-import { isCategoryTabStateNew } from '@/atoms/atom';
+import { isCategoryTabState } from '@/atoms/atom';
 import TabButton from '@/shared/components/TabButton';
 
 const CategoryAndIngredientTab = () => {
-  const [isCategoryTab, setIsCategoryTab] = useRecoilState(isCategoryTabStateNew);
+  const [isCategoryTab, setIsCategoryTab] = useRecoilState(isCategoryTabState);
 
   const handleTabClick = (isCategoryTabClicked: boolean) => {
     setIsCategoryTab(isCategoryTabClicked);
