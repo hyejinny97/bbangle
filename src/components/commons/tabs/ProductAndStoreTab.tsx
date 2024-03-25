@@ -1,7 +1,9 @@
 'use client';
 
+import { useId } from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { LayoutGroup } from 'framer-motion';
 import TabButton from '@/shared/components/TabButton';
 
 interface ProductAndStoreTabProps {
@@ -23,6 +25,7 @@ const ProductAndStoreTab = ({
   productCount,
   storeCount
 }: ProductAndStoreTabProps) => {
+  const id = useId();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -40,14 +43,16 @@ const ProductAndStoreTab = ({
   const storeCountStr = typeof storeCount === 'number' ? `(${checkCount(storeCount)})` : '';
 
   return (
-    <div className="flex">
-      <Link className="w-full" href={productsUrl}>
-        <TabButton active={isProductPage}>상품{productCountStr}</TabButton>
-      </Link>
-      <Link className="w-full" href={storesUrl}>
-        <TabButton active={isStorePage}>스토어{storeCountStr}</TabButton>
-      </Link>
-    </div>
+    <LayoutGroup id={id}>
+      <div className="flex">
+        <Link className="w-full" href={productsUrl}>
+          <TabButton active={isProductPage}>상품{productCountStr}</TabButton>
+        </Link>
+        <Link className="w-full" href={storesUrl}>
+          <TabButton active={isStorePage}>스토어{storeCountStr}</TabButton>
+        </Link>
+      </div>
+    </LayoutGroup>
   );
 };
 
