@@ -1,3 +1,4 @@
+import { BbangleSmileIcon } from '@/components/commons/Icon';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import BtnStar from '@/components/commons/button/client/Btn_start';
 import Image from 'next/image';
@@ -12,13 +13,14 @@ interface WishStroeProps {
 const WishStore = ({ imgSrc, title, desc, isWished }: WishStroeProps) => {
   return (
     <PaddingWrapper className="flex gap-[10px] justify-between border-b border-gray-100">
-      <Image
-        className="rounded-[6px] shrink-0"
-        width={40}
-        height={40}
-        src={imgSrc}
-        alt="store thumbnail"
-      />
+      <div className="w-[40px] h-[40px] rounded-[6px] shrink-0">
+        {imgSrc ? (
+          <Image width={40} height={40} src={imgSrc} alt="store thumbnail" />
+        ) : (
+          <BbangleSmileIcon />
+        )}
+      </div>
+
       <div className="flex w-full flex-col overflow-hidden">
         <div className="flex justify-between">
           <div className="font-semibold leading-150 tracking-tight-2 text-14">{title}</div>

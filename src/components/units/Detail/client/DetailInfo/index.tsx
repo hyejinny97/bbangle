@@ -55,7 +55,7 @@ const ProductInfo = ({ data }: ProductInfoProps) => {
             sizes="100vw"
             className=" m-auto"
             style={{ width: '100% ', padding: 0, margin: 0, marginBottom: '100px' }}
-          />{' '}
+          />
         </div>
       </div>
 
