@@ -79,7 +79,7 @@ function BoardInfo({ data }: BoardInfoProps) {
         </InfoWrapper>
 
         {data.board.products.length > 2 && (
-          <PaddingWrapper className="w-full pt-[30px] absolute bottom-0  bg-gradient-to-t from-white via-75% via-white to-white/0">
+          <PaddingWrapper className="w-full pt-[30px] absolute bottom-0  bg-gradient-to-t from-white via-[80.75%] via-white to-white/0 to-[116.09%]">
             <MoreBtn
               isMore={clickMore}
               onClick={() => {
