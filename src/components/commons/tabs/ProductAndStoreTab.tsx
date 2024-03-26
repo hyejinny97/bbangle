@@ -36,8 +36,8 @@ const ProductAndStoreTab = ({
   const isStorePage = pathname === storesPath;
 
   const queryString = searchParams.toString();
-  const productsUrl = queryString ? productsPath + '?' + queryString : productsPath;
-  const storesUrl = queryString ? storesPath + '?' + queryString : storesPath;
+  const productsUrl = queryString ? `${productsPath}?${queryString}` : productsPath;
+  const storesUrl = queryString ? `${storesPath}?${queryString}` : storesPath;
 
   const productCountStr = typeof productCount === 'number' ? `(${checkCount(productCount)})` : '';
   const storeCountStr = typeof storeCount === 'number' ? `(${checkCount(storeCount)})` : '';
