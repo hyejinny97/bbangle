@@ -2,10 +2,10 @@
 
 import GoogleIcon from '../assets/google_logo.svg';
 import { GOOGLE } from '../constants/social-login';
-import SocialLogin from '../service/socialLogin';
+import SocialLoginController from '../service/socialLogin';
 
 const GoogleLoginButton = () => {
-  const googleLogin = new SocialLogin({
+  const googleLoginController = new SocialLoginController({
     clientId: GOOGLE.clientId,
     redirectUri: GOOGLE.redirectUri,
     responseType: GOOGLE.responseType,
@@ -16,7 +16,7 @@ const GoogleLoginButton = () => {
   return (
     <button
       className="border border-gray-100 rounded-[10px] flex gap-[8px] items-center justify-center h-[52px] bg-white shadow text-black"
-      onClick={googleLogin.redirect}
+      onClick={googleLoginController.redirect}
     >
       <GoogleIcon />
       <div className="text-black text-16 leading-150 tracking-tight-2">구글 시작하기</div>
