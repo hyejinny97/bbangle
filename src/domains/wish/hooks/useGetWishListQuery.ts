@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import API from '@/api';
-import { WishListFolder } from '../types';
+import { WishFolder } from '../types/wishFolder';
 
 const getWishList = async () => {
-  const data: WishListFolder[] = await API.get('/wishLists');
+  const data: WishFolder[] = await API.get('/wishLists');
   return data;
 };
 

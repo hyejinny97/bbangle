@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge';
 
 interface ButtonProps {
   isLiked: boolean;
-  onClick: (_e: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (_e: MouseEvent<HTMLButtonElement>) => void;
   className?: string;
 }
 

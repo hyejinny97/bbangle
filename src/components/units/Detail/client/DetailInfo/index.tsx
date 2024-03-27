@@ -1,16 +1,19 @@
 'use client';
 
-import { IProductDetailType } from '../../types';
-import StoreInfo from '../StoreInfo';
-import BoardInfo from '../BoardInfo';
-import Button from '@/components/commons/button/client/Button';
-import ToastPop from '@/components/commons/ToastPop';
 import { MouseEvent, useState } from 'react';
-import { ChooseWishListModal } from '@/components/commons/card/ProductCard/client/ChooseWishListModal';
-import useToast from '@/commons/hooks/useToast';
+
 import Image from 'next/image';
+
+import useToast from '@/commons/hooks/useToast';
 import BtnOutlinedHeart from '@/components/commons/button/client/Btn_outlined_heart';
+import Button from '@/components/commons/button/client/Button';
+import { ChooseWishListModal } from '@/components/commons/card/ProductCard/client/ChooseWishListModal';
 import GrayDivider from '@/components/commons/divider/GrayDivider';
+import ToastPop from '@/components/commons/ToastPop';
+
+import { IProductDetailType } from '../../types';
+import BoardInfo from '../BoardInfo';
+import StoreInfo from '../StoreInfo';
 
 interface ProductInfoProps {
   data: IProductDetailType;
@@ -46,16 +49,23 @@ const ProductInfo = ({ data }: ProductInfoProps) => {
         <StoreInfo store={data.store} />
         <GrayDivider />
         <BoardInfo data={data} />
-        <div className="w-full">
-          <Image
-            src={'https://bbangree-oven.cdn.ntruss.com/1/1/1.jpg'}
-            alt="상세"
-            width={0}
-            height={0}
-            sizes="100vw"
-            className=" m-auto"
-            style={{ width: '100% ', padding: 0, margin: 0, marginBottom: '100px' }}
-          />{' '}
+        <div className="w-full p-0 ">
+          {data.board?.detail.map(item => (
+            <Image
+              key={item.imgIndex}
+              src={item.url}
+              alt="상세"
+              width={0}
+              height={0}
+              sizes="100vw"
+              className=" m-auto"
+              style={{
+                width: '100% ',
+                padding: 0,
+                margin: 0
+              }}
+            />
+          ))}
         </div>
       </div>
 
