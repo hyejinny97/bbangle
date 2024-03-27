@@ -1,23 +1,27 @@
 'use client';
 
 import { useRecoilState } from 'recoil';
-import { isCategoryTabStateNew } from '@/atoms/atom';
-import TabContainer from '@/components/commons/tabs/TabContainer';
-
-const TAB_NAMES = ['상품별', '성분별'];
-const CATEGORY_IDX = 0;
-const INGREDIENT_IDX = 1;
+import { isCategoryTabState } from '@/atoms/atom';
+import TabButton from '@/shared/components/TabButton';
 
 const CategoryAndIngredientTab = () => {
-  const [isCategoryTab, setIsCategoryTab] = useRecoilState(isCategoryTabStateNew);
-  const activeTabIdx = isCategoryTab ? CATEGORY_IDX : INGREDIENT_IDX;
+  const [isCategoryTab, setIsCategoryTab] = useRecoilState(isCategoryTabState);
 
-  const handleTabChange = (activeTabIdx: number) => {
-    setIsCategoryTab(activeTabIdx === CATEGORY_IDX);
+  const handleTabClick = (isCategoryTabClicked: boolean) => {
+    setIsCategoryTab(isCategoryTabClicked);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  return <TabContainer names={TAB_NAMES} activeTabIdx={activeTabIdx} onChange={handleTabChange} />;
+  return (
+    <div className="flex">
+      <TabButton active={isCategoryTab} onClick={() => handleTabClick(true)}>
+        상품별
+      </TabButton>
+      <TabButton active={!isCategoryTab} onClick={() => handleTabClick(false)}>
+        성분별
+      </TabButton>
+    </div>
+  );
 };
 
 export default CategoryAndIngredientTab;

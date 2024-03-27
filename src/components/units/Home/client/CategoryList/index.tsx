@@ -1,7 +1,7 @@
 'use client';
 
 import { useRecoilState } from 'recoil';
-import { isCategoryTabStateNew } from '@/atoms/atom';
+import { isCategoryTabState } from '@/atoms/atom';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import CategoryBtn from '../CategoryBtn';
 import AllIcon from './assets/all-icon.svg';
@@ -120,7 +120,7 @@ const categoryMenu = [
 ];
 
 const CategoryList = () => {
-  const [isCategoryTab] = useRecoilState(isCategoryTabStateNew);
+  const [isCategoryTab] = useRecoilState(isCategoryTabState);
 
   return (
     <PaddingWrapper className={`grid pb-[0px] ${isCategoryTab ? 'grid-cols-4' : 'grid-cols-3'}`}>
