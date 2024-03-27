@@ -1,16 +1,15 @@
 'use client';
 
 import Header from '@/components/commons/header/client/Header';
-import TabButton from '@/shared/components/TabButton';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
+import ProductAndStoreTab from '@/components/commons/tabs/ProductAndStoreTab';
 
 interface Layout {
   children: ReactNode;
 }
 
-const Laoyout = ({ children }: Layout) => {
+const Layout = ({ children }: Layout) => {
   const pathname = usePathname();
   const productsPath = '/wishlist/products';
   const storePath = '/wishlist/stores';
@@ -22,19 +21,10 @@ const Laoyout = ({ children }: Layout) => {
   return (
     <>
       <Header back={isDetailPage} title="찜" />
-      {!isDetailPage && (
-        <div className="flex">
-          <Link className="w-full" href="/wishlist/products">
-            <TabButton active={isProductPage}>상품</TabButton>
-          </Link>
-          <Link className="w-full" href="/wishlist/stores">
-            <TabButton active={isStorePage}>스토어</TabButton>
-          </Link>
-        </div>
-      )}
+      {!isDetailPage && <ProductAndStoreTab defaultPath="/wishlist" />}
       {children}
     </>
   );
 };
 
-export default Laoyout;
+export default Layout;
