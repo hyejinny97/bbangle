@@ -1,4 +1,4 @@
-import { IFilterType } from '@/components/units/(main)/Products/types';
+import { IFilterType } from '@/domains/product/types/filterType';
 import {
   transformCategoryToEng,
   transformTagToEng,

@@ -1,13 +1,13 @@
 'use client';
 
-import FilterIcon from './assets/filter.svg';
+import FilterIcon from '@/domains/product/assets/filter.svg';
 import ProductSortSelect from '@/components/commons/selects/ProductSortSelect';
 import { useRecoilState } from 'recoil';
-import FilterModal from './FilterModal';
+import FilterModal from '@/domains/product/components/FilterTab/FilterModal';
 import useModal from '@/commons/hooks/useModal';
-import { filterValueState } from '../../atoms';
+import { filterValueState } from '@/domains/product/atoms';
 import { FILTER_VALUES } from '@/commons/constants/filterValues';
-import OrderAvailableCheckBox from '@/components/units/(main)/Products/client/FilterTab/OrderAvailableCheckBox';
+import OrderAvailableCheckBox from '@/domains/product/components/FilterTab/OrderAvailableCheckBox';
 import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 

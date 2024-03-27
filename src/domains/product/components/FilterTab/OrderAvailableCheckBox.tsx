@@ -1,7 +1,7 @@
 'use client';
 
 import { useRecoilState } from 'recoil';
-import { filterValueState } from '@/components/units/(main)/Products/atoms';
+import { filterValueState } from '@/domains/product/atoms';
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 
 const OrderAvailableCheckBox = () => {

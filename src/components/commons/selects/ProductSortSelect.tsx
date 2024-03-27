@@ -1,7 +1,7 @@
 'use client';
 
 import { useRecoilState } from 'recoil';
-import { filterValueState } from '@/components/units/(main)/Products/atoms';
+import { filterValueState } from '@/domains/product/atoms';
 import Select from '@/components/commons/selects/Select';
 
 const OPTIONS = ['추천순', '인기순'];

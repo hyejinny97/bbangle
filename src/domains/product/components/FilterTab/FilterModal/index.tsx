@@ -5,10 +5,15 @@ import { useEffect } from 'react';
 import Button from '@/components/commons/button/client/Button';
 import UpModalNewVer from '@/components/commons/modal/UpModalNewVer';
 import useModal from '@/commons/hooks/useModal';
-import CategorySection from './CategorySection';
-import { categoryTempState, filterValueState, tagsTempState, priceTempState } from '../../../atoms';
-import TagsSection from './TagsSection';
-import PriceSection from '@/components/units/(main)/Products/client/FilterTab/FilterModal/PriceSection';
+import CategorySection from '@/domains/product/components/FilterTab/FilterModal/CategorySection';
+import {
+  categoryTempState,
+  filterValueState,
+  tagsTempState,
+  priceTempState
+} from '@/domains/product/atoms';
+import TagsSection from '@/domains/product/components/FilterTab/FilterModal/TagsSection';
+import PriceSection from '@/domains/product/components/FilterTab/FilterModal/PriceSection';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 function FilterModal() {

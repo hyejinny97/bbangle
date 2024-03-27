@@ -1,5 +1,10 @@
 import { atom } from 'recoil';
-import { ICategoryType, IFilterType, ITagsType, IPriceType } from '../types';
+import {
+  ICategoryType,
+  ITagsType,
+  IPriceType,
+  IFilterType
+} from '@/domains/product/types/filterType';
 import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
 
 export const categoryTempState = atom<ICategoryType>({

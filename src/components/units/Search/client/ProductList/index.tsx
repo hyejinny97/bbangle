@@ -7,7 +7,7 @@ import { useGetSearchProductsQuery } from '@/components/units/Search/hooks/useGe
 import ProductCard from '@/components/commons/card/ProductCard';
 import NoSearchResult from '@/components/units/Search/client/NoSearchResult';
 import Loading from '@/components/commons/Loading';
-import { filterValueState } from '@/components/units/(main)/Products/atoms';
+import { filterValueState } from '@/domains/product/atoms';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 interface ProductListProps {

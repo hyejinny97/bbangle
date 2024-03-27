@@ -3,7 +3,7 @@
 import { Suspense } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useSearchParams } from 'next/navigation';
-import { filterValueState } from '@/components/units/(main)/Products/atoms';
+import { filterValueState } from '@/domains/product/atoms';
 import { useGetSearchProductsQuery } from '@/components/units/Search/hooks/useGetSearchProductsQuery';
 import { useGetSearchStoresQuery } from '@/components/units/Search/hooks/useGetSearchStoresQuery';
 import ProductAndStoreTab from '@/components/commons/tabs/ProductAndStoreTab';

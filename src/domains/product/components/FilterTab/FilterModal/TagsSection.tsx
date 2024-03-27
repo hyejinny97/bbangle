@@ -1,7 +1,7 @@
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import { FILTER_VALUES } from '@/commons/constants/filterValues';
 import { useRecoilState } from 'recoil';
-import { tagsTempState } from '../../../atoms';
+import { tagsTempState } from '@/domains/product/atoms';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 const TagsSection = () => {

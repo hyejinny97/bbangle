@@ -1,4 +1,4 @@
-import FilterTab from '@/components/units/(main)/Products/client/FilterTab';
+import FilterTab from '@/domains/product/components/FilterTab';
 import ProductsTab from '@/components/units/(main)/Products/client/ProductsTab';
 
 const Products = () => {

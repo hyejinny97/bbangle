@@ -2,7 +2,7 @@
 
 import { Suspense } from 'react';
 import { useRecoilValue } from 'recoil';
-import { filterValueState } from '@/components/units/(main)/Products/atoms';
+import { filterValueState } from '@/domains/product/atoms';
 import { useGetAllProductsQuery } from '@/components/units/(main)/Products/hooks/useGetAllProductsQuery';
 import { useGetAllStoresQuery } from '@/components/units/(main)/Stores/hooks/useGetAllStoresQuery';
 import ProductAndStoreTab from '@/components/commons/tabs/ProductAndStoreTab';

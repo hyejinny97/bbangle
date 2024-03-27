@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRecoilState } from 'recoil';
-import { filterValueState } from '@/components/units/(main)/Products/atoms';
+import { filterValueState } from '@/domains/product/atoms';
 
 interface CategoryProps {
   name: string;

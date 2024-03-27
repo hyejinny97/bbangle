@@ -1,7 +1,7 @@
 import { FILTER_VALUES } from '@/commons/constants/filterValues';
 import Radio from '@/components/commons/radio/Radio';
 import { useRecoilState } from 'recoil';
-import { categoryTempState } from '../../../atoms';
+import { categoryTempState } from '@/domains/product/atoms';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 function CategorySection() {

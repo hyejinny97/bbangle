@@ -1,9 +1,9 @@
 'use client';
 
 import { useRecoilState } from 'recoil';
-import { priceTempState } from '@/components/units/(main)/Products/atoms';
-import PriceInputContainer from '@/components/units/(main)/Products/client/FilterTab/FilterModal/PriceSection/PriceInputContainer';
-import PriceSlide from '@/components/units/(main)/Products/client/FilterTab/FilterModal/PriceSection/PriceSlide';
+import { priceTempState } from '@/domains/product/atoms';
+import PriceInputContainer from '@/domains/product/components/FilterTab/FilterModal/PriceSection/PriceInputContainer';
+import PriceSlide from '@/domains/product/components/FilterTab/FilterModal/PriceSection/PriceSlide';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 const PriceSection = () => {
