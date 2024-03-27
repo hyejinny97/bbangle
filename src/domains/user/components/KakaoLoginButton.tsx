@@ -1,12 +1,12 @@
 'use client';
 
-import { KAKAO } from '@/shared/constants/api';
 import KakaoIcon from '../assets/kakao_logo.svg';
+import { KAKAO } from '../constants/social-login';
 
 const KakaoLoginButton = () => {
   const queryObject = {
     client_id: KAKAO.clientId,
-    response_type: 'code',
+    response_type: KAKAO.responseType,
     redirect_uri: KAKAO.redirectUri
   };
   const queryString = new URLSearchParams(queryObject).toString();

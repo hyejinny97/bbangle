@@ -1,19 +1,23 @@
 'use client';
 
-import { GOOGLE } from '@/shared/constants/api';
 import GoogleIcon from '../assets/google_logo.svg';
+import { GOOGLE } from '../constants/social-login';
 
-const GoogleLoginButton = () => {
+function getGoogleAuthUrl() {
   const queryObject = {
     client_id: GOOGLE.clientId,
     redirect_uri: GOOGLE.redirectUri,
-    response_type: 'token',
-    scope: 'https://www.googleapis.com/auth/drive.metadata.readonly'
+    response_type: GOOGLE.responseType,
+    scope: GOOGLE.scope
   };
   const queryString = new URLSearchParams(queryObject).toString();
+  return queryString;
+}
 
+const GoogleLoginButton = () => {
   const handleGoogleLogin = () => {
-    window.location.assign(`${GOOGLE.authUrl}?${queryString}`);
+    const googleAuthUrl = getGoogleAuthUrl();
+    window.location.assign(googleAuthUrl);
   };
 
   return (
