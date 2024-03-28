@@ -1,7 +1,17 @@
 import Header from '@/components/commons/header/client/Header';
+import { ReactNode } from 'react';
 
-const Layout = () => {
-  return <Header back />;
+interface Props {
+  children: ReactNode;
+}
+
+const Layout = ({ children }: Props) => {
+  return (
+    <>
+      <Header back />
+      {children}
+    </>
+  );
 };
 
 export default Layout;
