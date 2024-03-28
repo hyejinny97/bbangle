@@ -4,6 +4,7 @@ import { useRecoilState } from 'recoil';
 import { filterValueState } from '@/domains/product/atoms';
 import { PageParamType } from '@/domains/product/types/filterType';
 import { FILTER_VALUES } from '@/commons/constants/filterValues';
+import { TAG_CATEGORY, TAG_INGREDIENT, TAG_PRICE } from '@/domains/product/constants/tagType';
 import { getIngredientTag, getPriceTag } from '@/domains/product/utils/tag';
 import useModal from '@/commons/hooks/useModal';
 import FilterIcon from '@/domains/product/assets/filter.svg';
@@ -20,7 +21,10 @@ const FilterTab = ({ page }: FilterTabProps) => {
   const [filterValue, setFilterValue] = useRecoilState(filterValueState(page));
   const { openModal } = useModal();
 
-  const categoryTags = FILTER_VALUES.categories;
+  const categoryTags = FILTER_VALUES.categories.map(item => ({
+    type: TAG_CATEGORY,
+    content: item
+  }));
   const ingredientTag = filterValue.tags && getIngredientTag(filterValue.tags);
   const priceTag = getPriceTag(filterValue.price);
   const filterTagList = [ingredientTag, priceTag, ...categoryTags];
@@ -43,8 +47,8 @@ const FilterTab = ({ page }: FilterTabProps) => {
           {filterTagList.map((item, index) => {
             if (!item) return;
 
-            const isCategoryTagActive = filterValue.category === item;
-            const isNewTag = !FILTER_VALUES.categories.includes(item); // ingredientTag, priceTag
+            const isCategoryTagActive = filterValue.category === item.content;
+            const isNewTag = item.type === TAG_INGREDIENT || item.type === TAG_PRICE; // ingredientTag, priceTag
 
             return (
               <button
@@ -55,10 +59,10 @@ const FilterTab = ({ page }: FilterTabProps) => {
                     ? 'border-primaryOrangeRed text-primaryOrangeRed font-bold'
                     : 'border-gray-200 text-gray-900 font-medium'
                 }`}
-                onClick={() => handleFilterClick(item)}
+                onClick={() => handleFilterClick(item.content)}
                 disabled={isNewTag}
               >
-                {item}
+                {item.content}
               </button>
             );
           })}
