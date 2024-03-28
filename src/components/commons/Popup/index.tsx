@@ -8,7 +8,7 @@ interface PopupProps {
 }
 
 const Popup = ({ children, className = '' }: PopupProps) => {
-  return <div className={`rounded-[12px] bg-white w-[90%] ${className}`}>{children}</div>;
+  return <div className={`rounded-[12px] w-full bg-white mx-[16px] ${className}`}>{children}</div>;
 };
 
 export default Popup;

@@ -3,7 +3,7 @@
 import Button from '@/components/commons/button/client/Button';
 import { useRecoilState } from 'recoil';
 import useModal from '@/commons/hooks/useModal';
-import WishFolderModal from '@/domains/wish/components/WishFolderModal';
+import WishFolderModal from '@/domains/wish/components/AddWishFolderModal';
 import { isWishFolderEditingState } from '@/domains/wish/atoms/wishFolder';
 
 const WishFolderEditButtonSection = () => {

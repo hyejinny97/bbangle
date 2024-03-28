@@ -3,28 +3,25 @@
 import { BbangleSmileIcon } from '@/components/commons/Icon';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRecoilState } from 'recoil';
-import { isWishFolderEditingState } from '../atoms/wishFolder';
 import { CloseIcon } from '@/shared/components/icons';
 
-import { MouseEventHandler } from 'react';
-
 interface WishFolderProps {
-  id: string;
+  id: number;
   thumbnailList?: string[];
   name: string;
   count: number;
+  onDeleteClick: () => void;
+  isEditing: boolean;
 }
 
-const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
-  const [isEditing, setIsEditMode] = useRecoilState(isWishFolderEditingState);
-
-  const deleteFolder: MouseEventHandler<HTMLButtonElement> = e => {
-    // Todo. delete mutation
-    setIsEditMode(false);
-    e.preventDefault();
-  };
-
+const WishFolder = ({
+  id,
+  thumbnailList,
+  name,
+  count,
+  isEditing,
+  onDeleteClick
+}: WishFolderProps) => {
   return (
     <div className=" flex flex-col gap-[6.5px] rounded-[6px] overflow-hidden">
       <Link
@@ -34,16 +31,19 @@ const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
         {isEditing && (
           <button
             className="p-[4px]  rounded-full  absolute top-[6px] right-[6px]"
-            onClick={deleteFolder}
+            onClick={e => {
+              onDeleteClick();
+              e.preventDefault();
+            }}
           >
             <CloseIcon />
           </button>
         )}
 
         {thumbnailList && thumbnailList.length !== 0 ? (
-          <div className="grid grid-cols-2 grid-rows-2">
+          <div className="relative grid grid-cols-2 grid-rows-2">
             {thumbnailList.map(thumbnailSrc => (
-              <Image key={thumbnailSrc} src={thumbnailSrc} alt="thumbnail" />
+              <Image key={thumbnailSrc} src={thumbnailSrc} fill alt="thumbnail" />
             ))}
           </div>
         ) : (
