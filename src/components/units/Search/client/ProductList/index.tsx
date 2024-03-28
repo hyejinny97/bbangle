@@ -3,11 +3,12 @@
 import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useInView } from 'react-intersection-observer';
+import { filterValueState } from '@/domains/product/atoms';
+import { PAGE_SEARCH } from '@/domains/product/constants/pageParam';
 import { useGetSearchProductsQuery } from '@/components/units/Search/hooks/useGetSearchProductsQuery';
 import ProductCard from '@/components/commons/card/ProductCard';
 import NoSearchResult from '@/components/units/Search/client/NoSearchResult';
 import Loading from '@/components/commons/Loading';
-import { filterValueState } from '@/domains/product/atoms';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 interface ProductListProps {
@@ -15,7 +16,7 @@ interface ProductListProps {
 }
 
 const ProductList = ({ keyword }: ProductListProps) => {
-  const filterValue = useRecoilValue(filterValueState);
+  const filterValue = useRecoilValue(filterValueState(PAGE_SEARCH));
   const { products, itemCount, isLoading, fetchNextPage, isFetchingNextPage } =
     useGetSearchProductsQuery({ keyword, filterValue });
   const { ref, inView } = useInView();

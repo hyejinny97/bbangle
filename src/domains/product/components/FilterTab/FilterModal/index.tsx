@@ -2,25 +2,30 @@
 
 import { useRecoilState } from 'recoil';
 import { useEffect } from 'react';
-import Button from '@/components/commons/button/client/Button';
-import UpModalNewVer from '@/components/commons/modal/UpModalNewVer';
-import useModal from '@/commons/hooks/useModal';
-import CategorySection from '@/domains/product/components/FilterTab/FilterModal/CategorySection';
 import {
   categoryTempState,
   filterValueState,
   tagsTempState,
   priceTempState
 } from '@/domains/product/atoms';
+import { PageParamType } from '@/domains/product/types/filterType';
+import useModal from '@/commons/hooks/useModal';
+import Button from '@/components/commons/button/client/Button';
 import TagsSection from '@/domains/product/components/FilterTab/FilterModal/TagsSection';
 import PriceSection from '@/domains/product/components/FilterTab/FilterModal/PriceSection';
+import CategorySection from '@/domains/product/components/FilterTab/FilterModal/CategorySection';
+import UpModalNewVer from '@/components/commons/modal/UpModalNewVer';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
-function FilterModal() {
-  const [filterValue, setFilterValue] = useRecoilState(filterValueState);
-  const [selectedCategory, setSelectedCategory] = useRecoilState(categoryTempState);
-  const [selectedTags, setSelectedTags] = useRecoilState(tagsTempState);
-  const [price, setPrice] = useRecoilState(priceTempState);
+interface FilterModalProps {
+  page: PageParamType;
+}
+
+function FilterModal({ page }: FilterModalProps) {
+  const [filterValue, setFilterValue] = useRecoilState(filterValueState(page));
+  const [selectedCategory, setSelectedCategory] = useRecoilState(categoryTempState(page));
+  const [selectedTags, setSelectedTags] = useRecoilState(tagsTempState(page));
+  const [price, setPrice] = useRecoilState(priceTempState(page));
   const { closeModal } = useModal();
 
   const handleConfirm = () => {
@@ -47,11 +52,11 @@ function FilterModal() {
 
   return (
     <UpModalNewVer title="필터">
-      <CategorySection />
+      <CategorySection page={page} />
       <hr className="bg-gray-100" />
-      <TagsSection />
+      <TagsSection page={page} />
       <hr className="bg-gray-100" />
-      <PriceSection />
+      <PriceSection page={page} />
       <PaddingWrapper className="flex gap-[10px] justify-center items-center">
         <Button
           variants="primary-white"

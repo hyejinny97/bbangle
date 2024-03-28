@@ -1,15 +1,20 @@
 'use client';
 
+import { useRecoilState } from 'recoil';
+import { filterValueState } from '@/domains/product/atoms';
+import { PageParamType } from '@/domains/product/types/filterType';
+import { FILTER_VALUES } from '@/commons/constants/filterValues';
+import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
+import useModal from '@/commons/hooks/useModal';
 import FilterIcon from '@/domains/product/assets/filter.svg';
 import ProductSortSelect from '@/components/commons/selects/ProductSortSelect';
-import { useRecoilState } from 'recoil';
 import FilterModal from '@/domains/product/components/FilterTab/FilterModal';
-import useModal from '@/commons/hooks/useModal';
-import { filterValueState } from '@/domains/product/atoms';
-import { FILTER_VALUES } from '@/commons/constants/filterValues';
 import OrderAvailableCheckBox from '@/domains/product/components/FilterTab/OrderAvailableCheckBox';
-import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
+
+interface FilterTabProps {
+  page: PageParamType;
+}
 
 const getIngredientTag = (ingredients: Array<string>) => {
   if (ingredients.length === 1) return ingredients[0];
@@ -21,8 +26,8 @@ const getPriceTag = ({ minPrice, maxPrice }: { minPrice: number; maxPrice: numbe
   return `${minPrice.toLocaleString()}~${maxPrice.toLocaleString()}원`;
 };
 
-const FilterTab = () => {
-  const [filterValue, setFilterValue] = useRecoilState(filterValueState);
+const FilterTab = ({ page }: FilterTabProps) => {
+  const [filterValue, setFilterValue] = useRecoilState(filterValueState(page));
   const { openModal } = useModal();
 
   const categoryTags = FILTER_VALUES.categories;
@@ -38,7 +43,7 @@ const FilterTab = () => {
   };
 
   const openFilterModal = () => {
-    openModal(<FilterModal />);
+    openModal(<FilterModal page={page} />);
   };
 
   return (
@@ -73,8 +78,8 @@ const FilterTab = () => {
         </button>
       </div>
       <div className="flex justify-between items-center">
-        <OrderAvailableCheckBox />
-        <ProductSortSelect />
+        <OrderAvailableCheckBox page={page} />
+        <ProductSortSelect page={page} />
       </div>
     </PaddingWrapper>
   );

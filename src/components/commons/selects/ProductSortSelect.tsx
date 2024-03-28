@@ -2,12 +2,17 @@
 
 import { useRecoilState } from 'recoil';
 import { filterValueState } from '@/domains/product/atoms';
+import { PageParamType } from '@/domains/product/types/filterType';
 import Select from '@/components/commons/selects/Select';
+
+interface ProductSortSelectProps {
+  page: PageParamType;
+}
 
 const OPTIONS = ['추천순', '인기순'];
 
-const ProductSortSelect = () => {
-  const [filterValue, setFilterValue] = useRecoilState(filterValueState);
+const ProductSortSelect = ({ page }: ProductSortSelectProps) => {
+  const [filterValue, setFilterValue] = useRecoilState(filterValueState(page));
   const selectedOption = filterValue.sort;
 
   const handleSelectChange = (newSelectedOption: string) => {

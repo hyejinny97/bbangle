@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRecoilState } from 'recoil';
 import { filterValueState } from '@/domains/product/atoms';
+import { PAGE_MAIN } from '@/domains/product/constants/pageParam';
 
 interface CategoryProps {
   name: string;
@@ -9,7 +10,7 @@ interface CategoryProps {
 }
 
 const CategoryBtn = ({ name, icon, isCategoryTab }: CategoryProps) => {
-  const [filterValue, setFilterValue] = useRecoilState(filterValueState);
+  const [filterValue, setFilterValue] = useRecoilState(filterValueState(PAGE_MAIN));
 
   const handleClickBtn = () => {
     const newFilterValue = isCategoryTab

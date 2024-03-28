@@ -2,10 +2,15 @@
 
 import { useRecoilState } from 'recoil';
 import { filterValueState } from '@/domains/product/atoms';
+import { PageParamType } from '@/domains/product/types/filterType';
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 
-const OrderAvailableCheckBox = () => {
-  const [filterValue, setFilterValue] = useRecoilState(filterValueState);
+interface OrderAvailableCheckBoxProps {
+  page: PageParamType;
+}
+
+const OrderAvailableCheckBox = ({ page }: OrderAvailableCheckBoxProps) => {
+  const [filterValue, setFilterValue] = useRecoilState(filterValueState(page));
   const isChecked = filterValue.showProductsAvailableOrder;
 
   const handleCheckChange = () => {

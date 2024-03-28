@@ -1,11 +1,16 @@
-import { FILTER_VALUES } from '@/commons/constants/filterValues';
-import Radio from '@/components/commons/radio/Radio';
 import { useRecoilState } from 'recoil';
+import { FILTER_VALUES } from '@/commons/constants/filterValues';
 import { categoryTempState } from '@/domains/product/atoms';
+import { PageParamType } from '@/domains/product/types/filterType';
+import Radio from '@/components/commons/radio/Radio';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
-function CategorySection() {
-  const [selectedCategory, setSelectedCategory] = useRecoilState(categoryTempState);
+interface CategorySectionProps {
+  page: PageParamType;
+}
+
+function CategorySection({ page }: CategorySectionProps) {
+  const [selectedCategory, setSelectedCategory] = useRecoilState(categoryTempState(page));
 
   const handleClick = (clickItem: string) => {
     setSelectedCategory(clickItem);
