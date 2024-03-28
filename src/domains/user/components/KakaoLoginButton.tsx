@@ -1,15 +1,13 @@
 'use client';
 
 import KakaoIcon from '../assets/kakao_logo.svg';
-import { KAKAO } from '../constants/social-login';
-import SocialLoginController from '../service/socialLogin';
+import { KAKAO } from '../constants/socialLogin';
+import SocialLoginController from '../business/socialLogin';
 
 const KakaoLoginButton = () => {
   const kakaoLoginController = new SocialLoginController({
     authUrl: KAKAO.authUrl,
-    redirectUri: KAKAO.redirectUri,
-    responseType: KAKAO.responseType,
-    clientId: KAKAO.clientId
+    queryObject: KAKAO.queryObject
   });
 
   return (

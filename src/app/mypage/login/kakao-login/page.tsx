@@ -12,15 +12,15 @@ interface KakaoParams extends Params {
   error_description: string;
 }
 
-const KakaoLoginPage = () => {
+const KakaoLoginLoadingPage = () => {
   const { mutate } = useKakaoLoginMutation();
   const { code } = useParams<KakaoParams>();
 
   useEffect(() => {
     mutate(code);
-  });
+  }, [code, mutate]);
 
   return <Loading />;
 };
 
-export default KakaoLoginPage;
+export default KakaoLoginLoadingPage;

@@ -1,15 +1,12 @@
 'use client';
 
 import GoogleIcon from '../assets/google_logo.svg';
-import { GOOGLE } from '../constants/social-login';
-import SocialLoginController from '../service/socialLogin';
+import { GOOGLE } from '../constants/socialLogin';
+import SocialLoginController from '../business/socialLogin';
 
 const GoogleLoginButton = () => {
   const googleLoginController = new SocialLoginController({
-    clientId: GOOGLE.clientId,
-    redirectUri: GOOGLE.redirectUri,
-    responseType: GOOGLE.responseType,
-    scope: GOOGLE.scope,
+    queryObject: GOOGLE.queryObject,
     authUrl: GOOGLE.authUrl
   });
 

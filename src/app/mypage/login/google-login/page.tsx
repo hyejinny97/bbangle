@@ -10,15 +10,15 @@ interface GoogleParams extends Params {
   error: string;
 }
 
-const GoogleLoginPage = () => {
+const GoogleLoginLoadingPage = () => {
   const { mutate } = useGoogleLoginMutation();
   const { code } = useParams<GoogleParams>();
 
   useEffect(() => {
     mutate(code);
-  });
+  }, [code, mutate]);
 
   return <Loading />;
 };
 
-export default GoogleLoginPage;
+export default GoogleLoginLoadingPage;
