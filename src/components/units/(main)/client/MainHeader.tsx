@@ -1,19 +1,10 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { useMainPage } from '@/components/units/(main)/hooks/useMainPage';
 import Header from '@/components/commons/header/client/Header';
 
 const MainHeader = () => {
-  const pathname = usePathname();
-  const productPath = '/products';
-  const storePath = '/stores';
-
-  const isProductListPage = pathname === productPath;
-  const isStoreListPage = pathname === storePath;
-
-  const isDetailPage = !isStoreListPage && !isProductListPage;
-  const isProductDetailPage = isDetailPage && pathname.startsWith(productPath);
-  const isStoreDetailPage = isDetailPage && pathname.startsWith(storePath);
+  const { isDetailPage, isProductDetailPage, isStoreDetailPage } = useMainPage();
 
   let title;
   if (!isDetailPage) {

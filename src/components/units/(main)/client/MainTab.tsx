@@ -1,16 +1,10 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { useMainPage } from '@/components/units/(main)/hooks/useMainPage';
 import ProductAndStoreTabWithCount from '@/components/units/(main)/client/ProductAndStoreTabWithCount';
 
 const MainTab = () => {
-  const pathname = usePathname();
-  const productsPath = '/products';
-  const storePath = '/stores';
-
-  const isProductPage = pathname === productsPath;
-  const isStorePage = pathname === storePath;
-  const isDetailPage = !isStorePage && !isProductPage;
+  const { isDetailPage } = useMainPage();
 
   return <>{!isDetailPage && <ProductAndStoreTabWithCount />}</>;
 };
