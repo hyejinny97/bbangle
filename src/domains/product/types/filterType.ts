@@ -1,3 +1,5 @@
+import { PAGE_MAIN, PAGE_SEARCH } from '@/domains/product/constants/pageParam';
+
 export type ICategoryType = string | undefined;
 export type ITagsType = string[] | undefined;
 export type IPriceType = {
@@ -14,3 +16,5 @@ export interface IFilterType {
   sort: ISortType;
   showProductsAvailableOrder: IShowProductsAvailableOrder;
 }
+
+export type PageParamType = typeof PAGE_MAIN | typeof PAGE_SEARCH;

@@ -1,23 +1,24 @@
-import { atom } from 'recoil';
+import { atomFamily } from 'recoil';
 import {
   ICategoryType,
   ITagsType,
   IPriceType,
-  IFilterType
+  IFilterType,
+  PageParamType
 } from '@/domains/product/types/filterType';
 import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
 
-export const categoryTempState = atom<ICategoryType>({
+export const categoryTempState = atomFamily<ICategoryType, PageParamType>({
   key: 'category',
   default: undefined
 });
 
-export const tagsTempState = atom<ITagsType>({
+export const tagsTempState = atomFamily<ITagsType, PageParamType>({
   key: 'ingredient',
   default: undefined
 });
 
-export const priceTempState = atom<IPriceType>({
+export const priceTempState = atomFamily<IPriceType, PageParamType>({
   key: 'price',
   default: {
     minPrice: LIMIT_MIN_PRICE,
@@ -25,7 +26,7 @@ export const priceTempState = atom<IPriceType>({
   }
 });
 
-export const filterValueState = atom<IFilterType>({
+export const filterValueState = atomFamily<IFilterType, PageParamType>({
   key: 'filterValueState',
   default: {
     category: undefined,
