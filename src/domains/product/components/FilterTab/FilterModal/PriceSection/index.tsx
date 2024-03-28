@@ -2,17 +2,17 @@
 
 import { useRecoilState } from 'recoil';
 import { priceTempState } from '@/domains/product/atoms';
-import { PageParamType } from '@/domains/product/types/filterType';
+import { FilterFamilyIDType } from '@/domains/product/types/filterType';
 import PriceInputContainer from '@/domains/product/components/FilterTab/FilterModal/PriceSection/PriceInputContainer';
 import PriceSlide from '@/domains/product/components/FilterTab/FilterModal/PriceSection/PriceSlide';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 interface PriceSectionProps {
-  page: PageParamType;
+  filterFamilyId: FilterFamilyIDType;
 }
 
-const PriceSection = ({ page }: PriceSectionProps) => {
-  const [price, setPrice] = useRecoilState(priceTempState(page));
+const PriceSection = ({ filterFamilyId }: PriceSectionProps) => {
+  const [price, setPrice] = useRecoilState(priceTempState(filterFamilyId));
 
   const handleMinPriceChange = (newValue: number) => {
     if (newValue > price.maxPrice) {

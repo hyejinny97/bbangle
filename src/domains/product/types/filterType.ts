@@ -1,4 +1,4 @@
-import { PAGE_MAIN, PAGE_SEARCH } from '@/domains/product/constants/pageParam';
+import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 
 export type ICategoryType = string | undefined;
 export type ITagsType = string[] | undefined;
@@ -17,4 +17,4 @@ export interface IFilterType {
   showProductsAvailableOrder: IShowProductsAvailableOrder;
 }
 
-export type PageParamType = typeof PAGE_MAIN | typeof PAGE_SEARCH;
+export type FilterFamilyIDType = typeof FILTER_FAMILY_ID.main | typeof FILTER_FAMILY_ID.search;

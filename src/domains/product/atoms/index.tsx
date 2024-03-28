@@ -4,21 +4,21 @@ import {
   ITagsType,
   IPriceType,
   IFilterType,
-  PageParamType
+  FilterFamilyIDType
 } from '@/domains/product/types/filterType';
 import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
 
-export const categoryTempState = atomFamily<ICategoryType, PageParamType>({
+export const categoryTempState = atomFamily<ICategoryType, FilterFamilyIDType>({
   key: 'category',
   default: undefined
 });
 
-export const tagsTempState = atomFamily<ITagsType, PageParamType>({
+export const tagsTempState = atomFamily<ITagsType, FilterFamilyIDType>({
   key: 'ingredient',
   default: undefined
 });
 
-export const priceTempState = atomFamily<IPriceType, PageParamType>({
+export const priceTempState = atomFamily<IPriceType, FilterFamilyIDType>({
   key: 'price',
   default: {
     minPrice: LIMIT_MIN_PRICE,
@@ -26,7 +26,7 @@ export const priceTempState = atomFamily<IPriceType, PageParamType>({
   }
 });
 
-export const filterValueState = atomFamily<IFilterType, PageParamType>({
+export const filterValueState = atomFamily<IFilterType, FilterFamilyIDType>({
   key: 'filterValueState',
   default: {
     category: undefined,

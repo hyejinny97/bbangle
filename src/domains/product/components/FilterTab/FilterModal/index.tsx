@@ -1,6 +1,6 @@
 'use client';
 
-import { PageParamType } from '@/domains/product/types/filterType';
+import { FilterFamilyIDType } from '@/domains/product/types/filterType';
 import UpModalNewVer from '@/components/commons/modal/UpModalNewVer';
 import TagsSection from '@/domains/product/components/FilterTab/FilterModal/TagsSection';
 import PriceSection from '@/domains/product/components/FilterTab/FilterModal/PriceSection';
@@ -8,18 +8,18 @@ import CategorySection from '@/domains/product/components/FilterTab/FilterModal/
 import ButtonSection from '@/domains/product/components/FilterTab/FilterModal/ButtonSection';
 
 interface FilterModalProps {
-  page: PageParamType;
+  filterFamilyId: FilterFamilyIDType;
 }
 
-function FilterModal({ page }: FilterModalProps) {
+function FilterModal({ filterFamilyId }: FilterModalProps) {
   return (
     <UpModalNewVer title="필터">
-      <CategorySection page={page} />
+      <CategorySection filterFamilyId={filterFamilyId} />
       <hr className="bg-gray-100" />
-      <TagsSection page={page} />
+      <TagsSection filterFamilyId={filterFamilyId} />
       <hr className="bg-gray-100" />
-      <PriceSection page={page} />
-      <ButtonSection page={page} />
+      <PriceSection filterFamilyId={filterFamilyId} />
+      <ButtonSection filterFamilyId={filterFamilyId} />
     </UpModalNewVer>
   );
 }

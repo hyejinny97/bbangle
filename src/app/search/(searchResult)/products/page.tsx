@@ -1,4 +1,4 @@
-import { PAGE_SEARCH } from '@/domains/product/constants/pageParam';
+import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 import FilterTab from '@/domains/product/components/FilterTab';
 import ProductList from '@/components/units/Search/client/ProductList';
 
@@ -9,7 +9,7 @@ interface SearchProductsProps {
 const SearchProducts = ({ searchParams: { query } }: SearchProductsProps) => {
   return (
     <>
-      <FilterTab page={PAGE_SEARCH} />
+      <FilterTab filterFamilyId={FILTER_FAMILY_ID.search} />
       <ProductList keyword={query || ''} />
     </>
   );

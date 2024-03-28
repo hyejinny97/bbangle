@@ -5,20 +5,20 @@ import {
   tagsTempState,
   priceTempState
 } from '@/domains/product/atoms';
-import { PageParamType } from '@/domains/product/types/filterType';
+import { FilterFamilyIDType } from '@/domains/product/types/filterType';
 import useModal from '@/commons/hooks/useModal';
 import Button from '@/components/commons/button/client/Button';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 interface ButtonSectionProps {
-  page: PageParamType;
+  filterFamilyId: FilterFamilyIDType;
 }
 
-const ButtonSection = ({ page }: ButtonSectionProps) => {
-  const [filterValue, setFilterValue] = useRecoilState(filterValueState(page));
-  const [selectedCategory, setSelectedCategory] = useRecoilState(categoryTempState(page));
-  const [selectedTags, setSelectedTags] = useRecoilState(tagsTempState(page));
-  const [price, setPrice] = useRecoilState(priceTempState(page));
+const ButtonSection = ({ filterFamilyId }: ButtonSectionProps) => {
+  const [filterValue, setFilterValue] = useRecoilState(filterValueState(filterFamilyId));
+  const [selectedCategory, setSelectedCategory] = useRecoilState(categoryTempState(filterFamilyId));
+  const [selectedTags, setSelectedTags] = useRecoilState(tagsTempState(filterFamilyId));
+  const [price, setPrice] = useRecoilState(priceTempState(filterFamilyId));
   const { closeModal } = useModal();
 
   const handleConfirm = () => {

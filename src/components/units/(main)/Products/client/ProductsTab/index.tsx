@@ -5,13 +5,13 @@ import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useGetAllProductsQuery } from '@/components/units/(main)/Products/hooks/useGetAllProductsQuery';
 import { filterValueState } from '@/domains/product/atoms';
-import { PAGE_MAIN } from '@/domains/product/constants/pageParam';
+import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 import ProductCard from '@/components/commons/card/ProductCard';
 import Loading from '@/components/commons/Loading';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 const ProductsTab = () => {
-  const filterValue = useRecoilValue(filterValueState(PAGE_MAIN));
+  const filterValue = useRecoilValue(filterValueState(FILTER_FAMILY_ID.main));
   const { products, isError, isLoading, fetchNextPage, isFetchingNextPage } =
     useGetAllProductsQuery(filterValue);
   const { ref, inView } = useInView();

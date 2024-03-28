@@ -2,7 +2,7 @@
 
 import { useRecoilState } from 'recoil';
 import { filterValueState } from '@/domains/product/atoms';
-import { PageParamType } from '@/domains/product/types/filterType';
+import { FilterFamilyIDType } from '@/domains/product/types/filterType';
 import { FILTER_VALUES } from '@/commons/constants/filterValues';
 import { TAG_CATEGORY, TAG_INGREDIENT, TAG_PRICE } from '@/domains/product/constants/tagType';
 import { getIngredientTag, getPriceTag } from '@/domains/product/utils/tag';
@@ -14,11 +14,11 @@ import OrderAvailableCheckBox from '@/domains/product/components/FilterTab/Order
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 interface FilterTabProps {
-  page: PageParamType;
+  filterFamilyId: FilterFamilyIDType;
 }
 
-const FilterTab = ({ page }: FilterTabProps) => {
-  const [filterValue, setFilterValue] = useRecoilState(filterValueState(page));
+const FilterTab = ({ filterFamilyId }: FilterTabProps) => {
+  const [filterValue, setFilterValue] = useRecoilState(filterValueState(filterFamilyId));
   const { openModal } = useModal();
 
   const categoryTags = FILTER_VALUES.categories.map(item => ({
@@ -37,7 +37,7 @@ const FilterTab = ({ page }: FilterTabProps) => {
   };
 
   const openFilterModal = () => {
-    openModal(<FilterModal page={page} />);
+    openModal(<FilterModal filterFamilyId={filterFamilyId} />);
   };
 
   return (
@@ -72,8 +72,8 @@ const FilterTab = ({ page }: FilterTabProps) => {
         </button>
       </div>
       <div className="flex justify-between items-center">
-        <OrderAvailableCheckBox page={page} />
-        <ProductSortSelect page={page} />
+        <OrderAvailableCheckBox filterFamilyId={filterFamilyId} />
+        <ProductSortSelect filterFamilyId={filterFamilyId} />
       </div>
     </PaddingWrapper>
   );

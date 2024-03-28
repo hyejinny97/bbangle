@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useInView } from 'react-intersection-observer';
 import { filterValueState } from '@/domains/product/atoms';
-import { PAGE_SEARCH } from '@/domains/product/constants/pageParam';
+import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 import { useGetSearchProductsQuery } from '@/components/units/Search/hooks/useGetSearchProductsQuery';
 import ProductCard from '@/components/commons/card/ProductCard';
 import NoSearchResult from '@/components/units/Search/client/NoSearchResult';
@@ -16,7 +16,7 @@ interface ProductListProps {
 }
 
 const ProductList = ({ keyword }: ProductListProps) => {
-  const filterValue = useRecoilValue(filterValueState(PAGE_SEARCH));
+  const filterValue = useRecoilValue(filterValueState(FILTER_FAMILY_ID.search));
   const { products, itemCount, isLoading, fetchNextPage, isFetchingNextPage } =
     useGetSearchProductsQuery({ keyword, filterValue });
   const { ref, inView } = useInView();

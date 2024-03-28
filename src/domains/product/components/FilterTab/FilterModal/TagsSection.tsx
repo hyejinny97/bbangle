@@ -1,16 +1,16 @@
 import { useRecoilState } from 'recoil';
 import { FILTER_VALUES } from '@/commons/constants/filterValues';
 import { tagsTempState } from '@/domains/product/atoms';
-import { PageParamType } from '@/domains/product/types/filterType';
+import { FilterFamilyIDType } from '@/domains/product/types/filterType';
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 interface TagsSectionProps {
-  page: PageParamType;
+  filterFamilyId: FilterFamilyIDType;
 }
 
-const TagsSection = ({ page }: TagsSectionProps) => {
-  const [selectedTags, setSelectedTags] = useRecoilState(tagsTempState(page));
+const TagsSection = ({ filterFamilyId }: TagsSectionProps) => {
+  const [selectedTags, setSelectedTags] = useRecoilState(tagsTempState(filterFamilyId));
   const uniqueValue = '전체';
 
   const handleClick = (clickedItem: string) => {

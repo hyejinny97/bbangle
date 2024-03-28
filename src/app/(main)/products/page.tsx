@@ -1,11 +1,11 @@
-import { PAGE_MAIN } from '@/domains/product/constants/pageParam';
+import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 import FilterTab from '@/domains/product/components/FilterTab';
 import ProductsTab from '@/components/units/(main)/Products/client/ProductsTab';
 
 const Products = () => {
   return (
     <>
-      <FilterTab page={PAGE_MAIN} />
+      <FilterTab filterFamilyId={FILTER_FAMILY_ID.main} />
       <ProductsTab />
     </>
   );
