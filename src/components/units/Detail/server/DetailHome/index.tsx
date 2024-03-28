@@ -1,7 +1,6 @@
 import ProductImgs from '@/components/units/Detail/client/ProductImgs';
 import DetailInfo from '@/components/units/Detail/client/DetailInfo';
 import { IProductDetailType } from '../../types';
-import Header from '@/components/commons/header/client/Header';
 
 interface DetailHomePropsType {
   data: IProductDetailType;
@@ -10,7 +9,6 @@ interface DetailHomePropsType {
 const DetailHome = ({ data }: DetailHomePropsType) => {
   return (
     <>
-      <Header title="상품보기" back={true} />
       <ProductImgs boardImages={data.board.images} isBundled={data.board.isBundled} />
       <DetailInfo data={data} />
     </>
