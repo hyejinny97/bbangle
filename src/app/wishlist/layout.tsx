@@ -1,16 +1,16 @@
-'use client';
-
 import Header from '@/components/commons/header/client/Header';
-import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 import ProductAndStoreTab from '@/components/commons/tabs/ProductAndStoreTab';
+import { headers } from 'next/headers';
 
 interface Layout {
   children: ReactNode;
 }
 
 const Layout = ({ children }: Layout) => {
-  const pathname = usePathname();
+  const header = headers();
+  const pathname = header.get('next-url');
+
   const productsPath = '/wishlist/products';
   const storePath = '/wishlist/stores';
 
