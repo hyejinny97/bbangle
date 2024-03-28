@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import { filterValueState } from '@/domains/product/atoms';
 import { PageParamType } from '@/domains/product/types/filterType';
 import { FILTER_VALUES } from '@/commons/constants/filterValues';
-import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
+import { getIngredientTag, getPriceTag } from '@/domains/product/utils/tag';
 import useModal from '@/commons/hooks/useModal';
 import FilterIcon from '@/domains/product/assets/filter.svg';
 import ProductSortSelect from '@/components/commons/selects/ProductSortSelect';
@@ -15,16 +15,6 @@ import PaddingWrapper from '@/components/commons/PaddingWrapper';
 interface FilterTabProps {
   page: PageParamType;
 }
-
-const getIngredientTag = (ingredients: Array<string>) => {
-  if (ingredients.length === 1) return ingredients[0];
-  if (ingredients.length > 1) return `${ingredients[0]} 외 ${ingredients.length - 1}개`;
-};
-
-const getPriceTag = ({ minPrice, maxPrice }: { minPrice: number; maxPrice: number }) => {
-  if (minPrice === LIMIT_MIN_PRICE && maxPrice === LIMIT_MAX_PRICE) return;
-  return `${minPrice.toLocaleString()}~${maxPrice.toLocaleString()}원`;
-};
 
 const FilterTab = ({ page }: FilterTabProps) => {
   const [filterValue, setFilterValue] = useRecoilState(filterValueState(page));
