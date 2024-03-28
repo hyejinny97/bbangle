@@ -1,6 +1,7 @@
-import { useRecoilState } from 'recoil';
+import { useEffect } from 'react';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { FILTER_VALUES } from '@/commons/constants/filterValues';
-import { categoryTempState } from '@/domains/product/atoms';
+import { filterValueState, categoryTempState } from '@/domains/product/atoms';
 import { PageParamType } from '@/domains/product/types/filterType';
 import Radio from '@/components/commons/radio/Radio';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
@@ -10,7 +11,12 @@ interface CategorySectionProps {
 }
 
 function CategorySection({ page }: CategorySectionProps) {
+  const filterValue = useRecoilValue(filterValueState(page));
   const [selectedCategory, setSelectedCategory] = useRecoilState(categoryTempState(page));
+
+  useEffect(() => {
+    setSelectedCategory(filterValue.category);
+  }, [filterValue, setSelectedCategory]);
 
   const handleClick = (clickItem: string) => {
     setSelectedCategory(clickItem);
