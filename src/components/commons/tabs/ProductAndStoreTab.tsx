@@ -1,19 +1,16 @@
 'use client';
 
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import TabContainer from '@/components/commons/tabs/TabContainer';
+import { useId } from 'react';
+import Link from 'next/link';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { LayoutGroup } from 'framer-motion';
+import TabButton from '@/shared/components/TabButton';
 
 interface ProductAndStoreTabProps {
+  defaultPath?: string;
   productCount?: number;
   storeCount?: number;
 }
-
-const TAB_NAMES = {
-  product: '상품',
-  store: '스토어'
-};
-const PRODUCT_IDX = 0;
-const STORE_IDX = 1;
 
 // count가 100 이상이면 '99+'를 반환
 const checkCount = (count: number) => {
@@ -23,30 +20,40 @@ const checkCount = (count: number) => {
   return count;
 };
 
-const ProductAndStoreTab = ({ productCount, storeCount }: ProductAndStoreTabProps) => {
-  const productCountStr = typeof productCount === 'number' ? `(${checkCount(productCount)})` : '';
-  const storeCountStr = typeof storeCount === 'number' ? `(${checkCount(storeCount)})` : '';
-  const names = [`${TAB_NAMES.product}${productCountStr}`, `${TAB_NAMES.store}${storeCountStr}`];
-
-  const router = useRouter();
+const ProductAndStoreTab = ({
+  defaultPath = '',
+  productCount,
+  storeCount
+}: ProductAndStoreTabProps) => {
+  const id = useId();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const segments = pathname.split('/');
-  const isProductsPage = segments.pop() === 'products';
-  const defaultPath = segments.join('/');
+  const productsPath = `${defaultPath}/products`;
+  const storesPath = `${defaultPath}/stores`;
 
-  const activeTabIdx = isProductsPage ? PRODUCT_IDX : STORE_IDX;
+  const isProductPage = pathname === productsPath;
+  const isStorePage = pathname === storesPath;
 
-  const handleTabChange = (activeTabIdx: number) => {
-    const activeTab = activeTabIdx === PRODUCT_IDX ? 'products' : 'stores';
-    const path = `${defaultPath}/${activeTab}`;
-    const queryString = searchParams.toString();
+  const queryString = searchParams.toString();
+  const productsUrl = queryString ? `${productsPath}?${queryString}` : productsPath;
+  const storesUrl = queryString ? `${storesPath}?${queryString}` : storesPath;
 
-    router.push(queryString ? path + '?' + queryString : path);
-  };
+  const productCountStr = typeof productCount === 'number' ? `(${checkCount(productCount)})` : '';
+  const storeCountStr = typeof storeCount === 'number' ? `(${checkCount(storeCount)})` : '';
 
-  return <TabContainer names={names} activeTabIdx={activeTabIdx} onChange={handleTabChange} />;
+  return (
+    <LayoutGroup id={id}>
+      <div className="flex">
+        <Link className="w-full" href={productsUrl}>
+          <TabButton active={isProductPage}>상품{productCountStr}</TabButton>
+        </Link>
+        <Link className="w-full" href={storesUrl}>
+          <TabButton active={isStorePage}>스토어{storeCountStr}</TabButton>
+        </Link>
+      </div>
+    </LayoutGroup>
+  );
 };
 
 export default ProductAndStoreTab;
