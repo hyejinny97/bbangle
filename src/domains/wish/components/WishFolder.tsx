@@ -4,7 +4,7 @@ import { BbangleSmileIcon } from '@/components/commons/Icon';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRecoilState } from 'recoil';
-import { isWishFolderEditModeState } from '../atoms/wishFolder';
+import { isWishFolderEditingState } from '../atoms/wishFolder';
 import { CloseIcon } from '@/shared/components/icons';
 
 import { MouseEventHandler } from 'react';
@@ -17,7 +17,7 @@ interface WishFolderProps {
 }
 
 const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
-  const [isEditMode, setIsEditMode] = useRecoilState(isWishFolderEditModeState);
+  const [isEditing, setIsEditMode] = useRecoilState(isWishFolderEditingState);
 
   const deleteFolder: MouseEventHandler<HTMLButtonElement> = e => {
     // Todo. delete mutation
@@ -31,7 +31,7 @@ const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
         href={`/wishlist/products/${id}`}
         className="relative flex justify-center items-center after:pb-[100%] w-full border border-gray-100 rounded-[6px]"
       >
-        {isEditMode && (
+        {isEditing && (
           <button
             className="p-[4px]  rounded-full  absolute top-[6px] right-[6px]"
             onClick={deleteFolder}

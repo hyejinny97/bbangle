@@ -4,18 +4,18 @@ import Button from '@/components/commons/button/client/Button';
 import { useRecoilState } from 'recoil';
 import useModal from '@/commons/hooks/useModal';
 import WishFolderModal from '@/domains/wish/components/WishFolderModal';
-import { isWishFolderEditModeState } from '@/domains/wish/atoms/wishFolder';
+import { isWishFolderEditingState } from '@/domains/wish/atoms/wishFolder';
 
 const WishFolderEditButtonSection = () => {
-  const [isEdit, setEdit] = useRecoilState(isWishFolderEditModeState);
+  const [isEditing, setIsEditing] = useRecoilState(isWishFolderEditingState);
   const { openModal } = useModal();
 
   const editFolder = () => {
-    setEdit(true);
+    setIsEditing(true);
   };
 
   const complete = () => {
-    setEdit(false);
+    setIsEditing(false);
   };
 
   const createFolder = () => {
@@ -27,7 +27,7 @@ const WishFolderEditButtonSection = () => {
       <Button variants="secondary-white" onClick={createFolder}>
         추가
       </Button>
-      {isEdit ? (
+      {isEditing ? (
         <Button variants="secondary-black" onClick={complete}>
           완료
         </Button>
