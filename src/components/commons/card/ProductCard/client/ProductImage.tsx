@@ -1,9 +1,13 @@
+import { Dispatch, SetStateAction } from 'react';
+
+import Image from 'next/image';
+
 import usePopup from '@/commons/hooks/usePopup';
 import { IProductType } from '@/commons/types/productType';
+import { BundleBadge } from '@/components/commons/badge/BundleBadge';
 import BtnHeart from '@/components/commons/button/client/Btn_heart';
 import ToastPop from '@/components/commons/ToastPop';
-import { Dispatch, SetStateAction } from 'react';
-import { BundleBadge } from '@/components/commons/badge/BundleBadge';
+
 import { RankingBadge } from '../../../badge/RankingBadge';
 
 interface ProductImageProps {
@@ -37,10 +41,16 @@ export const ProductImage = ({
   };
 
   return (
-    <div
-      className="w-full pb-[100%] bg-cover bg-center rounded-[6px] relative"
-      style={{ backgroundImage: `url(${product.thumbnail})` }}
-    >
+    <div>
+      <Image
+        src={product.thumbnail}
+        alt="상품사진"
+        width={300}
+        height={300}
+        placeholder="blur"
+        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+        style={{ position: 'relative', borderRadius: '6px' }}
+      />
       <div className="absolute bottom-[9px] right-[9px] h-[20px]">
         <BtnHeart isLiked={product.isWished} onClick={handleClickHeart(product.boardId)} />
       </div>

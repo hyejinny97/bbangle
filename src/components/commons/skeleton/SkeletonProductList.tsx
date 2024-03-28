@@ -1,3 +1,4 @@
+import PaddingWrapper from '../PaddingWrapper';
 import { SkeletonProductCard } from './SkeletonProductCard';
 
 interface SkeletonProductListProps {
@@ -11,13 +12,13 @@ export const SkeletonProductList = ({ row = 3, col = 2 }: SkeletonProductListPro
       {Array(row)
         .fill(0)
         .map((_, idx) => (
-          <div key={`row-${idx}`} className="flex flex-wrap w-[92%] m-auto gap-x-[4%] pb-4">
+          <PaddingWrapper key={`row-${idx}`} className="flex flex-wrap gap-x-[4%] pb-1">
             {Array(col)
               .fill(0)
               .map((_, idx) => (
                 <SkeletonProductCard key={`col-${idx}`} />
               ))}
-          </div>
+          </PaddingWrapper>
         ))}
     </>
   );
