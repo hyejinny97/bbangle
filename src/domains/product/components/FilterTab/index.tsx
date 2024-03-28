@@ -4,8 +4,8 @@ import { useRecoilState } from 'recoil';
 import { filterValueState } from '@/domains/product/atoms';
 import { FilterFamilyIDType } from '@/domains/product/types/filterType';
 import { FILTER_VALUES } from '@/commons/constants/filterValues';
-import { TAG_CATEGORY, TAG_INGREDIENT, TAG_PRICE } from '@/domains/product/constants/tagType';
-import { getIngredientTag, getPriceTag } from '@/domains/product/utils/tag';
+import { TAG } from '@/domains/product/constants/tag';
+import { getIngredientTag, getPriceTag } from '@/domains/product/utils/getTag';
 import useModal from '@/commons/hooks/useModal';
 import FilterIcon from '@/domains/product/assets/filter.svg';
 import ProductSortSelect from '@/components/commons/selects/ProductSortSelect';
@@ -22,7 +22,7 @@ const FilterTab = ({ filterFamilyId }: FilterTabProps) => {
   const { openModal } = useModal();
 
   const categoryTags = FILTER_VALUES.categories.map(item => ({
-    type: TAG_CATEGORY,
+    type: TAG.category,
     content: item
   }));
   const ingredientTag = filterValue.tags && getIngredientTag(filterValue.tags);
@@ -48,7 +48,7 @@ const FilterTab = ({ filterFamilyId }: FilterTabProps) => {
             if (!item) return;
 
             const isCategoryTagActive = filterValue.category === item.content;
-            const isNewTag = item.type === TAG_INGREDIENT || item.type === TAG_PRICE; // ingredientTag, priceTag
+            const isNewTag = item.type === TAG.ingredient || item.type === TAG.price; // ingredientTag, priceTag
 
             return (
               <button
