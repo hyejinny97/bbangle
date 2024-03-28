@@ -24,6 +24,8 @@ export const ProductImage = ({
   setIsModal,
   setProductId
 }: ProductImageProps) => {
+  const blurDataUrl =
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==';
   const { openPopup } = usePopup();
   const handleClickHeart = (id: number) => (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -48,8 +50,8 @@ export const ProductImage = ({
         width={300}
         height={300}
         placeholder="blur"
-        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
-        style={{ position: 'relative', borderRadius: '6px' }}
+        blurDataURL={blurDataUrl}
+        className="rounded-[6px]"
       />
       <div className="absolute bottom-[9px] right-[9px] h-[20px]">
         <BtnHeart isLiked={product.isWished} onClick={handleClickHeart(product.boardId)} />

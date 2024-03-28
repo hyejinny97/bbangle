@@ -8,18 +8,12 @@ interface SkeletonProductListProps {
 
 export const SkeletonProductList = ({ row = 3, col = 2 }: SkeletonProductListProps) => {
   return (
-    <>
-      {Array(row)
+    <PaddingWrapper key={`row-${row}`} className="flex flex-wrap gap-x-[16px] gap-y-[16px] pb-1">
+      {Array(row * col)
         .fill(0)
         .map((_, idx) => (
-          <PaddingWrapper key={`row-${idx}`} className="flex flex-wrap gap-x-[4%] pb-1">
-            {Array(col)
-              .fill(0)
-              .map((_, idx) => (
-                <SkeletonProductCard key={`col-${idx}`} />
-              ))}
-          </PaddingWrapper>
+          <SkeletonProductCard key={idx} />
         ))}
-    </>
+    </PaddingWrapper>
   );
 };

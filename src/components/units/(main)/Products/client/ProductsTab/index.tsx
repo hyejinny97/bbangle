@@ -14,7 +14,7 @@ import { useGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
 
 const ProductsTab = () => {
   const filterValue = useRecoilValue(filterValueState);
-  const { products, isError, isLoading, hasNextPage, fetchNextPage, isFetchingNextPage } =
+  const { products, isError, isLoading, hasNextPage, fetchNextPage } =
     useGetAllProductsQuery(filterValue);
   const { ref, inView } = useInView();
 
@@ -37,12 +37,8 @@ const ProductsTab = () => {
           products.map(product => <ProductCard key={product.boardId} product={product} />)}
       </div>
       {hasNextPage && (
-        <div ref={ref}>
-          {isFetchingNextPage && (
-            <div className="gap-x-[16px] gap-y-[16px] pb-[36px]">
-              <SkeletonProductList row={1} col={2} />
-            </div>
-          )}
+        <div ref={ref} className="pb-[36px]">
+          <SkeletonProductList row={1} col={2} />
         </div>
       )}
     </PaddingWrapper>
