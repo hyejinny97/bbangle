@@ -1,5 +1,5 @@
 import UpModal from '@/components/commons/modal/UpModal';
-import useAddWishListMutation from '@/domains/wish/hooks/useAddWishFolderMutation';
+import useCreateWishListMutation from '@/domains/wish/hooks/useAddWishFolderMutation';
 import { useGetWishListFolder } from '@/domains/wish/hooks/useGetWishListFolder';
 import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import { useAddWishMutation } from '../hooks/useAddWishMutation';
@@ -22,7 +22,7 @@ export const ChooseWishListModal = ({
   const [isAddView, setIsAddView] = useState(false);
   const [title, setTitle] = useState('');
   const { data, refetch } = useGetWishListFolder();
-  const { mutate: addWishListMutate } = useAddWishListMutation();
+  const { mutate: addWishListMutate } = useCreateWishListMutation();
   const { mutate: addWishMutate } = useAddWishMutation();
   const { openToast } = useToast();
 

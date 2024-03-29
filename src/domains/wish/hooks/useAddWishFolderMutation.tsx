@@ -2,7 +2,7 @@ import useToast from '@/commons/hooks/useToast';
 import ToastPop from '@/components/commons/ToastPop';
 import { useMutation } from '@tanstack/react-query';
 
-const useAddWishListMutation = () => {
+const useCreateWishListMutation = () => {
   const { openToast } = useToast();
   const mutationFn = async (title: string) => {
     const res = await fetch('/wishLists', {
@@ -27,4 +27,4 @@ const useAddWishListMutation = () => {
   });
 };
 
-export default useAddWishListMutation;
+export default useCreateWishListMutation;

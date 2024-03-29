@@ -5,13 +5,13 @@ import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import Button from '@/components/commons/button/client/Button';
 import Input from '@/components/commons/inputs/Input';
 import UpModalNewVer from '@/components/commons/modal/UpModalNewVer';
-import useAddWishListMutation from '../hooks/useAddWishFolderMutation';
+import useCreateWishListMutation from '../hooks/useAddWishFolderMutation';
 import useInput from '@/commons/hooks/useInput';
 
 const CreateWishFolderModal = () => {
   const { closeModal } = useModal();
   const { value, onChange } = useInput('');
-  const { mutate } = useAddWishListMutation();
+  const { mutate } = useCreateWishListMutation();
 
   const createWishFolder = () => {
     mutate(value);
