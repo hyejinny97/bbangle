@@ -4,7 +4,7 @@ import { BbangleSmileIcon } from '@/components/commons/Icon';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CloseIcon } from '@/shared/components/icons';
-import DeleteWishFolderPopup from './DeleteWishFolderModal';
+import DeleteWishFolderPopup from './DeleteWishFolderPopup';
 import { useRecoilValue } from 'recoil';
 import { isWishFolderEditingState } from '../atoms/wishFolder';
 import usePopup from '@/commons/hooks/usePopup';
