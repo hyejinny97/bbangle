@@ -1,10 +1,5 @@
 import { useRecoilState } from 'recoil';
-import {
-  categoryTempState,
-  filterValueState,
-  tagsTempState,
-  priceTempState
-} from '@/domains/product/atoms';
+import { filterValueState, filterValueTempState } from '@/domains/product/atoms';
 import { FilterFamilyIDType } from '@/domains/product/types/filterType';
 import useModal from '@/commons/hooks/useModal';
 import Button from '@/components/commons/button/client/Button';
@@ -16,25 +11,18 @@ interface ButtonSectionProps {
 
 const ButtonSection = ({ filterFamilyId }: ButtonSectionProps) => {
   const [filterValue, setFilterValue] = useRecoilState(filterValueState(filterFamilyId));
-  const [selectedCategory, setSelectedCategory] = useRecoilState(categoryTempState(filterFamilyId));
-  const [selectedTags, setSelectedTags] = useRecoilState(tagsTempState(filterFamilyId));
-  const [price, setPrice] = useRecoilState(priceTempState(filterFamilyId));
+  const [tempFilterValue, setTempFilterValue] = useRecoilState(
+    filterValueTempState(filterFamilyId)
+  );
   const { closeModal } = useModal();
 
   const handleConfirm = () => {
-    setFilterValue(prev => ({
-      ...filterValue,
-      category: selectedCategory ? selectedCategory : prev.category,
-      tags: selectedTags ? selectedTags : prev.tags,
-      price
-    }));
+    setFilterValue(tempFilterValue);
     closeModal();
   };
 
   const handleCancel = () => {
-    setSelectedCategory(filterValue.category);
-    setSelectedTags(filterValue.tags);
-    setPrice(filterValue.price);
+    setTempFilterValue(filterValue);
     closeModal();
   };
 

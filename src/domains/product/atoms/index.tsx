@@ -1,4 +1,4 @@
-import { atomFamily } from 'recoil';
+import { atomFamily, selectorFamily, DefaultValue } from 'recoil';
 import {
   ICategoryType,
   ITagsType,
@@ -24,6 +24,34 @@ export const priceTempState = atomFamily<IPriceType, FilterFamilyIDType>({
     minPrice: LIMIT_MIN_PRICE,
     maxPrice: LIMIT_MAX_PRICE
   }
+});
+
+export const filterValueTempState = selectorFamily<IFilterType, FilterFamilyIDType>({
+  key: 'filterValueTempState',
+  get:
+    filterFamilyId =>
+    ({ get }) => {
+      const category = get(categoryTempState(filterFamilyId));
+      const tags = get(tagsTempState(filterFamilyId));
+      const price = get(priceTempState(filterFamilyId));
+      const filterValue = get(filterValueState(filterFamilyId));
+
+      return {
+        ...filterValue,
+        category,
+        tags,
+        price
+      };
+    },
+  set:
+    filterFamilyId =>
+    ({ set }, newValue) => {
+      if (newValue instanceof DefaultValue) return;
+
+      set(categoryTempState(filterFamilyId), newValue.category);
+      set(tagsTempState(filterFamilyId), newValue.tags);
+      set(priceTempState(filterFamilyId), newValue.price);
+    }
 });
 
 export const filterValueState = atomFamily<IFilterType, FilterFamilyIDType>({
