@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Header from '@/components/commons/header/client/Header';
 import { IconSadCharacter } from '@/components/units/(mypage)/Withdraw/client/Icons';
 import DeleteReasonList from '@/components/units/(mypage)/Withdraw/client/DeleteReasonList';
 import Agree from '@/components/units/(mypage)/Withdraw/client/Agree';
@@ -25,7 +24,6 @@ const Withdraw = () => {
 
   return (
     <form id="withdraw-form" onSubmit={handleFormSubmit}>
-      <Header title="회원 탈퇴" back />
       <div className="p-4 text-gray-900">
         <div className="mb-[40px] flex flex-col items-center">
           <div className="flex justify-center items-center w-[80px] h-[80px]">
