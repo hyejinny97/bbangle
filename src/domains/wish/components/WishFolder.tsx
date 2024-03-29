@@ -4,37 +4,38 @@ import { BbangleSmileIcon } from '@/components/commons/Icon';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CloseIcon } from '@/shared/components/icons';
+import DeleteWishFolderPopup from './DeleteWishFolderModal';
+import { useRecoilValue } from 'recoil';
+import { isWishFolderEditingState } from '../atoms/wishFolder';
+import usePopup from '@/commons/hooks/usePopup';
+import { MouseEventHandler } from 'react';
 
 interface WishFolderProps {
   id: number;
   thumbnailList?: string[];
   name: string;
   count: number;
-  onDeleteClick: () => void;
-  isEditing: boolean;
 }
 
-const WishFolder = ({
-  id,
-  thumbnailList,
-  name,
-  count,
-  isEditing,
-  onDeleteClick
-}: WishFolderProps) => {
+const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
+  const isEditing = useRecoilValue(isWishFolderEditingState);
+  const { openPopup } = usePopup();
+
+  const deleteFolder: MouseEventHandler<HTMLButtonElement> = e => {
+    openPopup(<DeleteWishFolderPopup folderId={id} />);
+    e.preventDefault();
+  };
+
   return (
-    <div className=" flex flex-col gap-[6.5px] rounded-[6px] overflow-hidden">
+    <div className="flex flex-col gap-[6.5px] rounded-[6px] overflow-hidden">
       <Link
-        href={`/wishlist/products/${id}`}
+        href={`/wishlist/detail/products/${id}`}
         className="relative flex justify-center items-center after:pb-[100%] w-full border border-gray-100 rounded-[6px]"
       >
         {isEditing && (
           <button
             className="p-[4px]  rounded-full  absolute top-[6px] right-[6px]"
-            onClick={e => {
-              onDeleteClick();
-              e.preventDefault();
-            }}
+            onClick={deleteFolder}
           >
             <CloseIcon />
           </button>

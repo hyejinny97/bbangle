@@ -1,11 +1,5 @@
-'use client';
-
-import usePopup from '@/commons/hooks/usePopup';
-import { isWishFolderEditingState } from '@/domains/wish/atoms/wishFolder';
-import DeleteWishFolderPopup from '@/domains/wish/components/DeleteWishFolderModal';
 import WishFolder from '@/domains/wish/components/WishFolder';
 import { WishFolderType } from '@/domains/wish/types/wishFolder';
-import { useRecoilValue } from 'recoil';
 
 const MOCK_DATA: WishFolderType[] = [
   {
@@ -17,13 +11,6 @@ const MOCK_DATA: WishFolderType[] = [
 ];
 
 const WishFolderGrid = () => {
-  const isEditing = useRecoilValue(isWishFolderEditingState);
-  const { openPopup } = usePopup();
-
-  const deleteFolder = (folderId: number) => {
-    openPopup(<DeleteWishFolderPopup folderId={folderId} />);
-  };
-
   return (
     <div className="grid gap-[16px] grid-cols-2">
       {MOCK_DATA.map(({ folderId, title, count, productImages }) => (
@@ -33,8 +20,6 @@ const WishFolderGrid = () => {
           name={title}
           thumbnailList={productImages}
           count={count}
-          onDeleteClick={() => deleteFolder(folderId)}
-          isEditing={isEditing}
         />
       ))}
     </div>
