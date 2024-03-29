@@ -6,7 +6,7 @@ import UpModalNewVer from '@/components/commons/modal/UpModalNewVer';
 import useAddWishListMutation from '../hooks/useAddWishFolderMutation';
 import useInput from '@/commons/hooks/useInput';
 
-const WishFolderModal = () => {
+const CreateWishFolderModal = () => {
   const { closeModal } = useModal();
   const { value, onChange } = useInput('');
   const { mutate } = useAddWishListMutation();
@@ -31,4 +31,4 @@ const WishFolderModal = () => {
   );
 };
 
-export default WishFolderModal;
+export default CreateWishFolderModal;
