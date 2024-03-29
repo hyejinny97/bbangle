@@ -4,13 +4,17 @@ import { WishFolderType } from '@/domains/wish/types/wishFolder';
 const MOCK_DATA: WishFolderType[] = [
   {
     folderId: 1,
-    title: '변경한 제목',
+    title: 'mock data 제목입니다',
     count: 1,
     productImages: []
   }
 ];
 
-const WishFolderGrid = () => {
+const WishFolderGrid = async () => {
+  // const res = await fetch('/wishLists');
+  // if (!res.ok) throw new Error('위시 리스트 조회 오류');
+  // const wishList: WishFolderType[] = await res.json();
+
   return (
     <div className="grid gap-[16px] grid-cols-2">
       {MOCK_DATA.map(({ folderId, title, count, productImages }) => (
