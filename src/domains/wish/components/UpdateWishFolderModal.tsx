@@ -5,16 +5,20 @@ import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import Button from '@/components/commons/button/client/Button';
 import Input from '@/components/commons/inputs/Input';
 import UpModalNewVer from '@/components/commons/modal/UpModalNewVer';
-import useAddWishListMutation from '../hooks/useAddWishFolderMutation';
 import useInput from '@/commons/hooks/useInput';
+import useUpdateWishListMutation from '../hooks/useUpdateWishListMutation';
 
-const CreateWishFolderModal = () => {
+interface UpdateWishFolderModalProps {
+  folderId: number;
+}
+
+const UpdateWishFolderModal = ({ folderId }: UpdateWishFolderModalProps) => {
   const { closeModal } = useModal();
   const { value, onChange } = useInput('');
-  const { mutate } = useAddWishListMutation();
+  const { mutate } = useUpdateWishListMutation();
 
-  const createWishFolder = () => {
-    mutate(value);
+  const updateWishFolder = () => {
+    mutate({ folderId, title: value });
     closeModal();
   };
 
@@ -27,10 +31,10 @@ const CreateWishFolderModal = () => {
             0<span className="text-gray-400">/12</span>
           </div>
         </div>
-        <Button onClick={createWishFolder}>확인</Button>
+        <Button onClick={updateWishFolder}>확인</Button>
       </PaddingWrapper>
     </UpModalNewVer>
   );
 };
 
-export default CreateWishFolderModal;
+export default UpdateWishFolderModal;

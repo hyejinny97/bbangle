@@ -9,6 +9,8 @@ import { useRecoilValue } from 'recoil';
 import { isWishFolderEditingState } from '../atoms/wishFolder';
 import usePopup from '@/commons/hooks/usePopup';
 import { MouseEventHandler } from 'react';
+import useModal from '@/commons/hooks/useModal';
+import UpdateWishFolderModal from './UpdateWishFolderModal';
 
 interface WishFolderProps {
   id: number;
@@ -20,10 +22,15 @@ interface WishFolderProps {
 const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
   const isEditing = useRecoilValue(isWishFolderEditingState);
   const { openPopup } = usePopup();
+  const { openModal } = useModal();
 
   const deleteFolder: MouseEventHandler<HTMLButtonElement> = e => {
     openPopup(<DeleteWishFolderPopup folderId={id} />);
     e.preventDefault();
+  };
+
+  const updateFolderName: MouseEventHandler<HTMLButtonElement> = () => {
+    openModal(<UpdateWishFolderModal folderId={id} />);
   };
 
   return (
@@ -34,7 +41,7 @@ const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
       >
         {isEditing && (
           <button
-            className="p-[4px]  rounded-full  absolute top-[6px] right-[6px]"
+            className="p-[4px] rounded-full absolute top-[6px] right-[6px]"
             onClick={deleteFolder}
           >
             <CloseIcon />
@@ -51,8 +58,18 @@ const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
           <BbangleSmileIcon width={80} height={80} />
         )}
       </Link>
-      <div className="flex justify-between  items-center">
-        <div className="font-semibold text-14 tracking-tight-4 leading-120">{name}</div>
+      <div className="flex justify-between items-center">
+        {isEditing ? (
+          <button
+            onClick={updateFolderName}
+            className="font-semibold text-14 tracking-tight-4 leading-120, underline"
+          >
+            {name}
+          </button>
+        ) : (
+          <div className="font-semibold text-14 tracking-tight-4 leading-120">{name}</div>
+        )}
+
         <div className="text-gray-500">({count})</div>
       </div>
     </div>
