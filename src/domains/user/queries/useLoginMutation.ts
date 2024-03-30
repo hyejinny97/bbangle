@@ -1,4 +1,4 @@
-import setCookie from '@/action';
+import { setCookie } from '@/action';
 import { loginState } from '@/shared/atoms/login';
 import fetchExtend from '@/shared/utils/api';
 import { useMutation } from '@tanstack/react-query';

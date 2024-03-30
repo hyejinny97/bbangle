@@ -17,7 +17,7 @@ export const getCookie = async (name: string) => {
   return cookieStore.get(name);
 };
 
-const setCookie = async ({ name, value }: { name: string; value: string }) => {
+export const setCookie = async ({ name, value }: { name: string; value: string }) => {
   cookies().set({
     name,
     value,
@@ -25,5 +25,3 @@ const setCookie = async ({ name, value }: { name: string; value: string }) => {
     path: '/'
   });
 };
-
-export default setCookie;
