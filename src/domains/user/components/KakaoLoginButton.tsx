@@ -13,7 +13,7 @@ const KakaoLoginButton = () => {
   return (
     <button
       className="rounded-[10px] flex gap-[8px] items-center justify-center h-[52px] bg-kakao shadow text-black"
-      onClick={kakaoLoginController.redirect}
+      onClick={() => kakaoLoginController.redirect()}
     >
       <KakaoIcon />
       <div className="text-black/[0.85] text-16 leading-150 tracking-tight-2">

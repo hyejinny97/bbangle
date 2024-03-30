@@ -9,9 +9,7 @@ const useKakaoLoginMutation = () => {
   const setLogin = useSetRecoilState(loginState);
 
   const mutationFn = async (code: string) => {
-    const res = await API.get(`/oauth2/login/callback/kakao?code=${code}`, {
-      method: 'GET'
-    });
+    const res = await API.get(`/oauth/login/kakao?code=${code}`);
     const data: LoginResponse = await res.json();
     if (!res.ok) throw Error('로그인 실패');
     return data;
