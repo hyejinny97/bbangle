@@ -4,10 +4,18 @@ import fetchExtend from '@/shared/utils/api';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { useSetRecoilState } from 'recoil';
+import { expToDate, parseJwt } from '../utils/jwt';
 
 interface LoginResponse {
   accessToken: string;
   refreshToken: string;
+}
+
+interface ParsedJWT {
+  exp: number;
+  iat: number;
+  id: number;
+  iss: number;
 }
 
 const useLoginMutation = () => {
@@ -21,17 +29,26 @@ const useLoginMutation = () => {
     return data;
   };
 
-  const onSuccess = async (data: LoginResponse) => {
+  const onSuccess = async ({ accessToken, refreshToken }: LoginResponse) => {
+    const { exp: accessTokenExp }: ParsedJWT = parseJwt(accessToken);
+    const { exp: refreshTokenExp }: ParsedJWT = parseJwt(refreshToken);
+
+    const accessTokenExpireDate = expToDate(accessTokenExp);
+    const refreshTokenExpireDate = expToDate(refreshTokenExp);
+
     await Promise.all([
       setCookie({
         name: 'accessToken',
-        value: data.accessToken
+        value: accessToken,
+        expires: accessTokenExpireDate
       }),
       setCookie({
         name: 'refreshToken',
-        value: data.accessToken
+        value: refreshToken,
+        expires: refreshTokenExpireDate
       })
     ]);
+
     setLogin(true);
     push('/');
   };
