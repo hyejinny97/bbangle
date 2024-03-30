@@ -16,5 +16,5 @@
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/ban-ts-comment": "off"
   },
-  "ignorePatterns": ["*.config.js", "*.config.ts", "node_modules"]
+  "ignorePatterns": ["*.config.js", "*.config.ts", "node_modules", "*.d.ts"]
 }

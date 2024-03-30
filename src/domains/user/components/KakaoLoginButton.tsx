@@ -1,17 +1,24 @@
 'use client';
 
-import API from '@/api';
 import KakaoIcon from '../assets/kakao_logo.svg';
+import { KAKAO } from '../constants/socialLogin';
 
 const KakaoLoginButton = () => {
-  const handleKakaLogin = () => {
-    window.location.assign(`${API.serverUrl}/oauth2/authorization/kakao`);
+  const queryObject = {
+    client_id: KAKAO.client_id,
+    redirect_uri: KAKAO.redirect_uri,
+    response_type: KAKAO.response_type
+  };
+
+  const redirectToKakaoLoginPage = () => {
+    const query = new URLSearchParams(queryObject);
+    window.location.assign(`${KAKAO.authUrl}?${query}`);
   };
 
   return (
     <button
       className="rounded-[10px] flex gap-[8px] items-center justify-center h-[52px] bg-kakao shadow text-black"
-      onClick={handleKakaLogin}
+      onClick={redirectToKakaoLoginPage}
     >
       <KakaoIcon />
       <div className="text-black/[0.85] text-16 leading-150 tracking-tight-2">
