@@ -117,6 +117,10 @@ async function _delete(endpoint: string, init?: RequestInit) {
   return data;
 }
 
+/**
+ * @deprecated API 함수 대신 @/shared/api 의 fetchExtend 사용해주세요
+ */
+
 const API = {
   TMP_TOKEN,
   serverUrl,

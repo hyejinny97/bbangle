@@ -1,9 +1,9 @@
+import setCookie from '@/action';
 import { loginState } from '@/shared/atoms/login';
 import fetchExtend from '@/shared/utils/api';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { useSetRecoilState } from 'recoil';
-import setCookie from '../action/setCookie';
 
 interface LoginResponse {
   accessToken: string;

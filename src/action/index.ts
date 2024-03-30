@@ -16,3 +16,14 @@ export const getCookie = async (name: string) => {
   const cookieStore = cookies();
   return cookieStore.get(name);
 };
+
+const setCookie = async ({ name, value }: { name: string; value: string }) => {
+  cookies().set({
+    name,
+    value,
+    httpOnly: true,
+    path: '/'
+  });
+};
+
+export default setCookie;
