@@ -1,12 +1,15 @@
 'use client';
+
+import { useGetStoreDetailAllQuery } from '@/components/units/StoreDetail/hooks/useGetStoreDetailAllQuery';
 import ProductCard from '@/components/commons/card/ProductCard';
-import { IStoreDetailAllType } from '../../types';
 
 interface AllProductProps {
-  data: IStoreDetailAllType | undefined;
+  storeId: number;
 }
 
-function AllProducts({ data }: AllProductProps) {
+function AllProducts({ storeId }: AllProductProps) {
+  const { data } = useGetStoreDetailAllQuery(storeId);
+
   return (
     <div className="flex w-full flex-wrap m-auto gap-x-[4%] gap-y-4">
       {data?.content?.map((item, i) => (
