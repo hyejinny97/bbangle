@@ -1,4 +1,4 @@
-import API from '@/shared/utils/api';
+import fetchExtend from '@/shared/utils/api';
 import { useMutation } from '@tanstack/react-query';
 import { KAKAO } from '../constants/socialLogin';
 import QueryString from 'qs';
@@ -12,7 +12,7 @@ const useKakaoAuthMutation = () => {
       redirect_uri: KAKAO.redirect_uri,
       code: code
     };
-    const res = await API.post('https://kauth.kakao.com/oauth/token', {
+    const res = await fetchExtend.post('https://kauth.kakao.com/oauth/token', {
       headers: {
         'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       },

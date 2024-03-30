@@ -1,5 +1,5 @@
 import { loginState } from '@/shared/atoms/login';
-import API from '@/shared/utils/api';
+import fetchExtend from '@/shared/utils/api';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { useSetRecoilState } from 'recoil';
@@ -15,7 +15,7 @@ const useLoginMutation = () => {
   const { push } = useRouter();
 
   const mutationFn = async (accessToken: string) => {
-    const res = await API.get(`/oauth/login/kakao?token=${accessToken}`);
+    const res = await fetchExtend.get(`/oauth/login/kakao?token=${accessToken}`);
     const data: LoginResponse = await res.json();
     if (!res.ok) throw new Error('백엔드 로그인 실패');
     return data;

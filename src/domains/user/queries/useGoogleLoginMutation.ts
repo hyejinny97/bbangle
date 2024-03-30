@@ -1,15 +1,15 @@
-import API from '@/shared/utils/api';
 import { useMutation } from '@tanstack/react-query';
 import { LoginResponse } from '../types/login';
 import { useSetRecoilState } from 'recoil';
 import { loginState } from '@/shared/atoms/login';
 import { redirect } from '@/action';
+import fetchExtend from '@/shared/utils/api';
 
 const useGoogleLoginMutation = () => {
   const setLogin = useSetRecoilState(loginState);
 
   const mutationFn = async (code: string) => {
-    const res = await API.get(`/oauth2/login/callback/google?code=${code}`, {
+    const res = await fetchExtend.get(`/oauth2/login/callback/google?code=${code}`, {
       method: 'GET'
     });
     const data: LoginResponse = await res.json();

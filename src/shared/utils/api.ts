@@ -130,7 +130,7 @@ async function _delete(endpoint: string, init?: RequestInit) {
   });
 }
 
-const API = {
+const fetchExtend = {
   get,
   post,
   formPost,
@@ -141,4 +141,4 @@ const API = {
   delete: _delete
 };
 
-export default API;
+export default fetchExtend;
