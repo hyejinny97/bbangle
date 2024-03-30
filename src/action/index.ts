@@ -34,3 +34,7 @@ export const setCookie = async ({
     expires
   });
 };
+
+export const deleteCookie = async (key: string) => {
+  cookies().delete(key);
+};
