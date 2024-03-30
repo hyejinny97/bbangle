@@ -5,6 +5,8 @@ import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { useSetRecoilState } from 'recoil';
 import { expToDate, parseJwt } from '../utils/jwt';
+import useToast from '@/commons/hooks/useToast';
+import ToastPop from '@/components/commons/ToastPop';
 
 interface LoginResponse {
   accessToken: string;
@@ -19,6 +21,7 @@ interface ParsedJWT {
 }
 
 const useLoginMutation = () => {
+  const { openToast } = useToast();
   const setLogin = useSetRecoilState(loginState);
   const { push } = useRouter();
 
@@ -48,14 +51,17 @@ const useLoginMutation = () => {
         expires: refreshTokenExpireDate
       })
     ]);
+    openToast(<ToastPop>로그인 되었어요.</ToastPop>);
 
     setLogin(true);
     push('/');
   };
 
-  // const onError = () => {};
+  const onError = () => {
+    openToast(<ToastPop>로그인 실패했어요.</ToastPop>);
+  };
 
-  return useMutation({ mutationFn, onSuccess });
+  return useMutation({ mutationFn, onSuccess, onError });
 };
 
 export default useLoginMutation;
