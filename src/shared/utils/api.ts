@@ -19,7 +19,7 @@ const getAccessToken = async () => {
 
 const getApiUrl = (endpoint: string) => {
   if (endpoint.startsWith('https://') || endpoint.startsWith('http://')) return endpoint;
-  return API_V1_URL;
+  return `${API_V1_URL}${endpoint}`;
 };
 
 async function get(endpoint: string, init?: RequestInit | undefined) {
