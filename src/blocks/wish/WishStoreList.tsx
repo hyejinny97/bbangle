@@ -1,11 +1,16 @@
 'use client';
 
 import { BbangleSadIcon } from '@/components/commons/Icon';
+import Loading from '@/components/commons/Loading';
 import StoreCard from '@/domains/store/components/StoreCard';
 import useWishStoreListQuery from '@/domains/wish/queries/useWishStoreListQuery';
 
 const WishStroeList = () => {
-  const { data } = useWishStoreListQuery();
+  const { data, isLoading } = useWishStoreListQuery();
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   if (!data || data.length === 0)
     return (

@@ -1,5 +1,6 @@
 import Header from '@/components/commons/header/client/Header';
 import ProductAndStoreTab from '@/components/commons/tabs/ProductAndStoreTab';
+import PATH from '@/shared/constants/path';
 import { ReactNode } from 'react';
 
 interface Layout {
@@ -10,7 +11,7 @@ const Layout = ({ children }: Layout) => {
   return (
     <>
       <Header title="찜" />
-      <ProductAndStoreTab defaultPath="/wishlist/list" />
+      <ProductAndStoreTab defaultPath={PATH.wishList} />
       {children}
     </>
   );
