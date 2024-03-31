@@ -7,6 +7,7 @@ import { HeartGrayIcon, HeartRedIcon } from '@/shared/components/icons';
 import { MouseEventHandler } from 'react';
 import useDeleteWishMutation from '@/domains/wish/queries/useDeleteWishMutation';
 import useAddWishMutation from '@/domains/wish/queries/useAddWishMutation';
+import Image from 'next/image';
 
 interface ProductImageProps {
   product: IProductType;
@@ -14,6 +15,9 @@ interface ProductImageProps {
   ranking?: number;
 }
 export const ProductImage = ({ product, popular, ranking }: ProductImageProps) => {
+  const blurDataUrl =
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==';
+
   const { mutate: addMutate } = useAddWishMutation();
   const { mutate: deleteMutate } = useDeleteWishMutation();
 
@@ -28,10 +32,16 @@ export const ProductImage = ({ product, popular, ranking }: ProductImageProps) =
   };
 
   return (
-    <div
-      className="w-full pb-[100%] bg-cover bg-center rounded-[6px] relative"
-      style={{ backgroundImage: `url(${product.thumbnail})` }}
-    >
+    <div>
+      <Image
+        src={product.thumbnail}
+        alt="상품사진"
+        width={300}
+        height={300}
+        placeholder="blur"
+        blurDataURL={blurDataUrl}
+        className="rounded-[6px]"
+      />
       <div className="absolute bottom-[9px] right-[9px] h-[20px]">
         {product.isWished ? (
           <button onClick={dislike}>

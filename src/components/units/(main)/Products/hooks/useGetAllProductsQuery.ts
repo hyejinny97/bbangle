@@ -1,15 +1,17 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { IFilterType } from '@/components/units/(main)/Products/types';
+import { IFilterType } from '@/domains/product/types/filterType';
 import { getAllProducts } from '../api/getAllProducts';
 
 export const useGetAllProductsQuery = (query: IFilterType) => {
   const { data, ...rest } = useInfiniteQuery({
     queryKey: ['products', query],
-    queryFn: ({ pageParam }: { pageParam: number }) => getAllProducts({ query, pageParam }),
-    initialPageParam: 0,
-    getNextPageParam: (lastPage, __, lastPageParam) => {
-      const nextPageParam = lastPage.last ? undefined : lastPageParam + 1;
-      return nextPageParam;
+    queryFn: ({ pageParam: cursorId }: { pageParam: number }) =>
+      getAllProducts({ query, cursorId }),
+    initialPageParam: -1,
+    getNextPageParam: lastPage => {
+      if (!lastPage.hasNext) return;
+      const nextCursorId = lastPage.content.at(-1)?.boardId;
+      return nextCursorId;
     },
     refetchOnMount: false,
     refetchOnReconnect: false,
@@ -18,7 +20,8 @@ export const useGetAllProductsQuery = (query: IFilterType) => {
   });
 
   const products = data?.pages.map(page => page.content).flat();
-  const itemCount = data?.pages[0]?.numberOfElements || 0;
+  const productCount = data?.pages[0]?.boardCnt || 0;
+  const storeCount = data?.pages[0]?.storeCnt || 0;
 
-  return { products, itemCount, ...rest };
+  return { products, productCount, storeCount, ...rest };
 };

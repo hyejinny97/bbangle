@@ -1,7 +1,7 @@
 'use client';
 
-import RangeInput from '@/components/units/(main)/Products/client/FilterTab/FilterModal/PriceSection/RangeInput';
-import SlideBar from '@/components/units/(main)/Products/client/FilterTab/FilterModal/PriceSection/SlideBar';
+import RangeInput from '@/domains/product/components/FilterTab/FilterModal/PriceSection/PriceSlide/RangeInput';
+import SlideBar from '@/domains/product/components/FilterTab/FilterModal/PriceSection/PriceSlide/SlideBar';
 import { LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
 
 interface PriceSlideProps {

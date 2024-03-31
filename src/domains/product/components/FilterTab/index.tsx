@@ -1,31 +1,30 @@
 'use client';
 
-import FilterIcon from './assets/filter.svg';
-import ProductSortSelect from '@/components/commons/selects/ProductSortSelect';
 import { useRecoilState } from 'recoil';
-import FilterModal from './FilterModal';
-import useModal from '@/commons/hooks/useModal';
-import { filterValueState } from '../../atoms';
+import { filterValueState } from '@/domains/product/atoms';
+import { FilterFamilyIDType } from '@/domains/product/types/filterType';
 import { FILTER_VALUES } from '@/commons/constants/filterValues';
-import OrderAvailableCheckBox from '@/components/units/(main)/Products/client/FilterTab/OrderAvailableCheckBox';
-import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
+import { TAG } from '@/domains/product/constants/tag';
+import { getIngredientTag, getPriceTag } from '@/domains/product/utils/getTag';
+import useModal from '@/commons/hooks/useModal';
+import FilterIcon from '@/domains/product/assets/filter.svg';
+import ProductSortSelect from '@/components/commons/selects/ProductSortSelect';
+import FilterModal from '@/domains/product/components/FilterTab/FilterModal';
+import OrderAvailableCheckBox from '@/domains/product/components/FilterTab/OrderAvailableCheckBox';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
-const getIngredientTag = (ingredients: Array<string>) => {
-  if (ingredients.length === 1) return ingredients[0];
-  if (ingredients.length > 1) return `${ingredients[0]} 외 ${ingredients.length - 1}개`;
-};
+interface FilterTabProps {
+  filterFamilyId: FilterFamilyIDType;
+}
 
-const getPriceTag = ({ minPrice, maxPrice }: { minPrice: number; maxPrice: number }) => {
-  if (minPrice === LIMIT_MIN_PRICE && maxPrice === LIMIT_MAX_PRICE) return;
-  return `${minPrice.toLocaleString()}~${maxPrice.toLocaleString()}원`;
-};
-
-const FilterTab = () => {
-  const [filterValue, setFilterValue] = useRecoilState(filterValueState);
+const FilterTab = ({ filterFamilyId }: FilterTabProps) => {
+  const [filterValue, setFilterValue] = useRecoilState(filterValueState(filterFamilyId));
   const { openModal } = useModal();
 
-  const categoryTags = FILTER_VALUES.categories;
+  const categoryTags = FILTER_VALUES.categories.map(item => ({
+    type: TAG.category,
+    content: item
+  }));
   const ingredientTag = filterValue.tags && getIngredientTag(filterValue.tags);
   const priceTag = getPriceTag(filterValue.price);
   const filterTagList = [ingredientTag, priceTag, ...categoryTags];
@@ -38,7 +37,7 @@ const FilterTab = () => {
   };
 
   const openFilterModal = () => {
-    openModal(<FilterModal />);
+    openModal(<FilterModal filterFamilyId={filterFamilyId} />);
   };
 
   return (
@@ -48,8 +47,8 @@ const FilterTab = () => {
           {filterTagList.map((item, index) => {
             if (!item) return;
 
-            const isCategoryTagActive = filterValue.category === item;
-            const isNewTag = !FILTER_VALUES.categories.includes(item); // ingredientTag, priceTag
+            const isCategoryTagActive = filterValue.category === item.content;
+            const isNewTag = item.type === TAG.ingredient || item.type === TAG.price; // ingredientTag, priceTag
 
             return (
               <button
@@ -60,10 +59,10 @@ const FilterTab = () => {
                     ? 'border-primaryOrangeRed text-primaryOrangeRed font-bold'
                     : 'border-gray-200 text-gray-900 font-medium'
                 }`}
-                onClick={() => handleFilterClick(item)}
+                onClick={() => handleFilterClick(item.content)}
                 disabled={isNewTag}
               >
-                {item}
+                {item.content}
               </button>
             );
           })}
@@ -73,8 +72,8 @@ const FilterTab = () => {
         </button>
       </div>
       <div className="flex justify-between items-center">
-        <OrderAvailableCheckBox />
-        <ProductSortSelect />
+        <OrderAvailableCheckBox filterFamilyId={filterFamilyId} />
+        <ProductSortSelect filterFamilyId={filterFamilyId} />
       </div>
     </PaddingWrapper>
   );

@@ -1,9 +1,11 @@
-import HeaderAndTab from '@/components/units/(main)/client/HeaderAndTab';
+import MainHeader from '@/components/units/(main)/client/MainHeader';
+import MainTab from '@/components/units/(main)/client/MainTab';
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <HeaderAndTab />
+      <MainHeader />
+      <MainTab />
       {children}
     </>
   );

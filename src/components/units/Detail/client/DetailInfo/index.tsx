@@ -33,15 +33,9 @@ const ProductInfo = ({ data }: ProductInfoProps) => {
               key={item.imgIndex}
               src={item.url}
               alt="상세"
-              width={0}
-              height={0}
-              sizes="100vw"
+              width={600}
+              height={100}
               className=" m-auto"
-              style={{
-                width: '100% ',
-                padding: 0,
-                margin: 0
-              }}
             />
           ))}
         </div>
