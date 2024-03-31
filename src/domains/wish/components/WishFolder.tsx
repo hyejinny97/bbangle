@@ -24,7 +24,7 @@ const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
   const { openModal } = useModal();
 
   const deleteFolder: MouseEventHandler<HTMLButtonElement> = e => {
-    openPopup(<DeleteWishFolderPopup folderId={id} />);
+    openPopup(<DeleteWishFolderPopup folderName={name} folderId={id} />);
     e.preventDefault();
   };
 

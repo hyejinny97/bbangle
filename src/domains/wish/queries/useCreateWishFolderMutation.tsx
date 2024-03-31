@@ -13,8 +13,8 @@ const useCreateWishListMutation = () => {
     if (!res.ok) throw new Error('찜 폴더 추가 실패');
   };
 
-  const onSuccess = () => {
-    revalidatePath('./');
+  const onSuccess = async () => {
+    await revalidatePath('./');
     openToast(<ToastPop>찜 폴더가 추가되었습니다.</ToastPop>);
   };
 

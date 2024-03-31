@@ -8,9 +8,10 @@ import useDeleteWishFolderMutation from '../queries/useDeleteWishFolderMutation'
 
 interface DeleteWishFolderPopupProps {
   folderId: number;
+  folderName: string;
 }
 
-const DeleteWishFolderPopup = ({ folderId }: DeleteWishFolderPopupProps) => {
+const DeleteWishFolderPopup = ({ folderName, folderId }: DeleteWishFolderPopupProps) => {
   const { mutate } = useDeleteWishFolderMutation();
   const { closePopup } = usePopup();
 
@@ -22,7 +23,7 @@ const DeleteWishFolderPopup = ({ folderId }: DeleteWishFolderPopupProps) => {
   return (
     <Popup className="text-center">
       <PaddingWrapper>
-        <u>$폴더명</u> 폴더 삭제
+        <u>{folderName}</u> 폴더 삭제
       </PaddingWrapper>
       <PaddingWrapper>
         삭제한 찜 폴더는 복구할 수 없고,
