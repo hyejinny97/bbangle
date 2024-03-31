@@ -7,6 +7,7 @@ interface ButtonProps {
   onClick: (_e: MouseEvent<HTMLButtonElement>) => void;
 }
 
+/**@deprecated */
 function BtnOutlinedHeart({ isLiked, onClick }: ButtonProps) {
   return (
     <button

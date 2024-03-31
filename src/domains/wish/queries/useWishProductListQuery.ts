@@ -2,11 +2,8 @@ import QUERY_KEY from '@/shared/constants/queryKey';
 import fetchExtend from '@/shared/utils/api';
 import { GetNextPageParamFunction, useInfiniteQuery } from '@tanstack/react-query';
 import { WishProductsDetail } from '../types/wishFolder';
-import { useParams } from 'next/navigation';
 
-const useGetProductListQuery = () => {
-  const { folderId } = useParams<{ folderId: string }>();
-
+const useWishProductListQuery = (folderId: string) => {
   const queryKey = [QUERY_KEY.wishProducts, folderId];
 
   const queryFn = async ({ pageParam }: { pageParam: number }) => {
@@ -35,4 +32,4 @@ const useGetProductListQuery = () => {
   });
 };
 
-export default useGetProductListQuery;
+export default useWishProductListQuery;

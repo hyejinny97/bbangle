@@ -1,15 +1,15 @@
 'use client';
 
-import { BbangleSmileIcon, CloseIcon } from '@/components/commons/Icon';
-import Image from 'next/image';
+import { CloseIcon } from '@/components/commons/Icon';
 import Link from 'next/link';
-import DeleteWishFolderPopup from './common/DeleteWishFolderPopup';
+import DeleteWishFolderPopup from './alert-box/DeleteWishFolderPopup';
 import { useRecoilValue } from 'recoil';
 import { isWishFolderEditingState } from '../atoms/wishFolder';
 import usePopup from '@/commons/hooks/usePopup';
 import { MouseEventHandler } from 'react';
 import useModal from '@/commons/hooks/useModal';
-import UpdateWishFolderModal from './common/UpdateWishFolderModal';
+import UpdateWishFolderModal from './alert-box/UpdateWishFolderModal';
+import FolderThumbnail from './common/FolderThumbnail';
 
 interface WishFolderProps {
   id: number;
@@ -36,7 +36,7 @@ const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
     <div className="flex flex-col gap-[6.5px] rounded-[6px] overflow-hidden">
       <Link
         href={`/wishlist/detail/products/${id}`}
-        className="relative flex justify-center items-center after:pb-[100%] w-full border border-gray-100 rounded-[6px]"
+        className="relative flex justify-center items-center after:pb-[100%] w-full"
       >
         {isEditing && (
           <button
@@ -47,15 +47,7 @@ const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
           </button>
         )}
 
-        {thumbnailList && thumbnailList.length !== 0 ? (
-          <div className="relative grid grid-cols-2 grid-rows-2">
-            {thumbnailList.map(thumbnailSrc => (
-              <Image key={thumbnailSrc} src={thumbnailSrc} fill alt="thumbnail" />
-            ))}
-          </div>
-        ) : (
-          <BbangleSmileIcon width={80} height={80} />
-        )}
+        <FolderThumbnail thumbnailList={thumbnailList} />
       </Link>
       <div className="flex justify-between items-center">
         {isEditing ? (

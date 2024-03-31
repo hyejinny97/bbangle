@@ -3,10 +3,12 @@
 import { BbangleSadIcon } from '@/components/commons/Icon';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import ProductCard from '@/components/commons/card/ProductCard';
-import useGetProductListQuery from '@/domains/wish/queries/useWishProductListQuery';
+import useWishProductListQuery from '@/domains/wish/queries/useWishProductListQuery';
+import { useParams } from 'next/navigation';
 
 const WishProductList = () => {
-  const { data } = useGetProductListQuery();
+  const { folderId } = useParams<{ folderId: string }>();
+  const { data } = useWishProductListQuery(folderId);
 
   if (!data || data?.length === 0) {
     return (

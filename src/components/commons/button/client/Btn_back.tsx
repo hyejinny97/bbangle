@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import Back from '@/components/commons/header/assets/back_arrow.svg';
 
+/**@deprecated */
 const BtnBack = () => {
   const router = useRouter();
 
