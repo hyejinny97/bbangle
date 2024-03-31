@@ -1,5 +1,5 @@
 import { UserProfileType } from '../../../components/units/(mypage)/types';
-import { REAVALIDATE_TAG } from '@/commons/constants/revalidateTags';
+import { REAVALIDATE_TAG } from '@/shared/constants/revalidateTags';
 import fetchExtend from '@/shared/utils/api';
 
 const getUserProfile = async () => {
