@@ -6,7 +6,7 @@ import Button from '@/components/commons/button/client/Button';
 import Input from '@/components/commons/inputs/Input';
 import UpModalNewVer from '@/components/commons/modal/UpModalNewVer';
 import useInput from '@/commons/hooks/useInput';
-import useUpdateWishListMutation from '../hooks/useUpdateWishListMutation';
+import useUpdateWishListMutation from '../queries/useUpdateWishListMutation';
 
 interface UpdateWishFolderModalProps {
   folderId: number;

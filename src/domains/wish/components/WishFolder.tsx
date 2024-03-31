@@ -1,9 +1,8 @@
 'use client';
 
-import { BbangleSmileIcon } from '@/components/commons/Icon';
+import { BbangleSmileIcon, CloseIcon } from '@/components/commons/Icon';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CloseIcon } from '@/shared/components/icons';
 import DeleteWishFolderPopup from './DeleteWishFolderPopup';
 import { useRecoilValue } from 'recoil';
 import { isWishFolderEditingState } from '../atoms/wishFolder';
