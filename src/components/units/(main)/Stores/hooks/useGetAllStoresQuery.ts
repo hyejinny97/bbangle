@@ -16,7 +16,6 @@ export const useGetAllStoresQuery = () => {
   });
 
   const stores = data?.pages.map(page => page.content).flat();
-  const itemCount = data?.pages[0]?.numberOfElements || 0;
 
-  return { stores, itemCount, ...rest };
+  return { stores, ...rest };
 };
