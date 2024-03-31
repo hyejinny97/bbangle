@@ -12,7 +12,7 @@ const MyPage = async () => {
   return (
     <>
       <Header title="마이페이지" />
-      {!!isLoggedIn ? <UserInfo /> : <LoginSection />}
+      {isLoggedIn ? <UserInfo /> : <LoginSection />}
       <SeparateLine />
       <MoreInfo />
     </>
