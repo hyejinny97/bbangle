@@ -1,7 +1,7 @@
 'use client';
 
 import { deleteCookie } from '@/action';
-import { loginState } from '@/shared/atoms/login';
+import { isLoggedinState } from '@/shared/atoms/login';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useSetRecoilState } from 'recoil';
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const MoreSection = ({ className }: Props) => {
-  const setLogin = useSetRecoilState(loginState);
+  const setLogin = useSetRecoilState(isLoggedinState);
   const { push } = useRouter();
   const logout = async () => {
     await Promise.all([deleteCookie('accessToken'), deleteCookie('refreshToken')]);

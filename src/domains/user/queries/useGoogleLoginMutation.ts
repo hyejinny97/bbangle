@@ -1,12 +1,12 @@
 import { useMutation } from '@tanstack/react-query';
 import { LoginResponse } from '../types/login';
 import { useSetRecoilState } from 'recoil';
-import { loginState } from '@/shared/atoms/login';
+import { isLoggedinState } from '@/shared/atoms/login';
 import { redirect } from '@/action';
 import fetchExtend from '@/shared/utils/api';
 
 const useGoogleLoginMutation = () => {
-  const setLogin = useSetRecoilState(loginState);
+  const setLogin = useSetRecoilState(isLoggedinState);
 
   const mutationFn = async (code: string) => {
     const res = await fetchExtend.get(`/oauth2/login/callback/google?code=${code}`, {

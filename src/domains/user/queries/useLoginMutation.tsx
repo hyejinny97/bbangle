@@ -1,5 +1,5 @@
 import { setCookie } from '@/action';
-import { loginState } from '@/shared/atoms/login';
+import { isLoggedinState } from '@/shared/atoms/login';
 import fetchExtend from '@/shared/utils/api';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
@@ -22,7 +22,7 @@ interface ParsedJWT {
 
 const useLoginMutation = () => {
   const { openToast } = useToast();
-  const setLogin = useSetRecoilState(loginState);
+  const setLogin = useSetRecoilState(isLoggedinState);
   const { push } = useRouter();
 
   const mutationFn = async (accessToken: string) => {

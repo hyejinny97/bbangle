@@ -6,7 +6,7 @@ import useLoginMutation from '@/domains/user/queries/useLoginMutation';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
-const KakaoLoginLoadingPage = () => {
+const KakaoLoginLoading = () => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code');
   const { mutate: mutateKakaoAuth, data: kakoAuthData } = useKakaoAuthMutation();
@@ -25,4 +25,4 @@ const KakaoLoginLoadingPage = () => {
   return <Loading />;
 };
 
-export default KakaoLoginLoadingPage;
+export default KakaoLoginLoading;
