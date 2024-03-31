@@ -118,7 +118,7 @@ async function _delete(endpoint: string, init?: RequestInit) {
 }
 
 /**
- * @deprecated API 함수 대신 @/shared/api 의 fetchExtend 사용해주세요
+ * @deprecated API 함수 대신 @/shared/uitls/api 의 fetchExtend 사용해주세요
  */
 
 const API = {
