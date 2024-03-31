@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { fetchUserProfile } from '@/components/units/(mypage)/api/fetchUserProfile';
+import getUserProfile from '@/domains/user/queries/getUserProfile';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import { BbangleSmileIcon } from '@/components/commons/Icon';
 
 const UserInfo = async () => {
-  const { profileImg, nickname } = await fetchUserProfile();
+  const { profileImg, nickname } = await getUserProfile();
 
   return (
     <PaddingWrapper className="flex flex-col gap-[16px]">

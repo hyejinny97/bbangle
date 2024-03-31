@@ -17,11 +17,24 @@ export const getCookie = async (name: string) => {
   return cookieStore.get(name);
 };
 
-export const setCookie = async ({ name, value }: { name: string; value: string }) => {
+export const setCookie = async ({
+  name,
+  value,
+  expires
+}: {
+  name: string;
+  value: string;
+  expires?: Date;
+}) => {
   cookies().set({
     name,
     value,
     httpOnly: true,
-    path: '/'
+    path: '/',
+    expires
   });
+};
+
+export const deleteCookie = async (key: string) => {
+  cookies().delete(key);
 };

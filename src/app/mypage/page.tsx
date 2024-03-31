@@ -3,14 +3,17 @@ import UserInfo from '@/components/units/(mypage)/MyPage/client/UserInfo';
 import MoreInfo from '@/components/units/(mypage)/MyPage/client/MoreInfo';
 import SeparateLine from '@/components/units/(mypage)/MyPage/client/SeparateLine';
 import LoginSection from '@/components/units/(mypage)/MyPage/client/LoginSection';
-
-const IsLoggedIn = false;
+import { cookies } from 'next/headers';
 
 const MyPage = () => {
+  const cookieStore = cookies();
+  const accessToken = cookieStore.get('accessToken');
+  const isLoggedIn = !!accessToken;
+
   return (
     <>
       <Header title="마이페이지" />
-      {IsLoggedIn ? <UserInfo /> : <LoginSection />}
+      {!!isLoggedIn ? <UserInfo /> : <LoginSection />}
       <SeparateLine />
       <MoreInfo />
     </>
