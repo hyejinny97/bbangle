@@ -1,7 +1,7 @@
 'use client';
 
 import { BbangleSadIcon } from '@/components/commons/Icon';
-import WishStore from '@/domains/store/components/StoreCard';
+import StoreCard from '@/domains/store/components/StoreCard';
 import useWishStoreListQuery from '@/domains/wish/queries/useWishStoreListQuery';
 
 const WishStroeList = () => {
@@ -18,8 +18,9 @@ const WishStroeList = () => {
   return (
     <div>
       {data.map(({ storeId, profile, introduce, storeName, isWished }) => (
-        <WishStore
+        <StoreCard
           key={storeId}
+          id={storeId}
           imgSrc={profile}
           title={storeName}
           desc={introduce}

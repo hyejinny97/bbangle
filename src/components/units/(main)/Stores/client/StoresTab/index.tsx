@@ -32,6 +32,7 @@ function StoresTab() {
         stores.map(({ introduce, storeId, storeName, isWished, profile }) => (
           <StoreCard
             key={storeId}
+            id={storeId}
             title={storeName}
             desc={introduce}
             isWished={isWished}

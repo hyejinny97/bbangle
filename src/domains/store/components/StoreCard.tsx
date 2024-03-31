@@ -1,18 +1,29 @@
 import { BbangleSmileIcon } from '@/components/commons/Icon';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import useAddWishStoreMutation from '@/domains/wish/queries/useAddWishStoreMutation';
+import useDeleteWishStoreMutation from '@/domains/wish/queries/useDeleteWishStoreMutation';
 import { StarGrayIcon, StarYellowIcon } from '@/shared/components/icons';
 import Image from 'next/image';
 
 interface WishStroeProps {
+  id: number;
   imgSrc: string;
   title: string;
   desc: string;
   isWished?: boolean; // default false로 임시 처리 (백엔드에서 안 줌)
 }
 
-const StoreCard = ({ imgSrc, title, desc, isWished = false }: WishStroeProps) => {
-  const like = () => {};
-  const hate = () => {};
+const StoreCard = ({ id, imgSrc, title, desc, isWished = false }: WishStroeProps) => {
+  const { mutate: addMutate } = useAddWishStoreMutation();
+  const { mutate: deleteMutate } = useDeleteWishStoreMutation();
+
+  const like = () => {
+    addMutate({ storeId: String(id) });
+  };
+
+  const hate = () => {
+    deleteMutate({ storeId: String(id) });
+  };
 
   return (
     <PaddingWrapper className="flex gap-[10px] justify-between border-b border-gray-100">
@@ -28,11 +39,11 @@ const StoreCard = ({ imgSrc, title, desc, isWished = false }: WishStroeProps) =>
         <div className="flex justify-between">
           <div className="font-semibold leading-150 tracking-tight-2 text-14">{title}</div>
           {isWished ? (
-            <button onClick={like}>
+            <button onClick={hate}>
               <StarYellowIcon />
             </button>
           ) : (
-            <button onClick={hate}>
+            <button onClick={like}>
               <StarGrayIcon />
             </button>
           )}

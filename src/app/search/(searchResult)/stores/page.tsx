@@ -30,6 +30,7 @@ const SearchStores = ({ searchParams: { query } }: SearchStoresProps) => {
           {stores.map(({ profile, storeId, storeName, isWished, introduce }) => (
             <StoreCard
               key={storeId}
+              id={storeId}
               imgSrc={profile}
               title={storeName}
               desc={introduce}
