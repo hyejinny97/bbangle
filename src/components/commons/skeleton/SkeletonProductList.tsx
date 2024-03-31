@@ -24,7 +24,6 @@ const GRID_COLS: GridType = {
 export const SkeletonProductList = ({ row = 3, col = 2 }: SkeletonProductListProps) => {
   return (
     <PaddingWrapper
-      key={`row-${row}`}
       className={`grid ${GRID_ROWS[row]} ${GRID_COLS[col]} gap-x-[16px] gap-y-[16px]`}
     >
       {Array(row * col)
