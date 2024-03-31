@@ -2,7 +2,7 @@
 
 import Header from '@/components/commons/header/client/Header';
 import { usePathname } from 'next/navigation';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import ProductAndStoreTab from '@/components/commons/tabs/ProductAndStoreTab';
 
 interface Layout {
@@ -21,7 +21,11 @@ const Layout = ({ children }: Layout) => {
   return (
     <>
       <Header back={isDetailPage} title="찜" />
-      {!isDetailPage && <ProductAndStoreTab defaultPath="/wishlist" />}
+      {!isDetailPage && (
+        <Suspense>
+          <ProductAndStoreTab defaultPath="/wishlist" />
+        </Suspense>
+      )}
       {children}
     </>
   );
