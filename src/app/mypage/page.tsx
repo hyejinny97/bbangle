@@ -3,11 +3,10 @@ import UserInfo from '@/components/units/(mypage)/MyPage/client/UserInfo';
 import MoreInfo from '@/components/units/(mypage)/MyPage/client/MoreInfo';
 import SeparateLine from '@/components/units/(mypage)/MyPage/client/SeparateLine';
 import LoginSection from '@/components/units/(mypage)/MyPage/client/LoginSection';
-import { cookies } from 'next/headers';
+import { getCookie } from '@/action';
 
-const MyPage = () => {
-  const cookieStore = cookies();
-  const accessToken = cookieStore.get('accessToken');
+const MyPage = async () => {
+  const accessToken = await getCookie('accessToken');
   const isLoggedIn = !!accessToken;
 
   return (
