@@ -1,6 +1,6 @@
 import API from '@/api';
 import { IAllProductsType } from '@/components/units/(main)/types';
-import { IFilterType } from '@/components/units/(main)/Products/types';
+import { IFilterType } from '@/domains/product/types/filterType';
 import { transformFilterValueToQueryString } from '@/commons/utils/transformFilterValueToQueryString';
 
 interface GetAllProductsProps {

@@ -1,11 +1,16 @@
-import CheckBox from '@/components/commons/checkbox/client/Checkbox';
-import { FILTER_VALUES } from '@/commons/constants/filterValues';
 import { useRecoilState } from 'recoil';
-import { tagsTempState } from '../../../atoms';
+import { FILTER_VALUES } from '@/commons/constants/filterValues';
+import { tagsTempState } from '@/domains/product/atoms';
+import { FilterFamilyIDType } from '@/domains/product/types/filterType';
+import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
-const TagsSection = () => {
-  const [selectedTags, setSelectedTags] = useRecoilState(tagsTempState);
+interface TagsSectionProps {
+  filterFamilyId: FilterFamilyIDType;
+}
+
+const TagsSection = ({ filterFamilyId }: TagsSectionProps) => {
+  const [selectedTags, setSelectedTags] = useRecoilState(tagsTempState(filterFamilyId));
   const uniqueValue = '전체';
 
   const handleClick = (clickedItem: string) => {

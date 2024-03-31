@@ -1,15 +1,17 @@
 'use client';
 
-import BtnStar from '@/components/commons/button/client/Btn_start';
 import { useState } from 'react';
-import { IStoreDetailType } from '../../types';
+import { useGetStoreDetailQuery } from '@/components/units/StoreDetail/hooks/useGetStoreDetailQuery';
+import BtnStar from '@/components/commons/button/client/Btn_start';
 
 interface StoreProfileProps {
-  data: IStoreDetailType;
+  storeId: number;
 }
 
-function StoreProfile({ data }: StoreProfileProps) {
+function StoreProfile({ storeId }: StoreProfileProps) {
+  const { data } = useGetStoreDetailQuery(storeId);
   const [isLiked, setIsLiked] = useState(data?.store?.isWished || false);
+
   return (
     <div className="flex flex-col justify-center items-center gap-[10px]">
       <div

@@ -4,17 +4,16 @@ import { useEffect } from 'react';
 
 import { useInView } from 'react-intersection-observer';
 import { useRecoilValue } from 'recoil';
-
+import { useGetAllProductsQuery } from '@/components/units/(main)/Products/hooks/useGetAllProductsQuery';
+import { filterValueState } from '@/domains/product/atoms';
+import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 import ProductCard from '@/components/commons/card/ProductCard';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import { SkeletonProductList } from '@/components/commons/skeleton/SkeletonProductList';
-import { filterValueState } from '@/components/units/(main)/Products/atoms';
-
-import { useGetAllProductsQuery } from '../../hooks/useGetAllProductsQuery';
 
 const ProductsTab = () => {
-  const filterValue = useRecoilValue(filterValueState);
-  const { products, isError, isLoading, hasNextPage, fetchNextPage } =
+  const filterValue = useRecoilValue(filterValueState(FILTER_FAMILY_ID.main));
+  const { products, isError, isLoading, fetchNextPage, hasNextPage } =
     useGetAllProductsQuery(filterValue);
   const { ref, inView } = useInView();
 

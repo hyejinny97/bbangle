@@ -1,6 +1,6 @@
 'use state';
 
-import PriceInput from '@/components/units/(main)/Products/client/FilterTab/FilterModal/PriceSection/PriceInput';
+import PriceInput from '@/domains/product/components/FilterTab/FilterModal/PriceSection/PriceInputContainer/PriceInput';
 import { useTmpPrice } from '@/components/units/(main)/Products/hooks/useTmpPrice';
 
 interface PriceInputContainerProps {

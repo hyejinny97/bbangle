@@ -1,3 +1,5 @@
+import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
+
 export type ICategoryType = string | undefined;
 export type ITagsType = string[] | undefined;
 export type IPriceType = {
@@ -14,3 +16,5 @@ export interface IFilterType {
   sort: ISortType;
   showProductsAvailableOrder: IShowProductsAvailableOrder;
 }
+
+export type FilterFamilyIDType = typeof FILTER_FAMILY_ID.main | typeof FILTER_FAMILY_ID.search;

@@ -1,11 +1,22 @@
+import { useEffect } from 'react';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { FILTER_VALUES } from '@/commons/constants/filterValues';
+import { filterValueState, categoryTempState } from '@/domains/product/atoms';
+import { FilterFamilyIDType } from '@/domains/product/types/filterType';
 import Radio from '@/components/commons/radio/Radio';
-import { useRecoilState } from 'recoil';
-import { categoryTempState } from '../../../atoms';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
-function CategorySection() {
-  const [selectedCategory, setSelectedCategory] = useRecoilState(categoryTempState);
+interface CategorySectionProps {
+  filterFamilyId: FilterFamilyIDType;
+}
+
+function CategorySection({ filterFamilyId }: CategorySectionProps) {
+  const filterValue = useRecoilValue(filterValueState(filterFamilyId));
+  const [selectedCategory, setSelectedCategory] = useRecoilState(categoryTempState(filterFamilyId));
+
+  useEffect(() => {
+    setSelectedCategory(filterValue.category);
+  }, [filterValue, setSelectedCategory]);
 
   const handleClick = (clickItem: string) => {
     setSelectedCategory(clickItem);

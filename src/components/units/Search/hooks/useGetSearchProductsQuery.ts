@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { IFilterType } from '@/components/units/(main)/Products/types';
+import { IFilterType } from '@/domains/product/types/filterType';
 import { getSearchProducts } from '@/components/units/Search/api/getSearchProducts';
 
 interface UseGetSearchProductsQueryProps {
