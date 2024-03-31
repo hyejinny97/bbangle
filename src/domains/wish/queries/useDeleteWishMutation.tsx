@@ -30,6 +30,7 @@ const useDeleteWishMutation = () => {
   };
 
   const onError = (error: Error) => {
+    console.log(error.message);
     openToast(
       <ToastPop>
         <div>{error.message}</div>

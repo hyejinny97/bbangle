@@ -3,7 +3,6 @@ import WishFolder from '@/domains/wish/components/WishFolder';
 
 const WishFolderGrid = async () => {
   const wishList = await getWishList();
-  console.log(wishList);
 
   return (
     <div className="grid gap-[16px] grid-cols-2">

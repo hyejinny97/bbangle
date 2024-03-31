@@ -14,7 +14,8 @@ interface ProductImageProps {
   popular?: boolean;
   ranking?: number;
 }
-export const ProductImage = ({ product, popular, ranking }: ProductImageProps) => {
+const ProductImage = ({ product, popular, ranking }: ProductImageProps) => {
+  const DEFAULT_FOLDER_ID = '86';
   const blurDataUrl =
     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==';
 
@@ -22,17 +23,18 @@ export const ProductImage = ({ product, popular, ranking }: ProductImageProps) =
   const { mutate: deleteMutate } = useDeleteWishMutation();
 
   const like: MouseEventHandler<HTMLButtonElement> = e => {
-    addMutate({ productId: String(product.boardId), folderId: '86' });
+    addMutate({ productId: String(product.boardId), folderId: DEFAULT_FOLDER_ID });
     e.preventDefault();
   };
 
   const dislike: MouseEventHandler<HTMLButtonElement> = e => {
-    deleteMutate({ productId: String(product.boardId), folderId: '86' });
+    // 정상 작동 안함
+    deleteMutate({ productId: String(product.boardId), folderId: DEFAULT_FOLDER_ID });
     e.preventDefault();
   };
 
   return (
-    <div>
+    <div className="w-full after:pb-[100%] bg-cover bg-center rounded-[6px] relative">
       <Image
         src={product.thumbnail}
         alt="상품사진"
@@ -40,7 +42,7 @@ export const ProductImage = ({ product, popular, ranking }: ProductImageProps) =
         height={300}
         placeholder="blur"
         blurDataURL={blurDataUrl}
-        className="rounded-[6px]"
+        className="rounded-[6px] aspect-square"
       />
       <div className="absolute bottom-[9px] right-[9px] h-[20px]">
         {product.isWished ? (
@@ -60,3 +62,4 @@ export const ProductImage = ({ product, popular, ranking }: ProductImageProps) =
     </div>
   );
 };
+export default ProductImage;

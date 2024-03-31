@@ -5,7 +5,7 @@ interface ProductSummaryProps {
   product: IProductType;
 }
 
-export const ProductSummary = ({ product }: ProductSummaryProps) => {
+const ProductSummary = ({ product }: ProductSummaryProps) => {
   return (
     <div className="mt-[6px]">
       <p className="mb-[2px] text-12 font-medium text-gray-400 leading-130 tracking-tight-2">
@@ -21,3 +21,5 @@ export const ProductSummary = ({ product }: ProductSummaryProps) => {
     </div>
   );
 };
+
+export default ProductSummary;

@@ -3,8 +3,8 @@
 import { IProductType } from '@/commons/types/productType';
 import Link from 'next/link';
 
-import { ProductImage } from './ProductImage';
-import { ProductSummary } from './ProductSummary';
+import ProductImage from './ProductImage';
+import ProductSummary from './ProductSummary';
 
 interface ProductCardProps {
   product: IProductType;
