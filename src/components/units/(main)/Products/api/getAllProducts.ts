@@ -5,14 +5,19 @@ import { transformFilterValueToQueryString } from '@/commons/utils/transformFilt
 
 interface GetAllProductsProps {
   query: IFilterType;
-  pageParam: number;
+  cursorId: number;
 }
 
 export const getAllProducts = async ({
   query,
-  pageParam
+  cursorId
 }: GetAllProductsProps): Promise<IAllProductsType> => {
-  const queryString = transformFilterValueToQueryString(query);
-  const data: IAllProductsType = await API.get(`/boards?${queryString}&page=${pageParam}`);
+  const firstPage = cursorId === -1;
+  const cursorIdQueryString = firstPage ? '' : `&cursorId=${cursorId}`;
+  const filterValueQueryString = transformFilterValueToQueryString(query);
+
+  const data: IAllProductsType = await API.get(
+    `/boards?${filterValueQueryString}${cursorIdQueryString}`
+  );
   return data;
 };
