@@ -7,7 +7,6 @@ import useGetProductListQuery from '@/domains/wish/queries/useWishProductList';
 
 const WishProductList = () => {
   const { data } = useGetProductListQuery();
-  console.log(data);
 
   if (!data || data?.length === 0) {
     return (

@@ -1,4 +1,4 @@
-import getWishList from '@/domains/wish/queries/getWishList';
+import getWishList from '@/domains/wish/queries/getWishFolderList';
 import WishFolder from '@/domains/wish/components/WishFolder';
 
 const WishFolderGrid = async () => {
