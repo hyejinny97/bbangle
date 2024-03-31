@@ -7,7 +7,7 @@ interface Layout {
   children: ReactNode;
 }
 
-const Layout = ({ children }: Layout) => {
+const Layout = async ({ children }: Layout) => {
   return (
     <>
       <Header title="찜" />
