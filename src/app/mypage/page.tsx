@@ -3,14 +3,16 @@ import UserInfo from '@/components/units/(mypage)/MyPage/client/UserInfo';
 import MoreInfo from '@/components/units/(mypage)/MyPage/client/MoreInfo';
 import SeparateLine from '@/components/units/(mypage)/MyPage/client/SeparateLine';
 import LoginSection from '@/components/units/(mypage)/MyPage/client/LoginSection';
+import { getCookie } from '@/action';
 
-const IsLoggedIn = false;
+const MyPage = async () => {
+  const accessToken = await getCookie('accessToken');
+  const isLoggedIn = !!accessToken;
 
-const MyPage = () => {
   return (
     <>
       <Header title="마이페이지" />
-      {IsLoggedIn ? <UserInfo /> : <LoginSection />}
+      {isLoggedIn ? <UserInfo /> : <LoginSection />}
       <SeparateLine />
       <MoreInfo />
     </>

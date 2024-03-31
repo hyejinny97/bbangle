@@ -2,7 +2,7 @@
 
 import LogoSub from '@/commons/assets/logo_sub.svg';
 
-const LogoBox = () => {
+const LoginLogoSection = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-[20px]">
       <LogoSub />
@@ -18,4 +18,4 @@ const LogoBox = () => {
   );
 };
 
-export default LogoBox;
+export default LoginLogoSection;

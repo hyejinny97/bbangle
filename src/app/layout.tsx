@@ -4,7 +4,6 @@ import localFont from 'next/font/local';
 import './global.css';
 import RootLayoutProvider from '@/components/commons/RootLayoutProvider';
 import Footer from '@/components/commons/footer/server/Footer';
-import GetAccessToken from '@/components/commons/header/client/GetAccessToken';
 import PopupContainer from '@/components/commons/PopupContainer';
 import ModalContainer from '@/components/commons/ModalContainer';
 import ToastContainer from '@/components/commons/ToastContainer';
@@ -28,7 +27,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <ModalContainer />
           <PopupContainer />
           <ToastContainer />
-          <GetAccessToken />
           <div className="sm:w-[600px] w-full m-auto pb-24 min-h-screen relative">{children}</div>
           <Footer />
         </RootLayoutProvider>
