@@ -3,13 +3,13 @@
 import { BbangleSmileIcon, CloseIcon } from '@/components/commons/Icon';
 import Image from 'next/image';
 import Link from 'next/link';
-import DeleteWishFolderPopup from './DeleteWishFolderPopup';
+import DeleteWishFolderPopup from './common/DeleteWishFolderPopup';
 import { useRecoilValue } from 'recoil';
 import { isWishFolderEditingState } from '../atoms/wishFolder';
 import usePopup from '@/commons/hooks/usePopup';
 import { MouseEventHandler } from 'react';
 import useModal from '@/commons/hooks/useModal';
-import UpdateWishFolderModal from './UpdateWishFolderModal';
+import UpdateWishFolderModal from './common/UpdateWishFolderModal';
 
 interface WishFolderProps {
   id: number;
