@@ -3,7 +3,7 @@
 import { BbangleSadIcon } from '@/components/commons/Icon';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import ProductCard from '@/components/commons/card/ProductCard';
-import useGetProductListQuery from '@/domains/wish/queries/useWishProductList';
+import useGetProductListQuery from '@/domains/wish/queries/useWishProductListQuery';
 
 const WishProductList = () => {
   const { data } = useGetProductListQuery();

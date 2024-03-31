@@ -7,10 +7,10 @@ interface WishStroeProps {
   imgSrc: string;
   title: string;
   desc: string;
-  isWished: boolean;
+  isWished?: boolean; // 임시 처리 (백엔드에서 안 줌)
 }
 
-const WishStore = ({ imgSrc, title, desc, isWished }: WishStroeProps) => {
+const StoreCard = ({ imgSrc, title, desc, isWished = false }: WishStroeProps) => {
   return (
     <PaddingWrapper className="flex gap-[10px] justify-between border-b border-gray-100">
       <div className="w-[40px] h-[40px] rounded-[6px] shrink-0">
@@ -32,4 +32,4 @@ const WishStore = ({ imgSrc, title, desc, isWished }: WishStroeProps) => {
   );
 };
 
-export default WishStore;
+export default StoreCard;

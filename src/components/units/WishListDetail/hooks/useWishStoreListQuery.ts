@@ -7,6 +7,7 @@ const getWishStoreList = async (): Promise<WishStore[]> => {
   return data;
 };
 
+/**@deprecated */
 export const useWishStoreListQuery = () => {
   return useQuery({
     queryKey: ['wishStoreList'],
