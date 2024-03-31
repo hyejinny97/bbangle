@@ -1,4 +1,5 @@
-import FilterTab from '@/components/units/(main)/Products/client/FilterTab';
+import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
+import FilterTab from '@/domains/product/components/FilterTab';
 import ProductList from '@/components/units/Search/client/ProductList';
 
 interface SearchProductsProps {
@@ -8,7 +9,7 @@ interface SearchProductsProps {
 const SearchProducts = ({ searchParams: { query } }: SearchProductsProps) => {
   return (
     <>
-      <FilterTab />
+      <FilterTab filterFamilyId={FILTER_FAMILY_ID.search} />
       <ProductList keyword={query || ''} />
     </>
   );

@@ -3,13 +3,14 @@
 import { Suspense } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useSearchParams } from 'next/navigation';
-import { filterValueState } from '@/components/units/(main)/Products/atoms';
+import { filterValueState } from '@/domains/product/atoms';
+import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 import { useGetSearchProductsQuery } from '@/components/units/Search/hooks/useGetSearchProductsQuery';
 import { useGetSearchStoresQuery } from '@/components/units/Search/hooks/useGetSearchStoresQuery';
 import ProductAndStoreTab from '@/components/commons/tabs/ProductAndStoreTab';
 
 const ProductAndStoreTabWithCount = () => {
-  const filterValue = useRecoilValue(filterValueState);
+  const filterValue = useRecoilValue(filterValueState(FILTER_FAMILY_ID.search));
   const searchParams = useSearchParams();
   const keyword = searchParams.get('query') || '';
 
@@ -18,7 +19,11 @@ const ProductAndStoreTabWithCount = () => {
 
   return (
     <Suspense>
-      <ProductAndStoreTab productCount={productCount} storeCount={storeCount} />
+      <ProductAndStoreTab
+        defaultPath="/search"
+        productCount={productCount}
+        storeCount={storeCount}
+      />
     </Suspense>
   );
 };

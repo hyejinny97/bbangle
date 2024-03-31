@@ -1,6 +1,6 @@
 import UpModal from '@/components/commons/modal/UpModal';
-import { useAddWishListMutation } from '@/components/units/WishList/hooks/useAddWishListMutation';
-import { useGetWishListFolder } from '@/components/units/WishList/hooks/useGetWishListFolder';
+import useAddWishListMutation from '@/domains/wish/hooks/useAddWishFolderMutation';
+import { useGetWishListFolder } from '@/domains/wish/hooks/useGetWishListFolder';
 import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import { useAddWishMutation } from '../hooks/useAddWishMutation';
 import PlusIcon from '../assets/plus-icon.svg';
@@ -63,18 +63,12 @@ export const ChooseWishListModal = ({
 
   const handleAddWishList = () => {
     if (title) {
-      addWishListMutate(
-        { title },
-        {
-          onSuccess: () => {
-            refetch();
-            setIsAddView(false);
-          },
-          onError: (err: any) => {
-            alert(err.response.data.message);
-          }
+      addWishListMutate(title, {
+        onSuccess: () => {
+          refetch();
+          setIsAddView(false);
         }
-      );
+      });
     }
   };
   return (

@@ -1,14 +1,11 @@
-import Header from '@/components/commons/header/client/Header';
-import ProductAndStoreTabWithCount from '@/components/units/(main)/client/ProductAndStoreTabWithCount';
-import FilterTab from '@/components/units/(main)/Products/client/FilterTab';
+import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
+import FilterTab from '@/domains/product/components/FilterTab';
 import ProductsTab from '@/components/units/(main)/Products/client/ProductsTab';
 
 const Products = () => {
   return (
     <>
-      <Header title="전체보기" />
-      <ProductAndStoreTabWithCount />
-      <FilterTab />
+      <FilterTab filterFamilyId={FILTER_FAMILY_ID.main} />
       <ProductsTab />
     </>
   );
