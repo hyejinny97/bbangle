@@ -1,7 +1,6 @@
 'use client';
 
 import { BbangleSadIcon } from '@/components/commons/Icon';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import ProductCard from '@/components/commons/card/ProductCard';
 import useWishProductListQuery from '@/domains/wish/queries/useWishProductListQuery';
 import { useParams } from 'next/navigation';
@@ -20,11 +19,11 @@ const WishProductList = () => {
   }
 
   return (
-    <PaddingWrapper className="grid grid-cols-2 gap-[16px]">
+    <div className="grid grid-cols-2 gap-[16px]">
       {data.map(product => (
         <ProductCard key={product.boardId} product={product} />
       ))}
-    </PaddingWrapper>
+    </div>
   );
 };
 
