@@ -3,8 +3,8 @@
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useGetAllStoresQuery } from '../../hooks/useGetAllStoresQuery';
-import StoreCard from '../StoreCard';
 import Loading from '@/components/commons/Loading';
+import StoreCard from '@/domains/store/components/StoreCard';
 
 function StoresTab() {
   const { stores, isError, isLoading, fetchNextPage, isFetchingNextPage } = useGetAllStoresQuery();
@@ -28,7 +28,16 @@ function StoresTab() {
 
   return (
     <div className="w-full">
-      {stores && stores.map(store => <StoreCard key={store.storeId} data={store} />)}
+      {stores &&
+        stores.map(({ introduce, storeId, storeName, isWished, profile }) => (
+          <StoreCard
+            key={storeId}
+            title={storeName}
+            desc={introduce}
+            isWished={isWished}
+            imgSrc={profile}
+          />
+        ))}
       {isFetchingNextPage ? <Loading /> : <div ref={ref}></div>}
     </div>
   );

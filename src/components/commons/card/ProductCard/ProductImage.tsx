@@ -27,7 +27,7 @@ const ProductImage = ({ product, popular, ranking }: ProductImageProps) => {
     e.preventDefault();
   };
 
-  const dislike: MouseEventHandler<HTMLButtonElement> = e => {
+  const hate: MouseEventHandler<HTMLButtonElement> = e => {
     // 정상 작동 안함
     deleteMutate({ productId: String(product.boardId), folderId: DEFAULT_FOLDER_ID });
     e.preventDefault();
@@ -46,7 +46,7 @@ const ProductImage = ({ product, popular, ranking }: ProductImageProps) => {
       />
       <div className="absolute bottom-[9px] right-[9px] h-[20px]">
         {product.isWished ? (
-          <button onClick={dislike}>
+          <button onClick={hate}>
             <HeartRedIcon />
           </button>
         ) : (

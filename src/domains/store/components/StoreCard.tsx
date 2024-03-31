@@ -1,16 +1,19 @@
 import { BbangleSmileIcon } from '@/components/commons/Icon';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import BtnStar from '@/components/commons/button/client/Btn_start';
+import { StarGrayIcon, StarYellowIcon } from '@/shared/components/icons';
 import Image from 'next/image';
 
 interface WishStroeProps {
   imgSrc: string;
   title: string;
   desc: string;
-  isWished?: boolean; // 임시 처리 (백엔드에서 안 줌)
+  isWished?: boolean; // default false로 임시 처리 (백엔드에서 안 줌)
 }
 
 const StoreCard = ({ imgSrc, title, desc, isWished = false }: WishStroeProps) => {
+  const like = () => {};
+  const hate = () => {};
+
   return (
     <PaddingWrapper className="flex gap-[10px] justify-between border-b border-gray-100">
       <div className="w-[40px] h-[40px] rounded-[6px] shrink-0">
@@ -24,7 +27,15 @@ const StoreCard = ({ imgSrc, title, desc, isWished = false }: WishStroeProps) =>
       <div className="flex w-full flex-col overflow-hidden">
         <div className="flex justify-between">
           <div className="font-semibold leading-150 tracking-tight-2 text-14">{title}</div>
-          <BtnStar isLiked={isWished} />
+          {isWished ? (
+            <button onClick={like}>
+              <StarYellowIcon />
+            </button>
+          ) : (
+            <button onClick={hate}>
+              <StarGrayIcon />
+            </button>
+          )}
         </div>
         <p className="truncate text-gray-600 leading-130 tracking-tight-2 text-12">{desc}</p>
       </div>

@@ -3,9 +3,9 @@
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useGetSearchStoresQuery } from '@/components/units/Search/hooks/useGetSearchStoresQuery';
-import StoreCard from '@/components/units/(main)/Stores/client/StoreCard';
 import NoSearchResult from '@/components/units/Search/client/NoSearchResult';
 import Loading from '@/components/commons/Loading';
+import StoreCard from '@/domains/store/components/StoreCard';
 
 interface SearchStoresProps {
   searchParams: { query?: string };
@@ -27,8 +27,14 @@ const SearchStores = ({ searchParams: { query } }: SearchStoresProps) => {
     <div className="w-full">
       {stores && itemCount > 0 ? (
         <>
-          {stores.map(store => (
-            <StoreCard key={store.storeId} data={store} />
+          {stores.map(({ profile, storeId, storeName, isWished, introduce }) => (
+            <StoreCard
+              key={storeId}
+              imgSrc={profile}
+              title={storeName}
+              desc={introduce}
+              isWished={isWished}
+            />
           ))}
           {isFetchingNextPage ? <Loading /> : <div ref={ref}></div>}
         </>
