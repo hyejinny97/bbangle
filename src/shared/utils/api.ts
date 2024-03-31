@@ -1,18 +1,9 @@
 import { getCookie } from '@/action';
-import { cookies } from 'next/headers';
 import { API_URL } from '../constants/api';
 
 const API_V1_URL = `${API_URL}/api/v1`;
 
 const getAccessToken = async () => {
-  const isServerSide = typeof window === 'undefined';
-
-  if (isServerSide) {
-    const cookieStore = cookies();
-    const accessToken = cookieStore.get('accessToken');
-    return accessToken?.value;
-  }
-
   const accessToken = await getCookie('accessToken');
   return accessToken?.value;
 };
