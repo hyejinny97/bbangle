@@ -3,13 +3,11 @@ import fetchExtend from '@/shared/utils/api';
 import { useMutation } from '@tanstack/react-query';
 import ToastPop from '@/components/commons/ToastPop';
 
-const useDeleteWishMutation = () => {
+const useDeleteWishProductMutation = () => {
   const { openToast } = useToast();
 
-  const mutationFn = async ({ productId, folderId }: { productId: string; folderId: string }) => {
-    const res = await fetchExtend.delete(`/boards/${productId}/wish`, {
-      body: JSON.stringify({ folderId })
-    });
+  const mutationFn = async ({ productId }: { productId: string }) => {
+    const res = await fetchExtend.patch(`/boards/${productId}/wish`);
 
     const contentType = res.headers.get('Content-Type');
     if (!res.ok && contentType && contentType.includes('application/json')) {
@@ -41,4 +39,4 @@ const useDeleteWishMutation = () => {
   return useMutation({ mutationFn, onSuccess, onError });
 };
 
-export default useDeleteWishMutation;
+export default useDeleteWishProductMutation;

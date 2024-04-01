@@ -5,7 +5,7 @@ import { BundleBadge } from '@/components/commons/badge/BundleBadge';
 import { RankingBadge } from '../../badge/RankingBadge';
 import { HeartGrayIcon, HeartRedIcon } from '@/shared/components/icons';
 import { MouseEventHandler } from 'react';
-import useDeleteWishMutation from '@/domains/wish/queries/useDeleteWishMutation';
+import useDeleteWishProductMutation from '@/domains/wish/queries/useDeleteWishProductMutation';
 import useAddWishMutation from '@/domains/wish/queries/useAddWishMutation';
 import Image from 'next/image';
 
@@ -15,12 +15,12 @@ interface ProductImageProps {
   ranking?: number;
 }
 const ProductImage = ({ product, popular, ranking }: ProductImageProps) => {
-  const DEFAULT_FOLDER_ID = '86';
-  const blurDataUrl =
+  const DEFAULT_FOLDER_ID = '0';
+  const BLUR_DATA_URL =
     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==';
 
   const { mutate: addMutate } = useAddWishMutation();
-  const { mutate: deleteMutate } = useDeleteWishMutation();
+  const { mutate: deleteMutate } = useDeleteWishProductMutation();
 
   const like: MouseEventHandler<HTMLButtonElement> = e => {
     addMutate({ productId: String(product.boardId), folderId: DEFAULT_FOLDER_ID });
@@ -28,8 +28,7 @@ const ProductImage = ({ product, popular, ranking }: ProductImageProps) => {
   };
 
   const hate: MouseEventHandler<HTMLButtonElement> = e => {
-    // 정상 작동 안함
-    deleteMutate({ productId: String(product.boardId), folderId: DEFAULT_FOLDER_ID });
+    deleteMutate({ productId: String(product.boardId) });
     e.preventDefault();
   };
 
@@ -41,7 +40,7 @@ const ProductImage = ({ product, popular, ranking }: ProductImageProps) => {
         width={300}
         height={300}
         placeholder="blur"
-        blurDataURL={blurDataUrl}
+        blurDataURL={BLUR_DATA_URL}
         className="rounded-[6px] aspect-square"
       />
       <div className="absolute bottom-[9px] right-[9px] h-[20px]">
