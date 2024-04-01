@@ -51,7 +51,7 @@ export const ProductImage = ({
         height={300}
         placeholder="blur"
         blurDataURL={blurDataUrl}
-        className="rounded-[6px]"
+        className="rounded-[6px] aspect-square"
       />
       <div className="absolute bottom-[9px] right-[9px] h-[20px]">
         <BtnHeart isLiked={product.isWished} onClick={handleClickHeart(product.boardId)} />
