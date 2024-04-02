@@ -1,5 +1,5 @@
 import API from '@/api';
-import { REAVALIDATE_TAG } from '@/commons/constants/revalidateTags';
+import { REAVALIDATE_TAG } from '@/shared/constants/revalidateTags';
 
 interface NotificationType {
   title: string;

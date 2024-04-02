@@ -1,15 +1,10 @@
 'use client';
 
-import { MouseEvent, useState } from 'react';
-
 import Image from 'next/image';
 
-import useToast from '@/commons/hooks/useToast';
 import BtnOutlinedHeart from '@/components/commons/button/client/Btn_outlined_heart';
 import Button from '@/components/commons/button/client/Button';
-import { ChooseWishListModal } from '@/components/commons/card/ProductCard/client/ChooseWishListModal';
 import GrayDivider from '@/components/commons/divider/GrayDivider';
-import ToastPop from '@/components/commons/ToastPop';
 
 import { IProductDetailType } from '../../types';
 import BoardInfo from '../BoardInfo';
@@ -20,24 +15,7 @@ interface ProductInfoProps {
 }
 
 const ProductInfo = ({ data }: ProductInfoProps) => {
-  const [isModal, setIsModal] = useState(false);
-  const [productId, setProductId] = useState<number>();
-  const { openToast } = useToast();
-
-  const handleClickHeart = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    if (data.board.isWished) {
-      openToast(
-        <ToastPop>
-          <div>이미 찜한 상품 입니다.</div>
-        </ToastPop>
-      );
-    } else {
-      setIsModal(true);
-      setProductId(data.board.boardId);
-    }
-  };
+  const handleClickHeart = () => {};
 
   const gotoPurchaseUrl = () => {
     window.open(data.board.purchaseUrl, '_blank');
@@ -71,9 +49,6 @@ const ProductInfo = ({ data }: ProductInfoProps) => {
           <Button onClick={gotoPurchaseUrl}>구매하러 가기</Button>
         </div>
       </div>
-      {isModal && (
-        <ChooseWishListModal isModal={isModal} setIsModal={setIsModal} productId={productId} />
-      )}
     </>
   );
 };

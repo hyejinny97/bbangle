@@ -4,7 +4,7 @@ import API from '@/api';
 import { MyProfileUpdateRequest } from '../types';
 import { revalidateTag } from '@/action';
 import { useRouter } from 'next/navigation';
-import { REAVALIDATE_TAG } from '@/commons/constants/revalidateTags';
+import { REAVALIDATE_TAG } from '@/shared/constants/revalidateTags';
 import useToast from '@/commons/hooks/useToast';
 import ToastPop from '@/components/commons/ToastPop';
 

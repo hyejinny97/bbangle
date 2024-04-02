@@ -25,7 +25,7 @@ const Footer = () => {
       title: '찜',
       defaultIcon: <Heart />,
       activeIcon: <HeartActive />,
-      href: '/wishlist/products'
+      href: '/wishlist/list/products'
     },
     {
       title: '마이페이지',
@@ -43,9 +43,8 @@ const Footer = () => {
 
         const isStorePage = pathname === '/stores';
         const isProductLink = item.href === '/products';
-
-        const isWishStorePage = pathname === '/wishlist/stores';
-        const isWishProductLink = item.href === '/wishlist/products';
+        const isWishStorePage = pathname.startsWith('/wishlist');
+        const isWishProductLink = item.href === '/wishlist/list/products';
 
         let isActive = pathname.startsWith(item.href);
         if (!isHomePage && isHomeLink) {

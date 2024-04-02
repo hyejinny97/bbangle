@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export const isWishFolderEditModeState = atom({
+export const isWishFolderEditingState = atom({
   key: 'wishFolder',
   default: false
 });

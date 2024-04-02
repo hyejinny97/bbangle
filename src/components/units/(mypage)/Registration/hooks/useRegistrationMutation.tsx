@@ -3,7 +3,7 @@ import API from '@/api';
 import { RegistrationRequest } from '../types';
 import { useRouter } from 'next/navigation';
 import { revalidateTag } from '@/action';
-import { REAVALIDATE_TAG } from '@/commons/constants/revalidateTags';
+import { REAVALIDATE_TAG } from '@/shared/constants/revalidateTags';
 import { ErrorResponse } from '@/commons/types/errorType';
 import useToast from '@/commons/hooks/useToast';
 import ToastPop from '@/components/commons/ToastPop';

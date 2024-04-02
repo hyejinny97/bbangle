@@ -1,5 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { getSearchStores } from '@/components/units/Search/api/getSearchStores';
+import QUERY_KEY from '@/shared/constants/queryKey';
 
 interface UseGetSearchStoresQueryProps {
   keyword: string;
@@ -7,7 +8,7 @@ interface UseGetSearchStoresQueryProps {
 
 export const useGetSearchStoresQuery = ({ keyword }: UseGetSearchStoresQueryProps) => {
   const { data, ...rest } = useInfiniteQuery({
-    queryKey: ['searchStores', keyword],
+    queryKey: [QUERY_KEY.store, QUERY_KEY.search, keyword],
     queryFn: ({ pageParam }: { pageParam: number }) => getSearchStores({ keyword, pageParam }),
     initialPageParam: 0,
     getNextPageParam: (lastPage, __, lastPageParam) => {

@@ -4,13 +4,16 @@ import { ReactNode } from 'react';
 import { CloseIcon } from '../../Icon';
 import useModal from '@/commons/hooks/useModal';
 import { motion } from 'framer-motion';
+import { twMerge } from 'tailwind-merge';
+import PaddingWrapper from '../../PaddingWrapper';
 
 interface UpModalProps {
   title: string;
   children: ReactNode;
+  className?: string;
 }
 
-const UpModalNewVer = ({ title, children }: UpModalProps) => {
+const UpModalNewVer = ({ title, children, className }: UpModalProps) => {
   const { closeModal } = useModal();
 
   return (
@@ -23,16 +26,19 @@ const UpModalNewVer = ({ title, children }: UpModalProps) => {
         ease: 'linear',
         duration: 0.2
       }}
-      className="absolute w-full max-w-[600px] max-h-[100vh] overflow-y-scroll scrollbar-hide bg-white z-[5001] rounded-t-[12px]"
+      className={twMerge(
+        'absolute w-full max-w-[600px] bg-white z-[5001] rounded-t-[12px]',
+        className
+      )}
     >
-      <div className="flex items-center px-[16px] py-[10px]">
+      <PaddingWrapper className="flex items-center py-[10px]">
         <h4 className="flex-1 text-center font-medium text-16 leading-150 tracking-tight-2">
           {title}
         </h4>
         <button onClick={closeModal}>
           <CloseIcon className="cursor-pointer" />
         </button>
-      </div>
+      </PaddingWrapper>
       {children}
     </motion.div>
   );

@@ -8,19 +8,25 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     | 'primary-orange'
     | 'secondary-white'
     | 'secondary-black'
-    | 'input';
+    | 'input'
+    | 'popup-black'
+    | 'popup-white';
 }
 
 const VARIANT_CLASS = {
-  'primary-black': 'w-full py-[14px] text-center rounded-full text-white bg-gray-900',
+  'primary-black': 'w-full h-[52px] py-[14px] text-center rounded-full text-white bg-gray-900',
   'primary-white':
-    'w-full py-[14px] text-center rounded-full text-gray-900 bg-white border border-solid border-gray-200',
+    'w-full h-[52px] py-[14px] text-center rounded-full text-gray-900 bg-white border border-solid border-gray-200',
   'primary-orange':
     'w-full py-[14px] text-center rounded-full bg-primaryOrangeRed border text-white border-solid border-gray-200',
   'secondary-white': 'px-[10px] py-[6px] bg-gray-100 rounded-full text-12',
   'secondary-black': 'px-[10px] py-[6px] bg-gray-800 rounded-full text-[12px] text-white ',
   input:
-    'disabled:text-gray-500 px-[11.5px] py-[6px] text-12 rounded-[8px] bg-gray-700 text-white disabled:bg-gray-200'
+    'disabled:text-gray-500 px-[11.5px] py-[6px] text-12 rounded-[8px] bg-gray-700 text-white disabled:bg-gray-200',
+  'popup-black':
+    'w-full h-[46px] py-[14px] px-[10px] text-center rounded-full text-white bg-gray-900',
+  'popup-white':
+    'w-full h-[46px] py-[14px] px-[10px] text-center rounded-full text-gray-900 bg-white border border-solid border-gray-200'
 };
 
 function Button({ variants = 'primary-black', className = '', ...props }: ButtonProps) {

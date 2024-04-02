@@ -1,14 +1,20 @@
+import getWishList from '@/domains/wish/queries/getWishFolderList';
 import WishFolder from '@/domains/wish/components/WishFolder';
 
-const WishFolderGrid = () => {
+const WishFolderGrid = async () => {
+  const wishList = await getWishList();
+
   return (
     <div className="grid gap-[16px] grid-cols-2">
-      <WishFolder id="1" name={'기본폴더'} count={0} />
-      <WishFolder id="2" name={'테스트'} count={0} />
-      <WishFolder id="3" name={'테스트'} count={0} />
-      <WishFolder id="4" name={'테스트'} count={0} />
-      <WishFolder id="5" name={'테스트'} count={0} />
-      <WishFolder id="6" name={'테스트'} count={0} />
+      {wishList.map(({ folderId, title, count, productImages }) => (
+        <WishFolder
+          key={folderId}
+          id={folderId}
+          name={title}
+          thumbnailList={productImages}
+          count={count}
+        />
+      ))}
     </div>
   );
 };
