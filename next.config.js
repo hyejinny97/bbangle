@@ -34,6 +34,9 @@ const nextConfig = {
           as: '*.js'
         }
       }
+    },
+    serverActions: {
+      allowedOrigins: ['www.bbangle.store']
     }
   },
 
