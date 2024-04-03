@@ -4,6 +4,7 @@ import useToast from '@/commons/hooks/useToast';
 import ToastPop from '@/components/commons/ToastPop';
 import { revalidateTag } from '@/action';
 
+/**@deprecated */
 export const useAddWishStoreMutation = () => {
   const { openToast } = useToast();
 

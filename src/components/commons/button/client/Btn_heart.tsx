@@ -7,6 +7,7 @@ interface ButtonProps {
   onClick: (_e: MouseEvent<HTMLButtonElement>) => void;
 }
 
+/**@deprecated */
 function BtnHeart({ isLiked, onClick }: ButtonProps) {
   return (
     <button onClick={onClick} className={isLiked ? 'animate-pop' : ''}>

@@ -7,6 +7,7 @@ const getWishProductList = async (folderId: number) => {
   return data;
 };
 
+/**@deprecated */
 export const useWishProductListQuery = (folderId: number) => {
   return useQuery<IWishProductList, Error>({
     queryKey: ['wishProductList'],

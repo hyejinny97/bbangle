@@ -1,0 +1,53 @@
+import useModal from '@/commons/hooks/useModal';
+import useToast from '@/commons/hooks/useToast';
+import fetchExtend from '@/shared/utils/api';
+import { useMutation } from '@tanstack/react-query';
+import WishFolderSelectModal from '../components/alert-box/WishFolderSelectModal';
+import ToastPop from '@/components/commons/ToastPop';
+import { revalidateTag } from '@/shared/actions';
+import { REAVALIDATE_TAG } from '@/shared/constants/revalidateTags';
+
+const useAddWishMutation = () => {
+  const { openToast } = useToast();
+  const { openModal } = useModal();
+
+  const mutationFn = async ({ productId, folderId }: { productId: string; folderId: string }) => {
+    const res = await fetchExtend.post(`/boards/${productId}/wish`, {
+      body: JSON.stringify({ folderId })
+    });
+
+    const contentType = res.headers.get('Content-Type');
+    if (!res.ok && contentType && contentType.includes('application/json')) {
+      const errorData = await res.json();
+      throw new Error(errorData.message);
+    }
+    if (!res.ok) {
+      throw new Error('찜 실패');
+    }
+  };
+
+  const onSuccess = async () => {
+    const openFolderSelectModal = () => openModal(<WishFolderSelectModal />);
+    await revalidateTag(REAVALIDATE_TAG.product);
+    openToast(
+      <ToastPop>
+        <div>💖 찜한 상품에 추가했어요</div>
+        <button className="hover:underline" onClick={openFolderSelectModal}>
+          편집
+        </button>
+      </ToastPop>
+    );
+  };
+
+  const onError = (error: Error) => {
+    openToast(
+      <ToastPop>
+        <div>{error.message}</div>
+      </ToastPop>
+    );
+  };
+
+  return useMutation({ mutationFn, onSuccess, onError });
+};
+
+export default useAddWishMutation;

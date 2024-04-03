@@ -1,9 +1,10 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { getAllStores } from '../api/getAllStores';
+import QUERY_KEY from '@/shared/constants/queryKey';
 
 export const useGetAllStoresQuery = () => {
   const { data, ...rest } = useInfiniteQuery({
-    queryKey: ['stores'],
+    queryKey: [QUERY_KEY.store],
     queryFn: ({ pageParam }: { pageParam: number }) => getAllStores({ pageParam }),
     initialPageParam: 0,
     getNextPageParam: (lastPage, __, lastPageParam) => {

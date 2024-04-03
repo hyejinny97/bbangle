@@ -9,6 +9,7 @@ interface ButtonProps {
   className?: string;
 }
 
+/**@deprecated */
 function BtnStar({ isLiked, onClick, className }: ButtonProps) {
   return (
     <button onClick={onClick} className={twMerge(isLiked ? 'animate-pop' : '', className)}>
