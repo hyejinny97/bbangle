@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { getAllStores } from '../api/getAllStores';
+import { getAllStores } from './getAllStores';
 import QUERY_KEY from '@/shared/constants/queryKey';
 
 export const useGetAllStoresQuery = () => {

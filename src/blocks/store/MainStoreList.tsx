@@ -2,11 +2,11 @@
 
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { useGetAllStoresQuery } from '../../hooks/useGetAllStoresQuery';
+import { useGetAllStoresQuery } from '@/domains/store/queries/useGetAllStoresQuery';
 import Loading from '@/components/commons/Loading';
 import StoreCard from '@/domains/store/components/StoreCard';
 
-function StoresTab() {
+function MainStoreList() {
   const { stores, isError, isLoading, fetchNextPage, isFetchingNextPage } = useGetAllStoresQuery();
   const { ref, inView } = useInView();
 
@@ -44,4 +44,4 @@ function StoresTab() {
   );
 }
 
-export default StoresTab;
+export default MainStoreList;

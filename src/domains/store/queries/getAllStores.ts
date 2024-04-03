@@ -1,5 +1,5 @@
 import API from '@/api';
-import { IAllStoresType } from '@/components/units/(main)/types';
+import { IAllStoresType } from '@/domains/store/types/allStoresType';
 
 interface GetAllStoresProps {
   pageParam: number;
