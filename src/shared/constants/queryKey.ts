@@ -3,7 +3,8 @@ const QUERY_KEY = {
   wishFolder: 'wish folder',
   store: 'store',
   search: 'search',
-  products: 'products'
+  mainProducts: 'main products',
+  mainStores: 'main stores'
 };
 
 export default QUERY_KEY;
