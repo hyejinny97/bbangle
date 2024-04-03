@@ -36,7 +36,7 @@ const nextConfig = {
       }
     },
     serverActions: {
-      allowedOrigins: ['115.85.181.105:3000']
+      allowedOrigins: ['www.bbangle.store']
     }
   },
 
