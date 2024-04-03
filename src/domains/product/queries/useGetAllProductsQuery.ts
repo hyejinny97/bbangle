@@ -1,18 +1,36 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, GetNextPageParamFunction } from '@tanstack/react-query';
+import QUERY_KEY from '@/shared/constants/queryKey';
 import { IFilterType } from '@/domains/product/types/filterType';
-import { getAllProducts } from './getAllProducts';
+import { IAllProductsType } from '@/domains/product/types/allProductsType';
+import { transformFilterValueToQueryString } from '@/commons/utils/transformFilterValueToQueryString';
+import fetchExtend from '@/shared/utils/api';
 
 export const useGetAllProductsQuery = (query: IFilterType) => {
+  const queryKey = [QUERY_KEY.products, query];
+
+  const queryFn = async ({ pageParam: cursorId }: { pageParam: number }) => {
+    const firstPage = cursorId === -1;
+    const cursorIdQueryString = firstPage ? '' : `&cursorId=${cursorId}`;
+    const filterValueQueryString = transformFilterValueToQueryString(query);
+
+    const res = await fetchExtend.get(`/boards?${filterValueQueryString}${cursorIdQueryString}`);
+    if (!res.ok) throw new Error('전체 상품 조회 실패');
+
+    const data: IAllProductsType = await res.json();
+    return data;
+  };
+
+  const getNextPageParam: GetNextPageParamFunction<number, IAllProductsType> = lastPage => {
+    if (!lastPage.hasNext) return;
+    const nextCursorId = lastPage.content.at(-1)?.boardId;
+    return nextCursorId;
+  };
+
   const { data, ...rest } = useInfiniteQuery({
-    queryKey: ['products', query],
-    queryFn: ({ pageParam: cursorId }: { pageParam: number }) =>
-      getAllProducts({ query, cursorId }),
+    queryKey,
+    queryFn,
     initialPageParam: -1,
-    getNextPageParam: lastPage => {
-      if (!lastPage.hasNext) return;
-      const nextCursorId = lastPage.content.at(-1)?.boardId;
-      return nextCursorId;
-    },
+    getNextPageParam,
     refetchOnMount: false,
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
