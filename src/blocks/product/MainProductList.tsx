@@ -1,17 +1,16 @@
 'use client';
 
 import { useEffect } from 'react';
-
 import { useInView } from 'react-intersection-observer';
 import { useRecoilValue } from 'recoil';
-import { useGetAllProductsQuery } from '@/components/units/(main)/Products/hooks/useGetAllProductsQuery';
+import { useGetAllProductsQuery } from '@/domains/product/queries/useGetAllProductsQuery';
 import { filterValueState } from '@/domains/product/atoms';
 import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 import ProductCard from '@/components/commons/card/ProductCard';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import { SkeletonProductList } from '@/components/commons/skeleton/SkeletonProductList';
 
-const ProductsTab = () => {
+const MainProductList = () => {
   const filterValue = useRecoilValue(filterValueState(FILTER_FAMILY_ID.main));
   const { products, isError, isLoading, fetchNextPage, hasNextPage } =
     useGetAllProductsQuery(filterValue);
@@ -44,4 +43,4 @@ const ProductsTab = () => {
   );
 };
 
-export default ProductsTab;
+export default MainProductList;

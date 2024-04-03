@@ -1,7 +1,7 @@
 'use state';
 
-import PriceInput from '@/domains/product/components/FilterTab/FilterModal/PriceSection/PriceInputContainer/PriceInput';
-import { useTmpPrice } from '@/components/units/(main)/Products/hooks/useTmpPrice';
+import PriceInput from '@/domains/product/components/alert-box/FilterModal/PriceSection/PriceInputContainer/PriceInput';
+import { useTmpPrice } from '@/domains/product/hooks/useTmpPrice';
 
 interface PriceInputContainerProps {
   minPrice: number;

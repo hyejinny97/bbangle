@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { useRecoilValue } from 'recoil';
 import { filterValueState } from '@/domains/product/atoms';
 import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
-import { useGetAllProductsQuery } from '@/components/units/(main)/Products/hooks/useGetAllProductsQuery';
+import { useGetAllProductsQuery } from '@/domains/product/queries/useGetAllProductsQuery';
 import ProductAndStoreTab from '@/components/commons/tabs/ProductAndStoreTab';
 
 const ProductAndStoreTabWithCount = () => {

@@ -1,13 +1,4 @@
-import { IProductType } from '@/commons/types/productType';
 import { IStoreType } from '@/commons/types/storeType';
-
-export interface IAllProductsType {
-  content: IProductType[];
-  requestCursor: number | null;
-  hasNext: boolean;
-  boardCnt: number;
-  storeCnt: number;
-}
 
 export interface IAllStoresType {
   content: IStoreType[];
@@ -34,12 +25,4 @@ export interface IAllStoresType {
     sorted: boolean;
     unsorted: boolean;
   };
-}
-
-export interface WishStoreData {
-  storeId: number | undefined;
-}
-
-export interface WishStoreListReturn {
-  message: string;
 }

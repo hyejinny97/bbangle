@@ -1,5 +1,5 @@
 import API from '@/api';
-import { IAllProductsType } from '@/components/units/(main)/types';
+import { IAllProductsType } from '@/domains/product/types/allProductsType';
 import { IFilterType } from '@/domains/product/types/filterType';
 import { transformFilterValueToQueryString } from '@/commons/utils/transformFilterValueToQueryString';
 

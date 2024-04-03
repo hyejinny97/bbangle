@@ -8,16 +8,16 @@ import { TAG } from '@/domains/product/constants/tag';
 import { getIngredientTag, getPriceTag } from '@/domains/product/utils/getTag';
 import useModal from '@/commons/hooks/useModal';
 import FilterIcon from '@/domains/product/assets/filter.svg';
-import ProductSortSelect from '@/components/commons/selects/ProductSortSelect';
-import FilterModal from '@/domains/product/components/FilterTab/FilterModal';
-import OrderAvailableCheckBox from '@/domains/product/components/FilterTab/OrderAvailableCheckBox';
+import ProductSortSelect from '@/domains/product/components/FilterSection/ProductSortSelect';
+import FilterModal from '@/domains/product/components/alert-box/FilterModal';
+import OrderAvailableCheckBox from '@/domains/product/components/FilterSection/OrderAvailableCheckBox';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
-interface FilterTabProps {
+interface FilterSectionProps {
   filterFamilyId: FilterFamilyIDType;
 }
 
-const FilterTab = ({ filterFamilyId }: FilterTabProps) => {
+const FilterSection = ({ filterFamilyId }: FilterSectionProps) => {
   const [filterValue, setFilterValue] = useRecoilState(filterValueState(filterFamilyId));
   const { openModal } = useModal();
 
@@ -79,4 +79,4 @@ const FilterTab = ({ filterFamilyId }: FilterTabProps) => {
   );
 };
 
-export default FilterTab;
+export default FilterSection;

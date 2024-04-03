@@ -1,6 +1,6 @@
 'use client';
 
-import { useMainPage } from '@/components/units/(main)/hooks/useMainPage';
+import { useMainPage } from '@/domains/product/hooks/useMainPage';
 import Header from '@/components/commons/header/client/Header';
 
 const MainHeader = () => {
