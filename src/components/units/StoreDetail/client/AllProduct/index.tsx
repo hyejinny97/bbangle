@@ -1,7 +1,7 @@
 'use client';
 
 import { useGetStoreDetailAllQuery } from '@/components/units/StoreDetail/hooks/useGetStoreDetailAllQuery';
-import ProductCard from '@/components/commons/card/ProductCard';
+import ProductCard from '@/domains/product/components/ProductCard';
 
 interface AllProductProps {
   storeId: number;

@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { filterValueState } from '@/domains/product/atoms';
 import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 import { useGetSearchProductsQuery } from '@/components/units/Search/hooks/useGetSearchProductsQuery';
-import ProductCard from '@/components/commons/card/ProductCard';
+import ProductCard from '@/domains/product/components/ProductCard';
 import NoSearchResult from '@/components/units/Search/client/NoSearchResult';
 import Loading from '@/components/commons/Loading';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';

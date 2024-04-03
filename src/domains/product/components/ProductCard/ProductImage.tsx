@@ -2,7 +2,7 @@
 
 import { IProductType } from '@/commons/types/productType';
 import { BundleBadge } from '@/components/commons/badge/BundleBadge';
-import { RankingBadge } from '../../badge/RankingBadge';
+import { RankingBadge } from '@/components/commons/badge/RankingBadge';
 import { HeartGrayIcon, HeartRedIcon } from '@/shared/components/icons';
 import { MouseEventHandler } from 'react';
 import useDeleteWishProductMutation from '@/domains/wish/queries/useDeleteWishProductMutation';

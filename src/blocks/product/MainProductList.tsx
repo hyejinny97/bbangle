@@ -6,7 +6,7 @@ import { useRecoilValue } from 'recoil';
 import { useGetAllProductsQuery } from '@/domains/product/queries/useGetAllProductsQuery';
 import { filterValueState } from '@/domains/product/atoms';
 import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
-import ProductCard from '@/components/commons/card/ProductCard';
+import ProductCard from '@/domains/product/components/ProductCard';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import { SkeletonProductList } from '@/components/commons/skeleton/SkeletonProductList';
 

@@ -2,9 +2,8 @@
 
 import { IProductType } from '@/commons/types/productType';
 import Link from 'next/link';
-
-import ProductImage from './ProductImage';
-import ProductSummary from './ProductSummary';
+import ProductImage from '@/domains/product/components/ProductCard/ProductImage';
+import ProductSummary from '@/domains/product/components/ProductCard/ProductSummary';
 
 interface ProductCardProps {
   product: IProductType;
