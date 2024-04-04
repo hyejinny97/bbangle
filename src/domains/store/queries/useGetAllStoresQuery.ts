@@ -4,7 +4,7 @@ import { IAllStoresType } from '@/domains/store/types/allStoresType';
 import fetchExtend from '@/shared/utils/api';
 
 export const useGetAllStoresQuery = () => {
-  const queryKey = [QUERY_KEY.mainStores];
+  const queryKey = [QUERY_KEY.main, QUERY_KEY.store];
 
   const queryFn = async ({ pageParam }: { pageParam: number }) => {
     const res = await fetchExtend.get(`/stores?page=${pageParam}`);
