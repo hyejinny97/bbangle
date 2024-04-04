@@ -1,5 +1,5 @@
-import MainHeader from '@/components/units/(main)/client/MainHeader';
-import MainTab from '@/components/units/(main)/client/MainTab';
+import MainHeader from '@/blocks/product/MainHeader';
+import MainTab from '@/blocks/product/MainTab';
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (

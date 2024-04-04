@@ -1,7 +1,7 @@
 'use client';
 
 import { BbangleSadIcon } from '@/components/commons/Icon';
-import ProductCard from '@/components/commons/card/ProductCard';
+import ProductCard from '@/domains/product/components/ProductCard';
 import useWishProductListQuery from '@/domains/wish/queries/useWishProductListQuery';
 import { useParams } from 'next/navigation';
 
