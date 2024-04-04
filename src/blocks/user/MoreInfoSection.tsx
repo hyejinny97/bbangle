@@ -1,27 +1,23 @@
 'use client';
 
 import Link from 'next/link';
-import {
-  IconBell,
-  IconDoc,
-  IconLock,
-  IconInquiry
-} from '@/components/units/(mypage)/MyPage/client/Icons';
 import { chatKakaoChannel } from '@/commons/utils/chatKakaoChannel';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import { useRecoilValue } from 'recoil';
+import { isLoggedinState } from '@/shared/atoms/login';
+import PATH from '@/shared/constants/path';
+import { BellIcon, DocIcon, InquiryIcon, LockIcon } from '@/domains/user/components/icons';
 
 interface MoreInfoItemProps {
   icon: React.ReactNode;
   content: string;
 }
 
-const isLoggedIn = true;
-
 const INFOS = [
-  { href: '/mypage/notifications', icon: <IconBell />, content: '공지사항' },
-  { href: '/mypage/service-terms', icon: <IconDoc />, content: '서비스 이용 약관' },
-  { href: '/mypage/privacy-policy', icon: <IconLock />, content: '개인정보 수집 및 이용' },
-  { href: '#', icon: <IconInquiry />, content: '문의하기' }
+  { href: PATH.notification, icon: <BellIcon />, content: '공지사항' },
+  { href: PATH.serviceTerm, icon: <DocIcon />, content: '서비스 이용 약관' },
+  { href: PATH.privacyPolicy, icon: <LockIcon />, content: '개인정보 수집 및 이용' },
+  { href: '#', icon: <InquiryIcon />, content: '문의하기' }
 ];
 
 const MoreInfoItem = ({ icon, content }: MoreInfoItemProps) => {
@@ -33,7 +29,8 @@ const MoreInfoItem = ({ icon, content }: MoreInfoItemProps) => {
   );
 };
 
-const MoreInfo = () => {
+const MoreInfoSection = () => {
+  const isLoggedIn = useRecoilValue(isLoggedinState);
   const information = isLoggedIn ? INFOS : INFOS.slice(0, INFOS.length - 1);
 
   return (
@@ -53,4 +50,4 @@ const MoreInfo = () => {
   );
 };
 
-export default MoreInfo;
+export default MoreInfoSection;

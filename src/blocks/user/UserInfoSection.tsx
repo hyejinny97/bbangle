@@ -3,8 +3,9 @@ import Link from 'next/link';
 import getUserProfile from '@/domains/user/queries/getUserProfile';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import { BbangleSmileIcon } from '@/components/commons/Icon';
+import PATH from '@/shared/constants/path';
 
-const UserInfo = async () => {
+const UserInfoSection = async () => {
   const { profileImg, nickname } = await getUserProfile();
 
   return (
@@ -26,7 +27,7 @@ const UserInfo = async () => {
           </div>
           <p className="text-18 text-gray-900 font-bold tracking-tight">{nickname}</p>
         </div>
-        <Link href="/mypage/update">
+        <Link href={PATH.profileUpdate}>
           <p className="text-11 text-gray-500 tracking-tight-2 leading-150">프로필 수정</p>
         </Link>
       </div>
@@ -35,4 +36,4 @@ const UserInfo = async () => {
   );
 };
 
-export default UserInfo;
+export default UserInfoSection;

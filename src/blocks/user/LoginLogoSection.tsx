@@ -1,6 +1,6 @@
 'use client';
 
-import LogoSub from '@/commons/assets/logo_sub.svg';
+import { BbangleSmileNameIcon } from '@/shared/components/icons';
 
 interface Props {
   title: string;
@@ -10,7 +10,7 @@ interface Props {
 const LoginLogoSection = ({ title, subTitle }: Props) => {
   return (
     <div className="flex flex-col items-center justify-center gap-[20px]">
-      <LogoSub />
+      <BbangleSmileNameIcon />
       <div>
         <div className="text-16 leading-150 tracking-tight-4 font-semibold text-center text-gray-900 ">
           {title}
