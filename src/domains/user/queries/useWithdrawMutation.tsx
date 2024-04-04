@@ -1,11 +1,11 @@
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
-import { withdrawMemberShip } from '@/components/units/(mypage)/Withdraw/api/withdrawMemberShip';
+import { withdrawMemberShip } from '@/domains/user/queries/withdrawMemberShip';
 import usePopup from '@/commons/hooks/usePopup';
 import useToast from '@/commons/hooks/useToast';
 import ToastPop from '@/components/commons/ToastPop';
 
-export const useWithdrawMutation = () => {
+const useWithdrawMutation = () => {
   const router = useRouter();
   const { closePopup } = usePopup();
   const { openToast } = useToast();
@@ -27,3 +27,5 @@ export const useWithdrawMutation = () => {
     throwOnError: true
   });
 };
+
+export default useWithdrawMutation;

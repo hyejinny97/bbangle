@@ -1,4 +1,4 @@
-import DeleteReasonItem from '@/components/units/(mypage)/Withdraw/client/DeleteReasonItem';
+import DeleteReasonItem from './DeleteReasonItem';
 
 const REASONS = [
   { content: '원하는 정보가 부족해요.' },
@@ -10,11 +10,9 @@ const REASONS = [
 
 const DeleteReasonList = () => {
   return (
-    <div className="py-[10px]">
-      {REASONS.map(item => (
-        <div key={item.content} className="mb-4 last:mb-0">
-          <DeleteReasonItem content={item.content} />
-        </div>
+    <div className="flex flex-col gap-[16px] py-[10px]">
+      {REASONS.map(({ content }) => (
+        <DeleteReasonItem key={content} content={content} />
       ))}
     </div>
   );

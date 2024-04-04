@@ -1,7 +1,7 @@
 'use client';
 
 import Button from '@/components/commons/button/client/Button';
-import WithdrawPopup from '@/components/units/(mypage)/Withdraw/client/WithdrawPopup';
+import WithdrawPopup from '@/domains/user/components/alert-box/WithdrawPopup';
 import usePopup from '@/commons/hooks/usePopup';
 
 interface WithdrawButtonProps {

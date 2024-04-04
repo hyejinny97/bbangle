@@ -1,4 +1,4 @@
-import API from '@/api';
+import fetchExtend from '@/shared/utils/api';
 
 interface WithdrawMemberShipProps {
   formData: FormData;
@@ -13,9 +13,10 @@ export const withdrawMemberShip = async ({ formData }: WithdrawMemberShipProps) 
     reasons: formData.getAll('delete-reason').join(',')
   };
 
-  const data: Data = await API.patch('/members', {
+  const res = await fetchExtend.patch('/members', {
     body: JSON.stringify(rawFormData)
   });
-
+  if (!res.ok) throw new Error('회원 탈퇴 실패');
+  const data: Data = await res.json();
   return data.message;
 };
