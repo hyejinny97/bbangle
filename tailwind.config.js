@@ -34,23 +34,8 @@ module.exports = {
         backdrop: 9999
       },
 
-      // ex) text-gray-50
       colors: {
-        color: {
-          PrimaryOrangeRed: '#F04C28',
-          SecondaryOrangeRed: '#ED5F5F',
-          SubColorPink: '#FEEDEA',
-          Gray100: '#F5F5F5',
-          Gray200: '#EEEEEE',
-          Gray300: '#E0E0E0',
-          Gray400: '#BDBDBD',
-          Gray500: '#9E9E9E',
-          Gray600: '#757575',
-          Gray700: '#616161',
-          Gray800: '#424242',
-          Gray900: '#212121',
-          White: '#fff'
-        },
+        // ex) text-gray-50
         gray: {
           50: '#FAFAFA',
           100: '#F5F5F5',
