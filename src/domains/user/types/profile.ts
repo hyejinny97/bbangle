@@ -9,6 +9,16 @@ export interface MyProfileUpdateRequest {
   birthDate: string | null;
 }
 
+export interface RegistrationRequest {
+  profileImg?: File;
+  phoneNumber: string;
+  isAllowingMarketing: boolean;
+  isPersonalInfoConsented: boolean;
+  isTermsOfServiceAccepted: boolean;
+  nickname: string;
+  birthdate?: string;
+}
+
 export interface UserProfileType {
   profileImg: string | null;
   nickname: string | null;

@@ -1,18 +1,19 @@
 import { useMutation } from '@tanstack/react-query';
-import API from '@/api';
-import { RegistrationRequest } from '../types';
 import { useRouter } from 'next/navigation';
 import { revalidateTag } from '@/action';
-import { REAVALIDATE_TAG } from '@/shared/constants/revalidateTags';
 import { ErrorResponse } from '@/commons/types/errorType';
 import useToast from '@/commons/hooks/useToast';
 import ToastPop from '@/components/commons/ToastPop';
+import { RegistrationRequest } from '../types/profile';
+import fetchExtend from '@/shared/utils/api';
+import PATH from '@/shared/constants/path';
+import QUERY_KEY from '@/shared/constants/queryKey';
 
 const useRegistrationMutation = () => {
   const { openToast } = useToast();
   const { push } = useRouter();
 
-  const mutationFn = ({ profileImg, ...rest }: RegistrationRequest) => {
+  const mutationFn = async ({ profileImg, ...rest }: RegistrationRequest) => {
     const formData = new FormData();
     const jsonData = JSON.stringify(rest);
     const blobData = new Blob([jsonData], { type: 'application/json' });
@@ -20,17 +21,19 @@ const useRegistrationMutation = () => {
     if (profileImg) {
       formData.append('profileImg', profileImg);
     }
-    return API.formPut('/members/additional-information', { body: formData });
+
+    const res = await fetchExtend.formPut('/members/additional-information', { body: formData });
+    if (!res.ok) throw Error('회원 등록 실패');
   };
 
-  const onSuccess = () => {
-    revalidateTag(REAVALIDATE_TAG.profile);
+  const onSuccess = async () => {
+    await revalidateTag(QUERY_KEY.profile);
     openToast(
       <ToastPop>
         <div>프로필 등록이 완료되었어요.</div>
       </ToastPop>
     );
-    push('/');
+    push(PATH.home);
   };
 
   const onError = (e: ErrorResponse) => {

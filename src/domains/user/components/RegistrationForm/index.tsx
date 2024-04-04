@@ -5,9 +5,9 @@ import { useRecoilValue } from 'recoil';
 import BirthdayInput from '@/domains/user/components/common/BirthdateInput';
 import NicknameInput from '@/domains/user/components/common/NickNameInput';
 import PhoneNumberInput from '@/domains/user/components/common/PhoneNumberInput';
-import { registrationFormState } from '../../../../../../domains/user/atoms/profile';
-import useRegistrationMutation from '../../hooks/useRegistrationMutation';
-import ProfileImageInput from '../../../../../../domains/user/components/common/ProfileImageInput';
+import { registrationFormState } from '../../atoms/profile';
+import useRegistrationMutation from '../../queries/useRegistrationMutation';
+import ProfileImageInput from '../common/ProfileImageInput';
 import CheckSection from './CheckSection';
 import ButtonSection from './ButtonSection';
 

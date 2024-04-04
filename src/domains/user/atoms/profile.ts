@@ -1,6 +1,5 @@
 import { atom, selector } from 'recoil';
-import { RegistrationRequest } from '../../../components/units/(mypage)/Registration/types';
-import { MyProfileUpdateRequest } from '../types/profile';
+import { MyProfileUpdateRequest, RegistrationRequest } from '../types/profile';
 
 export const agreeState = atom({
   key: 'agree',
