@@ -12,7 +12,7 @@ import { SkeletonProductList } from '@/components/commons/skeleton/SkeletonProdu
 
 const MainProductList = () => {
   const filterValue = useRecoilValue(filterValueState(FILTER_FAMILY_ID.main));
-  const { products, isError, isLoading, fetchNextPage, hasNextPage } =
+  const { data, isError, isLoading, fetchNextPage, hasNextPage } =
     useGetAllProductsQuery(filterValue);
   const { ref, inView } = useInView();
 
@@ -31,8 +31,8 @@ const MainProductList = () => {
   return (
     <PaddingWrapper className="px-0">
       <div className="grid grid-cols-2 gap-x-[16px] px-[16px] gap-y-[16px] pb-[36px]">
-        {products &&
-          products.map(product => <ProductCard key={product.boardId} product={product} />)}
+        {data &&
+          data.products.map(product => <ProductCard key={product.boardId} product={product} />)}
       </div>
       {hasNextPage && (
         <div ref={ref} className="pb-[36px]">

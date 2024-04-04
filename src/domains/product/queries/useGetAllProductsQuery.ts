@@ -26,7 +26,7 @@ export const useGetAllProductsQuery = (query: IFilterType) => {
     return nextCursorId;
   };
 
-  const { data, ...rest } = useInfiniteQuery({
+  return useInfiniteQuery({
     queryKey,
     queryFn,
     initialPageParam: -1,
@@ -34,12 +34,12 @@ export const useGetAllProductsQuery = (query: IFilterType) => {
     refetchOnMount: false,
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
-    staleTime: Infinity
+    staleTime: Infinity,
+    select: ({ pages }) => {
+      const products = pages.map(page => page.content).flat();
+      const productCount = pages[0]?.boardCnt || 0;
+      const storeCount = pages[0]?.storeCnt || 0;
+      return { products, productCount, storeCount };
+    }
   });
-
-  const products = data?.pages.map(page => page.content).flat();
-  const productCount = data?.pages[0]?.boardCnt || 0;
-  const storeCount = data?.pages[0]?.storeCnt || 0;
-
-  return { products, productCount, storeCount, ...rest };
 };

@@ -9,11 +9,11 @@ import ProductAndStoreTab from '@/components/commons/tabs/ProductAndStoreTab';
 
 const ProductAndStoreTabWithCount = () => {
   const filterValue = useRecoilValue(filterValueState(FILTER_FAMILY_ID.main));
-  const { productCount, storeCount } = useGetAllProductsQuery(filterValue);
+  const { data } = useGetAllProductsQuery(filterValue);
 
   return (
     <Suspense>
-      <ProductAndStoreTab productCount={productCount} storeCount={storeCount} />
+      <ProductAndStoreTab productCount={data?.productCount} storeCount={data?.storeCount} />
     </Suspense>
   );
 };
