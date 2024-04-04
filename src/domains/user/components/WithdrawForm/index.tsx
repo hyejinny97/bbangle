@@ -22,21 +22,19 @@ const WithdrawForm = () => {
   };
 
   return (
-    <>
-      <form id="withdraw-form" onSubmit={handleFormSubmit}>
-        <div>
-          <p className="mb-4 text-[14px] font-semibold tracking-tight">
-            계정을 삭제하는 이유를 알려주세요😢
-            <span className="text-[12px] text-gray-400">(중복선택가능)</span>
-          </p>
-          <DeleteReasonList />
-          <div className="flex justify-center mt-[20px] mb-[32px] ">
-            <Agree isChecked={isAgreeChecked} onChange={handleAgreeChange} />
-          </div>
+    <form id="withdraw-form" onSubmit={handleFormSubmit}>
+      <div>
+        <p className="mb-4 text-[14px] font-semibold tracking-tight">
+          계정을 삭제하는 이유를 알려주세요😢
+          <span className="text-[12px] text-gray-400">(중복선택가능)</span>
+        </p>
+        <DeleteReasonList />
+        <div className="flex justify-center mt-[20px] mb-[32px] ">
+          <Agree isChecked={isAgreeChecked} onChange={handleAgreeChange} />
         </div>
-        <WithdrawButton disabled={!isAgreeChecked} />
-      </form>
-    </>
+      </div>
+      <WithdrawButton disabled={!isAgreeChecked} />
+    </form>
   );
 };
 
