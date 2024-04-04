@@ -2,7 +2,7 @@
 
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import { useRecoilState } from 'recoil';
-import { agreeState } from '../../../atoms';
+import { agreeState } from '../../../../../../domains/user/atoms/profile';
 import { ChangeEvent } from 'react';
 
 const CheckSection = () => {

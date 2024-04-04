@@ -3,22 +3,22 @@
 import { FormEventHandler } from 'react';
 import { useRecoilValue } from 'recoil';
 import Button from '@/components/commons/button/client/Button';
-import BirthdayInput from '@/components/units/(mypage)/client/BirthdateInput';
-import MoreSection from '@/components/units/(mypage)/Update/client/UpdateForm/MoreSection';
-import NicknameInput from '@/components/units/(mypage)/client/NickNameInput';
-import PhoneNumberInput from '@/components/units/(mypage)/client/PhoneNumberInput';
-import ProfileImageInput from '@/components/units/(mypage)/client/ProfileImageInput';
-import useProfileUpdateMutation from '../../hooks/useProfileUpdateMutation';
-import { updateFormState } from '../../../atoms';
-import { UserProfileType } from '../../../types';
+import BirthdayInput from '@/domains/user/components/common/BirthdateInput';
+import MoreSection from '@/domains/user/components/ProfileUpdateForm/MoreSection';
+import NicknameInput from '@/domains/user/components/common/NickNameInput';
+import PhoneNumberInput from '@/domains/user/components/common/PhoneNumberInput';
+import ProfileImageInput from '@/domains/user/components/common/ProfileImageInput';
+import { UserProfileType } from '@/domains/user/types/profile';
+import useProfileUpdateMutation from '@/domains/user/queries/useProfileUpdateMutation';
+import { updateFormState } from '@/domains/user/atoms/profile';
 
-interface UpdateFormProps {
+interface ProfileUpdateFormProps {
   defaultValues: UserProfileType;
 }
 
-const UpdateForm = ({
+const ProfileUpdateForm = ({
   defaultValues: { profileImg, nickname, phoneNumber, birthDate }
-}: UpdateFormProps) => {
+}: ProfileUpdateFormProps) => {
   const { mutate } = useProfileUpdateMutation();
   const updateForm = useRecoilValue(updateFormState);
 
@@ -45,4 +45,4 @@ const UpdateForm = ({
   );
 };
 
-export default UpdateForm;
+export default ProfileUpdateForm;

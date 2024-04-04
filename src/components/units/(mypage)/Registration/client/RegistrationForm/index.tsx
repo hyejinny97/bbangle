@@ -2,12 +2,12 @@
 
 import { FormEventHandler, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
-import BirthdayInput from '@/components/units/(mypage)/client/BirthdateInput';
-import NicknameInput from '@/components/units/(mypage)/client/NickNameInput';
-import PhoneNumberInput from '@/components/units/(mypage)/client/PhoneNumberInput';
-import { registrationFormState } from '../../../atoms';
+import BirthdayInput from '@/domains/user/components/common/BirthdateInput';
+import NicknameInput from '@/domains/user/components/common/NickNameInput';
+import PhoneNumberInput from '@/domains/user/components/common/PhoneNumberInput';
+import { registrationFormState } from '../../../../../../domains/user/atoms/profile';
 import useRegistrationMutation from '../../hooks/useRegistrationMutation';
-import ProfileImageInput from '../../../client/ProfileImageInput';
+import ProfileImageInput from '../../../../../../domains/user/components/common/ProfileImageInput';
 import CheckSection from './CheckSection';
 import ButtonSection from './ButtonSection';
 

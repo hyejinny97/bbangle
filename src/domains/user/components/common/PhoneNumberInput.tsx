@@ -3,7 +3,7 @@
 import Input from '@/components/commons/inputs/Input';
 import Button from '@/components/commons/button/client/Button';
 import { useSetRecoilState } from 'recoil';
-import { phoneNumberState } from '../atoms';
+import { phoneNumberState } from '../../atoms/profile';
 import { ChangeEventHandler } from 'react';
 
 interface PhoneNumberInputProps {

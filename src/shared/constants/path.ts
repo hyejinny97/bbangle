@@ -8,7 +8,8 @@ const PATH = {
   notification: '/mypage/notifications',
   serviceTerm: '/mypage/service-terms',
   privacyPolicy: '/mypage/privacy-policy',
-  login: '/mypage/login'
+  login: '/mypage/login',
+  mypage: '/mypage'
 };
 
 export default PATH;

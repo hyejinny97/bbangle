@@ -3,7 +3,7 @@
 import { BbangleSmileIcon } from '@/components/commons/Icon';
 import { ChangeEventHandler, memo, useEffect, useId, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { profileImgState } from '../atoms';
+import { profileImgState } from '../../atoms/profile';
 import Image from 'next/image';
 
 interface ProfileImageInputProps {

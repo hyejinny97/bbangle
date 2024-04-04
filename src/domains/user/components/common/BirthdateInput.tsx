@@ -1,7 +1,7 @@
 'use client';
 
 import { useSetRecoilState } from 'recoil';
-import { birthDateState } from '../atoms';
+import { birthDateState } from '../../atoms/profile';
 import Input from '@/components/commons/inputs/Input';
 import { ChangeEventHandler } from 'react';
 
