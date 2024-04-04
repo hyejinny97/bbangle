@@ -6,7 +6,7 @@ import { transformFilterValueToQueryString } from '@/commons/utils/transformFilt
 import fetchExtend from '@/shared/utils/api';
 
 export const useGetAllProductsQuery = (query: IFilterType) => {
-  const queryKey = [QUERY_KEY.main, QUERY_KEY.product, { query }];
+  const queryKey = [QUERY_KEY.product, QUERY_KEY.main, { query }];
 
   const queryFn = async ({ pageParam: cursorId }: { pageParam: number }) => {
     const firstPage = cursorId === -1;
