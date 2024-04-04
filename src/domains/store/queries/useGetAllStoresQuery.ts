@@ -23,17 +23,17 @@ export const useGetAllStoresQuery = () => {
     return nextPageParam;
   };
 
-  const { data, ...rest } = useInfiniteQuery({
+  return useInfiniteQuery({
     queryKey,
     queryFn,
     initialPageParam: 0,
     getNextPageParam,
     refetchOnMount: false,
     refetchOnReconnect: false,
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
+    select: ({ pages }) => {
+      const stores = pages.map(page => page.content).flat();
+      return { stores };
+    }
   });
-
-  const stores = data?.pages.map(page => page.content).flat();
-
-  return { stores, ...rest };
 };

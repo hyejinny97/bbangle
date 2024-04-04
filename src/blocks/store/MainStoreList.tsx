@@ -7,7 +7,7 @@ import Loading from '@/components/commons/Loading';
 import StoreCard from '@/domains/store/components/StoreCard';
 
 function MainStoreList() {
-  const { stores, isError, isLoading, fetchNextPage, isFetchingNextPage } = useGetAllStoresQuery();
+  const { data, isError, isLoading, fetchNextPage, isFetchingNextPage } = useGetAllStoresQuery();
   const { ref, inView } = useInView();
 
   useEffect(() => {
@@ -28,8 +28,8 @@ function MainStoreList() {
 
   return (
     <div className="w-full">
-      {stores &&
-        stores.map(({ introduce, storeId, storeName, isWished, profile }) => (
+      {data &&
+        data.stores.map(({ introduce, storeId, storeName, isWished, profile }) => (
           <StoreCard
             key={storeId}
             id={storeId}
