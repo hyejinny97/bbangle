@@ -25,7 +25,7 @@ export default function GlobalError({
         <PaddingWrapper className="flex flex-wrap gap-x-[4%] gap-y-4">
           <div className="flex flex-col items-center justify-center w-full h-[80vh] gap-2">
             <BbangleSadIcon />
-            <div className="text-gray-500 text-center font-regular text-14 leading-150 tracking-tight-2">
+            <div className="text-gray-500 text-center font-normal text-14 leading-150 tracking-tight-2">
               <p>에러가 발생했어요!</p>
               <p>{error.message}</p>
             </div>
