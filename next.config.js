@@ -48,7 +48,9 @@ const nextConfig = {
       { hostname: 't1.kakaocdn.net' },
       { hostname: 'bbangree-oven.cdn.ntruss.com' }
     ]
-  }
+  },
+
+  output: 'standalone'
 };
 
 module.exports = nextConfig;
