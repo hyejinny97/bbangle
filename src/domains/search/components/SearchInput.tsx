@@ -1,32 +1,24 @@
 'use client';
 
 import SearchIcon from '@/components/units/Home/client/Search/assets/search.svg';
+import Input from '@/components/commons/inputs/Input';
 
 interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   value?: string;
   onChange?: (_: React.ChangeEvent<HTMLInputElement>) => void;
-  onEnter?: () => void;
+  onKeyDown?: (_: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-const SearchInput = ({ value, onChange, onEnter, ...rest }: SearchInputProps) => {
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!onEnter) return;
-
-    if (e.key === 'Enter') {
-      onEnter();
-      e.preventDefault();
-    }
-  };
-
+const SearchInput = ({ value, onChange, onKeyDown, ...rest }: SearchInputProps) => {
   return (
     <div className="flex items-center gap-[6px] px-[16px] py-[10px] w-full bg-blueGray-30 rounded-[50px] cursor-pointer">
-      <SearchIcon />
-      <input
+      <SearchIcon className="w-[15px]" />
+      <Input
         type="text"
+        className="p-0 border-none rounded-none flex-1 bg-blueGray-30 text-14 font-medium text-gray-400 leading-150 tracking-tight-2 outline-none"
         value={value}
-        className="w-full bg-blueGray-30 text-gray-400 text-14 font-medium leading-150 tracking-tight-2 outline-none"
         onChange={onChange}
-        onKeyDown={handleKeyDown}
+        onKeyDown={onKeyDown}
         {...rest}
       />
     </div>

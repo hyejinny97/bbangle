@@ -1,6 +1,6 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query';
-import { RecentSearchKeywordsType } from '@/components/units/Search/types';
-import { deleteRecentSearchKeyword } from '@/components/units/Search/api/deleteRecentSearchKeyword';
+import { RecentSearchKeywordsType } from '@/domains/search/types';
+import { deleteRecentSearchKeyword } from '@/domains/search/queries/deleteRecentSearchKeyword';
 
 export const useDeleteRecentSearchKeywordMutation = () => {
   const queryClient = useQueryClient();

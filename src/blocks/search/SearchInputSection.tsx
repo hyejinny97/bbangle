@@ -2,16 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { useAddRecentSearchKeywordMutation } from '@/components/units/Search/hooks/useAddRecentSearchKeywordMutation';
-import { useDebounce } from '@/components/units/Search/hooks/useDebounce';
-import SearchInput from '@/components/commons/inputs/SearchInput';
-import AutoCompleteSearchContainer from '@/components/units/Search/client/AutoCompleteSearchContainer';
+import { useAddRecentSearchKeywordMutation } from '@/domains/search/queries/useAddRecentSearchKeywordMutation';
+import { useDebounce } from '@/domains/search/hooks/useDebounce';
+import SearchInput from '@/domains/search/components/SearchInput';
+import AutoCompleteSearchContainer from '@/domains/search/components/AutoCompleteSearchContainer';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import BtnBack from '@/components/commons/button/client/Btn_back';
+import BackButton from '@/domains/search/components/BackButton';
 
 const SEARCH_DETAIL_PAGE_PATHNAMES = ['/search/products', '/search/stores'];
 
-const SearchInputContainer = () => {
+const SearchInputSection = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -43,7 +43,10 @@ const SearchInputContainer = () => {
     setShowAutoComplete(true);
   };
 
-  const handleInputEnter = () => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+
     const params = new URLSearchParams(searchParams.toString());
     params.set('query', text);
     router.push('/search/products' + '?' + params.toString());
@@ -55,11 +58,11 @@ const SearchInputContainer = () => {
   return (
     <PaddingWrapper className="relative py-[10px]">
       <div className="relative flex items-center">
-        {isSearchDetailPage && <BtnBack />}
+        {isSearchDetailPage && <BackButton />}
         <SearchInput
           value={text}
           onChange={handleInputChange}
-          onEnter={handleInputEnter}
+          onKeyDown={handleKeyDown}
           placeholder="궁금한 상품을 찾아보세요!"
         />
         {showAutoComplete && (
@@ -72,4 +75,4 @@ const SearchInputContainer = () => {
   );
 };
 
-export default SearchInputContainer;
+export default SearchInputSection;

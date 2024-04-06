@@ -1,5 +1,5 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query';
-import { addRecentSearchKeyword } from '@/components/units/Search/api/addRecentSearchKeyword';
+import { addRecentSearchKeyword } from '@/domains/search/queries/addRecentSearchKeyword';
 
 export const useAddRecentSearchKeywordMutation = () => {
   const queryClient = useQueryClient();

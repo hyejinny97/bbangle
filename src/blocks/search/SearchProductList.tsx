@@ -5,19 +5,19 @@ import { useRecoilValue } from 'recoil';
 import { useInView } from 'react-intersection-observer';
 import { filterValueState } from '@/domains/product/atoms';
 import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
-import { useGetSearchProductsQuery } from '@/components/units/Search/hooks/useGetSearchProductsQuery';
+import { useGetSearchProductsQuery } from '@/domains/search/queries/useGetSearchProductsQuery';
 import ProductCard from '@/domains/product/components/ProductCard';
-import NoSearchResult from '@/components/units/Search/client/NoSearchResult';
-import Loading from '@/components/commons/Loading';
+import NoSearchResult from '@/domains/search/components/NoSearchResult';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import { SkeletonProductList } from '@/components/commons/skeleton/SkeletonProductList';
 
-interface ProductListProps {
-  keyword: string;
+interface SearchProductListProps {
+  keyword?: string;
 }
 
-const ProductList = ({ keyword }: ProductListProps) => {
+const SearchProductList = ({ keyword = '' }: SearchProductListProps) => {
   const filterValue = useRecoilValue(filterValueState(FILTER_FAMILY_ID.search));
-  const { products, itemCount, isLoading, fetchNextPage, isFetchingNextPage } =
+  const { products, itemCount, isLoading, isError, fetchNextPage, hasNextPage } =
     useGetSearchProductsQuery({ keyword, filterValue });
   const { ref, inView } = useInView();
 
@@ -26,7 +26,12 @@ const ProductList = ({ keyword }: ProductListProps) => {
     fetchNextPage();
   }, [inView, fetchNextPage]);
 
-  if (isLoading) return <Loading />;
+  if (isLoading) {
+    return <SkeletonProductList />;
+  }
+  if (isError) {
+    return <div className="p-[16px]">Error</div>;
+  }
 
   return (
     <PaddingWrapper className="pb-[36px]">
@@ -35,7 +40,11 @@ const ProductList = ({ keyword }: ProductListProps) => {
           {products.map(product => (
             <ProductCard key={product.boardId} product={product} />
           ))}
-          {isFetchingNextPage ? <Loading /> : <div ref={ref}></div>}
+          {hasNextPage && (
+            <div ref={ref}>
+              <SkeletonProductList row={1} col={2} />
+            </div>
+          )}
         </div>
       ) : (
         <NoSearchResult />
@@ -44,4 +53,4 @@ const ProductList = ({ keyword }: ProductListProps) => {
   );
 };
 
-export default ProductList;
+export default SearchProductList;

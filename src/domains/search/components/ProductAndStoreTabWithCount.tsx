@@ -5,8 +5,8 @@ import { useRecoilValue } from 'recoil';
 import { useSearchParams } from 'next/navigation';
 import { filterValueState } from '@/domains/product/atoms';
 import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
-import { useGetSearchProductsQuery } from '@/components/units/Search/hooks/useGetSearchProductsQuery';
-import { useGetSearchStoresQuery } from '@/components/units/Search/hooks/useGetSearchStoresQuery';
+import { useGetSearchProductsQuery } from '@/domains/search/queries/useGetSearchProductsQuery';
+import { useGetSearchStoresQuery } from '@/domains/search/queries/useGetSearchStoresQuery';
 import ProductAndStoreTab from '@/components/commons/tabs/ProductAndStoreTab';
 
 const ProductAndStoreTabWithCount = () => {

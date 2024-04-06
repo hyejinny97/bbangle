@@ -1,14 +1,7 @@
-'use client';
-
 import Link from 'next/link';
-import { useGetAutoCompleteSearchTextsQuery } from '@/components/units/Search/hooks/useGetAutoCompleteSearchTextsQuery';
 
 interface AutoCompleteSearchItemProps {
   text: string;
-  keyword: string;
-}
-
-interface AutoCompleteSearchContainerProps {
   keyword: string;
 }
 
@@ -39,17 +32,4 @@ const AutoCompleteSearchItem = ({ text, keyword }: AutoCompleteSearchItemProps) 
   );
 };
 
-const AutoCompleteSearchContainer = ({ keyword }: AutoCompleteSearchContainerProps) => {
-  const { data: autoCompleteSearchTexts } = useGetAutoCompleteSearchTextsQuery(keyword);
-
-  return (
-    <div className="shadow-md shadow-gray-100 overflow-y-scroll scrollbar-hide">
-      {!!autoCompleteSearchTexts?.length &&
-        autoCompleteSearchTexts.map(text => {
-          return <AutoCompleteSearchItem key={text} text={text} keyword={keyword} />;
-        })}
-    </div>
-  );
-};
-
-export default AutoCompleteSearchContainer;
+export default AutoCompleteSearchItem;

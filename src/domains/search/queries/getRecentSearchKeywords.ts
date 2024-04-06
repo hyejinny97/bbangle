@@ -1,5 +1,5 @@
 import API from '@/api';
-import { RecentSearchKeywordsType } from '@/components/units/Search/types';
+import { RecentSearchKeywordsType } from '@/domains/search/types';
 
 export const getRecentSearchKeywords = async (): Promise<RecentSearchKeywordsType> => {
   const data: { content: RecentSearchKeywordsType } = await API.get('/search/recency');

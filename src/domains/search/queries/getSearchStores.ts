@@ -1,5 +1,5 @@
 import API from '@/api';
-import { IAllStoreType } from '@/components/units/Search/types';
+import { IAllStoreType } from '@/domains/search/types';
 
 interface GetSearchStoresProps {
   keyword: string;

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getAutoCompleteSearchTexts } from '@/components/units/Search/api/getAutoCompleteSearchTexts';
+import { getAutoCompleteSearchTexts } from '@/domains/search/queries/getAutoCompleteSearchTexts';
 
 export const useGetAutoCompleteSearchTextsQuery = (keyword: string) => {
   return useQuery({

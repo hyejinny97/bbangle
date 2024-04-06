@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import ProductAndStoreTabWithCount from '@/components/units/Search/client/ProductAndStoreTabWithCount';
+import ProductAndStoreTabWithCount from '@/domains/search/components/ProductAndStoreTabWithCount';
 
 interface SearchResultLayout {
   children: React.ReactNode;

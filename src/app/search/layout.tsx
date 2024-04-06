@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import SearchInputContainer from '@/components/units/Search/client/SearchInputContainer';
+import SearchInputSection from '@/blocks/search/SearchInputSection';
 
 interface SearchLayoutProps {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ const SearchLayout = ({ children }: SearchLayoutProps) => {
   return (
     <>
       <Suspense>
-        <SearchInputContainer />
+        <SearchInputSection />
       </Suspense>
       {children}
     </>

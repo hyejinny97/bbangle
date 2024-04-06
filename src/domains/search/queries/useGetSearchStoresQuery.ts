@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { getSearchStores } from '@/components/units/Search/api/getSearchStores';
+import { getSearchStores } from '@/domains/search/queries/getSearchStores';
 import QUERY_KEY from '@/shared/constants/queryKey';
 
 interface UseGetSearchStoresQueryProps {

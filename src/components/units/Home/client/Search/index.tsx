@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import SearchInput from '@/components/commons/inputs/SearchInput';
+import SearchInput from '@/domains/search/components/SearchInput';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 const Search = () => {
