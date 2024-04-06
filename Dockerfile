@@ -2,7 +2,7 @@ FROM node:20-alpine AS base
 
 # Setup env variabless for yarn and nextjs
 # https://nextjs.org/telemetry
-ENV NEXT_TELEMETRY_DISABLED=1 NODE_ENV=production YARN_VERSION=4.0.2
+ENV NEXT_TELEMETRY_DISABLED=1 NODE_ENV=production YARN_VERSION=4.1.1
 
 # update dependencies, add libc6-compat and dumb-init to the base image
 RUN apk update && apk upgrade && apk add --no-cache libc6-compat && apk add dumb-init
