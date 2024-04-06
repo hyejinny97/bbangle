@@ -5,7 +5,9 @@ const QUERY_KEY = {
   wish: 'wish',
   search: 'search',
   product: 'product',
-  store: 'store'
+  store: 'store',
+  keyword: 'keyword',
+  autoComplete: 'autoComplete'
 };
 
 export default QUERY_KEY;

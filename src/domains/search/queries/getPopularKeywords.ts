@@ -1,10 +1,18 @@
-import API from '@/api';
+import fetchExtend from '@/shared/utils/api';
 
-type PopularKeywordsType = Array<string>;
+interface PopularKeywordResultType {
+  content: Array<string>;
+}
 
-export const getPopularKeywords = async (): Promise<PopularKeywordsType> => {
-  const data: { content: PopularKeywordsType } = await API.get('/search/best-keyword', {
+export const getPopularKeywords = async () => {
+  const res = await fetchExtend.get('/search/best-keyword', {
     cache: 'no-store'
   });
+  if (!res.ok) {
+    console.error('인기 검색어 조회 실패');
+    return [];
+  }
+
+  const data: PopularKeywordResultType = await res.json();
   return data.content;
 };

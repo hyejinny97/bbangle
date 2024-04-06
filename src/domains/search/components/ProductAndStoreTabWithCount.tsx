@@ -14,15 +14,15 @@ const ProductAndStoreTabWithCount = () => {
   const searchParams = useSearchParams();
   const keyword = searchParams.get('query') || '';
 
-  const { itemCount: productCount } = useGetSearchProductsQuery({ keyword, filterValue });
-  const { itemCount: storeCount } = useGetSearchStoresQuery({ keyword });
+  const { data: productData } = useGetSearchProductsQuery({ keyword, filterValue });
+  const { data: storeData } = useGetSearchStoresQuery({ keyword });
 
   return (
     <Suspense>
       <ProductAndStoreTab
         defaultPath="/search"
-        productCount={productCount}
-        storeCount={storeCount}
+        productCount={productData?.itemCount}
+        storeCount={storeData?.itemCount}
       />
     </Suspense>
   );

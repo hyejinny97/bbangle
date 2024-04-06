@@ -17,8 +17,10 @@ interface SearchProductListProps {
 
 const SearchProductList = ({ keyword = '' }: SearchProductListProps) => {
   const filterValue = useRecoilValue(filterValueState(FILTER_FAMILY_ID.search));
-  const { products, itemCount, isLoading, isError, fetchNextPage, hasNextPage } =
-    useGetSearchProductsQuery({ keyword, filterValue });
+  const { data, isLoading, isError, fetchNextPage, hasNextPage } = useGetSearchProductsQuery({
+    keyword,
+    filterValue
+  });
   const { ref, inView } = useInView();
 
   useEffect(() => {
@@ -35,9 +37,9 @@ const SearchProductList = ({ keyword = '' }: SearchProductListProps) => {
 
   return (
     <PaddingWrapper className="pb-[36px]">
-      {products && itemCount > 0 ? (
+      {data && data.itemCount > 0 ? (
         <div className="grid grid-cols-2 gap-x-[16px] gap-y-[16px]">
-          {products.map(product => (
+          {data.products.map(product => (
             <ProductCard key={product.boardId} product={product} />
           ))}
           {hasNextPage && (

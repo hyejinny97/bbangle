@@ -1,10 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
-import { RecentSearchKeywordsType } from '@/domains/search/types';
-import { getRecentSearchKeywords } from '@/domains/search/queries/getRecentSearchKeywords';
+import { SearchResultType } from '@/domains/search/types';
+import fetchExtend from '@/shared/utils/api';
+import QUERY_KEY from '@/shared/constants/queryKey';
 
 export const useGetRecentSearchKeywordsQuery = () => {
-  return useQuery<RecentSearchKeywordsType, Error>({
-    queryKey: ['recentSearchKeywords'],
-    queryFn: getRecentSearchKeywords
-  });
+  const queryKey = [QUERY_KEY.search, QUERY_KEY.keyword];
+
+  const queryFn = async () => {
+    const res = await fetchExtend.get('/search/recency');
+    if (!res.ok) throw new Error('최근 검색어 조회 실패');
+
+    const data: SearchResultType = await res.json();
+    return data.content;
+  };
+
+  return useQuery({ queryKey, queryFn });
 };

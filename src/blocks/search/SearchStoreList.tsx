@@ -12,8 +12,9 @@ interface SearchStoreListProps {
 }
 
 const SearchStoreList = ({ keyword = '' }: SearchStoreListProps) => {
-  const { stores, itemCount, isLoading, isError, fetchNextPage, isFetchingNextPage } =
-    useGetSearchStoresQuery({ keyword });
+  const { data, isLoading, isError, fetchNextPage, isFetchingNextPage } = useGetSearchStoresQuery({
+    keyword
+  });
   const { ref, inView } = useInView();
 
   useEffect(() => {
@@ -30,9 +31,9 @@ const SearchStoreList = ({ keyword = '' }: SearchStoreListProps) => {
 
   return (
     <div className="w-full">
-      {stores && itemCount > 0 ? (
+      {data && data.itemCount > 0 ? (
         <>
-          {stores.map(({ profile, storeId, storeName, isWished, introduce }) => (
+          {data.stores.map(({ profile, storeId, storeName, isWished, introduce }) => (
             <StoreCard
               key={storeId}
               id={storeId}
