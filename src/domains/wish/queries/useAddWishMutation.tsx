@@ -32,7 +32,7 @@ const useAddWishMutation = () => {
     openToast(
       <ToastPop>
         <div>💖 찜한 상품에 추가했어요</div>
-        <button className="hover:underline" onClick={openFolderSelectModal}>
+        <button type="button" className="hover:underline" onClick={openFolderSelectModal}>
           편집
         </button>
       </ToastPop>

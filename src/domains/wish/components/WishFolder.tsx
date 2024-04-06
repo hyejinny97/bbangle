@@ -40,6 +40,8 @@ const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
       >
         {isEditing && (
           <button
+            aria-label="delete folder"
+            type="button"
             className="p-[4px] rounded-full absolute top-[6px] right-[6px]"
             onClick={deleteFolder}
           >
@@ -52,6 +54,8 @@ const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
       <div className="flex justify-between items-center">
         {isEditing ? (
           <button
+            aria-label="update folder"
+            type="button"
             onClick={updateFolderName}
             className="font-semibold text-14 tracking-tight-4 leading-120, underline"
           >
