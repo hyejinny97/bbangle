@@ -8,14 +8,12 @@ const REASONS = [
   { content: '기타' }
 ];
 
-const DeleteReasonList = () => {
-  return (
-    <div className="flex flex-col gap-[16px] py-[10px]">
-      {REASONS.map(({ content }) => (
-        <DeleteReasonItem key={content} content={content} />
-      ))}
-    </div>
-  );
-};
+const DeleteReasonList = () => (
+  <div className="flex flex-col gap-[16px] py-[10px]">
+    {REASONS.map(({ content }) => (
+      <DeleteReasonItem key={content} content={content} />
+    ))}
+  </div>
+);
 
 export default DeleteReasonList;

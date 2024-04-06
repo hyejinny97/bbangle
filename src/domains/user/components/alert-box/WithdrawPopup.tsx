@@ -26,9 +26,9 @@ const WithdrawPopup = () => {
             value="탈퇴하기"
             className="text-primaryOrangeRed text-[14px] underline underline-offset-2 cursor-pointer"
           />
-          <div className="text-[14px] cursor-pointer" onClick={handleClickCancel}>
+          <button type="button" className="text-[14px] cursor-pointer" onClick={handleClickCancel}>
             취소
-          </div>
+          </button>
         </div>
       </div>
     </Popup>

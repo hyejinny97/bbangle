@@ -21,9 +21,9 @@ const useWithdrawMutation = () => {
       );
       router.push('/');
     },
-    onError: (errorMessage: Error['message']) => {
-      console.log('회원탈퇴 에러 발생:', errorMessage);
-    },
+    // onError: (errorMessage: Error['message']) => {
+    //   console.log('회원탈퇴 에러 발생:', errorMessage);
+    // },
     throwOnError: true
   });
 };

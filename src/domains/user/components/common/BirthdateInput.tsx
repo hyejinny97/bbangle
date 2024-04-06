@@ -1,9 +1,9 @@
 'use client';
 
 import { useSetRecoilState } from 'recoil';
-import { birthDateState } from '../../atoms/profile';
 import Input from '@/components/commons/inputs/Input';
 import { ChangeEventHandler } from 'react';
+import { birthDateState } from '../../atoms/profile';
 
 interface BirthdateInputProps {
   defaultValue?: string;
@@ -12,7 +12,7 @@ interface BirthdateInputProps {
 const BirthdateInput = ({ defaultValue }: BirthdateInputProps) => {
   const setBirthdate = useSetRecoilState(birthDateState);
 
-  const onChange: ChangeEventHandler<HTMLInputElement> = e => {
+  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { value } = e.target;
     setBirthdate(value);
   };
