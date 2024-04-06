@@ -1,9 +1,8 @@
 import Header from '@/components/commons/header/client/Header';
-import UserInfo from '@/components/units/(mypage)/MyPage/client/UserInfo';
-import MoreInfo from '@/components/units/(mypage)/MyPage/client/MoreInfo';
-import SeparateLine from '@/components/units/(mypage)/MyPage/client/SeparateLine';
-import LoginSection from '@/components/units/(mypage)/MyPage/client/LoginSection';
+import UserInfoSection from '@/blocks/user/UserInfoSection';
+import MoreInfoSection from '@/blocks/user/MoreInfoSection';
 import { getCookie } from '@/action';
+import LoginSection from '@/blocks/user/LoginSection';
 
 const MyPage = async () => {
   const accessToken = await getCookie('accessToken');
@@ -12,9 +11,9 @@ const MyPage = async () => {
   return (
     <>
       <Header title="마이페이지" />
-      {isLoggedIn ? <UserInfo /> : <LoginSection />}
-      <SeparateLine />
-      <MoreInfo />
+      {isLoggedIn ? <UserInfoSection /> : <LoginSection />}
+      <div className="w-full h-[6px] bg-gray-100" />
+      <MoreInfoSection />
     </>
   );
 };
