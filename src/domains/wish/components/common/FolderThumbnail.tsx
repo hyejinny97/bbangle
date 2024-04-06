@@ -9,7 +9,6 @@ interface Props {
 
 const FolderThumbnail = ({ thumbnailList, size = 'lg' }: Props) => {
   const sizeClass = size === 'lg' ? 'size-full' : 'size-[24px]';
-  console.log(thumbnailList);
 
   return (
     <div
@@ -20,7 +19,7 @@ const FolderThumbnail = ({ thumbnailList, size = 'lg' }: Props) => {
     >
       {thumbnailList && thumbnailList.length !== 0 ? (
         <div className="grid grid-cols-2 grid-rows-2 size-full gap-[2px]">
-          {thumbnailList.map(thumbnailSrc => (
+          {thumbnailList.map((thumbnailSrc) => (
             <div key={thumbnailSrc} className="relative size-full">
               <Image src={thumbnailSrc} fill alt="thumbnail" />
             </div>

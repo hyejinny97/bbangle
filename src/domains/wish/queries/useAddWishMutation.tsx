@@ -2,10 +2,10 @@ import useModal from '@/commons/hooks/useModal';
 import useToast from '@/commons/hooks/useToast';
 import fetchExtend from '@/shared/utils/api';
 import { useMutation } from '@tanstack/react-query';
-import WishFolderSelectModal from '../components/alert-box/WishFolderSelectModal';
 import ToastPop from '@/components/commons/ToastPop';
 import { revalidateTag } from '@/shared/actions';
 import { REAVALIDATE_TAG } from '@/shared/constants/revalidateTags';
+import WishFolderSelectModal from '../components/alert-box/WishFolderSelectModal';
 
 const useAddWishMutation = () => {
   const { openToast } = useToast();

@@ -1,14 +1,14 @@
 'use client';
 
-import { CloseIcon } from '@/components/commons/Icon';
 import Link from 'next/link';
-import DeleteWishFolderPopup from './alert-box/DeleteWishFolderPopup';
 import { useRecoilValue } from 'recoil';
-import { isWishFolderEditingState } from '../atoms/wishFolder';
-import usePopup from '@/commons/hooks/usePopup';
 import { MouseEventHandler } from 'react';
+import { CloseIcon } from '@/components/commons/Icon';
+import usePopup from '@/commons/hooks/usePopup';
 import useModal from '@/commons/hooks/useModal';
+import DeleteWishFolderPopup from './alert-box/DeleteWishFolderPopup';
 import UpdateWishFolderModal from './alert-box/UpdateWishFolderModal';
+import { isWishFolderEditingState } from '../atoms/wishFolder';
 import FolderThumbnail from './common/FolderThumbnail';
 
 interface WishFolderProps {
@@ -23,7 +23,7 @@ const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
   const { openPopup } = usePopup();
   const { openModal } = useModal();
 
-  const deleteFolder: MouseEventHandler<HTMLButtonElement> = e => {
+  const deleteFolder: MouseEventHandler<HTMLButtonElement> = (e) => {
     openPopup(<DeleteWishFolderPopup folderName={name} folderId={id} />);
     e.preventDefault();
   };
