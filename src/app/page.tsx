@@ -1,8 +1,8 @@
-import LogoContainer from '@/components/units/Home/client/LogoContainer';
-import Banner from '@/components/units/Home/client/Banner';
-import Search from '@/components/units/Home/client/Search';
-import ServerCategory from '@/components/units/Home/server/ServerCategory';
-import ServerProducts from '@/components/units/Home/server/ServerProducts';
+import LogoContainer from '@/domains/home/components/LogoContainer';
+import Banner from '@/domains/home/components/Banner';
+import Search from '@/domains/home/components/Search';
+import ServerCategory from '@/domains/home/components/Category';
+import ServerProducts from '@/domains/home/components/Products';
 
 export default function Home() {
   return (

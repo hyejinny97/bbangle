@@ -28,8 +28,7 @@ const TagSwiper = ({ tag }: TagSwiperProps) => {
   return (
     <div className="flex items-center justify-between gap-[2px] w-full overflow-x-auto leading-150 tracking-tight-2">
       <div className="flex gap-[4px]">
-        {tagsToShow.map((tag, index) => {
-          return (
+        {tagsToShow.map((tag, index) => (
             <div
               key={index}
               style={{ flex: 'auto' }}
@@ -37,8 +36,7 @@ const TagSwiper = ({ tag }: TagSwiperProps) => {
             >
               {tag}
             </div>
-          );
-        })}
+          ))}
       </div>
       <span className="text-11 font-semibold text-gray-400">
         {maxTagsToShow < tag.length && `${tag.length - maxTagsToShow}+`}

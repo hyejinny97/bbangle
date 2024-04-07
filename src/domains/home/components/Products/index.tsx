@@ -1,17 +1,16 @@
 import Link from 'next/link';
-import ProductsList from '../client/ProductsList';
 import { Suspense } from 'react';
 import { SkeletonProductList } from '@/components/commons/skeleton/SkeletonProductList';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import ProductsList from './ProductsList';
 
-const ServerProducts = async () => {
-  return (
+const ServerProducts = async () => (
     <PaddingWrapper className="pb-[36px]">
       <div className="flex justify-between items-end py-[10px] ">
-        <div className="text-20 font-semibold leading-150 tracking-tight-2 text-gray-500">Best</div>
+        <div className="font-semibold text-gray-500 text-20 leading-150 tracking-tight-2">Best</div>
         <Link
           href="/products"
-          className="text-gray-400 text-12 font-medium leading-150 tracking-tight-2"
+          className="font-medium text-gray-400 text-12 leading-150 tracking-tight-2"
         >
           전체보기
         </Link>
@@ -21,6 +20,5 @@ const ServerProducts = async () => {
       </Suspense>
     </PaddingWrapper>
   );
-};
 
 export default ServerProducts;

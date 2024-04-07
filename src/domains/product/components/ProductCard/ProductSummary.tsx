@@ -1,12 +1,11 @@
 import { IProductType } from '@/commons/types/productType';
-import TagSwiper from '@/components/units/Home/client/TagSwiper';
+import TagSwiper from '@/domains/home/components/TagSwiper/TagSwiper';
 
 interface ProductSummaryProps {
   product: IProductType;
 }
 
-const ProductSummary = ({ product }: ProductSummaryProps) => {
-  return (
+const ProductSummary = ({ product }: ProductSummaryProps) => (
     <div className="mt-[6px]">
       <p className="mb-[2px] text-12 font-medium text-gray-400 leading-130 tracking-tight-2">
         {product?.storeName}
@@ -20,6 +19,5 @@ const ProductSummary = ({ product }: ProductSummaryProps) => {
       {product.tags && <TagSwiper tag={product.tags} />}
     </div>
   );
-};
 
 export default ProductSummary;

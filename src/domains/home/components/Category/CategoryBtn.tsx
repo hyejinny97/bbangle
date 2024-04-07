@@ -27,7 +27,7 @@ const CategoryBtn = ({ name, icon, isCategoryTab }: CategoryProps) => {
       onClick={handleClickBtn}
     >
       <div>{icon}</div>
-      <div className="text-14 font-normal leading-140 tracking-tight-4 text-gray-800">{name}</div>
+      <div className="font-normal text-gray-800 text-14 leading-140 tracking-tight-4">{name}</div>
     </Link>
   );
 };
