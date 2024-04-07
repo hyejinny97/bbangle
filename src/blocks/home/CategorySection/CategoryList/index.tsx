@@ -3,19 +3,19 @@
 import { useRecoilState } from 'recoil';
 import { isCategoryTabState } from '@/atoms/atom';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import AllIcon from '@/domains/home/assets/all-icon.svg';
-import BigenIcon from '@/domains/home/assets/bigen-icon.svg';
-import BreadIcon from '@/domains/home/assets/bread-icon.svg';
-import CakeIcon from '@/domains/home/assets/cake-icon.svg';
-import CookieIcon from '@/domains/home/assets/cookie-icon.svg';
-import EtcIcon from '@/domains/home/assets/etc-icon.svg';
-import GluIcon from '@/domains/home/assets/glu-icon.svg';
-import JamIcon from '@/domains/home/assets/jam-icon.svg';
-import KitoIcon from '@/domains/home/assets/kito-icon.svg';
-import NoSugarIcon from '@/domains/home/assets/noSugar-icon.svg';
-import ProteinIcon from '@/domains/home/assets/protein-icon.svg';
-import TartIcon from '@/domains/home/assets/tart-icon.svg';
-import YogurtIcon from '@/domains/home/assets/yogurt.svg';
+import AllIcon from '@/blocks/home/CategorySection/CategoryList/assets/all-icon.svg';
+import BigenIcon from '@/blocks/home/CategorySection/CategoryList/assets/bigen-icon.svg';
+import BreadIcon from '@/blocks/home/CategorySection/CategoryList/assets/bread-icon.svg';
+import CakeIcon from '@/blocks/home/CategorySection/CategoryList/assets/cake-icon.svg';
+import CookieIcon from '@/blocks/home/CategorySection/CategoryList/assets/cookie-icon.svg';
+import EtcIcon from '@/blocks/home/CategorySection/CategoryList/assets/etc-icon.svg';
+import GluIcon from '@/blocks/home/CategorySection/CategoryList/assets/glu-icon.svg';
+import JamIcon from '@/blocks/home/CategorySection/CategoryList/assets/jam-icon.svg';
+import KitoIcon from '@/blocks/home/CategorySection/CategoryList/assets/kito-icon.svg';
+import NoSugarIcon from '@/blocks/home/CategorySection/CategoryList/assets/noSugar-icon.svg';
+import ProteinIcon from '@/blocks/home/CategorySection/CategoryList/assets/protein-icon.svg';
+import TartIcon from '@/blocks/home/CategorySection/CategoryList/assets/tart-icon.svg';
+import YogurtIcon from '@/blocks/home/CategorySection/CategoryList/assets/yogurt.svg';
 import CategoryBtn from './CategoryBtn';
 
 const categoryMenu = [

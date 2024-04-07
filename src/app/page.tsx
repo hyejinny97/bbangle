@@ -1,8 +1,8 @@
-import LogoContainer from '@/domains/home/components/LogoContainer';
-import Banner from '@/domains/home/components/Banner';
-import Search from '@/domains/home/components/Search';
-import ServerCategory from '@/domains/home/components/Category';
-import ServerProducts from '@/domains/home/components/Products';
+import LogoContainer from '@/shared/components/HomeLogoIcon';
+import Banner from '@/blocks/home/Banner';
+import Search from '@/blocks/home/Search';
+import CategorySection from '@/blocks/home/CategorySection';
+import BestProductsSection from '@/blocks/home/BestProductsSection';
 
 export default function Home() {
   return (
@@ -10,8 +10,8 @@ export default function Home() {
       <LogoContainer />
       <Search />
       <Banner />
-      <ServerCategory />
-      <ServerProducts />
+      <CategorySection />
+      <BestProductsSection />
     </>
   );
 }
