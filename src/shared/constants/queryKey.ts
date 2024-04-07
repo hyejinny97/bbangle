@@ -6,7 +6,9 @@ const QUERY_KEY = {
   profile: 'profile',
   main: 'main',
   wish: 'wish',
-  product: 'product'
+  product: 'product',
+  keyword: 'keyword',
+  autoComplete: 'autoComplete'
 };
 
 export default QUERY_KEY;
