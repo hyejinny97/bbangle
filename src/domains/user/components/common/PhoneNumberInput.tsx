@@ -1,10 +1,10 @@
 'use client';
 
+import { ChangeEventHandler } from 'react';
 import Input from '@/components/commons/inputs/Input';
 import Button from '@/components/commons/button/client/Button';
 import { useSetRecoilState } from 'recoil';
 import { phoneNumberState } from '../../atoms/profile';
-import { ChangeEventHandler } from 'react';
 
 interface PhoneNumberInputProps {
   defaultValue?: string;
@@ -13,7 +13,7 @@ interface PhoneNumberInputProps {
 const PhoneNumberInput = ({ defaultValue }: PhoneNumberInputProps) => {
   const setPhoneNumber = useSetRecoilState(phoneNumberState);
 
-  const onChange: ChangeEventHandler<HTMLInputElement> = e => {
+  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { value } = e.target;
     setPhoneNumber(value);
   };

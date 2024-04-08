@@ -4,10 +4,10 @@ import { revalidateTag } from '@/action';
 import { ErrorResponse } from '@/commons/types/errorType';
 import useToast from '@/commons/hooks/useToast';
 import ToastPop from '@/components/commons/ToastPop';
-import { RegistrationRequest } from '../types/profile';
 import fetchExtend from '@/shared/utils/api';
 import PATH from '@/shared/constants/path';
 import QUERY_KEY from '@/shared/constants/queryKey';
+import { RegistrationRequest } from '../types/profile';
 
 const useRegistrationMutation = () => {
   const { openToast } = useToast();

@@ -22,7 +22,7 @@ const ProfileUpdateForm = ({
   const { mutate } = useProfileUpdateMutation();
   const updateForm = useRecoilValue(updateFormState);
 
-  const onSubmit: FormEventHandler<HTMLFormElement> = e => {
+  const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     mutate(updateForm);
     e.preventDefault();
   };
