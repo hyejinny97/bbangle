@@ -47,11 +47,11 @@ const ProductImage = ({ product, popular, ranking }: ProductImageProps) => {
       />
       <div className="absolute bottom-[9px] right-[9px] h-[20px]">
         {product.isWished ? (
-          <button onClick={hate}>
+          <button onClick={hate} type="button" aria-label="Remove from wishlist">
             <HeartRedIcon />
           </button>
         ) : (
-          <button onClick={like}>
+          <button onClick={like} type="button" aria-label="Add to wishlist">
             <HeartGrayIcon />
           </button>
         )}

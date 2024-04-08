@@ -1,16 +1,19 @@
 'use client';
-import BtnStar from '@/components/commons/button/client/Btn_start';
-import Image from 'next/image';
+
 import { useState } from 'react';
-import { IProductDetailType } from '../../types';
+
+import Image from 'next/image';
 import Link from 'next/link';
+
+import BtnStar from '@/components/commons/button/client/Btn_start';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import { IProductDetailType } from '@/domains/product/types/productDetailType';
 
 interface ProductsProps {
   store: IProductDetailType['store'];
 }
 
-function StoreInfo({ store }: ProductsProps) {
+const StoreInfo = ({ store }: ProductsProps) => {
   const [isLiked, setIsLiked] = useState(store.isWished);
 
   const addStoreToWishList = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -31,5 +34,5 @@ function StoreInfo({ store }: ProductsProps) {
       </PaddingWrapper>
     </Link>
   );
-}
+};
 export default StoreInfo;

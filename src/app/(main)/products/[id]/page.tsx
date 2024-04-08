@@ -1,7 +1,7 @@
 import API from '@/api';
-import { IProductDetailType } from '@/components/units/Detail/types';
-import ProductImgs from '@/components/units/Detail/client/ProductImgs';
-import DetailInfo from '@/components/units/Detail/client/DetailInfo';
+import ProductImgs from '@/domains/product/components/ProductImgs';
+import ProductInfo from '@/domains/product/components/ProductInfo';
+import { IProductDetailType } from '@/domains/product/types/productDetailType';
 
 async function getDetail(params: { id: string }) {
   const data: IProductDetailType = await API.get(`/boards/${params.id}`);
@@ -14,7 +14,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
   return (
     <>
       <ProductImgs boardImages={data.board.images} isBundled={data.board.isBundled} />
-      <DetailInfo data={data} />
+      <ProductInfo data={data} />
     </>
   );
 };

@@ -1,32 +1,34 @@
 'use client';
 
-import { transformDayTag } from '@/commons/constants/transfromTag';
-import { IProductDetailType } from '../../types';
-import TagContainer from '../TagContainer';
 import { useState } from 'react';
-import InfoWrapper from './InfoWrapper';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+
+import { transformDayTag } from '@/commons/constants/transfromTag';
 import GrayDivider from '@/components/commons/divider/GrayDivider';
+import PaddingWrapper from '@/components/commons/PaddingWrapper';
+
+import { IProductDetailType } from '../../types/productDetailType';
+import TagContainer from '../TagContainer';
+import InfoWrapper from './InfoWrapper';
 import MoreBtn from './MoreBtn';
 
 interface BoardInfoProps {
   data: IProductDetailType;
 }
 
-function BoardInfo({ data }: BoardInfoProps) {
+const BoardInfo = ({ data }: BoardInfoProps) => {
   const [clickMore, setClickMore] = useState(false);
-  const products = data.board.products;
-  const uniqueTags = Array.from(new Set(products.map(product => product.tags).flat()));
-  const orderAvailableDays = data.board.orderAvailableDays;
-  let availableDays = Object.keys(orderAvailableDays).filter(day => orderAvailableDays[day]);
-  availableDays = availableDays.map(item => transformDayTag(item));
+  const { products } = data.board;
+  const uniqueTags = Array.from(new Set(products.map((product) => product.tags).flat()));
+  const { orderAvailableDays } = data.board;
+  let availableDays = Object.keys(orderAvailableDays).filter((day) => orderAvailableDays[day]);
+  availableDays = availableDays.map((item) => transformDayTag(item));
 
   return (
     <PaddingWrapper>
       <div className="pb-[16px]">
         <div className="mb-[4px] h-[21px] justify-start gap-1 inline-flex">
-          {uniqueTags.map((tag, i) => (
-            <TagContainer key={i} tag={tag} />
+          {uniqueTags.map((tag) => (
+            <TagContainer key={tag} tag={tag} />
           ))}
         </div>
         <div className="text-16 leading-130 font-normal text-gray-800 mb-[2px]">
@@ -46,7 +48,7 @@ function BoardInfo({ data }: BoardInfoProps) {
       >
         <InfoWrapper title="주문가능일">
           <div className="flex gap-[4px] ">
-            {['월', '화', '수', '목', '금', '토', '일'].map(item => (
+            {['월', '화', '수', '목', '금', '토', '일'].map((item) => (
               <div
                 key={item}
                 className={`rounded-full leading-150 w-[24px] h-[24px] text-12 font-normal flex items-center justify-center  ${
@@ -63,14 +65,14 @@ function BoardInfo({ data }: BoardInfoProps) {
 
         <InfoWrapper title="상품 구성">
           <div className="transition-all ease-in delay-150">
-            {data.board.products.map((item, i) => (
-              <div className="mb-[10px]" key={i}>
+            {data.board.products.map((item) => (
+              <div className="mb-[10px]" key={item.title}>
                 <div className="font-normal leading-120 text-12 text-gray-800 mb-[4px]">
                   {item.title}
                 </div>
                 <div className="mb-[4px] h-[21px] justify-start gap-1 inline-flex ">
-                  {item.tags.map((tag, i) => (
-                    <TagContainer key={i} tag={tag} />
+                  {item.tags.map((tag) => (
+                    <TagContainer key={tag} tag={tag} />
                   ))}
                 </div>
               </div>
@@ -91,6 +93,6 @@ function BoardInfo({ data }: BoardInfoProps) {
       </div>
     </PaddingWrapper>
   );
-}
+};
 
 export default BoardInfo;

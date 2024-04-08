@@ -5,10 +5,10 @@ import Image from 'next/image';
 import BtnOutlinedHeart from '@/components/commons/button/client/Btn_outlined_heart';
 import Button from '@/components/commons/button/client/Button';
 import GrayDivider from '@/components/commons/divider/GrayDivider';
+import StoreInfo from '@/domains/store/components/StoreInfo';
 
-import { IProductDetailType } from '../../types';
+import { IProductDetailType } from '../../types/productDetailType';
 import BoardInfo from '../BoardInfo';
-import StoreInfo from '../StoreInfo';
 
 interface ProductInfoProps {
   data: IProductDetailType;
@@ -28,7 +28,7 @@ const ProductInfo = ({ data }: ProductInfoProps) => {
         <GrayDivider />
         <BoardInfo data={data} />
         <div className="w-full p-0 ">
-          {data.board?.detail.map(item => (
+          {data.board?.detail.map((item) => (
             <Image
               key={item.imgIndex}
               src={item.url}

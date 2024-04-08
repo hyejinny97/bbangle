@@ -1,22 +1,22 @@
 'use client';
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-
 import 'swiper/css/bundle';
+
+import React, { useState } from 'react';
 
 import { BundleBadge } from '@/components/commons/badge/BundleBadge';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import ImgSlider from './ImgSlider';
-import ImageCounter from './ImgCounter';
 
-interface Image {
+import ImageCounter from './ImgCounter';
+import ImgSlider from './ImgSlider';
+
+interface ImageProps {
   id: number;
   url: string;
 }
 
 interface ProductImgProps {
-  boardImages: Image[];
+  boardImages: ImageProps[];
   isBundled: boolean;
 }
 

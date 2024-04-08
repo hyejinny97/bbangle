@@ -12,18 +12,17 @@ interface ImgSliderProps {
   setSwiperIndex: (_: number) => void;
 }
 
-const ImgSlider = ({ boardImages, setSwiperIndex }: ImgSliderProps) => {
-  return (
+const ImgSlider = ({ boardImages, setSwiperIndex }: ImgSliderProps) => (
     <Swiper
       spaceBetween={10}
       slidesPerView={1}
       pagination={{ clickable: true }}
       scrollbar={{ el: '.swiper-scrollbar', draggable: true }}
-      onActiveIndexChange={swiperCore => {
+      onActiveIndexChange={(swiperCore) => {
         setSwiperIndex(swiperCore.activeIndex);
       }}
     >
-      {boardImages?.map(image =>
+      {boardImages?.map((image) =>
         image.url ? (
           <SwiperSlide key={image.id}>
             <div className="w-full pb-[100%]">
@@ -42,6 +41,5 @@ const ImgSlider = ({ boardImages, setSwiperIndex }: ImgSliderProps) => {
       )}
     </Swiper>
   );
-};
 
 export default ImgSlider;
