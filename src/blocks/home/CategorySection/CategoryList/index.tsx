@@ -3,20 +3,22 @@
 import { useRecoilState } from 'recoil';
 import { isCategoryTabState } from '@/atoms/atom';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import AllIcon from '@/blocks/home/CategorySection/CategoryList/assets/all-icon.svg';
-import BigenIcon from '@/blocks/home/CategorySection/CategoryList/assets/bigen-icon.svg';
-import BreadIcon from '@/blocks/home/CategorySection/CategoryList/assets/bread-icon.svg';
-import CakeIcon from '@/blocks/home/CategorySection/CategoryList/assets/cake-icon.svg';
-import CookieIcon from '@/blocks/home/CategorySection/CategoryList/assets/cookie-icon.svg';
-import EtcIcon from '@/blocks/home/CategorySection/CategoryList/assets/etc-icon.svg';
-import GluIcon from '@/blocks/home/CategorySection/CategoryList/assets/glu-icon.svg';
-import JamIcon from '@/blocks/home/CategorySection/CategoryList/assets/jam-icon.svg';
-import KitoIcon from '@/blocks/home/CategorySection/CategoryList/assets/kito-icon.svg';
-import NoSugarIcon from '@/blocks/home/CategorySection/CategoryList/assets/noSugar-icon.svg';
-import ProteinIcon from '@/blocks/home/CategorySection/CategoryList/assets/protein-icon.svg';
-import TartIcon from '@/blocks/home/CategorySection/CategoryList/assets/tart-icon.svg';
-import YogurtIcon from '@/blocks/home/CategorySection/CategoryList/assets/yogurt.svg';
-import CategoryBtn from './CategoryBtn';
+import {
+  AllIcon,
+  BigenIcon,
+  BreadIcon,
+  CakeIcon,
+  CookieIcon,
+  GluIcon,
+  KitoIcon,
+  NoSugarIcon,
+  EtcIcon,
+  JamIcon,
+  ProteinIcon,
+  TartIcon,
+  YogurtIcon
+} from '@/domains/product/assets/category/icons';
+import CategoryButton from '@/domains/product/components/CategoryButton';
 
 const categoryMenu = [
   {
@@ -127,7 +129,7 @@ const CategoryList = () => {
       {categoryMenu
         .filter((category) => category.category === (isCategoryTab ? '상품별' : '성분별'))
         .map((category) => (
-          <CategoryBtn
+          <CategoryButton
             key={category.id}
             name={category.name}
             icon={category.icon}
