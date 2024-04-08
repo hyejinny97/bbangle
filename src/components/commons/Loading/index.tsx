@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import LoadingGif from 'public/assets/loading.gif';
 
+import LoadingGif from '../../../../public/assets/loading.gif';
 import BackDrop from '../backgrounds/BackDrop';
 
 const Loading = () => (

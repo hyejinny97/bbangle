@@ -1,7 +1,7 @@
-import AllProducts from '@/components/units/StoreDetail/client/AllProduct';
-import BestProducts from '@/components/units/StoreDetail/client/BestProduct';
-import StoreDetailSection from '@/components/units/StoreDetail/client/Container/StoreDetailSection';
-import StoreProfile from '@/components/units/StoreDetail/client/StoreProfile';
+import AllProducts from '@/domains/store/components/AllProduct';
+import BestProducts from '@/domains/store/components/BestProduct';
+import StoreDetailSection from '@/domains/store/components/Container/StoreDetailSection';
+import StoreProfile from '@/domains/store/components/StoreProfile';
 
 const StoreDetail = ({ params: { id } }: { params: { id: string } }) => (
   <div className="w-full">
