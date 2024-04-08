@@ -17,18 +17,14 @@ const useWishProductListQuery = (folderId: string) => {
     lastPage,
     _,
     lastPageParam
-  ) => {
-    return lastPage.last ? undefined : lastPageParam + 1;
-  };
+  ) => (lastPage.last ? undefined : lastPageParam + 1);
 
   return useInfiniteQuery({
     queryKey,
     queryFn,
     initialPageParam: 0,
     getNextPageParam,
-    select: ({ pages }) => {
-      return pages.map(({ content }) => content).flat();
-    }
+    select: ({ pages }) => pages.map(({ content }) => content).flat()
   });
 };
 

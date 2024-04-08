@@ -1,11 +1,5 @@
 import WishStroeList from '@/blocks/wish/WishStoreList';
 
-const WishStoresPage = () => {
-  return (
-    <>
-      <WishStroeList />
-    </>
-  );
-};
+const WishStoresPage = () => <WishStroeList />;
 
 export default WishStoresPage;

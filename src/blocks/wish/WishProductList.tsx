@@ -20,7 +20,7 @@ const WishProductList = () => {
 
   return (
     <div className="grid grid-cols-2 gap-[16px]">
-      {data.map(product => (
+      {data.map((product) => (
         <ProductCard key={product.boardId} product={product} />
       ))}
     </div>
