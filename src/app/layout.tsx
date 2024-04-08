@@ -27,7 +27,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <ModalContainer />
           <PopupContainer />
           <ToastContainer />
-          <div className="sm:w-[600px] w-full m-auto pb-24 min-h-screen relative">{children}</div>
+          <div className="sm:w-[600px] w-full m-auto pb-24 min-h-screen relative shadow-lg">
+            {children}
+          </div>
           <Footer />
         </RootLayoutProvider>
         <KaKaoChatScript />
