@@ -6,13 +6,11 @@ interface SearchProductsProps {
   searchParams: { query?: string };
 }
 
-const SearchProducts = ({ searchParams: { query } }: SearchProductsProps) => {
-  return (
-    <>
-      <FilterSection filterFamilyId={FILTER_FAMILY_ID.search} />
-      <SearchProductList keyword={query} />
-    </>
-  );
-};
+const SearchProducts = ({ searchParams: { query } }: SearchProductsProps) => (
+  <>
+    <FilterSection filterFamilyId={FILTER_FAMILY_ID.search} />
+    <SearchProductList keyword={query} />
+  </>
+);
 
 export default SearchProducts;

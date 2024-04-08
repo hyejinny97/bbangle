@@ -26,7 +26,11 @@ const SearchStoreList = ({ keyword = '' }: SearchStoreListProps) => {
     return <Loading />;
   }
   if (isError) {
-    return <div className="p-[16px]">Error</div>;
+    return (
+      <SadBbangleBox>
+        <p>오류가 발생했어요!</p>
+      </SadBbangleBox>
+    );
   }
   if (!data || data.itemCount === 0) {
     return (
