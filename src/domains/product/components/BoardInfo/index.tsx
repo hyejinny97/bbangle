@@ -66,7 +66,7 @@ const BoardInfo = ({ data }: BoardInfoProps) => {
         <InfoWrapper title="상품 구성">
           <div className="transition-all ease-in delay-150">
             {data.board.products.map((item) => (
-              <div className="mb-[10px]" key={item.title}>
+              <div className="mb-[10px]" key={item.id}>
                 <div className="font-normal leading-120 text-12 text-gray-800 mb-[4px]">
                   {item.title}
                 </div>

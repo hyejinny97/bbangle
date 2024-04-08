@@ -39,7 +39,9 @@ export interface IProductDetailType {
 }
 
 export interface IProductType {
+  id: number;
   title: string;
+  category: string;
   tags: string[];
 }
 
