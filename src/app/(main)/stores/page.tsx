@@ -1,7 +1,5 @@
 import MainStoreList from '@/blocks/store/MainStoreList';
 
-const Stores = () => {
-  return <MainStoreList />;
-};
+const Stores = () => <MainStoreList />;
 
 export default Stores;
