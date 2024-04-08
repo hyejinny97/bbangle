@@ -24,7 +24,11 @@ const MainStoreList = () => {
     );
   }
   if (isError) {
-    return <div className="p-[16px]">Error</div>;
+    return (
+      <SadBbangleBox>
+        <p>오류가 발생했어요!</p>
+      </SadBbangleBox>
+    );
   }
   if (!data || data.stores.length === 0) {
     return (
@@ -46,7 +50,7 @@ const MainStoreList = () => {
           imgSrc={profile}
         />
       ))}
-      {isFetchingNextPage ? <Loading /> : <div ref={ref}></div>}
+      {isFetchingNextPage ? <Loading /> : <div ref={ref} />}
     </div>
   );
 };
