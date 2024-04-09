@@ -1,7 +1,7 @@
 'use client';
 
 import { BbangleSadIcon } from '@/components/commons/Icon';
-import ProductCard from '@/components/commons/card/ProductCard';
+import ProductCard from '@/domains/product/components/ProductCard';
 import useWishProductListQuery from '@/domains/wish/queries/useWishProductListQuery';
 import { useParams } from 'next/navigation';
 
@@ -20,7 +20,7 @@ const WishProductList = () => {
 
   return (
     <div className="grid grid-cols-2 gap-[16px]">
-      {data.map(product => (
+      {data.map((product) => (
         <ProductCard key={product.boardId} product={product} />
       ))}
     </div>

@@ -1,5 +1,5 @@
 import getUserProfile from '@/domains/user/queries/getUserProfile';
-import UpdateForm from '@/components/units/(mypage)/Update/client/UpdateForm';
+import UpdateForm from '@/domains/user/components/ProfileUpdateForm';
 
 export const dynamic = 'force-dynamic';
 

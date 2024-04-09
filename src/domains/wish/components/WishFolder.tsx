@@ -1,14 +1,14 @@
 'use client';
 
-import { CloseIcon } from '@/components/commons/Icon';
 import Link from 'next/link';
-import DeleteWishFolderPopup from './alert-box/DeleteWishFolderPopup';
 import { useRecoilValue } from 'recoil';
-import { isWishFolderEditingState } from '../atoms/wishFolder';
-import usePopup from '@/commons/hooks/usePopup';
 import { MouseEventHandler } from 'react';
+import { CloseIcon } from '@/components/commons/Icon';
+import usePopup from '@/commons/hooks/usePopup';
 import useModal from '@/commons/hooks/useModal';
+import DeleteWishFolderPopup from './alert-box/DeleteWishFolderPopup';
 import UpdateWishFolderModal from './alert-box/UpdateWishFolderModal';
+import { isWishFolderEditingState } from '../atoms/wishFolder';
 import FolderThumbnail from './common/FolderThumbnail';
 
 interface WishFolderProps {
@@ -23,7 +23,7 @@ const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
   const { openPopup } = usePopup();
   const { openModal } = useModal();
 
-  const deleteFolder: MouseEventHandler<HTMLButtonElement> = e => {
+  const deleteFolder: MouseEventHandler<HTMLButtonElement> = (e) => {
     openPopup(<DeleteWishFolderPopup folderName={name} folderId={id} />);
     e.preventDefault();
   };
@@ -40,6 +40,8 @@ const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
       >
         {isEditing && (
           <button
+            aria-label="delete folder"
+            type="button"
             className="p-[4px] rounded-full absolute top-[6px] right-[6px]"
             onClick={deleteFolder}
           >
@@ -52,6 +54,8 @@ const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
       <div className="flex justify-between items-center">
         {isEditing ? (
           <button
+            aria-label="update folder"
+            type="button"
             onClick={updateFolderName}
             className="font-semibold text-14 tracking-tight-4 leading-120, underline"
           >

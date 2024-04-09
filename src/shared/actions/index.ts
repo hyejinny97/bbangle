@@ -1,7 +1,6 @@
 'use server';
 
-import { revalidateTag as _revalidateTag } from 'next/cache';
-import { revalidatePath as _revalidatePath } from 'next/cache';
+import { revalidateTag as _revalidateTag, revalidatePath as _revalidatePath } from 'next/cache';
 import { redirect as _redirect } from 'next/navigation';
 
 export const revalidateTag = async (tag: string) => {

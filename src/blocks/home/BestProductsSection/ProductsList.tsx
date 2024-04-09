@@ -1,0 +1,28 @@
+import ProductCard from '@/domains/product/components/ProductCard';
+import { IProductType } from '@/commons/types/productType';
+import fetchExtend from '@/shared/utils/api';
+import { REAVALIDATE_TAG } from '@/shared/constants/revalidateTags';
+
+const getBestProducts = async () => {
+  const res = await fetchExtend.get('/boards', {
+    next: {
+      tags: [REAVALIDATE_TAG.product]
+    }
+  });
+  const data = await res.json();
+  return data;
+};
+
+const ProductsList = async () => {
+  const bestProducts = await getBestProducts();
+
+  return (
+    <div className="grid grid-cols-2 gap-x-[16px] gap-y-[16px]">
+      {bestProducts?.content?.map((product: IProductType) => (
+        <ProductCard key={String(product.boardId)} product={product} />
+      ))}
+    </div>
+  );
+};
+
+export default ProductsList;

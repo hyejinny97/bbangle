@@ -1,7 +1,5 @@
-import StoresTab from '@/components/units/(main)/Stores/client/StoresTab';
+import MainStoreList from '@/blocks/store/MainStoreList';
 
-const Stores = () => {
-  return <StoresTab />;
-};
+const Stores = () => <MainStoreList />;
 
 export default Stores;

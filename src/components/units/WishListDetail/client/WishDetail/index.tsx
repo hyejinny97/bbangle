@@ -1,6 +1,6 @@
 'use client';
 
-import ProductCard from '@/components/commons/card/ProductCard';
+import ProductCard from '@/domains/product/components/ProductCard';
 import WishListSortSelect from '@/components/commons/selects/WishListSortSelect';
 import { useWishProductListQuery } from '@/components/units/WishListDetail/hooks/useWishProductsListQuery';
 

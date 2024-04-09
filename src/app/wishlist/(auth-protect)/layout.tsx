@@ -12,7 +12,7 @@ const WithAuthLayout = async ({ children }: Props) => {
   if (!isLoggedIn) {
     return redirect(PATH.wishLogin);
   }
-  return <>{children}</>;
+  return children;
 };
 
 export default WithAuthLayout;

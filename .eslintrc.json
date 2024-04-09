@@ -1,20 +1,61 @@
 {
-  "extends": ["next/core-web-vitals", ""],
+  "extends": ["next/core-web-vitals", "airbnb", "airbnb-typescript", "prettier"],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
   "parser": "@typescript-eslint/parser",
-
   "plugins": ["@typescript-eslint/eslint-plugin"],
   "rules": {
+    // airbnb custom
+    "react/function-component-definition": [
+      "warn",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+
+    // airbnb off (필요 없다고 생각하는 옵션 off)
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off",
     "react/react-in-jsx-scope": "off",
-    "semi": ["error", "always"],
-    "quotes": ["error", "single"],
-    "no-console": "off",
-    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-    "react/prop-types": "off",
-    "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/ban-ts-comment": "off"
+
+    // 리팩토링 기간에만 warn (airbnb 설정에서 기본값 error)
+    "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
+    "import/no-duplicates": "warn",
+    "arrow-body-style": "warn",
+    "arrow-parens": "warn",
+    "react/button-has-type": "warn",
+    "import/order": "warn",
+    "consistent-return": "warn",
+    "react/jsx-curly-brace-presence": "warn",
+    "no-underscore-dangle": "warn",
+    "@typescript-eslint/naming-convention": "warn",
+    "react/self-closing-comp": "warn",
+    "react/no-unknown-property": "warn",
+    "no-restricted-globals": "warn",
+    "jsx-a11y/click-events-have-key-events": "warn",
+    "jsx-a11y/no-static-element-interactions": "warn",
+    "react/no-array-index-key": "warn",
+    "jsx-a11y/control-has-associated-label": "warn",
+    "@typescript-eslint/no-unused-expressions": "warn",
+    "no-empty": "warn",
+    "react/jsx-boolean-value": "warn",
+    "prefer-template": "warn",
+    "no-useless-concat": "warn",
+    "no-param-reassign": "warn",
+    "lines-around-directive": "warn",
+    "@typescript-eslint/no-redeclare": "warn",
+    "prefer-destructuring": "warn",
+    "@typescript-eslint/no-shadow": "warn",
+    "jsx-a11y/no-noninteractive-element-interactions": "warn",
+    "react/jsx-no-useless-fragment": "warn",
+    "@typescript-eslint/no-use-before-define": "warn",
+    "object-shorthand": "warn",
+    "import/no-extraneous-dependencies": "warn",
+    "spaced-comment": "warn",
+    "jsx-a11y/html-has-lang": "warn"
   },
   "ignorePatterns": ["*.config.js", "*.config.ts", "node_modules", "*.d.ts"]
 }
