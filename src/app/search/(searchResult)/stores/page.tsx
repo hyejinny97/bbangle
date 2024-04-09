@@ -4,8 +4,8 @@ interface SearchStoresProps {
   searchParams: { query?: string };
 }
 
-const SearchStores = ({ searchParams: { query } }: SearchStoresProps) => {
-  return <SearchStoreList keyword={query} />;
-};
+const SearchStores = ({ searchParams: { query } }: SearchStoresProps) => (
+  <SearchStoreList keyword={query} />
+);
 
 export default SearchStores;
