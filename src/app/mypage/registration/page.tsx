@@ -1,7 +1,5 @@
 import RegistrationForm from '@/domains/user/components/RegistrationForm';
 
-const Registration = () => {
-  return <RegistrationForm />;
-};
+const Registration = () => <RegistrationForm />;
 
 export default Registration;

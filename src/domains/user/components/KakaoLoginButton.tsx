@@ -17,6 +17,7 @@ const KakaoLoginButton = () => {
 
   return (
     <button
+      type="button"
       className="rounded-[10px] flex gap-[8px] items-center justify-center h-[52px] bg-kakao shadow text-black"
       onClick={redirectToKakaoLoginPage}
     >

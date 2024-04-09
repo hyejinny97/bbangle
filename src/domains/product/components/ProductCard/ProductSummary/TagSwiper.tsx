@@ -28,17 +28,15 @@ const TagSwiper = ({ tag }: TagSwiperProps) => {
   return (
     <div className="flex items-center justify-between gap-[2px] w-full overflow-x-auto leading-150 tracking-tight-2">
       <div className="flex gap-[4px]">
-        {tagsToShow.map((tag, index) => {
-          return (
-            <div
-              key={index}
-              style={{ flex: 'auto' }}
-              className="px-[6px] py-[2px] bg-white rounded-[4px] border border-solid border-gray-200 text-gray-600 text-[11px] font-normal"
-            >
-              {tag}
-            </div>
-          );
-        })}
+        {tagsToShow.map((tag, index) => (
+          <div
+            key={index}
+            style={{ flex: 'auto' }}
+            className="px-[6px] py-[2px] bg-white rounded-[4px] border border-solid border-gray-200 text-gray-600 text-[11px] font-normal"
+          >
+            {tag}
+          </div>
+        ))}
       </div>
       <span className="text-11 font-semibold text-gray-400">
         {maxTagsToShow < tag.length && `${tag.length - maxTagsToShow}+`}

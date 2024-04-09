@@ -1,9 +1,9 @@
 'use client';
 
+import { ChangeEvent } from 'react';
 import CheckBox from '@/components/commons/checkbox/client/Checkbox';
 import { useRecoilState } from 'recoil';
 import { agreeState } from '../../atoms/profile';
-import { ChangeEvent } from 'react';
 
 const CheckSection = () => {
   const [agree, setAgree] = useRecoilState(agreeState);
@@ -19,7 +19,7 @@ const CheckSection = () => {
 
   const onChangeMarketing = (e: ChangeEvent<HTMLInputElement>) => {
     const { checked } = e.target;
-    setAgree(prev => ({
+    setAgree((prev) => ({
       ...prev,
       isAllowingMarketing: checked
     }));
@@ -27,7 +27,7 @@ const CheckSection = () => {
 
   const onChangeService = (e: ChangeEvent<HTMLInputElement>) => {
     const { checked } = e.target;
-    setAgree(prev => ({
+    setAgree((prev) => ({
       ...prev,
       isTermsOfServiceAccepted: checked
     }));
@@ -35,7 +35,7 @@ const CheckSection = () => {
 
   const onChangePersonalInfo = (e: ChangeEvent<HTMLInputElement>) => {
     const { checked } = e.target;
-    setAgree(prev => ({
+    setAgree((prev) => ({
       ...prev,
       isPersonalInfoConsented: checked
     }));

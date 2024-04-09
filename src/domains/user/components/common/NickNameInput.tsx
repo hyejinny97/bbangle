@@ -1,10 +1,10 @@
 'use client';
 
+import { useRecoilState } from 'recoil';
+import { ChangeEvent, useId } from 'react';
 import Button from '@/components/commons/button/client/Button';
 import Input from '@/components/commons/inputs/Input';
-import { ChangeEvent, useId } from 'react';
 import useNicknameDoubleCheckMutation from '../../queries/useNicknameDoubleCheckMutation';
-import { useRecoilState } from 'recoil';
 import { nicknameState } from '../../atoms/profile';
 
 interface NicknameInputProps {

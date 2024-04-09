@@ -3,20 +3,22 @@
 import { useRecoilState } from 'recoil';
 import { isCategoryTabState } from '@/atoms/atom';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import CategoryBtn from '../CategoryBtn';
-import AllIcon from './assets/all-icon.svg';
-import BigenIcon from './assets/bigen-icon.svg';
-import BreadIcon from './assets/bread-icon.svg';
-import CakeIcon from './assets/cake-icon.svg';
-import CookieIcon from './assets/cookie-icon.svg';
-import EtcIcon from './assets/etc-icon.svg';
-import GluIcon from './assets/glu-icon.svg';
-import JamIcon from './assets/jam-icon.svg';
-import KitoIcon from './assets/kito-icon.svg';
-import NoSugarIcon from './assets/noSugar-icon.svg';
-import ProteinIcon from './assets/protein-icon.svg';
-import TartIcon from './assets/tart-icon.svg';
-import YogurtIcon from './assets/yogurt.svg';
+import {
+  AllIcon,
+  BigenIcon,
+  BreadIcon,
+  CakeIcon,
+  CookieIcon,
+  GluIcon,
+  KitoIcon,
+  NoSugarIcon,
+  EtcIcon,
+  JamIcon,
+  ProteinIcon,
+  TartIcon,
+  YogurtIcon
+} from '@/domains/product/assets/category/icons';
+import CategoryButton from '@/domains/product/components/CategoryButton';
 
 const categoryMenu = [
   {
@@ -125,9 +127,9 @@ const CategoryList = () => {
   return (
     <PaddingWrapper className={`grid pb-[0px] ${isCategoryTab ? 'grid-cols-4' : 'grid-cols-3'}`}>
       {categoryMenu
-        .filter(category => category.category === (isCategoryTab ? '상품별' : '성분별'))
-        .map(category => (
-          <CategoryBtn
+        .filter((category) => category.category === (isCategoryTab ? '상품별' : '성분별'))
+        .map((category) => (
+          <CategoryButton
             key={category.id}
             name={category.name}
             icon={category.icon}

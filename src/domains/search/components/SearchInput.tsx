@@ -1,6 +1,6 @@
 'use client';
 
-import SearchIcon from '@/components/units/Home/client/Search/assets/search.svg';
+import SearchIcon from '@/shared/assets/search.svg';
 import Input from '@/components/commons/inputs/Input';
 
 interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -9,13 +9,12 @@ interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   onKeyDown?: (_: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-const SearchInput = ({ value, onChange, onKeyDown, ...rest }: SearchInputProps) => {
-  return (
+const SearchInput = ({ value, onChange, onKeyDown, ...rest }: SearchInputProps) => (
     <div className="flex items-center gap-[6px] px-[16px] py-[10px] w-full bg-blueGray-30 rounded-[50px] cursor-pointer">
       <SearchIcon className="w-[15px]" />
       <Input
         type="text"
-        className="p-0 border-none rounded-none flex-1 bg-blueGray-30 text-14 font-medium text-gray-400 leading-150 tracking-tight-2 outline-none"
+        className="flex-1 p-0 font-medium text-gray-400 border-none rounded-none outline-none bg-blueGray-30 text-14 leading-150 tracking-tight-2"
         value={value}
         onChange={onChange}
         onKeyDown={onKeyDown}
@@ -23,6 +22,5 @@ const SearchInput = ({ value, onChange, onKeyDown, ...rest }: SearchInputProps) 
       />
     </div>
   );
-};
 
 export default SearchInput;

@@ -20,14 +20,12 @@ const INFOS = [
   { href: '#', icon: <InquiryIcon />, content: '문의하기' }
 ];
 
-const MoreInfoItem = ({ icon, content }: MoreInfoItemProps) => {
-  return (
-    <PaddingWrapper className="flex items-center gap-[8px] border-solid border-b-[1px] border-gray-100">
-      {icon}
-      <p className="ml-[8px] text-[14px] font-medium">{content}</p>
-    </PaddingWrapper>
-  );
-};
+const MoreInfoItem = ({ icon, content }: MoreInfoItemProps) => (
+  <PaddingWrapper className="flex items-center gap-[8px] border-solid border-b-[1px] border-gray-100">
+    {icon}
+    <p className="ml-[8px] text-[14px] font-medium">{content}</p>
+  </PaddingWrapper>
+);
 
 const MoreInfoSection = () => {
   const isLoggedIn = useRecoilValue(isLoggedinState);
