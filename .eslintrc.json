@@ -22,7 +22,7 @@
     "react/react-in-jsx-scope": "off",
 
     // 리팩토링 기간에만 warn (airbnb 설정에서 기본값 error)
-    "no-console": "warn",
+    "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
     "import/no-duplicates": "warn",
     "arrow-body-style": "warn",
     "arrow-parens": "warn",

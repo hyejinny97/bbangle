@@ -21,7 +21,7 @@ const SearchInputSection = () => {
 
   const [text, setText] = useState(query || '');
   const [showAutoComplete, setShowAutoComplete] = useState(false);
-  const debouncedText = useDebounce<string>({ value: text, delay: 500 });
+  const debouncedText = useDebounce<string>({ value: text, delay: 300 });
 
   const { mutate } = useAddRecentSearchKeywordMutation();
 
@@ -49,7 +49,7 @@ const SearchInputSection = () => {
 
     const params = new URLSearchParams(searchParams.toString());
     params.set('query', text);
-    router.push('/search/products' + '?' + params.toString());
+    router.push(`/search/products?${params.toString()}`);
 
     mutate(text);
     setShowAutoComplete(false);
