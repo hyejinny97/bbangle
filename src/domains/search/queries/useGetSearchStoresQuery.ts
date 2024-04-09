@@ -46,7 +46,7 @@ export const useGetSearchStoresQuery = ({ keyword }: QueryHookProps) => {
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
     select: ({ pages }) => {
-      const stores = pages.map(page => page.content).flat();
+      const stores = pages.map((page) => page.content).flat();
       const itemCount = pages[0]?.itemAllCount || 0;
       return { stores, itemCount };
     }

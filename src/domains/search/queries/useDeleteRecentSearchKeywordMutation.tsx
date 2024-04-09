@@ -26,7 +26,7 @@ export const useDeleteRecentSearchKeywordMutation = () => {
     await queryClient.cancelQueries({ queryKey });
     const previousKeywords: SearchKeywordsType | undefined = queryClient.getQueryData(queryKey);
     queryClient.setQueryData(queryKey, (oldKeywords: SearchKeywordsType) =>
-      oldKeywords.filter(item => item.keyword !== keywordToDelete)
+      oldKeywords.filter((item) => item.keyword !== keywordToDelete)
     );
     return { previousKeywords };
   };

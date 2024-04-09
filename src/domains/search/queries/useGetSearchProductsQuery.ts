@@ -53,7 +53,7 @@ export const useGetSearchProductsQuery = ({ keyword, filterValue }: QueryHookPro
     refetchOnWindowFocus: false,
     staleTime: Infinity,
     select: ({ pages }) => {
-      const products = pages.map(page => page.content).flat();
+      const products = pages.map((page) => page.content).flat();
       const itemCount = pages[0]?.itemAllCount || 0;
       return { products, itemCount };
     }
