@@ -10,17 +10,17 @@ interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const SearchInput = ({ value, onChange, onKeyDown, ...rest }: SearchInputProps) => (
-    <div className="flex items-center gap-[6px] px-[16px] py-[10px] w-full bg-blueGray-30 rounded-[50px] cursor-pointer">
-      <SearchIcon className="w-[15px]" />
-      <Input
-        type="text"
-        className="flex-1 p-0 font-medium text-gray-400 border-none rounded-none outline-none bg-blueGray-30 text-14 leading-150 tracking-tight-2"
-        value={value}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        {...rest}
-      />
-    </div>
-  );
+  <div className="flex items-center gap-[6px] px-[16px] py-[10px] w-full bg-blueGray-30 rounded-[50px] cursor-pointer">
+    <SearchIcon className="w-[15px]" />
+    <Input
+      type="text"
+      className="flex-1 p-0 font-medium text-gray-400 border-none rounded-none outline-none bg-blueGray-30 text-14 leading-150 tracking-tight-2"
+      value={value}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      {...rest}
+    />
+  </div>
+);
 
 export default SearchInput;
