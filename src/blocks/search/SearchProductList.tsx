@@ -7,9 +7,9 @@ import { filterValueState } from '@/domains/product/atoms';
 import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 import { useGetSearchProductsQuery } from '@/domains/search/queries/useGetSearchProductsQuery';
 import ProductCard from '@/domains/product/components/ProductCard';
-import NoSearchResult from '@/domains/search/components/NoSearchResult';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import { SkeletonProductList } from '@/components/commons/skeleton/SkeletonProductList';
+import SadBbangleBox from '@/shared/components/SadBbangleBox';
 
 interface SearchProductListProps {
   keyword?: string;
@@ -32,24 +32,32 @@ const SearchProductList = ({ keyword = '' }: SearchProductListProps) => {
     return <SkeletonProductList />;
   }
   if (isError) {
-    return <div className="p-[16px]">Error</div>;
+    return (
+      <SadBbangleBox>
+        <p>오류가 발생했어요!</p>
+      </SadBbangleBox>
+    );
+  }
+  if (!data || data.itemCount === 0) {
+    return (
+      <SadBbangleBox>
+        <p>검색 결과가 없어요 😥</p>
+        <p>다른 키워드로 검색해보세요!</p>
+      </SadBbangleBox>
+    );
   }
 
   return (
     <PaddingWrapper className="pb-[36px]">
-      {data && data.itemCount > 0 ? (
-        <div className="grid grid-cols-2 gap-x-[16px] gap-y-[16px]">
-          {data.products.map(product => (
-            <ProductCard key={product.boardId} product={product} />
-          ))}
-          {hasNextPage && (
-            <div ref={ref}>
-              <SkeletonProductList row={1} col={2} />
-            </div>
-          )}
+      <div className="grid grid-cols-2 gap-x-[16px] gap-y-[16px]">
+        {data.products.map((product) => (
+          <ProductCard key={product.boardId} product={product} />
+        ))}
+      </div>
+      {hasNextPage && (
+        <div ref={ref}>
+          <SkeletonProductList row={1} col={2} />
         </div>
-      ) : (
-        <NoSearchResult />
       )}
     </PaddingWrapper>
   );

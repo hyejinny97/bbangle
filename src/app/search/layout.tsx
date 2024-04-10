@@ -5,15 +5,13 @@ interface SearchLayoutProps {
   children: React.ReactNode;
 }
 
-const SearchLayout = ({ children }: SearchLayoutProps) => {
-  return (
-    <>
-      <Suspense>
-        <SearchInputSection />
-      </Suspense>
-      {children}
-    </>
-  );
-};
+const SearchLayout = ({ children }: SearchLayoutProps) => (
+  <>
+    <Suspense>
+      <SearchInputSection />
+    </Suspense>
+    {children}
+  </>
+);
 
 export default SearchLayout;

@@ -11,7 +11,12 @@ const BackButton = () => {
   };
 
   return (
-    <button className="mr-[17px] my-[6px]" onClick={goBackHandler}>
+    <button
+      type="button"
+      className="mr-[17px] my-[6px]"
+      onClick={goBackHandler}
+      aria-label="back button"
+    >
       <Back />
     </button>
   );

@@ -13,9 +13,9 @@ const AutoCompleteSearchContainer = ({ keyword }: AutoCompleteSearchContainerPro
   return (
     <div className="shadow-md shadow-gray-100 overflow-y-scroll scrollbar-hide">
       {!!autoCompleteSearchTexts?.length &&
-        autoCompleteSearchTexts.map(text => {
-          return <AutoCompleteSearchItem key={text} text={text} keyword={keyword} />;
-        })}
+        autoCompleteSearchTexts.map((text) => (
+          <AutoCompleteSearchItem key={text} text={text} keyword={keyword} />
+        ))}
     </div>
   );
 };

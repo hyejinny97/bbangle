@@ -5,8 +5,9 @@ import { useInView } from 'react-intersection-observer';
 import { useGetAllStoresQuery } from '@/domains/store/queries/useGetAllStoresQuery';
 import Loading from '@/components/commons/Loading';
 import StoreCard from '@/domains/store/components/StoreCard';
+import SadBbangleBox from '@/shared/components/SadBbangleBox';
 
-function MainStoreList() {
+const MainStoreList = () => {
   const { data, isError, isLoading, fetchNextPage, isFetchingNextPage } = useGetAllStoresQuery();
   const { ref, inView } = useInView();
 
@@ -23,25 +24,35 @@ function MainStoreList() {
     );
   }
   if (isError) {
-    return <div className="p-[16px]">Error</div>;
+    return (
+      <SadBbangleBox>
+        <p>오류가 발생했어요!</p>
+      </SadBbangleBox>
+    );
+  }
+  if (!data || data.stores.length === 0) {
+    return (
+      <SadBbangleBox>
+        <p>스토어가 없어요!</p>
+      </SadBbangleBox>
+    );
   }
 
   return (
     <div className="w-full">
-      {data &&
-        data.stores.map(({ introduce, storeId, storeName, isWished, profile }) => (
-          <StoreCard
-            key={storeId}
-            id={storeId}
-            title={storeName}
-            desc={introduce}
-            isWished={isWished}
-            imgSrc={profile}
-          />
-        ))}
-      {isFetchingNextPage ? <Loading /> : <div ref={ref}></div>}
+      {data.stores.map(({ introduce, storeId, storeName, isWished, profile }) => (
+        <StoreCard
+          key={storeId}
+          id={storeId}
+          title={storeName}
+          desc={introduce}
+          isWished={isWished}
+          imgSrc={profile}
+        />
+      ))}
+      {isFetchingNextPage ? <Loading /> : <div ref={ref} />}
     </div>
   );
-}
+};
 
 export default MainStoreList;

@@ -11,6 +11,7 @@ import ModalContainer from '@/components/commons/ModalContainer';
 import PopupContainer from '@/components/commons/PopupContainer';
 import RootLayoutProvider from '@/components/commons/RootLayoutProvider';
 import ToastContainer from '@/components/commons/ToastContainer';
+import FlareLaneScript from '@/global/FlareLaneScript';
 
 const pretendard = localFont({
   src: '../commons/assets/PretendardVariable.woff2'
@@ -35,6 +36,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => (
         <Footer />
       </RootLayoutProvider>
       <KaKaoChatScript />
+      <FlareLaneScript />
     </body>
   </html>
 );
