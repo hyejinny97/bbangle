@@ -2,6 +2,7 @@ import API from '@/api';
 import DetailFixedBtnSection from '@/blocks/product/DetailFixedBtnSection';
 import DetailOrderAvailableDays from '@/blocks/product/DetailOrderAvailableDays';
 import DetailProductComposition from '@/blocks/product/DetailProductComposition';
+import DetailProuductImgs from '@/blocks/product/DetailProductImgs';
 import DetailProductSummary from '@/blocks/product/DetailProductSummary';
 import DetailStoreInfo from '@/blocks/product/DetailStoreInfo';
 import GrayDivider from '@/components/commons/divider/GrayDivider';
@@ -30,6 +31,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
       <DetailOrderAvailableDays data={data} />
       <DetailProductComposition data={data} />
       <DetailFixedBtnSection data={data} />
+      <DetailProuductImgs data={data} />
     </>
   );
 };
