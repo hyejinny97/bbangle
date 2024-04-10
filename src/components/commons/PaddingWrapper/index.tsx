@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import { twMerge } from 'tailwind-merge';
 
 interface PaddingWrapperProps {
@@ -6,8 +7,8 @@ interface PaddingWrapperProps {
   children: ReactNode;
 }
 
-const PaddingWrapper = ({ className, children }: PaddingWrapperProps) => {
-  return <div className={twMerge('p-[16px]', className)}>{children}</div>;
-};
+const PaddingWrapper = ({ className, children }: PaddingWrapperProps) => (
+  <div className={twMerge('p-[16px]', className)}>{children}</div>
+);
 
 export default PaddingWrapper;

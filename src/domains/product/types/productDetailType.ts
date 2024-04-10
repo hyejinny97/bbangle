@@ -12,10 +12,6 @@ export interface IProductDetailType {
       {
         id: number;
         url: string;
-      },
-      {
-        id: number;
-        url: string;
       }
     ];
     title: string;
@@ -33,7 +29,7 @@ export interface IProductDetailType {
     purchaseUrl: string;
     isWished: boolean;
     isBundled: boolean;
-    detail: [IDetailImageType];
+    detail: IDetailImageType[];
     products: IProductType[];
   };
 }

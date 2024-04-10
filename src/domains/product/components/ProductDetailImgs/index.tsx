@@ -8,7 +8,7 @@ import { BundleBadge } from '@/components/commons/badge/BundleBadge';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
 import ImageCounter from './ImgCounter';
-import ImgSlider from './ImgSlider';
+import ProductImageSlide from './ProductImageSlide';
 
 interface ImageProps {
   id: number;
@@ -20,13 +20,13 @@ interface ProductImgProps {
   isBundled: boolean;
 }
 
-const ProductImgs = ({ boardImages, isBundled }: ProductImgProps) => {
+const ProductDetailImgs = ({ boardImages, isBundled }: ProductImgProps) => {
   const [swiperIndex, setSwiperIndex] = useState(0);
 
   return (
-    <PaddingWrapper>
+    <PaddingWrapper className="py-0">
       <div className="relative">
-        <ImgSlider boardImages={boardImages} setSwiperIndex={setSwiperIndex} />
+        <ProductImageSlide boardImages={boardImages} setSwiperIndex={setSwiperIndex} />
         {isBundled && (
           <div className="absolute top-[10px] left-[10px] z-10 ">
             <BundleBadge />
@@ -42,4 +42,4 @@ const ProductImgs = ({ boardImages, isBundled }: ProductImgProps) => {
   );
 };
 
-export default ProductImgs;
+export default ProductDetailImgs;

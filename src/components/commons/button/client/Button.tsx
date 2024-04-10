@@ -1,4 +1,5 @@
 import React, { ButtonHTMLAttributes } from 'react';
+
 import { twMerge } from 'tailwind-merge';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -29,8 +30,8 @@ const VARIANT_CLASS = {
     'w-full h-[46px] py-[14px] px-[10px] text-center rounded-full text-gray-900 bg-white border border-solid border-gray-200'
 };
 
-function Button({ variants = 'primary-black', className = '', ...props }: ButtonProps) {
-  return <button className={twMerge(VARIANT_CLASS[variants], className)} {...props} />;
-}
+const Button = ({ variants = 'primary-black', className = '', ...props }: ButtonProps) => (
+  <button type="button" className={twMerge(VARIANT_CLASS[variants], className)} {...props} />
+);
 
 export default Button;
