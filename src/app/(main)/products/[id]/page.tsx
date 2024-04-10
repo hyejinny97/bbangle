@@ -19,11 +19,13 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
   return (
     <>
       <ProductDetailImgs boardImages={data.board.images} isBundled={data.board.isBundled} />
-
       <DetailStoreInfo store={data.store} />
 
       <GrayDivider />
+
       <DetailProductSummary data={data} />
+
+      <GrayDivider />
 
       <DetailOrderAvailableDays data={data} />
       <DetailProductComposition data={data} />

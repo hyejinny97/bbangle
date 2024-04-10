@@ -16,7 +16,7 @@ const DetailFixedBtnSection = ({ data }: DetailFixedBtnSectionProps) => {
   };
 
   return (
-    <div className="bg-white z-[5000] w-full max-w-[600px] mx-auto p-[16px] fixed flex items-center gap-[10px] left-[0%] right-[0%] bottom-0 ">
+    <div className="bg-white z-[5000] w-full mx-auto p-[16px] fixed flex items-center gap-[10px] left-[0%] right-[0%] bottom-0 ">
       <div>
         <BtnOutlinedHeart isLiked={data.board.isWished} onClick={handleClickHeart} />
       </div>

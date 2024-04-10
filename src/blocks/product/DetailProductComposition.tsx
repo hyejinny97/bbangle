@@ -14,34 +14,38 @@ interface DetailProductCompositionProps {
 const DetailProductComposition = ({ data }: DetailProductCompositionProps) => {
   const [clickMore, setClickMore] = useState(false);
   return (
-    <PaddingWrapper className="pt-0">
-      <InfoWrapper title="상품 구성">
-        <div className="transition-all ease-in delay-150">
-          {data.board.products.map((item) => (
-            <div className="mb-[10px]" key={item.id}>
-              <div className="font-normal leading-120 text-12 text-gray-800 mb-[4px]">
-                {item.title}
+    <div className="relative">
+      <PaddingWrapper className="pt-0 ">
+        <InfoWrapper title="상품 구성">
+          <div
+            className={`flex  flex-col ${
+              clickMore ? 'overflow-y-visible ' : 'overflow-y-hidden h-[151px]'
+            }`}
+          >
+            {data.board.products.map((item) => (
+              <div className="mb-[10px]" key={item.id}>
+                <div className="font-normal leading-120 text-12 text-gray-800 mb-[4px]">
+                  {item.title}
+                </div>
+                <div className="mb-[4px] h-[21px] justify-start gap-1 inline-flex ">
+                  {item.tags.map((tag) => (
+                    <TagContainer key={tag} tag={tag} />
+                  ))}
+                </div>
               </div>
-              <div className="mb-[4px] h-[21px] justify-start gap-1 inline-flex ">
-                {item.tags.map((tag) => (
-                  <TagContainer key={tag} tag={tag} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </InfoWrapper>
+            ))}
+          </div>
+        </InfoWrapper>
+      </PaddingWrapper>
       {data.board.products.length > 2 && (
-        <PaddingWrapper className="w-full pt-[30px] absolute bottom-0  bg-gradient-to-t from-white via-[80.75%] via-white to-white/0 to-[116.09%]">
-          <MoreBtn
-            isMore={clickMore}
-            onClick={() => {
-              setClickMore(!clickMore);
-            }}
-          />
-        </PaddingWrapper>
+        <MoreBtn
+          isMore={clickMore}
+          onClick={() => {
+            setClickMore(!clickMore);
+          }}
+        />
       )}
-    </PaddingWrapper>
+    </div>
   );
 };
 export default DetailProductComposition;
