@@ -1,5 +1,5 @@
-import DetailStoreInfo from '@/blocks/product/DetailStoreInfo';
 import GrayDivider from '@/components/commons/divider/GrayDivider';
+import DetailStoreInfo from '@/domains/store/components/DetailStoreInfo';
 
 interface DetailStoreSectionProps {
   store: {

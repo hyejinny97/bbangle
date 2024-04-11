@@ -21,7 +21,7 @@ const GRID_COLS: GridType = {
   3: 'grid-cols-3'
 };
 
-export const SkeletonProductList = ({ row = 3, col = 2 }: SkeletonProductListProps) => (
+const SkeletonProductList = ({ row = 3, col = 2 }: SkeletonProductListProps) => (
   <PaddingWrapper className={`grid ${GRID_ROWS[row]} ${GRID_COLS[col]} gap-x-[16px] gap-y-[16px]`}>
     {Array(row * col)
       .fill(0)
@@ -30,3 +30,4 @@ export const SkeletonProductList = ({ row = 3, col = 2 }: SkeletonProductListPro
       ))}
   </PaddingWrapper>
 );
+export default SkeletonProductList;

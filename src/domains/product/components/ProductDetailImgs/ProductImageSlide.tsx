@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import ImgNone from './ImgNone';
+import ImgNone from '@/shared/components/ImgNone';
 
 interface ImageTypes {
   id: number;

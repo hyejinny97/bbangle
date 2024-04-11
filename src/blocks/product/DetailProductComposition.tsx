@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import InfoWrapper from '@/domains/product/components/ShowMoreProuductBtn/InfoWrapper';
+import InfoWrapper from '@/domains/product/components/InfoWrapper';
 import MoreBtn from '@/domains/product/components/ShowMoreProuductBtn/MoreBtn';
 import TagContainer from '@/domains/product/components/TagContainer';
 import { IProductDetailType } from '@/domains/product/types/productDetailType';

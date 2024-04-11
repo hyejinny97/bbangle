@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { useRecoilValue } from 'recoil';
 
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import { SkeletonProductList } from '@/components/commons/skeleton/SkeletonProductList';
+import SkeletonProductList from '@/components/commons/skeleton/SkeletonProductList';
 import { filterValueState } from '@/domains/product/atoms';
 import ProductCard from '@/domains/product/components/ProductCard';
 import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';

@@ -1,7 +1,10 @@
-import Link from 'next/link';
 import { Suspense } from 'react';
-import { SkeletonProductList } from '@/components/commons/skeleton/SkeletonProductList';
+
+import Link from 'next/link';
+
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import SkeletonProductList from '@/components/commons/skeleton/SkeletonProductList';
+
 import ProductsList from './ProductsList';
 
 const BestProductsSection = async () => (

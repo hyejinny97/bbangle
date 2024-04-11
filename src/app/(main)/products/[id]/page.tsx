@@ -4,10 +4,10 @@ import DetailOrderAvailableDays from '@/blocks/product/DetailOrderAvailableDays'
 import DetailProductComposition from '@/blocks/product/DetailProductComposition';
 import DetailProuductImgs from '@/blocks/product/DetailProductImgs';
 import DetailProductSummary from '@/blocks/product/DetailProductSummary';
-import DetailStoreInfo from '@/blocks/product/DetailStoreInfo';
 import GrayDivider from '@/components/commons/divider/GrayDivider';
 import ProductDetailImgs from '@/domains/product/components/ProductDetailImgs';
 import { IProductDetailType } from '@/domains/product/types/productDetailType';
+import DetailStoreInfo from '@/domains/store/components/DetailStoreInfo';
 
 async function getDetail(params: { id: string }) {
   const data: IProductDetailType = await API.get(`/boards/${params.id}`);
