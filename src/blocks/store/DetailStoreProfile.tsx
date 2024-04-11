@@ -9,7 +9,7 @@ interface StoreProfileProps {
   storeId: number;
 }
 
-const StoreProfile = ({ storeId }: StoreProfileProps) => {
+const DetailStoreProfile = ({ storeId }: StoreProfileProps) => {
   const { data } = useGetStoreDetailQuery(storeId);
   const [isLiked, setIsLiked] = useState(data?.store?.isWished || false);
 
@@ -30,4 +30,4 @@ const StoreProfile = ({ storeId }: StoreProfileProps) => {
   );
 };
 
-export default StoreProfile;
+export default DetailStoreProfile;
