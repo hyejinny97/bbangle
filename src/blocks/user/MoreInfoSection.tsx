@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { chatKakaoChannel } from '@/domains/user/utils/chatKakaoChannel';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import { useRecoilValue } from 'recoil';
 import { isLoggedinState } from '@/shared/atoms/login';
 import PATH from '@/shared/constants/path';

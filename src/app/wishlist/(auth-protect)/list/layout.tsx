@@ -1,4 +1,4 @@
-import Header from '@/components/commons/header/client/Header';
+import Header from '@/shared/components/Header';
 import ProductAndStoreTab from '@/components/commons/tabs/ProductAndStoreTab';
 import PATH from '@/shared/constants/path';
 import { ReactNode } from 'react';

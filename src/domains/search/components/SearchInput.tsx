@@ -1,7 +1,7 @@
 'use client';
 
 import SearchIcon from '@/shared/assets/search.svg';
-import Input from '@/components/commons/inputs/Input';
+import Input from '@/shared/components/Input';
 
 interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   value?: string;

@@ -4,8 +4,8 @@ import 'swiper/css/bundle';
 
 import React, { useState } from 'react';
 
-import { BundleBadge } from '@/components/commons/badge/BundleBadge';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import { BundleBadge } from '@/domains/product/components/ProductCard/ProductImage/BundleBadge';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import ProductImageSlide from '@/domains/product/components/ProductImageSlide';
 import ImageCounter from '@/domains/product/components/ProductImageSlide/ImgCounter';
 

@@ -1,5 +1,5 @@
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import Button from '@/components/commons/button/client/Button';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
+import Button from '@/shared/components/Button';
 import { BbangleSmileNameIcon } from '@/shared/components/icons';
 import PATH from '@/shared/constants/path';
 import Link from 'next/link';

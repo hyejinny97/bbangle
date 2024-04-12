@@ -1,4 +1,4 @@
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import RecentKeywordSection from '@/blocks/search/RecentKeywordSection';
 import PopularKeywordSection from '@/blocks/search/PopularKeywordSection';
 

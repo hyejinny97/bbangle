@@ -2,8 +2,8 @@ import { useRecoilState } from 'recoil';
 import { FILTER_VALUES } from '@/domains/product/constants/filterValues';
 import { tagsTempState } from '@/domains/product/atoms';
 import { FilterFamilyIDType } from '@/domains/product/types/filterType';
-import CheckBox from '@/components/commons/checkbox/client/Checkbox';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import CheckBox from '@/shared/components/Checkbox';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 
 interface TagsSectionProps {
   filterFamilyId: FilterFamilyIDType;

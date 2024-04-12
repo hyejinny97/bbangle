@@ -1,4 +1,4 @@
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import useAddWishStoreMutation from '@/domains/wish/queries/useAddWishStoreMutation';
 import useDeleteWishStoreMutation from '@/domains/wish/queries/useDeleteWishStoreMutation';
 import { BbangleSmileIcon, StarGrayIcon, StarYellowIcon } from '@/shared/components/icons';

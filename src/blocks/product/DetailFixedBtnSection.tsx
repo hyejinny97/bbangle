@@ -1,7 +1,7 @@
 'use client';
 
 import BtnOutlinedHeart from '@/components/commons/button/client/Btn_outlined_heart';
-import Button from '@/components/commons/button/client/Button';
+import Button from '@/shared/components/Button';
 import { IProductDetailType } from '@/domains/product/types/productDetailType';
 
 interface DetailFixedBtnSectionProps {

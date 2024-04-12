@@ -6,11 +6,11 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
 import Footer from '@/components/commons/footer/server/Footer';
-import KaKaoChatScript from '@/components/commons/KaKaoChatScript';
-import ModalContainer from '@/components/commons/ModalContainer';
-import PopupContainer from '@/components/commons/PopupContainer';
-import RootLayoutProvider from '@/components/commons/RootLayoutProvider';
-import ToastContainer from '@/components/commons/ToastContainer';
+import KaKaoChatScript from '@/global/KaKaoChatScript';
+import ModalContainer from '@/global/ModalContainer';
+import PopupContainer from '@/global/PopupContainer';
+import RootLayoutProvider from '@/global/RootLayoutProvider';
+import ToastContainer from '@/global/ToastContainer';
 import FlareLaneScript from '@/global/FlareLaneScript';
 import RegisterServiceWorker from '@/global/RegisterServiceWorker';
 

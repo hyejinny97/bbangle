@@ -2,7 +2,7 @@
 
 import { useRecoilState } from 'recoil';
 import { isCategoryTabState } from '@/domains/product/atoms/isCategoryTabState';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import {
   AllIcon,
   BigenIcon,

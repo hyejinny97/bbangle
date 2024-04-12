@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 
 import Link from 'next/link';
 
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import SkeletonProductList from '@/components/commons/skeleton/SkeletonProductList';
 
 import ProductsList from './ProductsList';

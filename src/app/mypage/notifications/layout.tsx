@@ -1,4 +1,4 @@
-import Header from '@/components/commons/header/client/Header';
+import Header from '@/shared/components/Header';
 
 interface NotificationsLayoutProps {
   children: React.ReactNode;

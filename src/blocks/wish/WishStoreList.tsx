@@ -1,6 +1,6 @@
 'use client';
 
-import Loading from '@/components/commons/Loading';
+import Loading from '@/shared/components/Loading';
 import StoreCard from '@/domains/store/components/StoreCard';
 import useWishStoreListQuery from '@/domains/wish/queries/useWishStoreListQuery';
 import { BbangleSadIcon } from '@/shared/components/icons';

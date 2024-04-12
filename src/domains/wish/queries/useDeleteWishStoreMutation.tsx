@@ -1,7 +1,7 @@
 import useToast from '@/shared/hooks/useToast';
 import fetchExtend from '@/shared/utils/api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import ToastPop from '@/components/commons/ToastPop';
+import ToastPop from '@/shared/components/ToastPop';
 import QUERY_KEY from '@/shared/constants/queryKey';
 
 const useDeleteWishStoreMutation = () => {

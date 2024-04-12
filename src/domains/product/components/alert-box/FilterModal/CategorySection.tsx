@@ -4,7 +4,7 @@ import { FILTER_VALUES } from '@/domains/product/constants/filterValues';
 import { filterValueState, categoryTempState } from '@/domains/product/atoms';
 import { FilterFamilyIDType } from '@/domains/product/types/filterType';
 import Radio from '@/components/commons/radio/Radio';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 
 interface CategorySectionProps {
   filterFamilyId: FilterFamilyIDType;

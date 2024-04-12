@@ -1,6 +1,6 @@
 'use client';
 
-import Loading from '@/components/commons/Loading';
+import Loading from '@/shared/components/Loading';
 import useGoogleLoginMutation from '@/domains/user/queries/useGoogleLoginMutation';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import { useParams } from 'next/navigation';

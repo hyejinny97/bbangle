@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import useToast from '@/shared/hooks/useToast';
-import ToastPop from '@/components/commons/ToastPop';
+import ToastPop from '@/shared/components/ToastPop';
 import fetchExtend from '@/shared/utils/api';
 import QUERY_KEY from '@/shared/constants/queryKey';
 import PATH from '@/shared/constants/path';

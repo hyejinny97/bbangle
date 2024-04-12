@@ -1,9 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-
 import LoadingGif from '../../../../public/assets/loading.gif';
-import BackDrop from '../backgrounds/BackDrop';
+import BackDrop from './BackDrop';
 
 const Loading = () => (
   <BackDrop isVisible>

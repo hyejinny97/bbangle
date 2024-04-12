@@ -1,4 +1,4 @@
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 
 const PrivacyPolicy = () => (
   <PaddingWrapper className="leading-150 text-14 text-gray-900  tracking-tight-2">

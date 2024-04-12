@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useGetSearchStoresQuery } from '@/domains/search/queries/useGetSearchStoresQuery';
-import Loading from '@/components/commons/Loading';
+import Loading from '@/shared/components/Loading';
 import StoreCard from '@/domains/store/components/StoreCard';
 import SadBbangleBox from '@/shared/components/SadBbangleBox';
 

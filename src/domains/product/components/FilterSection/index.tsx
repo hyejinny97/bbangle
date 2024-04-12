@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 
 import { FILTER_VALUES } from '@/domains/product/constants/filterValues';
 import useModal from '@/shared/hooks/useModal';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import FilterIcon from '@/domains/product/assets/filter.svg';
 import { filterValueState } from '@/domains/product/atoms';
 import FilterModal from '@/domains/product/components/alert-box/FilterModal';

@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useRecoilValue } from 'recoil';
 
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import SkeletonProductList from '@/components/commons/skeleton/SkeletonProductList';
 import { filterValueState } from '@/domains/product/atoms';
 import ProductCard from '@/domains/product/components/ProductCard';

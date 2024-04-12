@@ -3,7 +3,7 @@ import { SearchKeywordsType } from '@/domains/search/types';
 import fetchExtend from '@/shared/utils/api';
 import QUERY_KEY from '@/shared/constants/queryKey';
 import useToast from '@/shared/hooks/useToast';
-import ToastPop from '@/components/commons/ToastPop';
+import ToastPop from '@/shared/components/ToastPop';
 
 type ContextType = {
   previousKeywords?: SearchKeywordsType;

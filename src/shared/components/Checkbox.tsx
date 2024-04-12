@@ -1,9 +1,9 @@
 'use client';
 
 import React, { ChangeEvent, ReactNode, useId } from 'react';
+import { twMerge } from 'tailwind-merge';
 import Off from '../assets/icn_check_off.svg';
 import On from '../assets/icn_check_on.svg';
-import { twMerge } from 'tailwind-merge';
 
 interface CheckBoxProps {
   isChecked: boolean;

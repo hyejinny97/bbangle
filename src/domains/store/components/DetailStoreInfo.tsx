@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import BtnStar from '@/components/commons/button/client/Btn_start';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import { IProductDetailType } from '@/domains/product/types/productDetailType';
 
 interface ProductsProps {

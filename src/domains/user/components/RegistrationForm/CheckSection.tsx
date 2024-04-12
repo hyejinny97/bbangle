@@ -1,7 +1,7 @@
 'use client';
 
 import { ChangeEvent } from 'react';
-import CheckBox from '@/components/commons/checkbox/client/Checkbox';
+import CheckBox from '@/shared/components/Checkbox';
 import { useRecoilState } from 'recoil';
 import { agreeState } from '../../atoms/profile';
 

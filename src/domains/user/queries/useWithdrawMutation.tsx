@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { withdrawMemberShip } from '@/domains/user/queries/withdrawMemberShip';
 import usePopup from '@/shared/hooks/usePopup';
 import useToast from '@/shared/hooks/useToast';
-import ToastPop from '@/components/commons/ToastPop';
+import ToastPop from '@/shared/components/ToastPop';
 
 const useWithdrawMutation = () => {
   const router = useRouter();

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import getUserProfile from '@/domains/user/queries/getUserProfile';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import PATH from '@/shared/constants/path';
 import { BbangleSmileIcon } from '@/shared/components/icons';
 

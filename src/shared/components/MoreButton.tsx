@@ -1,4 +1,4 @@
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 
 interface MoreButtonProps {
   isMore: boolean;

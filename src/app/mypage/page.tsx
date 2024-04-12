@@ -1,4 +1,4 @@
-import Header from '@/components/commons/header/client/Header';
+import Header from '@/shared/components/Header';
 import UserInfoSection from '@/blocks/user/UserInfoSection';
 import MoreInfoSection from '@/blocks/user/MoreInfoSection';
 import { getCookie } from '@/shared/actions/cookie';

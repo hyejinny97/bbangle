@@ -1,4 +1,4 @@
-import PaddingWrapper from '../PaddingWrapper';
+import PaddingWrapper from '../../../shared/components/PaddingWrapper';
 import { SkeletonProductCard } from './SkeletonProductCard';
 
 interface SkeletonProductListProps {

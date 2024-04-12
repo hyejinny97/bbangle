@@ -9,8 +9,7 @@ interface BackDropProps {
   className?: string;
 }
 
-const BackDrop = ({ isVisible, onClick, children, className = '' }: BackDropProps) => {
-  return (
+const BackDrop = ({ isVisible, onClick, children, className = '' }: BackDropProps) => (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -27,6 +26,5 @@ const BackDrop = ({ isVisible, onClick, children, className = '' }: BackDropProp
       {children}
     </motion.div>
   );
-};
 
 export default BackDrop;

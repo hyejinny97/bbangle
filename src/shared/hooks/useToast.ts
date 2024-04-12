@@ -5,6 +5,8 @@ import { useRecoilState } from 'recoil';
 const useToast = () => {
   const [, setToast] = useRecoilState(toastState);
 
+  const closeToast = () => setToast(null);
+
   const openToast = (toastPopup: ReactNode) => {
     setToast(toastPopup);
 
@@ -12,8 +14,6 @@ const useToast = () => {
       closeToast();
     }, 3000);
   };
-
-  const closeToast = () => setToast(null);
 
   return { openToast, closeToast };
 };

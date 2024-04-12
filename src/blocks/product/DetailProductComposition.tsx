@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import InfoWrapper from '@/domains/product/components/InfoWrapper';
 import ProductTag from '@/domains/product/components/ProductTag';
 import { IProductDetailType } from '@/domains/product/types/productDetailType';

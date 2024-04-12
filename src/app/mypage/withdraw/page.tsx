@@ -1,5 +1,5 @@
 import WithdrawLogoSection from '@/blocks/user/WithdrawLogoSection';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import WithdrawForm from '@/domains/user/components/WithdrawForm';
 
 const Withdraw = () => (

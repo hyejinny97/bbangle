@@ -1,6 +1,6 @@
 'use client';
 
-import Loading from '@/components/commons/Loading';
+import Loading from '@/shared/components/Loading';
 import useKakaoAuthMutation from '@/domains/user/queries/useKakaoAuthMutation';
 import useLoginMutation from '@/domains/user/queries/useLoginMutation';
 import { useSearchParams } from 'next/navigation';

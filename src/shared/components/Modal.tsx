@@ -5,7 +5,7 @@ import useModal from '@/shared/hooks/useModal';
 import { motion } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 import { CloseIcon } from '@/shared/components/icons';
-import PaddingWrapper from '../../PaddingWrapper';
+import PaddingWrapper from './PaddingWrapper';
 
 interface UpModalProps {
   title: string;
@@ -13,7 +13,7 @@ interface UpModalProps {
   className?: string;
 }
 
-const UpModalNewVer = ({ title, children, className }: UpModalProps) => {
+const Modal = ({ title, children, className }: UpModalProps) => {
   const { closeModal } = useModal();
 
   return (
@@ -44,4 +44,4 @@ const UpModalNewVer = ({ title, children, className }: UpModalProps) => {
   );
 };
 
-export default UpModalNewVer;
+export default Modal;

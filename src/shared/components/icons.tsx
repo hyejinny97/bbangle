@@ -9,3 +9,5 @@ export { default as HeartRedIcon } from '../assets/heart-red.svg';
 export { default as HeartGrayIcon } from '../assets/heart-gray.svg';
 export { default as StarYellowIcon } from '../assets/star-yellow.svg';
 export { default as StarGrayIcon } from '../assets/star-gray.svg';
+
+export { default as BackArrowIcon } from '../assets/back-arrow.svg';

@@ -5,8 +5,8 @@ import { MouseEventHandler } from 'react';
 import Image from 'next/image';
 
 import { IProductType } from '@/domains/product/types/productType';
-import { BundleBadge } from '@/components/commons/badge/BundleBadge';
-import { RankingBadge } from '@/components/commons/badge/RankingBadge';
+import { BundleBadge } from '@/domains/product/components/ProductCard/ProductImage/BundleBadge';
+import { RankingBadge } from '@/domains/product/components/ProductCard/ProductImage/RankingBadge';
 import useAddWishMutation from '@/domains/wish/queries/useAddWishMutation';
 import useDeleteWishProductMutation from '@/domains/wish/queries/useDeleteWishProductMutation';
 import { HeartGrayIcon, HeartRedIcon } from '@/shared/components/icons';

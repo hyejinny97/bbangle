@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { useSetRecoilState } from 'recoil';
 import useToast from '@/shared/hooks/useToast';
-import ToastPop from '@/components/commons/ToastPop';
+import ToastPop from '@/shared/components/ToastPop';
 import { setCookie } from '@/shared/actions/cookie';
 import { expToDate, parseJwt } from '../utils/jwt';
 

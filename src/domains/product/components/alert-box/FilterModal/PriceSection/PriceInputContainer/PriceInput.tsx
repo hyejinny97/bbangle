@@ -7,7 +7,7 @@ import {
   LIMIT_MAX_PRICE,
   PRICE_RANGE_STEP
 } from '@/domains/product/constants/priceLimit';
-import Input from '@/components/commons/inputs/Input';
+import Input from '@/shared/components/Input';
 
 interface PriceInputProps {
   value: number;
