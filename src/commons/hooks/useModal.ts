@@ -1,4 +1,4 @@
-import { modalState } from '@/atoms/atom';
+import { modalState } from '@/shared/atoms/alert';
 import { ReactNode } from 'react';
 import { useRecoilState } from 'recoil';
 

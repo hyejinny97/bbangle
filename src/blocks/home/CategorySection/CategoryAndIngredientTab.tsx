@@ -1,7 +1,7 @@
 'use client';
 
 import { useRecoilState } from 'recoil';
-import { isCategoryTabState } from '@/atoms/atom';
+import { isCategoryTabState } from '@/domains/product/atoms/isCategoryTabState';
 import TabButton from '@/shared/components/TabButton';
 
 const CategoryAndIngredientTab = () => {

@@ -1,9 +1,9 @@
 'use client';
 
-import { toastState } from '@/atoms/atom';
 import { AnimatePresence } from 'framer-motion';
 import { useRecoilValue } from 'recoil';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import { toastState } from '@/shared/atoms/alert';
 
 const ToastContainer = () => {
   const toast = useRecoilValue(toastState);

@@ -2,10 +2,10 @@
 
 import { useRecoilValue } from 'recoil';
 import { MouseEventHandler } from 'react';
-import { modalState } from '@/atoms/atom';
-import BackDrop from '../backgrounds/BackDrop';
 import useModal from '@/commons/hooks/useModal';
 import { AnimatePresence } from 'framer-motion';
+import { modalState } from '@/shared/atoms/alert';
+import BackDrop from '../backgrounds/BackDrop';
 
 const ModalContainer = () => {
   const modal = useRecoilValue(modalState);

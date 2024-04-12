@@ -1,4 +1,4 @@
-import { popupState } from '@/atoms/atom';
+import { popupState } from '@/shared/atoms/alert';
 import { ReactNode } from 'react';
 import { useRecoilState } from 'recoil';
 

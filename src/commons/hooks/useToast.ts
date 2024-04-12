@@ -1,4 +1,4 @@
-import { toastState } from '@/atoms/atom';
+import { toastState } from '@/shared/atoms/alert';
 import { ReactNode } from 'react';
 import { useRecoilState } from 'recoil';
 
