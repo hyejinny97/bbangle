@@ -1,7 +1,7 @@
 import { useRecoilState } from 'recoil';
 import { filterValueState, filterValueTempState } from '@/domains/product/atoms';
 import { FilterFamilyIDType } from '@/domains/product/types/filterType';
-import useModal from '@/commons/hooks/useModal';
+import useModal from '@/shared/hooks/useModal';
 import Button from '@/components/commons/button/client/Button';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 

@@ -1,8 +1,8 @@
 'use client';
 
-import { BbangleSadIcon } from '@/components/commons/Icon';
 import ProductCard from '@/domains/product/components/ProductCard';
 import useWishProductListQuery from '@/domains/wish/queries/useWishProductListQuery';
+import { BbangleSadIcon } from '@/shared/components/icons';
 import { useParams } from 'next/navigation';
 
 const WishProductList = () => {

@@ -1,4 +1,4 @@
-import useToast from '@/commons/hooks/useToast';
+import useToast from '@/shared/hooks/useToast';
 import ToastPop from '@/components/commons/ToastPop';
 import { revalidatePath } from '@/shared/actions/revalidate';
 import PATH from '@/shared/constants/path';

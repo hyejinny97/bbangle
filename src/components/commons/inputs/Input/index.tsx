@@ -1,4 +1,4 @@
-import { INPUT_STYLE } from '@/commons/constants/inputStyle';
+import { INPUT_STYLE } from '@/shared/constants/inputStyle';
 import { InputHTMLAttributes, ReactNode, useId } from 'react';
 import { twMerge } from 'tailwind-merge';
 

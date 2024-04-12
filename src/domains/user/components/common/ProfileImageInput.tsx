@@ -1,9 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { BbangleSmileIcon } from '@/components/commons/Icon';
 import { ChangeEventHandler, memo, useEffect, useId, useState } from 'react';
 import { useRecoilState } from 'recoil';
+import { BbangleSmileIcon } from '@/shared/components/icons';
 import { profileImgState } from '../../atoms/profile';
 
 interface ProfileImageInputProps {

@@ -1,7 +1,7 @@
 import { useInfiniteQuery, GetNextPageParamFunction } from '@tanstack/react-query';
 import { IFilterType } from '@/domains/product/types/filterType';
 import { IAllProductsType } from '@/domains/search/types';
-import { transformFilterValueToQueryString } from '@/commons/utils/transformFilterValueToQueryString';
+import { transformFilterValueToQueryString } from '@/domains/product/utils/transformFilterValueToQueryString';
 import QUERY_KEY from '@/shared/constants/queryKey';
 import fetchExtend from '@/shared/utils/api';
 

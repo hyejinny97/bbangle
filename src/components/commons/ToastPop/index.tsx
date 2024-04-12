@@ -1,6 +1,6 @@
 'use client';
 
-import useToast from '@/commons/hooks/useToast';
+import useToast from '@/shared/hooks/useToast';
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 

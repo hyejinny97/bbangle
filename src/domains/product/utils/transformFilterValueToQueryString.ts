@@ -3,12 +3,12 @@ import {
   transformCategoryToEng,
   transformTagToEng,
   transformSortToEng
-} from '@/commons/constants/transfromTag';
+} from '@/domains/product/utils/transfromTag';
 
 export const transformFilterValueToQueryString = (query: IFilterType) => {
   const { category, tags, sort, showProductsAvailableOrder } = query;
   const categoryQuery = category && transformCategoryToEng(category);
-  const tagsEng = tags?.map(tag => transformTagToEng(tag));
+  const tagsEng = tags?.map((tag) => transformTagToEng(tag));
   const tagsQuery = tagsEng?.reduce(
     (acc, tag) => ({
       ...acc,

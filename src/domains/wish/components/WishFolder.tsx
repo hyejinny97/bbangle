@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import { useRecoilValue } from 'recoil';
 import { MouseEventHandler } from 'react';
-import { CloseIcon } from '@/components/commons/Icon';
-import usePopup from '@/commons/hooks/usePopup';
-import useModal from '@/commons/hooks/useModal';
+import usePopup from '@/shared/hooks/usePopup';
+import useModal from '@/shared/hooks/useModal';
+import { CloseIcon } from '@/shared/components/icons';
 import DeleteWishFolderPopup from './alert-box/DeleteWishFolderPopup';
 import UpdateWishFolderModal from './alert-box/UpdateWishFolderModal';
 import { isWishFolderEditingState } from '../atoms/wishFolder';

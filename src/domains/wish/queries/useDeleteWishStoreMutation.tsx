@@ -1,4 +1,4 @@
-import useToast from '@/commons/hooks/useToast';
+import useToast from '@/shared/hooks/useToast';
 import fetchExtend from '@/shared/utils/api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import ToastPop from '@/components/commons/ToastPop';

@@ -1,9 +1,9 @@
 'use client';
 
-import { BbangleSadIcon } from '@/components/commons/Icon';
 import Loading from '@/components/commons/Loading';
 import StoreCard from '@/domains/store/components/StoreCard';
 import useWishStoreListQuery from '@/domains/wish/queries/useWishStoreListQuery';
+import { BbangleSadIcon } from '@/shared/components/icons';
 
 const WishStroeList = () => {
   const { data, isLoading } = useWishStoreListQuery();

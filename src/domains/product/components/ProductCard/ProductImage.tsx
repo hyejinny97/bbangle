@@ -4,7 +4,7 @@ import { MouseEventHandler } from 'react';
 
 import Image from 'next/image';
 
-import { IProductType } from '@/commons/types/productType';
+import { IProductType } from '@/domains/product/types/productType';
 import { BundleBadge } from '@/components/commons/badge/BundleBadge';
 import { RankingBadge } from '@/components/commons/badge/RankingBadge';
 import useAddWishMutation from '@/domains/wish/queries/useAddWishMutation';

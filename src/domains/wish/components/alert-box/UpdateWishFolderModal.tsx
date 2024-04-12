@@ -1,11 +1,11 @@
 'use client';
 
-import useModal from '@/commons/hooks/useModal';
+import useModal from '@/shared/hooks/useModal';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import Button from '@/components/commons/button/client/Button';
 import Input from '@/components/commons/inputs/Input';
 import UpModalNewVer from '@/components/commons/modal/UpModalNewVer';
-import useInput from '@/commons/hooks/useInput';
+import useInput from '@/shared/hooks/useInput';
 import useUpdateWishListMutation from '../../queries/useUpdateWishListMutation';
 
 interface UpdateWishFolderModalProps {

@@ -3,7 +3,7 @@
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import Button from '@/components/commons/button/client/Button';
 import Popup from '@/components/commons/Popup';
-import usePopup from '@/commons/hooks/usePopup';
+import usePopup from '@/shared/hooks/usePopup';
 import useDeleteWishFolderMutation from '../../queries/useDeleteWishFolderMutation';
 
 interface DeleteWishFolderPopupProps {

@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider, QueryCache } from '@tanstack/react-query';
-import useToast from '@/commons/hooks/useToast';
+import useToast from '@/shared/hooks/useToast';
 import ToastPop from '@/components/commons/ToastPop';
 
 const CustomQueryClientProvider = ({ children }: { children: React.ReactNode }) => {

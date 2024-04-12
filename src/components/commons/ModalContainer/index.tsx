@@ -2,7 +2,7 @@
 
 import { useRecoilValue } from 'recoil';
 import { MouseEventHandler } from 'react';
-import useModal from '@/commons/hooks/useModal';
+import useModal from '@/shared/hooks/useModal';
 import { AnimatePresence } from 'framer-motion';
 import { modalState } from '@/shared/atoms/alert';
 import BackDrop from '../backgrounds/BackDrop';

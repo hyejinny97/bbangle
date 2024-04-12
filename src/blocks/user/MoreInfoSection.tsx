@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { chatKakaoChannel } from '@/commons/utils/chatKakaoChannel';
+import { chatKakaoChannel } from '@/domains/user/utils/chatKakaoChannel';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import { useRecoilValue } from 'recoil';
 import { isLoggedinState } from '@/shared/atoms/login';

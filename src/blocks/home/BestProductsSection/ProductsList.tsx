@@ -1,4 +1,4 @@
-import { IProductType } from '@/commons/types/productType';
+import { IProductType } from '@/domains/product/types/productType';
 import ProductCard from '@/domains/product/components/ProductCard';
 import { REAVALIDATE_TAG } from '@/shared/constants/revalidateTags';
 import fetchExtend from '@/shared/utils/api';

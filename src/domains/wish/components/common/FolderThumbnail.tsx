@@ -1,4 +1,4 @@
-import { BbangleSmileIcon } from '@/components/commons/Icon';
+import { BbangleSmileIcon } from '@/shared/components/icons';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
 

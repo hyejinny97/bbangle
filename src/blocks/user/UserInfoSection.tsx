@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import getUserProfile from '@/domains/user/queries/getUserProfile';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import { BbangleSmileIcon } from '@/components/commons/Icon';
 import PATH from '@/shared/constants/path';
+import { BbangleSmileIcon } from '@/shared/components/icons';
 
 const UserInfoSection = async () => {
   const { profileImg, nickname } = await getUserProfile();

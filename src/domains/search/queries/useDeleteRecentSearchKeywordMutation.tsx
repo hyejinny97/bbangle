@@ -2,7 +2,7 @@ import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { SearchKeywordsType } from '@/domains/search/types';
 import fetchExtend from '@/shared/utils/api';
 import QUERY_KEY from '@/shared/constants/queryKey';
-import useToast from '@/commons/hooks/useToast';
+import useToast from '@/shared/hooks/useToast';
 import ToastPop from '@/components/commons/ToastPop';
 
 type ContextType = {

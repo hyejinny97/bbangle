@@ -1,8 +1,7 @@
-import { BbangleSmileIcon } from '@/components/commons/Icon';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import useAddWishStoreMutation from '@/domains/wish/queries/useAddWishStoreMutation';
 import useDeleteWishStoreMutation from '@/domains/wish/queries/useDeleteWishStoreMutation';
-import { StarGrayIcon, StarYellowIcon } from '@/shared/components/icons';
+import { BbangleSmileIcon, StarGrayIcon, StarYellowIcon } from '@/shared/components/icons';
 import Image from 'next/image';
 
 interface WishStroeProps {

@@ -1,5 +1,8 @@
 import { useState, ChangeEvent } from 'react';
 
+/**
+ * @deprecated react-hook-form 사용해주세요
+ * */
 const useInput = (initialValue: string) => {
   const [value, setValue] = useState<string>(initialValue);
 

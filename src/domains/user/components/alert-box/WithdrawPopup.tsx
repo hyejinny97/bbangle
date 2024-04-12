@@ -1,7 +1,7 @@
 'use client';
 
 import Popup from '@/components/commons/Popup';
-import usePopup from '@/commons/hooks/usePopup';
+import usePopup from '@/shared/hooks/usePopup';
 
 const WithdrawPopup = () => {
   const { closePopup } = usePopup();

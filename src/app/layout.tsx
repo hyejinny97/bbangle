@@ -15,7 +15,7 @@ import FlareLaneScript from '@/global/FlareLaneScript';
 import RegisterServiceWorker from '@/global/RegisterServiceWorker';
 
 const pretendard = localFont({
-  src: '../commons/assets/PretendardVariable.woff2'
+  src: '../shared/assets/PretendardVariable.woff2'
 });
 
 export const metadata: Metadata = {

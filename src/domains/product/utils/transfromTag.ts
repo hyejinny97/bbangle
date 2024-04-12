@@ -44,6 +44,7 @@ export function transformTagToKr(tag: string): string {
   }
   return tag;
 }
+
 export function transformTagToEng(tag: string): string {
   if (tag === '글루텐프리') {
     return 'glutenFreeTag';
