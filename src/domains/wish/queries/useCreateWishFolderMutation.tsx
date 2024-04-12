@@ -1,6 +1,6 @@
 import useToast from '@/commons/hooks/useToast';
 import ToastPop from '@/components/commons/ToastPop';
-import { revalidatePath } from '@/shared/actions';
+import { revalidatePath } from '@/shared/actions/revalidate';
 import PATH from '@/shared/constants/path';
 import fetchExtend from '@/shared/utils/api';
 import { useMutation } from '@tanstack/react-query';
