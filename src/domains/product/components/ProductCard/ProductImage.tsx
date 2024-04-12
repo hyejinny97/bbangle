@@ -1,13 +1,15 @@
 'use client';
 
+import { MouseEventHandler } from 'react';
+
+import Image from 'next/image';
+
 import { IProductType } from '@/commons/types/productType';
 import { BundleBadge } from '@/components/commons/badge/BundleBadge';
 import { RankingBadge } from '@/components/commons/badge/RankingBadge';
-import { HeartGrayIcon, HeartRedIcon } from '@/shared/components/icons';
-import { MouseEventHandler } from 'react';
-import useDeleteWishProductMutation from '@/domains/wish/queries/useDeleteWishProductMutation';
 import useAddWishMutation from '@/domains/wish/queries/useAddWishMutation';
-import Image from 'next/image';
+import useDeleteWishProductMutation from '@/domains/wish/queries/useDeleteWishProductMutation';
+import { HeartGrayIcon, HeartRedIcon } from '@/shared/components/icons';
 
 interface ProductImageProps {
   product: IProductType;
@@ -22,12 +24,12 @@ const ProductImage = ({ product, popular, ranking }: ProductImageProps) => {
   const { mutate: addMutate } = useAddWishMutation();
   const { mutate: deleteMutate } = useDeleteWishProductMutation();
 
-  const like: MouseEventHandler<HTMLButtonElement> = e => {
+  const like: MouseEventHandler<HTMLButtonElement> = (e) => {
     addMutate({ productId: String(product.boardId), folderId: DEFAULT_FOLDER_ID });
     e.preventDefault();
   };
 
-  const hate: MouseEventHandler<HTMLButtonElement> = e => {
+  const hate: MouseEventHandler<HTMLButtonElement> = (e) => {
     deleteMutate({ productId: String(product.boardId) });
     e.preventDefault();
   };
@@ -45,11 +47,11 @@ const ProductImage = ({ product, popular, ranking }: ProductImageProps) => {
       />
       <div className="absolute bottom-[9px] right-[9px] h-[20px]">
         {product.isWished ? (
-          <button onClick={hate}>
+          <button onClick={hate} type="button" aria-label="Remove from wishlist">
             <HeartRedIcon />
           </button>
         ) : (
-          <button onClick={like}>
+          <button onClick={like} type="button" aria-label="Add to wishlist">
             <HeartGrayIcon />
           </button>
         )}

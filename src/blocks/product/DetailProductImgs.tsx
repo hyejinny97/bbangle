@@ -1,32 +1,31 @@
 'use client';
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-
 import 'swiper/css/bundle';
+
+import React, { useState } from 'react';
 
 import { BundleBadge } from '@/components/commons/badge/BundleBadge';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import ImgSlider from './ImgSlider';
-import ImageCounter from './ImgCounter';
+import ProductImageSlide from '@/domains/product/components/ProductImageSlide';
+import ImageCounter from '@/domains/product/components/ProductImageSlide/ImgCounter';
 
-interface Image {
+interface ImageProps {
   id: number;
   url: string;
 }
 
 interface ProductImgProps {
-  boardImages: Image[];
+  boardImages: ImageProps[];
   isBundled: boolean;
 }
 
-const ProductImgs = ({ boardImages, isBundled }: ProductImgProps) => {
+const ProductDetailImgs = ({ boardImages, isBundled }: ProductImgProps) => {
   const [swiperIndex, setSwiperIndex] = useState(0);
 
   return (
-    <PaddingWrapper>
+    <PaddingWrapper className="py-0">
       <div className="relative">
-        <ImgSlider boardImages={boardImages} setSwiperIndex={setSwiperIndex} />
+        <ProductImageSlide boardImages={boardImages} setSwiperIndex={setSwiperIndex} />
         {isBundled && (
           <div className="absolute top-[10px] left-[10px] z-10 ">
             <BundleBadge />
@@ -42,4 +41,4 @@ const ProductImgs = ({ boardImages, isBundled }: ProductImgProps) => {
   );
 };
 
-export default ProductImgs;
+export default ProductDetailImgs;

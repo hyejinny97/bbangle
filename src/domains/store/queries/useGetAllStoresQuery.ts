@@ -1,7 +1,7 @@
-import { useInfiniteQuery, GetNextPageParamFunction } from '@tanstack/react-query';
-import QUERY_KEY from '@/shared/constants/queryKey';
 import { IAllStoresType } from '@/domains/store/types/allStoresType';
+import QUERY_KEY from '@/shared/constants/queryKey';
 import fetchExtend from '@/shared/utils/api';
+import { GetNextPageParamFunction, useInfiniteQuery } from '@tanstack/react-query';
 
 export const useGetAllStoresQuery = () => {
   const queryKey = [QUERY_KEY.store, QUERY_KEY.main];
@@ -32,7 +32,7 @@ export const useGetAllStoresQuery = () => {
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
     select: ({ pages }) => {
-      const stores = pages.map(page => page.content).flat();
+      const stores = pages.map((page) => page.content).flat();
       return { stores };
     }
   });

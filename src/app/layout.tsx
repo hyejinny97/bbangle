@@ -1,13 +1,16 @@
+import './global.css';
+
 import { ReactNode } from 'react';
+
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import './global.css';
-import RootLayoutProvider from '@/components/commons/RootLayoutProvider';
+
 import Footer from '@/components/commons/footer/server/Footer';
-import PopupContainer from '@/components/commons/PopupContainer';
-import ModalContainer from '@/components/commons/ModalContainer';
-import ToastContainer from '@/components/commons/ToastContainer';
 import KaKaoChatScript from '@/components/commons/KaKaoChatScript';
+import ModalContainer from '@/components/commons/ModalContainer';
+import PopupContainer from '@/components/commons/PopupContainer';
+import RootLayoutProvider from '@/components/commons/RootLayoutProvider';
+import ToastContainer from '@/components/commons/ToastContainer';
 import FlareLaneScript from '@/global/FlareLaneScript';
 import RegisterServiceWorker from '@/global/RegisterServiceWorker';
 

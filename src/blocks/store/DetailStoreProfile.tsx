@@ -1,14 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { useGetStoreDetailQuery } from '@/components/units/StoreDetail/hooks/useGetStoreDetailQuery';
+
 import BtnStar from '@/components/commons/button/client/Btn_start';
+import { useGetStoreDetailQuery } from '@/domains/store/hooks/useGetStoreDetailQuery';
 
 interface StoreProfileProps {
   storeId: number;
 }
 
-function StoreProfile({ storeId }: StoreProfileProps) {
+const DetailStoreProfile = ({ storeId }: StoreProfileProps) => {
   const { data } = useGetStoreDetailQuery(storeId);
   const [isLiked, setIsLiked] = useState(data?.store?.isWished || false);
 
@@ -17,7 +18,7 @@ function StoreProfile({ storeId }: StoreProfileProps) {
       <div
         className="w-[46px] h-[46px] bg-cover bg-center rounded-md"
         style={{ backgroundImage: `url(${data?.store.profile})` }}
-      ></div>
+      />
       <div className="flex flex-col gap-[4px]">
         <div className="w-full flex items-center justify-center gap-[2px]">
           <div className="text-gray-900 text-16 font-bold">{data?.store.storeName}</div>
@@ -27,6 +28,6 @@ function StoreProfile({ storeId }: StoreProfileProps) {
       </div>
     </div>
   );
-}
+};
 
-export default StoreProfile;
+export default DetailStoreProfile;

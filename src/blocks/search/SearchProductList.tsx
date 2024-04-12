@@ -1,14 +1,16 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
+
 import { useInView } from 'react-intersection-observer';
+import { useRecoilValue } from 'recoil';
+
+import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import SkeletonProductList from '@/components/commons/skeleton/SkeletonProductList';
 import { filterValueState } from '@/domains/product/atoms';
+import ProductCard from '@/domains/product/components/ProductCard';
 import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 import { useGetSearchProductsQuery } from '@/domains/search/queries/useGetSearchProductsQuery';
-import ProductCard from '@/domains/product/components/ProductCard';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import { SkeletonProductList } from '@/components/commons/skeleton/SkeletonProductList';
 import SadBbangleBox from '@/shared/components/SadBbangleBox';
 
 interface SearchProductListProps {
