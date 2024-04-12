@@ -1,5 +1,5 @@
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import TagContainer from '@/domains/product/components/TagContainer';
+import ProductTag from '@/domains/product/components/ProductTag';
 import { IProductDetailType } from '@/domains/product/types/productDetailType';
 
 interface DetailProductSummaryProps {
@@ -12,7 +12,7 @@ const DetailProductSummary = ({ data }: DetailProductSummaryProps) => {
     <PaddingWrapper>
       <div className="mb-[4px] h-[21px] justify-start gap-1 inline-flex">
         {uniqueTags.map((tag) => (
-          <TagContainer key={tag} tag={tag} />
+          <ProductTag key={tag} tag={tag} />
         ))}
       </div>
       <div className="text-16 leading-130 font-normal text-gray-800 mb-[2px]">

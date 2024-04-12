@@ -4,8 +4,8 @@ import { useState } from 'react';
 
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
-import { IProductDetailType } from '../../types/productDetailType';
-import MoreBtn from './MoreBtn';
+import MoreButton from '../../../shared/components/MoreButton';
+import { IProductDetailType } from '../types/productDetailType';
 
 interface DetailBoardInfoProps {
   data: IProductDetailType;
@@ -22,7 +22,7 @@ const ShowMoreProductBtn = ({ data }: DetailBoardInfoProps) => {
         }`}
       >
         {data.board.products.length > 2 && (
-          <MoreBtn
+          <MoreButton
             isMore={clickMore}
             onClick={() => {
               setClickMore(!clickMore);

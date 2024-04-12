@@ -4,9 +4,9 @@ import { useState } from 'react';
 
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import InfoWrapper from '@/domains/product/components/InfoWrapper';
-import MoreBtn from '@/domains/product/components/ShowMoreProuductBtn/MoreBtn';
-import TagContainer from '@/domains/product/components/TagContainer';
+import ProductTag from '@/domains/product/components/ProductTag';
 import { IProductDetailType } from '@/domains/product/types/productDetailType';
+import MoreButton from '@/shared/components/MoreButton';
 
 interface DetailProductCompositionProps {
   data: IProductDetailType;
@@ -29,7 +29,7 @@ const DetailProductComposition = ({ data }: DetailProductCompositionProps) => {
                 </div>
                 <div className="mb-[4px] h-[21px] justify-start gap-1 inline-flex ">
                   {item.tags.map((tag) => (
-                    <TagContainer key={tag} tag={tag} />
+                    <ProductTag key={tag} tag={tag} />
                   ))}
                 </div>
               </div>
@@ -38,7 +38,7 @@ const DetailProductComposition = ({ data }: DetailProductCompositionProps) => {
         </InfoWrapper>
       </PaddingWrapper>
       {data.board.products.length > 2 && (
-        <MoreBtn
+        <MoreButton
           isMore={clickMore}
           onClick={() => {
             setClickMore(!clickMore);

@@ -1,24 +1,44 @@
-import Image from 'next/image';
+'use client';
 
-import { IProductDetailType } from '@/domains/product/types/productDetailType';
+import 'swiper/css/bundle';
 
-interface DetailProuductImgsProps {
-  data: IProductDetailType;
+import React, { useState } from 'react';
+
+import { BundleBadge } from '@/components/commons/badge/BundleBadge';
+import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import ProductImageSlide from '@/domains/product/components/ProductImageSlide';
+import ImageCounter from '@/domains/product/components/ProductImageSlide/ImgCounter';
+
+interface ImageProps {
+  id: number;
+  url: string;
 }
 
-const DetailProuductImgs = ({ data }: DetailProuductImgsProps) => (
-  <div className="w-full p-0 ">
-    {data.board?.detail.map((item) => (
-      <Image
-        key={item.imgIndex}
-        src={item.url}
-        alt="상세"
-        width={600}
-        height={100}
-        className=" m-auto"
-      />
-    ))}
-  </div>
-);
+interface ProductImgProps {
+  boardImages: ImageProps[];
+  isBundled: boolean;
+}
 
-export default DetailProuductImgs;
+const ProductDetailImgs = ({ boardImages, isBundled }: ProductImgProps) => {
+  const [swiperIndex, setSwiperIndex] = useState(0);
+
+  return (
+    <PaddingWrapper className="py-0">
+      <div className="relative">
+        <ProductImageSlide boardImages={boardImages} setSwiperIndex={setSwiperIndex} />
+        {isBundled && (
+          <div className="absolute top-[10px] left-[10px] z-10 ">
+            <BundleBadge />
+          </div>
+        )}
+        {boardImages[0].url && (
+          <div className="absolute bottom-[10px] right-[10px] w-[37px] h-[21px] px-2.5 py-0.5 bg-black bg-opacity-60 rounded-[50px] justify-center items-center gap-2.5 inline-flex z-10">
+            <ImageCounter index={swiperIndex} total={boardImages.length} />
+          </div>
+        )}
+      </div>
+    </PaddingWrapper>
+  );
+};
+
+export default ProductDetailImgs;

@@ -1,11 +1,11 @@
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 
-interface MoreBtnProps {
+interface MoreButtonProps {
   isMore: boolean;
   onClick: () => void;
 }
 
-const MoreBtn = ({ isMore, onClick }: MoreBtnProps) => {
+const MoreButton = ({ isMore, onClick }: MoreButtonProps) => {
   const handleClick = () => {
     if (isMore) {
       window.scrollTo({
@@ -38,4 +38,4 @@ const MoreBtn = ({ isMore, onClick }: MoreBtnProps) => {
   );
 };
 
-export default MoreBtn;
+export default MoreButton;
