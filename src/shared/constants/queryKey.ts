@@ -8,7 +8,8 @@ const QUERY_KEY = {
   wish: 'wish',
   product: 'product',
   keyword: 'keyword',
-  autoComplete: 'autoComplete'
+  autoComplete: 'autoComplete',
+  notification: 'notification'
 };
 
 export default QUERY_KEY;
