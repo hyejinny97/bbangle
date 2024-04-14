@@ -1,10 +1,9 @@
+import SadBbangleBox from '@/shared/components/SadBbangleBox';
+
 const ImgNone = () => (
-  <div
-    className="w-full relative m-auto flex items-center justify-center border border-solid border-gray-100 rounded-[10px]"
-    style={{ paddingTop: '100%' }}
-  >
-    <div className="absolute inset-0 flex items-center justify-center">{/* <None /> */}</div>
-  </div>
+  <SadBbangleBox className="h-[328px] border border-solid border-gray-100 rounded-[10px]">
+    <p>등록된 이미지가 없어요!</p>
+  </SadBbangleBox>
 );
 
 export default ImgNone;
