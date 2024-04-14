@@ -49,6 +49,7 @@ const FilterSection = ({ filterFamilyId }: FilterSectionProps) => {
             (item) =>
               item && (
                 <button
+                  key={`${item.type}/${item.content}`}
                   type="button"
                   className={`px-[12px] py-[8px] min-w-max rounded-[50px] bg-white border text-12 leading-150 tracking-tight-2
       ${
