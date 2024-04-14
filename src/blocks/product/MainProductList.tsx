@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { useRecoilValue } from 'recoil';
 
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
-import SkeletonProductList from '@/components/commons/skeleton/SkeletonProductList';
+import SkeletonProductCardList from '@/domains/product/components/SkeletonProductCardList';
 import { filterValueState } from '@/domains/product/atoms';
 import ProductCard from '@/domains/product/components/ProductCard';
 import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
@@ -25,7 +25,7 @@ const MainProductList = () => {
   }, [inView, fetchNextPage]);
 
   if (isLoading) {
-    return <SkeletonProductList />;
+    return <SkeletonProductCardList />;
   }
   if (isError) {
     return (
@@ -51,7 +51,7 @@ const MainProductList = () => {
       </div>
       {hasNextPage && (
         <div ref={ref} className="pb-[36px]">
-          <SkeletonProductList row={1} col={2} />
+          <SkeletonProductCardList row={1} col={2} />
         </div>
       )}
     </PaddingWrapper>

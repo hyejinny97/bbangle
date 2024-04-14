@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import Logo from '@/shared/assets/logo.svg';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
+import { BbangleIcon } from './icons';
 
 const LogoContainer = () => (
   <PaddingWrapper className="pt-[10px] pb-[0px] bg-white">
     <h1>
       <Link href="/">
-        <Logo />
+        <BbangleIcon shape="horizontal-name" />
       </Link>
     </h1>
   </PaddingWrapper>

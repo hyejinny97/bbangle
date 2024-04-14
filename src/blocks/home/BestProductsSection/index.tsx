@@ -1,10 +1,8 @@
 import { Suspense } from 'react';
 
 import Link from 'next/link';
-
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
-import SkeletonProductList from '@/components/commons/skeleton/SkeletonProductList';
-
+import SkeletonProductCardList from '@/domains/product/components/SkeletonProductCardList';
 import ProductsList from './ProductsList';
 
 const BestProductsSection = async () => (
@@ -18,7 +16,7 @@ const BestProductsSection = async () => (
         전체보기
       </Link>
     </div>
-    <Suspense fallback={<SkeletonProductList />}>
+    <Suspense fallback={<SkeletonProductCardList />}>
       <ProductsList />
     </Suspense>
   </PaddingWrapper>

@@ -7,7 +7,7 @@ import { useDebounce } from '@/domains/search/hooks/useDebounce';
 import SearchInput from '@/domains/search/components/SearchInput';
 import AutoCompleteSearchContainer from '@/domains/search/components/AutoCompleteSearchContainer';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
-import BackButton from '@/domains/search/components/BackButton';
+import BackButton from '@/shared/components/BackButton';
 
 const SEARCH_DETAIL_PAGE_PATHNAMES = ['/search/products', '/search/stores'];
 

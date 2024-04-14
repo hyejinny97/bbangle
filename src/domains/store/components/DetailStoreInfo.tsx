@@ -5,9 +5,9 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import BtnStar from '@/components/commons/button/client/Btn_start';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import { IProductDetailType } from '@/domains/product/types/productDetailType';
+import StarButton from '@/shared/components/StartButton';
 
 interface ProductsProps {
   store: IProductDetailType['store'];
@@ -30,7 +30,7 @@ const DetailStoreInfo = ({ store }: ProductsProps) => {
           </div>
           <div className="text-gray-600 text-14">{store.storeName}</div>
         </div>
-        <BtnStar isLiked={isLiked} onClick={addStoreToWishList} />
+        <StarButton isAcive={isLiked} onClick={addStoreToWishList} />
       </PaddingWrapper>
     </Link>
   );

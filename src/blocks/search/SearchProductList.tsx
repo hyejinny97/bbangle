@@ -1,16 +1,14 @@
 'use client';
 
 import { useEffect } from 'react';
-
 import { useInView } from 'react-intersection-observer';
 import { useRecoilValue } from 'recoil';
-
-import PaddingWrapper from '@/shared/components/PaddingWrapper';
-import SkeletonProductList from '@/components/commons/skeleton/SkeletonProductList';
+import SkeletonProductCardList from '@/domains/product/components/SkeletonProductCardList';
 import { filterValueState } from '@/domains/product/atoms';
 import ProductCard from '@/domains/product/components/ProductCard';
 import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 import { useGetSearchProductsQuery } from '@/domains/search/queries/useGetSearchProductsQuery';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import SadBbangleBox from '@/shared/components/SadBbangleBox';
 
 interface SearchProductListProps {
@@ -31,7 +29,7 @@ const SearchProductList = ({ keyword = '' }: SearchProductListProps) => {
   }, [inView, fetchNextPage]);
 
   if (isLoading) {
-    return <SkeletonProductList />;
+    return <SkeletonProductCardList />;
   }
   if (isError) {
     return (
@@ -58,7 +56,7 @@ const SearchProductList = ({ keyword = '' }: SearchProductListProps) => {
       </div>
       {hasNextPage && (
         <div ref={ref}>
-          <SkeletonProductList row={1} col={2} />
+          <SkeletonProductCardList row={1} col={2} />
         </div>
       )}
     </PaddingWrapper>

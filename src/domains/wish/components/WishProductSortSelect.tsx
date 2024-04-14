@@ -1,6 +1,6 @@
 'use client';
 
-import Select from '@/components/commons/selects/Select';
+import Select from '@/shared/components/Select';
 import { useRecoilState } from 'recoil';
 import { SORT_OPTIONS } from '../constants';
 import { wishProductSortState } from '../atoms/sort';

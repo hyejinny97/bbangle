@@ -1,9 +1,9 @@
-import { BbangleSadIcon } from '@/shared/components/icons';
+import { BbangleIcon } from '@/shared/components/icons';
 
 const WithdrawLogoSection = () => (
   <div className="mb-[40px] flex flex-col items-center">
     <div className="flex justify-center items-center w-[80px] h-[80px]">
-      <BbangleSadIcon />
+      <BbangleIcon shape="cry" />
     </div>
     <div className="leading-normal tracking-tight text-center">
       <p className="text-[16px] font-semibold">빵그리의 오븐과 이별인가요?</p>

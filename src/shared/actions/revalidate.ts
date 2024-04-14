@@ -1,3 +1,5 @@
+'use server';
+
 import { revalidateTag as _revalidateTag, revalidatePath as _revalidatePath } from 'next/cache';
 
 export const revalidateTag = async (tag: string) => {

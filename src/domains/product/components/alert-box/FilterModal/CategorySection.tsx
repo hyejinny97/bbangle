@@ -3,7 +3,7 @@ import { useRecoilValue, useRecoilState } from 'recoil';
 import { FILTER_VALUES } from '@/domains/product/constants/filterValues';
 import { filterValueState, categoryTempState } from '@/domains/product/atoms';
 import { FilterFamilyIDType } from '@/domains/product/types/filterType';
-import Radio from '@/components/commons/radio/Radio';
+import Radio from '@/shared/components/Radio';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 
 interface CategorySectionProps {

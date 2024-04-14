@@ -9,7 +9,7 @@ import { BundleBadge } from '@/domains/product/components/ProductCard/ProductIma
 import { RankingBadge } from '@/domains/product/components/ProductCard/ProductImage/RankingBadge';
 import useAddWishMutation from '@/domains/wish/queries/useAddWishMutation';
 import useDeleteWishProductMutation from '@/domains/wish/queries/useDeleteWishProductMutation';
-import { HeartGrayIcon, HeartRedIcon } from '@/shared/components/icons';
+import HeartButton from '@/shared/components/HeartButton';
 
 interface ProductImageProps {
   product: IProductType;
@@ -46,15 +46,11 @@ const ProductImage = ({ product, popular, ranking }: ProductImageProps) => {
         className="rounded-[6px] aspect-square"
       />
       <div className="absolute bottom-[9px] right-[9px] h-[20px]">
-        {product.isWished ? (
-          <button onClick={hate} type="button" aria-label="Remove from wishlist">
-            <HeartRedIcon />
-          </button>
-        ) : (
-          <button onClick={like} type="button" aria-label="Add to wishlist">
-            <HeartGrayIcon />
-          </button>
-        )}
+        <HeartButton
+          isAcive={product.isWished}
+          shape="shadow"
+          onClick={product.isWished ? hate : like}
+        />
       </div>
       <div className="absolute z-10 top-[6px] left-[6px] w-full flex gap-[6px]">
         {popular && <RankingBadge ranking={ranking} />}

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import getUserProfile from '@/domains/user/queries/getUserProfile';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import PATH from '@/shared/constants/path';
-import { BbangleSmileIcon } from '@/shared/components/icons';
+import { BbangleIcon } from '@/shared/components/icons';
 
 const UserInfoSection = async () => {
   const { profileImg, nickname } = await getUserProfile();
@@ -22,7 +22,7 @@ const UserInfoSection = async () => {
                 className="rounded-lg"
               />
             ) : (
-              <BbangleSmileIcon className="w-[30px] h-[30px]" />
+              <BbangleIcon shape="smile" className="w-[30px] h-[30px]" />
             )}
           </div>
           <p className="text-18 text-gray-900 font-bold tracking-tight">{nickname}</p>

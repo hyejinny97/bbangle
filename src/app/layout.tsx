@@ -5,17 +5,17 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
-import Footer from '@/components/commons/footer/server/Footer';
+import Footer from '@/shared/components/Footer';
 import KaKaoChatScript from '@/global/KaKaoChatScript';
 import ModalContainer from '@/global/ModalContainer';
 import PopupContainer from '@/global/PopupContainer';
 import RootLayoutProvider from '@/global/RootLayoutProvider';
 import ToastContainer from '@/global/ToastContainer';
-import FlareLaneScript from '@/global/FlareLaneScript';
-import RegisterServiceWorker from '@/global/RegisterServiceWorker';
+// import FlareLaneScript from '@/global/FlareLaneScript';
+// import RegisterServiceWorker from '@/global/RegisterServiceWorker';
 
 const pretendard = localFont({
-  src: '../shared/assets/PretendardVariable.woff2'
+  src: '../../public/assets/fonts/PretendardVariable.woff2'
 });
 
 export const metadata: Metadata = {
@@ -37,8 +37,8 @@ const RootLayout = ({ children }: { children: ReactNode }) => (
         <Footer />
       </RootLayoutProvider>
       <KaKaoChatScript />
-      <RegisterServiceWorker />
-      <FlareLaneScript />
+      {/* <RegisterServiceWorker /> */}
+      {/* <FlareLaneScript /> */}
     </body>
   </html>
 );

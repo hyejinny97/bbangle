@@ -1,6 +1,6 @@
 'use client';
 
-import { BbangleSmileNameIcon } from '@/shared/components/icons';
+import { BbangleIcon } from '@/shared/components/icons';
 
 interface Props {
   title: string;
@@ -9,7 +9,7 @@ interface Props {
 
 const LoginLogoSection = ({ title, subTitle }: Props) => (
   <div className="flex flex-col items-center justify-center gap-[20px]">
-    <BbangleSmileNameIcon />
+    <BbangleIcon shape="horizontal-name" />
     <div>
       <div className="text-16 leading-150 tracking-tight-4 font-semibold text-center text-gray-900 ">
         {title}

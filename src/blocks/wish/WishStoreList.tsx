@@ -3,7 +3,7 @@
 import Loading from '@/shared/components/Loading';
 import StoreCard from '@/domains/store/components/StoreCard';
 import useWishStoreListQuery from '@/domains/wish/queries/useWishStoreListQuery';
-import { BbangleSadIcon } from '@/shared/components/icons';
+import { BbangleIcon } from '@/shared/components/icons';
 
 const WishStroeList = () => {
   const { data, isLoading } = useWishStoreListQuery();
@@ -15,7 +15,7 @@ const WishStroeList = () => {
   if (!data || data.length === 0)
     return (
       <div className="w-[360px] h-[360px] flex flex-col gap-[2px] mx-auto justify-center items-center">
-        <BbangleSadIcon />
+        <BbangleIcon shape="cry" />
         <div className="text-[14px] text-gray-500">찜한 스토어가 없어요!</div>
       </div>
     );

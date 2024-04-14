@@ -4,7 +4,7 @@ import React, { ChangeEvent, ReactNode, useId } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { CheckIcon } from './icons';
 
-interface CheckBoxProps {
+interface RadioProps {
   isChecked: boolean;
   onChange: (_e: ChangeEvent<HTMLInputElement>) => void;
   name?: string;
@@ -14,7 +14,7 @@ interface CheckBoxProps {
   className?: string;
 }
 
-const CheckBox = ({
+const Radio = ({
   isChecked = false,
   onChange,
   name = '',
@@ -22,7 +22,7 @@ const CheckBox = ({
   required = false,
   children,
   className
-}: CheckBoxProps) => {
+}: RadioProps) => {
   const id = useId();
 
   return (
@@ -34,7 +34,7 @@ const CheckBox = ({
       )}
     >
       <input
-        type="checkbox"
+        type="radio"
         id={id}
         name={name}
         value={value}
@@ -43,13 +43,10 @@ const CheckBox = ({
         required={required}
         hidden
       />
-
-      <span>
-        {isChecked ? <CheckIcon shape="checkbox-on" /> : <CheckIcon shape="checkbox-off" />}
-      </span>
+      <span>{isChecked ? <CheckIcon shape="radio-on" /> : <CheckIcon shape="radio-off" />}</span>
       {children}
     </label>
   );
 };
 
-export default CheckBox;
+export default Radio;
