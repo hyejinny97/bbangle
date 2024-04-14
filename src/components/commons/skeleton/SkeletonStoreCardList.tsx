@@ -1,9 +1,13 @@
 import PaddingWrapper from '../PaddingWrapper';
 import SkeletonStoreCard from './SkeletonStoreCard';
 
-const SkeletonStoreList = () => (
-  <PaddingWrapper className="gap-x-[16px] gap-y-[16px]">
-    {Array(6)
+interface SkeletonStoreListProps {
+  row?: number;
+}
+
+const SkeletonStoreList = ({ row = 6 }: SkeletonStoreListProps) => (
+  <PaddingWrapper className="gap-x-[16px] py-0 gap-y-[16px] border-b border-gray-100">
+    {Array(row)
       .fill(0)
       .map((item) => (
         <SkeletonStoreCard key={item} />

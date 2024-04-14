@@ -1,10 +1,12 @@
 'use client';
 
 import { useEffect } from 'react';
+
 import { useInView } from 'react-intersection-observer';
-import { useGetAllStoresQuery } from '@/domains/store/queries/useGetAllStoresQuery';
-import Loading from '@/components/commons/Loading';
+
+import SkeletonStoreList from '@/components/commons/skeleton/SkeletonStoreCardList';
 import StoreCard from '@/domains/store/components/StoreCard';
+import { useGetAllStoresQuery } from '@/domains/store/queries/useGetAllStoresQuery';
 import SadBbangleBox from '@/shared/components/SadBbangleBox';
 
 const MainStoreList = () => {
@@ -17,11 +19,7 @@ const MainStoreList = () => {
   }, [inView, fetchNextPage]);
 
   if (isLoading) {
-    return (
-      <div className="p-[16px]">
-        <Loading />
-      </div>
-    );
+    return <SkeletonStoreList row={7} />;
   }
   if (isError) {
     return (
@@ -50,7 +48,7 @@ const MainStoreList = () => {
           imgSrc={profile}
         />
       ))}
-      {isFetchingNextPage ? <Loading /> : <div ref={ref} />}
+      {isFetchingNextPage ? <SkeletonStoreList /> : <div ref={ref} />}
     </div>
   );
 };

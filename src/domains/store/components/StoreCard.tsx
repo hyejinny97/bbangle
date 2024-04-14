@@ -1,9 +1,10 @@
+import Image from 'next/image';
+
 import { BbangleSmileIcon } from '@/components/commons/Icon';
 import PaddingWrapper from '@/components/commons/PaddingWrapper';
 import useAddWishStoreMutation from '@/domains/wish/queries/useAddWishStoreMutation';
 import useDeleteWishStoreMutation from '@/domains/wish/queries/useDeleteWishStoreMutation';
 import { StarGrayIcon, StarYellowIcon } from '@/shared/components/icons';
-import Image from 'next/image';
 
 interface WishStroeProps {
   id: number;
@@ -39,11 +40,11 @@ const StoreCard = ({ id, imgSrc, title, desc, isWished = false }: WishStroeProps
         <div className="flex justify-between">
           <div className="font-semibold leading-150 tracking-tight-2 text-14">{title}</div>
           {isWished ? (
-            <button onClick={hate}>
+            <button type="button" aria-label="button" onClick={hate}>
               <StarYellowIcon />
             </button>
           ) : (
-            <button onClick={like}>
+            <button type="button" aria-label="button" onClick={like}>
               <StarGrayIcon />
             </button>
           )}
