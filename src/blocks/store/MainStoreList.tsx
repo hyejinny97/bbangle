@@ -10,7 +10,7 @@ import { useGetAllStoresQuery } from '@/domains/store/queries/useGetAllStoresQue
 import SadBbangleBox from '@/shared/components/SadBbangleBox';
 
 const MainStoreList = () => {
-  const { data, isError, isLoading, fetchNextPage, isFetchingNextPage } = useGetAllStoresQuery();
+  const { data, isError, isLoading, fetchNextPage, hasNextPage } = useGetAllStoresQuery();
   const { ref, inView } = useInView();
 
   useEffect(() => {
@@ -48,7 +48,11 @@ const MainStoreList = () => {
           imgSrc={profile}
         />
       ))}
-      {isFetchingNextPage ? <SkeletonStoreList /> : <div ref={ref} />}
+      {hasNextPage && (
+        <div ref={ref}>
+          <SkeletonStoreList row={1} />
+        </div>
+      )}
     </div>
   );
 };
