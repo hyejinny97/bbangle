@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
-import { BbangleIcon } from './icons';
+import { BbangleIcon } from '@/shared/components/icons';
 
-const LogoContainer = () => (
+const HomeLogoSection = () => (
   <PaddingWrapper className="pt-[10px] pb-[0px] bg-white">
     <h1>
       <Link href="/">
@@ -12,4 +12,4 @@ const LogoContainer = () => (
   </PaddingWrapper>
 );
 
-export default LogoContainer;
+export default HomeLogoSection;

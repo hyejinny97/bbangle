@@ -1,5 +1,5 @@
 import Header from '@/shared/components/Header';
-import ProductAndStoreTab from '@/shared/components/molecules/ProductAndStoreTab';
+import ProductAndStoreTab from '@/shared/components/ProductAndStoreTab';
 import PATH from '@/shared/constants/path';
 import { ReactNode } from 'react';
 

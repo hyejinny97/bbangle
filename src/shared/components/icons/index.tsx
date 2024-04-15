@@ -1,7 +1,9 @@
+'use client';
+
 export { default as HeartIcon } from './HeartIcon';
-export { default as CheckIcon } from './CheckIcon';
 export { default as BbangleIcon } from './BbangleIcon';
 
+export { default as CheckIcon } from './CheckIcon';
 export { default as StarIcon } from './StarIcon';
 
 export { default as BackArrowIcon } from '@public/assets/icons/back-arrow.svg';

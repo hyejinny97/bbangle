@@ -7,7 +7,7 @@ import { filterValueState } from '@/domains/product/atoms';
 import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 import { useGetSearchProductsQuery } from '@/domains/search/queries/useGetSearchProductsQuery';
 import { useGetSearchStoresQuery } from '@/domains/search/queries/useGetSearchStoresQuery';
-import ProductAndStoreTab from '@/shared/components/molecules/ProductAndStoreTab';
+import ProductAndStoreTab from '@/shared/components/ProductAndStoreTab';
 
 const ProductAndStoreTabWithCount = () => {
   const filterValue = useRecoilValue(filterValueState(FILTER_FAMILY_ID.search));

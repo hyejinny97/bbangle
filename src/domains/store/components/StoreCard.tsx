@@ -1,9 +1,9 @@
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import useAddWishStoreMutation from '@/domains/wish/queries/useAddWishStoreMutation';
 import useDeleteWishStoreMutation from '@/domains/wish/queries/useDeleteWishStoreMutation';
-import { BbangleIcon } from '@/shared/components/icons';
 import Image from 'next/image';
 import StarButton from '@/shared/components/StartButton';
+import { BbangleIcon } from '@/shared/components/icons';
 
 interface WishStroeProps {
   id: number;

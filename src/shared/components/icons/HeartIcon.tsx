@@ -1,3 +1,5 @@
+'use client';
+
 import HeartOn from '@public/assets/icons/heart-on.svg';
 import HeartOff from '@public/assets/icons/heart-off.svg';
 import HeartNavOff from '@public/assets/icons/heart-nav-off.svg';

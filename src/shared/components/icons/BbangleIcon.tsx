@@ -1,3 +1,5 @@
+'use client';
+
 import BbangleSmileIcon from '@public/assets/icons/bbangle-smile.svg';
 import BbangleCryIcon from '@public/assets/icons/bbangle-cry.svg';
 import BbanglVerticalNameIcon from '@public/assets/icons/bbangle-vertical-name.svg';
