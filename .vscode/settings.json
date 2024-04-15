@@ -79,5 +79,11 @@
       "code": "➖",
       "description": "파일 삭제"
     }
-  ]
+  ],
+  "material-icon-theme.folders.associations": {
+    "blocks": "Container",
+    "domains": "Views",
+    "actions": "Lib",
+    "atoms": "Database"
+  }
 }
