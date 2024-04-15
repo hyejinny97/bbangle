@@ -20,7 +20,7 @@ const PriceInput = ({ value, onChange }: PriceInputProps) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(e.target.value.replaceAll(',', ''));
 
-    if (isNaN(newValue)) return;
+    if (Number.isNaN(newValue)) return;
     if (newValue < LIMIT_MIN_PRICE || newValue > LIMIT_MAX_PRICE) return;
 
     onChange(newValue);

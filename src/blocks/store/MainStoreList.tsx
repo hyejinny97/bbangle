@@ -11,8 +11,6 @@ const MainStoreList = () => {
   const { data, isError, isLoading, fetchNextPage, isFetchingNextPage } = useGetAllStoresQuery();
   const { ref, inView } = useInView();
 
-  console.log(data);
-
   useEffect(() => {
     if (!inView) return;
     fetchNextPage();

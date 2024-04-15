@@ -19,7 +19,7 @@ const PriceSection = ({ filterFamilyId }: PriceSectionProps) => {
       return setPrice((prev) => ({ ...prev, minPrice: price.maxPrice }));
     }
 
-    setPrice((prev) => ({ ...prev, minPrice: newValue }));
+    return setPrice((prev) => ({ ...prev, minPrice: newValue }));
   };
 
   const handleMaxPriceChange = (newValue: number) => {
@@ -27,7 +27,7 @@ const PriceSection = ({ filterFamilyId }: PriceSectionProps) => {
       return setPrice((prev) => ({ ...prev, maxPrice: price.minPrice }));
     }
 
-    setPrice((prev) => ({ ...prev, maxPrice: newValue }));
+    return setPrice((prev) => ({ ...prev, maxPrice: newValue }));
   };
 
   return (
