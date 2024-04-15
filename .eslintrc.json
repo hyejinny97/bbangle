@@ -57,5 +57,5 @@
     "spaced-comment": "warn",
     "jsx-a11y/html-has-lang": "warn"
   },
-  "ignorePatterns": ["*.config.js", "*.config.ts", "node_modules", "*.d.ts"]
+  "ignorePatterns": ["*.config.js", "*.config.ts", "node_modules", "*.d.ts", "public/sw.js"]
 }
