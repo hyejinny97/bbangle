@@ -21,7 +21,7 @@ export const useGetAllProductsQuery = (query: IFilterType) => {
   };
 
   const getNextPageParam: GetNextPageParamFunction<number, IAllProductsType> = (lastPage) => {
-    if (!lastPage.hasNext) return;
+    if (!lastPage.hasNext) return undefined;
     const nextCursorId = lastPage.content.at(-1)?.boardId;
     return nextCursorId;
   };

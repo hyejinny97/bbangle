@@ -26,6 +26,17 @@ export const priceTempState = atomFamily<IPriceType, FilterFamilyIDType>({
   }
 });
 
+export const filterValueState = atomFamily<IFilterType, FilterFamilyIDType>({
+  key: 'filterValueState',
+  default: {
+    category: undefined,
+    tags: undefined,
+    price: { minPrice: LIMIT_MIN_PRICE, maxPrice: LIMIT_MAX_PRICE },
+    sort: '추천순',
+    showProductsAvailableOrder: false
+  }
+});
+
 export const filterValueTempState = selectorFamily<IFilterType, FilterFamilyIDType>({
   key: 'filterValueTempState',
   get:
@@ -52,15 +63,4 @@ export const filterValueTempState = selectorFamily<IFilterType, FilterFamilyIDTy
       set(tagsTempState(filterFamilyId), newValue.tags);
       set(priceTempState(filterFamilyId), newValue.price);
     }
-});
-
-export const filterValueState = atomFamily<IFilterType, FilterFamilyIDType>({
-  key: 'filterValueState',
-  default: {
-    category: undefined,
-    tags: undefined,
-    price: { minPrice: LIMIT_MIN_PRICE, maxPrice: LIMIT_MAX_PRICE },
-    sort: '추천순',
-    showProductsAvailableOrder: false
-  }
 });

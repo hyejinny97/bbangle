@@ -45,8 +45,8 @@ const MainProductList = () => {
   return (
     <PaddingWrapper className="px-0">
       <div className="grid grid-cols-2 gap-x-[16px] px-[16px] gap-y-[16px] pb-[36px]">
-        {data.products.map((product) => (
-          <ProductCard key={product.boardId} product={product} />
+        {data.products.map((product, index) => (
+          <ProductCard key={`${product.boardId}/${index}`} product={product} />
         ))}
       </div>
       {hasNextPage && (

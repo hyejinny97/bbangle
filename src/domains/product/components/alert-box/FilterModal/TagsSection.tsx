@@ -20,7 +20,6 @@ const TagsSection = ({ filterFamilyId }: TagsSectionProps) => {
     }
 
     if (clickedItem === uniqueValue) {
-      console.log(clickedItem);
       setSelectedTags([clickedItem]);
       return;
     }
