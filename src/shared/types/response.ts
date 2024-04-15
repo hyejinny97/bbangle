@@ -1,6 +1,6 @@
 interface DefaultResponse {
-  success: true;
-  code: 0;
+  success: boolean;
+  code: number;
   message: string;
 }
 
