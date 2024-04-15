@@ -9,7 +9,7 @@ interface Props {
 
 const LoginLogoSection = ({ title, subTitle }: Props) => (
   <div className="flex flex-col items-center justify-center gap-[20px]">
-    <BbangleIcon shape="horizontal-name" />
+    <BbangleIcon shape="vertical-name" />
     <div>
       <div className="text-16 leading-150 tracking-tight-4 font-semibold text-center text-gray-900 ">
         {title}

@@ -6,7 +6,7 @@ import { BbangleIcon } from '@/shared/components/icons';
 
 const LoginSection = () => (
   <PaddingWrapper className="flex items-center flex-col gap-[16px] pb-[26px]">
-    <BbangleIcon shape="horizontal-name" />
+    <BbangleIcon shape="vertical-name" />
     <Link href={PATH.login} className="w-full">
       <Button variants="primary-orange">로그인/회원가입</Button>
     </Link>
