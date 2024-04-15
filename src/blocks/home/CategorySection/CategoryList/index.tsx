@@ -1,8 +1,8 @@
 'use client';
 
 import { useRecoilState } from 'recoil';
-import { isCategoryTabState } from '@/atoms/atom';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import { isCategoryTabState } from '@/domains/product/atoms/isCategoryTabState';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import {
   AllIcon,
   BigenIcon,

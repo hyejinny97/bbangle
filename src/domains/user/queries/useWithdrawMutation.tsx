@@ -1,9 +1,9 @@
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import { withdrawMemberShip } from '@/domains/user/queries/withdrawMemberShip';
-import usePopup from '@/commons/hooks/usePopup';
-import useToast from '@/commons/hooks/useToast';
-import ToastPop from '@/components/commons/ToastPop';
+import usePopup from '@/shared/hooks/usePopup';
+import useToast from '@/shared/hooks/useToast';
+import ToastPop from '@/shared/components/ToastPop';
 
 const useWithdrawMutation = () => {
   const router = useRouter();

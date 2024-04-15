@@ -1,4 +1,4 @@
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import ProductTag from '@/domains/product/components/ProductTag';
 import { IProductDetailType } from '@/domains/product/types/productDetailType';
 

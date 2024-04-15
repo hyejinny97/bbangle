@@ -1,4 +1,4 @@
-import GrayDivider from '@/components/commons/divider/GrayDivider';
+import GrayDivider from '@/shared/components/GrayDivider';
 import DetailStoreInfo from '@/domains/store/components/DetailStoreInfo';
 
 interface DetailStoreSectionProps {

@@ -1,7 +1,7 @@
-import { WishStore } from '@/domains/store/types/store';
+import { IStoreType } from '@/domains/store/types/store';
 
 export interface WishStoreList {
-  content: WishStore[];
+  content: IStoreType[];
   lastPage: number;
   nextPage: number;
 }

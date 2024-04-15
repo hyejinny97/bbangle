@@ -1,5 +1,5 @@
 import WishProductList from '@/blocks/wish/WishProductList';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import WishProductSortSelect from '@/domains/wish/components/WishProductSortSelect';
 
 const WishProductsDetail = async () => (

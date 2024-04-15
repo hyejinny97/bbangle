@@ -1,8 +1,8 @@
 'use client';
 
-import Button from '@/components/commons/button/client/Button';
+import Button from '@/shared/components/Button';
 import { useRecoilState } from 'recoil';
-import useModal from '@/commons/hooks/useModal';
+import useModal from '@/shared/hooks/useModal';
 import CreateWishFolderModal from '@/domains/wish/components/alert-box/CreateWishFolderModal';
 import { isWishFolderEditingState } from '@/domains/wish/atoms/wishFolder';
 

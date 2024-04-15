@@ -3,13 +3,15 @@
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useGetAllStoresQuery } from '@/domains/store/queries/useGetAllStoresQuery';
-import Loading from '@/components/commons/Loading';
+import Loading from '@/shared/components/Loading';
 import StoreCard from '@/domains/store/components/StoreCard';
 import SadBbangleBox from '@/shared/components/SadBbangleBox';
 
 const MainStoreList = () => {
   const { data, isError, isLoading, fetchNextPage, isFetchingNextPage } = useGetAllStoresQuery();
   const { ref, inView } = useInView();
+
+  console.log(data);
 
   useEffect(() => {
     if (!inView) return;

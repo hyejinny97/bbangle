@@ -1,9 +1,9 @@
-import { BbangleSmileIcon } from '@/components/commons/Icon';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import useAddWishStoreMutation from '@/domains/wish/queries/useAddWishStoreMutation';
 import useDeleteWishStoreMutation from '@/domains/wish/queries/useDeleteWishStoreMutation';
-import { StarGrayIcon, StarYellowIcon } from '@/shared/components/icons';
 import Image from 'next/image';
+import StarButton from '@/shared/components/StartButton';
+import { BbangleIcon } from '@/shared/components/icons';
 
 interface WishStroeProps {
   id: number;
@@ -31,22 +31,14 @@ const StoreCard = ({ id, imgSrc, title, desc, isWished = false }: WishStroeProps
         {imgSrc ? (
           <Image width={40} height={40} src={imgSrc} alt="store thumbnail" />
         ) : (
-          <BbangleSmileIcon />
+          <BbangleIcon shape="smile" />
         )}
       </div>
 
       <div className="flex w-full flex-col overflow-hidden">
         <div className="flex justify-between">
           <div className="font-semibold leading-150 tracking-tight-2 text-14">{title}</div>
-          {isWished ? (
-            <button onClick={hate}>
-              <StarYellowIcon />
-            </button>
-          ) : (
-            <button onClick={like}>
-              <StarGrayIcon />
-            </button>
-          )}
+          <StarButton isAcive={isWished} onClick={isWished ? hate : like} />
         </div>
         <p className="truncate text-gray-600 leading-130 tracking-tight-2 text-12">{desc}</p>
       </div>

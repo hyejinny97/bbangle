@@ -1,4 +1,4 @@
-import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
+import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/domains/product/constants/priceLimit';
 import { TAG } from '@/domains/product/constants/tag';
 
 export const getIngredientTag = (ingredients: Array<string>) => {

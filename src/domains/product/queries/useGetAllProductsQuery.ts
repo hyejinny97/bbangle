@@ -2,7 +2,7 @@ import { useInfiniteQuery, GetNextPageParamFunction } from '@tanstack/react-quer
 import QUERY_KEY from '@/shared/constants/queryKey';
 import { IFilterType } from '@/domains/product/types/filterType';
 import { IAllProductsType } from '@/domains/product/types/allProductsType';
-import { transformFilterValueToQueryString } from '@/commons/utils/transformFilterValueToQueryString';
+import { transformFilterValueToQueryString } from '@/domains/product/utils/transformFilterValueToQueryString';
 import fetchExtend from '@/shared/utils/api';
 
 export const useGetAllProductsQuery = (query: IFilterType) => {
@@ -20,7 +20,7 @@ export const useGetAllProductsQuery = (query: IFilterType) => {
     return data;
   };
 
-  const getNextPageParam: GetNextPageParamFunction<number, IAllProductsType> = lastPage => {
+  const getNextPageParam: GetNextPageParamFunction<number, IAllProductsType> = (lastPage) => {
     if (!lastPage.hasNext) return;
     const nextCursorId = lastPage.content.at(-1)?.boardId;
     return nextCursorId;
@@ -36,7 +36,7 @@ export const useGetAllProductsQuery = (query: IFilterType) => {
     refetchOnWindowFocus: false,
     staleTime: Infinity,
     select: ({ pages }) => {
-      const products = pages.map(page => page.content).flat();
+      const products = pages.map((page) => page.content).flat();
       const productCount = pages[0]?.boardCnt || 0;
       const storeCount = pages[0]?.storeCnt || 0;
       return { products, productCount, storeCount };

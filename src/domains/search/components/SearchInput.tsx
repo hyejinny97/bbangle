@@ -1,7 +1,7 @@
 'use client';
 
-import SearchIcon from '@/shared/assets/search.svg';
-import Input from '@/components/commons/inputs/Input';
+import Input from '@/shared/components/Input';
+import { Search16Icon } from '@/shared/components/icons';
 
 interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   value?: string;
@@ -11,7 +11,7 @@ interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const SearchInput = ({ value, onChange, onKeyDown, ...rest }: SearchInputProps) => (
   <div className="flex items-center gap-[6px] px-[16px] py-[10px] w-full bg-blueGray-30 rounded-[50px] cursor-pointer">
-    <SearchIcon className="w-[15px]" />
+    <Search16Icon />
     <Input
       type="text"
       className="flex-1 p-0 font-medium text-gray-400 border-none rounded-none outline-none bg-blueGray-30 text-14 leading-150 tracking-tight-2"

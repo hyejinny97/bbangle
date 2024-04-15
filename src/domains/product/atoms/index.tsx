@@ -6,7 +6,7 @@ import {
   IFilterType,
   FilterFamilyIDType
 } from '@/domains/product/types/filterType';
-import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
+import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/domains/product/constants/priceLimit';
 
 export const categoryTempState = atomFamily<ICategoryType, FilterFamilyIDType>({
   key: 'category',
@@ -29,7 +29,7 @@ export const priceTempState = atomFamily<IPriceType, FilterFamilyIDType>({
 export const filterValueTempState = selectorFamily<IFilterType, FilterFamilyIDType>({
   key: 'filterValueTempState',
   get:
-    filterFamilyId =>
+    (filterFamilyId) =>
     ({ get }) => {
       const category = get(categoryTempState(filterFamilyId));
       const tags = get(tagsTempState(filterFamilyId));
@@ -44,7 +44,7 @@ export const filterValueTempState = selectorFamily<IFilterType, FilterFamilyIDTy
       };
     },
   set:
-    filterFamilyId =>
+    (filterFamilyId) =>
     ({ set }, newValue) => {
       if (newValue instanceof DefaultValue) return;
 

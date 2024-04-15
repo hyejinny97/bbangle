@@ -1,17 +1,17 @@
-import LogoContainer from '@/shared/components/HomeLogoIcon';
+import HomeLogoSection from '@/blocks/home/HomeLogoSection';
 import Banner from '@/blocks/home/Banner';
 import Search from '@/blocks/home/SearchSection';
 import CategorySection from '@/blocks/home/CategorySection';
 import BestProductsSection from '@/blocks/home/BestProductsSection';
 
-export default function Home() {
-  return (
-    <>
-      <LogoContainer />
-      <Search />
-      <Banner />
-      <CategorySection />
-      <BestProductsSection />
-    </>
-  );
-}
+const Home = () => (
+  <>
+    <HomeLogoSection />
+    <Search />
+    <Banner />
+    <CategorySection />
+    <BestProductsSection />
+  </>
+);
+
+export default Home;

@@ -1,9 +1,9 @@
 import { useMutation } from '@tanstack/react-query';
-import { LoginResponse } from '../types/login';
 import { useSetRecoilState } from 'recoil';
 import { isLoggedinState } from '@/shared/atoms/login';
-import { redirect } from '@/action';
 import fetchExtend from '@/shared/utils/api';
+import { redirect } from '@/shared/actions/redirect';
+import { LoginResponse } from '../types/login';
 
 const useGoogleLoginMutation = () => {
   const setLogin = useSetRecoilState(isLoggedinState);

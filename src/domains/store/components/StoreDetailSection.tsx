@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 
 interface StoreDetailSectionProps {
   className?: string;

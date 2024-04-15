@@ -1,5 +1,5 @@
 import { twMerge } from 'tailwind-merge';
-import { BbangleSadIcon } from '@/shared/components/icons';
+import { BbangleIcon } from './icons';
 
 interface SadBbangleBoxProps {
   className?: string;
@@ -13,7 +13,7 @@ const SadBbangleBox = ({ className, children }: SadBbangleBoxProps) => (
       className
     )}
   >
-    <BbangleSadIcon />
+    <BbangleIcon shape="cry" />
     <div className="text-gray-500 text-center font-normal text-14 leading-150 tracking-tight-2">
       {children}
     </div>

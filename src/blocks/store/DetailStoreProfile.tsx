@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-import BtnStar from '@/components/commons/button/client/Btn_start';
 import { useGetStoreDetailQuery } from '@/domains/store/hooks/useGetStoreDetailQuery';
+import StarButton from '@/shared/components/StartButton';
 
 interface StoreProfileProps {
   storeId: number;
@@ -22,7 +22,7 @@ const DetailStoreProfile = ({ storeId }: StoreProfileProps) => {
       <div className="flex flex-col gap-[4px]">
         <div className="w-full flex items-center justify-center gap-[2px]">
           <div className="text-gray-900 text-16 font-bold">{data?.store.storeName}</div>
-          <BtnStar isLiked={isLiked} onClick={() => setIsLiked(!isLiked)} />
+          <StarButton isAcive={isLiked} onClick={() => setIsLiked(!isLiked)} />
         </div>
         <p className="text-center text-gray-600 text-12 font-normal">{data?.store.introduce}</p>
       </div>

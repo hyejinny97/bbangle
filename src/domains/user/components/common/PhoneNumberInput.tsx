@@ -1,8 +1,8 @@
 'use client';
 
 import { ChangeEventHandler } from 'react';
-import Input from '@/components/commons/inputs/Input';
-import Button from '@/components/commons/button/client/Button';
+import Input from '@/shared/components/Input';
+import Button from '@/shared/components/Button';
 import { useSetRecoilState } from 'recoil';
 import { phoneNumberState } from '../../atoms/profile';
 

@@ -1,5 +1,5 @@
-import { IProductType } from '@/commons/types/productType';
-import { IStoreType } from '@/commons/types/storeType';
+import { IProductType } from '@/domains/product/types/productType';
+import { IStoreType } from '@/domains/store/types/store';
 
 export interface IAllProductsType {
   content: IProductType[];

@@ -1,8 +1,8 @@
 'use client';
 
-import Button from '@/components/commons/button/client/Button';
+import Button from '@/shared/components/Button';
 import Link from 'next/link';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import SadBbangleBox from '@/shared/components/SadBbangleBox';
 
 const Custom404 = () => (

@@ -1,9 +1,9 @@
 import { useRecoilState } from 'recoil';
-import { FILTER_VALUES } from '@/commons/constants/filterValues';
+import { FILTER_VALUES } from '@/domains/product/constants/filterValues';
 import { tagsTempState } from '@/domains/product/atoms';
 import { FilterFamilyIDType } from '@/domains/product/types/filterType';
-import CheckBox from '@/components/commons/checkbox/client/Checkbox';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import CheckBox from '@/shared/components/Checkbox';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 
 interface TagsSectionProps {
   filterFamilyId: FilterFamilyIDType;
@@ -27,13 +27,13 @@ const TagsSection = ({ filterFamilyId }: TagsSectionProps) => {
 
     if (selectedTags.includes(clickedItem)) {
       const updatedItems = selectedTags
-        .filter(item => item !== clickedItem)
-        .filter(item => item !== uniqueValue);
+        .filter((item) => item !== clickedItem)
+        .filter((item) => item !== uniqueValue);
       setSelectedTags(updatedItems);
       return;
     }
 
-    const updatedItems = [...selectedTags, clickedItem].filter(item => item !== uniqueValue);
+    const updatedItems = [...selectedTags, clickedItem].filter((item) => item !== uniqueValue);
     setSelectedTags(updatedItems);
   };
 
@@ -41,7 +41,7 @@ const TagsSection = ({ filterFamilyId }: TagsSectionProps) => {
     <PaddingWrapper className="flex flex-col gap-[10px] pb-[26px]">
       <div className="text-14 font-semibold leading-150 tracking-tight-2">성분</div>
       <div className="flex gap-[10px] flex-wrap">
-        {FILTER_VALUES.tags.map(tag => {
+        {FILTER_VALUES.tags.map((tag) => {
           const isSelected = !!selectedTags?.includes(tag);
           return (
             <CheckBox

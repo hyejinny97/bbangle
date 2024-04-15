@@ -1,4 +1,5 @@
-import { getCookie, redirect } from '@/action';
+import { getCookie } from '@/shared/actions/cookie';
+import { redirect } from '@/shared/actions/redirect';
 import PATH from '@/shared/constants/path';
 import { ReactNode } from 'react';
 

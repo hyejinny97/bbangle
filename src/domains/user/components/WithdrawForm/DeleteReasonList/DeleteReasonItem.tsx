@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import CheckBox from '@/components/commons/checkbox/client/Checkbox';
+import CheckBox from '@/shared/components/Checkbox';
 
 interface DeleteReasonItemProps {
   content: string;

@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { FILTER_VALUES } from '@/commons/constants/filterValues';
+import { FILTER_VALUES } from '@/domains/product/constants/filterValues';
 import { filterValueState, categoryTempState } from '@/domains/product/atoms';
 import { FilterFamilyIDType } from '@/domains/product/types/filterType';
-import Radio from '@/components/commons/radio/Radio';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import Radio from '@/shared/components/Radio';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 
 interface CategorySectionProps {
   filterFamilyId: FilterFamilyIDType;
 }
 
-function CategorySection({ filterFamilyId }: CategorySectionProps) {
+const CategorySection = ({ filterFamilyId }: CategorySectionProps) => {
   const filterValue = useRecoilValue(filterValueState(filterFamilyId));
   const [selectedCategory, setSelectedCategory] = useRecoilState(categoryTempState(filterFamilyId));
 
@@ -26,7 +26,7 @@ function CategorySection({ filterFamilyId }: CategorySectionProps) {
     <PaddingWrapper className="flex flex-col gap-[10px] pb-[26px]">
       <div className="text-14 font-semibold leading-150 tracking-tight-2">카테고리</div>
       <div className="flex gap-[10px] flex-wrap">
-        {FILTER_VALUES.categories.map(item => {
+        {FILTER_VALUES.categories.map((item) => {
           const isSelected = selectedCategory === item;
           return (
             <Radio
@@ -46,6 +46,6 @@ function CategorySection({ filterFamilyId }: CategorySectionProps) {
       </div>
     </PaddingWrapper>
   );
-}
+};
 
 export default CategorySection;

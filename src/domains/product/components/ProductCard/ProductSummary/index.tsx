@@ -1,4 +1,4 @@
-import { IProductType } from '@/commons/types/productType';
+import { IProductType } from '@/domains/product/types/productType';
 import TagSwiper from '@/domains/product/components/ProductCard/ProductSummary/TagSwiper';
 
 interface ProductSummaryProps {

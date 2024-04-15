@@ -1,7 +1,11 @@
 'use client';
 
 import '@/domains/product/css/price-input.css';
-import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE, PRICE_RANGE_STEP } from '@/commons/constants/priceLimit';
+import {
+  LIMIT_MIN_PRICE,
+  LIMIT_MAX_PRICE,
+  PRICE_RANGE_STEP
+} from '@/domains/product/constants/priceLimit';
 
 interface RageInputProps {
   value: number;
