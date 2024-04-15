@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useMemo } from 'react';
+import { useId } from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { LayoutGroup } from 'framer-motion';
@@ -39,14 +39,8 @@ const ProductAndStoreTab = ({
   const productsUrl = queryString ? `${productsPath}?${queryString}` : productsPath;
   const storesUrl = queryString ? `${storesPath}?${queryString}` : storesPath;
 
-  const productCountStr = useMemo(
-    () => (typeof productCount === 'number' ? `(${checkCount(productCount)})` : ''),
-    [productCount]
-  );
-  const storeCountStr = useMemo(
-    () => (typeof storeCount === 'number' ? `(${checkCount(storeCount)})` : ''),
-    [storeCount]
-  );
+  const productCountStr = typeof productCount === 'number' ? `(${checkCount(productCount)})` : '';
+  const storeCountStr = typeof storeCount === 'number' ? `(${checkCount(storeCount)})` : '';
 
   return (
     <LayoutGroup id={id}>
