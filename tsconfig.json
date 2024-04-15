@@ -23,13 +23,6 @@
     },
     "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "svg.d.ts",
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "public/sw.ts"
-  ],
+  "include": ["svg.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
