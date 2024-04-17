@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import PATH from '@/shared/constants/path';
 import {
   CategoryIcon,
   CategoryRedIcon,
@@ -12,7 +13,7 @@ import {
   ProfileRedIcon,
   Search24Icon,
   Search24RedIcon
-} from './icons';
+} from '../shared/components/icons';
 
 const Footer = () => {
   const pathname = usePathname();
@@ -23,31 +24,31 @@ const Footer = () => {
       title: '홈',
       defaultIcon: <HomeIcon />,
       activeIcon: <HomeRedIcon />,
-      href: '/'
+      href: PATH.home
     },
     {
       title: '검색',
       defaultIcon: <Search24Icon />,
       activeIcon: <Search24RedIcon />,
-      href: '/search'
+      href: PATH.search
     },
     {
       title: '전체',
       defaultIcon: <CategoryIcon />,
       activeIcon: <CategoryRedIcon />,
-      href: '/products'
+      href: PATH.allProductList
     },
     {
       title: '찜',
       defaultIcon: <HeartIcon shape="nav-off" />,
       activeIcon: <HeartIcon shape="nav-on" />,
-      href: '/wishlist/list/products'
+      href: PATH.wishProductList
     },
     {
       title: '마이페이지',
       defaultIcon: <ProfileIcon />,
       activeIcon: <ProfileRedIcon />,
-      href: '/mypage'
+      href: PATH.mypage
     }
   ];
 
