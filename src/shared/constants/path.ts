@@ -1,8 +1,10 @@
 const PATH = {
   home: '/',
-  wishProductList: '/wishlist/list/products',
-  wishList: '/wishlist/list',
-  wishLogin: '/wishlist/login',
+  wish: '/wish',
+
+  wishProductList: '/wish/products',
+  wishLogin: '/wish/login',
+  wishStoreList: '/wish/stores',
 
   profileUpdate: '/mypage/update',
   notification: '/mypage/notifications',

@@ -2,7 +2,7 @@ import WishFolderEditButtonSection from '@/blocks/wish/WishFolderEditButtonSecti
 import WishFolderGrid from '@/blocks/wish/WishFolderGrid';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 
-const WishProductsPage = async () => (
+const WishProductsPage = () => (
   <PaddingWrapper>
     <WishFolderEditButtonSection />
     <WishFolderGrid />

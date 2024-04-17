@@ -6,6 +6,7 @@ import { MouseEventHandler } from 'react';
 import usePopup from '@/shared/hooks/usePopup';
 import useModal from '@/shared/hooks/useModal';
 import { CloseIcon } from '@/shared/components/icons';
+import PATH from '@/shared/constants/path';
 import DeleteWishFolderPopup from './alert-box/DeleteWishFolderPopup';
 import UpdateWishFolderModal from './alert-box/UpdateWishFolderModal';
 import { isWishFolderEditingState } from '../atoms/wishFolder';
@@ -35,7 +36,7 @@ const WishFolder = ({ id, thumbnailList, name, count }: WishFolderProps) => {
   return (
     <div className="flex flex-col gap-[6.5px] rounded-[6px] overflow-hidden">
       <Link
-        href={`/wishlist/detail/products/${id}`}
+        href={`${PATH.wishProductList}/${id}`}
         className="relative flex justify-center items-center after:pb-[100%] w-full"
       >
         {isEditing && (

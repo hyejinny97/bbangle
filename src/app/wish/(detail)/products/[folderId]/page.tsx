@@ -2,7 +2,7 @@ import WishProductList from '@/blocks/wish/WishProductList';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import WishProductSortSelect from '@/domains/wish/components/WishProductSortSelect';
 
-const WishProductsDetail = async () => (
+const WishProductsDetail = () => (
   <>
     <PaddingWrapper className="pb-[12px]">
       <WishProductSortSelect />

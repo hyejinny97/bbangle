@@ -13,6 +13,7 @@ import {
   Search24Icon,
   Search24RedIcon
 } from './icons';
+import PATH from '../constants/path';
 
 const Footer = () => {
   const pathname = usePathname();
@@ -41,7 +42,7 @@ const Footer = () => {
       title: '찜',
       defaultIcon: <HeartIcon shape="nav-off" />,
       activeIcon: <HeartIcon shape="nav-on" />,
-      href: '/wishlist/list/products'
+      href: PATH.wishProductList
     },
     {
       title: '마이페이지',
