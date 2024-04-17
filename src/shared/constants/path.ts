@@ -5,6 +5,9 @@ const PATH = {
   wishProductList: '/wish/products',
   wishLogin: '/wish/login',
   wishStoreList: '/wish/stores',
+  search: '/search',
+  allProductList: '/products',
+  wishList: '/wishlist/list',
 
   profileUpdate: '/mypage/update',
   notification: '/mypage/notifications',
