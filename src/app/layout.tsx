@@ -5,12 +5,12 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
-import Footer from '@/shared/components/Footer';
 import KaKaoChatScript from '@/global/KaKaoChatScript';
 import ModalContainer from '@/global/ModalContainer';
 import PopupContainer from '@/global/PopupContainer';
 import RootLayoutProvider from '@/global/RootLayoutProvider';
 import ToastContainer from '@/global/ToastContainer';
+import Footer from '@/global/Footer';
 // import FlareLaneScript from '@/global/FlareLaneScript';
 // import RegisterServiceWorker from '@/global/RegisterServiceWorker';
 
