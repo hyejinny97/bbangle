@@ -1,3 +1,4 @@
+import Header from '@/shared/components/Header';
 import DetailFixedBtnSection from '@/blocks/product/DetailFixedBtnSection';
 import DetailInformationImgs from '@/blocks/product/DetailInformationImgs';
 import DetailOrderAvailableDays from '@/blocks/product/DetailOrderAvailableDays';
@@ -20,6 +21,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
 
   return (
     <>
+      <Header title="상품보기" back />
       <ProductDetailImgs boardImages={data.board.images} isBundled={data.board.isBundled} />
       <DetailStoreInfo store={data.store} />
 
