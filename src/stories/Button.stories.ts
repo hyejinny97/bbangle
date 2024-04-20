@@ -21,7 +21,7 @@ export const PrimaryWhite: Story = {
 };
 
 export const Input: Story = {
-  args: { variants: 'primary-orange' }
+  args: { variants: 'input' }
 };
 
 export const SecondaryWhite: Story = {
