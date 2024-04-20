@@ -1,6 +1,6 @@
 'use client';
 
-import CheckBox from '@/components/commons/checkbox/client/Checkbox';
+import CheckBox from '@/shared/components/Checkbox';
 
 interface AgreeProps {
   isChecked: boolean;

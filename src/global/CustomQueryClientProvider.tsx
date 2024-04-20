@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider, QueryCache } from '@tanstack/react-query';
-import useToast from '@/commons/hooks/useToast';
-import ToastPop from '@/components/commons/ToastPop';
+import useToast from '@/shared/hooks/useToast';
+import ToastPop from '@/shared/components/ToastPop';
 
 const CustomQueryClientProvider = ({ children }: { children: React.ReactNode }) => {
   const { openToast } = useToast();

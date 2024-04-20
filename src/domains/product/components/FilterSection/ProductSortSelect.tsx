@@ -3,7 +3,7 @@
 import { useRecoilState } from 'recoil';
 import { filterValueState } from '@/domains/product/atoms';
 import { FilterFamilyIDType } from '@/domains/product/types/filterType';
-import Select from '@/components/commons/selects/Select';
+import Select from '@/shared/components/Select';
 
 interface ProductSortSelectProps {
   filterFamilyId: FilterFamilyIDType;

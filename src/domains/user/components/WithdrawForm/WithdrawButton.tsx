@@ -1,8 +1,8 @@
 'use client';
 
-import Button from '@/components/commons/button/client/Button';
+import Button from '@/shared/components/Button';
 import WithdrawPopup from '@/domains/user/components/alert-box/WithdrawPopup';
-import usePopup from '@/commons/hooks/usePopup';
+import usePopup from '@/shared/hooks/usePopup';
 
 interface WithdrawButtonProps {
   disabled: boolean;

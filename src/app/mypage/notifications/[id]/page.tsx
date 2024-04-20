@@ -1,6 +1,6 @@
-import NotificationTitle from '@/components/units/Notifications/client/NotificationTitle';
-import NotificationContent from '@/components/units/Notifications/client/NotificationContent';
-import { fetchNotificationDetail } from '@/components/units/Notifications/api/fetchNotificationDetail';
+import NotificationTitle from '@/domains/user/components/NotificationTitle';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
+import getNotificationDetail from '@/domains/user/queries/getNotificationDetail';
 
 interface NotificationDetailProps {
   params: {
@@ -9,13 +9,15 @@ interface NotificationDetailProps {
 }
 
 const NotificationDetail = async ({ params: { id } }: NotificationDetailProps) => {
-  const notification = await fetchNotificationDetail(id);
+  const notification = await getNotificationDetail(id);
 
   return (
-    <div>
+    <>
       <NotificationTitle title={notification.title} date={notification.createdAt} isBigTitle />
-      <NotificationContent content={notification.content} />
-    </div>
+      <PaddingWrapper className="leading-150 text-14 text-gray-900 tracking-tight-2">
+        {notification.content}
+      </PaddingWrapper>
+    </>
   );
 };
 

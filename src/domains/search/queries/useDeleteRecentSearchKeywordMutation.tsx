@@ -2,8 +2,8 @@ import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { SearchKeywordsType } from '@/domains/search/types';
 import fetchExtend from '@/shared/utils/api';
 import QUERY_KEY from '@/shared/constants/queryKey';
-import useToast from '@/commons/hooks/useToast';
-import ToastPop from '@/components/commons/ToastPop';
+import useToast from '@/shared/hooks/useToast';
+import ToastPop from '@/shared/components/ToastPop';
 
 type ContextType = {
   previousKeywords?: SearchKeywordsType;
@@ -26,7 +26,7 @@ export const useDeleteRecentSearchKeywordMutation = () => {
     await queryClient.cancelQueries({ queryKey });
     const previousKeywords: SearchKeywordsType | undefined = queryClient.getQueryData(queryKey);
     queryClient.setQueryData(queryKey, (oldKeywords: SearchKeywordsType) =>
-      oldKeywords.filter(item => item.keyword !== keywordToDelete)
+      oldKeywords.filter((item) => item.keyword !== keywordToDelete)
     );
     return { previousKeywords };
   };

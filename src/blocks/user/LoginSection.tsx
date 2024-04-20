@@ -1,12 +1,12 @@
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import Button from '@/components/commons/button/client/Button';
-import { BbangleSmileNameIcon } from '@/shared/components/icons';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
+import Button from '@/shared/components/Button';
 import PATH from '@/shared/constants/path';
 import Link from 'next/link';
+import { BbangleIcon } from '@/shared/components/icons';
 
 const LoginSection = () => (
   <PaddingWrapper className="flex items-center flex-col gap-[16px] pb-[26px]">
-    <BbangleSmileNameIcon />
+    <BbangleIcon shape="vertical-name" />
     <Link href={PATH.login} className="w-full">
       <Button variants="primary-orange">로그인/회원가입</Button>
     </Link>

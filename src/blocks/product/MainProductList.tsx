@@ -1,14 +1,16 @@
 'use client';
 
 import { useEffect } from 'react';
+
 import { useInView } from 'react-intersection-observer';
 import { useRecoilValue } from 'recoil';
-import { useGetAllProductsQuery } from '@/domains/product/queries/useGetAllProductsQuery';
+
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
+import SkeletonProductCardList from '@/domains/product/components/SkeletonProductCardList';
 import { filterValueState } from '@/domains/product/atoms';
-import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 import ProductCard from '@/domains/product/components/ProductCard';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import { SkeletonProductList } from '@/components/commons/skeleton/SkeletonProductList';
+import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
+import { useGetAllProductsQuery } from '@/domains/product/queries/useGetAllProductsQuery';
 import SadBbangleBox from '@/shared/components/SadBbangleBox';
 
 const MainProductList = () => {
@@ -23,7 +25,7 @@ const MainProductList = () => {
   }, [inView, fetchNextPage]);
 
   if (isLoading) {
-    return <SkeletonProductList />;
+    return <SkeletonProductCardList />;
   }
   if (isError) {
     return (
@@ -43,13 +45,13 @@ const MainProductList = () => {
   return (
     <PaddingWrapper className="px-0">
       <div className="grid grid-cols-2 gap-x-[16px] px-[16px] gap-y-[16px] pb-[36px]">
-        {data.products.map((product) => (
-          <ProductCard key={product.boardId} product={product} />
+        {data.products.map((product, index) => (
+          <ProductCard key={`${product.boardId}/${index}`} product={product} />
         ))}
       </div>
       {hasNextPage && (
         <div ref={ref} className="pb-[36px]">
-          <SkeletonProductList row={1} col={2} />
+          <SkeletonProductCardList row={1} col={2} />
         </div>
       )}
     </PaddingWrapper>

@@ -1,12 +1,13 @@
-import { setCookie } from '@/action';
-import { isLoggedinState } from '@/shared/atoms/login';
-import fetchExtend from '@/shared/utils/api';
-import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { useSetRecoilState } from 'recoil';
+import { useMutation } from '@tanstack/react-query';
+import { isLoggedinState } from '@/shared/atoms/login';
+import fetchExtend from '@/shared/utils/api';
+import PATH from '@/shared/constants/path';
+import useToast from '@/shared/hooks/useToast';
+import ToastPop from '@/shared/components/ToastPop';
+import { setCookie } from '@/shared/actions/cookie';
 import { expToDate, parseJwt } from '../utils/jwt';
-import useToast from '@/commons/hooks/useToast';
-import ToastPop from '@/components/commons/ToastPop';
 
 interface LoginResponse {
   accessToken: string;
@@ -23,7 +24,7 @@ interface ParsedJWT {
 const useLoginMutation = () => {
   const { openToast } = useToast();
   const setLogin = useSetRecoilState(isLoggedinState);
-  const { push } = useRouter();
+  const { replace } = useRouter();
 
   const mutationFn = async (accessToken: string) => {
     const res = await fetchExtend.get(`/oauth/login/kakao?token=${accessToken}`);
@@ -54,11 +55,12 @@ const useLoginMutation = () => {
     openToast(<ToastPop>로그인 되었어요.</ToastPop>);
 
     setLogin(true);
-    push('/');
+    replace(PATH.home);
   };
 
   const onError = () => {
     openToast(<ToastPop>로그인 실패했어요.</ToastPop>);
+    replace(PATH.mypage);
   };
 
   return useMutation({ mutationFn, onSuccess, onError });

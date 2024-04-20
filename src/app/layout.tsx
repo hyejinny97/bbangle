@@ -1,18 +1,21 @@
+import '@/global/global.css';
+
 import { ReactNode } from 'react';
+
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import './global.css';
-import RootLayoutProvider from '@/components/commons/RootLayoutProvider';
-import Footer from '@/components/commons/footer/server/Footer';
-import PopupContainer from '@/components/commons/PopupContainer';
-import ModalContainer from '@/components/commons/ModalContainer';
-import ToastContainer from '@/components/commons/ToastContainer';
-import KaKaoChatScript from '@/components/commons/KaKaoChatScript';
-import FlareLaneScript from '@/global/FlareLaneScript';
-import RegisterServiceWorker from '@/global/RegisterServiceWorker';
+
+import KaKaoChatScript from '@/global/KaKaoChatScript';
+import ModalContainer from '@/global/ModalContainer';
+import PopupContainer from '@/global/PopupContainer';
+import RootLayoutProvider from '@/global/RootLayoutProvider';
+import ToastContainer from '@/global/ToastContainer';
+import Footer from '@/global/Footer';
+// import FlareLaneScript from '@/global/FlareLaneScript';
+// import RegisterServiceWorker from '@/global/RegisterServiceWorker';
 
 const pretendard = localFont({
-  src: '../commons/assets/PretendardVariable.woff2'
+  src: '../../public/assets/fonts/PretendardVariable.woff2'
 });
 
 export const metadata: Metadata = {
@@ -34,8 +37,8 @@ const RootLayout = ({ children }: { children: ReactNode }) => (
         <Footer />
       </RootLayoutProvider>
       <KaKaoChatScript />
-      <RegisterServiceWorker />
-      <FlareLaneScript />
+      {/* <RegisterServiceWorker /> */}
+      {/* <FlareLaneScript /> */}
     </body>
   </html>
 );

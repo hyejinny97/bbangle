@@ -1,9 +1,9 @@
-import useModal from '@/commons/hooks/useModal';
-import useToast from '@/commons/hooks/useToast';
+import useModal from '@/shared/hooks/useModal';
+import useToast from '@/shared/hooks/useToast';
 import fetchExtend from '@/shared/utils/api';
 import { useMutation } from '@tanstack/react-query';
-import ToastPop from '@/components/commons/ToastPop';
-import { revalidateTag } from '@/shared/actions';
+import ToastPop from '@/shared/components/ToastPop';
+import { revalidateTag } from '@/shared/actions/revalidate';
 import { REAVALIDATE_TAG } from '@/shared/constants/revalidateTags';
 import WishFolderSelectModal from '../components/alert-box/WishFolderSelectModal';
 

@@ -1,4 +1,4 @@
-import { getCookie } from '@/action';
+import { getCookie } from '../actions/cookie';
 import { API_URL } from '../constants/api';
 
 const API_V1_URL = `${API_URL}/api/v1`;

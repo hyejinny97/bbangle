@@ -1,9 +1,13 @@
 'use client';
 
 import { twMerge } from 'tailwind-merge';
-import { INPUT_STYLE } from '@/commons/constants/inputStyle';
-import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE, PRICE_RANGE_STEP } from '@/commons/constants/priceLimit';
-import Input from '@/components/commons/inputs/Input';
+import { INPUT_STYLE } from '@/shared/constants/inputStyle';
+import {
+  LIMIT_MIN_PRICE,
+  LIMIT_MAX_PRICE,
+  PRICE_RANGE_STEP
+} from '@/domains/product/constants/priceLimit';
+import Input from '@/shared/components/Input';
 
 interface PriceInputProps {
   value: number;
@@ -16,7 +20,7 @@ const PriceInput = ({ value, onChange }: PriceInputProps) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(e.target.value.replaceAll(',', ''));
 
-    if (isNaN(newValue)) return;
+    if (Number.isNaN(newValue)) return;
     if (newValue < LIMIT_MIN_PRICE || newValue > LIMIT_MAX_PRICE) return;
 
     onChange(newValue);

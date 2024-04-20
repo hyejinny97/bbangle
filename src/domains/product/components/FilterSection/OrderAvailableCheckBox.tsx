@@ -3,7 +3,7 @@
 import { useRecoilState } from 'recoil';
 import { filterValueState } from '@/domains/product/atoms';
 import { FilterFamilyIDType } from '@/domains/product/types/filterType';
-import CheckBox from '@/components/commons/checkbox/client/Checkbox';
+import CheckBox from '@/shared/components/Checkbox';
 
 interface OrderAvailableCheckBoxProps {
   filterFamilyId: FilterFamilyIDType;

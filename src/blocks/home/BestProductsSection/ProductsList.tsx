@@ -1,7 +1,7 @@
+import { IProductType } from '@/domains/product/types/productType';
 import ProductCard from '@/domains/product/components/ProductCard';
-import { IProductType } from '@/commons/types/productType';
-import fetchExtend from '@/shared/utils/api';
 import { REAVALIDATE_TAG } from '@/shared/constants/revalidateTags';
+import fetchExtend from '@/shared/utils/api';
 
 const getBestProducts = async () => {
   const res = await fetchExtend.get('/boards', {

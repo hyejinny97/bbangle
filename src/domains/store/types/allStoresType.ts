@@ -1,4 +1,4 @@
-import { IStoreType } from '@/commons/types/storeType';
+import { IStoreType } from '@/domains/store/types/store';
 
 export interface IAllStoresType {
   content: IStoreType[];

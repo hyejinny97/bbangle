@@ -1,12 +1,12 @@
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import { revalidateTag } from '@/action';
-import { ErrorResponse } from '@/commons/types/errorType';
-import useToast from '@/commons/hooks/useToast';
-import ToastPop from '@/components/commons/ToastPop';
+import { ErrorResponse } from '@/shared/types/errorType';
+import useToast from '@/shared/hooks/useToast';
+import ToastPop from '@/shared/components/ToastPop';
 import fetchExtend from '@/shared/utils/api';
 import PATH from '@/shared/constants/path';
 import QUERY_KEY from '@/shared/constants/queryKey';
+import { revalidateTag } from '@/shared/actions/revalidate';
 import { RegistrationRequest } from '../types/profile';
 
 const useRegistrationMutation = () => {

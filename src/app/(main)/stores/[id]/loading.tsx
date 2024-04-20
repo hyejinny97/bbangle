@@ -1,7 +1,5 @@
-import Loading from '@/components/commons/Loading';
+import Loading from '@/shared/components/Loading';
 
-const StoreDetailLoading = () => {
-  return <Loading />;
-};
+const StoreDetailLoading = () => <Loading />;
 
 export default StoreDetailLoading;

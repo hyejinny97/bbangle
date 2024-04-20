@@ -37,12 +37,13 @@ const PriceInputContainer = ({
         ~
         <PriceInput value={tmpMaxPrice} onChange={handleTmpMaxPriceChange} />
       </div>
-      <span
+      <button
+        type="button"
         className="font-semibold text-14 text-primaryOrangeRed leading-150 tracking-tight-2 cursor-pointer"
         onClick={handleApplyButtonClick}
       >
         적용
-      </span>
+      </button>
     </div>
   );
 };

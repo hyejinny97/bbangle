@@ -3,13 +3,19 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { useGetAllNotificationsQuery } from '@/components/units/Notifications/hooks/useGetAllNotificationsQuery';
-import NotificationTitle from '@/components/units/Notifications/client/NotificationTitle';
-import Loading from '@/components/commons/Loading';
+import { useGetAllNotificationsQuery } from '@/domains/user/queries/useGetAllNotificationsQuery';
+import NotificationTitle from '@/domains/user/components/NotificationTitle';
+import Loading from '@/shared/components/Loading';
+import SadBbangleBox from '@/shared/components/SadBbangleBox';
 
 const Notifications = () => {
-  const { notifications, isLoading, isError, fetchNextPage, isFetchingNextPage } =
-    useGetAllNotificationsQuery();
+  const {
+    data: notifications,
+    isLoading,
+    isError,
+    fetchNextPage,
+    isFetchingNextPage
+  } = useGetAllNotificationsQuery();
   const { ref, inView } = useInView();
 
   useEffect(() => {
@@ -21,11 +27,18 @@ const Notifications = () => {
     return <Loading />;
   }
   if (isError) {
-    return <div className="p-[16px]">Error</div>;
+    return (
+      <SadBbangleBox>
+        <p>오류가 발생했어요!</p>
+      </SadBbangleBox>
+    );
   }
-
   if (!notifications) {
-    return <div>데이터 x</div>;
+    return (
+      <SadBbangleBox>
+        <p>공지사항이 없어요!</p>
+      </SadBbangleBox>
+    );
   }
 
   return (
@@ -35,7 +48,7 @@ const Notifications = () => {
           <NotificationTitle title={item.title} date={item.createdAt} />
         </Link>
       ))}
-      {isFetchingNextPage ? <Loading /> : <div ref={ref}></div>}
+      {isFetchingNextPage ? <Loading /> : <div ref={ref} />}
     </div>
   );
 };
