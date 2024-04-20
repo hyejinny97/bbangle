@@ -53,9 +53,16 @@
     "react/jsx-no-useless-fragment": "warn",
     "@typescript-eslint/no-use-before-define": "warn",
     "object-shorthand": "warn",
-    "import/no-extraneous-dependencies": "warn",
     "spaced-comment": "warn",
-    "jsx-a11y/html-has-lang": "warn"
+    "jsx-a11y/html-has-lang": "warn",
+
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/stories/**"],
+        "optionalDependencies": false
+      }
+    ]
   },
   "ignorePatterns": ["*.config.js", "*.config.ts", "node_modules", "*.d.ts", "public/sw.js"]
 }
