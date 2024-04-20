@@ -1,4 +1,4 @@
-import WishProductList from '@/blocks/wish/WishProductList';
+import WishProductList from '@/blocks/wish/(list)/products/WishProductList';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import WishProductSortSelect from '@/domains/wish/components/WishProductSortSelect';
 

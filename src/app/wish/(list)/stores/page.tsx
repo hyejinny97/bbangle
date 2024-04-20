@@ -1,4 +1,4 @@
-import WishStroeList from '@/blocks/wish/WishStoreList';
+import WishStroeList from '@/blocks/wish/(list)/stores/WishStoreList';
 
 const WishStoresPage = () => <WishStroeList />;
 
