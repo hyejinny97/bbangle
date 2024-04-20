@@ -64,5 +64,5 @@
       }
     ]
   },
-  "ignorePatterns": ["*.config.js", "*.config.ts", "node_modules", "*.d.ts", "public/sw.js"]
+  "ignorePatterns": ["*.config.*", "node_modules", "*.d.ts", "public/sw.js"]
 }
