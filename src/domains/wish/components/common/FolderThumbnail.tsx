@@ -1,4 +1,4 @@
-import { BbangleSmileIcon } from '@/components/commons/Icon';
+import { BbangleIcon } from '@/shared/components/icons';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
 
@@ -26,7 +26,7 @@ const FolderThumbnail = ({ thumbnailList, size = 'lg' }: Props) => {
           ))}
         </div>
       ) : (
-        <BbangleSmileIcon width={80} height={80} />
+        <BbangleIcon shape="smile" className="size-[80px]" />
       )}
     </div>
   );

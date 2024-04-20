@@ -1,7 +1,7 @@
-import Header from '@/components/commons/header/client/Header';
+import Header from '@/shared/components/Header';
 import UserInfoSection from '@/blocks/user/UserInfoSection';
 import MoreInfoSection from '@/blocks/user/MoreInfoSection';
-import { getCookie } from '@/action';
+import { getCookie } from '@/shared/actions/cookie';
 import LoginSection from '@/blocks/user/LoginSection';
 
 const MyPage = async () => {

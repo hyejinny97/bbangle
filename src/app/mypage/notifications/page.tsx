@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useGetAllNotificationsQuery } from '@/domains/user/queries/useGetAllNotificationsQuery';
 import NotificationTitle from '@/domains/user/components/NotificationTitle';
-import Loading from '@/components/commons/Loading';
+import Loading from '@/shared/components/Loading';
 import SadBbangleBox from '@/shared/components/SadBbangleBox';
 
 const Notifications = () => {
@@ -48,7 +48,7 @@ const Notifications = () => {
           <NotificationTitle title={item.title} date={item.createdAt} />
         </Link>
       ))}
-      {isFetchingNextPage ? <Loading /> : <div ref={ref}></div>}
+      {isFetchingNextPage ? <Loading /> : <div ref={ref} />}
     </div>
   );
 };

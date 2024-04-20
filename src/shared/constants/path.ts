@@ -1,5 +1,7 @@
 const PATH = {
   home: '/',
+  search: '/search',
+  allProductList: '/products',
   wishProductList: '/wishlist/list/products',
   wishList: '/wishlist/list',
   wishLogin: '/wishlist/login',

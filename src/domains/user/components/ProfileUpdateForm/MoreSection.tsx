@@ -1,6 +1,6 @@
 'use client';
 
-import { deleteCookie } from '@/action';
+import { deleteCookie } from '@/shared/actions/cookie';
 import { isLoggedinState } from '@/shared/atoms/login';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';

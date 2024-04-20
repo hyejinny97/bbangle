@@ -2,8 +2,8 @@
 
 import { useRecoilState } from 'recoil';
 import { ChangeEvent, useId } from 'react';
-import Button from '@/components/commons/button/client/Button';
-import Input from '@/components/commons/inputs/Input';
+import Button from '@/shared/components/Button';
+import Input from '@/shared/components/Input';
 import useNicknameDoubleCheckMutation from '../../queries/useNicknameDoubleCheckMutation';
 import { nicknameState } from '../../atoms/profile';
 

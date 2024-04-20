@@ -5,7 +5,7 @@ import { priceTempState } from '@/domains/product/atoms';
 import { FilterFamilyIDType } from '@/domains/product/types/filterType';
 import PriceInputContainer from '@/domains/product/components/alert-box/FilterModal/PriceSection/PriceInputContainer';
 import PriceSlide from '@/domains/product/components/alert-box/FilterModal/PriceSection/PriceSlide';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 
 interface PriceSectionProps {
   filterFamilyId: FilterFamilyIDType;
@@ -16,18 +16,18 @@ const PriceSection = ({ filterFamilyId }: PriceSectionProps) => {
 
   const handleMinPriceChange = (newValue: number) => {
     if (newValue > price.maxPrice) {
-      return setPrice(prev => ({ ...prev, minPrice: price.maxPrice }));
+      return setPrice((prev) => ({ ...prev, minPrice: price.maxPrice }));
     }
 
-    setPrice(prev => ({ ...prev, minPrice: newValue }));
+    return setPrice((prev) => ({ ...prev, minPrice: newValue }));
   };
 
   const handleMaxPriceChange = (newValue: number) => {
     if (newValue < price.minPrice) {
-      return setPrice(prev => ({ ...prev, maxPrice: price.minPrice }));
+      return setPrice((prev) => ({ ...prev, maxPrice: price.minPrice }));
     }
 
-    setPrice(prev => ({ ...prev, maxPrice: newValue }));
+    return setPrice((prev) => ({ ...prev, maxPrice: newValue }));
   };
 
   return (

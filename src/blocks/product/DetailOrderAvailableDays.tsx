@@ -1,5 +1,5 @@
-import { transformDayTag } from '@/commons/constants/transfromTag';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import { transformDayTag } from '@/domains/product/utils/transfromTag';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import InfoWrapper from '@/domains/product/components/InfoWrapper';
 import { IProductDetailType } from '@/domains/product/types/productDetailType';
 

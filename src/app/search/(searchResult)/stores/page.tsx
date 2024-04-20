@@ -1,4 +1,4 @@
-import SearchStoreList from '@/blocks/search/SearchStoreList';
+import SearchStoreList from '@/blocks/search/stores/SearchStoreList';
 
 interface SearchStoresProps {
   searchParams: { query?: string };

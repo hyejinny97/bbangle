@@ -2,9 +2,9 @@
 
 import { useRecoilState } from 'recoil';
 
-import { FILTER_VALUES } from '@/commons/constants/filterValues';
-import useModal from '@/commons/hooks/useModal';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import { FILTER_VALUES } from '@/domains/product/constants/filterValues';
+import useModal from '@/shared/hooks/useModal';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import FilterIcon from '@/domains/product/assets/filter.svg';
 import { filterValueState } from '@/domains/product/atoms';
 import FilterModal from '@/domains/product/components/alert-box/FilterModal';
@@ -49,6 +49,7 @@ const FilterSection = ({ filterFamilyId }: FilterSectionProps) => {
             (item) =>
               item && (
                 <button
+                  key={`${item.type}/${item.content}`}
                   type="button"
                   className={`px-[12px] py-[8px] min-w-max rounded-[50px] bg-white border text-12 leading-150 tracking-tight-2
       ${

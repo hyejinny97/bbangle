@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@/components/commons/button/client/Button';
+import Button from '@/shared/components/Button';
 import Link from 'next/link';
 
 const ButtonSection = () => (

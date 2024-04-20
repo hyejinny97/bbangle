@@ -3,8 +3,8 @@
 import { useEffect } from 'react';
 
 import { useInView } from 'react-intersection-observer';
-
 import SkeletonStoreList from '@/components/commons/skeleton/SkeletonStoreCardList';
+
 import StoreCard from '@/domains/store/components/StoreCard';
 import { useGetAllStoresQuery } from '@/domains/store/queries/useGetAllStoresQuery';
 import SadBbangleBox from '@/shared/components/SadBbangleBox';

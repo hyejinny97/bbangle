@@ -2,7 +2,7 @@
 
 import { FormEventHandler } from 'react';
 import { useRecoilValue } from 'recoil';
-import Button from '@/components/commons/button/client/Button';
+import Button from '@/shared/components/Button';
 import BirthdayInput from '@/domains/user/components/common/BirthdateInput';
 import MoreSection from '@/domains/user/components/ProfileUpdateForm/MoreSection';
 import NicknameInput from '@/domains/user/components/common/NickNameInput';

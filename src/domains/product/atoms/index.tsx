@@ -6,7 +6,7 @@ import {
   IFilterType,
   FilterFamilyIDType
 } from '@/domains/product/types/filterType';
-import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
+import { LIMIT_MIN_PRICE, LIMIT_MAX_PRICE } from '@/domains/product/constants/priceLimit';
 
 export const categoryTempState = atomFamily<ICategoryType, FilterFamilyIDType>({
   key: 'category',
@@ -26,10 +26,21 @@ export const priceTempState = atomFamily<IPriceType, FilterFamilyIDType>({
   }
 });
 
+export const filterValueState = atomFamily<IFilterType, FilterFamilyIDType>({
+  key: 'filterValueState',
+  default: {
+    category: undefined,
+    tags: undefined,
+    price: { minPrice: LIMIT_MIN_PRICE, maxPrice: LIMIT_MAX_PRICE },
+    sort: '추천순',
+    showProductsAvailableOrder: false
+  }
+});
+
 export const filterValueTempState = selectorFamily<IFilterType, FilterFamilyIDType>({
   key: 'filterValueTempState',
   get:
-    filterFamilyId =>
+    (filterFamilyId) =>
     ({ get }) => {
       const category = get(categoryTempState(filterFamilyId));
       const tags = get(tagsTempState(filterFamilyId));
@@ -44,7 +55,7 @@ export const filterValueTempState = selectorFamily<IFilterType, FilterFamilyIDTy
       };
     },
   set:
-    filterFamilyId =>
+    (filterFamilyId) =>
     ({ set }, newValue) => {
       if (newValue instanceof DefaultValue) return;
 
@@ -52,15 +63,4 @@ export const filterValueTempState = selectorFamily<IFilterType, FilterFamilyIDTy
       set(tagsTempState(filterFamilyId), newValue.tags);
       set(priceTempState(filterFamilyId), newValue.price);
     }
-});
-
-export const filterValueState = atomFamily<IFilterType, FilterFamilyIDType>({
-  key: 'filterValueState',
-  default: {
-    category: undefined,
-    tags: undefined,
-    price: { minPrice: LIMIT_MIN_PRICE, maxPrice: LIMIT_MAX_PRICE },
-    sort: '추천순',
-    showProductsAvailableOrder: false
-  }
 });

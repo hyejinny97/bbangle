@@ -1,6 +1,6 @@
-import { IProductType } from '@/commons/types/productType';
+import { IProductType } from '@/domains/product/types/productType';
 import { useEffect, useState } from 'react';
-import { transformTagToKr } from '@/commons/constants/transfromTag';
+import { transformTagToKr } from '@/domains/product/utils/transfromTag';
 
 interface TagSwiperProps {
   tag: IProductType['tags'];
@@ -28,13 +28,13 @@ const TagSwiper = ({ tag }: TagSwiperProps) => {
   return (
     <div className="flex items-center justify-between gap-[2px] w-full overflow-x-auto leading-150 tracking-tight-2">
       <div className="flex gap-[4px]">
-        {tagsToShow.map((tag, index) => (
+        {tagsToShow.map((item) => (
           <div
-            key={index}
+            key={item}
             style={{ flex: 'auto' }}
             className="px-[6px] py-[2px] bg-white rounded-[4px] border border-solid border-gray-200 text-gray-600 text-[11px] font-normal"
           >
-            {tag}
+            {item}
           </div>
         ))}
       </div>

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { IProductType } from '@/commons/types/productType';
+import { IProductType } from '@/domains/product/types/productType';
 import ProductImage from '@/domains/product/components/ProductCard/ProductImage';
 import ProductSummary from '@/domains/product/components/ProductCard/ProductSummary';
 

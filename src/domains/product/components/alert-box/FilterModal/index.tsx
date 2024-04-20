@@ -1,7 +1,7 @@
 'use client';
 
 import { FilterFamilyIDType } from '@/domains/product/types/filterType';
-import UpModalNewVer from '@/components/commons/modal/UpModalNewVer';
+import Modal from '@/shared/components/Modal';
 import TagsSection from '@/domains/product/components/alert-box/FilterModal/TagsSection';
 import PriceSection from '@/domains/product/components/alert-box/FilterModal/PriceSection';
 import CategorySection from '@/domains/product/components/alert-box/FilterModal/CategorySection';
@@ -11,17 +11,15 @@ interface FilterModalProps {
   filterFamilyId: FilterFamilyIDType;
 }
 
-function FilterModal({ filterFamilyId }: FilterModalProps) {
-  return (
-    <UpModalNewVer title="필터">
+const FilterModal = ({ filterFamilyId }: FilterModalProps) => (
+    <Modal title="필터">
       <CategorySection filterFamilyId={filterFamilyId} />
       <hr className="bg-gray-100" />
       <TagsSection filterFamilyId={filterFamilyId} />
       <hr className="bg-gray-100" />
       <PriceSection filterFamilyId={filterFamilyId} />
       <ButtonSection filterFamilyId={filterFamilyId} />
-    </UpModalNewVer>
-  );
-}
+    </Modal>
+  )
 
 export default FilterModal;

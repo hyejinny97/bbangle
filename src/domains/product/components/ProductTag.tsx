@@ -1,6 +1,6 @@
 'use client';
 
-import { transformTagToKr } from '@/commons/constants/transfromTag';
+import { transformTagToKr } from '@/domains/product/utils/transfromTag';
 
 interface ProductTagProps {
   tag: string;

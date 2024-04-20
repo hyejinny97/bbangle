@@ -1,11 +1,11 @@
 import { useMutation } from '@tanstack/react-query';
-import { revalidateTag } from '@/action';
 import { useRouter } from 'next/navigation';
-import useToast from '@/commons/hooks/useToast';
-import ToastPop from '@/components/commons/ToastPop';
+import useToast from '@/shared/hooks/useToast';
+import ToastPop from '@/shared/components/ToastPop';
 import fetchExtend from '@/shared/utils/api';
 import QUERY_KEY from '@/shared/constants/queryKey';
 import PATH from '@/shared/constants/path';
+import { revalidateTag } from '@/shared/actions/revalidate';
 import { MyProfileUpdateRequest } from '../types/profile';
 
 const useProfileUpdateMutation = () => {

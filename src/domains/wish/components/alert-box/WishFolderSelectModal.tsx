@@ -1,7 +1,7 @@
 'use client';
 
-import UpModalNewVer from '@/components/commons/modal/UpModalNewVer';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import Modal from '@/shared/components/Modal';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import { PlusIcon } from '@/shared/components/icons';
 import useWishFolderList from '../../queries/useWishFolderList';
 import FolderThumbnail from '../common/FolderThumbnail';
@@ -12,7 +12,7 @@ const WishFolderSelectModal = () => {
   if (!data || data.length === 0) return <>임시</>;
 
   return (
-    <UpModalNewVer title="찜 폴더" className="font-semibold text-[14px] text-gray-800">
+    <Modal title="찜 폴더" className="font-semibold text-[14px] text-gray-800">
       <div className="flex flex-col ">
         <button type="button" className="border-t border-gray-100">
           <PaddingWrapper className="flex items-center gap-[10px]">
@@ -35,7 +35,7 @@ const WishFolderSelectModal = () => {
           </button>
         ))}
       </div>
-    </UpModalNewVer>
+    </Modal>
   );
 };
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useMainPage } from '@/domains/product/hooks/useMainPage';
-import Header from '@/components/commons/header/client/Header';
+import Header from '@/shared/components/Header';
 
 const MainHeader = () => {
   const { isDetailPage, isProductDetailPage, isStoreDetailPage } = useMainPage();

@@ -1,5 +1,5 @@
 import NotificationTitle from '@/domains/user/components/NotificationTitle';
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import getNotificationDetail from '@/domains/user/queries/getNotificationDetail';
 
 interface NotificationDetailProps {

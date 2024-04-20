@@ -1,4 +1,4 @@
-import { IProductType } from '@/commons/types/productType';
+import { IProductType } from '@/domains/product/types/productType';
 
 export interface WishFolderType {
   folderId: number;

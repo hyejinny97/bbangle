@@ -2,7 +2,7 @@
 
 import RangeInput from '@/domains/product/components/alert-box/FilterModal/PriceSection/PriceSlide/RangeInput';
 import SlideBar from '@/domains/product/components/alert-box/FilterModal/PriceSection/PriceSlide/SlideBar';
-import { LIMIT_MAX_PRICE } from '@/commons/constants/priceLimit';
+import { LIMIT_MAX_PRICE } from '@/domains/product/constants/priceLimit';
 
 interface PriceSlideProps {
   minValue: number;

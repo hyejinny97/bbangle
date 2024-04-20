@@ -1,9 +1,9 @@
 'use client';
 
-import PaddingWrapper from '@/components/commons/PaddingWrapper';
-import Button from '@/components/commons/button/client/Button';
-import Popup from '@/components/commons/Popup';
-import usePopup from '@/commons/hooks/usePopup';
+import PaddingWrapper from '@/shared/components/PaddingWrapper';
+import Button from '@/shared/components/Button';
+import Popup from '@/shared/components/Popup';
+import usePopup from '@/shared/hooks/usePopup';
 import useDeleteWishFolderMutation from '../../queries/useDeleteWishFolderMutation';
 
 interface DeleteWishFolderPopupProps {
