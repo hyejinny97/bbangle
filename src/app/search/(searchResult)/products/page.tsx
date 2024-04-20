@@ -1,6 +1,6 @@
 import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 import FilterSection from '@/domains/product/components/FilterSection';
-import SearchProductList from '@/blocks/search/SearchProductList';
+import SearchProductList from '@/blocks/search/products/SearchProductList';
 
 interface SearchProductsProps {
   searchParams: { query?: string };
