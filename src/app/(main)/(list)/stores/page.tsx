@@ -1,5 +1,5 @@
 import MainStoreList from '@/blocks/store/MainStoreList';
 
-const Stores = () => <MainStoreList />;
+const StoreList = () => <MainStoreList />;
 
-export default Stores;
+export default StoreList;

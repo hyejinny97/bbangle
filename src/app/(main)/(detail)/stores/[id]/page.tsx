@@ -1,4 +1,3 @@
-import Header from '@/shared/components/Header';
 import AllProducts from '@/blocks/store/AllProducts';
 import BestProducts from '@/blocks/store/BestProducts';
 import DetailStoreProfile from '@/blocks/store/DetailStoreProfile';
@@ -6,7 +5,6 @@ import StoreDetailSection from '@/domains/store/components/StoreDetailSection';
 
 const StoreDetail = ({ params: { id } }: { params: { id: string } }) => (
   <div className="w-full">
-    <Header title="스토어" back />
     <div className="border-b-4 w-full mx-auto pb-[16px] border-solid border-gray-100">
       <DetailStoreProfile storeId={Number(id)} />
     </div>
