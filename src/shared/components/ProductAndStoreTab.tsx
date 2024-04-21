@@ -32,8 +32,8 @@ const ProductAndStoreTab = ({
   const productsPath = `${defaultPath}/products`;
   const storesPath = `${defaultPath}/stores`;
 
-  const isProductPage = pathname === productsPath;
-  const isStorePage = pathname === storesPath;
+  const isProductPage = pathname.startsWith(productsPath);
+  const isStorePage = pathname.startsWith(storesPath);
 
   const queryString = searchParams.toString();
   const productsUrl = queryString ? `${productsPath}?${queryString}` : productsPath;
