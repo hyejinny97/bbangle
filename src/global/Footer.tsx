@@ -13,7 +13,7 @@ import {
   ProfileRedIcon,
   Search24Icon,
   Search24RedIcon
-} from '../shared/components/icons';
+} from '@/shared/components/icons';
 
 const Footer = () => {
   const pathname = usePathname();

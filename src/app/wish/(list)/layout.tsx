@@ -1,3 +1,5 @@
+'use client';
+
 import Header from '@/shared/components/Header';
 import ProductAndStoreTab from '@/shared/components/ProductAndStoreTab';
 import PATH from '@/shared/constants/path';
@@ -7,10 +9,10 @@ interface Props {
   children: ReactNode;
 }
 
-const Layout = async ({ children }: Props) => (
+const Layout = ({ children }: Props) => (
   <>
     <Header title="찜" />
-    <ProductAndStoreTab defaultPath={PATH.wishList} />
+    <ProductAndStoreTab defaultPath={PATH.wish} />
     {children}
   </>
 );
