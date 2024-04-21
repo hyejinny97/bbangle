@@ -1,5 +1,6 @@
 import { describe, expect, test, vi } from 'vitest';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Button from '@/shared/components/Button';
 
 describe('<Button/> 테스트', () => {
@@ -21,7 +22,7 @@ describe('<Button/> 테스트', () => {
     const button = screen.getByRole('button');
 
     // act
-    await fireEvent.click(button);
+    await userEvent.click(button);
 
     // assert
     expect(onClick).toHaveBeenCalledOnce();
