@@ -56,8 +56,8 @@ const SearchInputSection = () => {
   };
 
   return (
-    <PaddingWrapper className="relative py-[10px]">
-      <div className="relative flex items-center">
+    <div className="relative">
+      <PaddingWrapper className="flex items-center py-[10px]">
         {isSearchDetailPage && <BackButton />}
         <SearchInput
           value={text}
@@ -65,13 +65,13 @@ const SearchInputSection = () => {
           onKeyDown={handleKeyDown}
           placeholder="궁금한 상품을 찾아보세요!"
         />
-        {showAutoComplete && (
-          <div className="absolute top-full z-[1] w-full">
-            <AutoCompleteSearchContainer keyword={debouncedText} />
-          </div>
-        )}
-      </div>
-    </PaddingWrapper>
+      </PaddingWrapper>
+      {showAutoComplete && (
+        <div className="absolute top-full z-[1] w-full">
+          <AutoCompleteSearchContainer keyword={debouncedText} />
+        </div>
+      )}
+    </div>
   );
 };
 
