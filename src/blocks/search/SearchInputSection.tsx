@@ -19,6 +19,7 @@ const SearchInputSection = () => {
   const isSearchDetailPage = SEARCH_DETAIL_PAGE_PATHNAMES.includes(pathname);
   const query = searchParams.get('query');
 
+  const [isInputFocused, setIsInputFocused] = useState(false);
   const [text, setText] = useState(query || '');
   const [showAutoComplete, setShowAutoComplete] = useState(false);
   const debouncedText = useDebounce<string>({ value: text, delay: 300 });
@@ -63,7 +64,9 @@ const SearchInputSection = () => {
           value={text}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-          placeholder="궁금한 상품을 찾아보세요!"
+          onFocus={() => setIsInputFocused(true)}
+          onBlur={() => setIsInputFocused(false)}
+          placeholder={isInputFocused ? '' : '궁금한 상품을 찾아보세요!'}
         />
       </PaddingWrapper>
       {showAutoComplete && (
