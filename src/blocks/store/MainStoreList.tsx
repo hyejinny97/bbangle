@@ -19,7 +19,7 @@ const MainStoreList = () => {
   }, [inView, fetchNextPage]);
 
   if (isLoading) {
-    return <SkeletonStoreList />;
+    return <SkeletonStoreList row={10} />;
   }
   if (isError) {
     return (
