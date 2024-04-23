@@ -12,3 +12,4 @@ export { default as EtcIcon } from './etc-icon.svg';
 export { default as JamIcon } from './jam-icon.svg';
 export { default as TartIcon } from './tart-icon.svg';
 export { default as BottomArrowICon } from './bottom-arrow.svg';
+export { default as MediumForwardArrowIcon } from './forward-medium-arrow.svg';

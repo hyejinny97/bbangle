@@ -1,4 +1,5 @@
 import { AllIcon, BreadIcon, CookieIcon } from '../assets/icons';
+import MiddlecategoryList from '../MiddleCategoryList';
 import LargeCategoryItem from './LargeCategoryItem';
 
 const CATEGORY_TYPE = [
@@ -10,7 +11,10 @@ const CATEGORY_TYPE = [
 const LargeCategoryList = () => (
   <div className="">
     {CATEGORY_TYPE.map((item) => (
-      <LargeCategoryItem item={item} />
+      <>
+        <LargeCategoryItem item={item} />
+        <MiddlecategoryList />
+      </>
     ))}
   </div>
 );
