@@ -1,5 +1,5 @@
-import LargeCategoryList from '@/domains/categories/LargeCategoryList';
+import CategoryList from '@/domains/categories/CategoryList';
 
-const CategoryPage = () => <LargeCategoryList />;
+const CategoryPage = () => <CategoryList />;
 
 export default CategoryPage;
