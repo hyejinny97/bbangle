@@ -85,6 +85,7 @@
     "domains": "Views",
     "actions": "Lib",
     "atoms": "Database",
-    "queries": "Api"
+    "queries": "Api",
+    "alert-box": "Messages"
   }
 }
