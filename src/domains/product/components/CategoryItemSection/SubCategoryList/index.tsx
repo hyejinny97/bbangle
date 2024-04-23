@@ -1,18 +1,29 @@
+import { motion } from 'framer-motion';
+
 import SubCategoryItem from './SubCategoryItem';
 
-const CATEGORY_TYPE = [
-  '전체보기',
-  '식빵ㆍ모닝빵',
-  '베이글ㆍ도넛',
-  '케이크ㆍ파이'
-];
+interface SubcategoryListProps {
+  subCategories: string[];
+}
 
-const SubcategoryList = () => (
-  <div className="grid grid-cols-2">
-    {CATEGORY_TYPE.map((item) => (
-      <SubCategoryItem item={item} />
-    ))}
-  </div>
+const SubcategoryList = ({ subCategories }: SubcategoryListProps) => (
+  <motion.div
+    layout
+    initial={{ scaleY: 0, height: 0 }}
+    animate={{ scaleY: 1, height: 'auto' }}
+    exit={{ scaleY: 0, height: 0 }}
+    transition={{
+      duration: 0.15,
+      ease: 'easeInOut'
+    }}
+    style={{ originY: 0 }}
+    className="bg-redGray-30"
+  >
+    <div className="grid grid-cols-2">
+      {subCategories.map((category) => (
+        <SubCategoryItem item={category} />
+      ))}
+    </div>
+  </motion.div>
 );
-
 export default SubcategoryList;
