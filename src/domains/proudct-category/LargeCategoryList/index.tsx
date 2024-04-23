@@ -19,7 +19,7 @@ const CATEGORY_TYPE = [
   }
 ];
 
-const CategoryList = () => {
+const LargeCategoryList = () => {
   const [activeIndicies, setActiveIndices] = useState<number[]>([]);
 
   const toggleCategory = (index: number) => {
@@ -65,4 +65,4 @@ const CategoryList = () => {
     </div>
   );
 };
-export default CategoryList;
+export default LargeCategoryList;
