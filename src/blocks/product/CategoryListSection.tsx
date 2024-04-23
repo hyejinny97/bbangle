@@ -4,9 +4,13 @@ import React, { useState } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { AllIcon, BreadIcon, CookieIcon } from '../assets/icons';
-import LargeCategoryItem from './LargeCategoryItem';
-import MiddlecategoryList from './MiddleCategoryList';
+import MainCategoryItem from '@/domains/product/components/CategoryItemSection/MainCategoryItem';
+import SubcategoryList from '@/domains/product/components/CategoryItemSection/SubCategoryList';
+import {
+  AllIcon,
+  BreadIcon,
+  CookieIcon
+} from '@public/assets/icons/categories/icons';
 
 const CATEGORY_TYPE = [
   { categoryId: 0, icon: <AllIcon />, title: '전체', hasMoreCategory: false },
@@ -19,7 +23,7 @@ const CATEGORY_TYPE = [
   }
 ];
 
-const LargeCategoryList = () => {
+const CategoryListSection = () => {
   const [activeIndicies, setActiveIndices] = useState<number[]>([]);
 
   const toggleCategory = (index: number) => {
@@ -34,14 +38,11 @@ const LargeCategoryList = () => {
     <div>
       {CATEGORY_TYPE.map((item) => (
         <React.Fragment key={item.title}>
-          <button
-            type="button"
-            aria-label="button"
+          <MainCategoryItem
+            item={item}
             onClick={() => toggleCategory(item.categoryId)}
-            className="w-full"
-          >
-            <LargeCategoryItem item={item} />
-          </button>
+          />
+
           <AnimatePresence>
             {activeIndicies.includes(item.categoryId) &&
               item.hasMoreCategory && (
@@ -56,7 +57,7 @@ const LargeCategoryList = () => {
                   }}
                   style={{ originY: 0 }}
                 >
-                  <MiddlecategoryList />
+                  <SubcategoryList />
                 </motion.div>
               )}
           </AnimatePresence>
@@ -65,4 +66,4 @@ const LargeCategoryList = () => {
     </div>
   );
 };
-export default LargeCategoryList;
+export default CategoryListSection;

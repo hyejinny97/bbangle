@@ -1,5 +1,5 @@
-import LargeCategoryList from '@/domains/proudct-category/LargeCategoryList';
+import CategoryListSection from '@/blocks/product/CategoryListSection';
 
-const CategoryPage = () => <LargeCategoryList />;
+const CategoryPage = () => <CategoryListSection />;
 
 export default CategoryPage;

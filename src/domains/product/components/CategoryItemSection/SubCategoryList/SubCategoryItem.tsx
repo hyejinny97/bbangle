@@ -1,10 +1,10 @@
-import { MediumForwardArrowIcon } from '../../assets/icons';
+import { MediumForwardArrowIcon } from '@public/assets/icons/categories/icons';
 
 interface MiddleCategoryItemProps {
   item: string;
 }
 
-const MiddleCategoryItem = ({ item }: MiddleCategoryItemProps) => (
+const SubCategoryItem = ({ item }: MiddleCategoryItemProps) => (
   <button
     type="button"
     className="flex p-[16px] gap-[6px] bg-redGray-30 items-center w-full border-solid border-r-[0.5px] border-b-[0.5px] border-gray-200"
@@ -18,4 +18,4 @@ const MiddleCategoryItem = ({ item }: MiddleCategoryItemProps) => (
   </button>
 );
 
-export default MiddleCategoryItem;
+export default SubCategoryItem;

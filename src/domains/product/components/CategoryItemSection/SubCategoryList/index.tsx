@@ -1,4 +1,4 @@
-import MiddleCategoryItem from './MiddleCategoryItem';
+import SubCategoryItem from './SubCategoryItem';
 
 const CATEGORY_TYPE = [
   '전체보기',
@@ -7,12 +7,12 @@ const CATEGORY_TYPE = [
   '케이크ㆍ파이'
 ];
 
-const MiddlecategoryList = () => (
+const SubcategoryList = () => (
   <div className="grid grid-cols-2">
     {CATEGORY_TYPE.map((item) => (
-      <MiddleCategoryItem item={item} />
+      <SubCategoryItem item={item} />
     ))}
   </div>
 );
 
-export default MiddlecategoryList;
+export default SubcategoryList;
