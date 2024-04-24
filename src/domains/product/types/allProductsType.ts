@@ -1,9 +1,14 @@
-import { IProductType } from '@/domains/product/types/productType';
+import { IProductType } from './productType';
 
 export interface IAllProductsType {
-  content: IProductType[];
-  requestCursor: number | null;
-  hasNext: boolean;
-  boardCnt: number;
-  storeCnt: number;
+  success: boolean;
+  code: number;
+  message: string;
+  result: {
+    content: IProductType[];
+    requestCursor: number;
+    hasNext: boolean;
+    boardCount: number;
+    storeCount: number;
+  };
 }
