@@ -6,12 +6,13 @@ import CategoryItemSection from '@/domains/product/components/CategoryItemSectio
 import { MAIN_CATEGORIES_TYPE } from '@/domains/product/constants/mainCategories';
 
 const CategoryListSection = () => (
-  <div>
+  <>
     {MAIN_CATEGORIES_TYPE.map((mainCategory) => (
-      <React.Fragment key={mainCategory.title}>
-        <CategoryItemSection mainCategory={mainCategory} />
-      </React.Fragment>
+      <CategoryItemSection
+        key={mainCategory.title}
+        mainCategory={mainCategory}
+      />
     ))}
-  </div>
+  </>
 );
 export default CategoryListSection;

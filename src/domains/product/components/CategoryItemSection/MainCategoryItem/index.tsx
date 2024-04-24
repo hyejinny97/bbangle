@@ -13,7 +13,7 @@ interface LargeCategoryItemProp {
 const MainCategoryItem = ({ mainCategory, onClick }: LargeCategoryItemProp) => (
   <button
     type="button"
-    aria-label="category-button"
+    aria-label={`${mainCategory.title}`}
     onClick={onClick}
     className="flex p-[16px] gap-[6px] items-center w-full border-solid border-b border-gray-100"
   >

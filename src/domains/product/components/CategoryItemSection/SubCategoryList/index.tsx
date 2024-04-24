@@ -20,8 +20,8 @@ const SubcategoryList = ({ subCategories }: SubcategoryListProps) => (
     className="bg-redGray-30"
   >
     <div className="grid grid-cols-2">
-      {subCategories.map((category) => (
-        <SubCategoryItem item={category} />
+      {subCategories.map((categoryItem) => (
+        <SubCategoryItem categoryItem={categoryItem} />
       ))}
     </div>
   </motion.div>

@@ -20,13 +20,12 @@ interface CategoryItemProps {
 const CategoryItemSection = ({ mainCategory }: CategoryItemProps) => {
   const [activeIndicies, setActiveIndices] = useState<number[]>([]);
 
-  const toggleCategory = (index: number) => {
-    setActiveIndices((prev) => {
-      if (prev.indexOf(index) !== -1) {
-        return prev.filter((item) => item !== index);
-      }
-      return [...prev, index];
-    });
+  const toggleCategory = (categoryId: number) => {
+    setActiveIndices((prev) =>
+      prev.includes(categoryId)
+        ? prev.filter((id) => id !== categoryId)
+        : [...prev, categoryId]
+    );
   };
   return (
     <>
