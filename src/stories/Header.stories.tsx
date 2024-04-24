@@ -6,7 +6,14 @@ const meta: Meta<typeof Header> = {
   title: 'Header',
   args: {
     title: 'Header Content'
-  }
+  },
+  decorators: [
+    (Story) => (
+      <div className="w-full max-w-[600px] h-screen m-auto shadow-lg shadow-slate-100">
+        <Story />
+      </div>
+    )
+  ]
 };
 
 export default meta;
