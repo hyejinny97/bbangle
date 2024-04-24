@@ -36,13 +36,14 @@ const CategoryItemSection = ({ mainCategory }: CategoryItemProps) => {
         mainCategory={mainCategory}
         onClick={() => toggleCategory(mainCategory.categoryId)}
       />
-      {isActive && (
-        <AnimatePresence>
+      <AnimatePresence>
+        {/* 조건부는 AnimatePresence 안에 있어야 컴포넌트가 사라질 때도 애니메이션이 적용된다 */}
+        {isActive && (
           <SubcategoryList
             subCategories={SUBCATEGORY_TYPE[mainCategory.categoryId - 1]}
           />
-        </AnimatePresence>
-      )}
+        )}
+      </AnimatePresence>
     </>
   );
 };
