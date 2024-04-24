@@ -1,7 +1,7 @@
 import { ForwardkArrowIcon } from '@/shared/components/icons';
 import { BottomArrowICon } from '@public/assets/icons/categories/icons';
 
-interface LargeCategoryItemProp {
+interface MainCategoryItemProp {
   mainCategory: {
     icon: JSX.Element;
     title: string;
@@ -10,7 +10,7 @@ interface LargeCategoryItemProp {
   onClick: () => void;
 }
 
-const MainCategoryItem = ({ mainCategory, onClick }: LargeCategoryItemProp) => (
+const MainCategoryItem = ({ mainCategory, onClick }: MainCategoryItemProp) => (
   <button
     type="button"
     aria-label={`${mainCategory.title}`}

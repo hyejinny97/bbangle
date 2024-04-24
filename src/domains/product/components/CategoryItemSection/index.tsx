@@ -18,10 +18,13 @@ interface CategoryItemProps {
 }
 
 const CategoryItemSection = ({ mainCategory }: CategoryItemProps) => {
-  const [activeIndicies, setActiveIndices] = useState<number[]>([]);
+  const [activeItems, setActiveItems] = useState<number[]>([]);
+  const isActive =
+    activeItems.includes(mainCategory.categoryId) &&
+    mainCategory.hasMoreCategory;
 
   const toggleCategory = (categoryId: number) => {
-    setActiveIndices((prev) =>
+    setActiveItems((prev) =>
       prev.includes(categoryId)
         ? prev.filter((id) => id !== categoryId)
         : [...prev, categoryId]
@@ -33,14 +36,13 @@ const CategoryItemSection = ({ mainCategory }: CategoryItemProps) => {
         mainCategory={mainCategory}
         onClick={() => toggleCategory(mainCategory.categoryId)}
       />
-      <AnimatePresence>
-        {activeIndicies.includes(mainCategory.categoryId) &&
-          mainCategory.hasMoreCategory && (
-            <SubcategoryList
-              subCategories={SUBCATEGORY_TYPE[mainCategory.categoryId - 1]}
-            />
-          )}
-      </AnimatePresence>
+      {isActive && (
+        <AnimatePresence>
+          <SubcategoryList
+            subCategories={SUBCATEGORY_TYPE[mainCategory.categoryId - 1]}
+          />
+        </AnimatePresence>
+      )}
     </>
   );
 };
