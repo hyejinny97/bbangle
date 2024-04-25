@@ -29,7 +29,8 @@ const Select = ({ options, selectedOption, onChange }: SelectProps) => {
   };
 
   return (
-    <div
+    <button
+      type="button"
       className="selectEl relative inline-block text-gray-900 text-[12px] font-medium leading-150 tracking-tight-2"
       onClick={handleSelectClick}
     >
@@ -54,16 +55,17 @@ const Select = ({ options, selectedOption, onChange }: SelectProps) => {
             return (
               <li
                 key={option}
-                onClick={() => onChange(option)}
                 className={`px-[16px] py-[10px] border-gray-100 cursor-pointer hover:bg-gray-50 ${borderStyle} ${hoverRoundedStyle}`}
               >
-                {option}
+                <button type="button" onClick={() => onChange(option)}>
+                  {option}
+                </button>
               </li>
             );
           })}
         </ul>
       )}
-    </div>
+    </button>
   );
 };
 
