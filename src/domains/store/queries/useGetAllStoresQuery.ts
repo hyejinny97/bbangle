@@ -14,13 +14,10 @@ export const useGetAllStoresQuery = () => {
     return data;
   };
 
-  const getNextPageParam: GetNextPageParamFunction<number, IAllStoresType> = (
-    lastPage,
-    __,
-    lastPageParam
-  ) => {
-    const nextPageParam = lastPage.last ? undefined : lastPageParam + 1;
-    return nextPageParam;
+  const getNextPageParam: GetNextPageParamFunction<number, IAllStoresType> = (lastPage) => {
+    if (!lastPage.result.hasNext) return undefined;
+    const nextCursorId = lastPage.result.content.at(-1)?.storeId;
+    return nextCursorId;
   };
 
   return useInfiniteQuery({
@@ -32,7 +29,7 @@ export const useGetAllStoresQuery = () => {
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
     select: ({ pages }) => {
-      const stores = pages.map((page) => page.content).flat();
+      const stores = pages.map((page) => page.result.content).flat();
       return { stores };
     }
   });
