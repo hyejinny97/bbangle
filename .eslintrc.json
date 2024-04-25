@@ -7,6 +7,7 @@
   "plugins": ["@typescript-eslint/eslint-plugin"],
   "rules": {
     // airbnb custom
+    "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
     "react/function-component-definition": [
       "warn",
       {
@@ -26,10 +27,7 @@
     "import/prefer-default-export": "off",
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
-    "react/react-in-jsx-scope": "off",
-
-    // 리팩토링 기간에만 warn (airbnb 설정에서 기본값 error)
-    "no-console": ["warn", { "allow": ["warn", "error", "info"] }]
+    "react/react-in-jsx-scope": "off"
   },
   "ignorePatterns": ["*.config.*", "node_modules", "*.d.ts", "public/sw.js"]
 }
