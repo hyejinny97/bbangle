@@ -5,7 +5,8 @@ import React from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
-import useToggleCategory from '../../hooks/useToggleCategory';
+import useToggle from '@/shared/hooks/useToggle';
+
 import MainCategoryItem from './MainCategoryItem';
 import SubcategoryList from './SubCategoryList';
 
@@ -18,7 +19,7 @@ interface CategoryItemProps {
 const CategoryItemSection = ({ icon, title, subCategories }: CategoryItemProps) => {
   const router = useRouter();
 
-  const { isActive, toggleCategory } = useToggleCategory();
+  const { isActive, toggleCategory } = useToggle();
 
   const handleCategoryClick = () => {
     toggleCategory();

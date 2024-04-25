@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useToggleCategory = () => {
+const useToggle = () => {
   const [isActive, setIsActive] = useState(false);
 
   const toggleCategory = () => {
@@ -10,4 +10,4 @@ const useToggleCategory = () => {
   return { toggleCategory, isActive };
 };
 
-export default useToggleCategory;
+export default useToggle;
