@@ -12,23 +12,17 @@ import SubcategoryList from './SubCategoryList';
 interface CategoryItemProps {
   icon: JSX.Element;
   title: string;
-  hasMoreCategory: boolean;
   subCategories: string[];
 }
 
-const CategoryItemSection = ({
-  icon,
-  title,
-  hasMoreCategory,
-  subCategories
-}: CategoryItemProps) => {
+const CategoryItemSection = ({ icon, title, subCategories }: CategoryItemProps) => {
   const router = useRouter();
 
   const { isActive, toggleCategory } = useToggleCategory();
 
   const handleCategoryClick = () => {
     toggleCategory();
-    if (!hasMoreCategory) {
+    if (subCategories.length === 0) {
       router.push('/products');
     }
   };
@@ -37,7 +31,7 @@ const CategoryItemSection = ({
       <MainCategoryItem
         icon={icon}
         title={title}
-        hasMoreCategory={hasMoreCategory}
+        hasSubCategory={subCategories.length > 0}
         onClick={handleCategoryClick}
       />
       <AnimatePresence>

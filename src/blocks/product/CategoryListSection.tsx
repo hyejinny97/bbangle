@@ -12,7 +12,6 @@ const CategoryListSection = () => (
         key={mainCategory.id}
         icon={mainCategory.icon}
         title={mainCategory.title}
-        hasMoreCategory={mainCategory.hasMoreCategory}
         subCategories={mainCategory.subCategories}
       />
     ))}

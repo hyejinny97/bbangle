@@ -3,11 +3,11 @@ import ArrowIcons from '@/shared/components/icons/ArrowIcons';
 interface MainCategoryItemProp {
   icon: JSX.Element;
   title: string;
-  hasMoreCategory: boolean;
+  hasSubCategory: boolean;
   onClick: () => void;
 }
 
-const MainCategoryItem = ({ icon, title, hasMoreCategory, onClick }: MainCategoryItemProp) => (
+const MainCategoryItem = ({ icon, title, hasSubCategory, onClick }: MainCategoryItemProp) => (
   <button
     type="button"
     aria-label={`${title}`}
@@ -16,7 +16,7 @@ const MainCategoryItem = ({ icon, title, hasMoreCategory, onClick }: MainCategor
   >
     <div>{icon}</div>
     <div className="flew-grow flex-1 text-gray-900 text-start font-semibold">{title}</div>
-    <div>{hasMoreCategory ? <ArrowIcons type="bottom" /> : <ArrowIcons type="forward" />}</div>
+    <div>{hasSubCategory ? <ArrowIcons type="bottom" /> : <ArrowIcons type="forward" />}</div>
   </button>
 );
 
