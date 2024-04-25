@@ -14,7 +14,7 @@ const SubCategoryItem = ({ categoryItem }: SubCategoryItemProps) => (
     >
       <div className="font-medium text-start text-gray-700 text-14 flex-grow">{categoryItem}</div>
       <div>
-        <ArrowIcons type="medium-forward" />
+        <ArrowIcons shape="medium-forward" />
       </div>
     </button>
   </Link>

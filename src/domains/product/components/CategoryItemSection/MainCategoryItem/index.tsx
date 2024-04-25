@@ -16,7 +16,7 @@ const MainCategoryItem = ({ icon, title, hasSubCategory, onClick }: MainCategory
   >
     <div>{icon}</div>
     <div className="flew-grow flex-1 text-gray-900 text-start font-semibold">{title}</div>
-    <div>{hasSubCategory ? <ArrowIcons type="bottom" /> : <ArrowIcons type="forward" />}</div>
+    <div>{hasSubCategory ? <ArrowIcons shape="bottom" /> : <ArrowIcons shape="forward" />}</div>
   </button>
 );
 

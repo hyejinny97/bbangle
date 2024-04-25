@@ -25,7 +25,7 @@ const Header = ({ title, back = false }: HeaderProps) => {
           className="cursor-pointer mr-[17px]"
           onClick={goBackHandler}
         >
-          <ArrowIcons type="back" />
+          <ArrowIcons shape="back" />
         </button>
       )}
       <h2 className="text-16 font-medium leading-[16px] tracking-tight-2">{title}</h2>

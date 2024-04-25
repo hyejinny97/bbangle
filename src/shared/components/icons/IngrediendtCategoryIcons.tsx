@@ -8,11 +8,11 @@ import NoSugarIcon from '@public/assets/icons/categories/noSugar-icon.svg';
 import ProteinIcon from '@public/assets/icons/categories/protein-icon.svg';
 
 interface Props {
-  type: 'all' | 'vigan' | 'gluten' | 'kito' | 'nosugar' | 'protein';
+  shape: 'all' | 'vigan' | 'gluten' | 'kito' | 'nosugar' | 'protein';
 }
 
-const IngredientCategoryIcons = ({ type }: Props) => {
-  switch (type) {
+const IngredientCategoryIcons = ({ shape }: Props) => {
+  switch (shape) {
     case 'all':
       return <AllIcon />;
     case 'vigan':

@@ -18,7 +18,7 @@ const BackButton = () => {
       onClick={goBackHandler}
       aria-label="back button"
     >
-      <ArrowIcons type="back" />
+      <ArrowIcons shape="back" />
     </button>
   );
 };

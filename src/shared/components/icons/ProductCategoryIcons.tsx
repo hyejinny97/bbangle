@@ -8,11 +8,11 @@ import TartIcon from '@public/assets/icons/categories/tart-icon.svg';
 import AllIcon from '@public/assets/icons/categories/yogurt.svg';
 
 interface Props {
-  type: 'all' | 'yogurt' | 'bread' | 'cake' | 'cookie' | 'etc' | 'jam' | 'tart';
+  shape: 'all' | 'yogurt' | 'bread' | 'cake' | 'cookie' | 'etc' | 'jam' | 'tart';
 }
 
-const ProductCategoryIcons = ({ type }: Props) => {
-  switch (type) {
+const ProductCategoryIcons = ({ shape }: Props) => {
+  switch (shape) {
     case 'all':
       return <AllIcon />;
     case 'yogurt':
