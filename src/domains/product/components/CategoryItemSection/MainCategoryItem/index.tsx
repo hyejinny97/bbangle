@@ -1,33 +1,22 @@
-import { ForwardkArrowIcon } from '@/shared/components/icons';
-import { BottomArrowICon } from '@public/assets/icons/categories/icons';
+import ArrowIcons from '@/shared/components/icons/ArrowIcons';
 
 interface MainCategoryItemProp {
-  mainCategory: {
-    icon: JSX.Element;
-    title: string;
-    hasMoreCategory: boolean;
-  };
+  icon: JSX.Element;
+  title: string;
+  hasMoreCategory: boolean;
   onClick: () => void;
 }
 
-const MainCategoryItem = ({ mainCategory, onClick }: MainCategoryItemProp) => (
+const MainCategoryItem = ({ icon, title, hasMoreCategory, onClick }: MainCategoryItemProp) => (
   <button
     type="button"
-    aria-label={`${mainCategory.title}`}
+    aria-label={`${title}`}
     onClick={onClick}
     className="flex p-[16px] gap-[6px] items-center w-full border-solid border-b border-gray-100"
   >
-    <div>{mainCategory.icon}</div>
-    <div className="flew-grow flex-1 text-gray-900 text-start font-semibold">
-      {mainCategory.title}
-    </div>
-    <div>
-      {mainCategory.hasMoreCategory ? (
-        <BottomArrowICon />
-      ) : (
-        <ForwardkArrowIcon />
-      )}
-    </div>
+    <div>{icon}</div>
+    <div className="flew-grow flex-1 text-gray-900 text-start font-semibold">{title}</div>
+    <div>{hasMoreCategory ? <ArrowIcons type="bottom" /> : <ArrowIcons type="forward" />}</div>
   </button>
 );
 
