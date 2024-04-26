@@ -1,5 +1,6 @@
 import { IAllStoresType } from '@/domains/store/types/allStoresType';
 import QUERY_KEY from '@/shared/constants/queryKey';
+import { ResultResponse } from '@/shared/types/response';
 import fetchExtend from '@/shared/utils/api';
 import { GetNextPageParamFunction, useInfiniteQuery } from '@tanstack/react-query';
 
@@ -10,13 +11,13 @@ export const useGetAllStoresQuery = () => {
     const res = await fetchExtend.get(`/stores?page=${pageParam}`);
     if (!res.ok) throw new Error('전체 스토어 조회 실패');
 
-    const data: IAllStoresType = await res.json();
-    return data;
+    const data: ResultResponse<IAllStoresType> = await res.json();
+    return data.result;
   };
 
   const getNextPageParam: GetNextPageParamFunction<number, IAllStoresType> = (lastPage) => {
-    if (!lastPage.result.hasNext) return undefined;
-    const nextCursorId = lastPage.result.content.at(-1)?.storeId;
+    if (!lastPage.hasNext) return undefined;
+    const nextCursorId = lastPage.content.at(-1)?.storeId;
     return nextCursorId;
   };
 
@@ -29,7 +30,7 @@ export const useGetAllStoresQuery = () => {
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
     select: ({ pages }) => {
-      const stores = pages.map((page) => page.result.content).flat();
+      const stores = pages.map((page) => page.content).flat();
       return { stores };
     }
   });
