@@ -21,6 +21,7 @@ export const useGetAllProductsQuery = (query: IFilterType) => {
     if (!res.ok) throw new Error('전체 상품 조회 실패');
 
     const data: ResultResponse<IAllProductsType> = await res.json();
+
     return data.result;
   };
 
