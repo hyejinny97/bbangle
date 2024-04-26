@@ -11,10 +11,13 @@ export const useGetAllProductsQuery = (query: IFilterType) => {
 
   const queryFn = async ({ pageParam: cursorId }: { pageParam: number }) => {
     const firstPage = cursorId === -1;
-    const cursorIdQueryString = firstPage ? '' : `&cursorId=${cursorId}`;
+    const cursorIdQueryString = firstPage ? '' : `&targetId=${cursorId}`;
+    const cursorScoreQueryString = firstPage ? '' : `&targetScore=0.0`;
     const filterValueQueryString = transformFilterValueToQueryString(query);
 
-    const res = await fetchExtend.get(`/boards?${filterValueQueryString}${cursorIdQueryString}`);
+    const res = await fetchExtend.get(
+      `/boards?${filterValueQueryString}${cursorIdQueryString}${cursorScoreQueryString}`
+    );
     if (!res.ok) throw new Error('전체 상품 조회 실패');
 
     const data: ResultResponse<IAllProductsType> = await res.json();
@@ -23,8 +26,7 @@ export const useGetAllProductsQuery = (query: IFilterType) => {
 
   const getNextPageParam: GetNextPageParamFunction<number, IAllProductsType> = (lastPage) => {
     if (!lastPage.hasNext) return undefined;
-    const nextCursorId = lastPage.content.at(-1)?.boardId;
-    return nextCursorId;
+    return lastPage.nextCursor;
   };
 
   return useInfiniteQuery({

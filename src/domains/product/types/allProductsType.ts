@@ -2,8 +2,9 @@ import { IProductType } from './productType';
 
 export interface IAllProductsType {
   content: IProductType[];
-  requestCursor: number;
+  nextCursor: number;
   hasNext: boolean;
   boardCount: number;
   storeCount: number;
+  cursorScore: number;
 }
