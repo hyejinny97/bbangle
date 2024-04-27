@@ -9,10 +9,14 @@ import { GetNextPageParamFunction, useInfiniteQuery } from '@tanstack/react-quer
 export const useGetAllProductsQuery = (query: IFilterType) => {
   const queryKey = [QUERY_KEY.product, QUERY_KEY.main, { query }];
 
-  const queryFn = async ({ pageParam: cursorId }: { pageParam: number }) => {
-    const firstPage = cursorId === -1;
-    const cursorIdQueryString = firstPage ? '' : `&targetId=${cursorId}`;
-    const cursorScoreQueryString = firstPage ? '' : `&targetScore=0.0`;
+  const queryFn = async ({
+    pageParam
+  }: {
+    pageParam: { cursorId: number; cursorScore: number };
+  }) => {
+    const firstPage = pageParam.cursorId === -1;
+    const cursorIdQueryString = firstPage ? '' : `&targetId=${pageParam.cursorId}`;
+    const cursorScoreQueryString = `&targetScore=${pageParam.cursorScore}`;
     const filterValueQueryString = transformFilterValueToQueryString(query);
 
     const res = await fetchExtend.get(
@@ -25,15 +29,18 @@ export const useGetAllProductsQuery = (query: IFilterType) => {
     return data.result;
   };
 
-  const getNextPageParam: GetNextPageParamFunction<number, IAllProductsType> = (lastPage) => {
+  const getNextPageParam: GetNextPageParamFunction<
+    { cursorId: number; cursorScore: number },
+    IAllProductsType
+  > = (lastPage) => {
     if (!lastPage.hasNext) return undefined;
-    return lastPage.nextCursor;
+    return { cursorId: lastPage.nextCursor, cursorScore: lastPage.cursorScore };
   };
 
   return useInfiniteQuery({
     queryKey,
     queryFn,
-    initialPageParam: -1,
+    initialPageParam: { cursorId: -1, cursorScore: 0 },
     getNextPageParam,
     refetchOnMount: false,
     refetchOnReconnect: false,
