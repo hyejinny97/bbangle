@@ -4,6 +4,7 @@ import { transformFilterValueToQueryString } from '@/domains/product/utils/trans
 import QUERY_KEY from '@/shared/constants/queryKey';
 import { ResultResponse } from '@/shared/types/response';
 import fetchExtend from '@/shared/utils/api';
+import { throwApiError } from '@/shared/utils/error';
 import { GetNextPageParamFunction, useInfiniteQuery } from '@tanstack/react-query';
 
 export const useGetAllProductsQuery = (query: IFilterType) => {
@@ -22,11 +23,13 @@ export const useGetAllProductsQuery = (query: IFilterType) => {
     const res = await fetchExtend.get(
       `/boards?${filterValueQueryString}${cursorIdQueryString}${cursorScoreQueryString}`
     );
-    if (!res.ok) throw new Error('전체 상품 조회 실패');
 
-    const data: ResultResponse<IAllProductsType> = await res.json();
+    const { success, result, code, message }: ResultResponse<IAllProductsType> = await res.json();
 
-    return data.result;
+    if (!res.ok || !success) {
+      throwApiError({ code, message });
+    }
+    return result;
   };
 
   const getNextPageParam: GetNextPageParamFunction<
