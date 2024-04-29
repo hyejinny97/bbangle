@@ -19,10 +19,10 @@ interface CategoryItemProps {
 const CategoryItemSection = ({ icon, title, subCategories }: CategoryItemProps) => {
   const router = useRouter();
 
-  const { isActive, toggleCategory } = useToggle();
+  const { isActive, toggleCategory: toggle } = useToggle();
 
   const handleCategoryClick = () => {
-    toggleCategory();
+    toggle();
     if (subCategories.length === 0) {
       router.push('/products');
     }

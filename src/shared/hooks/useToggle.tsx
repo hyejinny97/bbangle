@@ -3,11 +3,11 @@ import { useState } from 'react';
 const useToggle = () => {
   const [isActive, setIsActive] = useState(false);
 
-  const toggleCategory = () => {
+  const toggle = () => {
     setIsActive((prev) => !prev);
   };
 
-  return { toggleCategory, isActive };
+  return { toggleCategory: toggle, isActive };
 };
 
 export default useToggle;
