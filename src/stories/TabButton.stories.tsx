@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { Meta, StoryObj } from '@storybook/react';
 import TabButton from '@/shared/components/TabButton';
+import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof TabButton> = {
   component: TabButton,
