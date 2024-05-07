@@ -74,6 +74,14 @@ module.exports = {
   plugins: [
     require('tailwind-scrollbar-hide'), // 이미 존재하는 플러그인
     function ({ addUtilities }) {
+      const centerUtilities = {
+        '.absoulte-center': {
+          '@apply absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2': {}
+        },
+        '.flex-center': {
+          '@apply flex justify-center items-center': {}
+        }
+      };
       const typoUtilities = {
         '.typo-heading-20-semibold': {
           'font-size': '20px',
@@ -176,7 +184,7 @@ module.exports = {
           'letter-spacing': '-0.02em'
         }
       };
-      addUtilities(typoUtilities);
+      addUtilities({ ...typoUtilities, ...centerUtilities });
     }
   ]
 };
