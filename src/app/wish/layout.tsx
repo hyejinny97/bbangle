@@ -3,6 +3,7 @@ import Header from '@/shared/components/Header';
 import ProductAndStoreTab from '@/shared/components/ProductAndStoreTab';
 import PATH from '@/shared/constants/path';
 import { ReactNode } from 'react';
+import { TOKEN } from '@/shared/constants/token';
 
 interface Props {
   children: ReactNode;
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const Layout = async ({ children, login }: Props) => {
-  const accessToken = await getCookie('accessToken');
+  const accessToken = await getCookie(TOKEN.accessToken);
   const isLoggedIn = !!accessToken;
 
   return (
