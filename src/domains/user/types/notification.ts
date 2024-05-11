@@ -1,10 +1,12 @@
-interface NotificationType {
+export interface NotificationType {
   id: number;
   title: string;
   createdAt: string;
 }
 
-export interface AllNotificationsType {
-  contents: Array<NotificationType>;
-  lastPage: number;
+export interface NotificationDetailType {
+  id: number;
+  title: string;
+  content: string;
+  createdAt: string;
 }

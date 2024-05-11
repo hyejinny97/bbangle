@@ -1,5 +1,7 @@
 import fetchExtend from '@/shared/utils/api';
 import { ResultResponse } from '@/shared/types/response';
+import { throwApiError } from '@/shared/utils/error';
+
 
 interface PopularKeywordResultType {
   content: Array<string>;
@@ -11,8 +13,7 @@ export const getPopularKeywords = async () => {
     await res.json();
 
   if (!res.ok || !success) {
-    console.error(`[ERROR ${code}] ${message}`);
-    return [];
+    throwApiError({ code, message });
   }
 
   return result.content;

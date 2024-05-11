@@ -9,18 +9,12 @@ import ToastPop from '@/shared/components/ToastPop';
 import { setCookie } from '@/shared/actions/cookie';
 import { ResultResponse } from '@/shared/types/response';
 import { throwApiError } from '@/shared/utils/error';
-import { expToDate, parseJwt } from '../utils/jwt';
+import { TOKEN } from '@/shared/constants/token';
+import { getExpFromToken } from '@/domains/user/utils/jwt';
 
-interface LoginResponse {
+export interface LoginResponse {
   accessToken: string;
   refreshToken: string;
-}
-
-interface ParsedJWT {
-  exp: number;
-  iat: number;
-  id: number;
-  iss: number;
 }
 
 const useLoginMutation = () => {
@@ -38,22 +32,19 @@ const useLoginMutation = () => {
   };
 
   const onSuccess = async ({ accessToken, refreshToken }: LoginResponse) => {
-    const { exp: accessTokenExp }: ParsedJWT = parseJwt(accessToken);
-    const { exp: refreshTokenExp }: ParsedJWT = parseJwt(refreshToken);
-
-    const accessTokenExpireDate = expToDate(accessTokenExp);
-    const refreshTokenExpireDate = expToDate(refreshTokenExp);
+    const accessTokenExp = getExpFromToken(accessToken);
+    const refreshTokenExp = getExpFromToken(refreshToken);
 
     await Promise.all([
       setCookie({
-        name: 'accessToken',
+        name: TOKEN.accessToken,
         value: accessToken,
-        expires: accessTokenExpireDate
+        expires: accessTokenExp
       }),
       setCookie({
-        name: 'refreshToken',
+        name: TOKEN.refreshToken,
         value: refreshToken,
-        expires: refreshTokenExpireDate
+        expires: refreshTokenExp
       })
     ]);
     openToast(<ToastPop>로그인 되었어요.</ToastPop>);
@@ -67,7 +58,7 @@ const useLoginMutation = () => {
     replace(PATH.mypage);
   };
 
-  return useMutation({ mutationFn, onSuccess, onError });
+  return useMutation({ mutationKey: ['login'], mutationFn, onSuccess, onError });
 };
 
 export default useLoginMutation;
