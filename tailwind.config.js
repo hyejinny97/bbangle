@@ -4,28 +4,6 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      backgroundImage: {
-        'custom-gradient': 'linear-gradient(180deg, hsla(0, 0%, 100%, 0), #fff)'
-      },
-      keyframes: {
-        pop: {
-          '0%, 100%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(1.2)' }
-        },
-        slideUp: {
-          '0%': { transform: 'translateY(100%)' },
-          '100%': { transform: 'translateY(0)' }
-        },
-        slideDown: {
-          '0%': { transform: 'translateY(0)' },
-          '100%': { transform: 'translateY(100%)' }
-        }
-      },
-      animation: {
-        pop: 'pop 0.4s ease-in-out',
-        slideUp: 'slideUp 0.2s ease-out',
-        slideDown: 'slideDown 0.3s ease-out'
-      },
       zIndex: {
         toast: 1000,
         popup: 1000,
@@ -64,6 +42,8 @@ module.exports = {
           30: '#F8F8F8'
         }
       },
+
+      // fontSize, lineHeight,letterSpacing 삭제 예정
       // ex) text-11
       fontSize: {
         11: '11px',
@@ -84,7 +64,7 @@ module.exports = {
       letterSpacing: {
         'tight-6': '-0.06em',
         'tight-4': '-0.04em',
-        'tight-2': '-0.02em'
+        'tight-2': '-0.00.02em'
       }
     }
   },
@@ -94,18 +74,117 @@ module.exports = {
   plugins: [
     require('tailwind-scrollbar-hide'), // 이미 존재하는 플러그인
     function ({ addUtilities }) {
-      const newUtilities = {
-        '.custom-slider-thumb': {
-          '::-webkit-slider-thumb': {
-            width: '1.25rem', // 원의 너비
-            height: '1.25rem', // 원의 높이
-            backgroundColor: 'orange', // 배경색 (예: 오렌지색)
-            border: '2px solid #fff', // 테두리 스타일
-            borderRadius: '50%' // 원의 테두리 반지름
-          }
+      const centerUtilities = {
+        '.absoulte-center': {
+          '@apply absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2': {}
+        },
+        '.flex-center': {
+          '@apply flex justify-center items-center': {}
         }
       };
-      addUtilities(newUtilities);
+      const typoUtilities = {
+        '.typo-heading-20-semibold': {
+          'font-size': '20px',
+          'font-weight': 600,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+        '.typo-title-16-regular': {
+          'font-size': '16px',
+          'font-weight': 400,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+        '.typo-title-16-medium': {
+          'font-size': '16px',
+          'font-weight': 500,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+        '.typo-title-16-semibold': {
+          'font-size': '16px',
+          'font-weight': 600,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+
+        '.typo-title-14-regular': {
+          'font-size': '14px',
+          'font-weight': 400,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+        '.typo-title-14-medium': {
+          'font-size': '14px',
+          'font-weight': 500,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+        '.typo-title-14-semibold': {
+          'font-size': '14px',
+          'font-weight': 600,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+        '.typo-title-14-bold': {
+          'font-size': '14px',
+          'font-weight': 700,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+
+        '.typo-body-12-regular': {
+          'font-size': '12px',
+          'font-weight': 400,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+        '.typo-body-12-medium': {
+          'font-size': '12px',
+          'font-weight': 500,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+        '.typo-body-12-semibold': {
+          'font-size': '12px',
+          'font-weight': 600,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+        '.typo-body-12-bold': {
+          'font-size': '12px',
+          'font-weight': 700,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+        '.typo-body-12-regular-underline': {
+          'font-size': '12px',
+          'font-weight': 500,
+          'text-decoration': 'underline',
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+
+        '.typo-body-11-regular': {
+          'font-size': '11px',
+          'font-weight': 500,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+        '.typo-body-11-semibold': {
+          'font-size': '11px',
+          'font-weight': 600,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
+        '.typo-body-11-bold': {
+          'font-size': '11px',
+          'font-weight': 700,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        }
+      };
+      addUtilities({ ...typoUtilities, ...centerUtilities });
     }
   ]
 };
