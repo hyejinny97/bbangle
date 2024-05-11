@@ -4,6 +4,7 @@ import QUERY_KEY from '@/shared/constants/queryKey';
 import { Cursor } from '@/shared/types/response';
 import wishService from './service';
 
+
 const useWishStoreListQuery = () => {
   const queryKey = [QUERY_KEY.store];
 

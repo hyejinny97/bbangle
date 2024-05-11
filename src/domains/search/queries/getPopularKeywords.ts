@@ -2,6 +2,7 @@ import fetchExtend from '@/shared/utils/api';
 import { ResultResponse } from '@/shared/types/response';
 import { throwApiError } from '@/shared/utils/error';
 
+
 interface PopularKeywordResultType {
   content: Array<string>;
 }
