@@ -38,8 +38,12 @@ class Service {
     const cookie = await getCookie('accessToken');
     const accessToken = cookie?.value;
     const bearerToken = `Bearer ${accessToken}`;
+    const fullUrl =
+      this.baseUrl.startsWith('http://') || this.baseUrl.startsWith('https://')
+        ? url
+        : `${this.baseUrl}${url}`;
 
-    const res = await fetch(`${this.baseUrl}${url}`, {
+    const res = await fetch(fullUrl, {
       method,
       headers: {
         ...this.headers,
