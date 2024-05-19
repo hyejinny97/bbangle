@@ -9,27 +9,34 @@
       {
         "id": 1,
         "images": [
-          "https://www.bbangle.store/_next/image?url=https%3A…3D765f3543-96b4-4d9f-8a03-4c96825c0632&w=640&q=75"
+          "https://firebasestorage.googleapis.com/v0/b/test-1949b.appspot.com/o/stores%2Frawsome%2Fboards%2F00000002%2F0.jpeg?alt=media&token=765f3543-96b4-4d9f-8a03-4c96825c0632",
+          "https://firebasestorage.googleapis.com/v0/b/test-1949b.appspot.com/o/stores%2Frawsome%2Fboards%2F00000002%2F0.jpeg?alt=media&token=765f3543-96b4-4d9f-8a03-4c96825c0632"
         ],
         "nickname": "nickname1",
-        "score": 3.5,
-        "isBest": false,
+        "rating": 3.5,
+        "isBest": true,
         "tags": ["tag1", "tag2"],
         "like": 10,
+        "isLiked": false,
         "comment": "mock data comment1",
         "date": "2024-05-12T15:30:15"
       },
       {
         "id": 2,
         "images": [
-          "https://www.bbangle.store/_next/image?url=https%3A…3D765f3543-96b4-4d9f-8a03-4c96825c0632&w=640&q=75"
+          "https://firebasestorage.googleapis.com/v0/b/test-1949b.appspot.com/o/stores%2Frawsome%2Fboards%2F00000002%2F0.jpeg?alt=media&token=765f3543-96b4-4d9f-8a03-4c96825c0632",
+          "https://firebasestorage.googleapis.com/v0/b/test-1949b.appspot.com/o/stores%2Frawsome%2Fboards%2F00000002%2F0.jpeg?alt=media&token=765f3543-96b4-4d9f-8a03-4c96825c0632",
+          "https://firebasestorage.googleapis.com/v0/b/test-1949b.appspot.com/o/stores%2Frawsome%2Fboards%2F00000002%2F0.jpeg?alt=media&token=765f3543-96b4-4d9f-8a03-4c96825c0632",
+          "https://firebasestorage.googleapis.com/v0/b/test-1949b.appspot.com/o/stores%2Frawsome%2Fboards%2F00000002%2F0.jpeg?alt=media&token=765f3543-96b4-4d9f-8a03-4c96825c0632",
+          "https://firebasestorage.googleapis.com/v0/b/test-1949b.appspot.com/o/stores%2Frawsome%2Fboards%2F00000002%2F0.jpeg?alt=media&token=765f3543-96b4-4d9f-8a03-4c96825c0632"
         ],
         "nickname": "nickname2",
-        "score": 5,
+        "rating": 5,
         "isBest": false,
         "tags": ["tag1", "tag2"],
         "like": 20,
-        "comment": "mock data comment2",
+        "isLiked": true,
+        "comment": "부드러운데, 모양도 예뻐서 먹기가 아까웠어요. 안에 꼭 잼발라드세요. 먹고 맛있으면 도움돼요 눌러주세요 세 줄 넘어갈 시 말줄임이 되며 더보기가 나옵니다.부드러운데, 모양도 예뻐서 먹기가 아까웠어요. 안에 꼭 잼발라드세요. 먹고 맛있으면 도움돼요 눌러주세요 세 줄 넘어갈 시 말줄임이 되며 더보기가 나옵니다.부드러운데, 모양도 예뻐서 먹기가 아까웠어요. 안에 꼭 잼발라드세요. 먹고 맛있으면 도움돼요 눌러주세요 세 줄 넘어갈 시 말줄임이 되며 더보기가 나옵니다.",
         "date": "2024-05-13T15:30:20"
       }
     ]

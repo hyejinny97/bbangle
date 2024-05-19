@@ -1,6 +1,6 @@
 import { useId } from 'react';
-import Stars from '@/domains/review/components/StarRating/Stars';
 import { RatingType, StarSizeType } from '@/domains/review/types/starRating';
+import Stars from './Stars';
 
 interface StarRatingProps {
   rating: RatingType;

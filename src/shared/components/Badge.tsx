@@ -2,21 +2,22 @@ import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 interface Props {
-  type: 'default' | 'bundle' | 'ranking' | 'best';
+  type?: 'default' | 'bundle' | 'ranking' | 'best' | 'tag';
   children?: ReactNode;
 }
 
 const CLASS = {
-  default: 'border-gray-200 text-gray-700 bg-transparent px-[6px] py-[2px]',
-  bundle: 'text-white border-secondaryOrangeRed bg-secondaryOrangeRed px-[6px] py-[2px]',
-  best: 'text-white border-primaryOrangeRed bg-primaryOrangeRed px-[6px] py-[2px]',
-  ranking: 'text-gray-900 border-gray-100 bg-white size-[20px]'
+  default: 'border-gray-200 text-gray-700 bg-transparent ',
+  tag: 'border-gray-200 text-gray-600 bg-white ',
+  bundle: 'text-white border-secondaryOrangeRed bg-secondaryOrangeRed ',
+  best: 'text-white border-primaryOrangeRed bg-primaryOrangeRed ',
+  ranking: 'text-gray-900 border-gray-100 bg-white size-[20px] p-0'
 };
 
-const Badge = ({ type, children }: Props) => (
+const Badge = ({ type = 'default', children }: Props) => (
   <div
     className={twMerge(
-      'inline-block typo-body-11-regular border text-center rounded-[4px]',
+      'inline-block typo-body-11-regular border text-center px-[6px] py-[2px] rounded-[4px]',
       CLASS[type]
     )}
   >
