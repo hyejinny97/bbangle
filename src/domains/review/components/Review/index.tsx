@@ -5,6 +5,7 @@ import { ThumbsUpIcon } from '@/shared/components/icons';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import { RatingType } from '../../types/starRating';
 import StarRating from '../common/StarRating';
+import Comment from './Comment';
 
 interface Props {
   nickname: string;
@@ -46,13 +47,7 @@ const Review = ({
           </div>
         ))}
       </div>
-      <div>
-        <p className="relative typo-title-14-regular line-clamp-3">{comment}</p>
-        <input
-          className='typo-title-14-regular text-gray-500 before:content-["더보기"] appearance-none checked:before:content-["간략히"] hover:underline cursor-pointer'
-          type="checkbox"
-        />
-      </div>
+      <Comment comment={comment} />
     </div>
 
     <div className="flex gap-[4px]">
