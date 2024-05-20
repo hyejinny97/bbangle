@@ -8,6 +8,7 @@ import StarRating from '../common/StarRating';
 import Comment from './Comment';
 
 interface Props {
+  id: string;
   nickname: string;
   images?: string[];
   rating: RatingType;
@@ -20,6 +21,7 @@ interface Props {
 }
 
 const Review = ({
+  id,
   isBest,
   nickname,
   date,
@@ -42,12 +44,15 @@ const Review = ({
       </div>
       <div className="flex gap-[4px]">
         {images?.map((image) => (
-          <div className="relative size-[64px] aspect-square rounded-[6px] overflow-hidden">
-            <Image src={image} fill alt="review images" objectFit="cover" />
+          <div
+            key={image}
+            className="relative size-[64px] aspect-square rounded-[6px] overflow-hidden"
+          >
+            <Image src={image} fill alt="review images" />
           </div>
         ))}
       </div>
-      <Comment comment={comment} />
+      <Comment id={id} comment={comment} />
     </div>
 
     <div className="flex gap-[4px]">

@@ -1,7 +1,7 @@
 import { RatingType } from './starRating';
 
 export interface Review {
-  id: number;
+  id: string;
   images: string[];
   nickname: string;
   isBest: boolean;
