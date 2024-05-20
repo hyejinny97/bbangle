@@ -22,6 +22,7 @@ const Comment = ({ id, comment }: Props) => {
       setIsEllipsed(originalHeight !== commentHeight);
     };
 
+    handleMoreButton();
     window.addEventListener('resize', handleMoreButton);
     return () => window.addEventListener('resize', handleMoreButton);
   }, []);
