@@ -1,9 +1,10 @@
+import { STORY_PATH } from '@/stories/path';
 import type { Meta, StoryObj } from '@storybook/react';
 import Review from '.';
 
 const meta = {
   component: Review,
-  title: 'user/Review',
+  title: `${STORY_PATH.review}/Review`,
   args: {
     id: '1',
     nickname: '닉네임',

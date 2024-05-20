@@ -1,9 +1,10 @@
-import Badge from '@/shared/components/Badge';
+import { STORY_PATH } from '@/stories/path';
 import type { Meta, StoryObj } from '@storybook/react';
+import Badge from '.';
 
 const meta = {
   component: Badge,
-  title: 'Badge',
+  title: `${STORY_PATH.common}/Badge`,
   args: { type: 'tag', children: 'badge' }
 } satisfies Meta<typeof Badge>;
 
