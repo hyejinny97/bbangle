@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
 import Badge from '@/shared/components/Badge';
 import { ThumbsUpIcon } from '@/shared/components/icons';
@@ -6,6 +5,7 @@ import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import { RatingType } from '../../types/starRating';
 import StarRating from '../common/StarRating';
 import Comment from './Comment';
+import ImageSlider from './ImageSlider';
 
 interface Props {
   id: string;
@@ -42,16 +42,7 @@ const Review = ({
       <div>
         <StarRating rating={rating} />
       </div>
-      <div className="flex gap-[4px]">
-        {images?.map((image) => (
-          <div
-            key={image}
-            className="relative size-[64px] aspect-square rounded-[6px] overflow-hidden"
-          >
-            <Image src={image} fill alt="review images" />
-          </div>
-        ))}
-      </div>
+      {images && <ImageSlider images={images} />}
       <Comment id={id} comment={comment} />
     </div>
 
