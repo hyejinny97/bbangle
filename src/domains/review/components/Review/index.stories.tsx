@@ -1,10 +1,9 @@
-import { STORY_PATH } from '@/stories/path';
 import type { Meta, StoryObj } from '@storybook/react';
 import Review from '.';
 
 const meta = {
   component: Review,
-  title: `${STORY_PATH.review}/Review`,
+  title: 'user/Review',
   args: {
     id: '1',
     nickname: '닉네임',
@@ -26,6 +25,4 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {}
-};
+export const Default: Story = {};

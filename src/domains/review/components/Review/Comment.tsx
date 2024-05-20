@@ -10,7 +10,6 @@ interface Props {
 const Comment = ({ id, comment }: Props) => {
   const [isEllipsed, setIsEllipsed] = useState(false);
 
-  const containerRef = useRef<HTMLDivElement>(null);
   const commentRef = useRef<HTMLParagraphElement>(null);
   const originalCommentRef = useRef<HTMLParagraphElement>(null);
 
@@ -29,7 +28,7 @@ const Comment = ({ id, comment }: Props) => {
 
   return (
     <>
-      <div ref={containerRef} className="relative max-h-[63px] typo-title-14-regular line-clamp-3">
+      <div className="relative max-h-[63px] typo-title-14-regular line-clamp-3">
         {isEllipsed && (
           <Link
             href={`${PATH.myReview}/${id}`}

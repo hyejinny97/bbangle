@@ -1,4 +1,4 @@
-export const STORY_PATH = {
+const STORY_PATH = {
   common: 'common',
   user: 'user',
   review: 'review',
@@ -6,4 +6,6 @@ export const STORY_PATH = {
   search: 'search',
   store: 'store',
   wish: 'wish'
-};
+} as const;
+
+export default Object.freeze(STORY_PATH);
