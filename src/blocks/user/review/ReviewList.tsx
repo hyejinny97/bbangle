@@ -7,7 +7,7 @@ const ReviewList = () => {
   const { data: reviews } = useMyReviewQuery();
 
   return (
-    <section>
+    <section className="flex flex-col divide-y divide-gray-200">
       {reviews?.map(
         ({ id, comment, date, nickname, isBest, images, rating, tags, like, isLiked }) => {
           const formmatedDate = new Date(date).toLocaleDateString('ko-KR');
