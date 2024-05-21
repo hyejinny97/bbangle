@@ -28,19 +28,17 @@ const Comment = ({ id, comment }: Props) => {
 
   return (
     <>
-      <div className="relative max-h-[63px] typo-title-14-regular line-clamp-3">
+      <div className="typo-title-14-regular line-clamp-3">
         {isEllipsed && (
           <Link
             href={`${PATH.myReview}/${id}`}
-            className="float-right mt-[42px] appearance-none [shape-outside:border-box]"
+            className="float-right mt-[42px] [shape-outside:border-box]"
           >
             더보기
           </Link>
         )}
 
-        <p ref={commentRef} className="">
-          {comment}
-        </p>
+        <p ref={commentRef}>{comment}</p>
       </div>
 
       <div className="overflow-hidden h-0 typo-title-14-regular">
