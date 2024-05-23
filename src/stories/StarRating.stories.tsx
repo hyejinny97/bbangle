@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import StarRating from '@/domains/review/components/StarRating';
 import type { Meta, StoryObj } from '@storybook/react';
 import { RatingType } from '@/domains/review/types/starRating';
+import StarRating from '@/domains/review/components/common/StarRating';
 
 const meta: Meta<typeof StarRating> = {
   component: StarRating,
