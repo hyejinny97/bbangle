@@ -1,9 +1,6 @@
-import BreifExplanation from '@/blocks/product/(detail)/BriefExplanation';
-import ProductDetailImgs from '@/blocks/product/(detail)/DetailProductImgs';
-import DetailProductInfo from '@/blocks/product/(detail)/DetailProductInfo';
-import FixedPurchaseButtonSection from '@/blocks/product/(detail)/FixedPurchaseButtonSection';
+import DetailContent from '@/blocks/product/DetailContent';
+import FixedPurchaseButtonSection from '@/blocks/product/FixedPurchaseButtonSection';
 import getProductDetail from '@/domains/product/queries/getProductDetail';
-import DetailStoreInfo from '@/domains/store/components/DetailStoreInfo';
 import Header from '@/shared/components/Header';
 import { ShareIcon } from '@/shared/components/icons';
 
@@ -25,10 +22,7 @@ const ProductDetail = async ({ params: { productId } }: ProductDetailProps) => {
         }
         back
       />
-      <ProductDetailImgs boardImages={data.board.images} isBundled={data.board.isBundled} />
-      <DetailStoreInfo store={data.store} />
-      <BreifExplanation data={data} />
-      <DetailProductInfo data={data} />
+      <DetailContent data={data} />
       <FixedPurchaseButtonSection data={data} />
     </>
   );
