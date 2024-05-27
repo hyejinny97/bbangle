@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge';
 
-import BADGE from '@/domains/review/constants/badge';
+import { BADGE } from '@/domains/review/constants/badge';
 import { BadgeShapeType } from '@/domains/review/types/badge';
 import { ReviewBadgeIcon } from '@/shared/components/icons';
 
