@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import StarRating from '@/domains/review/components/StarRating';
 import type { Meta, StoryObj } from '@storybook/react';
 import { RatingType } from '@/domains/review/types/starRating';
+import StarRating from '@/domains/review/components/common/StarRating';
 
 const meta: Meta<typeof StarRating> = {
   component: StarRating,
@@ -18,7 +18,7 @@ const EditableStory = () => {
     <StarRating
       rating={rating}
       onRatingChange={(newRating) => setRating(newRating)}
-      size="large"
+      starSize="large"
       editable
     />
   );
@@ -29,7 +29,7 @@ export const Default: Story = {
 };
 
 export const Size: Story = {
-  args: { rating: 2, size: 'large' }
+  args: { rating: 2, starSize: 'large' }
 };
 
 export const Editable: Story = {
