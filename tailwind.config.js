@@ -86,6 +86,12 @@ module.exports = {
           'line-height': '150%',
           'letter-spacing': '-0.02em'
         },
+        '.typo-heading-18-semibold': {
+          'font-size': '18px',
+          'font-weight': 600,
+          'line-height': '150%',
+          'letter-spacing': '-0.02em'
+        },
         '.typo-title-16-regular': {
           'font-size': '16px',
           'font-weight': 400,

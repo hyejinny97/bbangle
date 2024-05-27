@@ -1,14 +1,11 @@
-import DetailFixedBtnSection from '@/blocks/product/DetailFixedBtnSection';
-import DetailInformationImgs from '@/blocks/product/DetailInformationImgs';
-import DetailOrderAvailableDays from '@/blocks/product/DetailOrderAvailableDays';
-import DetailProductComposition from '@/blocks/product/DetailProductComposition';
-import ProductDetailImgs from '@/blocks/product/DetailProductImgs';
-import DetailProductSummary from '@/blocks/product/DetailProductSummary';
-import GrayDivider from '@/shared/components/GrayDivider';
+import BreifExplanation from '@/blocks/product/(detail)/BriefExplanation';
+import ProductDetailImgs from '@/blocks/product/(detail)/DetailProductImgs';
+import DetailProductInfo from '@/blocks/product/(detail)/DetailProductInfo';
+import FixedPurchaseButtonSection from '@/blocks/product/(detail)/FixedPurchaseButtonSection';
+import getProductDetail from '@/domains/product/queries/getProductDetail';
 import DetailStoreInfo from '@/domains/store/components/DetailStoreInfo';
 import Header from '@/shared/components/Header';
 import { ShareIcon } from '@/shared/components/icons';
-import getProductDetail from '@/domains/product/queries/getProductDetail';
 
 interface ProductDetailProps {
   params: { productId: string };
@@ -30,17 +27,9 @@ const ProductDetail = async ({ params: { productId } }: ProductDetailProps) => {
       />
       <ProductDetailImgs boardImages={data.board.images} isBundled={data.board.isBundled} />
       <DetailStoreInfo store={data.store} />
-
-      <GrayDivider />
-
-      <DetailProductSummary data={data} />
-
-      <GrayDivider />
-
-      <DetailOrderAvailableDays data={data} />
-      <DetailProductComposition data={data} />
-      <DetailFixedBtnSection data={data} />
-      <DetailInformationImgs data={data} />
+      <BreifExplanation data={data} />
+      <DetailProductInfo data={data} />
+      <FixedPurchaseButtonSection data={data} />
     </>
   );
 };

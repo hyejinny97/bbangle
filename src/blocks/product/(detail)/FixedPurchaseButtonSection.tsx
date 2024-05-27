@@ -1,14 +1,14 @@
 'use client';
 
-import Button from '@/shared/components/Button';
 import { IProductDetailType } from '@/domains/product/types/productDetailType';
+import Button from '@/shared/components/Button';
 import HeartButton from '@/shared/components/HeartButton';
 
 interface DetailFixedBtnSectionProps {
   data: IProductDetailType;
 }
 
-const DetailFixedBtnSection = ({ data }: DetailFixedBtnSectionProps) => {
+const FixedPurchaseButtonSection = ({ data }: DetailFixedBtnSectionProps) => {
   const handleClickHeart = () => {};
 
   const gotoPurchaseUrl = () => {
@@ -27,4 +27,4 @@ const DetailFixedBtnSection = ({ data }: DetailFixedBtnSectionProps) => {
   );
 };
 
-export default DetailFixedBtnSection;
+export default FixedPurchaseButtonSection;
