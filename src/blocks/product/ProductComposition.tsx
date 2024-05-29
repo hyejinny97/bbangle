@@ -16,7 +16,7 @@ const DetailProductComposition = ({ data }: DetailProductCompositionProps) => {
     <div className="relative">
       <InfoWrapper title="상품 구성">
         <div
-          className={`flex flex-col ${
+          className={`flex flex-col p-[0px] ${
             clickMore ? 'overflow-y-visible ' : 'overflow-y-hidden h-[151px]'
           }`}
         >

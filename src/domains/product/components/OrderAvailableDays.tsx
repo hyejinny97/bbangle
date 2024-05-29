@@ -17,17 +17,19 @@ const OrderAvailableDays = ({ data }: DetailOrderAvailableDaysProps) => {
   const weekly = true;
 
   return (
-    <InfoWrapper title="주문가능일" className="flex justify-between items-center">
-      <div className="flex gap-[4px]">
-        {weekly ? <TypeOfWeeklyOrder availableDays={availableDays} /> : <TypeOfMonthlyOrder />}
+    <InfoWrapper title="주문가능일">
+      <div className="flex justify-between items-center">
+        <div className="flex gap-[4px]">
+          {weekly ? <TypeOfWeeklyOrder availableDays={availableDays} /> : <TypeOfMonthlyOrder />}
+        </div>
+        <button
+          type="button"
+          className="p-[6px] flex gap-[2px] typo-body-12-medium text-gray-900 border border-gray-200 rounded-[4px]"
+        >
+          <BellIcons shape="off" />
+          빵켓팅 알림 신청
+        </button>
       </div>
-      <button
-        type="button"
-        className="p-[6px] flex gap-[2px] typo-body-12-medium text-gray-900 border border-gray-200 rounded-[4px]"
-      >
-        <BellIcons shape="off" />
-        빵켓팅 알림 신청
-      </button>
     </InfoWrapper>
   );
 };
