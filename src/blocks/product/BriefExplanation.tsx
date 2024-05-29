@@ -17,7 +17,6 @@ const BreifExplanation = ({ boardData }: BreifExplanationProps) => (
         {boardData.price.toLocaleString()}
         <span className="typo-title-16-semibold">원</span>
       </div>
-      c
       <div className="flex items-center gap-[2px]">
         <StarIcon size="md" color="yellow" />
         <span className="typo-title-14-medium text-gray-800">4.5</span>
