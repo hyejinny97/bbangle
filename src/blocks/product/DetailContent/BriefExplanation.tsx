@@ -4,19 +4,20 @@ import ArrowIcons from '@/shared/components/icons/ArrowIcons';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 
 interface BreifExplanationProps {
-  data: IProductDetailType;
+  boardData: IProductDetailType['board'];
 }
-const BreifExplanation = ({ data }: BreifExplanationProps) => (
+const BreifExplanation = ({ boardData }: BreifExplanationProps) => (
   <PaddingWrapper>
     <div className="typo-title-16-regular leading-130 font-normal text-gray-800 mb-[2px]">
-      {data.board.title}
+      {boardData.title}
     </div>
     <div className="flex justify-between items-center">
       <div className="typo-heading-18-semibold">
         <span className="text-secondaryOrangeRed mr-[4px]">10%</span>
-        {data.board.price.toLocaleString()}
+        {boardData.price.toLocaleString()}
         <span className="typo-title-16-semibold">원</span>
       </div>
+      c
       <div className="flex items-center gap-[2px]">
         <StarIcon size="md" color="yellow" />
         <span className="typo-title-14-medium text-gray-800">4.5</span>
