@@ -1,9 +1,10 @@
 import { Cursor, ResultResponse } from '@/shared/types/response';
 import QUERY_KEY from '@/shared/constants/queryKey';
-import { throwApiError } from '@/shared/utils/error';
 import { INITIAL_CORSOR } from '@/shared/constants/corsor';
 import Service from '@/shared/queries/service';
+import { ERROR_MESSAGE } from '@/shared/constants/error';
 import { NotificationDetailType, NotificationType } from '../types/notification';
+import { UserProfileType } from '../types/profile';
 
 class UserService extends Service {
   async getNotifications(cursorId: number) {
@@ -12,7 +13,7 @@ class UserService extends Service {
     const { result, success, code, message }: ResultResponse<Cursor<NotificationType>> =
       await res.json();
 
-    if (!res.ok || !success) throwApiError({ code, message });
+    if (!res.ok || !success) throw new Error(ERROR_MESSAGE.api({ code, message }));
     return result;
   }
 
@@ -22,7 +23,21 @@ class UserService extends Service {
     });
     const { result, success, code, message }: ResultResponse<NotificationDetailType> =
       await res.json();
-    if (!res.ok || !success) throwApiError({ code, message });
+    if (!res.ok || !success) throw new Error(ERROR_MESSAGE.api({ code, message }));
+    return result;
+  }
+
+  async getUserProfile() {
+    const res = await this.fetchExtend.get('/profile', {
+      next: {
+        tags: [QUERY_KEY.profile]
+      }
+    });
+    if (res.status === 401) throw new Error(ERROR_MESSAGE.requiredLogin);
+    const { result, success, code, message }: ResultResponse<UserProfileType> = await res.json();
+    if (!success) {
+      throw new Error(ERROR_MESSAGE.api({ code, message }));
+    }
     return result;
   }
 }
