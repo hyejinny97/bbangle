@@ -10,8 +10,6 @@ const QUERY_KEY = {
   main: 'main',
   wish: 'wish',
   product: 'product',
-  keyword: 'keyword',
-  autoComplete: 'autoComplete',
   notification: 'notification'
 };
 
