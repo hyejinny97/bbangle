@@ -1,14 +1,19 @@
+/**
+ * @deprecated
+ * v1.0.0 에서 사용되던 컴포넌트인데 추후 사용가능성을 고려하여 삭제하지 않았습니다
+ * */
+
 import { IAllProductsType } from '@/domains/product/types/allProductsType';
 import { IFilterType } from '@/domains/product/types/filterType';
 import { transformFilterValueToQueryString } from '@/domains/product/utils/transformFilterValueToQueryString';
-import QUERY_KEY from '@/shared/constants/queryKey';
+import { productQueryKey } from '@/shared/queries/queryKey';
 import { ResultResponse } from '@/shared/types/response';
 import fetchExtend from '@/shared/utils/api';
 import { throwApiError } from '@/shared/utils/error';
 import { GetNextPageParamFunction, useInfiniteQuery } from '@tanstack/react-query';
 
 export const useGetAllProductsQuery = (query: IFilterType) => {
-  const queryKey = [QUERY_KEY.product, QUERY_KEY.main, { query }];
+  const queryKey = productQueryKey.list('home');
 
   const queryFn = async ({
     pageParam

@@ -1,9 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import { ChangeEventHandler, memo, useEffect, useId, useState } from 'react';
+import { ChangeEventHandler, memo, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { BbangleIcon } from '@/shared/components/icons';
+import ImageInput from '@/shared/components/ImageInput';
 import { profileImgState } from '../../atoms/profile';
 
 interface ProfileImageInputProps {
@@ -11,7 +12,6 @@ interface ProfileImageInputProps {
 }
 
 const ProfileImageInput = ({ defaultValue }: ProfileImageInputProps) => {
-  const inputId = useId();
   const [profileImg, setProfileImg] = useRecoilState(profileImgState);
   const [imgSrc, setImgSrc] = useState(defaultValue);
 
@@ -26,27 +26,22 @@ const ProfileImageInput = ({ defaultValue }: ProfileImageInputProps) => {
   }, [profileImg]);
 
   return (
-    <label
-      htmlFor={inputId}
-      className="cursor-pointer relative flex justify-center items-center rounded-full overflow-hidden w-[100px] h-[100px] bg-gray-100"
+    <ImageInput
+      onChange={onChange}
+      className="relative flex justify-center items-center rounded-full overflow-hidden w-[100px] h-[100px] bg-gray-100"
     >
-      <input
-        id={inputId}
-        className="hidden"
-        name="profile"
-        type="file"
-        onChange={onChange}
-        multiple={false}
-      />
       {imgSrc ? (
         <Image src={imgSrc} alt="profile preview" width={100} height={100} />
       ) : (
-        <BbangleIcon shape="smile" className="w-[80px] h-[80px] fill-gray-300" />
+        <BbangleIcon
+          shape="smile"
+          className="w-[80px] h-[80px] fill-gray-300 translate-y-[-10px]"
+        />
       )}
-      <div className="absolute h-[26px] leading-[26px] bottom-0 w-full text-center text-white bg-gray-800/50">
+      <div className="absolute bottom-0 flex justify-center items-center h-[26px] w-full text-white bg-gray-800/50 typo-title-14-semibold">
         편집
       </div>
-    </label>
+    </ImageInput>
   );
 };
 
