@@ -1,10 +1,11 @@
-import { ERROR_MESSAGE } from '@/shared/constants/error';
-import Service from '@/shared/queries/service';
-import { ResultResponse, Cursor } from '@/shared/types/response';
-import { transformFilterValueToQueryString } from '@/domains/product/utils/transformFilterValueToQueryString';
 import { IFilterType } from '@/domains/product/types/filterType';
 import { IProductType } from '@/domains/product/types/productType';
+import { transformFilterValueToQueryString } from '@/domains/product/utils/transformFilterValueToQueryString';
 import { INITIAL_CURSOR } from '@/shared/constants/cursor';
+import { ERROR_MESSAGE } from '@/shared/constants/error';
+import Service from '@/shared/queries/service';
+import { Cursor, ResultResponse } from '@/shared/types/response';
+
 import { IBoardType, IDetailProductType, INewStoreType } from '../types/productDetailType';
 
 class ProductService extends Service {
