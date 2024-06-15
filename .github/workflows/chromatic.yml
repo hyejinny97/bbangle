@@ -3,6 +3,8 @@ name: 'Chromatic Deployment'
 
 on:
   pull_request:
+    paths:
+      - '**/*.stories.*'
     branches: ['master', 'develop']
 
 jobs:

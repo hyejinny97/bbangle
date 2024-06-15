@@ -5,8 +5,6 @@ import fetchExtend from '@/shared/utils/api';
 import { throwApiError } from '@/shared/utils/error';
 import { productQueryKey } from '@/shared/queries/queryKey';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
-import FilterSection from '@/domains/product/components/FilterSection';
-import { FILTER_FAMILY_ID } from '@/domains/product/constants/filterFamilyID';
 
 const getBestProducts = async () => {
   const res = await fetchExtend.get('/boards', {
