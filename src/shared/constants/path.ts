@@ -24,7 +24,7 @@ const PATH = {
 
   preferenceCreate: '/mypage/preference/create',
   preferenceUpdate: '/mypage/preference/update',
-  bbangketing: '/mypage/alarm/bbangketing',
+  bbangcketing: '/mypage/alarm/bbangcketing',
   restock: '/mypage/alarm/restock',
 
   reviewList: (productId: number) => `${PATH.mainProductList}/${productId}/review`,
