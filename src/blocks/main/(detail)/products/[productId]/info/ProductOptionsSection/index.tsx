@@ -38,10 +38,15 @@ const ProductOptionsSetion = ({ productId }: { productId: string }) => {
           sugarFreeTag,
           veganTag,
           ketogenicTag,
-          isNotified
+          isNotified,
+          soldout
         }: ProductOptionType) => (
           <div key={id}>
-            <CategoryOption title={title} onClick={() => handleCategoryClick(id)} />
+            <CategoryOption
+              title={title}
+              soldout={soldout}
+              onClick={() => handleCategoryClick(id)}
+            />
             {activeOption[id] && (
               <PaddingWrapper className="flex flex-col gap-4">
                 <IngredientInfo
@@ -52,10 +57,13 @@ const ProductOptionsSetion = ({ productId }: { productId: string }) => {
                   ketogenicTag={ketogenicTag}
                 />
                 <OrderAvailableDays
+                  productOptionId={id}
+                  productOptionName={title}
                   orderType={orderType}
                   orderAvailableWeek={orderAvailableWeek}
                   orderAvailableDate={orderAvailableDate}
                   isNotified={isNotified}
+                  soldout={soldout}
                 />
                 <NutrientInfo nutrient={nutrient} />
               </PaddingWrapper>
