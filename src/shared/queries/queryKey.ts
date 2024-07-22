@@ -13,3 +13,14 @@ export const storeQueryKey = {
   details: () => [...storeQueryKey.all, 'detail'],
   detail: (storeId: number) => [...storeQueryKey.details(), { storeId }]
 };
+
+export const reviewQueryKey = {
+  all: ['review'],
+  lists: () => [...reviewQueryKey.all, 'list'],
+  list: ({ boardId, type }: { boardId?: number; type: string }) => [
+    ...reviewQueryKey.lists(),
+    { type, boardId }
+  ],
+  details: () => [...reviewQueryKey.all, 'detail'],
+  detail: (id: number) => [...reviewQueryKey.details(), id]
+};
