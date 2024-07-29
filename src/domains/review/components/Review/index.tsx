@@ -6,6 +6,7 @@ import StarRating from '../common/StarRating';
 import Comment from './Comment';
 import ImageSlider from './ImageSlider';
 import KebabMenu from './KebabMenu';
+import ReviewSkeleton from './ReviewSkeleton';
 import LikeButton from './LikeButton';
 
 const Review = ({
@@ -55,5 +56,7 @@ const Review = ({
     </div>
   </PaddingWrapper>
 );
+
+Review.Skeleton = ReviewSkeleton;
 
 export default Review;
