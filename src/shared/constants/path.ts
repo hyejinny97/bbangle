@@ -8,6 +8,9 @@ const PATH = {
   mainProductListInfo: (productId: number) => `/main/products/${productId}/info`,
   mainProductListReview: (productId: number) => `/main/products/${productId}/review`,
 
+  mainStoreList: '/main/stores',
+  mainStoreDetail: (storeId: number) => `/main/stores/${storeId}`,
+
   wish: '/wish',
   wishLogin: '/wish/login',
   wishList: '/wishlist/list',
