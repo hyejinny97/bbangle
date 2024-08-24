@@ -6,15 +6,15 @@ import { IStoreType } from '@/domains/store/types/store';
 import { updateInfiniteQueryCache } from '../../../shared/utils/queryCache';
 import wishService from './service';
 
-const useDeleteWishStoreMutation = () => {
+const useDeleteWishStoreMutation = (storeId: number) => {
   const { openToast } = useToastNewVer();
   const queryClient = useQueryClient();
 
-  const mutationFn = async ({ storeId }: { storeId: number }) => {
+  const mutationFn = async () => {
     await wishService.deleteWishStore({ storeId });
   };
 
-  const onMutate = ({ storeId }: { storeId: number }) => {
+  const onMutate = () => {
     queryClient.setQueriesData<InfiniteData<Cursor<IStoreType[]>>>(
       { queryKey: storeQueryKey.lists() },
       (oldData) =>
@@ -22,6 +22,14 @@ const useDeleteWishStoreMutation = () => {
           ...oldItem,
           isWished: false
         }))
+    );
+
+    queryClient.setQueriesData<IStoreType>(
+      { queryKey: storeQueryKey.detail(storeId) },
+      (oldData) => {
+        if (!oldData) return oldData;
+        return { ...oldData, isWished: false };
+      }
     );
   };
 
@@ -31,6 +39,8 @@ const useDeleteWishStoreMutation = () => {
 
   const onError = ({ message }: Error) => {
     openToast({ message });
+    queryClient.resetQueries({ queryKey: storeQueryKey.lists() });
+    queryClient.resetQueries({ queryKey: storeQueryKey.detail(storeId) });
   };
 
   return useMutation({ mutationFn, onSuccess, onError, onMutate });

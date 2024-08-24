@@ -23,12 +23,12 @@ const FixedPurchaseButtonSection = () => {
   if (!boardData) return 'data not found';
 
   const addToWishlist: MouseEventHandler<HTMLButtonElement> = (e) => {
-    addMutate({ productId: boardData.id, folderId: selectedWishFolder });
+    addMutate({ productId: boardData.boardId, folderId: selectedWishFolder });
     e.preventDefault();
   };
 
   const deleteToWishlist: MouseEventHandler<HTMLButtonElement> = (e) => {
-    deleteMutate({ productId: boardData.id });
+    deleteMutate({ productId: boardData.boardId });
     e.preventDefault();
   };
 
