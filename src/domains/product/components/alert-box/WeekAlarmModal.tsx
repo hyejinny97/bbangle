@@ -2,29 +2,37 @@
 
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
-import useToastNewVer from '@/shared/hooks/useToastNewVer';
 import useModal from '@/shared/hooks/useModal';
 import { useAddAlarmMutation } from '@/domains/product/queries/useAddAlarmMutation';
 import { useCancelAlarmMutation } from '@/domains/product/queries/useCancelAlarmMutation';
-import { ProductOptionType } from '@/domains/product/types/productDetailType';
+import useAddAlarmWithFcmToken from '@/domains/alarm/hooks/useAddAlarmWithFcmToken';
+import { WeekProductOptionType } from '@/domains/product/types/productDetailType';
 import { DayEnType } from '@/domains/product/types/dayType';
-import { transformDayTag } from '@/domains/product/utils/transfromTag';
-import { getFcmToken } from '@/domains/alarm/utils/fcmToken';
+import { transformDayToKr } from '@/domains/product/utils/transformDay';
+import { transformWeekObjectToArray } from '@/domains/product/utils/transformWeek';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import Modal from '@/shared/components/Modal';
 import Checkbox from '@/shared/components/Checkbox';
 import ButtonNewver from '@/shared/components/ButtonNewver';
 
 interface Props {
-  productOptionId: ProductOptionType['id'];
-  orderAvailableWeek: ProductOptionType['orderAvailableWeek'];
+  product: WeekProductOptionType;
 }
 
-const WeekAlarmModal = ({ productOptionId, orderAvailableWeek }: Props) => {
-  const { openToast } = useToastNewVer();
+const WeekAlarmModal = ({
+  product: {
+    id: productOptionId,
+    orderAvailableWeek: orderAvailableWeekObject,
+    appliedOrderWeek: appliedOrderWeekObject
+  }
+}: Props) => {
+  const orderAvailableWeekArr = transformWeekObjectToArray(orderAvailableWeekObject);
+  const appliedOrderWeekArr =
+    appliedOrderWeekObject && transformWeekObjectToArray(appliedOrderWeekObject);
+
   const { closeModal } = useModal();
   const { productId } = useParams<{ productId: string }>();
-  const [selectedDays, setSelectedDays] = useState<Array<DayEnType>>([]);
+  const [selectedDays, setSelectedDays] = useState<Array<DayEnType>>(appliedOrderWeekArr || []);
   const { mutate: addAlarm } = useAddAlarmMutation({
     pushCategory: 'bbangcketing',
     productId: Number(productId),
@@ -37,6 +45,7 @@ const WeekAlarmModal = ({ productOptionId, orderAvailableWeek }: Props) => {
     productId: Number(productId),
     productOptionId
   });
+  const { addAlarmWithFcmToken } = useAddAlarmWithFcmToken({ addAlarm });
 
   const handleChange = (dayToChange: DayEnType) => {
     const newValue = selectedDays.includes(dayToChange)
@@ -47,36 +56,26 @@ const WeekAlarmModal = ({ productOptionId, orderAvailableWeek }: Props) => {
   };
 
   const handleApply = async () => {
-    try {
-      const fcmToken = await getFcmToken();
-
-      const numSelectedDays = selectedDays.length;
-      if (numSelectedDays === 0) cancelAlarm();
-      if (numSelectedDays > 0) addAlarm({ fcmToken });
-    } catch (error) {
-      if (!(error instanceof Error)) return;
-      openToast({ message: `[알림 신청 실패] ${error.message}` });
-    }
+    const numSelectedDays = selectedDays.length;
+    if (numSelectedDays === 0) cancelAlarm();
+    else addAlarmWithFcmToken();
     closeModal();
   };
 
   return (
     <Modal title="요일별 알림 신청">
       <PaddingWrapper className="py-[10px] flex flex-col gap-y-[10px]">
-        {Object.entries(orderAvailableWeek).map(([day, isOrderAvailable]) => {
-          const dayEn = day as DayEnType;
-          const dayKr = transformDayTag(dayEn);
+        {orderAvailableWeekArr.map((dayEn) => {
+          const dayKr = transformDayToKr(dayEn);
           return (
-            isOrderAvailable && (
-              <Checkbox
-                key={dayEn}
-                isChecked={selectedDays.includes(dayEn)}
-                onChange={() => handleChange(dayEn)}
-                className="typo-title-14-regular"
-              >
-                매주 {dayKr}요일 알림
-              </Checkbox>
-            )
+            <Checkbox
+              key={dayEn}
+              isChecked={selectedDays.includes(dayEn)}
+              onChange={() => handleChange(dayEn)}
+              className="typo-title-14-regular"
+            >
+              매주 {dayKr}요일 알림
+            </Checkbox>
           );
         })}
       </PaddingWrapper>

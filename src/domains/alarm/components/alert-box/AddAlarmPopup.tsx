@@ -1,29 +1,24 @@
+'use client';
+
 import { ALARM } from '@/domains/alarm/constants';
 import { AlarmType } from '@/domains/alarm/types';
-import { getFcmToken } from '@/domains/alarm/utils/fcmToken';
-import useToastNewVer from '@/shared/hooks/useToastNewVer';
 import usePopup from '@/shared/hooks/usePopup';
+import useAddAlarmWithFcmToken from '@/domains/alarm/hooks/useAddAlarmWithFcmToken';
 import Popup from '@/shared/components/Popup';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import ButtonNewver from '@/shared/components/ButtonNewver';
 
 interface Props {
   type: AlarmType;
-  addAlarm: (fcmToken: string) => void;
+  addAlarm: ({ fcmToken }: { fcmToken: string }) => void;
 }
 
 const AddAlarmPopup = ({ type, addAlarm }: Props) => {
-  const { openToast } = useToastNewVer();
   const { closePopup } = usePopup();
+  const { addAlarmWithFcmToken } = useAddAlarmWithFcmToken({ addAlarm });
 
   const handleApply = async () => {
-    try {
-      const fcmToken = await getFcmToken();
-      addAlarm(fcmToken);
-    } catch (error) {
-      if (!(error instanceof Error)) return;
-      openToast({ message: `[알림 신청 실패] ${error.message}` });
-    }
+    addAlarmWithFcmToken();
     closePopup();
   };
 

@@ -9,6 +9,7 @@ import AlertContainer from '@/global/AlertContainer';
 import SilentLogin from '@/global/SilentLogin';
 import GAScript from '@/global/GAScript';
 import ForeGroundMessage from '@/global/ForeGroundMessage';
+import ReceiveMessageFromApp from '@/global/ReceiveMessageFromApp';
 
 const pretendard = localFont({
   src: '../../public/assets/fonts/PretendardVariable.woff2'
@@ -25,6 +26,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => (
     <body className={pretendard.className}>
       <RootLayoutProvider>
         <SilentLogin />
+        <ReceiveMessageFromApp />
         <div
           id="main"
           className="shadow-lg sm:w-[600px] h-full m-auto overflow-x-hidden scrollbar-hide"
