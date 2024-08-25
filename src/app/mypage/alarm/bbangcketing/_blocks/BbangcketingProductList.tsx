@@ -1,5 +1,6 @@
 'use client';
 
+import useWebView from '@/shared/hooks/useWebView';
 import usePopup from '@/shared/hooks/usePopup';
 import { useGetAlarmQuery } from '@/domains/alarm/queries/useGetAlarmQuery';
 import { useAddAlarmMutation } from '@/domains/alarm/queries/useAddAlarmMutation';
@@ -9,12 +10,15 @@ import Loading from '@/shared/components/Loading';
 import SadBbangleBox from '@/shared/components/SadBbangleBox';
 import AlarmCard from '@/domains/alarm/components/AlarmCard';
 import NoAlarm from '@/domains/alarm/components/NoAlarm';
+import MobileAppPopup from '@/domains/alarm/components/alert-box/MobileAppPopup';
+import ReadyForServicePopup from '@/domains/alarm/components/alert-box/ReadyForServicePopup';
 import AddAlarmPopup from '@/domains/alarm/components/alert-box/AddAlarmPopup';
 import CancelAlarmPopup from '@/domains/alarm/components/alert-box/CancelAlarmPopup';
 import DeleteAlarmPopup from '@/domains/alarm/components/alert-box/DeleteAlarmPopup';
 
 const BbancketingProductList = () => {
   const { openPopup } = usePopup();
+  const { isWebView } = useWebView();
   const {
     data: products,
     isFetching,
@@ -23,7 +27,13 @@ const BbancketingProductList = () => {
   const { mutate: addAlarm } = useAddAlarmMutation({ pushCategory: 'bbangcketing' });
   const { mutate: cancelAlarm } = useCancelAlarmMutation({ pushCategory: 'bbangcketing' });
 
+  /* eslint-disable */
   const handleAlarm = (isAlarming: boolean, productOptionId: number) => {
+    if (!isWebView) {
+      openPopup(<MobileAppPopup type="bbangcketing" />);
+      return;
+    }
+
     if (isAlarming)
       openPopup(
         <CancelAlarmPopup
@@ -35,10 +45,11 @@ const BbancketingProductList = () => {
       openPopup(
         <AddAlarmPopup
           type="bbangcketing"
-          addAlarm={(fcmToken) => addAlarm({ fcmToken, productOptionId })}
+          addAlarm={({ fcmToken }) => addAlarm({ fcmToken, productOptionId })}
         />
       );
   };
+  /* eslint-enable */
 
   const handleDelete = (productOptionId: number) => {
     openPopup(<DeleteAlarmPopup type="bbangcketing" productOptionId={productOptionId} />);
@@ -63,7 +74,8 @@ const BbancketingProductList = () => {
           key={product.productId}
           type="bbangcketing"
           data={product}
-          onAlarm={() => handleAlarm(product.subscribed, product.productId)}
+          // onAlarm={() => handleAlarm(product.subscribed, product.productId)}
+          onAlarm={() => openPopup(<ReadyForServicePopup type="bbangcketing" />)}
           onDelete={() => handleDelete(product.productId)}
         />
       ))}

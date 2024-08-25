@@ -2,31 +2,28 @@
 
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
-import useToastNewVer from '@/shared/hooks/useToastNewVer';
 import useModal from '@/shared/hooks/useModal';
 import { useAddAlarmMutation } from '@/domains/product/queries/useAddAlarmMutation';
 import { useCancelAlarmMutation } from '@/domains/product/queries/useCancelAlarmMutation';
-import { ProductOptionType } from '@/domains/product/types/productDetailType';
-import { getFcmToken } from '@/domains/alarm/utils/fcmToken';
+import useAddAlarmWithFcmToken from '@/domains/alarm/hooks/useAddAlarmWithFcmToken';
+import { DateProductOptionType } from '@/domains/product/types/productDetailType';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import Modal from '@/shared/components/Modal';
 import Checkbox from '@/shared/components/Checkbox';
 import ButtonNewver from '@/shared/components/ButtonNewver';
 
 interface Props {
-  productOptionId: ProductOptionType['id'];
-  productOptionName: ProductOptionType['title'];
-  orderAvailableDate: ProductOptionType['orderAvailableDate'];
-  isNotified: ProductOptionType['isNotified'];
+  product: DateProductOptionType;
 }
 
 const DateAlarmModal = ({
-  productOptionId,
-  productOptionName,
-  orderAvailableDate: { startDate },
-  isNotified
+  product: {
+    id: productOptionId,
+    title: productOptionName,
+    orderAvailableDate: { startDate },
+    isNotified
+  }
 }: Props) => {
-  const { openToast } = useToastNewVer();
   const { closeModal } = useModal();
   const { productId } = useParams<{ productId: string }>();
   const [isSelected, setIsSelected] = useState(isNotified);
@@ -41,6 +38,19 @@ const DateAlarmModal = ({
     productId: Number(productId),
     productOptionId
   });
+  const { addAlarmWithFcmToken } = useAddAlarmWithFcmToken({ addAlarm });
+
+  const handleChange = () => {
+    setIsSelected(!isSelected);
+  };
+
+  const handleApply = async () => {
+    if (isNotified !== isSelected) {
+      if (isSelected) addAlarmWithFcmToken();
+      else cancelAlarm();
+    }
+    closeModal();
+  };
 
   const date = new Date(startDate).toLocaleDateString('ko-KR', {
     month: 'numeric',
@@ -50,25 +60,6 @@ const DateAlarmModal = ({
   const time = new Date(startDate).toLocaleTimeString('en-US', {
     hour: 'numeric'
   });
-
-  const handleChange = () => {
-    setIsSelected(!isSelected);
-  };
-
-  const handleApply = async () => {
-    try {
-      const fcmToken = await getFcmToken();
-
-      if (isNotified !== isSelected) {
-        if (isSelected) addAlarm({ fcmToken });
-        else cancelAlarm();
-      }
-    } catch (error) {
-      if (!(error instanceof Error)) return;
-      openToast({ message: `[알림 신청 실패] ${error.message}` });
-    }
-    closeModal();
-  };
 
   return (
     <Modal title="날짜별 알림 신청">
