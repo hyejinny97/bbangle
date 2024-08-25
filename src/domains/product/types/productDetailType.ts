@@ -40,7 +40,8 @@ export interface ProductOptionType {
 }
 
 export interface IBoardDetailType {
-  id: number;
+  boardId: number;
+  storeId: number;
   profile: string;
   title: string;
   price: number;

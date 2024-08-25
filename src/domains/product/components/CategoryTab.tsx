@@ -3,11 +3,12 @@
 import { useEffect, useId, useRef } from 'react';
 
 import { LayoutGroup } from 'framer-motion';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
-import { filterValueState } from '@/domains/product/atoms';
+import { filterValueState, mainCategoryState } from '@/domains/product/atoms';
 import { FILTER_VALUES } from '@/domains/product/constants/filterValues';
 import { FilterFamilyIDType } from '@/domains/product/types/filterType';
+import useCategory from '@/domains/product/hooks/useCategory';
 import TabButton from '@/shared/components/TabButton';
 
 interface Props {
@@ -17,18 +18,20 @@ interface Props {
 const CategoryTab = ({ filterFamilyId }: Props) => {
   const id = useId();
   const [filterValue, setFilterValue] = useRecoilState(filterValueState(filterFamilyId));
+  const mainCategory = useRecoilValue(mainCategoryState(filterFamilyId));
+  const { elaborateCategory, simplifyCategory } = useCategory(filterFamilyId);
   const tabContainerRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const handleClick = (newCategory: string) => {
     setFilterValue((prev) => ({
       ...prev,
-      category: newCategory
+      category: elaborateCategory(newCategory)
     }));
   };
 
   useEffect(() => {
-    const activeIndex = FILTER_VALUES.categories.findIndex(
+    const activeIndex = FILTER_VALUES.category.kind[mainCategory].findIndex(
       (category) => category === filterValue.category
     );
     if (activeIndex !== -1 && tabRefs.current[activeIndex]) {
@@ -43,14 +46,15 @@ const CategoryTab = ({ filterFamilyId }: Props) => {
         tabContainer.scrollTo({ left: offsetLeft, behavior: 'smooth' });
       }
     }
-  }, [filterValue]);
+  }, [filterValue, mainCategory]);
 
   return (
     <LayoutGroup id={id}>
       <div ref={tabContainerRef} className="flex overflow-x-scroll scrollbar-hide">
-        {FILTER_VALUES.categories.map((category, index) => {
+        {FILTER_VALUES.category.kind[mainCategory].map((category, index) => {
           const isActive =
-            filterValue.category === category || (!filterValue.category && index === 0);
+            simplifyCategory(filterValue.category) === category ||
+            (!filterValue.category && index === 0);
           return (
             <TabButton
               key={category}
