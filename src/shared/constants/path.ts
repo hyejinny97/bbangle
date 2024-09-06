@@ -34,6 +34,8 @@ const PATH = {
   restock: '/mypage/alarm/restock',
 
   reviewList: (productId: number) => `${PATH.mainProductList}/${productId}/review`,
+  reviewDetail: ({ productId, reviewId }: { productId: number; reviewId: number }) =>
+    `/review/${productId}/${reviewId}`,
   reviewCreate: ({ productId, progress }: { productId: number; progress: number }) =>
     `/review/${productId}/create/${progress}`,
   reviewUpdate: ({

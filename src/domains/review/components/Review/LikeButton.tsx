@@ -1,3 +1,5 @@
+'use client';
+
 import { ThumbsUpIcon } from '@/shared/components/icons';
 import { cn } from '@/shared/utils/cn';
 import useLikeReviewMutation from '../../queries/useLikeReviewMutation';

@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import ImageWithFallback from '@/shared/components/ImageWithFallback';

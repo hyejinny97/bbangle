@@ -26,8 +26,8 @@ class ReviewService extends Service {
     return result;
   }
 
-  async getReviewDetail(id: number) {
-    const res = await this.fetchExtend.get(`/review/${id}`);
+  async getReviewDetail(reviewId: number) {
+    const res = await this.fetchExtend.get(`/review/${reviewId}`);
     const { result, success, message, code }: ResultResponse<ReviewType> = await res.json();
     if (!res.ok || !success) throw new Error(ERROR_MESSAGE.api({ code, message }));
     return result;
