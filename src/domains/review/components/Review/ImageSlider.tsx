@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import ImageWithFallback from '@/shared/components/ImageWithFallback';
 import Skeleton from '@/shared/components/Skeleton';
+import { BLUR_DATA_URL } from '@/shared/constants/blurDataUrl';
 import { ReviewType } from '../../types/review';
 
 interface Props {
@@ -24,8 +25,9 @@ const ImageSlider = ({ images }: Props) => {
             <ImageWithFallback
               fallback={<Skeleton className="size-full rounded-none" />}
               src={url}
-              fill
               alt="review image"
+              blurDataURL={BLUR_DATA_URL}
+              fill
               className="object-cover"
             />
           </div>

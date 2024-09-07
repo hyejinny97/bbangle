@@ -2,7 +2,12 @@ import Service from '@/shared/queries/service';
 import { INITIAL_CURSOR } from '@/shared/constants/cursor';
 import { Cursor, DefaultResponse, ResultResponse } from '@/shared/types/response';
 import { ERROR_MESSAGE } from '@/shared/constants/error';
-import { BoardReviewRateResponse, CreatReviewRequest, ReviewType } from '../types/review';
+import {
+  BoardReviewRateResponse,
+  CreatReviewRequest,
+  ReviewType,
+  ReviewPhoto
+} from '../types/review';
 
 class ReviewService extends Service {
   async getMyReview(cursorId: number) {
@@ -91,6 +96,15 @@ class ReviewService extends Service {
     const res = await this.fetchExtend.delete(`/review/like/${id}`);
     const { code, message, success }: DefaultResponse = await res.json();
     if (!res.ok || !success) throw new Error(ERROR_MESSAGE.api({ code, message }));
+  }
+
+  async getReviewPhotos({ boardId, cursorId }: { boardId: number; cursorId: number }) {
+    const params = cursorId === INITIAL_CURSOR ? '' : `?cursorId=${cursorId}`;
+    const res = await this.fetchExtend.get(`/review/${boardId}/images${params}`);
+    const { result, success, code, message }: ResultResponse<Cursor<ReviewPhoto[]>> =
+      await res.json();
+    if (!success || !res.ok) throw new Error(ERROR_MESSAGE.api({ code, message }));
+    return result;
   }
 }
 

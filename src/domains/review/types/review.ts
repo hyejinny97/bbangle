@@ -51,3 +51,8 @@ export interface CreatReviewRequest {
   urls: string[] | null;
   boardId: number;
 }
+
+export interface ReviewPhoto {
+  id: number;
+  url: string;
+}

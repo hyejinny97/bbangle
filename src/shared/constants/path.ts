@@ -46,7 +46,8 @@ const PATH = {
     productId: number;
     progress: number;
     reviewId: number;
-  }) => `/review/${productId}/${reviewId}/update/${progress}`
+  }) => `/review/${productId}/${reviewId}/update/${progress}`,
+  reviewPhotos: (productId: number) => `/review/${productId}/photos`
 };
 
 export default PATH;
