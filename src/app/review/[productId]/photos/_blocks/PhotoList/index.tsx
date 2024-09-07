@@ -4,9 +4,11 @@ import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import { BLUR_DATA_URL } from '@/shared/constants/blurDataUrl';
+import useFullScreenModal from '@/shared/hooks/useFullScreenModal';
 import useGetReviewPhotosQuery from '@/domains/review/queries/useGetReviewPhotosQuery';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import SadBbangleBox from '@/shared/components/SadBbangleBox';
+import PhotoModal from '@/domains/review/components/alert-box/PhotoModal';
 import PhotoSkeleton from './PhotoSkeleton';
 
 interface Props {
@@ -21,6 +23,7 @@ const PhotoList = ({ boardId }: Props) => {
     hasNextPage
   } = useGetReviewPhotosQuery({ boardId });
   const { ref, inView } = useInView();
+  const { openFullScreenModal } = useFullScreenModal();
 
   useEffect(() => {
     if (!inView) return;
@@ -44,15 +47,16 @@ const PhotoList = ({ boardId }: Props) => {
 
   return (
     <PaddingWrapper className="grid grid-cols-3 gap-[10px] pt-0">
-      {photos.map(({ id, url }) => (
+      {photos.map((photo) => (
         <Image
-          key={id}
-          src={url}
+          key={photo.id}
+          src={photo.url}
           alt="리뷰 이미지"
           width={100}
           height={100}
           blurDataURL={BLUR_DATA_URL}
-          className="w-full aspect-square object-cover border-solid border-[1px] border-gray-300 rounded-[6px]"
+          onClick={() => openFullScreenModal(<PhotoModal {...photo} />)}
+          className="w-full aspect-square object-cover border-solid border-[1px] border-gray-300 rounded-[6px] cursor-pointer"
         />
       ))}
       {hasNextPage && <PhotoSkeleton ref={ref} count={3} />}

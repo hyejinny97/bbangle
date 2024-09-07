@@ -1,10 +1,15 @@
 import { SelectedBadgeType } from '@/domains/review/types/badge';
 import { RatingType } from '@/domains/review/types/starRating';
 
+export interface ReviewPhoto {
+  id: number;
+  url: string;
+}
+
 export interface ReviewType {
   id: number;
   boardId: number;
-  images: { id: number; url: string }[] | null;
+  images: Array<ReviewPhoto> | null;
   nickname: string;
   isBest: boolean;
   tags: string[];
@@ -50,9 +55,4 @@ export interface CreatReviewRequest {
   content: string;
   urls: string[] | null;
   boardId: number;
-}
-
-export interface ReviewPhoto {
-  id: number;
-  url: string;
 }
