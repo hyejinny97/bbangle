@@ -25,6 +25,9 @@ const useUpdateReviewMutation = () => {
       queryClient.invalidateQueries({
         queryKey: reviewQueryKey.list({ type: 'mypage' })
       });
+      queryClient.invalidateQueries({
+        queryKey: [...reviewQueryKey.all, 'photos', { boardId: Number(productId) }]
+      });
     },
 
     onError: () => {

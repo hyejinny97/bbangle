@@ -16,6 +16,9 @@ const useDeleteReviewMutation = (boardId: number) => {
       queryClient.invalidateQueries({
         queryKey: reviewQueryKey.list({ type: 'mypage' })
       });
+      queryClient.invalidateQueries({
+        queryKey: [...reviewQueryKey.all, 'photos', { boardId: Number(boardId) }]
+      });
       openToast({ message: '리뷰가 삭제 되었어요.' });
     },
     onError: () => {
