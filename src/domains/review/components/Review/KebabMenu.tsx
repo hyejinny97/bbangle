@@ -4,7 +4,7 @@ import Dropdown from '@/shared/components/Dropdown';
 import { KebabIcon } from '@/shared/components/icons';
 import PATH from '@/shared/constants/path';
 import { attachRedirectUrl } from '@/shared/utils/attachRedirectUrl';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { ReviewType } from '../../types/review';
 import useDeleteReviewMutation from '../../queries/useDeleteReviewMutation';
 
@@ -14,8 +14,10 @@ interface Props {
 }
 
 const KebabMenu = ({ reviewId, boardId }: Props) => {
-  const { push } = useRouter();
+  const { push, back } = useRouter();
   const { mutate: deleteMutate } = useDeleteReviewMutation(boardId);
+  const pathname = usePathname();
+  const isReviewDetailPage = pathname === PATH.reviewDetail({ productId: boardId, reviewId });
 
   const onModifyClick = () => {
     push(
@@ -28,6 +30,7 @@ const KebabMenu = ({ reviewId, boardId }: Props) => {
 
   const onDeleteClick = () => {
     deleteMutate(reviewId);
+    if (isReviewDetailPage) back();
   };
 
   return (
