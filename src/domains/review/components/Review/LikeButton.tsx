@@ -1,5 +1,7 @@
 'use client';
 
+import { useRecoilValue } from 'recoil';
+import { isLoggedinState } from '@/shared/atoms/login';
 import { ThumbsUpIcon } from '@/shared/components/icons';
 import { cn } from '@/shared/utils/cn';
 import useLikeReviewMutation from '../../queries/useLikeReviewMutation';
@@ -12,6 +14,7 @@ interface Props {
 }
 
 const LikeButton = ({ id, isLiked, like }: Props) => {
+  const isLoggedIn = useRecoilValue(isLoggedinState);
   const { mutate: likeMutate } = useLikeReviewMutation(id);
   const { mutate: dislikeMutate } = useDislikeReviewMutation(id);
 
@@ -25,6 +28,7 @@ const LikeButton = ({ id, isLiked, like }: Props) => {
         isLiked ? 'text-primaryOrangeRed bg-secondaryPink' : 'text-gray-500 bg-redGray-30'
       )}
       onClick={() => mutate()}
+      disabled={!isLoggedIn}
     >
       <ThumbsUpIcon color={isLiked ? 'red' : 'gray'} />
       <span>도움돼요 {like}</span>
