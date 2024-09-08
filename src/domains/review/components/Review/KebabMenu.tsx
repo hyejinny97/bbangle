@@ -3,6 +3,7 @@
 import Dropdown from '@/shared/components/Dropdown';
 import { KebabIcon } from '@/shared/components/icons';
 import PATH from '@/shared/constants/path';
+import { attachRedirectUrl } from '@/shared/utils/attachRedirectUrl';
 import { useRouter } from 'next/navigation';
 import { ReviewType } from '../../types/review';
 import useDeleteReviewMutation from '../../queries/useDeleteReviewMutation';
@@ -17,7 +18,12 @@ const KebabMenu = ({ reviewId, boardId }: Props) => {
   const { mutate: deleteMutate } = useDeleteReviewMutation(boardId);
 
   const onModifyClick = () => {
-    push(PATH.reviewUpdate({ productId: boardId, reviewId, progress: 1 }));
+    push(
+      attachRedirectUrl({
+        url: PATH.reviewUpdate({ productId: boardId, reviewId, progress: 1 }),
+        redirectUrl: window.location.href
+      })
+    );
   };
 
   const onDeleteClick = () => {
