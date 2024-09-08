@@ -2,7 +2,6 @@
 
 import Review from '@/domains/review/components/Review';
 import useReviewQuery from '@/domains/review/queries/useReviewQuery';
-import Skeleton from '@/shared/components/Skeleton';
 import { useParams } from 'next/navigation';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
@@ -56,7 +55,7 @@ const ReviewList = () => {
 
       {hasNextPage && (
         <div ref={ref}>
-          <Skeleton />
+          <Review.Skeleton />
         </div>
       )}
     </section>
