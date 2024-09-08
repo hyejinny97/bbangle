@@ -22,6 +22,9 @@ const useUpdateReviewMutation = () => {
       queryClient.invalidateQueries({
         queryKey: reviewQueryKey.list({ boardId: Number(productId), type: 'board' })
       });
+      queryClient.invalidateQueries({
+        queryKey: reviewQueryKey.list({ type: 'mypage' })
+      });
     },
 
     onError: () => {
