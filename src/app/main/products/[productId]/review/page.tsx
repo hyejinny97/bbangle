@@ -1,5 +1,7 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
+import { INITIAL_CURSOR } from '@/shared/constants/cursor';
 import { reivewQueryOption } from '@/domains/review/queries/useReviewQuery';
+import reviewService from '@/domains/review/queries/service';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import ReviewList from './_blocks/ReviewList';
 import RatingSection from './_blocks/RatingSection';
@@ -16,13 +18,14 @@ const ReviewListPage = async ({ params }: Props) => {
   const productId = Number(params.productId);
   const queryClient = new QueryClient();
   const { queryKey, queryFn, initialPageParam } = reivewQueryOption(productId);
-  const reviews = await queryClient.fetchInfiniteQuery({
-    queryKey,
-    queryFn,
-    initialPageParam
-  });
-
-  const bestReview = reviews.pages[0].content[0];
+  const [{ content: reviewPhotos }] = await Promise.all([
+    reviewService.getReviewPhotos({ boardId: productId, cursorId: INITIAL_CURSOR }),
+    queryClient.fetchInfiniteQuery({
+      queryKey,
+      queryFn,
+      initialPageParam
+    })
+  ]);
 
   return (
     <>
@@ -34,9 +37,7 @@ const ReviewListPage = async ({ params }: Props) => {
       <PaddingWrapper className="typo-title-14-semibold">리뷰</PaddingWrapper>
       <PaddingWrapper className="flex flex-col gap-[16px] border-b-[6px] border-gray-100">
         <ReviewCreateButton productId={productId} />
-        {bestReview.images && bestReview.images.length > 0 && (
-          <PhotoSection photos={bestReview.images} productId={productId} />
-        )}
+        <PhotoSection photos={reviewPhotos} productId={productId} />
       </PaddingWrapper>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <ReviewList />
