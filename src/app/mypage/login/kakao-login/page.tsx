@@ -9,7 +9,7 @@ const KakaoLoginLoadingPage = () => {
   const code = searchParams.get('code');
 
   useEffect(() => {
-    if (!code) throw new Error('카카오 로그인 시도 중 에러가 발생했어요.');
+    if (!code) return;
     window.opener.postMessage({ code, socialType: 'KAKAO' }, window.location.origin);
   }, [code]);
 
