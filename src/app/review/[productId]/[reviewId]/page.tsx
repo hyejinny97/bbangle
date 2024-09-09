@@ -14,7 +14,7 @@ const ReviewDetailPage = async ({ params: { reviewId } }: Props) => {
   return (
     <DefaultLayout
       header={<Header title="리뷰 상세" back />}
-      main={<Review {...review} date={formattedDate} />}
+      main={<Review {...review} date={formattedDate} usedIn="review-detail" />}
     />
   );
 };

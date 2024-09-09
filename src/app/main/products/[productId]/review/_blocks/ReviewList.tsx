@@ -48,6 +48,7 @@ const ReviewList = () => {
               date={formattedDate}
               images={images}
               isMine={isMine}
+              usedIn="review-list"
             />
           );
         }
