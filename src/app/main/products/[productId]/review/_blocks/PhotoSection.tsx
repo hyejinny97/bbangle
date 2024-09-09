@@ -5,7 +5,7 @@ import Image from 'next/image';
 import PATH from '@/shared/constants/path';
 import useFullScreenModal from '@/shared/hooks/useFullScreenModal';
 import { BLUR_DATA_URL } from '@/shared/constants/blurDataUrl';
-import PhotoModal from '@/domains/review/components/alert-box/PhotoModal';
+import PhotoSlideModal from '@/domains/review/components/alert-box/PhotoSlideModal';
 import { ReviewPhoto } from '@/domains/review/types/review';
 
 interface Props {
@@ -46,7 +46,11 @@ const PhotoSection = ({ photos, productId }: Props) => {
             width={80}
             height={80}
             blurDataURL={BLUR_DATA_URL}
-            onClick={() => openFullScreenModal(<PhotoModal id={id} url={url} />)}
+            onClick={() =>
+              openFullScreenModal(
+                <PhotoSlideModal photos={photos.slice(0, 4)} initSlideIdx={idx} />
+              )
+            }
             className="w-full aspect-square object-cover border-solid border-[1px] border-gray-300 rounded-[6px] cursor-pointer"
           />
         );

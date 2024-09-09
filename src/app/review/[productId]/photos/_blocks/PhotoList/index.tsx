@@ -8,7 +8,7 @@ import useFullScreenModal from '@/shared/hooks/useFullScreenModal';
 import useGetReviewPhotosQuery from '@/domains/review/queries/useGetReviewPhotosQuery';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import SadBbangleBox from '@/shared/components/SadBbangleBox';
-import PhotoModal from '@/domains/review/components/alert-box/PhotoModal';
+import PhotoSlideModal from '@/domains/review/components/alert-box/PhotoSlideModal';
 import PhotoSkeleton from './PhotoSkeleton';
 
 interface Props {
@@ -47,7 +47,7 @@ const PhotoList = ({ boardId }: Props) => {
 
   return (
     <PaddingWrapper className="grid grid-cols-3 gap-[10px] pt-0">
-      {photos.map((photo) => (
+      {photos.map((photo, idx) => (
         <Image
           key={photo.id}
           src={photo.url}
@@ -55,7 +55,9 @@ const PhotoList = ({ boardId }: Props) => {
           width={100}
           height={100}
           blurDataURL={BLUR_DATA_URL}
-          onClick={() => openFullScreenModal(<PhotoModal {...photo} />)}
+          onClick={() =>
+            openFullScreenModal(<PhotoSlideModal photos={photos} initSlideIdx={idx} />)
+          }
           className="w-full aspect-square object-cover border-solid border-[1px] border-gray-300 rounded-[6px] cursor-pointer"
         />
       ))}
