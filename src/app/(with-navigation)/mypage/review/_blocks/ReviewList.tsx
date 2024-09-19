@@ -50,6 +50,7 @@ const ReviewList = () => {
               isBest={isBest}
               date={formmatedDate}
               isMine={isMine}
+              usedIn="review-list"
             />
           );
         }

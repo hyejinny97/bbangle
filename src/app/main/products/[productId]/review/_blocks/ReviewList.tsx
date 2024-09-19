@@ -3,7 +3,6 @@
 import Review from '@/domains/review/components/Review';
 import useReviewQuery from '@/domains/review/queries/useReviewQuery';
 import SadBbangleBox from '@/shared/components/SadBbangleBox';
-import Skeleton from '@/shared/components/Skeleton';
 import { useParams } from 'next/navigation';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
@@ -53,6 +52,7 @@ const ReviewList = () => {
               date={formattedDate}
               images={images}
               isMine={isMine}
+              usedIn="review-list"
             />
           );
         }
@@ -60,7 +60,7 @@ const ReviewList = () => {
 
       {hasNextPage && (
         <div ref={ref}>
-          <Skeleton />
+          <Review.Skeleton />
         </div>
       )}
     </section>
