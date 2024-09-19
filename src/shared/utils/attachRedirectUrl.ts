@@ -5,10 +5,7 @@ export const attachRedirectUrl = ({
   url: string;
   redirectUrl: string | null;
 }) => {
-  let fullUrl = url;
-  if (!url.startsWith('http')) fullUrl = window.location.protocol + window.location.host + url;
-
-  const newUrl = new URL(fullUrl);
+  const newUrl = new URL(url, window.location.protocol + window.location.host);
   if (redirectUrl) newUrl.searchParams.append('redirect', redirectUrl);
   return newUrl.toString();
 };
