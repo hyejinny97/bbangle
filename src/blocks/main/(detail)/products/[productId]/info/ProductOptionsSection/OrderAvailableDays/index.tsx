@@ -1,10 +1,6 @@
 'use client';
 
-import { useRouter, useParams } from 'next/navigation';
-import { useRecoilValue } from 'recoil';
-import { isLoggedinState } from '@/shared/atoms/login';
-import PATH from '@/shared/constants/path';
-import useToastNewVer from '@/shared/hooks/useToastNewVer';
+import { useParams } from 'next/navigation';
 import useModal from '@/shared/hooks/useModal';
 import usePopup from '@/shared/hooks/usePopup';
 import useWebView from '@/shared/hooks/useWebView';
@@ -14,6 +10,7 @@ import { ProductOptionType } from '@/domains/product/types/productDetailType';
 import { ORDER_TYPE } from '@/domains/product/constants/orderType';
 import { AlarmType } from '@/domains/alarm/types';
 import { isWeekProductOption, isDateProductOption } from '@/domains/product/utils/typeGuard';
+import useCheckLogin from '@/domains/product/hooks/useCheckLogin';
 import WeekAlarmModal from '@/domains/product/components/alert-box/WeekAlarmModal';
 import DateAlarmModal from '@/domains/product/components/alert-box/DateAlarmModal';
 import AlarmButton from '@/domains/alarm/components/common/AlarmButton';
@@ -33,13 +30,11 @@ const OrderAvailableDays = ({ product }: Props) => {
   const isWeek = orderType === 'WEEK' && isWeekProductOption(product);
   const isDate = orderType === 'DATE' && isDateProductOption(product);
 
-  const { openToast } = useToastNewVer();
   const { openModal } = useModal();
   const { openPopup } = usePopup();
-  const { push } = useRouter();
   const { productId } = useParams<{ productId: string }>();
   const { isWebView } = useWebView();
-  const isLoggedIn = useRecoilValue(isLoggedinState);
+  const { checkLogin } = useCheckLogin();
   const mutationProps = {
     pushCategory: (isSoldout ? 'restock' : 'bbangcketing') as AlarmType,
     productId: Number(productId),
@@ -55,11 +50,8 @@ const OrderAvailableDays = ({ product }: Props) => {
       return;
     }
 
-    if (!isLoggedIn) {
-      openToast({ message: '알림 신청을 하려면 먼저 로그인해주세요.' });
-      push(PATH.login);
-      return;
-    }
+    const isLoggedIn = checkLogin();
+    if (!isLoggedIn) return;
 
     if (isNotified) {
       openPopup(<CancelAlarmPopup type="restock" cancelAlarm={cancelAlarm} />);
@@ -76,11 +68,8 @@ const OrderAvailableDays = ({ product }: Props) => {
       return;
     }
 
-    if (!isLoggedIn) {
-      openToast({ message: '알림 신청을 하려면 먼저 로그인해주세요.' });
-      push(PATH.login);
-      return;
-    }
+    const isLoggedIn = checkLogin();
+    if (!isLoggedIn) return;
 
     if (isWeek) {
       openModal(<WeekAlarmModal product={product} />);
