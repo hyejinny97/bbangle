@@ -107,6 +107,7 @@ const OrderAvailableDays = ({ product }: Props) => {
           onClick={() =>
             openPopup(<ReadyForServicePopup type={isSoldout ? 'restock' : 'bbangcketing'} />)
           }
+          disabled={isDate && new Date(product.orderAvailableDate.startDate) <= new Date()}
           className="max-w-max"
         />
       </div>
