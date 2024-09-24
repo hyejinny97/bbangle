@@ -11,7 +11,7 @@ import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query
 const ProductListPage = async () => {
   const queryClient = new QueryClient();
   await queryClient.prefetchInfiniteQuery({
-    queryKey: [...productQueryKey.list('main'), { filter: INIT_FILTER_VALUE }],
+    queryKey: [...productQueryKey.lists(), { filter: INIT_FILTER_VALUE }],
     queryFn: async ({ pageParam: cursorId }: { pageParam: number }) => {
       const result = await productService.getAllCategoryProducts({
         cursorId,
