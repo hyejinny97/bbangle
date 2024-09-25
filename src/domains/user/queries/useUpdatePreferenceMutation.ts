@@ -1,6 +1,7 @@
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import { PreferenceType } from '@/domains/user/types/preference';
+import { revalidateTag } from '@/shared/actions/revalidate';
 import PATH from '@/shared/constants/path';
 import userService from '@/domains/user/queries/service';
 import useToastNewVer from '@/shared/hooks/useToastNewVer';
@@ -19,6 +20,7 @@ const useUpdatePreferenceMutation = () => {
 
   const onSuccess = () => {
     openToast({ message: '맞춤 추천이 수정됐으니, 추천 빵을 구경해봐요!' });
+    revalidateTag('preference');
   };
 
   const onError = ({ message }: Error) => {
