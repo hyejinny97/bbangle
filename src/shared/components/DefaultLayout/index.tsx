@@ -14,7 +14,10 @@ const DefaultLayout = ({ main, header, footer }: Props) => (
       {main}
     </main>
     {footer && (
-      <footer id={ELEMENT_ID.footer} className=" w-full mx-auto shrink-0 sticky bottom-0 z-footer">
+      <footer
+        id={ELEMENT_ID.footer}
+        className="w-full mx-auto shrink-0 sticky bottom-0 z-footer bg-white"
+      >
         {footer}
       </footer>
     )}

@@ -23,12 +23,12 @@ export function useSocialLoginMutation() {
     await login({ accessToken, refreshToken });
     const { isFullyAssigned, isPreferenceAssigned } = await userService.getMyPreferenceStatus();
 
-    if (!isPreferenceAssigned) {
+    if (!isFullyAssigned) {
       replace(PATH.profileRegistration);
       return;
     }
-    if (!isFullyAssigned) {
-      replace(PATH.preferenceCreate);
+    if (!isPreferenceAssigned) {
+      replace(PATH.preferenceCreate({ progress: 1 }));
       return;
     }
 

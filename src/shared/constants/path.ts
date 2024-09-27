@@ -28,8 +28,8 @@ const PATH = {
   mypage: '/mypage',
   myReview: '/mypage/review',
 
-  preferenceCreate: '/mypage/preference/create',
-  preferenceUpdate: '/mypage/preference/update',
+  preferenceCreate: ({ progress }: { progress: 1 | 2 }) => `/mypage/preference/create/${progress}`,
+  preferenceUpdate: ({ progress }: { progress: 1 | 2 }) => `/mypage/preference/update/${progress}`,
   bbangcketing: '/mypage/alarm/bbangcketing',
   restock: '/mypage/alarm/restock',
 
