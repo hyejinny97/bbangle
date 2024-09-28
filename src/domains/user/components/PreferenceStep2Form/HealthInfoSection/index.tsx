@@ -1,48 +1,86 @@
+import { useFormContext } from 'react-hook-form';
+import { PreferenceStep2Type } from '@/domains/user/types/preference';
+import { PREFERENCE } from '@/domains/user/constants/preference';
 import CheckboxQuestion from './CheckboxQuestion';
 
-const HealthInfoSection = () => (
-  <section className="mb-[8px]">
-    <h3 className="w-full px-[16px] py-[10px] bg-gray-100 typo-title-14-semibold text-gray-700">
-      건강 정보
-    </h3>
-    <div className="divide-y divide-gray-100">
-      <CheckboxQuestion
-        title="식이제한을 가지고 계신가요?"
-        subTitle="정확한 추천을 위해 모두 선택해주세요."
-        required
-        options={{ contents: ['유당불내증', '글루텐불내증', '당뇨', '해당없음'] }}
-      />
-      <CheckboxQuestion
-        title="건강 고민이 있으신가요?"
-        subTitle="가지고 있는 건강 고민을 모두 선택해주세요."
-        required
-        options={{ contents: ['여드름', '체지방', '콜레스테롤', '소화불량', '해당없음'] }}
-      />
-      <CheckboxQuestion
-        title="기피하는 음식 재료가 있으신가요?"
-        subTitle="정확한 추천을 위해 모두 선택해주세요."
-        required
-        options={{
-          contents: [
-            '밀가루',
-            '통밀',
-            '쌀',
-            '콩',
-            '우유',
-            '두유',
-            '설탕',
-            '계란',
-            '땅콩',
-            '호두',
-            '잣',
-            '복숭아',
-            '토마토',
-            '해당없음'
-          ]
-        }}
-      />
-    </div>
-  </section>
-);
+const HealthInfoSection = () => {
+  const { watch, register, setValue } = useFormContext<PreferenceStep2Type>();
+  const [dietLimitation, healthConcerns, hateFoodList] = watch([
+    'dietLimitation',
+    'healthConcerns',
+    'hateFoodList'
+  ]);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    {
+      fieldName,
+      fieldValue
+    }: {
+      fieldName: keyof PreferenceStep2Type;
+      fieldValue: PreferenceStep2Type[keyof PreferenceStep2Type];
+    }
+  ) => {
+    const { value: clickedValue, checked } = e.target;
+    if (clickedValue === '해당없음' && checked) {
+      setValue(fieldName, ['해당없음']);
+    }
+    if (clickedValue !== '해당없음' && fieldValue.some((v) => v === '해당없음')) {
+      setValue(fieldName, [clickedValue] as PreferenceStep2Type[keyof PreferenceStep2Type]);
+    }
+  };
+
+  return (
+    <section className="mb-[8px]">
+      <h3 className="w-full px-[16px] py-[10px] bg-gray-100 typo-title-14-semibold text-gray-700">
+        건강 정보
+      </h3>
+      <div className="divide-y divide-gray-100">
+        <CheckboxQuestion
+          title="식이제한을 가지고 계신가요?"
+          subTitle="정확한 추천을 위해 모두 선택해주세요."
+          required
+          options={PREFERENCE.step2.dietLimitation.map((option) => ({
+            value: option,
+            checked: dietLimitation.includes(option),
+            ...register('dietLimitation', {
+              required: true,
+              onChange: (e) =>
+                handleChange(e, { fieldName: 'dietLimitation', fieldValue: dietLimitation })
+            })
+          }))}
+        />
+        <CheckboxQuestion
+          title="건강 고민이 있으신가요?"
+          subTitle="가지고 있는 건강 고민을 모두 선택해주세요."
+          required
+          options={PREFERENCE.step2.healthConcerns.map((option) => ({
+            value: option,
+            checked: healthConcerns.includes(option),
+            ...register('healthConcerns', {
+              required: true,
+              onChange: (e) =>
+                handleChange(e, { fieldName: 'healthConcerns', fieldValue: healthConcerns })
+            })
+          }))}
+        />
+        <CheckboxQuestion
+          title="기피하는 음식 재료가 있으신가요?"
+          subTitle="정확한 추천을 위해 모두 선택해주세요."
+          required
+          options={PREFERENCE.step2.hateFoodList.map((option) => ({
+            value: option,
+            checked: hateFoodList.includes(option),
+            ...register('hateFoodList', {
+              required: true,
+              onChange: (e) =>
+                handleChange(e, { fieldName: 'hateFoodList', fieldValue: hateFoodList })
+            })
+          }))}
+        />
+      </div>
+    </section>
+  );
+};
 
 export default HealthInfoSection;

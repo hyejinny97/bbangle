@@ -6,19 +6,19 @@ import { CheckIcon } from '../icons';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {}
 
-const CheckBoxNewver = (
+const RadioNewver = (
   { className, onBeforeInput, ...props }: Props,
   ref: ForwardedRef<HTMLInputElement>
 ) => (
-  <div role="checkbox" aria-checked={props.checked} className={cn('relative', className)}>
+  <div role="radio" aria-checked={props.checked} className={cn('relative', className)}>
     <input
       ref={ref}
-      type="checkbox"
+      type="radio"
       className="opacity-0 absolute size-full cursor-pointer"
       {...props}
     />
-    {props.checked ? <CheckIcon shape="checkbox-on" /> : <CheckIcon shape="checkbox-off" />}
+    {props.checked ? <CheckIcon shape="radio-on" /> : <CheckIcon shape="radio-off" />}
   </div>
 );
 
-export default forwardRef(CheckBoxNewver);
+export default forwardRef(RadioNewver);

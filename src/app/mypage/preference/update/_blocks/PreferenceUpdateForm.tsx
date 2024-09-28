@@ -1,5 +1,7 @@
+'use client';
+
 import useUpdatePreferenceMutation from '@/domains/user/queries/useUpdatePreferenceMutation';
-import { PreferenceFormType } from '@/domains/user/types/preference';
+import { PreferenceStep1Type } from '@/domains/user/types/preference';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { FORM_ID } from '@/domains/user/constants/form';
 import PreferenceStep1Form from '@/domains/user/components/PreferenceStep1Form';
@@ -10,10 +12,10 @@ interface Props {
 }
 
 const PreferenceUpdateForm = ({ progress }: Props) => {
-  const { handleSubmit } = useFormContext<PreferenceFormType>();
+  const { handleSubmit } = useFormContext<PreferenceStep1Type>();
   const { mutate } = useUpdatePreferenceMutation();
 
-  const onStep1Valid: SubmitHandler<PreferenceFormType> = ({ preferenceType }) => {
+  const onStep1Valid: SubmitHandler<PreferenceStep1Type> = ({ preferenceType }) => {
     const preferences = preferenceType.filter((value) => typeof value === 'string');
     mutate(preferences);
   };

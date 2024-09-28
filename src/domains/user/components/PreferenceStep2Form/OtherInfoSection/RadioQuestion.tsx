@@ -3,18 +3,18 @@
 import { cn } from '@/shared/utils/cn';
 import { selectInputVariants } from '@/shared/style/variants';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
-import Radio from '@/shared/components/Radio';
+import RadioNewver from '@/shared/components/RadioNewver';
+
+interface OptionType extends React.InputHTMLAttributes<HTMLInputElement> {}
 
 interface Props {
   title: string;
   subTitle: string;
   required?: boolean;
-  options: {
-    contents: Array<string>;
-  };
+  options: Array<OptionType>;
 }
 
-const RadioQuestion = ({ title, subTitle, required = false, options: { contents } }: Props) => (
+const RadioQuestion = ({ title, subTitle, required = false, options }: Props) => (
   <div>
     <PaddingWrapper className="pb-[10px]">
       <h4 className="typo-title-16-semibold text-gray-900">
@@ -24,21 +24,24 @@ const RadioQuestion = ({ title, subTitle, required = false, options: { contents 
       <p className="typo-title-14-regular text-gray-700">{subTitle}</p>
     </PaddingWrapper>
     <PaddingWrapper className="pt-0 flex flex-wrap gap-[10px]">
-      {contents.map((content) => (
-        <Radio
-          key={content}
-          isChecked={false}
-          onChange={() => {}}
-          required={required}
-          className={cn(
-            selectInputVariants({ outline: true, checked: false }),
-            'flex min-w-max p-[8px] gap-[6px] items-center typo-title-14-regular text-gray-900'
-            // disabled && 'opacity-70'/
-          )}
-        >
-          {content}
-        </Radio>
-      ))}
+      {options.map((option) => {
+        const { checked, name, value } = option;
+        const id = `${name}/${value}`;
+        return (
+          <label
+            key={id}
+            htmlFor={id}
+            className={cn(
+              'flex min-w-max p-[8px] gap-[6px] items-center typo-title-14-regular text-gray-900',
+              selectInputVariants({ outline: false, checked }),
+              checked && 'typo-title-14-semibold'
+            )}
+          >
+            <RadioNewver id={id} {...option} />
+            {value}
+          </label>
+        );
+      })}
     </PaddingWrapper>
   </div>
 );

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
-import { PreferenceType } from '@/domains/user/types/preference';
+import { PreferenceStep1Type } from '@/domains/user/types/preference';
 import PATH from '@/shared/constants/path';
 import userService from '@/domains/user/queries/service';
 import useToastNewVer from '@/shared/hooks/useToastNewVer';
@@ -9,7 +9,7 @@ const useAddPreferenceMutation = () => {
   const { openToast } = useToastNewVer();
   const { push } = useRouter();
 
-  const mutationFn = async (preference: Array<PreferenceType>) => {
+  const mutationFn = async (preference: PreferenceStep1Type['preferenceType']) => {
     await userService.addPreference(preference);
   };
 

@@ -7,7 +7,7 @@ import { transformPreferenceToEng } from '@/domains/user/utils/transformPreferen
 import { NotificationDetailType, NotificationType } from '../types/notification';
 import { notificationQueryKey, userProfileQueryKey } from './queryKey';
 import { UserProfileType, WithdrawResponse } from '../types/profile';
-import { PreferenceType, PreferenceResultType } from '../types/preference';
+import { PreferenceStep1Type, PreferenceStep1ResultType } from '../types/preference';
 import { KakaoAuthResponse, LoginResponse, SocialType } from '../types/login';
 import { KAKAO } from '../constants/socialLogin';
 
@@ -57,7 +57,7 @@ class UserService extends Service {
     return result;
   }
 
-  async addPreference(preference: Array<PreferenceType>) {
+  async addPreference(preference: PreferenceStep1Type['preferenceType']) {
     const res = await this.fetchExtend.post('/preference', {
       body: JSON.stringify({
         preferenceType: preference
@@ -73,13 +73,13 @@ class UserService extends Service {
 
   async getPreference() {
     const res = await this.fetchExtend.get('/preference', { cache: 'no-store' });
-    const { result, success, code, message }: ResultResponse<PreferenceResultType> =
+    const { result, success, code, message }: ResultResponse<PreferenceStep1ResultType> =
       await res.json();
     if (!res.ok || !success) throw new Error(ERROR_MESSAGE.api({ code, message }));
     return result.preferenceType;
   }
 
-  async updatePreference(preference: Array<PreferenceType>) {
+  async updatePreference(preference: PreferenceStep1Type['preferenceType']) {
     const res = await this.fetchExtend.put('/preference', {
       body: JSON.stringify({
         preferenceType: preference

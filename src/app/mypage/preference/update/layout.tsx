@@ -14,9 +14,17 @@ const PreferenceUpdateLayout = async ({ children }: PreferenceUpdateLayoutProps)
   const data = await userService.getPreference();
   const preferenceType = transformDataToAtomFormat(data);
 
+  // TODO
   return (
     <PreferenceStep1FormProvider defaultValues={{ preferenceType }}>
-      <PreferenceStep2FormProvider defaultValues={{ preferenceType }}>
+      <PreferenceStep2FormProvider
+        defaultValues={{
+          dietLimitation: [],
+          healthConcerns: [],
+          hateFoodList: [],
+          isVegetarians: []
+        }}
+      >
         <DefaultLayout
           header={<Header title="맞춤 추천 수정하기" />}
           main={children}

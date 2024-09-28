@@ -1,17 +1,16 @@
 'use client';
 
-import { PreferenceFormType } from '@/domains/user/types/preference';
+import { PreferenceStep2Type } from '@/domains/user/types/preference';
 import { ReactNode } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 interface Props {
   children: ReactNode;
-  defaultValues: PreferenceFormType;
+  defaultValues: PreferenceStep2Type;
 }
 
-// TODO.
 const PreferenceStep2FormProvider = ({ children, defaultValues }: Props) => {
-  const methods = useForm<PreferenceFormType>({ defaultValues });
+  const methods = useForm<PreferenceStep2Type>({ defaultValues });
 
   return <FormProvider {...methods}>{children}</FormProvider>;
 };

@@ -1,3 +1,4 @@
+import { PREFERENCE_PROVIDER_DEFAULT_VALUE } from '@/domains/user/constants/preference';
 import DefaultLayout from '@/shared/components/DefaultLayout';
 import Header from '@/shared/components/Header';
 import PreferenceStep1FormProvider from '../_blocks/PreferenceStep1FormProvider';
@@ -9,8 +10,8 @@ interface PreferenceCreateLayoutProps {
 }
 
 const PreferenceCreateLayout = ({ children }: PreferenceCreateLayoutProps) => (
-  <PreferenceStep1FormProvider defaultValues={{ preferenceType: [] }}>
-    <PreferenceStep2FormProvider defaultValues={{ preferenceType: [] }}>
+  <PreferenceStep1FormProvider defaultValues={PREFERENCE_PROVIDER_DEFAULT_VALUE.step1}>
+    <PreferenceStep2FormProvider defaultValues={PREFERENCE_PROVIDER_DEFAULT_VALUE.step2}>
       <DefaultLayout
         header={<Header title="맞춤 추천 받기" />}
         main={children}
