@@ -174,8 +174,11 @@ class UserService extends Service {
       success,
       code,
       message
-    }: ResultResponse<{ isFullyAssigned: boolean; isPreferenceAssigned: boolean }> =
-      await res.json();
+    }: ResultResponse<{
+      isFullyAssigned: boolean;
+      isPreferenceAssigned: boolean;
+      isSurveyed: boolean;
+    }> = await res.json();
     if (!res.ok || !success) {
       throw new Error(ERROR_MESSAGE.api({ code, message }));
     }
