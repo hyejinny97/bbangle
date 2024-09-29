@@ -3,7 +3,6 @@ import PATH from '@/shared/constants/path';
 import { getCookie } from '@/shared/actions/cookie';
 import { TOKEN } from '@/shared/constants/token';
 import userService from '@/domains/user/queries/service';
-import { transformDataToAtomFormat } from '@/domains/user/utils/transformPreference';
 import { genGuidanceMessage } from '@/domains/home/utils/genGuidanceMessage';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 
@@ -14,8 +13,7 @@ const TitleSection = async () => {
   let preference;
   if (isLoggedIn) {
     try {
-      const data = await userService.getRecommendationStep1();
-      preference = transformDataToAtomFormat(data);
+      preference = await userService.getRecommendationStep1();
     } catch (error) {
       if (error instanceof Error) console.error(error.message);
     }

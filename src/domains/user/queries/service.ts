@@ -3,7 +3,10 @@ import { Cursor, ResultResponse, DefaultResponse } from '@/shared/types/response
 import { ERROR_MESSAGE } from '@/shared/constants/error';
 import { INITIAL_CURSOR } from '@/shared/constants/cursor';
 import Service from '@/shared/queries/service';
-import { transformPreferenceToEng } from '@/domains/user/utils/transformPreference';
+import {
+  processKrArrayToEnString,
+  processEnStringToKrArray
+} from '@/domains/user/utils/recommendation';
 import { NotificationDetailType, NotificationType } from '../types/notification';
 import { notificationQueryKey, userProfileQueryKey } from './queryKey';
 import { UserProfileType, WithdrawResponse } from '../types/profile';
@@ -61,11 +64,7 @@ class UserService extends Service {
     const { preferenceType } = recommendationStep1;
     const res = await this.fetchExtend.post('/preference', {
       body: JSON.stringify({
-        preferenceType: preferenceType
-          .map((ele) => transformPreferenceToEng(ele))
-          .join('_')
-          .replace(' ', '_')
-          .toUpperCase()
+        preferenceType: processKrArrayToEnString(preferenceType)
       })
     });
     const { success, code, message }: DefaultResponse = await res.json();
@@ -74,21 +73,21 @@ class UserService extends Service {
 
   async getRecommendationStep1() {
     const res = await this.fetchExtend.get('/preference', { cache: 'no-store' });
-    const { result, success, code, message }: ResultResponse<RecommendationStep1ResultType> =
-      await res.json();
+    const {
+      result: { preferenceType },
+      success,
+      code,
+      message
+    }: ResultResponse<RecommendationStep1ResultType> = await res.json();
     if (!res.ok || !success) throw new Error(ERROR_MESSAGE.api({ code, message }));
-    return result.preferenceType;
+    return processEnStringToKrArray(preferenceType);
   }
 
   async updateRecommendationStep1(recommendationStep1: RecommendationStep1Type) {
     const { preferenceType } = recommendationStep1;
     const res = await this.fetchExtend.put('/preference', {
       body: JSON.stringify({
-        preferenceType: preferenceType
-          .map((ele) => transformPreferenceToEng(ele))
-          .join('_')
-          .replace(' ', '_')
-          .toUpperCase()
+        preferenceType: processKrArrayToEnString(preferenceType)
       })
     });
     const { success, code, message }: DefaultResponse = await res.json();
