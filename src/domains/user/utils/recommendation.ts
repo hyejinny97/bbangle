@@ -1,5 +1,9 @@
 import Dictionary from '@/shared/utils/dictionary';
-import { PreferenceType } from '@/domains/user/types/recommendation';
+import {
+  PreferenceType,
+  RecommendationStep2Type,
+  RecommendationStep2ResultType
+} from '@/domains/user/types/recommendation';
 
 export const recommendationDictionary = new Dictionary({
   다이어트: 'DIET',
@@ -35,12 +39,34 @@ export const recommendationDictionary = new Dictionary({
   해당없음: 'NOT_APPLICABLE'
 });
 
-export const processKrArrayToEnString = (preferenceType: Array<PreferenceType>): string =>
+export const processKrArrayToEngString = (preferenceType: Array<PreferenceType>): string =>
   preferenceType.map((ele) => recommendationDictionary.translate(ele)).join('_');
 
-export const processEnStringToKrArray = (preferenceType: string): Array<PreferenceType> =>
+export const processEngStringToKrArray = (preferenceType: string): Array<PreferenceType> =>
   preferenceType
     .replace('MUSCLE_GROW', 'MUSCLE GROW')
     .split('_')
     .map((ele) => (ele === 'MUSCLE GROW' ? 'MUSCLE_GROW' : ele))
     .map((ele) => recommendationDictionary.translate(ele) as PreferenceType);
+
+export const translateObjectValuesEngToKr = (recommendationStep2: RecommendationStep2ResultType) =>
+  Object.keys(recommendationStep2).reduce(
+    (result, key) => ({
+      ...result,
+      [key]: recommendationStep2[key as keyof RecommendationStep2Type].map((ele) =>
+        recommendationDictionary.translate(ele)
+      )
+    }),
+    {} as RecommendationStep2Type
+  );
+
+export const translateObjectValuesKrToEng = (recommendationStep2: RecommendationStep2Type) =>
+  Object.keys(recommendationStep2).reduce(
+    (result, key) => ({
+      ...result,
+      [key]: recommendationStep2[key as keyof RecommendationStep2Type].map((ele) =>
+        recommendationDictionary.translate(ele)
+      )
+    }),
+    {} as RecommendationStep2ResultType
+  );

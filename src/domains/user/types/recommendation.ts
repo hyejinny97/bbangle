@@ -13,3 +13,10 @@ export type RecommendationStep2Type = {
 export interface RecommendationStep1ResultType {
   preferenceType: string;
 }
+
+export interface RecommendationStep2ResultType {
+  dietLimitation: Array<string>;
+  healthConcerns: Array<string>;
+  hateFoodList: Array<string>;
+  isVegetarians: Array<string>;
+}

@@ -11,18 +11,11 @@ interface RecommendationUpdateLayoutProps {
 
 const RecommendationUpdateLayout = async ({ children }: RecommendationUpdateLayoutProps) => {
   const preferenceType = await userService.getRecommendationStep1();
+  const recommendationStep2 = await userService.getRecommendationStep2();
 
-  // TODO
   return (
     <RecommendationStep1FormProvider defaultValues={{ preferenceType }}>
-      <RecommendationStep2FormProvider
-        defaultValues={{
-          dietLimitation: [],
-          healthConcerns: [],
-          hateFoodList: [],
-          isVegetarians: []
-        }}
-      >
+      <RecommendationStep2FormProvider defaultValues={recommendationStep2}>
         <DefaultLayout
           header={<Header title="맞춤 추천 수정하기" />}
           main={children}
