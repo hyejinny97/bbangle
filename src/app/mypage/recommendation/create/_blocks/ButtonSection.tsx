@@ -5,26 +5,29 @@ import { useFormContext } from 'react-hook-form';
 import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import ButtonNewver from '@/shared/components/ButtonNewver';
 import { FORM_ID } from '@/domains/user/constants/form';
-import { PreferenceStep1Type, PreferenceStep2Type } from '@/domains/user/types/preference';
+import {
+  RecommendationStep1Type,
+  RecommendationStep2Type
+} from '@/domains/user/types/recommendation';
 
 const ButtonSection = () => {
   const { progress } = useParams<{ progress: '1' | '2' }>();
   const {
     formState: { isValid: isStep1Valid }
-  } = useFormContext<PreferenceStep1Type>();
+  } = useFormContext<RecommendationStep1Type>();
   const {
     formState: { isValid: isStep2Valid }
-  } = useFormContext<PreferenceStep2Type>();
+  } = useFormContext<RecommendationStep2Type>();
 
   const config = {
     '1': {
       children: '다음',
-      form: FORM_ID.preferenceUpdateStep1,
+      form: FORM_ID.recommendationCreateStep1,
       disabled: !isStep1Valid
     },
     '2': {
-      children: '수정 완료',
-      form: FORM_ID.preferenceUpdateStep2,
+      children: '완료',
+      form: FORM_ID.recommendationCreateStep2,
       disabled: !isStep2Valid
     }
   };

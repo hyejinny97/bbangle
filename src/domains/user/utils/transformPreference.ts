@@ -1,4 +1,4 @@
-import { PreferenceType } from '@/domains/user/types/preference';
+import { PreferenceType } from '@/domains/user/types/recommendation';
 
 export const transformPreferenceToEng = (preference: string): string => {
   switch (preference) {

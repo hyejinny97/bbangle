@@ -7,7 +7,7 @@ import { transformPreferenceToEng } from '@/domains/user/utils/transformPreferen
 import { NotificationDetailType, NotificationType } from '../types/notification';
 import { notificationQueryKey, userProfileQueryKey } from './queryKey';
 import { UserProfileType, WithdrawResponse } from '../types/profile';
-import { PreferenceStep1Type, PreferenceStep1ResultType } from '../types/preference';
+import { RecommendationStep1Type, RecommendationStep1ResultType } from '../types/recommendation';
 import { KakaoAuthResponse, LoginResponse, SocialType } from '../types/login';
 import { KAKAO } from '../constants/socialLogin';
 
@@ -57,10 +57,11 @@ class UserService extends Service {
     return result;
   }
 
-  async addPreference(preference: PreferenceStep1Type['preferenceType']) {
+  async addRecommendationStep1(recommendationStep1: RecommendationStep1Type) {
+    const { preferenceType } = recommendationStep1;
     const res = await this.fetchExtend.post('/preference', {
       body: JSON.stringify({
-        preferenceType: preference
+        preferenceType: preferenceType
           .map((ele) => transformPreferenceToEng(ele))
           .join('_')
           .replace(' ', '_')
@@ -71,18 +72,19 @@ class UserService extends Service {
     if (!res.ok || !success) throw new Error(ERROR_MESSAGE.api({ code, message }));
   }
 
-  async getPreference() {
+  async getRecommendationStep1() {
     const res = await this.fetchExtend.get('/preference', { cache: 'no-store' });
-    const { result, success, code, message }: ResultResponse<PreferenceStep1ResultType> =
+    const { result, success, code, message }: ResultResponse<RecommendationStep1ResultType> =
       await res.json();
     if (!res.ok || !success) throw new Error(ERROR_MESSAGE.api({ code, message }));
     return result.preferenceType;
   }
 
-  async updatePreference(preference: PreferenceStep1Type['preferenceType']) {
+  async updateRecommendationStep1(recommendationStep1: RecommendationStep1Type) {
+    const { preferenceType } = recommendationStep1;
     const res = await this.fetchExtend.put('/preference', {
       body: JSON.stringify({
-        preferenceType: preference
+        preferenceType: preferenceType
           .map((ele) => transformPreferenceToEng(ele))
           .join('_')
           .replace(' ', '_')

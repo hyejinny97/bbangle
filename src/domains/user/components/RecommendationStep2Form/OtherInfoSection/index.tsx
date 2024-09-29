@@ -1,10 +1,10 @@
 import { useFormContext } from 'react-hook-form';
-import { PreferenceStep2Type } from '@/domains/user/types/preference';
-import { PREFERENCE } from '@/domains/user/constants/preference';
+import { RecommendationStep2Type } from '@/domains/user/types/recommendation';
+import { RECOMMENDATION } from '@/domains/user/constants/recommendation';
 import RadioQuestion from './RadioQuestion';
 
 const OtherInfoSection = () => {
-  const { watch, register } = useFormContext<PreferenceStep2Type>();
+  const { watch, register } = useFormContext<RecommendationStep2Type>();
   const isVegetarians = watch('isVegetarians');
 
   return (
@@ -15,7 +15,7 @@ const OtherInfoSection = () => {
       <RadioQuestion
         title="채식 지향이신가요?"
         subTitle="채식인 경우에 1개만 선택해주세요."
-        options={PREFERENCE.step2.isVegetarians.map((option) => ({
+        options={RECOMMENDATION.step2.isVegetarians.map((option) => ({
           value: option,
           checked: isVegetarians.includes(option),
           ...register('isVegetarians')

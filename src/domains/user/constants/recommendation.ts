@@ -1,4 +1,4 @@
-export const PREFERENCE = {
+export const RECOMMENDATION = {
   step1: { preferenceType: ['다이어트', '근성장', '체질•알러지', '비건•채식'] },
   step2: {
     dietLimitation: ['유당불내증', '글루텐불내증', '당뇨', '해당없음'],
@@ -23,7 +23,7 @@ export const PREFERENCE = {
   }
 } as const;
 
-export const PREFERENCE_PROVIDER_DEFAULT_VALUE = {
+export const RECOMMENDATION_PROVIDER_DEFAULT_VALUE = {
   step1: { preferenceType: [] },
   step2: {
     dietLimitation: [],

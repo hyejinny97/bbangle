@@ -14,7 +14,7 @@ const TitleSection = async () => {
   let preference;
   if (isLoggedIn) {
     try {
-      const data = await userService.getPreference();
+      const data = await userService.getRecommendationStep1();
       preference = transformDataToAtomFormat(data);
     } catch (error) {
       if (error instanceof Error) console.error(error.message);
@@ -28,7 +28,7 @@ const TitleSection = async () => {
           <div className="flex items-center gap-x-[6px]">
             <h2 className="text-gray-900 typo-heading-18-semibold">개인 맞춤 상품</h2>
             <Link
-              href={PATH.preferenceUpdate({ progress: 1 })}
+              href={PATH.recommendationUpdate({ progress: 1 })}
               className="px-[10px] py-[2px] rounded-[50px] bg-gray-100 text-gray-700 typo-body-12-semibold"
             >
               수정

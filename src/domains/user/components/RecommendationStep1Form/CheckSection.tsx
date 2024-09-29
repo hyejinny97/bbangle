@@ -1,6 +1,6 @@
 'use client';
 
-import { PreferenceStep1Type } from '@/domains/user/types/preference';
+import { RecommendationStep1Type } from '@/domains/user/types/recommendation';
 import { useFormContext } from 'react-hook-form';
 import CheckBoxNewver from '@/shared/components/CheckboxNewver';
 import { selectInputVariants } from '@/shared/style/variants';
@@ -26,7 +26,7 @@ const ITEMS = [
 ] as const;
 
 const CheckSection = () => {
-  const { watch, register } = useFormContext<PreferenceStep1Type>();
+  const { watch, register } = useFormContext<RecommendationStep1Type>();
   const preferences = watch('preferenceType') || [];
 
   return (

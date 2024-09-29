@@ -1,0 +1,15 @@
+import { RECOMMENDATION } from '@/domains/user/constants/recommendation';
+
+export type PreferenceType = (typeof RECOMMENDATION.step1.preferenceType)[number];
+
+export type RecommendationStep1Type = {
+  [K in keyof typeof RECOMMENDATION.step1]: Array<(typeof RECOMMENDATION.step1)[K][number]>;
+};
+
+export type RecommendationStep2Type = {
+  [K in keyof typeof RECOMMENDATION.step2]: Array<(typeof RECOMMENDATION.step2)[K][number]>;
+};
+
+export interface RecommendationStep1ResultType {
+  preferenceType: string;
+}

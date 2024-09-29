@@ -2,7 +2,7 @@ import { DetailedHTMLProps, FormHTMLAttributes } from 'react';
 import HealthInfoSection from './HealthInfoSection';
 import OtherInfoSection from './OtherInfoSection';
 
-const PreferenceStep2Form = (
+const RecommendationStep2Form = (
   props: DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>
 ) => (
   <form {...props}>
@@ -11,4 +11,4 @@ const PreferenceStep2Form = (
   </form>
 );
 
-export default PreferenceStep2Form;
+export default RecommendationStep2Form;

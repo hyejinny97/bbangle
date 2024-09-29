@@ -29,7 +29,7 @@ const useSilentLoginMutation = () => {
     }
     if (!isPreferenceAssigned) {
       openToast({ message: '맞춤 추천 설문을 완료해주세요.' });
-      push(PATH.preferenceCreate({ progress: 1 }));
+      push(PATH.recommendationCreate({ progress: 1 }));
     }
   };
 

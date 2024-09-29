@@ -28,7 +28,7 @@ export function useSocialLoginMutation() {
       return;
     }
     if (!isPreferenceAssigned) {
-      replace(PATH.preferenceCreate({ progress: 1 }));
+      replace(PATH.recommendationCreate({ progress: 1 }));
       return;
     }
 

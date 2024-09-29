@@ -3,7 +3,7 @@ import PaddingWrapper from '@/shared/components/PaddingWrapper';
 import DescriptionSection from './DescriptionSection';
 import CheckSection from './CheckSection';
 
-const PreferenceStep1Form = (
+const RecommendationStep1Form = (
   props: DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>
 ) => (
   <form {...props}>
@@ -14,4 +14,4 @@ const PreferenceStep1Form = (
   </form>
 );
 
-export default PreferenceStep1Form;
+export default RecommendationStep1Form;
