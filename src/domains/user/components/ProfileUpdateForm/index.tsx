@@ -1,44 +1,57 @@
 'use client';
 
-import { FormEventHandler } from 'react';
-import { useRecoilValue } from 'recoil';
+import { FormProvider, useForm } from 'react-hook-form';
+
 import BirthdayInput from '@/domains/user/components/common/BirthdateInput';
-import MoreSection from '@/domains/user/components/ProfileUpdateForm/MoreSection';
 import NicknameInput from '@/domains/user/components/common/NickNameInput';
-import PhoneNumberInput from '@/domains/user/components/common/PhoneNumberInput';
 import ProfileImageInput from '@/domains/user/components/common/ProfileImageInput';
-import { UserProfileType } from '@/domains/user/types/profile';
+import MoreSection from '@/domains/user/components/ProfileUpdateForm/MoreSection';
 import useProfileUpdateMutation from '@/domains/user/queries/useProfileUpdateMutation';
-import { updateFormState } from '@/domains/user/atoms/profile';
+import { UserProfileType } from '@/domains/user/types/profile';
+
 import { FORM_ID } from '../../constants/form';
+import SexInput from '../common/SexInput';
 
 interface ProfileUpdateFormProps {
   defaultValues: UserProfileType;
 }
 
 const ProfileUpdateForm = ({
-  defaultValues: { profileImg, nickname, phoneNumber, birthDate }
+  defaultValues: { profileImg, nickname, sex, birthDate }
 }: ProfileUpdateFormProps) => {
   const { mutate } = useProfileUpdateMutation();
-  const updateForm = useRecoilValue(updateFormState);
 
-  const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    mutate(updateForm);
-    e.preventDefault();
+  const methods = useForm({
+    defaultValues: {
+      profileImg,
+      nickname,
+      sex,
+      birthDate
+    }
+  });
+
+  const onSubmit = (data: UserProfileType) => {
+    mutate(data);
   };
 
   return (
-    <form id={FORM_ID.profileUpdate} className="px-[16px]" onSubmit={onSubmit}>
-      <div className="my-[16px] flex justify-center items-center">
-        <ProfileImageInput defaultValue={profileImg ?? undefined} />
-      </div>
-      <div className="flex flex-col gap-[20px] mb-[36px]">
-        <NicknameInput defaultValue={nickname ?? undefined} />
-        <PhoneNumberInput defaultValue={phoneNumber ?? undefined} />
-        <BirthdayInput defaultValue={birthDate ?? undefined} />
-      </div>
-      <MoreSection className="mb-[16px]" />
-    </form>
+    <FormProvider {...methods}>
+      <form
+        id={FORM_ID.profileUpdate}
+        className="px-[16px]"
+        onSubmit={methods.handleSubmit(onSubmit)}
+      >
+        <div className="my-[16px] flex justify-center items-center">
+          <ProfileImageInput />
+        </div>
+        <div className="flex flex-col gap-[20px] mb-[36px]">
+          <NicknameInput />
+          <SexInput />
+          <BirthdayInput />
+        </div>
+        <MoreSection className="mb-[16px]" />
+      </form>
+    </FormProvider>
   );
 };
 
