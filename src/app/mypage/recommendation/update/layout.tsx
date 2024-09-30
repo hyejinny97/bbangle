@@ -10,8 +10,10 @@ interface RecommendationUpdateLayoutProps {
 }
 
 const RecommendationUpdateLayout = async ({ children }: RecommendationUpdateLayoutProps) => {
-  const preferenceType = await userService.getRecommendationStep1();
-  const recommendationStep2 = await userService.getRecommendationStep2();
+  const [preferenceType, recommendationStep2] = await Promise.all([
+    userService.getRecommendationStep1(),
+    userService.getRecommendationStep2()
+  ]);
 
   return (
     <RecommendationStep1FormProvider defaultValues={{ preferenceType }}>

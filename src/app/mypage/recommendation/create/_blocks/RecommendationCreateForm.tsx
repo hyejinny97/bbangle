@@ -24,7 +24,13 @@ const RecommendationCreateForm = ({ progress }: Props) => {
   };
 
   const onStep2Valid: SubmitHandler<RecommendationStep2Type> = (recommendationStep2) => {
-    mutateStep2(recommendationStep2);
+    let newRecommendationStep2 = recommendationStep2;
+    if (!Array.isArray(recommendationStep2.isVegetarians))
+      newRecommendationStep2 = {
+        ...recommendationStep2,
+        isVegetarians: [recommendationStep2.isVegetarians]
+      };
+    mutateStep2(newRecommendationStep2);
   };
 
   return (
