@@ -17,6 +17,6 @@ export interface RecommendationStep1ResultType {
 export interface RecommendationStep2ResultType {
   dietLimitation: Array<string>;
   healthConcerns: Array<string>;
-  hateFoodList: Array<string>;
+  unmatchedIngredientList: Array<string>;
   isVegetarians: Array<string>;
 }

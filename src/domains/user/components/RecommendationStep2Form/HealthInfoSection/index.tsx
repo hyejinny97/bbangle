@@ -5,10 +5,10 @@ import CheckboxQuestion from './CheckboxQuestion';
 
 const HealthInfoSection = () => {
   const { watch, register, setValue } = useFormContext<RecommendationStep2Type>();
-  const [dietLimitation, healthConcerns, hateFoodList] = watch([
+  const [dietLimitation, healthConcerns, unmatchedIngredientList] = watch([
     'dietLimitation',
     'healthConcerns',
-    'hateFoodList'
+    'unmatchedIngredientList'
   ]);
 
   const handleChange = (
@@ -68,13 +68,16 @@ const HealthInfoSection = () => {
           title="기피하는 음식 재료가 있으신가요?"
           subTitle="정확한 추천을 위해 모두 선택해주세요."
           required
-          options={RECOMMENDATION.step2.hateFoodList.map((option) => ({
+          options={RECOMMENDATION.step2.unmatchedIngredientList.map((option) => ({
             value: option,
-            checked: hateFoodList.includes(option),
-            ...register('hateFoodList', {
+            checked: unmatchedIngredientList.includes(option),
+            ...register('unmatchedIngredientList', {
               required: true,
               onChange: (e) =>
-                handleChange(e, { fieldName: 'hateFoodList', fieldValue: hateFoodList })
+                handleChange(e, {
+                  fieldName: 'unmatchedIngredientList',
+                  fieldValue: unmatchedIngredientList
+                })
             })
           }))}
         />

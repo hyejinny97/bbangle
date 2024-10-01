@@ -3,7 +3,7 @@ export const RECOMMENDATION = {
   step2: {
     dietLimitation: ['유당불내증', '글루텐불내증', '당뇨', '해당없음'],
     healthConcerns: ['여드름', '체지방', '콜레스테롤', '소화불량', '해당없음'],
-    hateFoodList: [
+    unmatchedIngredientList: [
       '밀가루',
       '통밀',
       '쌀',
@@ -28,7 +28,7 @@ export const RECOMMENDATION_PROVIDER_DEFAULT_VALUE = {
   step2: {
     dietLimitation: [],
     healthConcerns: [],
-    hateFoodList: [],
+    unmatchedIngredientList: [],
     isVegetarians: []
   }
 };
