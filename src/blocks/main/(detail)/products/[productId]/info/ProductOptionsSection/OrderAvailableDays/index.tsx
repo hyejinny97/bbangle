@@ -15,7 +15,6 @@ import WeekAlarmModal from '@/domains/product/components/alert-box/WeekAlarmModa
 import DateAlarmModal from '@/domains/product/components/alert-box/DateAlarmModal';
 import AlarmButton from '@/domains/alarm/components/common/AlarmButton';
 import MobileAppPopup from '@/domains/alarm/components/alert-box/MobileAppPopup';
-import ReadyForServicePopup from '@/domains/alarm/components/alert-box/ReadyForServicePopup';
 import AddAlarmPopup from '@/domains/alarm/components/alert-box/AddAlarmPopup';
 import CancelAlarmPopup from '@/domains/alarm/components/alert-box/CancelAlarmPopup';
 import TypeOfDate from './TypeOfDate';
@@ -43,7 +42,6 @@ const OrderAvailableDays = ({ product }: Props) => {
   const { mutate: addAlarm } = useAddAlarmMutation(mutationProps);
   const { mutate: cancelAlarm } = useCancelAlarmMutation(mutationProps);
 
-  /* eslint-disable */
   const handleRestockBtnClick = () => {
     if (!isWebView) {
       openPopup(<MobileAppPopup type="restock" />);
@@ -77,7 +75,6 @@ const OrderAvailableDays = ({ product }: Props) => {
       openModal(<DateAlarmModal product={product} />);
     }
   };
-  /* eslint-enable */
 
   return (
     <div>
@@ -92,10 +89,7 @@ const OrderAvailableDays = ({ product }: Props) => {
         <AlarmButton
           type={isSoldout ? 'restock' : 'bbangcketing'}
           isAlarming={notified}
-          // onClick={isSoldout ? handleRestockBtnClick : handleBbangcketingBtnClick}
-          onClick={() =>
-            openPopup(<ReadyForServicePopup type={isSoldout ? 'restock' : 'bbangcketing'} />)
-          }
+          onClick={isSoldout ? handleRestockBtnClick : handleBbangcketingBtnClick}
           disabled={isDate && new Date(product.orderAvailableDate.startDate) <= new Date()}
           className="max-w-max"
         />
