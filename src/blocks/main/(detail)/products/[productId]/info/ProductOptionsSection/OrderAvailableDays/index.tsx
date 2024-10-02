@@ -26,7 +26,7 @@ interface Props {
 }
 
 const OrderAvailableDays = ({ product }: Props) => {
-  const { id: productOptionId, orderType, isSoldout, isNotified } = product;
+  const { id: productOptionId, orderType, isSoldout, notified } = product;
   const isWeek = orderType === 'WEEK' && isWeekProductOption(product);
   const isDate = orderType === 'DATE' && isDateProductOption(product);
 
@@ -53,7 +53,7 @@ const OrderAvailableDays = ({ product }: Props) => {
     const isLoggedIn = checkLogin();
     if (!isLoggedIn) return;
 
-    if (isNotified) {
+    if (notified) {
       openPopup(<CancelAlarmPopup type="restock" cancelAlarm={cancelAlarm} />);
     } else {
       openPopup(
@@ -91,7 +91,7 @@ const OrderAvailableDays = ({ product }: Props) => {
         </div>
         <AlarmButton
           type={isSoldout ? 'restock' : 'bbangcketing'}
-          isAlarming={isNotified}
+          isAlarming={notified}
           // onClick={isSoldout ? handleRestockBtnClick : handleBbangcketingBtnClick}
           onClick={() =>
             openPopup(<ReadyForServicePopup type={isSoldout ? 'restock' : 'bbangcketing'} />)
