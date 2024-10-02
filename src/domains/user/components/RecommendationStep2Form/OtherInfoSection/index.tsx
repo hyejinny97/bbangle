@@ -1,11 +1,11 @@
 import { useFormContext } from 'react-hook-form';
-import { RecommendationStep2Type } from '@/domains/user/types/recommendation';
+import { RecommendationType } from '@/domains/user/types/recommendation';
 import { RECOMMENDATION } from '@/domains/user/constants/recommendation';
 import RadioQuestion from './RadioQuestion';
 
 const OtherInfoSection = () => {
-  const { watch, register } = useFormContext<RecommendationStep2Type>();
-  const isVegetarians = watch('isVegetarians');
+  const { watch, register } = useFormContext<RecommendationType>();
+  const isVegetarians = watch('step2.isVegetarians');
 
   return (
     <section className="mb-[8px]">
@@ -18,7 +18,7 @@ const OtherInfoSection = () => {
         options={RECOMMENDATION.step2.isVegetarians.map((option) => ({
           value: option,
           checked: isVegetarians.includes(option),
-          ...register('isVegetarians')
+          ...register('step2.isVegetarians')
         }))}
       />
     </section>

@@ -1,6 +1,6 @@
 'use client';
 
-import { RecommendationStep1Type } from '@/domains/user/types/recommendation';
+import { RecommendationType } from '@/domains/user/types/recommendation';
 import { useFormContext } from 'react-hook-form';
 import CheckBoxNewver from '@/shared/components/CheckboxNewver';
 import { selectInputVariants } from '@/shared/style/variants';
@@ -26,8 +26,8 @@ const ITEMS = [
 ] as const;
 
 const CheckSection = () => {
-  const { watch, register } = useFormContext<RecommendationStep1Type>();
-  const preferences = watch('preferenceType') || [];
+  const { watch, register } = useFormContext<RecommendationType>();
+  const preferences = watch('step1.preferenceType');
 
   return (
     <div className="flex flex-col gap-[8px]">
@@ -52,7 +52,7 @@ const CheckSection = () => {
               value={item.title}
               checked={checked}
               disabled={disabled}
-              {...register('preferenceType', {
+              {...register('step1.preferenceType', {
                 required: true
               })}
             />

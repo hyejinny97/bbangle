@@ -87,7 +87,10 @@ class UserService extends Service {
   }
 
   async getRecommendationStep1() {
-    const res = await this.fetchExtend.get('/preference', { cache: 'no-store' });
+    const res = await this.fetchExtend.get('/preference', {
+      cache: 'no-store',
+      next: { tags: ['recommendation-step1'] }
+    });
     const {
       result: { preferenceType },
       success,
@@ -95,11 +98,14 @@ class UserService extends Service {
       message
     }: ResultResponse<RecommendationStep1ResultType> = await res.json();
     if (!res.ok || !success) throw new Error(ERROR_MESSAGE.api({ code, message }));
-    return processEngStringToKrArray(preferenceType);
+    const recommendationStep1 = { preferenceType: processEngStringToKrArray(preferenceType) };
+    return recommendationStep1;
   }
 
   async getRecommendationStep2() {
-    const res = await this.fetchExtend.get('/surveys/recommendation');
+    const res = await this.fetchExtend.get('/surveys/recommendation', {
+      next: { tags: ['recommendation-ste21'] }
+    });
     const { result, success, code, message }: ResultResponse<RecommendationStep2ResultType> =
       await res.json();
     if (!res.ok || !success) throw new Error(ERROR_MESSAGE.api({ code, message }));

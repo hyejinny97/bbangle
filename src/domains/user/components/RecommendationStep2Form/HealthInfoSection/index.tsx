@@ -1,14 +1,14 @@
 import { useFormContext } from 'react-hook-form';
-import { RecommendationStep2Type } from '@/domains/user/types/recommendation';
+import { RecommendationType, RecommendationStep2Type } from '@/domains/user/types/recommendation';
 import { RECOMMENDATION } from '@/domains/user/constants/recommendation';
 import CheckboxQuestion from './CheckboxQuestion';
 
 const HealthInfoSection = () => {
-  const { watch, register, setValue } = useFormContext<RecommendationStep2Type>();
+  const { watch, register, setValue } = useFormContext<RecommendationType>();
   const [dietLimitation, healthConcerns, unmatchedIngredientList] = watch([
-    'dietLimitation',
-    'healthConcerns',
-    'unmatchedIngredientList'
+    'step2.dietLimitation',
+    'step2.healthConcerns',
+    'step2.unmatchedIngredientList'
   ]);
 
   const handleChange = (
@@ -23,10 +23,12 @@ const HealthInfoSection = () => {
   ) => {
     const { value: clickedValue, checked } = e.target;
     if (clickedValue === '해당없음' && checked) {
-      setValue(fieldName, ['해당없음']);
+      setValue(`step2.${fieldName}`, ['해당없음']);
     }
     if (clickedValue !== '해당없음' && fieldValue.some((v) => v === '해당없음')) {
-      setValue(fieldName, [clickedValue] as RecommendationStep2Type[keyof RecommendationStep2Type]);
+      setValue(`step2.${fieldName}`, [
+        clickedValue
+      ] as RecommendationStep2Type[keyof RecommendationStep2Type]);
     }
   };
 
@@ -43,7 +45,7 @@ const HealthInfoSection = () => {
           options={RECOMMENDATION.step2.dietLimitation.map((option) => ({
             value: option,
             checked: dietLimitation.includes(option),
-            ...register('dietLimitation', {
+            ...register('step2.dietLimitation', {
               required: true,
               onChange: (e) =>
                 handleChange(e, { fieldName: 'dietLimitation', fieldValue: dietLimitation })
@@ -57,7 +59,7 @@ const HealthInfoSection = () => {
           options={RECOMMENDATION.step2.healthConcerns.map((option) => ({
             value: option,
             checked: healthConcerns.includes(option),
-            ...register('healthConcerns', {
+            ...register('step2.healthConcerns', {
               required: true,
               onChange: (e) =>
                 handleChange(e, { fieldName: 'healthConcerns', fieldValue: healthConcerns })
@@ -71,7 +73,7 @@ const HealthInfoSection = () => {
           options={RECOMMENDATION.step2.unmatchedIngredientList.map((option) => ({
             value: option,
             checked: unmatchedIngredientList.includes(option),
-            ...register('unmatchedIngredientList', {
+            ...register('step2.unmatchedIngredientList', {
               required: true,
               onChange: (e) =>
                 handleChange(e, {

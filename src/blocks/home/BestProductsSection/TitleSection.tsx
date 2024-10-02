@@ -13,7 +13,8 @@ const TitleSection = async () => {
   let preference;
   if (isLoggedIn) {
     try {
-      preference = await userService.getRecommendationStep1();
+      const recommendationStep1 = await userService.getRecommendationStep1();
+      preference = recommendationStep1.preferenceType;
     } catch (error) {
       if (error instanceof Error) console.error(error.message);
     }

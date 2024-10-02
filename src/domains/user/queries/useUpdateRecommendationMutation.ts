@@ -1,5 +1,6 @@
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
+import { revalidateTag } from '@/shared/actions/revalidate';
 import {
   RecommendationStep1Type,
   RecommendationStep2Type
@@ -17,6 +18,7 @@ const useUpdateRecommendationStep1Mutation = () => {
   };
 
   const onSuccess = () => {
+    revalidateTag('recommendation-step1');
     push(PATH.recommendationUpdate({ progress: 2 }));
   };
 
@@ -37,6 +39,7 @@ const useUpdateRecommendationStep2Mutation = () => {
 
   const onSuccess = () => {
     openToast({ message: '맞춤 추천 받기가 수정됐으니, 추천 빵을 구경해봐요!🙌' });
+    revalidateTag('recommendation-step2');
     push(PATH.home);
   };
 

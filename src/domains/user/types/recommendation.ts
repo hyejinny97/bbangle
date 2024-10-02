@@ -10,6 +10,11 @@ export type RecommendationStep2Type = {
   [K in keyof typeof RECOMMENDATION.step2]: Array<(typeof RECOMMENDATION.step2)[K][number]>;
 };
 
+export interface RecommendationType {
+  step1: RecommendationStep1Type;
+  step2: RecommendationStep2Type;
+}
+
 export interface RecommendationStep1ResultType {
   preferenceType: string;
 }

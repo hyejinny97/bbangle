@@ -1,10 +1,7 @@
 'use client';
 
 import useUpdatePreferenceMutation from '@/domains/user/queries/useUpdateRecommendationMutation';
-import {
-  RecommendationStep1Type,
-  RecommendationStep2Type
-} from '@/domains/user/types/recommendation';
+import { RecommendationType } from '@/domains/user/types/recommendation';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { FORM_ID } from '@/domains/user/constants/form';
 import RecommendationStep1Form from '@/domains/user/components/RecommendationStep1Form';
@@ -15,22 +12,21 @@ interface Props {
 }
 
 const RecommendationUpdateForm = ({ progress }: Props) => {
-  const { handleSubmit: handleStep1Submit } = useFormContext<RecommendationStep1Type>();
-  const { handleSubmit: handleStep2Submit } = useFormContext<RecommendationStep2Type>();
+  const { handleSubmit } = useFormContext<RecommendationType>();
   const { mutateStep1, mutateStep2 } = useUpdatePreferenceMutation();
 
-  const onStep1Valid: SubmitHandler<RecommendationStep1Type> = (recommendationStep1) => {
-    mutateStep1(recommendationStep1);
+  const onStep1Valid: SubmitHandler<RecommendationType> = ({ step1 }) => {
+    mutateStep1(step1);
   };
 
-  const onStep2Valid: SubmitHandler<RecommendationStep2Type> = (recommendationStep2) => {
-    let newRecommendationStep2 = recommendationStep2;
-    if (!Array.isArray(recommendationStep2.isVegetarians))
-      newRecommendationStep2 = {
-        ...recommendationStep2,
-        isVegetarians: [recommendationStep2.isVegetarians]
+  const onStep2Valid: SubmitHandler<RecommendationType> = ({ step2 }) => {
+    let newStep2 = step2;
+    if (!Array.isArray(step2.isVegetarians))
+      newStep2 = {
+        ...step2,
+        isVegetarians: [step2.isVegetarians]
       };
-    mutateStep2(newRecommendationStep2);
+    mutateStep2(newStep2);
   };
 
   return (
@@ -38,13 +34,13 @@ const RecommendationUpdateForm = ({ progress }: Props) => {
       {progress === 1 && (
         <RecommendationStep1Form
           id={FORM_ID.recommendationUpdateStep1}
-          onSubmit={handleStep1Submit(onStep1Valid)}
+          onSubmit={handleSubmit(onStep1Valid)}
         />
       )}
       {progress === 2 && (
         <RecommendationStep2Form
           id={FORM_ID.recommendationUpdateStep2}
-          onSubmit={handleStep2Submit(onStep2Valid)}
+          onSubmit={handleSubmit(onStep2Valid)}
         />
       )}
     </>
