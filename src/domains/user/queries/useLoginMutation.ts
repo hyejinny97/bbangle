@@ -22,7 +22,7 @@ export function useSocialLoginMutation() {
   const onSuccess = async ({ accessToken, refreshToken }: LoginResponse) => {
     await login({ accessToken, refreshToken });
     const { isFullyAssigned, isPreferenceAssigned, isSurveyed } =
-      await userService.getMyPreferenceStatus();
+      await userService.getMyRecommendationStatus();
 
     if (!isFullyAssigned) {
       replace(PATH.profileRegistration);

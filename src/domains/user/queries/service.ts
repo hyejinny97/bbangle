@@ -104,7 +104,7 @@ class UserService extends Service {
 
   async getRecommendationStep2() {
     const res = await this.fetchExtend.get('/surveys/recommendation', {
-      next: { tags: ['recommendation-ste21'] }
+      next: { tags: ['recommendation-ste2'] }
     });
     const { result, success, code, message }: ResultResponse<RecommendationStep2ResultType> =
       await res.json();
@@ -173,7 +173,7 @@ class UserService extends Service {
     return result;
   }
 
-  async getMyPreferenceStatus() {
+  async getMyRecommendationStatus() {
     const res = await this.fetchExtend.get('/members/status');
     const {
       result,

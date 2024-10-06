@@ -22,7 +22,7 @@ const useSilentLoginMutation = () => {
   const onSuccess = async ({ accessToken }: ResultType) => {
     await login({ accessToken });
     const { isPreferenceAssigned, isFullyAssigned, isSurveyed } =
-      await userService.getMyPreferenceStatus();
+      await userService.getMyRecommendationStatus();
     if (!isFullyAssigned) {
       openToast({ message: '약관 동의를 완료해주세요.' });
       push(PATH.profileRegistration);
