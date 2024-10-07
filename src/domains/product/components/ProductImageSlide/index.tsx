@@ -31,7 +31,7 @@ const ProductImageSlide = ({ boardImages, isSoldOut, onChange }: ImgSliderProps)
       }}
       className="w-full aspect-square"
     >
-      {boardImages?.map((image) => (
+      {boardImages.map((image) => (
         <SwiperSlide
           key={image}
           className={cn(
