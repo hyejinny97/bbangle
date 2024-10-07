@@ -33,7 +33,7 @@ export const recommendationDictionary = new Dictionary({
   과일: 'FRUIT',
   '동물성 재료': 'ANIMAL_INGREDIENT',
   유제품: 'DIARY',
-  '동물의 알': 'EGG',
+  '동물의 알': 'ANIMAL_EGG',
   해산물: 'SEA_FOOD',
   육고기: 'MEAT',
   해당없음: 'NOT_APPLICABLE'
