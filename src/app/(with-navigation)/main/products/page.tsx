@@ -7,6 +7,7 @@ import productService from '@/domains/product/queries/service';
 import { INITIAL_CURSOR } from '@/shared/constants/cursor';
 import { productQueryKey } from '@/shared/queries/queryKey';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+import TopButton from '@/shared/components/TopButton';
 
 const ProductListPage = async () => {
   const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const ProductListPage = async () => {
       <HydrationBoundary state={dehydrate(queryClient)}>
         <MainProductList />
       </HydrationBoundary>
+      <TopButton />
     </>
   );
 };
