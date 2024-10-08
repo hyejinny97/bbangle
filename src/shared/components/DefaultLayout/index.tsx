@@ -36,7 +36,7 @@ const DefaultLayout = ({ main, header, footer }: Props) => {
         <footer
           ref={footerRef}
           id={ELEMENT_ID.footer}
-          className="max-w-[600px] w-full mx-auto  fixed left-1/2 -translate-x-1/2 bottom-0 z-footer"
+          className="max-w-[600px] w-full mx-auto  fixed left-1/2 -translate-x-1/2 bottom-0 z-footer bg-white"
         >
           {footer}
         </footer>
